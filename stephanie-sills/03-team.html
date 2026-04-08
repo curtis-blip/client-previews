@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet the Palermo Properties Team | Coastside &amp; Peninsula Real Estate Agents</title>
+<meta name="description" content="Meet the 8 agents of Palermo Properties Team at Compass. Serving Half Moon Bay, the Coastside, and the Peninsula. Find your local real estate expert.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #C5A572;
+  --primary-dark: #A8894F;
+  --primary-light: #E8D5B5;
+  --dark: #1A1A1A;
+  --mid: #6B6B6B;
+  --light: #F7F5F0;
+  --neutral: #ffffff;
+  --coastal: #4A7C8F;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --max: 1200px;
+  --radius: 2px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 32px rgba(0,0,0,0.14);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2C2C2C;
+  background: var(--neutral);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--dark);
+}
+h1 { font-size: clamp(38px, 5vw, 60px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 42px); }
+h3 { font-size: 22px; font-weight: 500; }
+h4 { font-size: 18px; font-weight: 500; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+.section-light { padding: 100px 0; background: var(--neutral); }
+.section-alt   { padding: 100px 0; background: var(--light); }
+.section-dark  { padding: 100px 0; background: var(--dark); color: #fff; }
+.section-dark h2, .section-dark h3, .section-dark h4 { color: #fff; }
+.section-dark .eyebrow { color: var(--primary-light); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: #000;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 34px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.btn-dark {
+  display: inline-block;
+  background: var(--dark);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 40px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+.btn-dark:hover { background: #000; }
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+  padding: 24px 0;
+}
+.nav.nav-solid {
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 14px 0;
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { height: 72px; transition: height 0.3s; }
+.nav.nav-solid .nav-logo { height: 56px; }
+.nav-logo img { height: 100%; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+.nav.nav-solid .nav-logo img { filter: none; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links > a, .nav-dropdown > a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color 0.3s;
+}
+.nav.nav-solid .nav-links > a, .nav.nav-solid .nav-dropdown > a { color: var(--dark); }
+.nav-links > a:hover, .nav-dropdown > a:hover { color: var(--primary); }
+.nav-links > a.active { color: var(--primary); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.nav-dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  padding: 12px 0;
+  min-width: 220px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s;
+}
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown-menu a {
+  display: block;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dark);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-dropdown-menu a:hover { color: var(--primary); background: var(--light); }
+.nav-cta {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.nav.nav-solid .nav-cta {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.nav-cta:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #000;
+}
+.nav-mobile { display: none; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 180px 0 100px;
+  background: linear-gradient(rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.9) 12%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.7) 100%), url('images/team-photo.jpg') center/cover no-repeat;
+  text-align: center;
+  position: relative;
+}
+.page-hero .eyebrow { color: var(--primary-light); justify-content: center; }
+.page-hero h1 { color: #fff; margin-bottom: 16px; }
+.page-hero p {
+  color: rgba(255,255,255,0.7);
+  font-size: 17px;
+  max-width: 640px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ── TEAM INTRO ── */
+.team-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.team-intro h2 { margin-bottom: 20px; }
+.team-intro p {
+  color: var(--mid);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* ── TEAM GRID ── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 0;
+}
+.team-card {
+  background: var(--neutral);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.team-card-photo {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.team-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s;
+}
+.team-card:hover .team-card-photo img {
+  transform: scale(1.03);
+}
+.team-card-info {
+  padding: 24px 20px;
+}
+.team-card-info h3 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.team-card-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+.team-card-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.team-card-contact a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--mid);
+  transition: color 0.3s;
+}
+.team-card-contact a:hover { color: var(--primary); }
+.team-card-contact svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.team-card-contact .ig-link svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ── PARALLAX BREAK ── */
+.parallax-break {
+  height: 400px;
+  background: linear-gradient(rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.9) 12%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.7) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.parallax-content h2 {
+  color: #fff;
+  font-size: clamp(28px, 3.5vw, 42px);
+  margin-bottom: 12px;
+}
+.parallax-content p {
+  color: rgba(255,255,255,0.65);
+  font-size: 17px;
+  max-width: 520px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  padding: 80px 0;
+  background: var(--primary);
+  text-align: center;
+}
+.cta-band h2 { color: #000; margin-bottom: 12px; }
+.cta-band p { color: rgba(0,0,0,0.6); font-size: 16px; margin-bottom: 32px; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.6);
+  padding: 80px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+.footer-brand img {
+  height: 80px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: 20px;
+}
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+  max-width: 280px;
+}
+.footer-brand-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.footer-brand-socials a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, background 0.3s;
+}
+.footer-brand-socials a:hover {
+  border-color: var(--primary);
+  background: rgba(197,165,114,0.1);
+}
+.footer-brand-socials svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.6); }
+.footer h4 {
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--primary); }
+.footer-contact p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.footer-contact a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-contact a:hover { color: var(--primary); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .section-light, .section-alt, .section-dark { padding: 64px 0; }
+  .page-hero { padding: 130px 0 60px; }
+    .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .nav-mobile button { background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-mobile svg { width: 24px; height: 24px; stroke: #fff; }
+  .nav.nav-solid .nav-mobile svg { stroke: var(--dark); }.team-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .parallax-break { background-attachment: scroll; height: 300px; }
+  .cta-band { padding: 60px 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  /* Mobile Nav Menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.98);
+    z-index: 999;
+    padding: 100px 40px 40px;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dark);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--primary); }
+  .mobile-menu a.active { color: var(--primary); }
+  .mobile-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    background: none; border: none; cursor: pointer; padding: 8px;
+  }
+  .mobile-close svg { width: 24px; height: 24px; stroke: var(--dark); stroke-width: 2; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="01-home.html" class="nav-logo">
+      <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="10-featured-listings.html">Homes for Sale</a>
+        <div class="nav-dropdown-menu">
+          <a href="10-featured-listings.html">Featured Listings</a>
+          <a href="09-search.html">Search All Homes</a>
+          <a href="11-hmb-homes.html">Half Moon Bay Homes</a>
+        </div>
+      </div>
+      <a href="04-communities.html">Communities</a>
+      <a href="05-buy.html">Buy</a>
+      <a href="06-sell.html">Sell</a>
+      <a href="02-about.html">About</a>
+      <a href="07-services.html">Services</a>
+      <a href="08-testimonials.html">Testimonials</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <div class="nav-mobile">
+      <button aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+  <button class="mobile-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')">
+    <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+  <a href="10-featured-listings.html">Featured Listings</a>
+  <a href="09-search.html">Search All Homes</a>
+  <a href="11-hmb-homes.html">Half Moon Bay Homes</a>
+  <a href="04-communities.html">Communities</a>
+  <a href="05-buy.html">Buy</a>
+  <a href="06-sell.html">Sell</a>
+  <a href="02-about.html">About</a>
+  <a href="07-services.html">Services</a>
+  <a href="08-testimonials.html">Testimonials</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Our Team</div>
+    <h1>Meet the Palermo Properties Team</h1>
+    <p>8 agents serving the San Mateo County Coastside and Peninsula. Local expertise backed by Compass technology and reach.</p>
+  </div>
+</section>
+
+<!-- ── TEAM INTRO ── -->
+<section class="section-light">
+  <div class="container">
+    <div class="team-intro reveal">
+      <h2>Coastside &amp; Peninsula Real Estate Agents</h2>
+      <p>The Palermo Properties Team brings together eight experienced agents with deep roots in the communities we serve. From our offices in Half Moon Bay and Burlingame, we cover every corner of the Coastside and Peninsula, combining neighborhood-level knowledge with the global resources and technology of Compass.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM GRID ── -->
+<section class="section-alt">
+  <div class="container">
+    <div class="team-grid">
+
+      <!-- Mark Palermo -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/mark_1_.jpeg" alt="Mark Palermo, REALTOR, Team Leader">
+        </div>
+        <div class="team-card-info">
+          <h3>Mark Palermo</h3>
+          <div class="team-card-title">REALTOR, Team Leader</div>
+          <div class="team-card-contact">
+            <a href="mailto:mark.palermo@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              mark.palermo@compass.com
+            </a>
+            <a href="tel:6502186400">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 218-6400
+            </a>
+            <a href="https://www.instagram.com/mpalermo_compass/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @mpalermo_compass
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stephanie Sills -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/stephanie_headshot_full_length.jpg" alt="Stephanie Sills, REALTOR, Principal Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Stephanie Sills</h3>
+          <div class="team-card-title">REALTOR, Principal Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:stephanie.sills@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              stephanie.sills@compass.com
+            </a>
+            <a href="tel:6506785707">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 678-5707
+            </a>
+            <a href="https://www.instagram.com/stephaniesillsrealty/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @stephaniesillsrealty
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kirsten Hagen -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/kirsten_favorite_cr_vert.jpeg" alt="Kirsten Hagen, REALTOR, Principal Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Kirsten Hagen</h3>
+          <div class="team-card-title">REALTOR, Principal Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:kirsten.hagen@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              kirsten.hagen@compass.com
+            </a>
+            <a href="tel:6505041469">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 504-1469
+            </a>
+            <a href="https://www.instagram.com/khagen.compass/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @khagen.compass
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Umi Park -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/umi_profile_2023.jpeg" alt="Umi Park, REALTOR, Sales Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Umi Park</h3>
+          <div class="team-card-title">REALTOR, Sales Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:umi.park@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              umi.park@compass.com
+            </a>
+            <a href="tel:6503882570">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 388-2570
+            </a>
+            <a href="https://www.instagram.com/umiparkcompass/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @umiparkcompass
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Irina Luck -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/irina_1_.jpg" alt="Irina Luck, REALTOR, Sales Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Irina Luck</h3>
+          <div class="team-card-title">REALTOR, Sales Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:irina.luck@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              irina.luck@compass.com
+            </a>
+            <a href="tel:4157224461">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (415) 722-4461
+            </a>
+            <a href="https://www.instagram.com/real_irina_luck/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @real_irina_luck
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marissa Ackroyd -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/marissa_ackroyd.jpg" alt="Marissa Ackroyd, REALTOR, Sales Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Marissa Ackroyd</h3>
+          <div class="team-card-title">REALTOR, Sales Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:marissa.ackroyd@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              marissa.ackroyd@compass.com
+            </a>
+            <a href="tel:6508921840">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 892-1840
+            </a>
+            <a href="https://www.instagram.com/marissa.ackroyd/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @marissa.ackroyd
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Greta Sieglock -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/greta_1_.jpg" alt="Greta Sieglock, REALTOR, Sales Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Greta Sieglock</h3>
+          <div class="team-card-title">REALTOR, Sales Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:greta.sieglock@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              greta.sieglock@compass.com
+            </a>
+            <a href="tel:6504452653">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 445-2653
+            </a>
+            <a href="https://www.instagram.com/gretsieglock/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @gretsieglock
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shanti Minkstein -->
+      <div class="team-card reveal">
+        <div class="team-card-photo">
+          <img src="images/shanti_preferred_1_.jpg" alt="Shanti Minkstein, REALTOR, Sales Agent">
+        </div>
+        <div class="team-card-info">
+          <h3>Shanti Minkstein</h3>
+          <div class="team-card-title">REALTOR, Sales Agent</div>
+          <div class="team-card-contact">
+            <a href="mailto:shanti.minkstein@compass.com">
+              <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 4 12 13 2 4"/></svg>
+              shanti.minkstein@compass.com
+            </a>
+            <a href="tel:6503500440">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              (650) 350-0440
+            </a>
+            <a href="https://www.instagram.com/shanti_minkstein_realtor/" target="_blank" rel="noopener" class="ig-link">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @shanti_minkstein_realtor
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PARALLAX BREAK ── -->
+<section class="parallax-break">
+  <div class="parallax-content reveal">
+    <h2>8 agents. 2 offices. One Coastside team.</h2>
+    <p>Covering every neighborhood from Pacifica to Half Moon Bay and across the Peninsula.</p>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <div class="container reveal">
+    <h2>Want to Work With Us?</h2>
+    <p>Whether buying or selling on the Coastside or Peninsula, our team is here to help.</p>
+    <a href="#contact" class="btn-dark">Contact the Team</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+        <p>Top-producing real estate advisor serving Half Moon Bay and the San Mateo County Coastside. Palermo Properties Team at Compass.</p>
+        <div class="footer-brand-socials">
+          <a href="https://www.instagram.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/stephaniesills/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@StephanieSills" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="02-about.html">About Us</a>
+          <a href="03-team.html">Meet the Team</a>
+          <a href="04-communities.html">Communities</a>
+          <a href="05-buy.html">Buy</a>
+          <a href="06-sell.html">Sell</a>
+          <a href="07-services.html">Services</a>
+          <a href="08-testimonials.html">Testimonials</a>
+        </div>
+      </div>
+      <div>
+        <h4>Communities</h4>
+        <div class="footer-links">
+          <a href="04-communities.html#half-moon-bay">Half Moon Bay</a>
+          <a href="04-communities.html#el-granada">El Granada</a>
+          <a href="04-communities.html#montara">Montara</a>
+          <a href="04-communities.html#moss-beach">Moss Beach</a>
+          <a href="04-communities.html#pacifica">Pacifica</a>
+          <a href="04-communities.html#san-mateo">San Mateo</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><strong style="color:#fff;">Stephanie Sills</strong></p>
+        <p>MBA, MIM, REALTOR&reg; | DRE 02060529</p>
+        <p style="margin-top:12px;"><a href="tel:6506785707">(650) 678-5707</a></p>
+        <p><a href="mailto:stephanie.sills@compass.com">stephanie.sills@compass.com</a></p>
+        <p style="margin-top:14px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Coastside Office</p>
+        <p>42 Cabrillo Highway North<br>Half Moon Bay, CA 94019</p>
+        <p style="margin-top:10px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Peninsula Office</p>
+        <p>1440 Chapin St, Suite 200<br>Burlingame, CA 94010</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Stephanie Sills | Palermo Properties Team at Compass. All rights reserved. DRE 02060529</p>
+      <p>Equal Housing Opportunity</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── JS ── -->
+<script>
+/* Scroll Reveal */
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+})();
+/* Nav scroll */
+(function() {
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-solid', window.scrollY > 80);
+    });
+  }
+})();
+</script>
+</body>
+</html>

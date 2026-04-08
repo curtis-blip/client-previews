@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastside Communities | Half Moon Bay, El Granada, Montara, Moss Beach, Pacifica</title>
+<meta name="description" content="Explore San Mateo County Coastside communities. Learn about Half Moon Bay, El Granada, Montara, Moss Beach, Pacifica, and San Mateo with Stephanie Sills.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #C5A572;
+  --primary-dark: #A8894F;
+  --primary-light: #E8D5B5;
+  --dark: #1A1A1A;
+  --mid: #6B6B6B;
+  --light: #F7F5F0;
+  --neutral: #ffffff;
+  --coastal: #4A7C8F;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --max: 1200px;
+  --radius: 2px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 32px rgba(0,0,0,0.14);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2C2C2C;
+  background: var(--neutral);
+  -webkit-font-smoothing: antialiased;
+}
+body.modal-open { overflow: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--dark);
+}
+h1 { font-size: clamp(38px, 5vw, 60px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 42px); }
+h3 { font-size: 22px; font-weight: 500; }
+h4 { font-size: 18px; font-weight: 500; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+/* ── SECTIONS ── */
+.section-light { padding: 100px 0; background: var(--neutral); }
+.section-alt   { padding: 100px 0; background: var(--light); }
+.section-dark  { padding: 100px 0; background: var(--dark); color: #fff; }
+.section-dark h2, .section-dark h3, .section-dark h4 { color: #fff; }
+.section-dark .eyebrow { color: var(--primary-light); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: #000;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 34px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid var(--dark);
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-outline:hover { background: var(--dark); color: #fff; }
+
+.btn-dark {
+  display: inline-block;
+  background: var(--dark);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 34px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-dark:hover { background: #333; transform: translateY(-1px); }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+  padding: 24px 0;
+}
+.nav.nav-solid {
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 14px 0;
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo { height: 72px; transition: height 0.3s; }
+.nav.nav-solid .nav-logo { height: 56px; }
+.nav-logo img { height: 100%; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+.nav.nav-solid .nav-logo img { filter: none; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links > a, .nav-dropdown > a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: color 0.3s;
+}
+.nav.nav-solid .nav-links > a, .nav.nav-solid .nav-dropdown > a { color: var(--dark); }
+.nav-links > a:hover, .nav-dropdown > a:hover { color: var(--primary); }
+.nav-links > a.active { color: var(--primary); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.nav-dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  padding: 12px 0;
+  min-width: 220px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s;
+}
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown-menu a {
+  display: block;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dark);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-dropdown-menu a:hover { color: var(--primary); background: var(--light); }
+.nav-cta {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.nav.nav-solid .nav-cta {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.nav-cta:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #000;
+}
+.nav-mobile { display: none; }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: 180px 0 100px;
+  background: linear-gradient(rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.9) 12%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.7) 100%), url('https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=1600&h=900&fit=crop') center/cover no-repeat;
+  text-align: center;
+  position: relative;
+}
+.page-hero .eyebrow { color: var(--primary-light); justify-content: center; }
+.page-hero h1 { color: #fff; margin-bottom: 16px; }
+.page-hero p {
+  color: rgba(255,255,255,0.7);
+  font-size: 17px;
+  max-width: 620px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── INTRO ── */
+.intro-split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+.intro-split-left .eyebrow { margin-bottom: 16px; }
+.intro-split-left h2 { margin-bottom: 0; }
+.intro-split-right p {
+  color: var(--mid);
+  font-size: 16px;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+.intro-split-right p:last-of-type { margin-bottom: 0; }
+.intro-split-right a {
+  color: var(--primary-dark);
+  font-weight: 500;
+  border-bottom: 1px solid var(--primary-light);
+  transition: color 0.2s, border-color 0.2s;
+}
+.intro-split-right a:hover { color: var(--primary); border-color: var(--primary); }
+@media (max-width: 768px) {
+  .intro-split { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* ── COMMUNITY CARDS GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.4s, transform 0.4s;
+}
+.card-item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+.card-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.card-item:hover img { transform: scale(1.06); }
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  transition: background 0.4s;
+}
+.card-item:hover .card-overlay {
+  background: linear-gradient(0deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 55%);
+}
+.card-name {
+  font-family: var(--font-head);
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.card-tagline {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+.card-link {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.card-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s;
+}
+.card-item:hover .card-link svg { transform: translateX(4px); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  padding: 20px;
+}
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-box {
+  background: #fff;
+  max-width: 720px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(0,0,0,0.7); }
+.modal-close svg { width: 18px; height: 18px; }
+
+.modal-hero-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-content { padding: 36px 40px 40px; }
+
+/* Lifestyle tags */
+.lifestyle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.lifestyle-tag {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* Modal section headings */
+.modal-section-title {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 14px;
+  margin-top: 28px;
+}
+.modal-section-title:first-of-type { margin-top: 0; }
+
+.modal-text {
+  color: var(--mid);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+/* Quick stats grid */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.quick-stat {
+  background: var(--light);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+.quick-stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 4px;
+}
+.quick-stat-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* Commute times */
+.commute-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.commute-item {
+  text-align: center;
+  padding: 14px 8px;
+  background: var(--light);
+  border-radius: var(--radius);
+}
+.commute-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 8px;
+  fill: var(--primary);
+}
+.commute-time {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.2;
+}
+.commute-dest {
+  font-size: 11px;
+  color: var(--mid);
+  margin-top: 2px;
+}
+
+/* Vibe meter */
+.vibe-meter { margin-top: 16px; margin-bottom: 8px; }
+.vibe-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.vibe-row:last-child { margin-bottom: 0; }
+.vibe-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+.vibe-track {
+  flex: 1;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  position: relative;
+  margin: 0 12px;
+}
+.vibe-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+}
+.vibe-score {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  min-width: 32px;
+  text-align: right;
+}
+
+/* Local highlights */
+.highlights-list { margin-top: 14px; margin-bottom: 8px; }
+.highlight-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.highlight-item:last-child { border-bottom: none; }
+.highlight-icon {
+  width: 8px;
+  height: 8px;
+  margin-top: 7px;
+  flex-shrink: 0;
+  background: var(--primary);
+  border-radius: 50%;
+}
+.highlight-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+}
+.highlight-desc {
+  font-size: 13px;
+  color: var(--mid);
+}
+
+/* Best for callout */
+.best-for {
+  margin-top: 28px;
+  padding: 20px 24px;
+  background: var(--light);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.best-for-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+.best-for-text {
+  font-size: 15px;
+  color: var(--dark);
+  font-weight: 400;
+}
+
+/* Modal CTA */
+.modal-cta {
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ── MARKET REPORTS ── */
+.market-placeholder {
+  max-width: 720px;
+  margin: 40px auto 0;
+  background: var(--dark);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 60px 40px;
+  text-align: center;
+}
+.market-placeholder h3 {
+  font-family: var(--font-head);
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.market-placeholder p {
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+/* ── PARALLAX BREAK ── */
+.parallax-break {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(rgba(26,26,26,0.92) 0%, rgba(26,26,26,0.9) 12%, rgba(26,26,26,0.6) 40%, rgba(26,26,26,0.7) 100%), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=600&fit=crop') center/cover no-repeat;
+  background-attachment: fixed;
+}
+.parallax-break p {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 3vw, 32px);
+  color: #fff;
+  font-weight: 400;
+  font-style: italic;
+  max-width: 640px;
+  padding: 0 40px;
+  line-height: 1.5;
+}
+
+/* ── FAQ ── */
+.faq-list { max-width: 800px; margin: 40px auto 0; }
+.faq-item {
+  border-bottom: 1px solid #e8e8e8;
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dark);
+  gap: 20px;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--primary-dark); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--mid);
+  transition: transform 0.3s;
+}
+.faq-icon::before { width: 14px; height: 1.5px; transform: translate(-50%, -50%); }
+.faq-icon::after  { width: 1.5px; height: 14px; transform: translate(-50%, -50%); }
+.faq-item.active .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-answer-inner {
+  padding: 0 0 22px;
+  color: var(--mid);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--primary);
+  padding: 80px 0;
+  text-align: center;
+}
+.cta-band h2 { color: var(--dark); margin-bottom: 14px; }
+.cta-band p {
+  color: rgba(26,26,26,0.7);
+  font-size: 16px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark);
+  padding: 80px 0 40px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px;
+}
+.footer-brand img {
+  height: 80px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: 16px;
+}
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
+}
+.footer-brand-socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.footer-brand-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+.footer-brand-socials a:hover { opacity: 0.8; }
+.footer-brand-socials svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.6); }
+.footer h4 {
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.footer-links a {
+  display: block;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+  padding: 4px 0;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--primary); }
+.footer-contact p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.footer-contact a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-contact a:hover { color: var(--primary); }
+.footer-bottom {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .commute-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { gap: 20px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .section-light, .section-alt, .section-dark { padding: 70px 0; }
+  .page-hero { padding: 140px 0 70px; }
+    .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .nav-mobile button { background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-mobile svg { width: 24px; height: 24px; stroke: #fff; }
+  .nav.nav-solid .nav-mobile svg { stroke: var(--dark); }.cards-grid { grid-template-columns: 1fr; }
+  .card-item { aspect-ratio: 16/9; }
+  .quick-stats { grid-template-columns: 1fr; }
+  .commute-grid { grid-template-columns: repeat(2, 1fr); }
+  .vibe-label { min-width: 110px; font-size: 12px; }
+  .modal-content { padding: 28px 24px 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .parallax-break { background-attachment: scroll; height: 320px; }
+  .market-placeholder { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="01-home.html" class="nav-logo">
+      <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="10-featured-listings.html">Homes for Sale</a>
+        <div class="nav-dropdown-menu">
+          <a href="10-featured-listings.html">Featured Listings</a>
+          <a href="09-search.html">Search All Homes</a>
+          <a href="11-hmb-homes.html">Half Moon Bay Homes</a>
+        </div>
+      </div>
+      <a href="04-communities.html" class="active">Communities</a>
+      <a href="05-buy.html">Buy</a>
+      <a href="06-sell.html">Sell</a>
+      <a href="02-about.html">About</a>
+      <a href="07-services.html">Services</a>
+      <a href="08-testimonials.html">Testimonials</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <div class="nav-mobile">
+      <button aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Communities</div>
+    <h1>Coastside Communities</h1>
+    <p>From Half Moon Bay to Pacifica, explore the neighborhoods and lifestyle of the San Mateo County Coastside.</p>
+  </div>
+</section>
+
+<!-- ── INTRO ── -->
+<section class="section-light">
+  <div class="container">
+    <div class="intro-split reveal">
+      <div class="intro-split-left">
+        <div class="eyebrow">Communities</div>
+        <h2>Find Your Perfect Coastside Neighborhood</h2>
+      </div>
+      <div class="intro-split-right">
+        <p>The Coastside stretches along Highway 1 from Pacifica south to Half Moon Bay. Each community has its own character, shaped by the landscape, the people, and decades of coastal living. Whether you want beachfront access, rural acreage, a walkable downtown, or quiet hillside privacy, there is a Coastside community that fits.</p>
+        <p>Stephanie has lived on the Coastside for over 25 years and knows every street, trail, and hidden lookout. Whether you are just starting to explore or ready to make an offer, she can help you find the right neighborhood for your lifestyle. <a href="09-search.html">Start your home search</a> or <a href="05-buy.html">begin your buyer journey</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY CARDS ── -->
+<section class="section-alt">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:50px;">
+      <div class="eyebrow" style="justify-content:center;">Explore the Coastside</div>
+      <h2>Our Communities</h2>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card-item reveal" data-modal="half-moon-bay" id="half-moon-bay">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop" alt="Half Moon Bay">
+        <div class="card-overlay">
+          <h3 class="card-name">Half Moon Bay</h3>
+          <p class="card-tagline">Coastside living at its finest</p>
+          <span class="card-link">Explore Half Moon Bay <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+      <div class="card-item reveal" data-modal="el-granada" id="el-granada">
+        <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop" alt="El Granada">
+        <div class="card-overlay">
+          <h3 class="card-name">El Granada</h3>
+          <p class="card-tagline">Ocean views and harbor charm</p>
+          <span class="card-link">Explore El Granada <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+      <div class="card-item reveal" data-modal="montara" id="montara">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop" alt="Montara">
+        <div class="card-overlay">
+          <h3 class="card-name">Montara</h3>
+          <p class="card-tagline">Quiet coastal seclusion</p>
+          <span class="card-link">Explore Montara <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+      <div class="card-item reveal" data-modal="moss-beach" id="moss-beach">
+        <img src="https://images.unsplash.com/photo-1520942702018-0862200e6873?w=800&h=600&fit=crop" alt="Moss Beach">
+        <div class="card-overlay">
+          <h3 class="card-name">Moss Beach</h3>
+          <p class="card-tagline">Tidepools, trails, and tranquility</p>
+          <span class="card-link">Explore Moss Beach <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+      <div class="card-item reveal" data-modal="pacifica" id="pacifica">
+        <img src="https://images.unsplash.com/photo-1504681869696-d977211a5f4c?w=800&h=600&fit=crop" alt="Pacifica">
+        <div class="card-overlay">
+          <h3 class="card-name">Pacifica</h3>
+          <p class="card-tagline">Surf town meets city access</p>
+          <span class="card-link">Explore Pacifica <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+      <div class="card-item reveal" data-modal="san-mateo" id="san-mateo">
+        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&h=600&fit=crop" alt="San Mateo">
+        <div class="card-overlay">
+          <h3 class="card-name">San Mateo</h3>
+          <p class="card-tagline">Peninsula living, Coastside connection</p>
+          <span class="card-link">Explore San Mateo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MODALS ── -->
+
+<!-- Half Moon Bay Modal -->
+<div class="modal-overlay" id="modal-half-moon-bay">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=450&fit=crop" alt="Half Moon Bay">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Downtown Walkable</span>
+        <span class="lifestyle-tag">Beachfront</span>
+        <span class="lifestyle-tag">Family-Friendly</span>
+        <span class="lifestyle-tag">Equestrian</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">The largest town on the Coastside with a walkable downtown along Main Street. Half Moon Bay offers a mix of coastal estates, ranch properties, and family neighborhoods. Known for the annual Pumpkin Festival, world-class surfing at Mavericks, and a thriving local food scene.</p>
+      <p class="modal-text">The downtown strip includes independent shops, restaurants, and galleries. Residents enjoy proximity to beaches, trails, and some of the best produce in the Bay Area from local farms.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94019</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">Cabrillo Unified</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Single-family, estates, condos, ranch</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">30 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">45 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">35 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">10 min</div>
+          <div class="commute-dest">to Montara</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:55%"></div></div>
+          <span class="vibe-score">55</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:90%"></div></div>
+          <span class="vibe-score">90</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:70%"></div></div>
+          <span class="vibe-score">70</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:85%"></div></div>
+          <span class="vibe-score">85</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Main Street shops and restaurants</div><div class="highlight-desc">Walkable downtown with independent retail, galleries, and dining</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Half Moon Bay State Beach</div><div class="highlight-desc">Miles of sandy coastline with picnic areas and coastal trails</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Mavericks surf break</div><div class="highlight-desc">World-famous big wave surfing destination south of Pillar Point</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Coastside Trail</div><div class="highlight-desc">Paved bike and walking path connecting Coastside communities</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Sam's Chowder House</div><div class="highlight-desc">Iconic oceanfront restaurant known for lobster rolls and sunset views</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">Families wanting top-rated schools, beach access, and a walkable downtown</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in Half Moon Bay</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- El Granada Modal -->
+<div class="modal-overlay" id="modal-el-granada">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=450&fit=crop" alt="El Granada">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Harbor Access</span>
+        <span class="lifestyle-tag">Ocean Views</span>
+        <span class="lifestyle-tag">Community-Oriented</span>
+        <span class="lifestyle-tag">Coastal Bluffs</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">A tight-knit community perched above Pillar Point Harbor. El Granada offers some of the best ocean views on the Coastside with a mix of mid-century homes and newer construction. The harbor area is home to fishing boats, kayak launches, and waterfront dining.</p>
+      <p class="modal-text">Residents enjoy quick access to trails, tidepools, and some of the Coastside's best restaurants. The elevated neighborhoods in El Granada Highlands provide sweeping Pacific panoramas.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94018</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">Cabrillo Unified</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Single-family, view lots, mid-century</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">25 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">40 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">30 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">5 min</div>
+          <div class="commute-dest">to HMB downtown</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:35%"></div></div>
+          <span class="vibe-score">35</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:92%"></div></div>
+          <span class="vibe-score">92</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:60%"></div></div>
+          <span class="vibe-score">60</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:75%"></div></div>
+          <span class="vibe-score">75</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Pillar Point Harbor</div><div class="highlight-desc">Working harbor with fishing charters, kayak rentals, and waterfront restaurants</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Maverick's Trail</div><div class="highlight-desc">Coastal trail with views of the famous big wave surf break</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Barbara's Fish Trap</div><div class="highlight-desc">Classic harborside seafood spot with fresh catches daily</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Surfer's Beach</div><div class="highlight-desc">Popular surf spot with easy access from Highway 1</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">El Granada Highlands views</div><div class="highlight-desc">Elevated neighborhood with panoramic ocean and harbor views</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">Ocean lovers wanting harbor access, views, and a strong sense of community</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in El Granada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Montara Modal -->
+<div class="modal-overlay" id="modal-montara">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=450&fit=crop" alt="Montara">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Quiet Coastal</span>
+        <span class="lifestyle-tag">Nature Access</span>
+        <span class="lifestyle-tag">Rural Character</span>
+        <span class="lifestyle-tag">Secluded</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">A small, unincorporated community between Pacifica and Moss Beach known for its quiet, rural character. Montara offers larger lots, more privacy, and direct access to Montara State Beach and McNee Ranch State Park.</p>
+      <p class="modal-text">Homes range from classic beach cottages to modern hillside builds with panoramic ocean views. For buyers who want space, nature, and solitude without sacrificing proximity to San Francisco, Montara delivers.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94037</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">Cabrillo Unified</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Single-family, large lots, custom builds</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">20 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">35 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">30 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">10 min</div>
+          <div class="commute-dest">to HMB downtown</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:20%"></div></div>
+          <span class="vibe-score">20</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:95%"></div></div>
+          <span class="vibe-score">95</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:25%"></div></div>
+          <span class="vibe-score">25</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:65%"></div></div>
+          <span class="vibe-score">65</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Montara State Beach</div><div class="highlight-desc">Uncrowded sandy beach with dramatic cliff backdrop</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">McNee Ranch State Park</div><div class="highlight-desc">Hiking trails climbing Montara Mountain with sweeping coastal views</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Montara Mountain trails</div><div class="highlight-desc">Network of trails connecting to San Pedro Valley and beyond</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Point Montara Lighthouse</div><div class="highlight-desc">Historic lighthouse now operating as a hostel with ocean views</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Chart House</div><div class="highlight-desc">Upscale dining with ocean views south of Montara</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">Nature lovers and remote workers seeking quiet coastal privacy with larger properties</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in Montara</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Moss Beach Modal -->
+<div class="modal-overlay" id="modal-moss-beach">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1520942702018-0862200e6873?w=800&h=450&fit=crop" alt="Moss Beach">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Tidepools</span>
+        <span class="lifestyle-tag">Quiet Residential</span>
+        <span class="lifestyle-tag">Nature Preserve</span>
+        <span class="lifestyle-tag">Coastal Charm</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">A peaceful residential community centered around the Fitzgerald Marine Reserve, one of the richest tidepool habitats on the California coast. Moss Beach offers a quieter alternative to Half Moon Bay with strong community bonds and easy access to trails and beaches.</p>
+      <p class="modal-text">Stephanie lives here and knows the neighborhood intimately. The area attracts families, nature enthusiasts, and professionals who value coastal living without the bustle of a larger town.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94038</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">Cabrillo Unified</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Single-family, cottages, view properties</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">20 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">35 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">28 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">8 min</div>
+          <div class="commute-dest">to HMB downtown</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:25%"></div></div>
+          <span class="vibe-score">25</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:90%"></div></div>
+          <span class="vibe-score">90</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:30%"></div></div>
+          <span class="vibe-score">30</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:80%"></div></div>
+          <span class="vibe-score">80</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Fitzgerald Marine Reserve</div><div class="highlight-desc">Protected tidepool habitat with guided walks and marine education</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Moss Beach Distillery</div><div class="highlight-desc">Historic cliffside restaurant with ocean views and local lore</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Seal Cove neighborhood</div><div class="highlight-desc">Quiet residential streets with ocean-view properties</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Coastal trails</div><div class="highlight-desc">Connected trail system linking Moss Beach to neighboring communities</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">James V. Fitzgerald ASBS</div><div class="highlight-desc">Area of Special Biological Significance protecting marine ecosystems</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">Families and nature enthusiasts wanting a quiet, tight-knit coastal community</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in Moss Beach</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pacifica Modal -->
+<div class="modal-overlay" id="modal-pacifica">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1504681869696-d977211a5f4c?w=800&h=450&fit=crop" alt="Pacifica">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Surf Culture</span>
+        <span class="lifestyle-tag">City Access</span>
+        <span class="lifestyle-tag">Affordable Entry</span>
+        <span class="lifestyle-tag">Fog Belt</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">The northernmost Coastside community and the closest to San Francisco. Pacifica combines surf culture with suburban convenience. Linda Mar Beach draws surfers year-round, while the Pedro Point and Rockaway Beach areas offer walkable shops and restaurants.</p>
+      <p class="modal-text">More accessible price points make Pacifica a popular entry point for Coastside living. The city has invested in trail improvements, downtown revitalization, and community programming in recent years.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94044</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">Pacifica SD / Jefferson Union HSD</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Single-family, condos, townhomes</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">15 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">20 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">35 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">20 min</div>
+          <div class="commute-dest">to HMB downtown</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:50%"></div></div>
+          <span class="vibe-score">50</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:85%"></div></div>
+          <span class="vibe-score">85</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:55%"></div></div>
+          <span class="vibe-score">55</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:75%"></div></div>
+          <span class="vibe-score">75</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Linda Mar Beach</div><div class="highlight-desc">Popular surf break with consistent waves and rental shops nearby</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Pedro Point Brewing</div><div class="highlight-desc">Local craft brewery in the Pedro Point neighborhood</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Pacifica Pier</div><div class="highlight-desc">Free fishing pier with whale watching and sunset views</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Mori Point trail</div><div class="highlight-desc">Coastal blufftop trail with wildflowers and ocean panoramas</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Rockaway Beach</div><div class="highlight-desc">Sheltered beach area with restaurants and shops along the waterfront</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">First-time buyers and SF commuters wanting coastal living with shorter drive times</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in Pacifica</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- San Mateo Modal -->
+<div class="modal-overlay" id="modal-san-mateo">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <img class="modal-hero-img" src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&h=450&fit=crop" alt="San Mateo">
+    <div class="modal-content">
+      <div class="lifestyle-tags">
+        <span class="lifestyle-tag">Urban Amenities</span>
+        <span class="lifestyle-tag">Transit Access</span>
+        <span class="lifestyle-tag">Diverse Dining</span>
+        <span class="lifestyle-tag">Central Peninsula</span>
+      </div>
+
+      <h3 class="modal-section-title">About the Area</h3>
+      <p class="modal-text">A larger Peninsula city offering urban amenities with access to the Coastside via Highway 92. San Mateo has a vibrant downtown with diverse restaurants, shops, and entertainment. Caltrain access makes it a commuter hub for Silicon Valley and San Francisco.</p>
+      <p class="modal-text">While not on the coast itself, San Mateo residents are 30 minutes from Half Moon Bay beaches. The city appeals to buyers who want walkability, dining, and nightlife during the week with easy weekend escapes to the ocean.</p>
+
+      <h3 class="modal-section-title">Quick Stats</h3>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <div class="quick-stat-label">Zip Code</div>
+          <div class="quick-stat-value">94401-94404</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">School District</div>
+          <div class="quick-stat-value">San Mateo-Foster City SD</div>
+        </div>
+        <div class="quick-stat">
+          <div class="quick-stat-label">Housing Types</div>
+          <div class="quick-stat-value">Condos, townhomes, single-family, mixed-use</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Commute Times</h3>
+      <div class="commute-grid">
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">10 min</div>
+          <div class="commute-dest">to SFO</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">25 min</div>
+          <div class="commute-dest">to Downtown SF</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">20 min</div>
+          <div class="commute-dest">to Palo Alto</div>
+        </div>
+        <div class="commute-item">
+          <svg class="commute-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div class="commute-time">30 min</div>
+          <div class="commute-dest">to HMB downtown</div>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Neighborhood Vibe</h3>
+      <div class="vibe-meter">
+        <div class="vibe-row">
+          <span class="vibe-label">Walkability</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:72%"></div></div>
+          <span class="vibe-score">72</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Outdoor Access</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:60%"></div></div>
+          <span class="vibe-score">60</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Dining & Nightlife</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:85%"></div></div>
+          <span class="vibe-score">85</span>
+        </div>
+        <div class="vibe-row">
+          <span class="vibe-label">Family-Friendliness</span>
+          <div class="vibe-track"><div class="vibe-fill" style="width:80%"></div></div>
+          <span class="vibe-score">80</span>
+        </div>
+      </div>
+
+      <h3 class="modal-section-title">Local Highlights</h3>
+      <div class="highlights-list">
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Downtown San Mateo restaurants</div><div class="highlight-desc">Diverse dining scene with dozens of cuisines within walking distance</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Central Park</div><div class="highlight-desc">Large city park with playgrounds, gardens, and a mini railroad</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Caltrain station</div><div class="highlight-desc">Direct commuter rail service to San Francisco and Silicon Valley</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Hillsdale Shopping Center</div><div class="highlight-desc">Major retail center with shopping, dining, and entertainment</div></div></div>
+        <div class="highlight-item"><div class="highlight-icon"></div><div><div class="highlight-name">Japanese Garden</div><div class="highlight-desc">Serene public garden in Central Park with traditional landscaping</div></div></div>
+      </div>
+
+      <div class="best-for">
+        <div class="best-for-label">Best For</div>
+        <div class="best-for-text">Buyers wanting urban convenience with easy weekend access to the Coastside</div>
+      </div>
+
+      <div class="modal-cta">
+        <a href="09-search.html" class="btn-primary">Search Homes in San Mateo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MARKET REPORTS ── -->
+<section class="section-light">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <div class="eyebrow" style="justify-content:center;">Market Data</div>
+      <h2>Bay Area Market Reports</h2>
+      <p style="color:var(--mid); font-size:16px; max-width:580px; margin:16px auto 0;">Stay informed with the latest market data for the Bay Area and San Mateo County Coastside.</p>
+    </div>
+    <div class="market-placeholder reveal">
+      <!-- BUILDER: Embed Bay Area Market Reports flipbook from https://drive.google.com/file/d/1pQXXOjs-2sbMuIQWylWQcxH5UAoRcIVJ/view -->
+      <h3>Bay Area Market Reports</h3>
+      <p>Interactive flipbook with current market data for San Mateo County and the Coastside</p>
+      <a href="https://drive.google.com/file/d/1pQXXOjs-2sbMuIQWylWQcxH5UAoRcIVJ/view" class="btn-primary" target="_blank" rel="noopener">View Market Reports</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARALLAX BREAK ── -->
+<section class="parallax-break">
+  <p>Every community has its own character. Find the one that fits yours.</p>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section-light">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <div class="eyebrow" style="justify-content:center;">Frequently Asked</div>
+      <h2>Questions About Living on the Coastside</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-question">What are the best neighborhoods on the Coastside?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Half Moon Bay offers a walkable downtown, El Granada has harbor views, Montara provides rural seclusion, Moss Beach is known for tidepools and quiet living, Pacifica has surf culture and city access, and San Mateo offers Peninsula urban amenities.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">What is the cost of living on the Coastside?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Housing ranges from Pacifica condos in the $700Ks to oceanfront estates above $3M. Half Moon Bay median listing is approximately $1.69M. Property taxes follow San Mateo County rates.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">How are the schools on the Coastside?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Half Moon Bay, El Granada, Montara, and Moss Beach are served by Cabrillo Unified School District. Pacifica has its own district. San Mateo has San Mateo-Foster City School District.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">What is the commute from the Coastside to San Francisco?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Pacifica to Downtown SF is about 20 minutes. Half Moon Bay to SF is about 45 minutes via Highway 92 and I-280. Commute times vary with traffic and weather on Highway 1.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">Is the Coastside a good place to raise a family?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Many Coastside communities are family-oriented with good schools, safe neighborhoods, outdoor recreation, and strong community events. Half Moon Bay and Moss Beach are particularly popular with families.</div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">What is the average home price on the Coastside?<span class="faq-icon"></span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Prices vary significantly by community. Pacifica starts lower, while oceanfront properties in Montara and El Granada can exceed $3M. Half Moon Bay median is approximately $1.69M.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Find Your Coastside Community</h2>
+    <p>Stephanie lives on the Coastside and knows every neighborhood. Let's find the one that fits your lifestyle.</p>
+    <a href="#contact" class="btn-dark">Contact Stephanie</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+        <p>Top-producing real estate advisor serving Half Moon Bay and the San Mateo County Coastside. Palermo Properties Team at Compass.</p>
+        <div class="footer-brand-socials">
+          <a href="https://www.instagram.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/stephaniesills/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@StephanieSills" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="02-about.html">About Us</a>
+          <a href="03-team.html">Meet the Team</a>
+          <a href="04-communities.html">Communities</a>
+          <a href="05-buy.html">Buy</a>
+          <a href="06-sell.html">Sell</a>
+          <a href="07-services.html">Services</a>
+          <a href="08-testimonials.html">Testimonials</a>
+        </div>
+      </div>
+      <div>
+        <h4>Communities</h4>
+        <div class="footer-links">
+          <a href="04-communities.html#half-moon-bay">Half Moon Bay</a>
+          <a href="04-communities.html#el-granada">El Granada</a>
+          <a href="04-communities.html#montara">Montara</a>
+          <a href="04-communities.html#moss-beach">Moss Beach</a>
+          <a href="04-communities.html#pacifica">Pacifica</a>
+          <a href="04-communities.html#san-mateo">San Mateo</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><strong style="color:#fff;">Stephanie Sills</strong></p>
+        <p>MBA, MIM, REALTOR&reg; | DRE 02060529</p>
+        <p style="margin-top:12px;"><a href="tel:6506785707">(650) 678-5707</a></p>
+        <p><a href="mailto:stephanie.sills@compass.com">stephanie.sills@compass.com</a></p>
+        <p style="margin-top:14px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Coastside Office</p>
+        <p>42 Cabrillo Highway North<br>Half Moon Bay, CA 94019</p>
+        <p style="margin-top:10px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Peninsula Office</p>
+        <p>1440 Chapin St, Suite 200<br>Burlingame, CA 94010</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Stephanie Sills | Palermo Properties Team at Compass. All rights reserved. DRE 02060529</p>
+      <p>Equal Housing Opportunity</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── JS ── -->
+<script>
+/* Modal open/close */
+(function() {
+  const cards = document.querySelectorAll('.card-item[data-modal]');
+  const overlays = document.querySelectorAll('.modal-overlay');
+
+  function openModal(id) {
+    const modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+
+  function closeModal(overlay) {
+    overlay.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      openModal(card.dataset.modal);
+    });
+  });
+
+  overlays.forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal(overlay);
+    });
+    const closeBtn = overlay.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => closeModal(overlay));
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      overlays.forEach(overlay => {
+        if (overlay.classList.contains('active')) closeModal(overlay);
+      });
+    }
+  });
+
+  /* Open modal from hash on page load */
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    const card = document.getElementById(hash);
+    if (card && card.dataset.modal) {
+      setTimeout(() => openModal(card.dataset.modal), 400);
+    }
+  }
+})();
+
+/* FAQ accordion */
+(function() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isActive = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item.active').forEach(active => {
+        active.classList.remove('active');
+        active.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+/* Scroll Reveal */
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+})();
+/* Nav scroll */
+(function() {
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-solid', window.scrollY > 80);
+    });
+  }
+})();
+</script>
+</body>
+</html>
