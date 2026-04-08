@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Melo-de Savage | San Diego REALTOR</title>
+<meta name="description" content="Schedule a complimentary real estate consultation with Melo-de Savage. Serving San Diego's mountain, inland, and coastal communities for over 25 years.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* RESET & TOKENS */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+:root {
+  --primary: #ede4dc;
+  --primary-dark: #d4c8bc;
+  --dark: #000000;
+  --mid: #666666;
+  --light: #f7f7f5;
+  --neutral: #ffffff;
+  --warm-gray: #E2E3E4;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+  --max: 1400px;
+  --radius: 0px;
+  --section-pad: 96px;
+  --card-gap: 24px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body); color: var(--dark);
+  background: var(--neutral); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-family: var(--font-head); font-size: clamp(36px, 5vw, 70px);
+  font-weight: 400; line-height: 1.08; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff;
+}
+h2 {
+  font-family: var(--font-head); font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400; line-height: 1.15; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--dark);
+}
+h3 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 400;
+  line-height: 1.3; letter-spacing: 1px; text-transform: uppercase;
+}
+p { font-size: 16px; color: var(--mid); line-height: 1.8; }
+
+.eyebrow {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 16px; display: inline-block;
+}
+.eyebrow-dark {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 16px; display: inline-block;
+}
+
+/* BUTTONS */
+.btn-ghost {
+  display: inline-block; border: 2px solid #fff; color: #fff;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost:hover { background: #fff; color: #000; }
+
+.btn-ghost-dark {
+  display: inline-block; border: 2px solid var(--dark); color: var(--dark);
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost-dark:hover { background: var(--dark); color: #fff; }
+
+/* LAYOUT */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 50px; }
+
+/* PREVIEW BANNER */
+.preview-banner {
+  background: #111; color: rgba(255,255,255,0.5); font-size: 11px;
+  padding: 8px 0; text-align: center; letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--primary);
+  position: relative; z-index: 200;
+}
+.preview-banner strong { color: var(--primary); font-weight: 600; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: transparent; transition: background .3s;
+}
+.nav.scrolled { background: var(--warm-gray); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max); margin: 0 auto; padding: 0 50px; height: 80px;
+}
+.nav-logo {
+  display: flex; align-items: center; transition: opacity .3s;
+}
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo img { height: 60px; width: auto; max-width: 120px; }
+.nav .nav-logo img { filter: brightness(0) invert(1); transition: filter .3s; }
+.nav.scrolled .nav-logo img { filter: none; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85);
+  position: relative; transition: color .3s;
+}
+.nav.scrolled .nav-links a { color: var(--dark); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+  background: currentColor; transition: width .3s linear;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.7); color: #fff;
+  padding: 10px 28px; cursor: pointer; transition: all .3s;
+}
+.nav.scrolled .nav-cta { border-color: var(--dark); color: var(--dark); }
+.nav-cta:hover { background: #fff; color: #000; }
+.nav.scrolled .nav-cta:hover { background: var(--dark); color: #fff; }
+
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: background .3s; }
+.nav.scrolled .nav-hamburger span { background: var(--dark); }
+
+/* HERO (Short) */
+.hero {
+  min-height: 50vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1920&q=80') center/cover no-repeat;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 40px; }
+.hero h1 { margin-bottom: 16px; }
+
+/* CONTACT SECTION */
+.contact-section { padding: var(--section-pad) 0; background: var(--neutral); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.contact-info h2 { margin-bottom: 24px; }
+.contact-info > p { margin-bottom: 28px; }
+.contact-details { margin-top: 32px; }
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 16px; padding: 12px 0;
+}
+.contact-detail-icon {
+  flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; color: var(--dark);
+}
+.contact-detail-label {
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid);
+  margin-bottom: 4px;
+}
+.contact-detail-value {
+  font-size: 15px; color: var(--dark); line-height: 1.6;
+}
+.contact-detail-value a { border-bottom: 1px solid rgba(0,0,0,0.2); transition: border-color .2s; }
+.contact-detail-value a:hover { border-color: var(--dark); }
+
+/* FORM PLACEHOLDER */
+.form-placeholder {
+  background: var(--light); border: 2px dashed rgba(0,0,0,0.12);
+  padding: 48px 36px;
+}
+.form-placeholder .placeholder-badge {
+  display: inline-block; font-family: var(--font-body); font-size: 11px;
+  font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--mid); border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.03); padding: 6px 16px; margin-bottom: 28px;
+}
+.form-field-list { margin-top: 20px; }
+.form-field {
+  padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+  display: flex; align-items: center; gap: 12px;
+}
+.form-field:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.form-field-dot {
+  width: 6px; height: 6px; background: var(--primary-dark); flex-shrink: 0;
+}
+.form-field-name {
+  font-family: var(--font-body); font-size: 14px; color: var(--mid);
+}
+.form-field-type {
+  font-family: var(--font-body); font-size: 11px; color: rgba(0,0,0,0.3);
+  margin-left: auto; text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* FAQ ACCORDION */
+.faq-section { padding: var(--section-pad) 0; background: var(--light); }
+.faq-section .section-header { text-align: center; margin-bottom: 56px; }
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
+.faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; cursor: pointer; font-size: 16px; font-weight: 500;
+  color: var(--dark); width: 100%; text-align: left;
+  font-family: var(--font-body); transition: color .2s;
+}
+.faq-question:hover { color: #888; }
+.faq-icon {
+  font-size: 22px; font-weight: 300; color: var(--dark);
+  transition: transform .3s; flex-shrink: 0; margin-left: 16px;
+}
+.faq-answer {
+  max-height: 0; overflow: hidden; padding-bottom: 0;
+  font-size: 15px; color: var(--mid); line-height: 1.8;
+  transition: max-height .35s ease, padding-bottom .35s ease;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+.footer {
+  background: #111; color: rgba(255,255,255,0.6);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px; padding-bottom: 56px;
+}
+.footer-brand-col {}
+.footer-logo-img {
+  height: 60px; width: auto; margin-bottom: 24px;
+  filter: brightness(0) invert(1);
+}
+.footer-eho {
+  display: flex; gap: 16px; align-items: center; margin-bottom: 24px;
+}
+.footer-eho svg { width: 40px; height: 40px; color: rgba(255,255,255,0.7); }
+.footer-disclaimer {
+  font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7;
+}
+.footer-col-title {
+  font-family: var(--font-head); font-size: 16px; font-weight: 400;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 24px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 14px; }
+.footer-links a {
+  font-size: 15px; color: rgba(255,255,255,0.6);
+  transition: color .2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 16px;
+}
+.footer-contact-icon {
+  color: var(--primary); flex-shrink: 0; margin-top: 2px;
+}
+.footer-contact-icon svg { width: 18px; height: 18px; }
+.footer-contact-text {
+  font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+}
+.footer-contact-text a {
+  color: rgba(255,255,255,0.6); transition: color .2s;
+}
+.footer-contact-text a:hover { color: #fff; }
+.footer-bar {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copyright {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.footer-copyright a { color: rgba(255,255,255,0.4); transition: color .2s; }
+.footer-copyright a:hover { color: #fff; }
+.footer-bar-social {
+  display: flex; gap: 20px;
+}
+.footer-bar-social a {
+  color: rgba(255,255,255,0.4); transition: color .2s;
+}
+.footer-bar-social a:hover { color: #fff; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  :root { --section-pad: 64px; }
+  .container { padding: 0 32px; }
+  .nav-inner { padding: 0 32px; }
+}
+@media (max-width: 768px) {
+  :root { --section-pad: 60px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bar { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-bar-social { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- PREVIEW BANNER -->
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &bull; Melo-de Savage &bull; Contact &bull; April 2026
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="logo.png" alt="Melo-de Savage, REALTOR" style="height: 60px; width: auto;"></a>
+    <div class="nav-links">
+      <a href="home-search-preview.html">Search</a>
+      <a href="buyers-guide-preview.html">Buy</a>
+      <a href="sellers-guide-preview.html">Sell</a>
+      <a href="home-value-preview.html">Home Value</a>
+      <a href="communities-preview.html">Communities</a>
+      <a href="about-preview.html">About</a>
+      <a href="blog-preview.html">Blog</a>
+    </div>
+    <a href="contact-preview.html" class="nav-cta">Contact</a>
+    <div class="nav-hamburger" onclick="document.body.classList.toggle('mobile-menu-open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">San Diego Real Estate Consultation</span>
+    <h1>Contact Melo-de Savage</h1>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: Info -->
+      <div class="contact-info">
+        <span class="eyebrow-dark">Get in Touch</span>
+        <h2>Let's Start the Conversation</h2>
+        <p>Whether you are exploring the idea of buying, preparing to sell, or simply curious about San Diego's real estate landscape, a complimentary consultation is the best place to start. Melo-de will walk you through your options, answer your questions, and help you understand your next steps with no pressure and no obligation.</p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Office</div>
+              <div class="contact-detail-value">12636 High Bluff Dr, Suite 400<br>San Diego, CA 92130</div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Phone</div>
+              <div class="contact-detail-value"><a href="tel:+17605045720">(760) 504-5720</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">Email</div>
+              <div class="contact-detail-value"><a href="mailto:melo-de@melo-desavage.com">melo-de@melo-desavage.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+            </div>
+            <div>
+              <div class="contact-detail-label">License</div>
+              <div class="contact-detail-value">CA DRE #01784140<br>eXp Realty of Southern California</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form Placeholder -->
+      <div class="form-placeholder">
+        <span class="placeholder-badge">GRAVITY FORMS CONTACT FORM</span>
+        <p style="font-size: 14px; color: var(--mid); margin-bottom: 8px;">The contact form will be embedded here on the live site.</p>
+        <div class="form-field-list">
+          <div class="form-field">
+            <div class="form-field-dot"></div>
+            <span class="form-field-name">Full Name</span>
+            <span class="form-field-type">Text</span>
+          </div>
+          <div class="form-field">
+            <div class="form-field-dot"></div>
+            <span class="form-field-name">Email Address</span>
+            <span class="form-field-type">Email</span>
+          </div>
+          <div class="form-field">
+            <div class="form-field-dot"></div>
+            <span class="form-field-name">Phone Number</span>
+            <span class="form-field-type">Phone</span>
+          </div>
+          <div class="form-field">
+            <div class="form-field-dot"></div>
+            <span class="form-field-name">I'm Interested In</span>
+            <span class="form-field-type">Dropdown</span>
+          </div>
+          <div class="form-field">
+            <div class="form-field-dot"></div>
+            <span class="form-field-name">Message</span>
+            <span class="form-field-type">Textarea</span>
+          </div>
+        </div>
+        <p style="font-size: 12px; color: rgba(0,0,0,0.3); margin-top: 20px;">Dropdown options: Buy / Sell / Both / Other</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Common Questions Before Reaching Out</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How quickly can I expect a response?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Melo-de responds to all inquiries within one business day. Most calls and emails receive a reply within a few hours. If your timeline is urgent, calling directly at (760) 504-5720 is the fastest way to connect.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is there a cost for the initial consultation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No. The initial consultation is completely free and comes with no obligation. It is simply an opportunity to discuss your goals, ask questions, and determine whether working together is the right fit.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What should I prepare before our first conversation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          There is nothing you need to prepare in advance. That said, having a general sense of your timeline, budget range, and preferred neighborhoods will help make the conversation more productive. If you are selling, knowing your home's approximate condition and any recent improvements is helpful.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What areas of San Diego do you serve?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Melo-de serves all of San Diego County, with particular expertise in the corridor from mountain communities like Julian and Ramona through inland cities like Poway, Escondido, and Rancho Bernardo, and out to coastal neighborhoods including Del Mar, Oceanside, and Coronado.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What happens after I reach out?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          After you submit the form or call, Melo-de will reach out to schedule a brief introductory conversation. From there, she will outline a personalized plan based on your goals, whether that means setting up a home search, running a market analysis on your property, or simply answering questions about the San Diego market.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- COL 1: Brand -->
+      <div class="footer-brand-col">
+        <img src="logo.png" alt="Melo-de Savage, REALTOR" class="footer-logo-img">
+        <div style="font-family: var(--font-head); font-size: 18px; font-weight: 400; letter-spacing: 1.5px; color: #fff; margin-bottom: 8px;">Melo-de Savage, REALTOR&reg;</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px;">CA DRE #01784140<br>eXp Realty of Southern California, Inc.</div>
+        <div class="footer-eho">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="1"/><path d="M12 2l10 6H2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor" stroke="none">R</text></svg>
+        </div>
+        <div class="footer-disclaimer">
+          While information is believed to be reliable, it is not guaranteed. Please verify all information independently.
+        </div>
+      </div>
+
+      <!-- COL 2: Explore -->
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <div class="footer-links">
+          <a href="about-preview.html">About</a>
+          <a href="home-search-preview.html">Home Search</a>
+          <a href="buyers-guide-preview.html">Buyer's Guide</a>
+          <a href="sellers-guide-preview.html">Seller's Guide</a>
+          <a href="home-value-preview.html">Home Value</a>
+          <a href="community-service-preview.html">Community Service</a>
+          <a href="testimonials-preview.html">Reviews</a>
+          <a href="contact-preview.html">Contact</a>
+        </div>
+      </div>
+
+      <!-- COL 3: Communities Served -->
+      <div>
+        <div class="footer-col-title">Communities Served</div>
+        <div class="footer-links">
+          <a href="communities-preview.html#modal-julian">Julian</a>
+          <a href="communities-preview.html#modal-ramona">Ramona</a>
+          <a href="communities-preview.html#modal-fallbrook">Fallbrook</a>
+          <a href="communities-preview.html#modal-escondido">Escondido</a>
+          <a href="communities-preview.html#modal-poway">Poway</a>
+          <a href="communities-preview.html#modal-rb">Rancho Bernardo</a>
+          <a href="communities-preview.html#modal-oceanside">Oceanside</a>
+          <a href="communities-preview.html#modal-delmar">Del Mar</a>
+          <a href="communities-preview.html#modal-coronado">Coronado</a>
+        </div>
+      </div>
+
+      <!-- COL 4: Contact -->
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="footer-contact-text"><a href="tel:+17605045720">(760) 504-5720</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="footer-contact-text"><a href="mailto:melo-de@melo-desavage.com">melo-de@melo-desavage.com</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="footer-contact-text">12636 High Bluff Dr., Suite #400,<br>San Diego, CA 92130</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-copyright">&copy; 2026 Melo-de Savage | CA DRE #01784140 | eXp Realty of Southern California, Inc. | Website by <a href="https://agenticpress.ai">AgenticPress</a></span>
+      <div class="footer-bar-social">
+        <a href="https://www.facebook.com/melodesavagerealtor" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.5 3.3 12 3.3 12 3.3s-4.5 0-7.6.3c-.5 0-1.5 0-2.4 1C1.2 5.3 1 7 1 7S.8 9 .8 11v1.8c0 2 .2 4 .2 4s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 7.4.2 7.4.2s4.5 0 7.6-.3c.5-.1 1.5-.1 2.4-1 .8-.7 1-2.4 1-2.4s.2-2 .2-4V11c0-2-.2-4-.2-4zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* Nav scroll behavior */
+(function() {
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+})();
+
+/* FAQ Accordion */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => {
+    b.nextElementSibling.style.maxHeight = '0px';
+    b.nextElementSibling.style.paddingBottom = '0';
+    const ic = b.querySelector('.faq-icon');
+    if (ic) ic.style.transform = '';
+    b.style.color = '';
+  });
+  if (!isOpen) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.paddingBottom = '20px';
+    if (icon) icon.style.transform = 'rotate(45deg)';
+    btn.style.color = '#888';
+  }
+}
+
+/* Scroll reveal */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = '.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}';
+  document.head.appendChild(style);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('section:not(.hero):not(.preview-banner)').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

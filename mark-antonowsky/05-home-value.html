@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix Home Value | Mark Antonowsky | Get Your Home's Worth</title>
+<meta name="description" content="Find your Phoenix home value with a personalized estimate from Mark Antonowsky. Get accurate pricing based on comparable sales, market trends, and property details.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  --color-primary: #F75823;
+  --color-primary-dark: #d94a1a;
+  --color-primary-light: #ff7a4f;
+  --color-dark: #0f1923;
+  --color-dark-alt: #162130;
+  --color-dark-card: #1c2a3a;
+  --color-light: #f9f9f9;
+  --color-light-alt: #f0f0f0;
+  --color-text-dark: #1a1a2e;
+  --color-text-light: #e0e0e0;
+  --color-text-muted: #8a94a6;
+  --color-white: #ffffff;
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-light: rgba(0,0,0,0.08);
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+
+  --h1-size: clamp(36px, 5vw, 56px);
+  --h2-size: clamp(28px, 3.5vw, 42px);
+  --h3-size: clamp(18px, 2vw, 22px);
+  --body-size: 16px;
+  --small-size: 14px;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.12);
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --section-padding: clamp(60px, 8vw, 100px);
+  --header-height: 80px;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.7;
+  color: var(--color-text-dark);
+  background: var(--color-white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--h1-size); font-weight: 700; }
+h2 { font-size: var(--h2-size); font-weight: 600; }
+h3 { font-size: var(--h3-size); font-weight: 600; }
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.eyebrow--light {
+  color: var(--color-primary-light);
+}
+
+.section-subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+.section-subtitle--light {
+  color: rgba(255,255,255,0.65);
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-header--center {
+  text-align: center;
+}
+
+.section-header--center .section-subtitle {
+  margin: 16px auto 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.btn--primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(247, 88, 35, 0.35);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.4);
+}
+.btn--outline:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--color-text-dark);
+  border-color: var(--color-text-dark);
+}
+.btn--outline-dark:hover {
+  background: var(--color-dark);
+  color: var(--color-white);
+  border-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.btn--white {
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
+}
+.btn--white:hover {
+  background: var(--color-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.btn--sm {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* Scroll-triggered animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(15, 25, 35, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo__mark {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.logo__divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,0.25);
+}
+
+.logo__brokerage {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav__link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-white);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  width: 100%;
+}
+
+.nav__cta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-primary);
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.nav__cta:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  transition: all var(--transition-base);
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Nav */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  height: 100vh;
+  background: var(--color-dark);
+  z-index: 999;
+  padding: 100px 32px 40px;
+  transition: right var(--transition-base);
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.mobile-nav__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-nav__overlay.open {
+  opacity: 1;
+}
+
+.mobile-nav a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color var(--transition-fast);
+}
+
+.mobile-nav a:hover {
+  color: var(--color-primary);
+}
+
+.mobile-nav .nav__cta {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 15px;
+  padding: 14px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-height) + 120px) 0 100px;
+  background: var(--color-dark);
+  overflow: hidden;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.4);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15,25,35,0.92) 0%, rgba(15,25,35,0.6) 50%, rgba(15,25,35,0.3) 100%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+}
+
+.hero h1 {
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.hero h1 span {
+  color: var(--color-primary);
+}
+
+.hero .eyebrow::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #F75823;
+  margin-bottom: 16px;
+}
+
+.hero .eyebrow {
+  letter-spacing: 0.2em;
+  font-size: 13px;
+}
+
+.hero__text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 36px;
+  max-width: 580px;
+}
+
+.hero__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   VALUATION FACTORS (4 CARDS)
+   ======================================== */
+.factors {
+  padding: var(--section-padding) 0;
+  background: var(--color-light);
+}
+
+.factors__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.factor-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.factor-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.factor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.factor-card:hover::before {
+  transform: scaleX(1);
+}
+
+.factor-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(247,88,35,0.1), rgba(247,88,35,0.05));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.factor-card__icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.factor-card h3 {
+  margin-bottom: 12px;
+  color: var(--color-text-dark);
+}
+
+.factor-card p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   HOME VALUE FORM (DARK BG)
+   ======================================== */
+.form-section {
+  padding: var(--section-padding) 0;
+  background: var(--color-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,88,35,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.form-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.form-section__content h2 {
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.form-section__content p {
+  color: rgba(255,255,255,0.65);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.form-section__trust {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.form-section__trust svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.form-section__trust span {
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+
+.form-card {
+  background: var(--color-dark-alt);
+  border-radius: var(--radius-md);
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.form-card__title {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px rgba(247,88,35,0.15);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-card .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 16px 32px;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* ========================================
+   PRICING MATTERS (TWO-COLUMN)
+   ======================================== */
+.pricing-matters {
+  padding: var(--section-padding) 0;
+  background: var(--color-light);
+}
+
+.pricing-matters .section-header {
+  margin-bottom: 48px;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.pricing-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pricing-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.pricing-card--over .pricing-card__icon {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.pricing-card--over .pricing-card__icon svg {
+  stroke: #dc3545;
+}
+
+.pricing-card--under .pricing-card__icon {
+  background: rgba(255, 193, 7, 0.12);
+}
+
+.pricing-card--under .pricing-card__icon svg {
+  stroke: #d4a017;
+}
+
+.pricing-card__icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pricing-card h3 {
+  margin-bottom: 16px;
+  color: var(--color-text-dark);
+}
+
+.pricing-card p {
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.pricing-bottom {
+  background: var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pricing-bottom__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(247,88,35,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pricing-bottom__icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pricing-bottom p {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   MARKET STATS
+   ======================================== */
+.market-stats {
+  padding: var(--section-padding) 0;
+  background: var(--color-light-alt);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.stat-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.stat-card__number {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.5vw, 44px);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-card__label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.3px;
+}
+
+.stat-card__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.stat-card__trend--up {
+  color: #28a745;
+  background: rgba(40,167,69,0.1);
+}
+
+.stat-card__trend--neutral {
+  color: var(--color-text-muted);
+  background: rgba(0,0,0,0.04);
+}
+
+.stat-card__trend svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+.faq {
+  padding: var(--section-padding) 0;
+  background: var(--color-light);
+}
+
+.faq__list {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  border: 1px solid var(--color-border-light);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.faq-item:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item.active {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(247,88,35,0.15);
+}
+
+.faq-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-align: left;
+  gap: 16px;
+  transition: color var(--transition-fast);
+}
+
+.faq-item.active .faq-item__question {
+  color: var(--color-primary);
+}
+
+.faq-item__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-base);
+}
+
+.faq-item.active .faq-item__icon {
+  background: var(--color-primary);
+  transform: rotate(45deg);
+}
+
+.faq-item__icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-text-dark);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--transition-fast);
+}
+
+.faq-item.active .faq-item__icon svg {
+  stroke: var(--color-white);
+}
+
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-item__answer {
+  max-height: 300px;
+}
+
+.faq-item__answer-inner {
+  padding: 0 28px 24px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cta-section {
+  padding: var(--section-padding) 0;
+  background: var(--color-dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,88,35,0.1), transparent 60%);
+  pointer-events: none;
+}
+
+.cta-section__content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-section h2 {
+  color: var(--color-white);
+  margin-bottom: 32px;
+}
+
+.cta-section__accent {
+  width: 60px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 0 auto 32px;
+  border-radius: 2px;
+}
+
+.cta-section__buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--color-dark);
+  padding: 64px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer__brand .logo {
+  margin-bottom: 20px;
+}
+
+.footer__brand p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer__nav h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.footer__nav a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.footer__nav a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact a,
+.footer__contact p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+
+.footer__contact a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer__contact-item svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.footer__social-link:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.footer__social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: rgba(255,255,255,0.6);
+  transition: fill var(--transition-fast);
+}
+
+.footer__social-link:hover svg {
+  fill: var(--color-white);
+}
+
+.footer__bottom {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer__bottom a {
+  color: var(--color-primary);
+}
+
+.footer__bottom a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .factors__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .form-section__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: clamp(48px, 8vw, 80px);
+    --header-height: 70px;
+  }
+
+  .nav { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: block; }
+
+  .hero {
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .factors__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    padding: 28px 20px;
+  }
+
+  .form-card {
+    padding: 28px 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cta-section__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     HEADER
+     ======================================== -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <span class="logo__mark">MARK ANTONOWSKY</span>
+      <span class="logo__divider"></span>
+      <span class="logo__brokerage">real</span>
+    </a>
+    <nav class="nav">
+      <a href="#" class="nav__link">Buy</a>
+      <a href="#" class="nav__link">Sell</a>
+      <a href="#" class="nav__link">Communities</a>
+      <a href="#" class="nav__link">Search Homes</a>
+      <a href="#" class="nav__link nav__link--active">Home Value</a>
+      <a href="#" class="nav__link">About</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav__overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#">Buy</a>
+  <a href="#">Sell</a>
+  <a href="#">Communities</a>
+  <a href="#">Search Homes</a>
+  <a href="#">Home Value</a>
+  <a href="#">About</a>
+  <a href="#" class="nav__cta">Contact</a>
+</div>
+
+<!-- ========================================
+     HERO
+     ======================================== -->
+<section class="hero" id="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1920&q=80" alt="Modern Phoenix home exterior" loading="eager">
+  </div>
+  <div class="container">
+    <div class="hero__content reveal">
+      <span class="eyebrow eyebrow--light">HOME VALUE</span>
+      <h1>Find Your Home's Worth with a <span>Phoenix Home Value</span> Estimate</h1>
+      <p class="hero__text">Knowing your Phoenix home value is the first step when planning to sell, refinance, or understand your equity. Get a quick estimate online or request a detailed review based on current local market activity.</p>
+      <div class="hero__buttons">
+        <a href="#form" class="btn btn--primary">
+          Request Your Home Value
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="tel:6024691111" class="btn btn--outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (602) 469-1111
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     VALUATION FACTORS
+     ======================================== -->
+<section class="factors" id="factors">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">VALUATION FACTORS</span>
+      <h2>What Determines Your Phoenix Home Value</h2>
+    </div>
+    <div class="factors__grid">
+      <!-- Card 1 -->
+      <div class="factor-card reveal reveal-delay-1">
+        <div class="factor-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Recent Comparable Sales</h3>
+        <p>Your home's value is benchmarked against similar properties that sold recently in your area. Size, condition, and features are compared.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="factor-card reveal reveal-delay-2">
+        <div class="factor-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Property Condition & Upgrades</h3>
+        <p>Updated kitchens, bathrooms, roofing, and systems increase perceived value. Deferred maintenance can reduce it.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="factor-card reveal reveal-delay-3">
+        <div class="factor-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Location & Neighborhood</h3>
+        <p>Proximity to schools, shopping, employment centers, and parks directly affects what buyers will pay.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="factor-card reveal reveal-delay-4">
+        <div class="factor-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Current Market Demand</h3>
+        <p>The number of active buyers versus available inventory determines how competitive your pricing can be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     HOME VALUE FORM
+     ======================================== -->
+<section class="form-section" id="form">
+  <div class="container">
+    <div class="form-section__grid">
+      <div class="form-section__content reveal">
+        <span class="eyebrow eyebrow--light">FREE REPORT</span>
+        <h2>Get Your Personalized Home Value Report</h2>
+        <p>Fill out the form and Mark will provide a detailed analysis based on recent sales, market trends, and your property's unique features.</p>
+        <div class="form-section__trust">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Your information is kept private and never shared.</span>
+        </div>
+      </div>
+      <div class="form-card reveal reveal-delay-2">
+        <div class="form-card__title">Request Your Report</div>
+        <form onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" placeholder="(555) 555-5555">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="address">Property Address</label>
+            <input type="text" id="address" placeholder="123 Main St, Phoenix, AZ 85001">
+          </div>
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" placeholder="Any details about your property (upgrades, timeline, etc.)"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">
+            Get My Home Value Report
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     WHY ACCURATE PRICING MATTERS
+     ======================================== -->
+<section class="pricing-matters" id="pricing">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">PRICING STRATEGY</span>
+      <h2>Why Accurate Pricing Matters When Selling</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card pricing-card--over reveal reveal-delay-1">
+        <div class="pricing-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+        </div>
+        <h3>Overpricing Risks</h3>
+        <p>Homes priced above market value sit longer, attract fewer showings, and often sell for less after price reductions. Extended time on market signals problems to buyers.</p>
+      </div>
+      <div class="pricing-card pricing-card--under reveal reveal-delay-2">
+        <div class="pricing-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+        </div>
+        <h3>Underpricing Risks</h3>
+        <p>Pricing too low can leave money on the table. While it may generate fast offers, those offers may not reflect the property's true market value.</p>
+      </div>
+    </div>
+    <div class="pricing-bottom reveal">
+      <div class="pricing-bottom__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <p>Mark's pricing strategy uses comparable sales data, current demand, and property-specific factors to find the sweet spot.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     MARKET STATS
+     ======================================== -->
+<section class="market-stats" id="stats">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">MARKET DATA</span>
+      <h2>Phoenix Market Indicators</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-card__number">$435K</div>
+        <div class="stat-card__label">Median Home Price</div>
+        <div class="stat-card__trend stat-card__trend--up">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          +4.2% YoY
+        </div>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-card__number">34</div>
+        <div class="stat-card__label">Avg. Days on Market</div>
+        <div class="stat-card__trend stat-card__trend--neutral">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Stable
+        </div>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-card__number">4.2%</div>
+        <div class="stat-card__label">Year-Over-Year Appreciation</div>
+        <div class="stat-card__trend stat-card__trend--up">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Positive Trend
+        </div>
+      </div>
+      <div class="stat-card reveal reveal-delay-4">
+        <div class="stat-card__number">2.8</div>
+        <div class="stat-card__label">Months of Inventory</div>
+        <div class="stat-card__trend stat-card__trend--neutral">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Seller-Leaning
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     FAQ
+     ======================================== -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Home Value Questions, Answered</h2>
+    </div>
+    <div class="faq__list">
+      <div class="faq-item reveal">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>How accurate are online home value estimates?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Online estimates provide a starting point but can vary significantly. A professional analysis using local comparables and current market conditions provides a more accurate picture.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>How often should I check my home's value?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Annually is a good practice, or whenever you're considering selling, refinancing, or making major improvements.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>What improvements add the most value?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Kitchen and bathroom updates, new flooring, fresh paint, and landscaping improvements typically offer the best return in the Phoenix market.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>Does my home's value change with the seasons?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Phoenix sees seasonal fluctuations. Spring typically brings more buyers and stronger demand, while summer heat can slow activity slightly.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>What's the difference between appraised value and market value?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Appraised value is determined by a licensed appraiser for lending purposes. Market value is what a buyer is willing to pay based on current conditions and competition.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-item__question" aria-expanded="false">
+          <span>How quickly can I get a home value report?</span>
+          <span class="faq-item__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Mark typically delivers a personalized report within 24-48 hours of receiving your property details.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CTA
+     ======================================== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-section__content reveal">
+      <span class="eyebrow eyebrow--light">TAKE THE NEXT STEP</span>
+      <h2>Know Your Home's Value Before You Decide</h2>
+      <div class="cta-section__accent"></div>
+      <div class="cta-section__buttons">
+        <a href="#form" class="btn btn--primary">
+          Request Your Free Report
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="tel:6024691111" class="btn btn--outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (602) 469-1111
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Brand / Disclaimer -->
+      <div class="footer__brand">
+        <div class="logo">
+          <span class="logo__mark">MARK ANTONOWSKY</span>
+          <span class="logo__divider"></span>
+          <span class="logo__brokerage">real</span>
+        </div>
+        <p>Mark Antonowsky is a licensed real estate professional affiliated with Real Brokerage. All information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer__nav">
+        <h4>Navigation</h4>
+        <a href="#">Buy a Home</a>
+        <a href="#">Sell a Home</a>
+        <a href="#">Communities</a>
+        <a href="#">Search Homes</a>
+        <a href="#">Home Value</a>
+        <a href="#">About Mark</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+      <!-- Contact -->
+      <div class="footer__nav footer__contact">
+        <h4>Contact</h4>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span style="color: rgba(255,255,255,0.5); font-size: 14px;">Phoenix, Arizona</span>
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:6024691111" style="color: rgba(255,255,255,0.5); font-size: 14px;">(602) 469-1111</a>
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:mark@markantonowsky.com" style="color: rgba(255,255,255,0.5); font-size: 14px;">mark@markantonowsky.com</a>
+        </div>
+        <!-- Social Icons -->
+        <div class="footer__socials">
+          <a href="#" class="footer__social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      &copy; 2026 Mark Antonowsky. All rights reserved. | Real Estate Website Design by <a href="https://agenticpress.com" target="_blank" rel="noopener">AgenticPress</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- Header scroll effect ----
+  var header = document.getElementById('header');
+
+  function onScroll() {
+    if (window.scrollY > 80) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---- Mobile nav toggle ----
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  var mobileOverlay = document.getElementById('mobileOverlay');
+
+  function toggleMobileNav() {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+    mobileOverlay.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  hamburger.addEventListener('click', toggleMobileNav);
+  mobileOverlay.addEventListener('click', toggleMobileNav);
+
+  mobileNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (mobileNav.classList.contains('open')) {
+        toggleMobileNav();
+      }
+    });
+  });
+
+  // ---- Scroll-triggered reveal animations ----
+  var revealElements = document.querySelectorAll('.reveal');
+
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // ---- FAQ Accordion ----
+  var faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(function(item) {
+    var question = item.querySelector('.faq-item__question');
+    question.addEventListener('click', function() {
+      var isActive = item.classList.contains('active');
+
+      // Close all
+      faqItems.forEach(function(other) {
+        other.classList.remove('active');
+        other.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked if it was closed
+      if (!isActive) {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ---- Smooth scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

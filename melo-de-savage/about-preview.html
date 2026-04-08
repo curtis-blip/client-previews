@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melo-de Savage: San Diego REALTOR, 25+ Years of Expertise | Melo-de Savage</title>
+<meta name="description" content="Meet Melo-de Savage, a San Diego real estate agent with 25+ years of experience helping clients transition between mountain, inland, and coastal lifestyles across San Diego County.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===================================
+   RESET & LP-MATCHED TOKENS
+   =================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+:root {
+  --primary: #ede4dc;
+  --primary-dark: #d4c8bc;
+  --dark: #000000;
+  --mid: #666666;
+  --light: #f7f7f5;
+  --neutral: #ffffff;
+  --warm-gray: #E2E3E4;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+  --max: 1400px;
+  --radius: 0px;
+  --section-pad: 96px;
+  --card-gap: 24px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body); color: var(--dark);
+  background: var(--neutral); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================================
+   LP TYPOGRAPHY
+   =================================== */
+h1 {
+  font-family: var(--font-head); font-size: clamp(36px, 5vw, 70px);
+  font-weight: 400; line-height: 1.08; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff;
+}
+h2 {
+  font-family: var(--font-head); font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400; line-height: 1.15; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--dark);
+}
+h3 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 400;
+  line-height: 1.3; letter-spacing: 1px; text-transform: uppercase;
+}
+p { font-size: 16px; color: var(--mid); line-height: 1.8; }
+
+.eyebrow {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 16px; display: inline-block;
+}
+.eyebrow-dark {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 16px; display: inline-block;
+}
+
+/* ===================================
+   LP BUTTONS
+   =================================== */
+.btn-ghost {
+  display: inline-block; border: 2px solid #fff; color: #fff;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost:hover { background: #fff; color: #000; }
+
+.btn-ghost-dark {
+  display: inline-block; border: 2px solid var(--dark); color: var(--dark);
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost-dark:hover { background: var(--dark); color: #fff; }
+
+/* ===================================
+   LAYOUT
+   =================================== */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 50px; }
+
+/* ===================================
+   PREVIEW BANNER
+   =================================== */
+.preview-banner {
+  background: #111; color: rgba(255,255,255,0.5); font-size: 11px;
+  padding: 8px 0; text-align: center; letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--primary);
+  position: relative; z-index: 200;
+}
+.preview-banner strong { color: var(--primary); font-weight: 600; }
+
+/* ===================================
+   NAV
+   =================================== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: transparent; transition: background .3s;
+}
+.nav.scrolled { background: var(--warm-gray); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max); margin: 0 auto; padding: 0 50px; height: 80px;
+}
+.nav-logo {
+  display: flex; align-items: center; transition: opacity .3s;
+}
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo img { height: 60px; width: auto; max-width: 120px; }
+.nav .nav-logo img { filter: brightness(0) invert(1); transition: filter .3s; }
+.nav.scrolled .nav-logo img { filter: none; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85);
+  position: relative; transition: color .3s;
+}
+.nav.scrolled .nav-links a { color: var(--dark); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+  background: currentColor; transition: width .3s linear;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.7); color: #fff;
+  padding: 10px 28px; cursor: pointer; transition: all .3s;
+}
+.nav.scrolled .nav-cta { border-color: var(--dark); color: var(--dark); }
+.nav-cta:hover { background: #fff; color: #000; }
+.nav.scrolled .nav-cta:hover { background: var(--dark); color: #fff; }
+
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: background .3s; }
+.nav.scrolled .nav-hamburger span { background: var(--dark); }
+
+/* ===================================
+   1. HERO (60vh)
+   =================================== */
+.hero {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=80') center/cover no-repeat;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 40px; }
+.hero h1 { margin-bottom: 16px; }
+
+/* ===================================
+   2. MEET MELO-DE (Split)
+   =================================== */
+.meet-section { padding: var(--section-pad) 0; background: var(--neutral); }
+.meet-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+}
+.meet-photo {
+  width: 100%; aspect-ratio: 3/4; overflow: hidden;
+}
+.meet-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.meet-content h2 { margin-bottom: 24px; }
+.meet-content p { margin-bottom: 20px; }
+.meet-tags {
+  display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0;
+}
+.meet-tag {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--dark);
+  border: 1px solid rgba(0,0,0,0.2); padding: 10px 20px;
+}
+.meet-buttons {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px;
+}
+
+/* ===================================
+   IMAGE BREAK
+   =================================== */
+.image-break { min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+.image-break-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80') center/cover no-repeat; }
+.image-break-content { position: relative; z-index: 1; max-width: 700px; padding: 0 40px; }
+.image-break blockquote { font-family: var(--font-head); font-size: clamp(22px, 2.5vw, 32px); font-weight: 400; font-style: italic; color: #fff; line-height: 1.4; letter-spacing: 1px; margin-bottom: 16px; }
+.image-break cite { font-family: var(--font-body); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); font-style: normal; }
+
+/* ===================================
+   3. PHILOSOPHY & CLIENT APPROACH
+   =================================== */
+.philosophy-section { padding: var(--section-pad) 0; background: var(--light); }
+.philosophy-section .section-header { text-align: center; margin-bottom: 56px; }
+.philosophy-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--card-gap);
+  max-width: 1000px; margin: 0 auto;
+}
+.philosophy-card {
+  background: var(--neutral); padding: 48px 40px;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-top: 4px solid var(--dark);
+  transition: box-shadow .3s, transform .3s;
+  position: relative;
+  overflow: hidden;
+}
+.philosophy-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 120px; height: 120px; opacity: 0.03;
+  background: radial-gradient(circle at top right, var(--dark) 0%, transparent 70%);
+  pointer-events: none;
+}
+.philosophy-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.philosophy-card .card-icon {
+  margin-bottom: 24px; color: var(--dark);
+}
+.philosophy-card h3 { margin-bottom: 20px; }
+.philosophy-card p { font-size: 15px; }
+
+/* ===================================
+   COMMUNITY SERVICE CTA BANNER
+   =================================== */
+.cs-cta-banner {
+  padding: 48px 0; background: var(--dark); text-align: center;
+}
+.cs-cta-banner p {
+  color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 20px;
+}
+.cs-cta-banner h3 {
+  color: #fff; margin-bottom: 24px; font-size: clamp(20px, 2vw, 28px);
+}
+
+/* ===================================
+   4. EXPERIENCE HIGHLIGHTS
+   =================================== */
+.experience-section { padding: var(--section-pad) 0; background: var(--neutral); }
+.experience-section .section-header { text-align: center; margin-bottom: 56px; }
+.experience-list {
+  max-width: 780px; margin: 0 auto;
+}
+.experience-item {
+  display: flex; align-items: flex-start; gap: 24px;
+  padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.experience-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.experience-icon {
+  flex-shrink: 0; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(0,0,0,0.15); color: var(--dark);
+}
+.experience-detail h4 {
+  font-family: var(--font-body); font-size: 16px; font-weight: 700;
+  color: var(--dark); margin-bottom: 4px;
+}
+.experience-detail p { font-size: 14px; margin: 0; }
+.experience-link {
+  text-align: center; margin-top: 40px;
+}
+.experience-link a {
+  font-family: var(--font-body); font-size: 14px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--dark);
+  border-bottom: 1px solid var(--dark); padding-bottom: 2px;
+  transition: opacity .2s;
+}
+.experience-link a:hover { opacity: 0.6; }
+
+/* ===================================
+   5. EXPERTISE TAGS
+   =================================== */
+.expertise-section { padding: var(--section-pad) 0; background: var(--light); }
+.expertise-section .section-header { text-align: center; margin-bottom: 48px; }
+.expertise-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;
+  max-width: 900px; margin: 0 auto;
+}
+.expertise-pill {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--dark);
+  border: 2px solid var(--dark); padding: 14px 28px;
+  transition: background .2s, color .2s;
+}
+.expertise-pill:hover { background: var(--dark); color: #fff; }
+
+/* ===================================
+   6. DESIGNATIONS
+   =================================== */
+.designations-section { padding: var(--section-pad) 0; background: var(--neutral); }
+.designations-section .section-header { text-align: center; margin-bottom: 56px; }
+.designations-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap);
+  max-width: 1000px; margin: 0 auto;
+}
+.designation-card {
+  text-align: center; padding: 40px 28px;
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: box-shadow .3s, transform .3s;
+}
+.designation-card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+.designation-card .desig-icon {
+  margin: 0 auto 20px; width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--dark);
+}
+.designation-card h3 { font-size: 18px; margin-bottom: 8px; }
+.designation-card .desig-abbr {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--mid);
+  margin-bottom: 16px; display: block;
+}
+.designation-card p { font-size: 14px; }
+
+/* ===================================
+   7. CTA BLOCK
+   =================================== */
+.cta-block {
+  min-height: 400px; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-block-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover no-repeat;
+}
+.cta-block-content { position: relative; z-index: 1; padding: 60px 40px; }
+.cta-block h2 { color: #fff; margin-bottom: 32px; }
+
+/* ===================================
+   8. FAQ ACCORDION
+   =================================== */
+.faq-section { padding: var(--section-pad) 0; background: var(--light); }
+.faq-section .section-header { text-align: center; margin-bottom: 56px; }
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
+.faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; cursor: pointer; font-size: 16px; font-weight: 500;
+  color: var(--dark); width: 100%; text-align: left;
+  font-family: var(--font-body); transition: color .2s;
+}
+.faq-question:hover { color: #888; }
+.faq-icon {
+  font-size: 22px; font-weight: 300; color: var(--dark);
+  transition: transform .3s; flex-shrink: 0; margin-left: 16px;
+}
+.faq-answer {
+  max-height: 0; overflow: hidden; padding-bottom: 0;
+  font-size: 15px; color: var(--mid); line-height: 1.8;
+  transition: max-height .35s ease, padding-bottom .35s ease;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+.footer {
+  background: #111; color: rgba(255,255,255,0.6);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px; padding-bottom: 56px;
+}
+.footer-brand-col {}
+.footer-logo-img {
+  height: 60px; width: auto; margin-bottom: 24px;
+  filter: brightness(0) invert(1);
+}
+.footer-eho {
+  display: flex; gap: 16px; align-items: center; margin-bottom: 24px;
+}
+.footer-eho svg { width: 40px; height: 40px; color: rgba(255,255,255,0.7); }
+.footer-disclaimer {
+  font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7;
+}
+.footer-col-title {
+  font-family: var(--font-head); font-size: 16px; font-weight: 400;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 24px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 14px; }
+.footer-links a {
+  font-size: 15px; color: rgba(255,255,255,0.6);
+  transition: color .2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 16px;
+}
+.footer-contact-icon {
+  color: var(--primary); flex-shrink: 0; margin-top: 2px;
+}
+.footer-contact-icon svg { width: 18px; height: 18px; }
+.footer-contact-text {
+  font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+}
+.footer-contact-text a {
+  color: rgba(255,255,255,0.6); transition: color .2s;
+}
+.footer-contact-text a:hover { color: #fff; }
+.footer-bar {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copyright {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.footer-copyright a { color: rgba(255,255,255,0.4); transition: color .2s; }
+.footer-copyright a:hover { color: #fff; }
+.footer-bar-social {
+  display: flex; gap: 20px;
+}
+.footer-bar-social a {
+  color: rgba(255,255,255,0.4); transition: color .2s;
+}
+.footer-bar-social a:hover { color: #fff; }
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 1024px) {
+  :root { --section-pad: 64px; }
+  .container { padding: 0 32px; }
+  .nav-inner { padding: 0 32px; }
+  .meet-grid { gap: 40px; }
+  .philosophy-grid { grid-template-columns: 1fr 1fr; }
+  .designations-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  :root { --section-pad: 60px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .meet-grid { grid-template-columns: 1fr; gap: 40px; }
+  .philosophy-grid { grid-template-columns: 1fr; }
+  .designations-grid { grid-template-columns: 1fr; }
+  .expertise-tags { gap: 10px; }
+  .expertise-pill { padding: 10px 20px; font-size: 12px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bar { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-bar-social { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- PREVIEW BANNER -->
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &bull; Melo-de Savage &bull; About Page &bull; April 2026
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="logo.png" alt="Melo-de Savage, REALTOR" style="height: 60px; width: auto;"></a>
+    <div class="nav-links">
+      <a href="home-search-preview.html">Search</a>
+      <a href="buyers-guide-preview.html">Buy</a>
+      <a href="sellers-guide-preview.html">Sell</a>
+      <a href="home-value-preview.html">Home Value</a>
+      <a href="communities-preview.html">Communities</a>
+      <a href="about-preview.html">About</a>
+      <a href="blog-preview.html">Blog</a>
+    </div>
+    <a href="contact-preview.html" class="nav-cta">Contact</a>
+    <div class="nav-hamburger" onclick="document.body.classList.toggle('mobile-menu-open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">25+ Years, Mountains to Coast</span>
+    <h1>Melo-de Savage, San Diego REALTOR</h1>
+  </div>
+</section>
+
+<!-- 2. MEET MELO-DE -->
+<section class="meet-section">
+  <div class="container">
+    <div class="meet-grid">
+      <div class="meet-photo">
+        <img src="https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/z9kghtiujjzyqah0fqcm" alt="Melo-de Savage, San Diego REALTOR" loading="lazy">
+      </div>
+      <div class="meet-content">
+        <span class="eyebrow-dark">Meet Melo-de</span>
+        <h2>A Personalized Approach to Real Estate</h2>
+        <p>For over 25 years, Melo-de Savage has helped clients navigate every corner of San Diego County. Whether you are transitioning from a cool mountain retreat in Julian to sun-drenched coastal living in Del Mar, or discovering San Diego for the very first time, her deep local knowledge bridges every landscape in the region.</p>
+        <p>Melo-de believes that real estate is about more than property. It is about lifestyle, timing, and trust. She works closely with each client to understand what matters most, then delivers honest guidance backed by decades of hands-on experience across mountain, inland, and coastal communities.</p>
+        <div class="meet-tags">
+          <span class="meet-tag">Transition Specialist</span>
+          <span class="meet-tag">Relationship Driven</span>
+          <span class="meet-tag">Expert Local Knowledge</span>
+        </div>
+        <div class="meet-buttons">
+          <a href="contact-preview.html" class="btn-ghost-dark">Schedule a Consultation</a>
+          <a href="tel:+17605045720" class="btn-ghost-dark">Call (760) 504-5720</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE BREAK QUOTE -->
+<section class="image-break">
+  <div class="image-break-bg" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80') center/cover no-repeat;"></div>
+  <div class="image-break-content">
+    <blockquote>"Real estate is personal. Every client's transition is unique, and the guidance should be too."</blockquote>
+    <cite>Melo-de Savage, REALTOR</cite>
+  </div>
+</section>
+
+<!-- 3. PHILOSOPHY & CLIENT APPROACH -->
+<section class="philosophy-section">
+  <div class="container">
+    <div class="philosophy-grid">
+      <div class="philosophy-card">
+        <div class="card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>Philosophy</h3>
+        <p>Melo-de takes an education-first approach to every client relationship. She believes that informed clients make better decisions, so she invests time in explaining the market, walking through comparable data, and providing honest guidance even when the answer is not what someone wants to hear. Transparency builds trust, and trust is the foundation of every successful transaction.</p>
+      </div>
+      <div class="philosophy-card">
+        <div class="card-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Client Approach</h3>
+        <p>Every engagement begins with listening. Melo-de takes the time to understand your lifestyle priorities, financial goals, and timeline before suggesting a single property or pricing strategy. She recognizes that buying or selling a home is deeply personal, and she navigates the complexity of San Diego's diverse market with patience, clarity, and genuine care for each client's outcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. EXPERIENCE HIGHLIGHTS -->
+<section class="experience-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow-dark">Career Overview</span>
+      <h2>Real Estate Experience and Highlights</h2>
+    </div>
+    <div class="experience-list">
+      <div class="experience-item">
+        <div class="experience-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="experience-detail">
+          <h4>Licensed California Real Estate Agent Since 2006</h4>
+          <p>Nearly two decades of continuous practice across San Diego County's mountain, inland, and coastal markets.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <div class="experience-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="experience-detail">
+          <h4>CA DRE License #01784140</h4>
+          <p>Fully licensed and in good standing with the California Department of Real Estate.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <div class="experience-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="experience-detail">
+          <h4>eXp Realty of Southern California</h4>
+          <p>Backed by one of the fastest-growing real estate brokerages in the nation, with access to cutting-edge tools and a collaborative agent network.</p>
+        </div>
+      </div>
+      <div class="experience-item">
+        <div class="experience-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="experience-detail">
+          <h4>Active Industry Leadership</h4>
+          <p>Board-level service with SDAR, CAR, and the Women's Council of REALTORS spanning multiple years and leadership roles.</p>
+        </div>
+      </div>
+    </div>
+    <div class="experience-link">
+      <a href="community-service-preview.html">View Full Leadership History</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY SERVICE CTA -->
+<section class="cs-cta-banner">
+  <div class="container">
+    <p>Beyond buying and selling</p>
+    <h3>Shaping the Industry Through Professional Leadership</h3>
+    <a href="community-service-preview.html" class="btn-ghost">Explore Community Service</a>
+  </div>
+</section>
+
+<!-- 5. EXPERTISE TAGS -->
+<section class="expertise-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow-dark">Specializations</span>
+      <h2>Areas of Expertise</h2>
+    </div>
+    <div class="expertise-tags">
+      <span class="expertise-pill">Listing Agent</span>
+      <span class="expertise-pill">Buyers Agent</span>
+      <span class="expertise-pill">Luxury Properties</span>
+      <span class="expertise-pill">Single Family Residential</span>
+      <span class="expertise-pill">Multi-Residential</span>
+      <span class="expertise-pill">Condominiums</span>
+      <span class="expertise-pill">Mobile Homes</span>
+      <span class="expertise-pill">Land Sales</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6. DESIGNATIONS -->
+<section class="designations-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow-dark">Credentials</span>
+      <h2>Professional Designations</h2>
+    </div>
+    <div class="designations-grid">
+      <div class="designation-card">
+        <div class="desig-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        </div>
+        <h3>MRP</h3>
+        <span class="desig-abbr">Military Relocation Professional</span>
+        <p>Certified to assist active-duty military, veterans, and their families with the unique challenges of military relocation and home buying.</p>
+      </div>
+      <div class="designation-card">
+        <div class="desig-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12l2-6 4 10 2-4"/></svg>
+        </div>
+        <h3>NAR Green</h3>
+        <span class="desig-abbr">NAR's Green Designation</span>
+        <p>Trained to identify and promote energy-efficient, sustainable, and environmentally responsible real estate practices and properties.</p>
+      </div>
+      <div class="designation-card">
+        <div class="desig-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>PMN</h3>
+        <span class="desig-abbr">Performance Management Network</span>
+        <p>Advanced training in business planning, personal development, and performance strategies for real estate professionals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CTA BLOCK -->
+<section class="cta-block">
+  <div class="cta-block-bg"></div>
+  <div class="cta-block-content">
+    <span class="eyebrow">Your Next Chapter</span>
+    <h2>Start Your Next Chapter with Confidence</h2>
+    <a href="contact-preview.html" class="btn-ghost">Work with Melo-de</a>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long has Melo-de been in real estate?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Melo-de has been a licensed California real estate agent since 2006, bringing over 25 years of combined real estate and professional experience to her clients. She has worked across every micro-market in San Diego County, from backcountry mountain towns to premier coastal communities.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Which areas of San Diego does Melo-de serve?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Melo-de serves all of San Diego County, with particular expertise in the transitions between mountain communities (Julian, Ramona, Pine Valley), inland neighborhoods (Escondido, Poway, Fallbrook), and coastal cities (Del Mar, Encinitas, Carlsbad). Her countywide knowledge is especially valuable for clients moving between these distinct lifestyles.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does Melo-de specialize in buying or selling?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Both. Melo-de represents buyers and sellers with equal dedication. Her listing strategy focuses on professional marketing, accurate pricing, and skilled negotiation. For buyers, she emphasizes lifestyle alignment, financial clarity, and competitive positioning in San Diego's active market.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How does Melo-de help clients transitioning between lifestyles?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Melo-de starts by understanding what is driving the change: climate preferences, commute needs, family growth, retirement plans, or simply a desire for a new environment. She then leverages her firsthand knowledge of each region to present realistic options, explain the tradeoffs, and manage the logistics of selling in one community while purchasing in another. Many of her clients have made multiple transitions with her guidance.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What should I expect in my first consultation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Your first conversation with Melo-de is complimentary and focused entirely on you. She will ask about your goals, timeline, budget, and lifestyle priorities. From there, she will outline a clear plan of action, whether you are buying, selling, or simply exploring your options. There is no pressure and no obligation. The goal is to make sure you feel informed and confident about your next steps.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- COL 1: Brand -->
+      <div class="footer-brand-col">
+        <img src="logo.png" alt="Melo-de Savage, REALTOR" class="footer-logo-img">
+        <div style="font-family: var(--font-head); font-size: 18px; font-weight: 400; letter-spacing: 1.5px; color: #fff; margin-bottom: 8px;">Melo-de Savage, REALTOR&reg;</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px;">CA DRE #01784140<br>eXp Realty of Southern California, Inc.</div>
+        <div class="footer-eho">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="1"/><path d="M12 2l10 6H2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor" stroke="none">R</text></svg>
+        </div>
+        <div class="footer-disclaimer">
+          While information is believed to be reliable, it is not guaranteed. Please verify all information independently.
+        </div>
+      </div>
+
+      <!-- COL 2: Explore -->
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <div class="footer-links">
+          <a href="about-preview.html">About</a>
+          <a href="home-search-preview.html">Home Search</a>
+          <a href="buyers-guide-preview.html">Buyer's Guide</a>
+          <a href="sellers-guide-preview.html">Seller's Guide</a>
+          <a href="home-value-preview.html">Home Value</a>
+          <a href="community-service-preview.html">Community Service</a>
+          <a href="testimonials-preview.html">Reviews</a>
+          <a href="contact-preview.html">Contact</a>
+        </div>
+      </div>
+
+      <!-- COL 3: Communities Served -->
+      <div>
+        <div class="footer-col-title">Communities Served</div>
+        <div class="footer-links">
+          <a href="communities-preview.html#modal-julian">Julian</a>
+          <a href="communities-preview.html#modal-ramona">Ramona</a>
+          <a href="communities-preview.html#modal-fallbrook">Fallbrook</a>
+          <a href="communities-preview.html#modal-escondido">Escondido</a>
+          <a href="communities-preview.html#modal-poway">Poway</a>
+          <a href="communities-preview.html#modal-rb">Rancho Bernardo</a>
+          <a href="communities-preview.html#modal-oceanside">Oceanside</a>
+          <a href="communities-preview.html#modal-delmar">Del Mar</a>
+          <a href="communities-preview.html#modal-coronado">Coronado</a>
+        </div>
+      </div>
+
+      <!-- COL 4: Contact -->
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="footer-contact-text"><a href="tel:+17605045720">(760) 504-5720</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="footer-contact-text"><a href="mailto:melo-de@melo-desavage.com">melo-de@melo-desavage.com</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="footer-contact-text">12636 High Bluff Dr., Suite #400,<br>San Diego, CA 92130</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-copyright">&copy; 2026 Melo-de Savage | CA DRE #01784140 | eXp Realty of Southern California, Inc. | Website by <a href="https://agenticpress.ai">AgenticPress</a></span>
+      <div class="footer-bar-social">
+        <a href="https://www.facebook.com/melodesavagerealtor" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.5 3.3 12 3.3 12 3.3s-4.5 0-7.6.3c-.5 0-1.5 0-2.4 1C1.2 5.3 1 7 1 7S.8 9 .8 11v1.8c0 2 .2 4 .2 4s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 7.4.2 7.4.2s4.5 0 7.6-.3c.5-.1 1.5-.1 2.4-1 .8-.7 1-2.4 1-2.4s.2-2 .2-4V11c0-2-.2-4-.2-4zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* Nav scroll behavior */
+(function() {
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+})();
+
+/* FAQ Accordion */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => {
+    b.nextElementSibling.style.maxHeight = '0px';
+    b.nextElementSibling.style.paddingBottom = '0';
+    const ic = b.querySelector('.faq-icon');
+    if (ic) ic.style.transform = '';
+    b.style.color = '';
+  });
+  if (!isOpen) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.paddingBottom = '20px';
+    if (icon) icon.style.transform = 'rotate(45deg)';
+    btn.style.color = '#888';
+  }
+}
+
+/* Scroll reveal */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = '.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}';
+  document.head.appendChild(style);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('section:not(.hero):not(.preview-banner)').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

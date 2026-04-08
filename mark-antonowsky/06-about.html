@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mark Antonowsky | Phoenix Realtor Since 1989</title>
+<meta name="description" content="Mark Antonowsky is a Phoenix Realtor licensed since 1986 with 30+ years of local experience. CRS, GRI, ABR, ePRO, and SFR designations. Brokered by Real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  --color-primary: #F75823;
+  --color-primary-dark: #d94a1a;
+  --color-primary-light: #ff7a4f;
+  --color-dark: #0f1923;
+  --color-dark-alt: #162130;
+  --color-dark-card: #1c2a3a;
+  --color-light: #f9f9f9;
+  --color-light-alt: #f0f0f0;
+  --color-text-dark: #1a1a2e;
+  --color-text-light: #e0e0e0;
+  --color-text-muted: #8a94a6;
+  --color-white: #ffffff;
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-light: rgba(0,0,0,0.08);
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+
+  --h1-size: clamp(36px, 5vw, 56px);
+  --h2-size: clamp(28px, 3.5vw, 42px);
+  --h3-size: clamp(18px, 2vw, 22px);
+  --body-size: 16px;
+  --small-size: 14px;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.12);
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --section-padding: clamp(60px, 8vw, 100px);
+  --header-height: 80px;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.7;
+  color: var(--color-text-dark);
+  background: var(--color-white);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--h1-size); font-weight: 700; }
+h2 { font-size: var(--h2-size); font-weight: 600; }
+h3 { font-size: var(--h3-size); font-weight: 600; }
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.eyebrow--light {
+  color: var(--color-primary-light);
+}
+
+.section-subtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 640px;
+}
+
+.section-subtitle--light {
+  color: rgba(255,255,255,0.65);
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-header--center {
+  text-align: center;
+}
+
+.section-header--center .section-subtitle {
+  margin: 16px auto 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+.btn--primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(247, 88, 35, 0.35);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-white);
+  border-color: rgba(255,255,255,0.4);
+}
+.btn--outline:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--color-text-dark);
+  border-color: var(--color-text-dark);
+}
+.btn--outline-dark:hover {
+  background: var(--color-dark);
+  color: var(--color-white);
+  border-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.btn--white {
+  background: var(--color-white);
+  color: var(--color-dark);
+  border-color: var(--color-white);
+}
+.btn--white:hover {
+  background: var(--color-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.btn--sm {
+  padding: 10px 24px;
+  font-size: 14px;
+}
+
+/* Scroll-triggered animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(15, 25, 35, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.logo__mark {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.logo__divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255,255,255,0.25);
+}
+
+.logo__brokerage {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav__link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav__link:hover,
+.nav__link--active {
+  color: var(--color-white);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width var(--transition-base);
+}
+
+.nav__link:hover::after,
+.nav__link--active::after {
+  width: 100%;
+}
+
+.nav__cta {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-primary);
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+}
+
+.nav__cta:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  transition: all var(--transition-base);
+  border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile Nav */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  height: 100vh;
+  background: var(--color-dark);
+  z-index: 999;
+  padding: 100px 32px 40px;
+  transition: right var(--transition-base);
+  overflow-y: auto;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.mobile-nav__overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-nav__overlay.open {
+  opacity: 1;
+}
+
+.mobile-nav a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color var(--transition-fast);
+}
+
+.mobile-nav a:hover {
+  color: var(--color-primary);
+}
+
+.mobile-nav .nav__cta {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 15px;
+  padding: 14px 28px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ========================================
+   PAGE HERO (ABOUT)
+   ======================================== */
+.page-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-height) + 120px) 0 100px;
+  background: var(--color-dark);
+  overflow: hidden;
+  box-shadow: inset 0 0 150px rgba(0,0,0,0.4);
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+
+.page-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(15,25,35,0.92) 0%, rgba(15,25,35,0.6) 50%, rgba(15,25,35,0.3) 100%);
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: center;
+}
+
+.page-hero__content {
+  max-width: 640px;
+}
+
+.page-hero h1 {
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-size: clamp(42px, 6vw, 72px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.page-hero h1 span {
+  color: var(--color-primary);
+}
+
+.page-hero .eyebrow::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #F75823;
+  margin-bottom: 16px;
+}
+
+.page-hero .eyebrow {
+  letter-spacing: 0.2em;
+  font-size: 13px;
+}
+
+.page-hero__text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 36px;
+  max-width: 560px;
+}
+
+.page-hero__buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-hero__photo {
+  position: relative;
+}
+
+.page-hero__photo img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.page-hero__photo::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* ========================================
+   BIO SECTION
+   ======================================== */
+.bio {
+  padding: var(--section-padding) 0;
+  background: var(--color-light);
+}
+
+.bio__grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.bio__image {
+  position: relative;
+}
+
+.bio__image img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+.bio__image::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: -16px;
+  width: 120px;
+  height: 120px;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.bio__content h2 {
+  color: var(--color-text-dark);
+  margin-bottom: 24px;
+}
+
+.bio__content p {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.bio__credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.credential-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  padding: 8px 16px;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  transition: all var(--transition-base);
+}
+
+.credential-tag svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.credential-tag:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(247, 88, 35, 0.25);
+}
+
+.credential-tag:hover svg {
+  stroke: var(--color-white);
+}
+
+/* ========================================
+   WHAT SETS MARK APART
+   ======================================== */
+.differentiators {
+  padding: var(--section-padding) 0;
+  background: var(--color-dark);
+}
+
+.differentiators h2 {
+  color: var(--color-white);
+}
+
+.diff__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.diff-card {
+  background: var(--color-dark-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.diff-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.diff-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  border-color: rgba(247, 88, 35, 0.2);
+}
+
+.diff-card:hover::before {
+  transform: scaleX(1);
+}
+
+.diff-card__icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(247, 88, 35, 0.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: background var(--transition-base);
+}
+
+.diff-card:hover .diff-card__icon {
+  background: rgba(247, 88, 35, 0.2);
+}
+
+.diff-card__icon svg {
+  width: 26px;
+  height: 26px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diff-card h3 {
+  color: var(--color-white);
+  margin-bottom: 12px;
+  font-size: 19px;
+}
+
+.diff-card p {
+  color: rgba(255,255,255,0.6);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   TRACK RECORD
+   ======================================== */
+.track-record {
+  padding: var(--section-padding) 0;
+  background: var(--color-light);
+}
+
+.stats-bar {
+  position: relative;
+  z-index: 10;
+  margin-bottom: 40px;
+}
+
+.stats-bar__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  background: var(--color-dark);
+  border-radius: var(--radius-md);
+  padding: 40px 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat-item {
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+}
+
+.stat-item__number {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-item__label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
+}
+
+.track-record__text {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: #555;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   DESIGNATIONS & CREDENTIALS
+   ======================================== */
+.designations {
+  padding: var(--section-padding) 0;
+  background: var(--color-light-alt);
+}
+
+.designations h2 {
+  color: var(--color-text-dark);
+}
+
+.desig__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+
+.desig-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.desig-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(247, 88, 35, 0.2);
+}
+
+.desig-card__badge {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, rgba(247,88,35,0.08), rgba(247,88,35,0.02));
+  border: 2px solid rgba(247,88,35,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.desig-card:hover .desig-card__badge {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.desig-card__badge span {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+  transition: color var(--transition-base);
+}
+
+.desig-card:hover .desig-card__badge span {
+  color: var(--color-white);
+}
+
+.desig-card h3 {
+  font-size: 17px;
+  color: var(--color-text-dark);
+  margin-bottom: 8px;
+}
+
+.desig-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+/* ========================================
+   BROKERAGE
+   ======================================== */
+.brokerage {
+  padding: var(--section-padding) 0;
+  background: var(--color-dark);
+}
+
+.brokerage .container {
+  text-align: center;
+}
+
+.brokerage h2 {
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.brokerage__text {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  color: rgba(255,255,255,0.65);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.brokerage__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 32px 60px;
+  transition: all var(--transition-base);
+}
+
+.brokerage__logo:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.brokerage__logo-text {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: 8px;
+  text-transform: lowercase;
+}
+
+.brokerage__logo-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin-left: 4px;
+  display: inline-block;
+  vertical-align: super;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.cta-section {
+  padding: var(--section-padding) 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cta-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.cta-section h2 {
+  color: var(--color-white);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-section p {
+  color: rgba(255,255,255,0.9);
+  font-size: 18px;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-section__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--color-dark);
+  padding: 64px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer__brand .logo {
+  margin-bottom: 20px;
+}
+
+.footer__brand p {
+  color: rgba(255,255,255,0.45);
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer__nav h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 20px;
+}
+
+.footer__nav a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  padding: 6px 0;
+  transition: color var(--transition-fast);
+}
+
+.footer__nav a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact a,
+.footer__contact p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+}
+
+.footer__contact a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer__contact-item svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-primary);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.footer__social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+}
+
+.footer__social-link:hover {
+  background: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.footer__social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: rgba(255,255,255,0.6);
+  transition: fill var(--transition-fast);
+}
+
+.footer__social-link:hover svg {
+  fill: var(--color-white);
+}
+
+.footer__bottom {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer__bottom a {
+  color: var(--color-primary);
+}
+
+.footer__bottom a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .page-hero__grid {
+    grid-template-columns: 1fr 320px;
+    gap: 40px;
+  }
+
+  .bio__grid {
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+  }
+
+  .diff__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .desig__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: clamp(48px, 8vw, 80px);
+    --header-height: 70px;
+  }
+
+  .nav { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: block; }
+
+  .page-hero {
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  .page-hero__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .page-hero__content {
+    max-width: 100%;
+  }
+
+  .page-hero__text {
+    max-width: 100%;
+  }
+
+  .page-hero__buttons {
+    justify-content: center;
+  }
+
+  .page-hero__photo {
+    max-width: 320px;
+    margin: 0 auto;
+    order: -1;
+  }
+
+  .page-hero__photo::before {
+    display: none;
+  }
+
+  .bio__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .bio__image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .bio__image::after { display: none; }
+
+  .bio__credentials {
+    justify-content: center;
+  }
+
+  .diff__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar__inner {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 28px 24px;
+    gap: 24px;
+  }
+
+  .stat-item:not(:last-child)::after { display: none; }
+
+  .desig__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cta-section__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header { margin-bottom: 40px; }
+}
+
+@media (max-width: 480px) {
+  .page-hero__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats-bar__inner {
+    grid-template-columns: 1fr 1fr;
+    padding: 24px 20px;
+  }
+
+  .desig__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brokerage__logo {
+    padding: 24px 40px;
+  }
+
+  .brokerage__logo-text {
+    font-size: 32px;
+    letter-spacing: 6px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     HEADER
+     ======================================== -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <span class="logo__mark">MARK ANTONOWSKY</span>
+      <span class="logo__divider"></span>
+      <span class="logo__brokerage">real</span>
+    </a>
+    <nav class="nav">
+      <a href="#" class="nav__link">Buy</a>
+      <a href="#" class="nav__link">Sell</a>
+      <a href="#" class="nav__link">Communities</a>
+      <a href="#" class="nav__link">Search Homes</a>
+      <a href="#" class="nav__link">Home Value</a>
+      <a href="#" class="nav__link nav__link--active">About</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav__overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#">Buy</a>
+  <a href="#">Sell</a>
+  <a href="#">Communities</a>
+  <a href="#">Search Homes</a>
+  <a href="#">Home Value</a>
+  <a href="#">About</a>
+  <a href="#" class="nav__cta">Contact</a>
+</div>
+
+<!-- ========================================
+     PAGE HERO
+     ======================================== -->
+<section class="page-hero" id="hero">
+  <div class="page-hero__bg">
+    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80" alt="Phoenix Arizona skyline" loading="eager">
+  </div>
+  <div class="container">
+    <div class="page-hero__grid">
+      <div class="page-hero__content">
+        <span class="eyebrow eyebrow--light">MEET MARK</span>
+        <h1>Your Expert Real Estate <span>Strategist</span> in Phoenix</h1>
+        <p class="page-hero__text">Work with Mark Antonowsky, Phoenix Realtor licensed since 1986, who has spent over 30 years helping buyers and sellers navigate the local housing market with clear guidance, proven negotiation skills, and decades of practical experience.</p>
+        <div class="page-hero__buttons">
+          <a href="#contact" class="btn btn--primary">
+            Contact Mark
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="tel:6024691111" class="btn btn--outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (602) 469-1111
+          </a>
+        </div>
+      </div>
+      <div class="page-hero__photo reveal">
+        <img src="https://markantonowstg.wpenginepowered.com/wp-content/uploads/2025/02/mark-antonowsky-realtor.jpg" alt="Mark Antonowsky, Phoenix Realtor" loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     BIO SECTION
+     ======================================== -->
+<section class="bio" id="bio">
+  <div class="container">
+    <div class="bio__grid">
+      <div class="bio__image reveal">
+        <img src="https://markantonowstg.wpenginepowered.com/wp-content/uploads/2025/02/mark-antonowsky-realtor.jpg" alt="Mark Antonowsky, Phoenix Realtor since 1989" loading="lazy">
+      </div>
+      <div class="bio__content reveal reveal-delay-1">
+        <span class="eyebrow">ABOUT MARK</span>
+        <h2>Mark Antonowsky, Phoenix Realtor Since 1989</h2>
+        <p>Mark Antonowsky has been actively helping buyers and sellers in the Greater Phoenix area since 1989. Licensed since 1986, he brings deep local market knowledge, a background in mortgage lending, and a practical approach to every transaction. His experience spans residential resale, new construction, investment properties, luxury homes, and distressed sales including short sales and REO properties.</p>
+        <p>With designations including CRS, GRI, ABR, ePRO, and SFR, Mark combines formal expertise with real-world transaction experience. He focuses on accurate pricing, clear communication, and thorough coordination across every stage of the buying or selling process.</p>
+        <div class="bio__credentials">
+          <span class="credential-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            CRS
+          </span>
+          <span class="credential-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            GRI
+          </span>
+          <span class="credential-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            ABR
+          </span>
+          <span class="credential-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            ePRO
+          </span>
+          <span class="credential-tag">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            SFR
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     WHAT SETS MARK APART
+     ======================================== -->
+<section class="differentiators" id="differentiators">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow eyebrow--light">WHY WORK WITH MARK</span>
+      <h2>What Sets Mark Apart</h2>
+    </div>
+    <div class="diff__grid">
+      <!-- Card 1 -->
+      <div class="diff-card reveal reveal-delay-1">
+        <div class="diff-card__icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>30+ Years of Local Experience</h3>
+        <p>Active in Phoenix real estate since 1989, Mark has seen every type of market condition and knows how to navigate each one.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="diff-card reveal reveal-delay-2">
+        <div class="diff-card__icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        </div>
+        <h3>Mortgage Lending Background</h3>
+        <p>Previous experience in mortgage lending gives Mark unique insight into financing, underwriting, and appraisal processes.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="diff-card reveal reveal-delay-3">
+        <div class="diff-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Full-Service Approach</h3>
+        <p>From pricing strategy and marketing to negotiation and closing coordination, Mark handles every detail of the transaction.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="diff-card reveal reveal-delay-4">
+        <div class="diff-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Trusted Vendor Network</h3>
+        <p>Decades of relationships with inspectors, contractors, lenders, and title companies means you are connected to reliable professionals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     TRACK RECORD
+     ======================================== -->
+<section class="track-record" id="track-record">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">PROVEN RESULTS</span>
+      <h2>A Track Record Built on Results</h2>
+    </div>
+    <div class="stats-bar reveal">
+      <div class="stats-bar__inner">
+        <div class="stat-item">
+          <div class="stat-item__number">30+</div>
+          <div class="stat-item__label">Years in Phoenix Real Estate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">1986</div>
+          <div class="stat-item__label">Licensed Since</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">Hundreds</div>
+          <div class="stat-item__label">Closed Home Sales</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">5-Star</div>
+          <div class="stat-item__label">Consistent Client Rating</div>
+        </div>
+      </div>
+    </div>
+    <p class="track-record__text reveal">Mark has maintained a consistent level of performance across shifting market cycles, from the boom years through corrections and recoveries. That consistency comes from disciplined pricing, steady communication, and a process built on protecting the client's position in every transaction.</p>
+  </div>
+</section>
+
+<!-- ========================================
+     DESIGNATIONS & CREDENTIALS
+     ======================================== -->
+<section class="designations" id="designations">
+  <div class="container">
+    <div class="section-header section-header--center reveal">
+      <span class="eyebrow">CREDENTIALS</span>
+      <h2>Professional Designations</h2>
+      <p class="section-subtitle" style="margin: 16px auto 0;">Each designation represents specialized training and demonstrated expertise that directly benefits your buying or selling experience.</p>
+    </div>
+    <div class="desig__grid">
+      <!-- CRS -->
+      <div class="desig-card reveal reveal-delay-1">
+        <div class="desig-card__badge">
+          <span>CRS</span>
+        </div>
+        <h3>Certified Residential Specialist</h3>
+        <p>The highest credential awarded to residential sales agents, held by the top 3% of REALTORS nationwide.</p>
+      </div>
+      <!-- GRI -->
+      <div class="desig-card reveal reveal-delay-2">
+        <div class="desig-card__badge">
+          <span>GRI</span>
+        </div>
+        <h3>Graduate, REALTOR Institute</h3>
+        <p>Advanced training in legal and regulatory issues, technology, professional standards, and the sales process.</p>
+      </div>
+      <!-- ABR -->
+      <div class="desig-card reveal reveal-delay-3">
+        <div class="desig-card__badge">
+          <span>ABR</span>
+        </div>
+        <h3>Accredited Buyer's Representative</h3>
+        <p>Specialized training in representing home buyers through every stage of the purchase transaction.</p>
+      </div>
+      <!-- ePRO -->
+      <div class="desig-card reveal reveal-delay-4">
+        <div class="desig-card__badge">
+          <span>ePRO</span>
+        </div>
+        <h3>Digital Marketing Certification</h3>
+        <p>Expertise in digital marketing strategies, online tools, and technology to effectively market and find properties.</p>
+      </div>
+      <!-- SFR -->
+      <div class="desig-card reveal reveal-delay-1">
+        <div class="desig-card__badge">
+          <span>SFR</span>
+        </div>
+        <h3>Short Sales &amp; Foreclosure Resource</h3>
+        <p>Specialized knowledge in navigating distressed property transactions, short sales, and bank-owned properties.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     BROKERAGE
+     ======================================== -->
+<section class="brokerage" id="brokerage">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--light">BROKERAGE</span>
+      <h2>Brokered by Real</h2>
+      <p class="brokerage__text">Mark is affiliated with Real Brokerage, a publicly traded, technology-driven real estate company with a national footprint. Real combines modern tools and infrastructure with the local expertise agents like Mark bring to every client relationship, delivering a streamlined experience from listing to close.</p>
+      <div class="brokerage__logo">
+        <span class="brokerage__logo-text">real</span>
+        <span class="brokerage__logo-dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CTA SECTION
+     ======================================== -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <h2>Ready to Work with Mark?</h2>
+      <p>Whether buying or selling in Phoenix, start with a conversation and a clear plan.</p>
+      <div class="cta-section__buttons">
+        <a href="#" class="btn btn--white">
+          Get Started
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="tel:6024691111" class="btn btn--outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (602) 469-1111
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- Brand / Disclaimer -->
+      <div class="footer__brand">
+        <div class="logo">
+          <span class="logo__mark">MARK ANTONOWSKY</span>
+          <span class="logo__divider"></span>
+          <span class="logo__brokerage">real</span>
+        </div>
+        <p>Mark Antonowsky is a licensed real estate professional affiliated with Real Brokerage. All information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
+      </div>
+      <!-- Quick Links -->
+      <div class="footer__nav">
+        <h4>Navigation</h4>
+        <a href="#">Buy a Home</a>
+        <a href="#">Sell a Home</a>
+        <a href="#">Communities</a>
+        <a href="#">Search Homes</a>
+        <a href="#">Home Value</a>
+        <a href="#">About Mark</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+      <!-- Contact -->
+      <div class="footer__nav footer__contact">
+        <h4>Contact</h4>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span style="color: rgba(255,255,255,0.5); font-size: 14px;">Phoenix, Arizona</span>
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:6024691111" style="color: rgba(255,255,255,0.5); font-size: 14px;">(602) 469-1111</a>
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:mark@markantonowsky.com" style="color: rgba(255,255,255,0.5); font-size: 14px;">mark@markantonowsky.com</a>
+        </div>
+        <!-- Social Icons -->
+        <div class="footer__socials">
+          <a href="#" class="footer__social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      &copy; 2026 Mark Antonowsky. All rights reserved. | Real Estate Website Design by <a href="https://agenticpress.com" target="_blank" rel="noopener">AgenticPress</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- Header scroll effect ----
+  var header = document.getElementById('header');
+
+  function onScroll() {
+    if (window.scrollY > 80) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---- Mobile nav toggle ----
+  var hamburger = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobileNav');
+  var mobileOverlay = document.getElementById('mobileOverlay');
+
+  function toggleMobileNav() {
+    hamburger.classList.toggle('active');
+    mobileNav.classList.toggle('open');
+    mobileOverlay.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  hamburger.addEventListener('click', toggleMobileNav);
+  mobileOverlay.addEventListener('click', toggleMobileNav);
+
+  mobileNav.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (mobileNav.classList.contains('open')) {
+        toggleMobileNav();
+      }
+    });
+  });
+
+  // ---- Scroll-triggered reveal animations ----
+  var revealElements = document.querySelectorAll('.reveal');
+
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(function(el) {
+    revealObserver.observe(el);
+  });
+
+  // ---- Smooth scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

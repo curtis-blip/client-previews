@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Diego Communities: Mountain, Inland & Coastal Living | Melo-de Savage, REALTOR</title>
+<meta name="description" content="Explore San Diego communities from backcountry mountains to coastal living. Julian, Fallbrook, Escondido, Poway, Del Mar, Coronado and more. Your guide to finding the right neighborhood.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   RESET & LP-MATCHED TOKENS
+   ═══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+:root {
+  --primary: #ede4dc;
+  --primary-dark: #d4c8bc;
+  --dark: #000000;
+  --mid: #666666;
+  --light: #f7f7f5;
+  --neutral: #ffffff;
+  --warm-gray: #E2E3E4;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+  --max: 1400px;
+  --radius: 0px;
+  --section-pad: 96px;
+  --card-gap: 24px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body); color: var(--dark);
+  background: var(--neutral); line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════
+   LP TYPOGRAPHY
+   ═══════════════════════════════════ */
+h1 {
+  font-family: var(--font-head); font-size: clamp(36px, 5vw, 70px);
+  font-weight: 400; line-height: 1.08; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff;
+}
+h2 {
+  font-family: var(--font-head); font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400; line-height: 1.15; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--dark);
+}
+h3 {
+  font-family: var(--font-head); font-size: 22px; font-weight: 400;
+  line-height: 1.3; letter-spacing: 1px; text-transform: uppercase;
+}
+p { font-size: 16px; color: var(--mid); line-height: 1.8; }
+
+.eyebrow {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); margin-bottom: 16px; display: inline-block;
+}
+.eyebrow-dark {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--mid); margin-bottom: 16px; display: inline-block;
+}
+
+/* ═══════════════════════════════════
+   LP BUTTONS
+   ═══════════════════════════════════ */
+.btn-ghost {
+  display: inline-block; border: 2px solid #fff; color: #fff;
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost:hover { background: #fff; color: #000; }
+
+.btn-ghost-dark {
+  display: inline-block; border: 2px solid var(--dark); color: var(--dark);
+  font-family: var(--font-body); font-weight: 700; font-size: 14px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 20px 46px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost-dark:hover { background: var(--dark); color: #fff; }
+
+.btn-ghost-sm {
+  display: inline-block; border: 2px solid var(--dark); color: var(--dark);
+  font-family: var(--font-body); font-weight: 700; font-size: 13px;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 14px 32px; background: transparent; cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.btn-ghost-sm:hover { background: var(--dark); color: #fff; }
+
+/* ═══════════════════════════════════
+   LAYOUT
+   ═══════════════════════════════════ */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 50px; }
+
+/* ═══════════════════════════════════
+   PREVIEW BANNER
+   ═══════════════════════════════════ */
+.preview-banner {
+  background: #111; color: rgba(255,255,255,0.5); font-size: 11px;
+  padding: 8px 0; text-align: center; letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--primary);
+  position: relative; z-index: 200;
+}
+.preview-banner strong { color: var(--primary); font-weight: 600; }
+
+/* ═══════════════════════════════════
+   NAV
+   ═══════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: transparent; transition: background .3s;
+}
+.nav.scrolled { background: var(--warm-gray); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max); margin: 0 auto; padding: 0 50px; height: 80px;
+}
+.nav-logo {
+  display: flex; align-items: center; transition: opacity .3s;
+}
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo img { height: 60px; width: auto; max-width: 120px; }
+.nav .nav-logo img { filter: brightness(0) invert(1); transition: filter .3s; }
+.nav.scrolled .nav-logo img { filter: none; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.85);
+  position: relative; transition: color .3s;
+}
+.nav.scrolled .nav-links a { color: var(--dark); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+  background: currentColor; transition: width .3s linear;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border: 2px solid rgba(255,255,255,0.7); color: #fff;
+  padding: 10px 28px; cursor: pointer; transition: all .3s;
+}
+.nav.scrolled .nav-cta { border-color: var(--dark); color: var(--dark); }
+.nav-cta:hover { background: #fff; color: #000; }
+.nav.scrolled .nav-cta:hover { background: var(--dark); color: #fff; }
+.nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: background .3s; }
+.nav.scrolled .nav-hamburger span { background: var(--dark); }
+
+/* ═══════════════════════════════════
+   HERO
+   ═══════════════════════════════════ */
+.hero {
+  min-height: 60vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80') center/cover no-repeat;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; padding: 0 40px; }
+.hero p { color: rgba(255,255,255,0.7); font-size: 17px; max-width: 620px; margin: 20px auto 0; }
+
+/* ═══════════════════════════════════
+   REGION FILTER BUTTONS
+   ═══════════════════════════════════ */
+/* region-nav removed — tabs stripped */
+.region-buttons {
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+}
+.region-btn {
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 14px 40px; border: 2px solid rgba(0,0,0,0.15);
+  color: var(--dark); background: var(--neutral); cursor: pointer;
+  transition: all .2s;
+}
+.region-btn:hover, .region-btn.active {
+  background: var(--dark); color: #fff; border-color: var(--dark);
+}
+
+/* ═══════════════════════════════════
+   COMMUNITY CARDS BY REGION
+   ═══════════════════════════════════ */
+.comm-region { padding: var(--section-pad) 0 0; }
+.comm-region:last-of-type { padding-bottom: var(--section-pad); }
+.comm-region-header {
+  margin-bottom: 40px;
+}
+.comm-region-header h2 { margin-bottom: 12px; }
+.comm-region-header p { max-width: 600px; }
+
+.comm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); }
+.comm-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--card-gap); }
+
+.comm-card {
+  position: relative; overflow: hidden; cursor: pointer;
+  min-height: 400px;
+}
+.comm-card-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center;
+  transition: transform .6s ease;
+}
+.comm-card:hover .comm-card-bg { transform: scale(1.05); }
+.comm-card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.3); transition: background .4s;
+}
+.comm-card:hover .comm-card-overlay { background: rgba(0,0,0,0.5); }
+.comm-card-content {
+  position: absolute; bottom: 32px; left: 32px; right: 32px; z-index: 1;
+}
+.comm-card-content h3 { color: #fff; font-size: 26px; letter-spacing: 2px; margin-bottom: 6px; }
+.comm-card-tag {
+  font-family: var(--font-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6);
+}
+
+/* ═══════════════════════════════════
+   COMMUNITY MODALS (DOM-Loaded, Misty-style)
+   ═══════════════════════════════════ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 40px 20px; overflow-y: auto;
+}
+.modal-overlay.active { display: flex; }
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 0;
+}
+.modal-content {
+  position: relative; z-index: 1; background: var(--neutral);
+  max-width: 860px; width: 100%; margin: 40px auto;
+  overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px; z-index: 10;
+  background: rgba(0,0,0,0.5); border: none; width: 40px; height: 40px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(0,0,0,0.8); }
+.modal-close svg { width: 20px; height: 20px; color: #fff; }
+
+/* Modal Hero Image */
+.modal-hero-img {
+  height: 340px; background-size: cover; background-position: center;
+  position: relative;
+}
+.modal-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+}
+.modal-hero-content {
+  position: absolute; bottom: 28px; left: 40px; z-index: 1;
+}
+.modal-hero-content h2 {
+  color: #fff; font-size: clamp(28px, 3vw, 38px); margin-bottom: 4px;
+  letter-spacing: 2px;
+}
+.modal-hero-tag {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6);
+}
+
+/* Modal Body */
+.modal-body { padding: 40px; }
+.modal-vibe {
+  font-family: var(--font-head); font-size: 22px; font-weight: 400;
+  color: var(--dark); margin-bottom: 28px; line-height: 1.3;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* Modal Quick Stats */
+.modal-stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px; margin-bottom: 36px;
+}
+.modal-stat {
+  text-align: center; padding: 16px 8px; background: var(--light);
+}
+.modal-stat .ms-value {
+  display: block; font-family: var(--font-head); font-size: 18px;
+  font-weight: 400; color: var(--dark); margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.modal-stat .ms-label {
+  font-size: 11px; color: var(--mid); text-transform: uppercase;
+  letter-spacing: 0.06em; font-weight: 600;
+}
+
+/* Modal Sections */
+.modal-section { margin-bottom: 32px; }
+.modal-section h4 {
+  font-family: var(--font-body); font-size: 14px; font-weight: 700;
+  margin-bottom: 12px; color: var(--dark); text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.modal-section p {
+  font-size: 15px; color: var(--mid); line-height: 1.8;
+}
+
+/* Modal Highlights */
+.modal-highlights {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.modal-highlight {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--dark); font-weight: 600;
+}
+.modal-highlight svg {
+  width: 20px; height: 20px; color: var(--dark); flex-shrink: 0;
+}
+
+/* Modal Comparison */
+.modal-compare {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.compare-item {
+  text-align: center; padding: 20px 12px; background: var(--light);
+}
+.compare-item .ci-value {
+  display: block; font-family: var(--font-head); font-size: 20px;
+  font-weight: 400; color: var(--dark); margin-bottom: 4px;
+}
+.compare-item .ci-label {
+  font-size: 12px; color: var(--mid); line-height: 1.4;
+}
+
+/* Melo-de's Take */
+.melodes-take {
+  background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.01) 100%);
+  border-left: 3px solid var(--dark); padding: 24px 28px; margin-bottom: 32px;
+}
+.melodes-take .mt-label {
+  font-family: var(--font-body); font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px; color: var(--dark); margin-bottom: 8px;
+}
+.melodes-take p {
+  font-size: 15px; color: var(--dark); line-height: 1.7; font-style: italic;
+}
+
+/* Modal CTAs */
+.modal-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ═══════════════════════════════════
+   LIFESTYLE COMPASS
+   ═══════════════════════════════════ */
+.compass { padding: var(--section-pad) 0; background: var(--light); }
+.compass .section-header { text-align: center; margin-bottom: 56px; }
+.compass .section-header p { max-width: 600px; margin: 16px auto 0; }
+.compass-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.compass-col h3 { margin-bottom: 16px; font-size: 20px; }
+.compass-col p { font-size: 15px; line-height: 1.8; }
+
+/* ═══════════════════════════════════
+   CTA BLOCK
+   ═══════════════════════════════════ */
+.cta-block {
+  min-height: 380px; display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-block-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80') center/cover no-repeat;
+}
+.cta-block-content { position: relative; z-index: 1; padding: 60px 40px; }
+.cta-block h2 { color: #fff; margin-bottom: 32px; }
+
+/* ═══════════════════════════════════
+   FAQ
+   ═══════════════════════════════════ */
+.faq-section { padding: var(--section-pad) 0; background: var(--neutral); }
+.faq-section .section-header { text-align: center; margin-bottom: 56px; }
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
+.faq-question {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; cursor: pointer; font-size: 16px; font-weight: 500;
+  color: var(--dark); width: 100%; text-align: left;
+  font-family: var(--font-body); transition: color .2s;
+}
+.faq-question:hover { color: #888; }
+.faq-icon {
+  font-size: 22px; font-weight: 300; color: var(--dark);
+  transition: transform .3s; flex-shrink: 0; margin-left: 16px;
+}
+.faq-answer {
+  max-height: 0; overflow: hidden; padding-bottom: 0;
+  font-size: 15px; color: var(--mid); line-height: 1.8;
+  transition: max-height .35s ease, padding-bottom .35s ease;
+}
+
+/* ═══════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════ */
+.footer {
+  background: #111; color: rgba(255,255,255,0.6);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px; padding-bottom: 56px;
+}
+.footer-brand-col {}
+.footer-logo-img {
+  height: 60px; width: auto; margin-bottom: 24px;
+  filter: brightness(0) invert(1);
+}
+.footer-eho {
+  display: flex; gap: 16px; align-items: center; margin-bottom: 24px;
+}
+.footer-eho svg { width: 40px; height: 40px; color: rgba(255,255,255,0.7); }
+.footer-disclaimer {
+  font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7;
+}
+.footer-col-title {
+  font-family: var(--font-head); font-size: 16px; font-weight: 400;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 24px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 14px; }
+.footer-links a {
+  font-size: 15px; color: rgba(255,255,255,0.6);
+  transition: color .2s;
+}
+.footer-links a:hover { color: #fff; }
+.footer-contact-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 16px;
+}
+.footer-contact-icon {
+  color: var(--primary); flex-shrink: 0; margin-top: 2px;
+}
+.footer-contact-icon svg { width: 18px; height: 18px; }
+.footer-contact-text {
+  font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7;
+}
+.footer-contact-text a {
+  color: rgba(255,255,255,0.6); transition: color .2s;
+}
+.footer-contact-text a:hover { color: #fff; }
+.footer-bar {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copyright {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+.footer-copyright a { color: rgba(255,255,255,0.4); transition: color .2s; }
+.footer-copyright a:hover { color: #fff; }
+.footer-bar-social {
+  display: flex; gap: 20px;
+}
+.footer-bar-social a {
+  color: rgba(255,255,255,0.4); transition: color .2s;
+}
+.footer-bar-social a:hover { color: #fff; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════ */
+@media (max-width: 1024px) {
+  :root { --section-pad: 64px; }
+  .container { padding: 0 32px; }
+  .nav-inner { padding: 0 32px; }
+  .comm-grid { grid-template-columns: 1fr 1fr; }
+  .comm-grid-2 { grid-template-columns: 1fr; }
+  .compass-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 768px) {
+  :root { --section-pad: 60px; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .comm-grid { grid-template-columns: 1fr; }
+  .region-buttons { gap: 8px; }
+  .region-btn { padding: 10px 24px; font-size: 12px; }
+  /* Modal responsive */
+  .modal-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .modal-highlights { grid-template-columns: 1fr; }
+  .modal-compare { grid-template-columns: 1fr; }
+  .modal-body { padding: 24px; }
+  .modal-overlay { padding: 20px 12px; }
+  .modal-ctas { flex-direction: column; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bar { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-bar-social { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- PREVIEW BANNER -->
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &mdash; Melo-de Savage &bull; Communities Hub &bull; April 2026
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="logo.png" alt="Melo-de Savage, REALTOR" style="height: 60px; width: auto;"></a>
+    <div class="nav-links">
+      <a href="home-search-preview.html">Search</a>
+      <a href="buyers-guide-preview.html">Buy</a>
+      <a href="sellers-guide-preview.html">Sell</a>
+      <a href="home-value-preview.html">Home Value</a>
+      <a href="communities-preview.html">Communities</a>
+      <a href="about-preview.html">About</a>
+      <a href="blog-preview.html">Blog</a>
+    </div>
+    <a href="contact-preview.html" class="nav-cta">Contact</a>
+    <div class="nav-hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Explore San Diego</span>
+    <h1>San Diego Communities</h1>
+    <p>From mountain retreats to coastal sanctuaries, discover the neighborhoods that define San Diego County living.</p>
+  </div>
+</section>
+
+<!-- MOUNTAIN COMMUNITIES -->
+<section class="comm-region" id="mountains" data-region="mountain">
+  <div class="container">
+    <div class="comm-region-header">
+      <span class="eyebrow-dark">Living in the San Diego Mountains</span>
+      <h2>San Diego Mountain Communities</h2>
+      <p>Cooler temperatures, larger lots, and a pace of life defined by the land. Mountain living in San Diego offers space, privacy, and seasonal changes the rest of the county never sees.</p>
+    </div>
+    <div class="comm-grid-2">
+      <div class="comm-card" onclick="openModal('julian')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Julian</h3>
+          <span class="comm-card-tag">Mountain Community</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('ramona')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Ramona</h3>
+          <span class="comm-card-tag">Mountain / Inland Transition</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INLAND COMMUNITIES -->
+<section class="comm-region" id="inland" data-region="inland">
+  <div class="container">
+    <div class="comm-region-header">
+      <span class="eyebrow-dark">Living in Inland San Diego</span>
+      <h2>Inland San Diego Neighborhoods</h2>
+      <p>Strong schools, growing downtowns, and a balance of accessibility and space that appeals to families and professionals across San Diego's inland corridors.</p>
+    </div>
+    <div class="comm-grid">
+      <div class="comm-card" onclick="openModal('fallbrook')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Fallbrook</h3>
+          <span class="comm-card-tag">Inland Foothill</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('escondido')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Escondido</h3>
+          <span class="comm-card-tag">Inland Valley</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('poway')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Poway</h3>
+          <span class="comm-card-tag">Inland Suburban</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('rb')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Rancho Bernardo</h3>
+          <span class="comm-card-tag">Inland Planned Community</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COASTAL COMMUNITIES -->
+<section class="comm-region" id="coast" data-region="coast">
+  <div class="container">
+    <div class="comm-region-header">
+      <span class="eyebrow-dark">Living on the San Diego Coast</span>
+      <h2>San Diego Coastal Communities</h2>
+      <p>Where the Pacific defines daily life. Coastal San Diego commands premium pricing and delivers a lifestyle that draws buyers from across the country.</p>
+    </div>
+    <div class="comm-grid">
+      <div class="comm-card" onclick="openModal('oceanside')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Oceanside</h3>
+          <span class="comm-card-tag">North Coast</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('delmar')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Del Mar</h3>
+          <span class="comm-card-tag">Luxury Coastal</span>
+        </div>
+      </div>
+      <div class="comm-card" onclick="openModal('coronado')">
+        <div class="comm-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80')"></div>
+        <div class="comm-card-overlay"></div>
+        <div class="comm-card-content">
+          <h3>Coronado</h3>
+          <span class="comm-card-tag">Island Living</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+   DOM-LOADED COMMUNITY MODALS (Misty-style)
+   All content is in the DOM for SEO crawling
+   ═══════════════════════════════════ -->
+
+<!-- JULIAN MODAL -->
+<div class="modal-overlay" id="modal-julian">
+  <div class="modal-backdrop" onclick="closeModal('julian')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('julian')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Julian</h2>
+        <span class="modal-hero-tag">Mountain &bull; San Diego Backcountry</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Where mountain quiet replaces coastal noise.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$400K-$700K</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Julian Union</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">60+ Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~1,500</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning walks through apple orchards with cooler mountain air setting the tone. Weekends bring the farmers market on Main Street, browsing local shops and cafes at a pace that never feels rushed. Evenings are for stargazing under some of the darkest skies in the county, and the seasonal changes are real here, with autumn color and winter snow that the rest of San Diego never sees.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Custom homes on acreage, historic cabins, and ranch properties define the housing stock. Inventory is limited and moves seasonally, with spring and summer bringing peak activity. Expect wells, propane, and septic systems on many parcels.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Apple Orchards &amp; Farm Culture
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Julian Union Schools
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Cuyamaca State Park
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Historic Gold Mining Town
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            Dark Sky Stargazing
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Seasonal Snow &amp; Fall Color
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">50%</span>
+            <span class="ci-label">Larger lots vs inland avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Strong</span>
+            <span class="ci-label">Seasonal tourism revenue</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">True</span>
+            <span class="ci-label">4-season climate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Julian is for buyers who have already decided that space and quiet matter more than convenience. I get calls from people who visited on a weekend apple-picking trip and realized they could actually live here. The inventory is limited, so patience and readiness are essential."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Julian</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Julian</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RAMONA MODAL -->
+<div class="modal-overlay" id="modal-ramona">
+  <div class="modal-backdrop" onclick="closeModal('ramona')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('ramona')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Ramona</h2>
+        <span class="modal-hero-tag">Mountain / Inland Transition</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Horse country with a wine glass in hand.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$500K-$800K</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Ramona Unified</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">40-60 Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~45,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning ride on the equestrian trails before the heat sets in. Downtown coffee shops are the meeting spot, and afternoon visits to Ramona Valley vineyards are a weekend staple. Kids are at local schools while Friday night football draws the whole town. Weekends open up to exploring the backcountry that starts right at the edge of town.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Ranch properties, horse-friendly lots, and newer construction spread across a wide price range. You can find starter homes and custom estates here, with lot sizes much larger than anything in suburban San Diego.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Ramona Valley AVA Wineries
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Equestrian-Friendly Lots
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Guy B. Woodward Museum
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Ramona Grasslands
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Friday Night Football Culture
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            Growing Local Food Scene
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">3x</span>
+            <span class="ci-label">Avg lot size vs coastal</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Wine Country</span>
+            <span class="ci-label">Next door</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">45 Min</span>
+            <span class="ci-label">Avg commute</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Ramona is where I see the most lifestyle-driven purchases. People come for the horse property or the wineries and realize the whole town has a rhythm that works for them. If you want acreage without being off-grid, Ramona is the sweet spot."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Ramona</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Ramona</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FALLBROOK MODAL -->
+<div class="modal-overlay" id="modal-fallbrook">
+  <div class="modal-backdrop" onclick="closeModal('fallbrook')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('fallbrook')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Fallbrook</h2>
+        <span class="modal-hero-tag">Inland Foothill</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Avocado groves, art walks, and no stoplights on Main.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$550K-$900K</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Fallbrook Union</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">20-30 Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~32,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning walk through avocado and citrus groves with the scent of blossoms in the air. Art galleries line Main Avenue for a midday browse, and lunch at a local farm-to-table spot feels like a routine worth keeping. Afternoons at the community nurseries, evenings on the patio watching the sun set over the foothills. The pace here is intentional.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Estate homes on acreage, newer tract developments, and agricultural properties. The price range is wide enough to be accessible to multiple buyer profiles, from first-time purchasers to those seeking a rural estate.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Avocado Capital of the World
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Main Avenue Art Walk
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            Fallbrook Nurseries
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Camp Pendleton Corridor Access
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Farm-to-Table Dining
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Growing Remote Worker Community
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">30%</span>
+            <span class="ci-label">Below coastal pricing</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Strongest</span>
+            <span class="ci-label">Ag community in county</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">25 Min</span>
+            <span class="ci-label">Avg coast drive</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Fallbrook has a personality that no other San Diego community can replicate. The agricultural character, the art scene, the friendliness. I recommend it to buyers who want a community with real identity, not just another subdivision."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Fallbrook</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Fallbrook</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCONDIDO MODAL -->
+<div class="modal-overlay" id="modal-escondido">
+  <div class="modal-backdrop" onclick="closeModal('escondido')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('escondido')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Escondido</h2>
+        <span class="modal-hero-tag">Inland Valley</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Downtown revival meets valley living.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$500K-$750K</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Escondido Union</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">25-35 Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~150,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning at a downtown craft coffee shop before driving past the Safari Park on the way to work. Kids are at school across various neighborhood districts while you work from a home office with mountain views. Afternoon exploring the San Pasqual Valley wineries, evening in the revitalized downtown with new restaurants and breweries that keep opening monthly.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Starter homes and condos, custom hillside estates, and newer developments with Mello-Roos. The variety here is wider than almost anywhere else in the county, with options across neighborhoods and price points that work for first-time buyers and move-up purchasers alike.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            San Diego Zoo Safari Park
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Downtown Arts Revival
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            San Pasqual Valley Wineries
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Daley Ranch Preserve
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Multiple School Options
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Best Value Per Sq Ft Inland
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">40%</span>
+            <span class="ci-label">Below coastal avg price</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Fastest</span>
+            <span class="ci-label">Growing downtown in county</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Widest</span>
+            <span class="ci-label">Price range inland</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Escondido is undervalued and I tell buyers that honestly. The downtown is transforming, the Safari Park draws visitors from around the world, and the housing options are more diverse than anywhere else in the county. First-time buyers should absolutely look here."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Escondido</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Escondido</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POWAY MODAL -->
+<div class="modal-overlay" id="modal-poway">
+  <div class="modal-backdrop" onclick="closeModal('poway')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('poway')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Poway</h2>
+        <span class="modal-hero-tag">Inland Suburban</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">The city in the country, with schools to match.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$800K-$1.2M</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Poway Unified</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">20-30 Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~50,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning hike up Iron Mountain before the rest of the city wakes up. Kids walking to school in a top-rated district while you commute to Sorrento Valley in under 20 minutes. Afternoon at Lake Poway, community farmers market on Saturday, and neighborhood block parties that still happen regularly. This is a community where people know their neighbors.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Predominantly single-family homes on moderate-to-large lots with a school-district premium baked into pricing. Inventory moves fast, especially near Lake Poway and the trail systems. Expect competitive offers in established neighborhoods.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Poway Unified (Top-Rated)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Iron Mountain Trail
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Lake Poway Recreation
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            Saturday Farmers Market
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Low Crime Rate
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Central SD Location
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">#1</span>
+            <span class="ci-label">School district in county</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">15%</span>
+            <span class="ci-label">Price premium for schools</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Central</span>
+            <span class="ci-label">To all SD corridors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Poway sells itself through its schools and its trails. I have never had a buyer regret choosing Poway. The commute works, the schools deliver, and the community actually feels like a community. The premium is real, but so is what you get for it."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Poway</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Poway</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RANCHO BERNARDO MODAL -->
+<div class="modal-overlay" id="modal-rb">
+  <div class="modal-backdrop" onclick="closeModal('rb')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('rb')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Rancho Bernardo</h2>
+        <span class="modal-hero-tag">Inland Planned Community</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Polished, planned, and perfectly positioned.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$650K-$1M</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Poway Unified</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">20-30 Min</span>
+          <span class="ms-label">Drive to Coast</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~48,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning round at one of three golf courses, coffee at Bernardo Center Drive, then a quick commute south to the Sorrento Valley tech corridor. Evening walk through well-maintained community paths, dinner at one of the many local restaurants. Everything here is designed to work smoothly, from the infrastructure to the daily routine.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Condos, townhomes, and single-family homes across a wide price range. HOA communities with maintained common areas are the standard. Consistent demand and moderate turnover keep the market stable and predictable.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            I-15 Tech Corridor Access
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Three Golf Courses
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Poway Unified Schools
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Well-Planned Infrastructure
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Active Adult Communities
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Medical &amp; Shopping Access
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">20%</span>
+            <span class="ci-label">Below Carmel Valley pricing</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Strongest</span>
+            <span class="ci-label">Retiree amenity base</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Direct</span>
+            <span class="ci-label">I-15 commute</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Rancho Bernardo is where I send buyers who want zero surprises. The infrastructure is solid, the HOAs are well-run, and the location works for commuters and retirees alike. It is the most consistently livable community in inland San Diego."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Rancho Bernardo</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Rancho Bernardo</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OCEANSIDE MODAL -->
+<div class="modal-overlay" id="modal-oceanside">
+  <div class="modal-backdrop" onclick="closeModal('oceanside')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('oceanside')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Oceanside</h2>
+        <span class="modal-hero-tag">North Coast</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Coastal energy at a price the coast can still afford.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$600K-$1M</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Oceanside Unified</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Beachfront</span>
+          <span class="ms-label">Location</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~175,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning surf session at the pier, coffee at a South O cafe, kids at school while you work remote from a harbor-view office. Afternoon walk on the strand, dinner at one of the new downtown restaurants that keep opening monthly. The energy here is young, creative, and moving forward fast.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Beach cottages, condos, townhomes, and newer inland developments. Pricing varies dramatically by proximity to the coast, with west of I-5 commanding a major premium over eastern neighborhoods.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            3.5 Miles of Beach
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Oceanside Harbor
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Coaster Train to Downtown SD
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            South O Revitalization
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Camp Pendleton Adjacent
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Craft Brewery Scene
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">30%</span>
+            <span class="ci-label">Below Del Mar pricing</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Most</span>
+            <span class="ci-label">Affordable coastal entry</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Fastest</span>
+            <span class="ci-label">Growing dining scene</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Oceanside is the coastal value play right now, and I say that without hesitation. South O and the downtown area have transformed in the last five years. Buyers who want beach access without million-dollar-plus entry points should look here first."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Oceanside</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Oceanside</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEL MAR MODAL -->
+<div class="modal-overlay" id="modal-delmar">
+  <div class="modal-backdrop" onclick="closeModal('delmar')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('delmar')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Del Mar</h2>
+        <span class="modal-hero-tag">Luxury Coastal</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Village charm where the bluffs meet the Pacific.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$2M-$5M+</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Del Mar Union</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Oceanfront</span>
+          <span class="ms-label">Location</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~4,200</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning walk along the bluffs with the Pacific stretching to the horizon. Coffee at a village cafe, afternoon at Torrey Pines State Reserve, evening at the racetrack during season. Sunday brunch with ocean views that never get old. Everything here is within walking distance, and the village scale makes every errand feel like a stroll.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Luxury single-family homes, some condos and townhomes, and extremely limited inventory. Price per square foot is the highest in the county, and multiple-offer situations are common on desirable listings.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Del Mar Racetrack &amp; Fairgrounds
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Torrey Pines State Reserve
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Walkable Village Core
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Boutique Shopping &amp; Dining
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            World-Class Golf (Torrey Pines)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Top-Rated Del Mar Schools
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">Highest</span>
+            <span class="ci-label">Price/sqft in county</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Tightest</span>
+            <span class="ci-label">Inventory in SD</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Most</span>
+            <span class="ci-label">Walkable coastal village</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Del Mar is for buyers who know exactly what they want and are prepared to move quickly when it appears. Inventory is measured in single digits most months. The lifestyle is unmatched, but the competition for homes here is the most intense in San Diego."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Del Mar</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Del Mar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CORONADO MODAL -->
+<div class="modal-overlay" id="modal-coronado">
+  <div class="modal-backdrop" onclick="closeModal('coronado')"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('coronado')" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80')">
+      <div class="modal-hero-overlay"></div>
+      <div class="modal-hero-content">
+        <h2>Coronado</h2>
+        <span class="modal-hero-tag">Island Living</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">An island in a city, with a beach that proves it.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$1.5M-$4M+</span>
+          <span class="ms-label">Median Price</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Coronado Unified</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Island</span>
+          <span class="ms-label">Location</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~24,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Morning bike ride along the strand, kids walking to school on tree-lined streets, afternoon at the Hotel del Coronado beach. Ferry Landing dinner with skyline views, evening stroll through the village. The rhythm here is unhurried, self-contained, and unlike anything else in San Diego.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Historic cottages, modern waterfront estates, and condos near the village. The geography-constrained market has zero room for expansion, which means consistent demand and premium pricing that holds through every cycle.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            #1 Ranked US Beach (multiple years)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Coronado Bridge &amp; Ferry Access
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            Hotel del Coronado
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Walkable Village &amp; Schools
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Military Community (NASNI)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            Ferry Landing Marketplace
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">Zero</span>
+            <span class="ci-label">Expansion possible</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Lowest</span>
+            <span class="ci-label">Crime rate in county</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Most</span>
+            <span class="ci-label">Self-contained community</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="melodes-take">
+        <div class="mt-label">Melo-de's Take</div>
+        <p>"Coronado is the only place in San Diego where you genuinely feel like you have left the city while being ten minutes from downtown. The bridge commute is the only friction point, and most residents tell me they forget about it within a month. If you can get in, you will not want to leave."</p>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="home-search-preview.html" class="btn-ghost-dark">Search Homes in Coronado</a>
+        <a href="contact-preview.html" class="btn-ghost-dark" style="border-color: var(--mid); color: var(--mid);">Talk to Melo-de About Coronado</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIFESTYLE COMPASS -->
+<section class="compass">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow-dark">Compare Lifestyles</span>
+      <h2>The San Diego Lifestyle Compass</h2>
+      <p>Three regions, three distinct ways of living. Understanding the differences helps you choose the lifestyle that fits, not just the house that looks right.</p>
+    </div>
+    <div class="compass-grid">
+      <div class="compass-col">
+        <h3>Mountain Living</h3>
+        <p>Mountain communities like Julian and Ramona offer space, quiet, and a connection to the land that the rest of San Diego cannot match. Daily life follows seasons more than schedules. Expect larger lots, cooler temperatures, and a pace that rewards patience over convenience.</p>
+        <p>The tradeoff is distance. Central San Diego is 45 minutes to over an hour away, and amenities are limited to what the local community provides. For buyers who value privacy and nature over proximity, mountain living delivers something irreplaceable.</p>
+      </div>
+      <div class="compass-col">
+        <h3>Inland Living</h3>
+        <p>Inland San Diego, from Fallbrook to Poway to Rancho Bernardo, offers the widest range of housing options and price points in the county. Schools are strong, neighborhoods are established, and the balance between access and space appeals to families and professionals alike.</p>
+        <p>Summers are warmer than the coast, and the marine layer rarely reaches this far inland. What you gain is value: more home for the money, larger yards, and a suburban infrastructure that supports daily life without requiring a car trip for every errand.</p>
+      </div>
+      <div class="compass-col">
+        <h3>Coastal Living</h3>
+        <p>Coastal San Diego is where the Pacific defines everything: the weather, the lifestyle, and the pricing. Communities like Del Mar, Oceanside, and Coronado command premiums because the combination of beach access, walkability, and ocean influence is genuinely limited.</p>
+        <p>Expect tighter inventory, higher per-square-foot costs, and maintenance considerations from salt air and coastal weather. What you get in return is a daily proximity to the ocean that fundamentally shapes how you live, not just where you live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block">
+  <div class="cta-block-bg"></div>
+  <div class="cta-block-content">
+    <span class="eyebrow">Need Guidance?</span>
+    <h2>Not Sure Where You Fit?</h2>
+    <a href="contact-preview.html" class="btn-ghost">Talk to Melo-de Savage</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Community Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are the best San Diego neighborhoods for families?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Poway and Rancho Bernardo consistently rank among the top family-friendly communities in San Diego, primarily due to the Poway Unified School District. Escondido and Fallbrook offer more space at lower price points, while coastal options like Coronado and parts of Oceanside provide beach-adjacent family living at higher price points. The right answer depends on your school priorities, commute needs, and budget.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How much does it cost to live on the coast vs. inland?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Coastal communities like Del Mar and Coronado typically price at 2-3x the per-square-foot cost of comparable inland homes. A home that might cost $700,000 in Escondido could be $1.5M or more in Del Mar for similar square footage. Beyond purchase price, coastal properties carry higher insurance costs, maintenance from salt-air exposure, and often higher property taxes reflecting assessed values.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What should I know about living in San Diego's mountain communities?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Mountain living in San Diego means accepting tradeoffs that suburban and coastal buyers do not face. Properties may use well water, propane, and septic systems instead of municipal services. Fire insurance is a significant cost factor. Winters bring real weather, including occasional snow. Drive times to central San Diego are 45 minutes to over an hour. What you gain is space, privacy, and a quality of life that many buyers find worth every tradeoff.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are the commute times from inland communities to the coast?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          From Poway or Rancho Bernardo to Del Mar, expect 20-30 minutes outside of peak hours. Escondido to Oceanside is approximately 20-25 minutes via the 78 corridor. Fallbrook to the coast is 25-35 minutes. During morning and evening rush, add 15-30 minutes to these estimates, particularly on the I-15 and I-5 interchange.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I choose between San Diego's different regions?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Start with lifestyle, not listings. Ask yourself what your ideal daily routine looks like: how far you are willing to commute, whether outdoor access means trails or beaches, how much space you need, and what your budget allows. Mountain, inland, and coastal regions each serve different priorities. Melo-de helps buyers clarify these preferences before they start searching, which makes the entire process more efficient and less overwhelming.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- COL 1: Brand -->
+      <div class="footer-brand-col">
+        <img src="logo.png" alt="Melo-de Savage, REALTOR" class="footer-logo-img">
+        <div style="font-family: var(--font-head); font-size: 18px; font-weight: 400; letter-spacing: 1.5px; color: #fff; margin-bottom: 8px;">Melo-de Savage, REALTOR&reg;</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px;">CA DRE #01784140<br>eXp Realty of Southern California, Inc.</div>
+        <div class="footer-eho">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="8" width="20" height="14" rx="1"/><path d="M12 2l10 6H2z"/><rect x="9" y="14" width="6" height="8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><text x="12" y="16" text-anchor="middle" font-size="10" font-weight="bold" fill="currentColor" stroke="none">R</text></svg>
+        </div>
+        <div class="footer-disclaimer">
+          While information is believed to be reliable, it is not guaranteed. Please verify all information independently.
+        </div>
+      </div>
+
+      <!-- COL 2: Explore -->
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <div class="footer-links">
+          <a href="about-preview.html">About</a>
+          <a href="home-search-preview.html">Home Search</a>
+          <a href="buyers-guide-preview.html">Buyer's Guide</a>
+          <a href="sellers-guide-preview.html">Seller's Guide</a>
+          <a href="home-value-preview.html">Home Value</a>
+          <a href="community-service-preview.html">Community Service</a>
+          <a href="testimonials-preview.html">Reviews</a>
+          <a href="contact-preview.html">Contact</a>
+        </div>
+      </div>
+
+      <!-- COL 3: Communities Served -->
+      <div>
+        <div class="footer-col-title">Communities Served</div>
+        <div class="footer-links">
+          <a href="communities-preview.html#modal-julian">Julian</a>
+          <a href="communities-preview.html#modal-ramona">Ramona</a>
+          <a href="communities-preview.html#modal-fallbrook">Fallbrook</a>
+          <a href="communities-preview.html#modal-escondido">Escondido</a>
+          <a href="communities-preview.html#modal-poway">Poway</a>
+          <a href="communities-preview.html#modal-rb">Rancho Bernardo</a>
+          <a href="communities-preview.html#modal-oceanside">Oceanside</a>
+          <a href="communities-preview.html#modal-delmar">Del Mar</a>
+          <a href="communities-preview.html#modal-coronado">Coronado</a>
+        </div>
+      </div>
+
+      <!-- COL 4: Contact -->
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="footer-contact-text"><a href="tel:+17605045720">(760) 504-5720</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="footer-contact-text"><a href="mailto:melo-de@melo-desavage.com">melo-de@melo-desavage.com</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="footer-contact-text">12636 High Bluff Dr., Suite #400,<br>San Diego, CA 92130</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <span class="footer-copyright">&copy; 2026 Melo-de Savage | CA DRE #01784140 | eXp Realty of Southern California, Inc. | Website by <a href="https://agenticpress.ai">AgenticPress</a></span>
+      <div class="footer-bar-social">
+        <a href="https://www.facebook.com/melodesavagerealtor" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.5 3.3 12 3.3 12 3.3s-4.5 0-7.6.3c-.5 0-1.5 0-2.4 1C1.2 5.3 1 7 1 7S.8 9 .8 11v1.8c0 2 .2 4 .2 4s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 7.4.2 7.4.2s4.5 0 7.6-.3c.5-.1 1.5-.1 2.4-1 .8-.7 1-2.4 1-2.4s.2-2 .2-4V11c0-2-.2-4-.2-4zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* Nav scroll */
+(function() {
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+})();
+
+/* Modal open/close */
+function openModal(id) {
+  const el = document.getElementById('modal-' + id);
+  if (el) {
+    el.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeModal(id) {
+  if (id) {
+    const el = document.getElementById('modal-' + id);
+    if (el) {
+      el.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  } else {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      m.classList.remove('active');
+    });
+    document.body.style.overflow = '';
+  }
+}
+/* Auto-open modal from hash (e.g. #modal-julian) */
+(function() {
+  var hash = window.location.hash;
+  if (hash && hash.startsWith('#modal-')) {
+    var id = hash.replace('#modal-', '');
+    setTimeout(function() { openModal(id); }, 300);
+  }
+})();
+
+/* Close modal on Escape */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+});
+
+/* Region filter */
+function filterRegion(region, btn) {
+  document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.comm-region').forEach(section => {
+    if (region === 'all' || section.dataset.region === region) {
+      section.style.display = '';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+}
+
+/* FAQ Accordion */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => {
+    b.nextElementSibling.style.maxHeight = '0px';
+    b.nextElementSibling.style.paddingBottom = '0';
+    const ic = b.querySelector('.faq-icon');
+    if (ic) ic.style.transform = '';
+    b.style.color = '';
+  });
+  if (!isOpen) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.paddingBottom = '20px';
+    if (icon) icon.style.transform = 'rotate(45deg)';
+    btn.style.color = '#888';
+  }
+}
+
+/* Scroll reveal */
+(function() {
+  const style = document.createElement('style');
+  style.textContent = '.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}';
+  document.head.appendChild(style);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.comm-region, .compass, .cta-block, .faq-section').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
