@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Solstice International Realty</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   DONNA BOHANA / SOLSTICE INTERNATIONAL REALTY
+   Base Template — Warm Gold Luxury
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #C9A96E;
+  --primary-dark: #A8893E;
+  --primary-light: rgba(201, 169, 110, 0.12);
+  --dark: #0d0d0d;
+  --dark-surface: #1a1a1a;
+  --light: #f8f6f2;
+  --neutral: #faf8f5;
+  --text: #444444;
+  --text-light: #888888;
+  --text-on-dark: rgba(255, 255, 255, 0.6);
+  --border: rgba(0, 0, 0, 0.08);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --container: 1140px;
+  --container-narrow: 800px;
+  --section-pad: clamp(80px, 10vw, 120px);
+  --radius: 0px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+.container { width: 90%; max-width: var(--container); margin: 0 auto; }
+.container-narrow { width: 90%; max-width: var(--container-narrow); margin: 0 auto; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--dark);
+}
+h1 { font-size: clamp(38px, 5.5vw, 64px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 42px); letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 20px; }
+h3 { font-size: 20px; font-weight: 500; line-height: 1.3; }
+h4 { font-size: 18px; font-weight: 500; }
+
+p { margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 36px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+/* --- HEADER --- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 28px 40px;
+  transition: all 0.4s var(--ease);
+  background: transparent;
+}
+.header.scrolled {
+  background: rgba(13, 13, 13, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 18px 40px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.nav-left { margin-right: auto; }
+.nav-right { margin-left: auto; }
+
+.nav-logo { flex-shrink: 0; padding: 0 40px; }
+.nav-logo img {
+  height: 60px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: height 0.4s var(--ease);
+}
+.header.scrolled .nav-logo img { height: 46px; }
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--primary); }
+
+.nav-item { position: relative; }
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  /* right-side dropdowns use .nav-right .nav-dropdown */
+  background: var(--dark-surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  min-width: 200px;
+  padding: 12px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
+}
+.nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; }
+.nav-right .nav-dropdown { left: auto; right: 0; }
+.nav-dropdown a {
+  display: block;
+  padding: 10px 24px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.6);
+  transition: all 0.2s;
+}
+.nav-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.04); }
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--primary);
+  padding: 10px 24px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--primary-dark); }
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.mobile-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: #fff;
+  transition: all 0.3s;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--dark);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.mobile-nav a:hover { color: var(--primary); }
+.mobile-nav .mobile-phone {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--primary);
+  letter-spacing: 0.1em;
+}
+.mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .nav-left, .nav-right { display: none; }
+  .mobile-toggle { display: flex; }
+  .nav-logo { padding: 0; margin-right: auto; }
+  .nav-wrapper { justify-content: space-between; }
+  .header { padding: 16px 24px; }
+}
+
+/* --- HERO (Interior) --- */
+.hero-interior {
+  position: relative;
+  min-height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-interior .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.hero-interior .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+.hero-interior .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  padding: 0 24px;
+}
+.hero-interior h1 { color: #fff; font-size: clamp(34px, 4.5vw, 52px); margin-bottom: 0; }
+.hero-interior .eyebrow { color: var(--primary); margin-bottom: 12px; }
+
+/* --- SECTIONS --- */
+.section { padding: var(--section-pad) 0; }
+.section-light { background: #fff; }
+
+/* --- LEGAL CONTENT --- */
+.legal-content h3 {
+  font-family: var(--font-head);
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+.legal-content h3:first-child { margin-top: 0; }
+.legal-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.legal-content ul {
+  list-style: disc;
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+.legal-content li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.legal-content a { color: var(--primary); text-decoration: underline; }
+
+/* --- FOOTER --- */
+.footer {
+  background: var(--dark);
+  padding: 80px 0 0;
+  color: rgba(255,255,255,0.5);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 48px;
+}
+.footer h4 {
+  font-family: var(--font-body);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 24px;
+}
+.footer p { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+.footer a { color: rgba(255,255,255,0.5); transition: color 0.2s; font-size: 14px; }
+.footer a:hover { color: #fff; }
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 10px; }
+.footer-brand { display: flex; flex-direction: column; gap: 16px; }
+.footer-brand img { height: 40px; width: auto; filter: brightness(0) invert(1); opacity: 0.6; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 48px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+}
+.footer .social-links { display: flex; gap: 16px; }
+.footer .social-links a { color: rgba(255,255,255,0.35); }
+.footer .social-links a:hover { color: var(--primary); }
+.footer .social-links svg { width: 16px; height: 16px; fill: currentColor; }
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* --- SCROLL ANIMATIONS --- */
+.fade-up { opacity: 0; transform: translateY(28px); transition: all 0.7s var(--ease); }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <nav class="nav-wrapper">
+    <div class="nav-left">
+      <div class="nav-item">
+        <a href="05-buyers-guide.html" class="nav-link">Buy <svg width="8" height="5" viewBox="0 0 8 5" style="margin-left:4px;vertical-align:middle"><path d="M1 1l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.2"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="05-buyers-guide.html">Buyer's Guide</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="06-why-sell-with-us.html" class="nav-link">Sell <svg width="8" height="5" viewBox="0 0 8 5" style="margin-left:4px;vertical-align:middle"><path d="M1 1l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.2"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="06-why-sell-with-us.html">Why Sell With Us</a>
+          <a href="07-home-valuation.html">Home Valuation</a>
+        </div>
+      </div>
+      <a href="04-communities.html" class="nav-link">Communities</a>
+    </div>
+
+    <a href="01-home.html" class="nav-logo">
+      <img src="logo.png" alt="Solstice International Realty">
+    </a>
+
+    <div class="nav-right">
+      <div class="nav-item">
+        <a href="02-about.html" class="nav-link">About <svg width="8" height="5" viewBox="0 0 8 5" style="margin-left:4px;vertical-align:middle"><path d="M1 1l3 3 3-3" stroke="currentColor" fill="none" stroke-width="1.2"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="02-about.html">About Donna</a>
+          <a href="03-meet-the-team.html">Meet The Team</a>
+          <a href="08-testimonials.html">Testimonials</a>
+          <a href="#" title="Blog page coming soon">Blog</a>
+        </div>
+      </div>
+      <a href="09-niche-listings.html" class="nav-link">Luxury Homes</a>
+      <a href="10-contact.html" class="nav-cta">Contact</a>
+    </div>
+
+    <div class="mobile-toggle" onclick="document.querySelector('.mobile-nav').classList.add('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <span class="mobile-close" onclick="this.parentElement.classList.remove('open')">&times;</span>
+  <a href="01-home.html">Home</a>
+  <a href="05-buyers-guide.html">Buyer's Guide</a>
+  <a href="06-why-sell-with-us.html">Why Sell With Us</a>
+  <a href="07-home-valuation.html">Home Valuation</a>
+  <a href="04-communities.html">Communities</a>
+  <a href="02-about.html">About Donna</a>
+  <a href="03-meet-the-team.html">Meet The Team</a>
+  <a href="08-testimonials.html">Testimonials</a>
+  <a href="09-niche-listings.html">Luxury Homes</a>
+  <a href="10-contact.html" class="btn btn-primary" style="margin-top:8px">Contact</a>
+  <a href="tel:+13108010265" class="mobile-phone">(310) 801-0265</a>
+</div>
+
+<!-- HERO INTERIOR -->
+<section class="hero-interior">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+  </div>
+</section>
+
+<!-- PRIVACY POLICY CONTENT -->
+<section class="section section-light fade-up">
+  <div class="container-narrow">
+    <div class="legal-content">
+      <p><strong>Effective Date:</strong> January 1, 2026</p>
+
+      <h3>Introduction</h3>
+      <p>Solstice International Realty ("we," "our," or "us") respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (solsticeir.com) or use our real estate services.</p>
+
+      <h3>Information We Collect</h3>
+      <p>We may collect the following types of information:</p>
+      <ul>
+        <li><strong>Personal information you provide:</strong> Name, email address, phone number, mailing address, and other details submitted through our contact forms, property inquiry forms, or home valuation requests.</li>
+        <li><strong>Property search information:</strong> Your saved searches, favorited listings, and browsing activity within our IDX property search tools.</li>
+        <li><strong>Automatically collected information:</strong> IP address, browser type, operating system, referring URLs, pages visited, and timestamps, collected through cookies and similar tracking technologies.</li>
+        <li><strong>Communication records:</strong> Records of your correspondence with us, including emails, phone calls, and text messages related to real estate transactions.</li>
+      </ul>
+
+      <h3>How We Use Your Information</h3>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Respond to your inquiries and provide real estate services</li>
+        <li>Send property listings, market updates, and newsletters you have requested</li>
+        <li>Facilitate real estate transactions, including connecting you with lenders, inspectors, and other service providers</li>
+        <li>Improve our website functionality and user experience</li>
+        <li>Comply with legal obligations and California Department of Real Estate regulations</li>
+      </ul>
+
+      <h3>Information Sharing</h3>
+      <p>We do not sell your personal information. We may share your information with:</p>
+      <ul>
+        <li><strong>Service providers:</strong> Third-party vendors who assist with website hosting, IDX services, email marketing, and analytics</li>
+        <li><strong>Transaction partners:</strong> Lenders, escrow companies, title companies, inspectors, and other parties necessary to complete a real estate transaction, with your knowledge</li>
+        <li><strong>Legal compliance:</strong> When required by law, regulation, or legal process</li>
+      </ul>
+
+      <h3>Cookies and Tracking</h3>
+      <p>Our website uses cookies and similar technologies to enhance your browsing experience, analyze site traffic, and serve personalized content. You can manage your cookie preferences through your browser settings. Disabling cookies may affect certain features of our website, including property search functionality.</p>
+
+      <h3>Third-Party Services</h3>
+      <p>Our website integrates with third-party services, including Showcase IDX for property search, Google Analytics for website analytics, and social media platforms. These services have their own privacy policies, and we encourage you to review them. We are not responsible for the privacy practices of third-party services.</p>
+
+      <h3>California Privacy Rights (CCPA)</h3>
+      <p>If you are a California resident, you have the right to:</p>
+      <ul>
+        <li>Request disclosure of the categories and specific pieces of personal information we have collected about you</li>
+        <li>Request deletion of your personal information, subject to certain exceptions</li>
+        <li>Opt out of the sale of your personal information (we do not sell personal information)</li>
+        <li>Not be discriminated against for exercising your privacy rights</li>
+      </ul>
+      <p>To exercise these rights, contact us at <a href="mailto:info@solsticeir.com">info@solsticeir.com</a> or call <a href="tel:+13108010265">(310) 801-0265</a>.</p>
+
+      <h3>Data Security</h3>
+      <p>We implement commercially reasonable security measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security.</p>
+
+      <h3>Data Retention</h3>
+      <p>We retain personal information for as long as necessary to fulfill the purposes described in this policy, comply with legal obligations, resolve disputes, and enforce our agreements. Transaction-related records are retained in accordance with California real estate record-keeping requirements.</p>
+
+      <h3>Children's Privacy</h3>
+      <p>Our website and services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children. If we learn that we have collected information from a child under 18, we will take steps to delete that information promptly.</p>
+
+      <h3>Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated effective date. We encourage you to review this policy periodically.</p>
+
+      <h3>Contact Us</h3>
+      <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+      <p>Solstice International Realty<br>
+      Donna Bohana, Broker/Owner<br>
+      23465 Civic Center Way, Building 9<br>
+      Malibu, CA 90265<br>
+      Phone: <a href="tel:+13108010265">(310) 801-0265</a><br>
+      Email: <a href="mailto:info@solsticeir.com">info@solsticeir.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Solstice International Realty">
+        <p>Solstice International Realty is Malibu's premier boutique brokerage, serving LA's most exclusive communities for over 20 years.</p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3)">DRE# 01194141</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="05-buyers-guide.html">Buyer's Guide</a></li>
+          <li><a href="06-why-sell-with-us.html">Sell With Us</a></li>
+          <li><a href="07-home-valuation.html">Home Valuation</a></li>
+          <li><a href="09-niche-listings.html">Luxury Homes</a></li>
+          <li><a href="02-about.html">About Donna</a></li>
+          <li><a href="03-meet-the-team.html">Our Team</a></li>
+          <li><a href="08-testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Communities</h4>
+        <ul>
+          <li><a href="04-communities.html#malibu">Malibu</a></li>
+          <li><a href="04-communities.html#pacific-palisades">Pacific Palisades</a></li>
+          <li><a href="04-communities.html#westlake-village">Westlake Village</a></li>
+          <li><a href="04-communities.html#calabasas">Calabasas</a></li>
+          <li><a href="04-communities.html#brentwood">Brentwood</a></li>
+          <li><a href="04-communities.html#hollywood-hills">Hollywood Hills</a></li>
+          <li><a href="04-communities.html#manhattan-beach">Manhattan Beach</a></li>
+          <li><a href="04-communities.html#newport-beach">Newport Beach</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Donna Bohana, Broker/Owner</p>
+        <p><a href="tel:+13108010265">(310) 801-0265</a></p>
+        <p><a href="mailto:info@solsticeir.com">info@solsticeir.com</a></p>
+        <p style="margin-top:12px;font-size:13px;">23465 Civic Center Way<br>Building 9<br>Malibu, CA 90265</p>
+        <div class="social-links" style="margin-top:20px">
+          <a href="https://facebook.com/solsticeintlrealty" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://instagram.com/solsticeinternationalrealty" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+          <a href="https://www.linkedin.com/in/donnabohana" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Solstice International Realty. All rights reserved.</span>
+      <span>
+        <a href="12-terms.html" style="margin-right:16px">Terms of Use</a>
+        <a href="13-privacy.html">Privacy Policy</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
