@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Portfolio | Red House Property Management San Diego</title>
+<meta name="description" content="View properties managed by Red House Property Management across San Diego County. Single-family homes, condos, townhomes, and duplexes in Solana Beach, Del Mar, La Jolla, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+/* ── TOKENS ── */
+:root {
+  --blue: #033769; --blue-mid: #567490; --teal: #81afb7; --teal-bright: #68ccd1;
+  --coral: #f76060; --coral-dark: #e04f4f; --cream: #fefbf7; --dark: #333333;
+  --mid: #555555; --light-gray: #939393; --neutral: #ffffff; --light: #f7f5f2;
+  --border: rgba(0,0,0,0.08);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-nav: 'Montserrat', system-ui, sans-serif;
+  --font: 'Inter', system-ui, sans-serif;
+  --max: 960px; --max-wide: 1140px; --radius: 8px; --radius-sm: 6px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06); --shadow-hover: 0 6px 28px rgba(0,0,0,0.1);
+  --pad: 80px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--dark); background: var(--neutral); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+/* ── LAYOUT ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.container-wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; }
+.section-white { padding: var(--pad) 0; background: var(--neutral); }
+.section-cream { padding: var(--pad) 0; background: var(--cream); }
+.section-coral { padding: var(--pad) 0; background: var(--coral); color: #fff; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 10px; }
+.section-header p { max-width: 520px; margin: 0 auto; }
+
+/* ── TYPOGRAPHY ── */
+h1 { font-family: var(--font-head); font-size: clamp(36px, 4.5vw, 48px); font-weight: 500; line-height: 1.12; color: var(--blue); }
+h2 { font-family: var(--font-nav); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.2; color: var(--blue); }
+h3 { font-family: var(--font-nav); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--blue-mid); }
+p { font-size: 16px; color: var(--mid); line-height: 1.7; }
+.section-coral h2 { color: #fff; }
+.section-coral p { color: rgba(255,255,255,0.85); }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; display: inline-block; }
+
+/* ── BUTTONS ── */
+.btn-coral { display: inline-block; background: var(--coral); color: #fff; font-weight: 700; font-size: 13px; padding: 11px 26px; border-radius: var(--radius); letter-spacing: 0.03em; text-transform: uppercase; transition: background .25s; }
+.btn-coral:hover { background: var(--blue); }
+.btn-white { display: inline-block; background: #fff; color: var(--coral); font-weight: 700; font-size: 13px; padding: 12px 28px; border-radius: var(--radius); letter-spacing: 0.03em; text-transform: uppercase; transition: background .25s, transform .15s; }
+.btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+
+/* ── PREVIEW BANNER ── */
+.preview-banner { background: var(--dark); color: rgba(255,255,255,0.45); font-size: 11px; padding: 8px 0; text-align: center; letter-spacing: 0.04em; border-bottom: 2px solid var(--coral); }
+.preview-banner strong { color: var(--coral); font-weight: 700; }
+
+/* ═══ UTILITY BAR ═══ */
+.utility-bar { position: fixed; top: 33px; left: 0; right: 0; z-index: 101; background: rgba(2,40,70,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); transition: top .3s, opacity .3s; }
+.utility-bar.hidden { top: -28px; opacity: 0; pointer-events: none; }
+.utility-inner { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; height: 28px; display: flex; align-items: center; justify-content: space-between; }
+.utility-links { display: flex; gap: 20px; }
+.utility-links a { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; transition: color .2s; }
+.utility-links a:hover { color: var(--coral); }
+.utility-contact a { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; transition: color .2s; }
+.utility-contact a:hover { color: #fff; }
+
+/* ═══ NAV ═══ */
+.nav { position: fixed; top: 61px; left: 0; right: 0; z-index: 100; background: transparent; transition: top .3s, background .3s, box-shadow .3s; }
+.nav.scrolled { top: 0; background: rgba(3,55,105,0.97); backdrop-filter: blur(10px); box-shadow: 0 2px 24px rgba(0,0,0,0.18); }
+@media (max-width: 640px) { .utility-bar { display: none; } .nav { top: 33px; } }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-wide); margin: 0 auto; padding: 0 40px; height: 72px; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 84px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-family: var(--font-nav); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { background: var(--coral); color: #fff !important; padding: 10px 22px; border-radius: var(--radius); font-size: 12px; font-weight: 700 !important; letter-spacing: 0.04em; text-transform: uppercase; transition: background .25s !important; }
+.nav-cta:hover { background: var(--coral-dark) !important; }
+
+/* ═══ INNER HERO ═══ */
+.hero-inner { min-height: 40vh; position: relative; display: flex; align-items: flex-end; padding: 120px 0 60px; background: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/220-coast-boulevard-038_web-2880w.jpg') center/cover no-repeat; }
+.hero-inner .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(3,55,105,0.78) 0%, rgba(3,55,105,0.55) 40%, rgba(3,55,105,0.82) 100%); }
+.hero-inner .container { position: relative; z-index: 2; }
+.hero-inner .hero-content { max-width: 620px; text-align: left; }
+.hero-inner .hero-content .eyebrow { color: var(--coral); margin-bottom: 12px; }
+.hero-inner .hero-content h1 { color: #fff; margin-bottom: 14px; font-size: clamp(32px, 4.5vw, 46px); }
+.hero-inner .hero-content p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.75; }
+
+/* ═══ PORTFOLIO GRID ═══ */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.prop-card { border-radius: var(--radius); overflow: hidden; background: var(--neutral); box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; cursor: pointer; }
+.prop-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.prop-img { aspect-ratio: 3/2; background-size: cover; background-position: center; position: relative; }
+.prop-badge { position: absolute; top: 12px; left: 12px; background: rgba(3,55,105,0.85); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.03em; }
+.prop-body { padding: 20px; }
+.prop-location { font-family: var(--font-nav); font-size: 17px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+.prop-specs { display: flex; gap: 16px; font-size: 13px; color: var(--light-gray); margin-bottom: 8px; }
+.prop-desc { font-size: 14px; color: var(--mid); line-height: 1.6; }
+
+/* ═══ PROPERTY MODALS ═══ */
+.prop-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 500; display: none; align-items: center; justify-content: center; }
+.prop-modal-overlay.active { display: flex; }
+.prop-modal { background: #fff; border-radius: var(--radius); max-width: 700px; width: 90%; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); position: relative; }
+.prop-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; font-size: 20px; color: #fff; background: rgba(0,0,0,0.3); z-index: 1; transition: background .2s; }
+.prop-modal-close:hover { background: rgba(0,0,0,0.5); }
+.prop-modal-img { height: 300px; background-size: cover; background-position: center; }
+.prop-modal-body { padding: 32px; }
+.prop-badge-inline { display: inline-block; background: rgba(3,55,105,0.08); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.03em; margin-bottom: 10px; }
+.prop-modal-body h2 { margin-bottom: 6px; font-size: 24px; }
+.prop-modal-specs { font-size: 14px; color: var(--light-gray); margin-bottom: 14px; }
+.prop-modal-body p { font-size: 15px; line-height: 1.75; margin-bottom: 12px; }
+.prop-managed { font-size: 13px; color: var(--light-gray); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+/* ═══ CTA ═══ */
+.cta-center { text-align: center; max-width: 560px; margin: 0 auto; }
+.cta-center h2 { margin-bottom: 12px; }
+.cta-center p { margin-bottom: 28px; font-size: 16px; }
+
+/* ═══ FOOTER ═══ */
+.footer-top { background: var(--dark); padding: 56px 0 48px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-logo-img { height: 130px; width: auto; margin-bottom: 12px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); font-style: italic; margin-bottom: 20px; }
+.footer-contact-block { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+.footer-contact-block a { color: var(--teal-bright); transition: color .2s; }
+.footer-contact-block a:hover { color: #fff; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); transition: border-color .2s, color .2s, background .2s; }
+.footer-social a:hover { border-color: var(--teal-bright); color: var(--teal-bright); background: rgba(104,204,209,0.08); }
+.footer-social a svg { width: 15px; height: 15px; }
+.footer-col-title { font-size: 11px; font-weight: 700; color: var(--coral); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s, padding-left .2s; }
+.footer-links a:hover { color: #fff; padding-left: 4px; }
+.footer-portals { display: flex; flex-direction: column; gap: 8px; margin-top: 0; }
+.portal-link { padding: 9px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700; text-align: center; letter-spacing: 0.03em; text-transform: uppercase; transition: all .2s; }
+.portal-link:hover { border-color: var(--teal-bright); color: var(--teal-bright); background: rgba(104,204,209,0.06); }
+.footer-bottom-bar { background: rgba(0,0,0,0.15); padding: 20px 0; }
+.footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-legal { font-size: 11px; color: rgba(255,255,255,0.2); }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cert-badge { border: 1px solid rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 3px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; transition: border-color .2s, color .2s; }
+.cert-badge:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); }
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 640px) {
+  :root { --pad: 56px; }
+  .container, .container-wide { padding: 0 20px; }
+  .nav-links { display: none; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &nbsp;/&nbsp; Red House Property Management &nbsp;/&nbsp; Property Portfolio &nbsp;/&nbsp; April 2026
+</div>
+
+<div class="utility-bar">
+  <div class="utility-inner">
+    <div class="utility-links">
+      <a href="11-owner-portal.html">Owner Portal</a>
+      <a href="12-tenant-portal.html">Resident Portal</a>
+      <a href="13-vendor-proposals.html">Vendor Proposals</a>
+      <a href="14-agent-referral-program.html">Agent Referrals</a>
+    </div>
+    <div class="utility-contact">
+      <a href="tel:8587553031">(858) 755-3031</a>
+    </div>
+  </div>
+</div>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management"></a>
+    <div class="nav-links">
+      <a href="02-property-management.html">Property Management</a>
+      <a href="03-service-areas.html">Service Areas</a>
+      <a href="07-available-rentals.html">Available Rentals</a>
+      <a href="06-about.html">About</a>
+      <a href="10-resources.html">Resources</a>
+      <a href="04-free-rental-analysis.html" class="nav-cta">Free Rental Analysis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero-inner">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Our Portfolio</span>
+      <h1>Featured Properties We Manage</h1>
+      <p>A boutique firm dedicated to delivering exceptional service to property owners. We focus on long-term, unfurnished residential properties, specializing in single-family homes, condominiums, and 2-4 unit buildings across San Diego County.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="section-cream">
+  <div class="container reveal" style="text-align: center; max-width: 720px;">
+    <span class="eyebrow">What We Manage</span>
+    <h2>Properties Across San Diego County</h2>
+    <p>Our portfolio spans coastal communities from Solana Beach and Del Mar to inland neighborhoods like Bressi Ranch and Clairemont. Every property receives the same level of personal attention, proactive maintenance, and financial transparency.</p>
+  </div>
+</section>
+
+<!-- ============ PROPERTY GRID ============ -->
+<section class="section-white">
+  <div class="container-wide">
+    <div class="section-header reveal">
+      <span class="eyebrow">Featured</span>
+      <h2>Recently Managed Properties</h2>
+    </div>
+    <div class="portfolio-grid reveal">
+
+      <div class="prop-card" onclick="openPropModal('pm-1')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/325-s-sierra-ave-2-043_web-2880w.jpg');"><span class="prop-badge">Townhome</span></div>
+        <div class="prop-body"><div class="prop-location">Solana Beach</div><div class="prop-specs"><span>2 Bed</span><span>2.5 Bath</span></div><p class="prop-desc">Spectacular white water ocean views to La Jolla</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-2')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/115-spinnaker-ct-073_web-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">Del Mar</div><div class="prop-specs"><span>5 Bed</span><span>3 Bath</span></div><p class="prop-desc">Recently remodeled original Del Mar Heights property</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-3')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/351-paseo-pacifica-007_web-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">Encinitas</div><div class="prop-specs"><span>4 Bed</span><span>3 Bath</span></div><p class="prop-desc">Spacious 2-story remodel with open floor plan</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-4')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/lj+220+view-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">La Jolla</div><div class="prop-specs"><span>1 Bed</span><span>1 Bath</span></div><p class="prop-desc">Classic beach cottage with beautiful ocean views</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-5')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/7534-navigator-cir-067_web-2880w.jpg');"><span class="prop-badge">Condominium</span></div>
+        <div class="prop-body"><div class="prop-location">Carlsbad</div><div class="prop-specs"><span>2 Bed</span><span>2 Bath</span></div><p class="prop-desc">Extensive remodel with marble counters and quartz</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-6')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/cardiff+3-2880w.jpg');"><span class="prop-badge">Townhome</span></div>
+        <div class="prop-body"><div class="prop-location">Cardiff-by-the-Sea</div><div class="prop-specs"><span>3 Bed</span><span>3 Bath</span></div><p class="prop-desc">2-story townhome with panoramic ocean views</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-7')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/115-spinnaker-ct-073_web-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">Del Mar</div><div class="prop-specs"><span>3 Bed</span><span>2.5 Bath</span></div><p class="prop-desc">Spanish Mediterranean style with pool and spa</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-8')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/325-s-sierra-ave-2-043_web-2880w.jpg');"><span class="prop-badge">Townhome</span></div>
+        <div class="prop-body"><div class="prop-location">Solana Beach</div><div class="prop-specs"><span>2 Bed</span><span>2.5 Bath</span></div><p class="prop-desc">Seascape Community with private beach access</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-9')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/7534-navigator-cir-067_web-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">Bressi Ranch</div><div class="prop-specs"><span>4 Bed</span><span>3 Bath</span></div><p class="prop-desc">Corner lot home with dramatic entryway</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-10')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/cardiff+3-2880w.jpg');"><span class="prop-badge">Duplex</span></div>
+        <div class="prop-body"><div class="prop-location">Cardiff-by-the-Sea</div><div class="prop-specs"><span>3 Bed</span><span>2 Bath</span></div><p class="prop-desc">Recently remodeled penthouse with sunset views</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-11')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/pb2-b8a96855-2880w.jpg');"><span class="prop-badge">Townhome</span></div>
+        <div class="prop-body"><div class="prop-location">Pacific Beach</div><div class="prop-specs"><span>3 Bed</span><span>3 Bath</span></div><p class="prop-desc">Spacious remodeled three-story townhome</p></div>
+      </div>
+
+      <div class="prop-card" onclick="openPropModal('pm-12')">
+        <div class="prop-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/4610-leathers-st-043_web-2880w.jpg');"><span class="prop-badge">Single Family</span></div>
+        <div class="prop-body"><div class="prop-location">Clairemont</div><div class="prop-specs"><span>3 Bed</span><span>2 Bath</span></div><p class="prop-desc">Newly remodeled and move-in ready</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section-coral">
+  <div class="container">
+    <div class="cta-center reveal">
+      <h2>Own a Rental Property in San Diego?</h2>
+      <p>Find out what your property could earn under professional management.</p>
+      <a href="04-free-rental-analysis.html" class="btn-white">Request a Free Rental Analysis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODALS ============ -->
+<div class="prop-modal-overlay" id="pm-1" onclick="if(event.target===this)closePropModal('pm-1')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-1')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/325-s-sierra-ave-2-043_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Townhome</span><h2>Solana Beach</h2><div class="prop-modal-specs">2 Bedrooms | 2.5 Bathrooms | Long Term Rental</div><p>Updated end unit with spectacular white water ocean views to La Jolla. Fabulous views of the Del Mar racetrack below and Rancho Santa Fe to the east. Walk to the beach and fine dining. Watch the sunrise over the mountains and the sunset on the Pacific Ocean.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-2" onclick="if(event.target===this)closePropModal('pm-2')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-2')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/115-spinnaker-ct-073_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>Del Mar</h2><div class="prop-modal-specs">5 Bedrooms | 3 Bathrooms | Long Term Rental</div><p>Remodel was recently completed on this original Del Mar Heights property situated on large lot with beautiful landscaping. This two story home has new luxury vinyl plank flooring throughout the main living area and all but one of the bedrooms.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-3" onclick="if(event.target===this)closePropModal('pm-3')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-3')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/351-paseo-pacifica-007_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>Encinitas</h2><div class="prop-modal-specs">4 Bedrooms | 3 Bathrooms | Long Term Rental</div><p>This spacious 2 story remodel was just completed and offers an open floor plan, high ceilings, and great outdoor space. The main level is flooded with natural light and has plenty of room for your family and friends along with a guest bedroom and full bath.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-4" onclick="if(event.target===this)closePropModal('pm-4')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-4')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/lj+220+view-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>La Jolla</h2><div class="prop-modal-specs">1 Bedroom | 1 Bathroom | Long Term Rental</div><p>Enjoy coastal living in this classic beach cottage with beautiful ocean views. This is a spacious one bedroom property with views from the large balcony, living room, and kitchen.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-5" onclick="if(event.target===this)closePropModal('pm-5')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-5')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/7534-navigator-cir-067_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Condominium</span><h2>Carlsbad</h2><div class="prop-modal-specs">2 Bedrooms | 2 Bathrooms | Long Term Rental</div><p>An extensive remodel was just completed including new LVP flooring throughout, Van Gogh marble counters in the kitchen, and quartz slab walls in both showers. This 2-story unit has an open floor plan with one bed/bath on the first floor and the master bedroom upstairs.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-6" onclick="if(event.target===this)closePropModal('pm-6')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-6')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/cardiff+3-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Townhome</span><h2>Cardiff-by-the-Sea</h2><div class="prop-modal-specs">3 Bedrooms | 3 Bathrooms | Long Term Rental</div><p>Enjoy panoramic ocean views from this 2 story townhome located in the heart of Cardiff. This recently updated home has hardwood floors throughout the main living areas and bedrooms w/tile in the kitchen &amp; baths.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-7" onclick="if(event.target===this)closePropModal('pm-7')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-7')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/115-spinnaker-ct-073_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>Del Mar</h2><div class="prop-modal-specs">3 Bedrooms | 2.5 Bathrooms | Long Term Rental</div><p>You'll enjoy endless ocean views, sunsets, and seamless indoor/outdoor living in this remodeled Spanish Mediterranean style property. Perched on the hill in Olde Del Mar this single story home wraps around a beautiful courtyard with a pool and spa.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-8" onclick="if(event.target===this)closePropModal('pm-8')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-8')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/325-s-sierra-ave-2-043_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Townhome</span><h2>Solana Beach</h2><div class="prop-modal-specs">2 Bedrooms | 2.5 Bathrooms | Long Term Rental</div><p>Recently upgraded 2 story townhome located in the Seascape Community of Solana Beach. Rare opportunity to rent on the bluffs long term with private beach access. The main floor has large travertine tile throughout the living room, kitchen, and dining room for easy maintenance.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-9" onclick="if(event.target===this)closePropModal('pm-9')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-9')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/7534-navigator-cir-067_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>Bressi Ranch</h2><div class="prop-modal-specs">4 Bedrooms | 3 Bathrooms | Long Term Rental</div><p>Beautiful corner lot home with dramatic entryway and high ceilings that soar up to the loft located on the second floor. The first level has tile and hardwood floors in the living areas with new carpet to be installed in the bedrooms.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-10" onclick="if(event.target===this)closePropModal('pm-10')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-10')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/cardiff+3-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Duplex</span><h2>Cardiff-by-the-Sea</h2><div class="prop-modal-specs">3 Bedrooms | 2 Bathrooms | Long Term Rental</div><p>This duplex was recently remodeled inside and out! The penthouse unit offers beautiful sunset views from the balcony that wraps around the kitchen and living room. New hardscape flooring throughout most of the living area and cozy new carpet in all three bedrooms.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-11" onclick="if(event.target===this)closePropModal('pm-11')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-11')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/pb2-b8a96855-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Townhome</span><h2>Pacific Beach</h2><div class="prop-modal-specs">3 Bedrooms | 3 Bathrooms | Long Term Rental</div><p>This is a spacious remodeled three-story townhome in a small complex. Upgrades include new stainless steel kitchen appliances, luxury vinyl planks throughout, and custom bathrooms. The main living area is on the 1st floor with a fireplace and high ceilings.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<div class="prop-modal-overlay" id="pm-12" onclick="if(event.target===this)closePropModal('pm-12')"><div class="prop-modal"><button class="prop-modal-close" onclick="closePropModal('pm-12')">&times;</button><div class="prop-modal-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/4610-leathers-st-043_web-2880w.jpg');"></div><div class="prop-modal-body"><span class="prop-badge-inline">Single Family</span><h2>Clairemont</h2><div class="prop-modal-specs">3 Bedrooms | 2 Bathrooms | Long Term Rental</div><p>Newly remodeled, landscaped, and in near perfect condition this single story home is low maintenance and move in ready. The property has hardwood-like floors throughout, a gas fireplace, and new counter-tops in the kitchen and bathrooms. An updated kitchen with a garden window opens up to a generous sized family room with views of the canyon.</p><div class="prop-managed">Managed by Red House Property Management</div></div></div></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-top">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management" class="footer-logo-img"></div>
+          <div class="footer-tagline">Peace of Mind, One Door at a Time</div>
+          <div class="footer-contact-block">
+            444 S Cedros Ave, Suite 215<br>Solana Beach, CA 92075<br><br>
+            Office: <a href="tel:8587553031">(858) 755-3031</a><br>
+            24/7 Maintenance: <a href="tel:8588082420">(858) 808-2420</a><br>
+            <a href="mailto:admin@redhousemgt.com">admin@redhousemgt.com</a>
+          </div>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="07-available-rentals.html">Available Rentals</a>
+            <a href="02-property-management.html">Management Services</a>
+            <a href="05-the-red-house-difference.html">The Red House Difference</a>
+            <a href="03-service-areas.html">Service Areas</a>
+            <a href="06-about.html">About Us</a>
+            <a href="09-contact.html">Contact</a>
+            <a href="10-resources.html">News</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Service Areas</div>
+          <div class="footer-links">
+            <a href="03-service-areas.html">Solana Beach</a>
+            <a href="03-service-areas.html">Del Mar</a>
+            <a href="03-service-areas.html">La Jolla</a>
+            <a href="03-service-areas.html">Pacific Beach</a>
+            <a href="03-service-areas.html">Carlsbad</a>
+            <a href="03-service-areas.html">Encinitas</a>
+            <a href="03-service-areas.html">Point Loma</a>
+            <a href="03-service-areas.html">All Areas</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Portals</div>
+          <div class="footer-portals">
+            <a href="11-owner-portal.html" class="portal-link">Owner Portal</a>
+            <a href="12-tenant-portal.html" class="portal-link">Resident Portal</a>
+          </div>
+          <div style="margin-top: 28px;">
+            <div class="footer-col-title">For Partners</div>
+            <div class="footer-links">
+              <a href="13-vendor-proposals.html">Vendor Proposals</a>
+              <a href="14-agent-referral-program.html">Agent Referral Program</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <div class="container-wide">
+      <div class="footer-bottom-inner">
+        <div class="footer-legal">&copy; 2026 Red House Property Management &nbsp;|&nbsp; CA DRE# 01877634 &nbsp;|&nbsp; Equal Housing Opportunity</div>
+        <div class="cert-row">
+          <span class="cert-badge">NARPM</span>
+          <span class="cert-badge">SDAR</span>
+          <span class="cert-badge">CAR</span>
+          <span class="cert-badge">NAR</span>
+          <span class="cert-badge">SCRHA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function openPropModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
+function closePropModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') { document.querySelectorAll('.prop-modal-overlay.active').forEach(m => { m.classList.remove('active'); document.body.style.overflow=''; }); }});
+(function(){ const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:0.12}); document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.reveal').forEach(el=>o.observe(el))}); })();
+(function(){ document.addEventListener('DOMContentLoaded',()=>{ const n=document.getElementById('mainNav'); const u=document.querySelector('.utility-bar'); if(!n) return; window.addEventListener('scroll',()=>{ const scrolled=window.scrollY>60; n.classList.toggle('scrolled',scrolled); if(u) u.classList.toggle('hidden',scrolled); }); }); })();
+</script>
+</body>
+</html>

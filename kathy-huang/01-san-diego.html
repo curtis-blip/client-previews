@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Huang - San Diego Area Page Redesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* DESIGN PREVIEW BANNER */
+        .preview-banner {
+            background: linear-gradient(90deg, #d4b896, #c9a876);
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* HERO BLOCK */
+        .hero {
+            background: linear-gradient(135deg, #1a4d5c 0%, #3d5a5a 50%, #2d4a55 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: left;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(212, 184, 150, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e6e6e6;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .intro-section .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* COMMUNITY CARDS SECTION */
+        .community-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .community-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .community-section-subtitle {
+            text-align: center;
+            color: #ddd;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .community-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .community-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Unique gradient backgrounds for each card */
+        .card-downtown {
+            background: linear-gradient(135deg, #1e6b7e 0%, #2d5a6d 100%);
+        }
+
+        .card-lajolla {
+            background: linear-gradient(135deg, #c66b4a 0%, #a85a3a 100%);
+        }
+
+        .card-delmar {
+            background: linear-gradient(135deg, #5a8b6b 0%, #4a7b5b 100%);
+        }
+
+        .card-carmelvalley {
+            background: linear-gradient(135deg, #d4a574 0%, #c49564 100%);
+        }
+
+        .card-ranchosantafe {
+            background: linear-gradient(135deg, #8b6b5a 0%, #6b5b4a 100%);
+        }
+
+        .card-santaluz {
+            background: linear-gradient(135deg, #4a7a8b 0%, #3a6a7b 100%);
+        }
+
+        .card-ranchobernardo {
+            background: linear-gradient(135deg, #7a5a4a 0%, #5a4a3a 100%);
+        }
+
+        .card-solanasbeach {
+            background: linear-gradient(135deg, #1e8b7e 0%, #2d7b6d 100%);
+        }
+
+        .card-carlsbad {
+            background: linear-gradient(135deg, #c6884a 0%, #a8703a 100%);
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+            z-index: 2;
+        }
+
+        .community-card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            z-index: 3;
+        }
+
+        /* DESIGNER NOTE */
+        .designer-note {
+            background: #fff3e0;
+            border-left: 4px solid #d4b896;
+            padding: 20px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #666;
+            border-radius: 4px;
+        }
+
+        .designer-note strong {
+            color: #3d5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ADTV SECTION */
+        .adtv-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+        }
+
+        .adtv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .adtv-image {
+            background: linear-gradient(135deg, #d4b896, #c9a876);
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .adtv-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .adtv-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .adtv-bullets {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .adtv-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .adtv-bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #c9a876;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 184, 150, 0.3);
+        }
+
+        /* WHY KATHY SECTION */
+        .why-kathy-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .why-kathy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .kathy-image {
+            background: linear-gradient(135deg, #3d5a5a, #2d4a55);
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-kathy-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .why-kathy-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .why-kathy-bullets {
+            list-style: none;
+        }
+
+        .why-kathy-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .why-kathy-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 184, 150, 0.2);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: rgba(212, 184, 150, 0.1);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #d4b896;
+            font-size: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(212, 184, 150, 0.15);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 25px 20px;
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #2d3d3d;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 85%;
+            max-width: 1000px;
+            background: #fff;
+            overflow-y: auto;
+            z-index: 1001;
+            animation: slideInRight 0.4s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .modal-header {
+            background: #3d5a5a;
+            color: #fff;
+            padding: 60px 40px 40px;
+            position: relative;
+            border-bottom: 1px solid #d4b896;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #d4b896;
+        }
+
+        .modal-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* STICKY NAV PILLS */
+        .modal-nav {
+            display: flex;
+            gap: 12px;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            flex-wrap: nowrap;
+        }
+
+        .nav-pill {
+            background: #f5f5f5;
+            border: 2px solid #eee;
+            color: #666;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-pill:hover {
+            background: #f0f0f0;
+            border-color: #d4b896;
+        }
+
+        .nav-pill.active {
+            background: #d4b896;
+            color: #3d5a5a;
+            border-color: #d4b896;
+        }
+
+        /* MODAL CONTENT */
+        .modal-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .modal-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 180px;
+        }
+
+        .modal-section::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #eee;
+            margin-bottom: 30px;
+        }
+
+        .modal-section:first-of-type::before {
+            display: none;
+        }
+
+        .modal-section-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .modal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .modal-section-intro {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .modal-section ul {
+            list-style: none;
+        }
+
+        .modal-section li {
+            padding: 12px 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-section li strong {
+            color: #3d5a5a;
+            font-weight: 600;
+        }
+
+        .modal-section a {
+            color: #d4b896;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .modal-section a:hover {
+            color: #c9a876;
+            text-decoration: underline;
+        }
+
+        /* ADTV VIDEO PLACEHOLDER */
+        .video-placeholder {
+            background: #2d3d3d;
+            aspect-ratio: 16 / 9;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin: 25px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .video-placeholder p {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .video-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .adtv-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+
+        /* MODAL CTA */
+        .modal-cta {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .modal-cta:hover {
+            background: #c9a876;
+        }
+
+        .modal-cta-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                width: 100%;
+            }
+
+            .adtv-container,
+            .why-kathy-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .intro-section h2,
+            .community-section h2,
+            .faq-section h2 {
+                font-size: 32px;
+            }
+
+            .modal-nav {
+                gap: 8px;
+                padding: 15px 20px;
+            }
+
+            .nav-pill {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DESIGN PREVIEW BANNER -->
+<div class="preview-banner">
+    DESIGN PREVIEW — Kathy Huang | San Diego Area Page Redesign | AgenticPress | March 2026
+</div>
+
+<!-- HERO BLOCK -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Reliable San Diego Realtor For Luxury Coastal Living</h1>
+        <p>Discover your dream home in San Diego's most coveted neighborhoods with Kathy Huang, your trusted luxury real estate expert.</p>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div class="eyebrow">Welcome to California</div>
+    <h2>Expert Guidance For Buying And Selling In San Diego</h2>
+    <p>Whether you're seeking the vibrant urban lifestyle of Downtown, the coastal charm of La Jolla, or the suburban elegance of Rancho Santa Fe, San Diego offers diverse communities to match every lifestyle. With over two decades of experience, I guide buyers and sellers through every step of the process.</p>
+</section>
+
+<!-- COMMUNITY CARDS SECTION -->
+<section class="community-section">
+    <h2>Find The Right San Diego Community For You</h2>
+    <p class="community-section-subtitle">Explore nine distinctive neighborhoods across greater San Diego, each with its own unique character, amenities, and market dynamics.</p>
+
+        <div class="cards-grid">
+        <button class="community-card card-downtown" onclick="openModal('downtown')">
+            <div class="community-card-text">Downtown San Diego</div>
+        </button>
+        <button class="community-card card-lajolla" onclick="openModal('lajolla')">
+            <div class="community-card-text">La Jolla</div>
+        </button>
+        <button class="community-card card-delmar" onclick="openModal('delmar')">
+            <div class="community-card-text">Del Mar</div>
+        </button>
+        <button class="community-card card-carmelvalley" onclick="openModal('carmelvalley')">
+            <div class="community-card-text">Carmel Valley</div>
+        </button>
+        <button class="community-card card-ranchosantafe" onclick="openModal('ranchosantafe')">
+            <div class="community-card-text">Rancho Santa Fe</div>
+        </button>
+        <button class="community-card card-santaluz" onclick="openModal('santaluz')">
+            <div class="community-card-text">Santaluz & Del Sur</div>
+        </button>
+        <button class="community-card card-ranchobernardo" onclick="openModal('ranchobernardo')">
+            <div class="community-card-text">Rancho Bernardo</div>
+        </button>
+        <button class="community-card card-solanasbeach" onclick="openModal('solanasbeach')">
+            <div class="community-card-text">Solana Beach</div>
+        </button>
+        <button class="community-card card-carlsbad" onclick="openModal('carlsbad')">
+            <div class="community-card-text">Carlsbad</div>
+        </button>
+    </div>
+
+    <div class="designer-note">
+        <strong>DESIGNER NOTE:</strong> Cards are now 1:1 squares with minimal bottom-only gradient overlay. Each card uses a unique background. The modal has been completely redesigned — click Downtown San Diego to see the new layout.
+    </div>
+</section>
+
+<!-- WHY KATHY SECTION -->
+<section class="why-kathy-section">
+    <div class="why-kathy-container">
+        <div class="kathy-image">Kathy Huang Photo Placeholder</div>
+        <div class="why-kathy-content">
+            <h2>Why Choose Kathy Huang</h2>
+            <p>With deep roots in San Diego and extensive experience in luxury real estate, Kathy brings both expertise and passion to every transaction. Her commitment to understanding your unique needs and goals ensures a seamless, rewarding experience.</p>
+            <ul class="why-kathy-bullets">
+                <li>20+ years of luxury real estate experience in San Diego</li>
+                <li>Expert knowledge of all major San Diego communities</li>
+                <li>Award-winning customer service and market expertise</li>
+                <li>Strategic pricing and marketing for maximum results</li>
+                <li>Comprehensive guidance through the entire transaction</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the best area to buy a home in San Diego?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">The best area depends on lifestyle, commute, schools, and price range. Each community offers a different living experience. Whether you prefer the urban energy of Downtown, the coastal beauty of La Jolla, or the family-friendly atmosphere of communities like Rancho Bernardo, San Diego has options for every buyer.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>How much do homes cost in San Diego right now?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Home prices vary by community, property type, and condition. Coastal and luxury areas tend to be higher than inland neighborhoods. A home in La Jolla or Rancho Santa Fe will typically command a premium compared to more inland areas like Rancho Bernardo. Current market conditions and individual property features also play significant roles in pricing.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What should I get approved for before buying a home in San Diego?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Most buyers start with a mortgage pre-approval to understand budget and strengthen their offers. A pre-approval letter shows sellers that you're a serious, qualified buyer and puts you in a stronger negotiating position, especially in competitive markets like San Diego's luxury segment.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there first time home buyer programs in San Diego?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. There are state and local programs that may offer assistance depending on income and eligibility. California and San Diego County offer various down payment assistance programs, favorable loan products, and tax benefits for first-time homebuyers. I can connect you with resources to explore all available options.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What extra costs should I plan for when buying a home?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Buyers should plan for closing costs, inspections, insurance, taxes, and ongoing maintenance. Closing costs typically range from 2-5% of the purchase price and include lender fees, title insurance, escrow, and appraisal fees. Additionally, you'll want to budget for home inspections, homeowners insurance, and property taxes, which vary by location.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I buy a home in San Diego if I am relocating?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. Many buyers relocate and purchase homes using virtual tours, remote planning, and guided timelines. I specialize in working with relocation clients and can arrange virtual tours, connect you with trusted inspectors and contractors, and provide detailed market analysis to help you make confident decisions from afar.</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 Kathy Huang | San Diego Luxury Real Estate | All Rights Reserved</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"></div>
+
+<!-- DOWNTOWN SAN DIEGO MODAL -->
+<div class="modal" id="downtownModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Heart of America's Finest City</div>
+        <h1>Downtown San Diego</h1>
+        <p>Downtown San Diego, a dynamic urban center on the waterfront that serves as the region's hub for business, culture, and entertainment. Stretching from the San Diego Bay inland, Downtown is a tapestry of distinct, vibrant neighborhoods, each offering its own unique lifestyle and atmosphere.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('downtown-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-business')">🏢 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-transit')">🚆 Transit</button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-adtv')">📺 ADTV</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="downtown-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Downtown San Diego is composed of seven major districts, each with a unique character:</p>
+            <ul>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Gaslamp_Quarter" target="_blank">Gaslamp Quarter</a>:</strong> A historic, 16-block district famous for its Victorian architecture, high-energy nightlife, restaurants, and shopping.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/East_Village,_San_Diego" target="_blank">East Village</a>:</strong> The largest neighborhood, known for its rapid redevelopment, urban-chic vibe, and as the home of the city's main sports venue.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Little_Italy,_San_Diego" target="_blank">Little Italy</a>:</strong> An appealing, walkable neighborhood that honors its Italian heritage with trendy restaurants, frequent street festivals, and a popular farmers market.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Marina,_San_Diego" target="_blank">Marina</a>:</strong> A tranquil, residential district along the waterfront, featuring tree-lined streets, public art, and proximity to major attractions.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Columbia,_San_Diego" target="_blank">Columbia</a>:</strong> The western waterfront district, home to high-rise luxury condos (such as Pacific Gate, Savina, Bayside, The Grande North & South and Sapphire Towers), the <a href="https://www.midway.org/" target="_blank">USS Midway Museum</a>, and the <a href="https://sdmaritime.org/" target="_blank">Maritime Museum of San Diego</a>.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Core,_San_Diego" target="_blank">Core</a>:</strong> The central business district, featuring civic buildings, theaters, and corporate offices.</li>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Cortez_Hill,_San_Diego" target="_blank">Cortez Hill</a>:</strong> A quieter, elevated neighborhood offering residential serenity and easy freeway access.</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="downtown-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Downtown is a major draw for tourism, offering coastal attractions and cultural institutions:</p>
+            <ul>
+                <li><strong><a href="https://www.midway.org/" target="_blank">USS Midway Museum</a></strong> (Columbia): A historic aircraft carrier museum docked on the bay.</li>
+                <li><strong><a href="https://www.visitsandiego.com/plan/san-diego-convention-center" target="_blank">San Diego Convention Center</a></strong> (Marina/East Village): The city's primary convention and meeting venue, home to <a href="https://www.comic-con.org/" target="_blank">Comic-Con</a> every year.</li>
+                <li><strong><a href="https://www.theshell.org/" target="_blank">The Rady Shell at Jacobs Park</a></strong> (Embarcadero): An architectural wonder and state-of-the-art outdoor venue for the San Diego Symphony.</li>
+                <li><strong><a href="https://www.sandiegotheatres.org/balboa-theatre/" target="_blank">Balboa Theatre</a></strong> and <strong><a href="https://www.sandiegotheatres.org/san-diego-civic-theatre/" target="_blank">San Diego Civic Theatre</a></strong> (Core): Historic venues for performing arts, opera, and traveling shows.</li>
+                <li><strong><a href="https://www.mcasd.org/" target="_blank">Museum of Contemporary Art San Diego (MCASD)</a></strong> (Little Italy/Columbia): Features postwar and contemporary art.</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="downtown-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">While major hospitals are located in adjacent neighborhoods like Hillcrest, Downtown 92101 offers convenient access to top medical services:</p>
+            <ul>
+                <li><strong><a href="https://health.ucsd.edu/locations/" target="_blank">UC San Diego Health</a></strong> (Downtown/Bankers Hill): Offers specialty and primary care clinics, with major hospitals located just north in Hillcrest (ZIP 92103).</li>
+                <li><strong><a href="https://www.fhcsd.org/downtown-family-health-center-at-connections/" target="_blank">Family Health Centers of San Diego</a></strong> (East Village): Provides vital low-cost health care and social services to the community, including a clinic co-located with Connections Housing.</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="downtown-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Downtown residents are served by the <a href="https://www.sandiegounified.org/" target="_blank">San Diego Unified School District</a>, with in-district options and nearby charters:</p>
+            <ul>
+                <li><strong><a href="https://www.urbansd.com/" target="_blank">Urban Discovery Schools</a></strong> (East Village): A free public charter school with two campuses serving students from TK through 12th grade, known for its Design Thinking curriculum and innovative project-based learning.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="downtown-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Green spaces and waterfront parks offer residents a chance to relax and recreate:</p>
+            <ul>
+                <li><strong><a href="https://balboapark.org/" target="_blank">Balboa Park</a></strong> (Borders Downtown): Located just north, this 1,200-acre historic cultural park is home to museums, gardens, and walking trails.</li>
+                <li><strong><a href="https://www.sandiegocounty.gov/content/sdc/parks/waterfrontpark.html" target="_blank">Waterfront Park</a></strong> (Columbia): A popular destination with ocean views, a large splash fountain, and play areas.</li>
+                <li><strong>Martin Luther King Jr. Promenade</strong> (East Village/Marina): A linear park along the trolley line featuring public art.</li>
+                <li><strong>Pantoja Park</strong> (Marina): San Diego's oldest public park.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="downtown-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">Downtown is the epicenter of San Diego's professional sports scene:</p>
+            <ul>
+                <li>The <strong><a href="https://www.mlb.com/padres" target="_blank">San Diego Padres</a></strong> (MLB - Baseball) play their home games at <strong><a href="https://www.mlb.com/padres/ballpark" target="_blank">Petco Park</a></strong> in the East Village.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="downtown-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Key industries include finance, technology, and utilities, with presences for companies such as:</p>
+            <ul>
+                <li><a href="https://www.sempra.com/" target="_blank">Sempra Energy</a></li>
+                <li><a href="https://www.sdge.com/" target="_blank">San Diego Gas & Electric (SDG&E)</a></li>
+                <li><a href="https://www.lpl.com/" target="_blank">LPL Financial</a></li>
+            </ul>
+        </div>
+
+        <!-- TRANSIT -->
+        <div class="modal-section" id="downtown-transit">
+            <h2><span class="modal-section-icon">🚆</span>Transportation Accessibility</h2>
+            <p class="modal-section-intro">Downtown San Diego (92101) serves as the region's central transportation hub, making it highly accessible via air, rail, and sea.</p>
+            <ul>
+                <li><strong>San Diego International Airport (SAN):</strong> The airport is just three miles north. Access is easy via ride-share or the free <a href="https://www.san.org/to-from/san-diego-flyer" target="_blank">San Diego Flyer</a> shuttle.</li>
+                <li><strong>Regional Rail:</strong> The historic <a href="https://www.amtrak.com/stations/snd" target="_blank">Santa Fe Depot</a> is the hub for <a href="https://www.amtrak.com/california-train-routes" target="_blank">Amtrak</a> (Pacific Surfliner) and the <a href="https://gonctd.com/services/coaster-commuter-rail/" target="_blank">Coaster</a> commuter line.</li>
+                <li><strong>San Diego Trolley:</strong> The <a href="https://www.sdmts.com/transit-services/trolley" target="_blank">MTS Trolley</a> (Blue, Green, and Orange Lines) connects Downtown to the entire region, with stops including America Plaza and Gaslamp Quarter Station.</li>
+                <li><strong>Cruise Ship Terminal:</strong> The <a href="https://www.portofsandiego.org/cruise-terminal" target="_blank">B Street Cruise Terminal</a> is located on the waterfront, within easy walking distance of Downtown amenities.</li>
+            </ul>
+        </div>
+
+        <!-- ADTV -->
+        <div class="modal-section" id="downtown-adtv">
+            <h2><span class="modal-section-icon">📺</span>ADTV Episode</h2>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Little Italy & Savina High Rise Condos</p>
+            </div>
+            <p class="adtv-description">Explore Downtown San Diego's iconic Little Italy neighborhood and the luxurious Savina high-rise condos through this American Dream TV episode with Kathy Huang.</p>
+            <p class="video-note">Developer Note: Embed YouTube video here — URL TBD from client</p>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('downtown')">Search Homes in Downtown San Diego</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- LA JOLLA MODAL -->
+<div class="modal" id="lajollaModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Jewel of San Diego</div>
+        <h1>La Jolla</h1>
+        <p>The "Jewel" of San Diego, La Jolla is an affluent, hilly seaside resort community of over 40,000 residents, occupying 7 miles of curving coastline along the Pacific Ocean. La Jolla boasts some of the most magnificent coastline that Southern California has to offer. Its natural beauty, near perfect weather, and upscale image attract home buyers from all over the world.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('lajolla-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-sports')">🏌️ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('lajolla-business')">🏢 Business</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="lajolla-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">La Jolla features exclusive neighborhoods and a vibrant village center:</p>
+            <ul>
+                <li>The <strong><a href="https://www.lajollabythesea.com/village-of-la-jolla" target="_blank">Village of La Jolla</a></strong> is the pedestrian-focused heart of the community, filled with quaint cafes, upscale boutiques, and fine dining.</li>
+                <li><strong><a href="https://www.sandiego.gov/park-and-recreation/parks/aquatics/lajolla-shores" target="_blank">La Jolla Shores</a></strong> is a wide, family-friendly beach ideal for kayaking and swimming.</li>
+                <li>Exclusive neighborhoods including La Jolla Shores, Bird Rock, Muirlands, and Country Club each have unique charm.</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="lajolla-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">La Jolla is an art lover's paradise with world-class attractions:</p>
+            <ul>
+                <li><strong><a href="https://www.mcasd.org/" target="_blank">Museum of Contemporary Art San Diego (MCASD)</a></strong> on Prospect Street holds a nationally significant permanent collection of post-1950s art and features stunning architecture on the cliffs overlooking the ocean.</li>
+                <li><strong><a href="https://lajollaplayhouse.org/" target="_blank">La Jolla Playhouse</a></strong> is an esteemed theater venue.</li>
+                <li><strong><a href="https://www.sandiego.gov/park-and-recreation/parks/aquatics/lajolla-cove" target="_blank">La Jolla Cove</a></strong> is a protected ecological reserve, excellent for snorkeling and viewing sea lions.</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="lajolla-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">La Jolla is a major medical and research hub:</p>
+            <ul>
+                <li><strong><a href="https://www.salk.edu/" target="_blank">Salk Institute for Biological Studies</a></strong> is a prestigious research institution located here.</li>
+                <li><strong><a href="https://health.ucsd.edu/locations/la-jolla" target="_blank">UC San Diego Health's La Jolla Medical Campus</a></strong> includes specialized hospitals and the Moores Cancer Center.</li>
+                <li><strong><a href="https://scripps.ucsd.edu/" target="_blank">Scripps Institution of Oceanography</a></strong> is also located here.</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="lajolla-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">La Jolla is home to world-class educational institutions:</p>
+            <ul>
+                <li><strong><a href="https://ucsd.edu/" target="_blank">University of California San Diego (UCSD)</a></strong> is one of the world's top public research universities.</li>
+                <li>Highly-regarded private institutions include <strong><a href="https://www.bishops.com/" target="_blank">The Bishop's School</a></strong> and <strong><a href="https://www.ljcds.org/" target="_blank">La Jolla Country Day School</a></strong>.</li>
+                <li>Public schools include excellent La Jolla High School and <strong><a href="https://preuss.ucsd.edu/" target="_blank">The Preuss School UCSD</a></strong>, a selective charter school for motivated low-income students.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="lajolla-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">La Jolla features stunning natural attractions:</p>
+            <ul>
+                <li><strong><a href="https://www.parks.ca.gov/?page_id=659" target="_blank">Torrey Pines State Reserve</a></strong> on the steep cliffs of the north side of La Jolla is one of the largest ocean side reserves on the California coast, offering scenic hiking, bird-watching, and ocean vistas.</li>
+                <li>La Jolla features beautiful beaches, secluded coves, and a gorgeous cliff-top promenade.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="lajolla-sports">
+            <h2><span class="modal-section-icon">🏌️</span>Sports</h2>
+            <p class="modal-section-intro">La Jolla is the location of a famous golf destination:</p>
+            <ul>
+                <li><strong><a href="https://www.torreypines.com/" target="_blank">Torrey Pines Golf Course</a></strong> is a challenging, municipal course with gorgeous ocean views that hosts the PGA Tour's Farmers Insurance Open and has been the site of multiple U.S. Open championships.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="lajolla-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">The local economy is driven by major industries:</p>
+            <ul>
+                <li>Biotech, medical research, and education anchored by <strong><a href="https://ucsd.edu/" target="_blank">UCSD</a></strong> and high-end retail along <strong><a href="https://www.lajollabythesea.com/village-of-la-jolla" target="_blank">Prospect Street</a></strong>.</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('lajolla')">Search Homes in La Jolla</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- DEL MAR MODAL -->
+<div class="modal" id="delmarModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Where the Turf Meets the Surf</div>
+        <h1>Del Mar</h1>
+        <p>Del Mar is a charming seaside village that exudes a sophisticated, yet relaxed, coastal ambiance. It is globally recognized for its famous racetrack and its high-end dining and boutique shopping. It remains one of the most desirable, affluent beach towns in Southern California.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('delmar-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('delmar-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('delmar-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('delmar-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('delmar-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('delmar-sports')">⚾ Sports</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="delmar-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Del Mar features charming neighborhoods and beautiful coastal areas:</p>
+            <ul>
+                <li>The <strong><a href="https://delmarvillage.com/" target="_blank">Del Mar Village</a></strong> is the quaint, highly walkable core, featuring unique boutiques, art galleries, and acclaimed fine dining establishments.</li>
+                <li>The <strong><a href="https://www.sandiego.gov/park-and-recreation/parks/osp/penaesquitos/delmarmesa" target="_blank">Del Mar Mesa</a></strong> area, located east of the freeway, features large, custom residential homes and preserved open space, offering residents a more rural feel with ocean views.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="delmar-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Del Mar hosts major regional attractions:</p>
+            <ul>
+                <li>The <strong><a href="https://www.sdfair.com/" target="_blank">Del Mar Fairgrounds</a></strong> is a major regional hub, hosting the annual San Diego County Fair and the world-class horse racing seasons.</li>
+                <li>The <strong><a href="https://www.dmtc.com/" target="_blank">Del Mar Thoroughbred Club</a></strong> holds racing seasons in Summer and Fall.</li>
+                <li><strong><a href="https://www.delmar.ca.us/218/Powerhouse-Park" target="_blank">Powerhouse Park</a></strong> is a popular coastal park and community gathering spot, known for its iconic view of the ocean and the historic Powerhouse building.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="delmar-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Del Mar is primarily residential with nearby medical facilities:</p>
+            <ul>
+                <li>Del Mar utilizes neighboring community facilities with numerous private physician offices and specialty centers within town.</li>
+                <li>Major hospital services such as those from <strong><a href="https://www.scripps.org/locations/scripps-coastal-medical-center-encinitas" target="_blank">Scripps Medical Center</a></strong> are easily accessible in nearby Encinitas and La Jolla.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="delmar-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Del Mar is served by highly-regarded school districts:</p>
+            <ul>
+                <li>Elementary students are served by the <strong><a href="https://www.dmusd.org/" target="_blank">Del Mar Union School District</a></strong>.</li>
+                <li>Secondary education is provided by the excellent <strong><a href="https://www.sduhsd.net/" target="_blank">San Dieguito Union High School District</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="delmar-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Del Mar features stunning coastal recreation:</p>
+            <ul>
+                <li><strong><a href="https://www.delmar.ca.us/203/Beaches-Parks" target="_blank">Powerhouse Park and Seagrove Park</a></strong> offer beautiful bluff-top views and beach access.</li>
+                <li><strong><a href="https://www.parks.ca.gov/?page_id=659" target="_blank">Torrey Pines State Beach</a></strong> borders the south end, offering scenic bluffs and beach trails for hiking and nature viewing.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="delmar-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports & Major Businesses</h2>
+            <p class="modal-section-intro">Del Mar's economy centers on unique attractions:</p>
+            <ul>
+                <li>The <strong><a href="https://www.dmtc.com/" target="_blank">Del Mar Thoroughbred Club</a></strong> is the community's major sports and entertainment anchor.</li>
+                <li>The local economy centers on tourism, hospitality (e.g., the luxurious <strong><a href="https://www.laubergedelmar.com/" target="_blank">L'Auberge Del Mar</a></strong>), and luxury services catering to affluent residents and visitors.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('delmar')">Search Homes in Del Mar</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- CARMEL VALLEY MODAL -->
+<div class="modal" id="carmelvalleyModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Master-Planned Excellence</div>
+        <h1>Carmel Valley</h1>
+        <p>Carmel Valley is one of the most desirable areas in San Diego due to its convenient coastal location and its award-winning schools. Positioned roughly halfway up the San Diego County coastline, this master-planned community is convenient to almost everything. The area was originally called "North City West" as it is the northwestern-most part of the City of San Diego.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('carmelvalley-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-sports')">⛳ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('carmelvalley-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="carmelvalley-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Carmel Valley is a master-planned community with diverse neighborhoods and commercial centers:</p>
+            <ul>
+                <li>The commercial core is centered around the intersection of El Camino Real and Del Mar Heights Road, featuring major retail centers like <strong><a href="https://delmarhighlands.com/" target="_blank">Del Mar Highlands Town Center</a></strong> and <strong><a href="https://www.onepaseo.com/" target="_blank">One Paseo</a></strong>.</li>
+                <li>The newest retail area is off Carmel Valley Road called <strong><a href="https://phrvillage.com/" target="_blank">The Village at Pacific Highlands Ranch</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Carmel Valley offers access to world-class attractions:</p>
+            <ul>
+                <li>Home to the ultra-luxury <strong><a href="https://www.fairmont.com/san-diego/" target="_blank">Fairmont Grand Del Mar</a></strong> resort, which features a championship golf course and the celebrated three-Michelin-star restaurant, Addison.</li>
+                <li>Quick access to wonderful beaches at <strong><a href="https://www.parks.ca.gov/?page_id=657" target="_blank">Torrey Pines State Natural Reserve</a></strong> and Del Mar.</li>
+                <li>Major attractions include Mission Bay, Sea World, <strong><a href="https://balboapark.org/" target="_blank">Balboa Park</a></strong>, the world famous <strong><a href="https://zoo.sandiegozoo.org/" target="_blank">San Diego Zoo</a></strong>, the airport, and Downtown San Diego.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Carmel Valley residents benefit from excellent healthcare access:</p>
+            <ul>
+                <li>To the immediate south lies Sorrento Valley, <strong><a href="https://ucsd.edu/" target="_blank">University of California-San Diego (UCSD)</a></strong>, and La Jolla's Golden Triangle, which are large employment centers.</li>
+                <li>Residents access comprehensive healthcare services through large regional providers, with major medical campuses run by <strong><a href="https://www.scripps.org/locations/scripps-clinic-rancho-bernardo" target="_blank">Scripps Health</a></strong> and <strong><a href="https://healthy.kaiserpermanente.org/southern-california/locations/san-marcos" target="_blank">Kaiser Permanente</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Carmel Valley is known for some of the best schools in the nation:</p>
+            <ul>
+                <li>Elementary schools in the northern part are covered by the <strong><a href="https://www.sbsd.k12.ca.us/" target="_blank">Solana Beach School District</a></strong> (including Carmel Creek, Solana Pacific, Solana Highlands, and Solana Ranch).</li>
+                <li>Elementary schools in the southern part are covered by the <strong><a href="https://www.dmusd.org/" target="_blank">Del Mar School District</a></strong>.</li>
+                <li>Middle schools and high schools are operated by the award-winning <strong><a href="https://www.sduhsd.net/" target="_blank">San Dieguito Union High School District</a></strong>, including <strong><a href="https://www.sduhsd.net/cca" target="_blank">Canyon Crest Academy</a></strong> and <strong><a href="https://www.sduhsd.net/tphs" target="_blank">Torrey Pines High School</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Carmel Valley features numerous recreational amenities:</p>
+            <ul>
+                <li>The community features the <strong><a href="https://www.sandiego.gov/park-and-recreation/centers/skateparks/pacific-highlands" target="_blank">Pacific Highlands Skate Park</a></strong> and the centralized <strong><a href="https://www.sandiego.gov/park-and-recreation/centers/recctr/carmelvalley" target="_blank">Carmel Valley Recreation Center</a></strong>, a large hub for youth soccer, baseball, and recreational activities.</li>
+                <li>To the immediate west are the beautiful <strong><a href="https://www.parks.ca.gov/?page_id=659" target="_blank">Torrey Pines Reserve</a></strong> with its lovely beach, offering scenic ocean vistas and opportunities for hiking and bird-watching.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-sports">
+            <h2><span class="modal-section-icon">⛳</span>Sports</h2>
+            <p class="modal-section-intro">Carmel Valley hosts championship golf:</p>
+            <ul>
+                <li>The <strong><a href="https://www.granddelmar.com/golf/" target="_blank">Grand Golf Club</a></strong> at the Fairmont Grand Del Mar is home to an 18-hole championship course designed by legendary architect Tom Fazio, the only Tom Fazio-designed course in San Diego.</li>
+                <li>The par-71 course is uniquely nestled within the dramatic coastal canyon of Los Peñasquitos Canyon Preserve, providing stunning natural scenery and a secluded feel.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carmelvalley-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Carmel Valley is a major corporate and commercial center:</p>
+            <ul>
+                <li>Carmel Valley houses campuses for technology, legal, finance, and pharmaceutical companies, making it a hub for North County commerce.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('carmelvalley')">Search Homes in Carmel Valley</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- RANCHO SANTA FE MODAL -->
+<div class="modal" id="ranchosantafeModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Exclusive Equestrian Living</div>
+        <h1>Rancho Santa Fe</h1>
+        <p>Rancho Santa Fe is the most affluent community in San Diego. Tucked away four miles inland from the ocean, just north of Del Mar off the Interstate-5 freeway, this secluded community is renowned for its privacy & exclusivity and multimillion-dollar properties set on acreage. Originally ranch land for the Santa Fe Railroad, Rancho Santa Fe is now populated by the elite.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('ranchosantafe-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-parks')">🏌️ Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchosantafe-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="ranchosantafe-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Rancho Santa Fe comprises elite, exclusive communities:</p>
+            <ul>
+                <li>Elite communities include <strong>The Covenant</strong>, <strong>Fairbanks Ranch</strong>, <strong>The Bridges</strong>, <strong>The Crosby</strong>, and <strong>Hacienda Santa Fe</strong>.</li>
+                <li><strong>The Covenant</strong> is the historic core, an area covered by strict design stipulations to maintain character; sidewalks and streetlights are banned from residential areas.</li>
+                <li>The <strong>Rancho Santa Fe Village</strong> is a charming town center offering fine dining, high-end boutiques, library, and the <strong><a href="https://rsfcc.org/" target="_blank">Rancho Santa Fe Community Center</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Rancho Santa Fe is home to luxury resorts and exclusive experiences:</p>
+            <ul>
+                <li>The historic, luxurious <strong><a href="https://theinnatrsf.com/" target="_blank">The Inn at Rancho Santa Fe</a></strong> has hosted Presidents, royalty, and Hollywood's elite.</li>
+                <li>The five-star <strong><a href="https://ranchovalencia.com/" target="_blank">Rancho Valencia Resort & Spa</a></strong> attracts visitors seeking exclusivity and tranquility.</li>
+                <li>The community hosts various private equestrian events throughout the year.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Healthcare services are accessed through private practitioners:</p>
+            <ul>
+                <li>Residents utilize nearby major facilities in adjacent communities, including those operated by <strong><a href="https://www.scripps.org/locations/scripps-clinic-rancho-bernardo" target="_blank">Scripps Health</a></strong> and <strong><a href="https://www.palomarhealth.org/" target="_blank">Palomar Health</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Rancho Santa Fe is served by highly-rated school districts:</p>
+            <ul>
+                <li>The community is served by the highly-rated <strong><a href="https://www.rsf.k12.ca.us/" target="_blank">Rancho Santa Fe School District</a></strong> for K-8 education, with R. Roger Rowe Elementary & Middle Schools located directly in the Village.</li>
+                <li>For secondary education, the community attends the respected <strong><a href="https://www.sduhsd.net/" target="_blank">San Dieguito Union High School District</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-parks">
+            <h2><span class="modal-section-icon">🏌️</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Rancho Santa Fe focuses on equestrian and leisurely recreation:</p>
+            <ul>
+                <li>The recreational focus is on <strong>equestrian trails</strong> and private leisure amenities, particularly the private <strong><a href="https://rsfgolf.com/" target="_blank">Rancho Santa Fe Golf Club</a></strong> and tennis facilities.</li>
+                <li>Public access includes trails connecting to the <strong><a href="https://sdrp.org/" target="_blank">San Dieguito River Park</a></strong> for hiking and nature viewing.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports</h2>
+            <p class="modal-section-intro">Rancho Santa Fe specializes in exclusive club-level sports:</p>
+            <ul>
+                <li>The community specializes in private, club-level sports, particularly golf, polo, and tennis.</li>
+                <li><strong><a href="https://ranchovalencia.com/" target="_blank">Rancho Valencia Resort & Spa</a></strong> is consistently ranked as a top tennis resort.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchosantafe-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">The local economy centers on wealth management and luxury services:</p>
+            <ul>
+                <li>The local economy is centered on <strong>wealth management, private services, and luxury resorts</strong>, with businesses supporting the large estates.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('ranchosantafe')">Search Homes in Rancho Santa Fe</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- SANTALUZ & DEL SUR MODAL -->
+<div class="modal" id="santaluzModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Community & Open Space</div>
+        <h1>Santaluz & Del Sur</h1>
+        <p>Santaluz and Del Sur (ZIP 92127) are adjacent, high-quality master-planned communities known for their contemporary suburban lifestyle, extensive preserved open space, and focus on luxury amenities. Over 60 percent of the 4,677 acres will remain untouched, dedicated open space, designed with the natural habitat in mind.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('santaluz-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-parks')">⛳ Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-sports')">🏌️ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('santaluz-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="santaluz-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Santaluz and Del Sur offer distinct master-planned living:</p>
+            <ul>
+                <li><strong>Santaluz</strong> is an upscale, gated community centered around its luxurious golf club and custom estates. Custom home sites range from just under one acre to two acres, offering privacy with many residents enjoying views towards the Pacific Ocean, canyons, and the golf course.</li>
+                <li><strong><a href="https://delsurhoa.org/" target="_blank">Del Sur</a></strong> is a modern master-planned community known for its frequent communal events and numerous neighborhood parks and pools, featuring architectural designs including rustic cottage, Mediterranean farmhouse, Spanish revival, and Monterey colonial homes.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Santaluz and Del Sur feature unique attractions:</p>
+            <ul>
+                <li>Santaluz's major amenity is The Santaluz Club, which features a luxurious 35,000-square-foot clubhouse, private spas, bars, restaurants, and lounges.</li>
+                <li>Below the club sits the 19,000-square-foot Hacienda, which includes a casual coffee shop café, a poolside grill, a resort-like swimming pool, six tennis courts, a fitness center, and an indoor basketball court.</li>
+                <li>In Del Sur, the main attractions are the natural environment and the extensive network of <strong><a href="https://santaluzcommunity.com/location/" target="_blank">hiking trails and open space</a></strong> that connect the communities to the surrounding natural environment.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Santaluz residents benefit from excellent medical access:</p>
+            <ul>
+                <li>Residents benefit from excellent access to major medical facilities in neighboring communities, including large centers from <strong><a href="https://www.scripps.org/locations/scripps-clinic-rancho-bernardo" target="_blank">Scripps Health</a></strong> and <strong><a href="https://www.palomarhealth.org/" target="_blank">Palomar Health</a></strong> located in nearby Rancho Bernardo and Carmel Valley.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Both communities are served by an excellent school district:</p>
+            <ul>
+                <li>These communities are served by the distinguished <strong><a href="https://www.powayusd.com/" target="_blank">Poway Unified School District</a></strong>, which is highly rated for academic excellence.</li>
+                <li>Santaluz residents attend schools such as Sunset Hills Elementary, Adobe Bluffs Elementary, Black Mountain Middle School, and Mt. Carmel High School.</li>
+                <li>Del Sur students also benefit from this highly-rated public school system, with key schools including the modern <strong><a href="https://www.powayusd.com/Domain/55" target="_blank">Del Norte High School</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-parks">
+            <h2><span class="modal-section-icon">⛳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Santaluz and Del Sur feature extensive outdoor recreation:</p>
+            <ul>
+                <li><strong>Santaluz</strong> offers its residents its private golf course and more than <strong>44 miles of biking and walking trails</strong>, surrounded by 1,500 acres of preserved land landscaped with drought-tolerant native plants.</li>
+                <li><strong>Del Sur</strong> is designed so that a <strong>park with a pool</strong> is within walking distance of most homes. Each of the eight planned parks is uniquely designed to fit the personality of the neighborhood it serves, featuring spacious parks with swimming pools, picnic areas, and tot lots.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-sports">
+            <h2><span class="modal-section-icon">🏌️</span>Sports</h2>
+            <p class="modal-section-intro">Santaluz features championship golf and community sports:</p>
+            <ul>
+                <li>The <strong><a href="https://thesantaluzclub.com/" target="_blank">Santaluz Club</a></strong> is anchored by a private, 18-hole championship <strong>Rees Jones designed golf course</strong>.</li>
+                <li>The Hacienda provides extensive facilities for recreational sports like tennis and basketball.</li>
+                <li>Both areas are heavily involved in youth sports leagues, using the neighborhood parks and school facilities.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="santaluz-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Santaluz and Del Sur are strategically located near business hubs:</p>
+            <ul>
+                <li>While the areas are primarily residential, they are strategically located near the <strong>technology and biotech hubs</strong> in Sorrento Valley and Carmel Valley. Commerce is primarily retail and services along the Camino Del Sur corridor.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('santaluz')">Search Homes in Santaluz & Del Sur</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- RANCHO BERNARDO MODAL -->
+<div class="modal" id="ranchobernardoModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Multi-Generational Charm</div>
+        <h1>Rancho Bernardo</h1>
+        <p>Rancho Bernardo is an area of northeastern San Diego located on both the west side and east side of I-15, spanning the ZIP codes of 92127 and 92128. This established inland community is characterized by its scenic mountains, master-planned communities, and status as a significant employment center in North County.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('ranchobernardo-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-parks')">⛳ Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-sports')">🏌️ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('ranchobernardo-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="ranchobernardo-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Rancho Bernardo offers multi-generational appeal:</p>
+            <ul>
+                <li>The community is known for its multi-generational appeal and its focus on senior living, featuring active adult (over 55) communities such as <strong><a href="https://www.rbseniorcenter.com/" target="_blank">Rancho Bernardo Senior Center</a></strong>, <strong><a href="https://www.oaksnorthcommunity.org/home/" target="_blank">Oaks North</a></strong> and <strong><a href="https://www.7oaksrb.com/default.php" target="_blank">Seven Oaks</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Rancho Bernardo features unique attractions:</p>
+            <ul>
+                <li>The <strong><a href="https://www.ranchobernardoinn.com/" target="_blank">Rancho Bernardo Inn</a></strong> is a well-known resort and convention center famous for its golf course and luxury amenities.</li>
+                <li>The <strong><a href="https://rbhistoricalsociety.org/" target="_blank">Rancho Bernardo Historical Society Museum</a></strong> provides a glimpse into the community's agricultural and historical past.</li>
+                <li>Founded in 1889, the <strong><a href="https://bernardowinery.com/" target="_blank">Bernardo Winery</a></strong>, located in the Oaks North community, is the oldest continuously operating winery in Southern California.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Rancho Bernardo is an excellent location for medical access:</p>
+            <ul>
+                <li>Rancho Bernardo is anchored by facilities like <strong><a href="https://www.scripps.org/locations/scripps-clinic-rancho-bernardo" target="_blank">Scripps Clinic Rancho Bernardo</a></strong>, which offers comprehensive specialty and primary care services to the inland population.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Rancho Bernardo is served by highly-rated schools:</p>
+            <ul>
+                <li>The community is served by the highly-rated <strong><a href="https://www.powayusd.com/" target="_blank">Poway Unified School District</a></strong>.</li>
+                <li>Key schools include the distinguished <strong><a href="https://ranchobernardo.powayusd.com/" target="_blank">Rancho Bernardo High School</a></strong> and Bernardo Heights Middle School.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-parks">
+            <h2><span class="modal-section-icon">⛳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Rancho Bernardo is famous for its golf and outdoor recreation:</p>
+            <ul>
+                <li>The area is famous for its multiple public and private <strong>golf courses</strong> and country clubs, including the course at the <strong><a href="https://www.ranchobernardoinn.com/golf/" target="_blank">Rancho Bernardo Inn</a></strong>.</li>
+                <li>Residents utilize the <strong><a href="https://www.sandiego.gov/park-and-recreation/parks/recctr/rbcomm" target="_blank">Rancho Bernardo Community Park</a></strong> and have access to recreation at nearby <strong><a href="https://www.sandiego.gov/reservoirs-and-lakes/lake-hodges" target="_blank">Lake Hodges</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-sports">
+            <h2><span class="modal-section-icon">🏌️</span>Sports</h2>
+            <p class="modal-section-intro">Rancho Bernardo focuses on golf and senior recreation:</p>
+            <ul>
+                <li>Local sports focus heavily on golf, youth leagues and senior recreational activities hosted at community centers.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="ranchobernardo-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Rancho Bernardo is a major economic hub:</p>
+            <ul>
+                <li>Rancho Bernardo is a major economic hub of corporate offices for <strong>technology, life sciences, and finance</strong> firms that benefit from the area's skilled workforce and freeway access.</li>
+                <li>It has a <strong>685-acre business park</strong> that is home to many high-tech companies, including Sony US, Hewlett-Packard, and Eastman Kodak, employing approximately 50,000 workers.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('ranchobernardo')">Search Homes in Rancho Bernardo</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- SOLANA BEACH MODAL -->
+<div class="modal" id="solanasbeachModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Artsy Coastal Vibe</div>
+        <h1>Solana Beach</h1>
+        <p>Solana Beach is a distinctive, laid-back coastal town known for its unique blend of artistic flair, surf culture, and the vibrant, unique retail shops of its famous design district. Bordered by Del Mar to the south, Rancho Santa Fe to the east, Encinitas to the north, and the Pacific Ocean to the west, Solana Beach offers fabulous beaches, eclectic shops, wonderful dining options, and fun nightlife.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('solanasbeach-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('solanasbeach-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('solanasbeach-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('solanasbeach-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('solanasbeach-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('solanasbeach-sports')">⚾ Sports</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="solanasbeach-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Solana Beach features iconic neighborhoods and attractions:</p>
+            <ul>
+                <li>The <strong><a href="https://www.cedrosavenue.com/" target="_blank">Cedros Design District</a></strong> is the community's signature feature, filled with antique shops, home design boutiques, art galleries, and great restaurants.</li>
+                <li>Just a block from shops and restaurants, <strong><a href="https://www.ci.solana-beach.ca.us/city-hall/departments/parks-recreation/fletcher-cove" target="_blank">Fletcher Cove</a></strong> is a small beach with a park that overlooks the ocean.</li>
+                <li>The historic <strong><a href="https://www.ci.solana-beach.ca.us/city-hall/departments/parks-recreation/la-colonia-park" target="_blank">Solana Beach Heritage Museum</a></strong> is located at La Colonia Park.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="solanasbeach-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Solana Beach offers unique cultural experiences:</p>
+            <ul>
+                <li><strong><a href="https://www.ci.solana-beach.ca.us/city-hall/departments/parks-recreation/fletcher-cove" target="_blank">Fletcher Cove</a></strong> serves as the main accessible beach and community park hub. Much of Solana Beach's coastline is made up of steep cliffs with staircases to the beaches below.</li>
+                <li><strong>Tide Beach Park</strong> is especially popular for snorkeling and tide pool exploration.</li>
+                <li>After dark, residents and visitors enjoy the entertainment at the <strong><a href="https://bellyup.com/" target="_blank">Belly Up Tavern</a></strong>, a world-famous, intimate live music venue featuring local and national talent.</li>
+                <li>In 2003, Solana Beach became the <strong>first city in the continental US to enact a smoking ban on its public beaches</strong>, a trend which has since been adopted by many other coastal towns.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="solanasbeach-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Solana Beach residents have excellent medical access:</p>
+            <ul>
+                <li>Residents utilize nearby North County resources, with major medical facilities such as <strong><a href="https://www.scripps.org/locations/scripps-coastal-medical-center-encinitas" target="_blank">Scripps Coastal Medical Center</a></strong> and various specialist offices easily accessible in neighboring Encinitas and Del Mar.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="solanasbeach-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Solana Beach has top-notch schools:</p>
+            <ul>
+                <li><strong><a href="https://www.sbsd.k12.ca.us/" target="_blank">The Solana Beach School District</a></strong> has two elementary schools for Solana Beach residents: Solana Vista (K-3) and Skyline Elementary (4-6).</li>
+                <li>The <strong><a href="https://www.sduhsd.net/" target="_blank">San Dieguito Union High School District</a></strong> operates <strong><a href="https://www.sduhsd.net/ewms" target="_blank">Earl Warren Middle School</a></strong> and two high schools that serve the area: <strong><a href="https://www.sduhsd.net/sda" target="_blank">San Dieguito Academy</a></strong> and <strong><a href="https://www.sduhsd.net/tphs" target="_blank">Torrey Pines High School</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="solanasbeach-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Solana Beach features stunning coastal recreation:</p>
+            <ul>
+                <li>The stunning coastline is a major draw, with <strong><a href="https://www.ci.solana-beach.ca.us/city-hall/departments/parks-recreation/fletcher-cove" target="_blank">Fletcher Cove Park</a></strong> providing bluff-top views and beach access.</li>
+                <li>The <strong><a href="https://www.sandiegocounty.gov/content/sdc/parks/San-Elijo-Lagoon.html" target="_blank">San Elijo Lagoon Ecological Reserve</a></strong> features excellent bird-watching and the unique slot canyon hike of <strong><a href="https://www.sandiegocounty.gov/content/sdc/parks/San-Elijo-Lagoon.html" target="_blank">Annie's Canyon Trail</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="solanasbeach-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports & Major Businesses</h2>
+            <p class="modal-section-intro">Solana Beach's economy centers on unique industries:</p>
+            <ul>
+                <li>The local economy is heavily reliant on the <strong>retail, dining, and artistic businesses</strong> within the <strong><a href="https://www.cedrosavenue.com/" target="_blank">Cedros Design District</a></strong>, as well as local tourism and hospitality.</li>
+                <li>Ocean sports are popular, with the <strong><a href="https://www.ci.solana-beach.ca.us/city-hall/departments/parks-recreation/coastal-rail-trail" target="_blank">Coastal Rail Trail</a></strong> offering a route for cycling and walking.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('solanasbeach')">Search Homes in Solana Beach</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- CARLSBAD MODAL -->
+<div class="modal" id="carlsbadModal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Innovation and Coastal Charm</div>
+        <h1>Carlsbad</h1>
+        <p>Carlsbad is a major coastal city known for its beautiful beaches, world-class family attractions, thriving technology and life sciences industry, and a strong presence in the golf and activewear sectors. This unique coastal community located 35-40 miles north of Downtown San Diego is surrounded by mountains and nestled between the Pacific Ocean and two lovely lagoons—Batiquitos to the south and Buena Vista to the north.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('carlsbad-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-sights')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-sports')">⛳ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('carlsbad-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="carlsbad-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas of the City</h2>
+            <p class="modal-section-intro">Carlsbad features diverse neighborhoods and communities:</p>
+            <ul>
+                <li><strong><a href="https://www.carlsbad-village.com/" target="_blank">Carlsbad Village</a></strong> is the historic and cultural downtown hub just off the beach, filled with boutiques, antique shops, salons, restaurants, and cafes.</li>
+                <li>Areas like La Costa, Aviara, Bressi Ranch and Robertson Ranch are known for master-planned communities and high-quality suburban living.</li>
+                <li>The city hosts world-class resorts, such as the <strong><a href="https://www.omnihotels.com/hotels/san-diego-la-costa" target="_blank">Omni La Costa Resort & Spa</a></strong> and the <strong><a href="https://www.hyatt.com/en-US/hotel/california/park-hyatt-aviara-resort-golf-club-spa/sanpa" target="_blank">Park Hyatt Aviara Resort</a></strong>, which is known for hosting numerous events enjoyed by its neighboring homeowners.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-sights">
+            <h2><span class="modal-section-icon">⚓</span>Tourist Sights & Culture</h2>
+            <p class="modal-section-intro">Carlsbad is home to world-class attractions:</p>
+            <ul>
+                <li>Carlsbad is home to <strong><a href="https://www.legoland.com/california/" target="_blank">LEGOLAND California Resort</a></strong>, an amusement park with more than 60 rides, shows, and attractions.</li>
+                <li>Every spring, thousands visit the spectacular <strong><a href="https://www.theflowerfields.com/" target="_blank">Flower Fields in Carlsbad</a></strong> to take photos amidst the stunning blooms.</li>
+                <li>Regular events take place in the Carlsbad Village, including the Farmer's Market, Coast Art Walk, Flavors of the Village Restaurant Week, and the large <strong>Carlsbad Village Street Fair</strong>.</li>
+                <li>The preserved ranch and park at <strong><a href="https://www.carlsbadca.gov/departments/parks-recreation/facilities/leo-carrillo-ranch-historic-park" target="_blank">Leo Carrillo Ranch Historic Park</a></strong> offers a historical look at the region.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Carlsbad is a major biotech and life sciences hub:</p>
+            <ul>
+                <li>Carlsbad is a major hub for the <strong>biotech and life sciences</strong> industries, with companies like <strong><a href="https://www.thermofisher.com/us/en/home.html" target="_blank">Thermo Fisher Scientific</a></strong>.</li>
+                <li>This concentration of medical and scientific businesses ensures strong regional healthcare access, with major facilities available in nearby communities.</li>
+                <li>The city promotes wellness via facilities like the <strong><a href="https://www.carlsbadca.gov/departments/parks-recreation/facilities/alga-norte-aquatic-center" target="_blank">Alga Norte Aquatic Center</a></strong>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Carlsbad offers diverse educational options:</p>
+            <ul>
+                <li>Carlsbad residents will likely attend schools in either the <strong><a href="https://www.carlsbadusd.k12.ca.us/" target="_blank">Carlsbad Unified School District</a></strong> or the <strong><a href="https://www.smusd.org/" target="_blank">San Marcos Unified School District</a></strong>, with a smaller percentage attending the <strong><a href="https://www.sduhsd.net/" target="_blank">San Dieguito Union High School District</a></strong>.</li>
+                <li>Higher education is supported by the nearby <strong><a href="https://www.miracosta.edu/" target="_blank">MiraCosta College</a></strong> campus.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Carlsbad features 7 miles of beautiful coastline and parks:</p>
+            <ul>
+                <li>Carlsbad boasts some of the finest beaches in San Diego like <strong><a href="https://www.parks.ca.gov/?page_id=643" target="_blank">Carlsbad State Beach</a></strong> and large community facilities such as <strong><a href="https://www.carlsbadca.gov/departments/parks-recreation/facilities/alga-norte-community-park" target="_blank">Alga Norte Community Park</a></strong>.</li>
+                <li>The city features excellent public parks, including <strong><a href="https://www.parks.ca.gov/?page_id=643" target="_blank">Carlsbad State Beach</a></strong>, and protected coastal areas like the <strong><a href="https://batiquitoslagoon.org/" target="_blank">Batiquitos Lagoon</a></strong>.</li>
+                <li>Shopping is plentiful at the outlet stores and in Carlsbad Village.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-sports">
+            <h2><span class="modal-section-icon">⛳</span>Sports</h2>
+            <p class="modal-section-intro">Carlsbad is a global hub for golf and activewear:</p>
+            <ul>
+                <li>Carlsbad is a global hub for the golf equipment & activewear industries, with businesses surrounding <strong><a href="https://www.sandiegocounty.gov/content/sdc/dpw/airports/palomar.html" target="_blank">Palomar Airport</a></strong>.</li>
+                <li>Major employers include <strong><a href="https://www.callawaygolf.com/" target="_blank">Callaway Golf</a></strong> and <strong><a href="https://www.taylormadegolf.com/" target="_blank">TaylorMade</a></strong> (headquartered here).</li>
+                <li>The <strong><a href="https://www.omnihotels.com/hotels/san-diego-la-costa" target="_blank">Omni La Costa Resort & Spa</a></strong> and the <strong><a href="https://parkhyattaviara.com/golf/aviara-golf/" target="_blank">Park Hyatt Aviara Golf</a></strong> are renowned golf destinations.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="carlsbad-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Carlsbad's robust economy spans multiple industries:</p>
+            <ul>
+                <li>Carlsbad's robust economy—particularly in <strong>technology</strong> (<strong><a href="https://www.viasat.com/" target="_blank">ViaSat</a></strong>), <strong>life sciences, and biotech</strong> companies—highlights that the city is more than just fun in the sun.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('carlsbad')">Search Homes in Carlsbad</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<script>
+    function openModal(communityId) {
+        const modal = document.getElementById(communityId + 'Modal');
+        const overlay = document.getElementById('modalOverlay');
+        if (modal) {
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const navPills = modal.querySelectorAll('.nav-pill');
+            navPills.forEach((pill, index) => {
+                pill.classList.remove('active');
+                if (index === 0) pill.classList.add('active');
+            });
+
+            const content = modal.querySelector('.modal-content');
+            if (content) content.scrollTop = 0;
+        }
+    }
+
+    function closeModal(event) {
+        if (event && event.target && event.target.id !== 'modalOverlay' && !event.target.classList.contains('modal-close')) return;
+        const modals = document.querySelectorAll('.modal.active');
+        modals.forEach(modal => modal.classList.remove('active'));
+        const overlay = document.getElementById('modalOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modals = document.querySelectorAll('.modal.active');
+            modals.forEach(modal => modal.classList.remove('active'));
+            const overlay = document.getElementById('modalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    function toggleFAQ(element) {
+        const item = element.closest('.faq-item');
+        item.classList.toggle('active');
+    }
+
+    function scrollToSection(sectionId) {
+        const activeModal = document.querySelector('.modal.active');
+        if (!activeModal) return;
+        const section = activeModal.querySelector('#' + sectionId);
+        if (section) {
+            const navPills = activeModal.querySelectorAll('.nav-pill');
+            navPills.forEach(pill => pill.classList.remove('active'));
+            if (event && event.target) event.target.closest('.nav-pill').classList.add('active');
+
+            const modalContent = activeModal.querySelector('.modal-content');
+            const sectionPosition = section.offsetTop - modalContent.offsetTop - 150;
+            modalContent.scrollTop = sectionPosition;
+        }
+    }
+
+    function searchHomes(community) {
+        alert('Link to Showcase IDX saved search for ' + community + ' — URL TBD');
+    }
+</script>
+
+</body>
+</html>

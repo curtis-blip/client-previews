@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Huang - Space Coast Area Page Redesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* DESIGN PREVIEW BANNER */
+        .preview-banner {
+            background: linear-gradient(90deg, #d4b896, #c9a876);
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* HERO BLOCK */
+        .hero {
+            background: linear-gradient(135deg, #1a4d5c 0%, #3d5a5a 50%, #2d4a55 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: left;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(212, 184, 150, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e6e6e6;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .intro-section .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* COMMUNITY CARDS SECTION */
+        .community-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .community-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .community-section-subtitle {
+            text-align: center;
+            color: #ddd;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .community-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .community-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Unique gradient backgrounds for each card */
+        .card-viera {
+            background: linear-gradient(135deg, #1e6b7e 0%, #2d5a6d 100%);
+        }
+
+        .card-melbourne {
+            background: linear-gradient(135deg, #c66b4a 0%, #a85a3a 100%);
+        }
+
+        .card-titusville {
+            background: linear-gradient(135deg, #5a8b6b 0%, #4a7b5b 100%);
+        }
+
+        .card-merrittisland {
+            background: linear-gradient(135deg, #d4a574 0%, #c49564 100%);
+        }
+
+        .card-cocoabeach {
+            background: linear-gradient(135deg, #8b6b5a 0%, #6b5b4a 100%);
+        }
+
+        .card-daytonabeach {
+            background: linear-gradient(135deg, #4a7a8b 0%, #3a6a7b 100%);
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+            z-index: 2;
+        }
+
+        .community-card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            z-index: 3;
+        }
+
+        /* DESIGNER NOTE */
+        .designer-note {
+            background: #fff3e0;
+            border-left: 4px solid #d4b896;
+            padding: 20px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #666;
+            border-radius: 4px;
+        }
+
+        .designer-note strong {
+            color: #3d5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ADTV SECTION (DEAD CODE - NOT USED) */
+        .adtv-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+            display: none;
+        }
+
+        .adtv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .adtv-image {
+            background: linear-gradient(135deg, #d4b896, #c9a876);
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .adtv-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .adtv-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .adtv-bullets {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .adtv-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .adtv-bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #c9a876;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 184, 150, 0.3);
+        }
+
+        /* WHY KATHY SECTION */
+        .why-kathy-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .why-kathy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .kathy-image {
+            background: linear-gradient(135deg, #3d5a5a, #2d4a55);
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-kathy-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .why-kathy-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .why-kathy-bullets {
+            list-style: none;
+        }
+
+        .why-kathy-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .why-kathy-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 184, 150, 0.2);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: rgba(212, 184, 150, 0.1);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #d4b896;
+            font-size: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(212, 184, 150, 0.15);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 25px 20px;
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #2d3d3d;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 50%;
+            background: #fff;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .modal-header {
+            background: #fff;
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #d4b896;
+        }
+
+        .modal-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* STICKY NAV PILLS */
+        .modal-nav {
+            display: flex;
+            gap: 12px;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            flex-wrap: nowrap;
+        }
+
+        .nav-pill {
+            background: #f5f5f5;
+            border: 2px solid #eee;
+            color: #666;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-pill:hover {
+            background: #f0f0f0;
+            border-color: #d4b896;
+        }
+
+        .nav-pill.active {
+            background: #d4b896;
+            color: #3d5a5a;
+            border-color: #d4b896;
+        }
+
+        /* MODAL CONTENT */
+        .modal-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .modal-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 180px;
+        }
+
+        .modal-section::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #eee;
+            margin-bottom: 30px;
+        }
+
+        .modal-section:first-of-type::before {
+            display: none;
+        }
+
+        .modal-section-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .modal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .modal-section-intro {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .modal-section ul {
+            list-style: none;
+        }
+
+        .modal-section li {
+            padding: 12px 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-section li strong {
+            color: #3d5a5a;
+            font-weight: 600;
+        }
+
+        .modal-section a {
+            color: #d4b896;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .modal-section a:hover {
+            color: #c9a876;
+            text-decoration: underline;
+        }
+
+        /* ADTV VIDEO PLACEHOLDER */
+        .video-placeholder {
+            background: #2d3d3d;
+            aspect-ratio: 16 / 9;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin: 25px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .video-placeholder p {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .video-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .adtv-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+
+        /* MODAL CTA */
+        .modal-cta {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .modal-cta:hover {
+            background: #c9a876;
+        }
+
+        .modal-cta-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                width: 100%;
+            }
+
+            .why-kathy-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .intro-section h2,
+            .community-section h2,
+            .faq-section h2 {
+                font-size: 32px;
+            }
+
+            .modal-nav {
+                gap: 8px;
+                padding: 15px 20px;
+            }
+
+            .nav-pill {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DESIGN PREVIEW BANNER -->
+<div class="preview-banner">
+    DESIGN PREVIEW — Kathy Huang | Space Coast Area Page Redesign | AgenticPress | March 2026
+</div>
+
+<!-- HERO BLOCK -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Trusted Space Coast Realtor For Florida's Premier Waterfront Living</h1>
+        <p>Discover your dream home along Florida's iconic Space Coast with Kathy Huang, your trusted luxury real estate expert.</p>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div class="eyebrow">Welcome to Florida</div>
+    <h2>Expert Guidance For Buying And Selling On The Space Coast</h2>
+    <p>From the master-planned communities of Viera to the legendary beaches of Cocoa Beach and Daytona, Florida's Space Coast offers diverse communities blending innovation, natural beauty, and coastal charm. With deep market expertise, I guide buyers and sellers through every step of the process.</p>
+</section>
+
+<!-- COMMUNITY CARDS SECTION -->
+<section class="community-section">
+    <h2>Find The Right Space Coast Community For You</h2>
+    <p class="community-section-subtitle">Explore six distinctive communities across Florida's Space Coast, each with its own unique character, amenities, and market dynamics.</p>
+
+    <div class="cards-grid">
+        <button class="community-card card-viera" onclick="openModal('viera')">
+            <div class="community-card-text">Viera</div>
+        </button>
+        <button class="community-card card-melbourne" onclick="openModal('melbourne')">
+            <div class="community-card-text">Melbourne</div>
+        </button>
+        <button class="community-card card-titusville" onclick="openModal('titusville')">
+            <div class="community-card-text">Titusville</div>
+        </button>
+        <button class="community-card card-merrittisland" onclick="openModal('merrittisland')">
+            <div class="community-card-text">Merritt Island</div>
+        </button>
+        <button class="community-card card-cocoabeach" onclick="openModal('cocoabeach')">
+            <div class="community-card-text">Cocoa Beach</div>
+        </button>
+        <button class="community-card card-daytonabeach" onclick="openModal('daytonabeach')">
+            <div class="community-card-text">Daytona Beach</div>
+        </button>
+    </div>
+
+    <div class="designer-note">
+        <strong>DESIGNER NOTE:</strong> Cards are now 1:1 squares with minimal bottom-only gradient overlay. Each card uses a unique background. The modal has been completely redesigned — click Viera to see the new layout.
+    </div>
+</section>
+
+<!-- WHY KATHY SECTION -->
+<section class="why-kathy-section">
+    <div class="why-kathy-container">
+        <div class="kathy-image">Kathy Huang Photo Placeholder</div>
+        <div class="why-kathy-content">
+            <h2>Why Choose Kathy Huang</h2>
+            <p>With extensive experience in Florida's Space Coast real estate market, Kathy brings both expertise and passion to every transaction. Her commitment to understanding your unique needs and goals ensures a seamless, rewarding experience.</p>
+            <ul class="why-kathy-bullets">
+                <li>20+ years of luxury real estate experience</li>
+                <li>Expert knowledge of all major Space Coast communities</li>
+                <li>Award-winning customer service and market expertise</li>
+                <li>Strategic pricing and marketing for maximum results</li>
+                <li>Comprehensive guidance through the entire transaction</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the best area to buy a home on the Space Coast?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">The best area depends on lifestyle, commute, schools, and price range. Each community offers a different living experience. Whether you prefer the planned community appeal of Viera, the aerospace industry presence in Melbourne, or the beachfront lifestyle of Cocoa Beach, the Space Coast has options for every buyer.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>How much do homes cost on the Space Coast right now?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Home prices vary by community, property type, and condition. Coastal beach communities like Cocoa Beach and Daytona Beach tend to be higher than inland communities like Viera. Properties near the water and with ocean access command a premium compared to more inland areas. Current market conditions and individual property features also play significant roles in pricing.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What should I get approved for before buying a home on the Space Coast?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Most buyers start with a mortgage pre-approval to understand budget and strengthen their offers. A pre-approval letter shows sellers that you're a serious, qualified buyer and puts you in a stronger negotiating position, especially in competitive markets like the Space Coast's luxury segment.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there first time home buyer programs on the Space Coast?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. There are state and local programs that may offer assistance depending on income and eligibility. Florida and Brevard County offer various down payment assistance programs, favorable loan products, and tax benefits for first-time homebuyers. I can connect you with resources to explore all available options.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What extra costs should I plan for when buying a home on the Space Coast?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Buyers should plan for closing costs, inspections, insurance, taxes, and ongoing maintenance. Closing costs typically range from 2-5% of the purchase price and include lender fees, title insurance, escrow, and appraisal fees. Additionally, you'll want to budget for home inspections, homeowners insurance, and property taxes, which vary by location.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I buy a home on the Space Coast if I am relocating?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. Many buyers relocate and purchase homes using virtual tours, remote planning, and guided timelines. I specialize in working with relocation clients and can arrange virtual tours, connect you with trusted inspectors and contractors, and provide detailed market analysis to help you make confident decisions from afar.</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 Kathy Huang | Space Coast Luxury Real Estate | All Rights Reserved</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"></div>
+
+<!-- VIERA MODAL -->
+<div class="modal" id="viera-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Space Coast's Premier Planned Community</div>
+        <h1>Viera</h1>
+        <p>Viera, Spanish for "faith," is a large, master-planned community located in Central Florida's Space Coast, near Melbourne and the Atlantic Ocean. Unlike many Florida cities, Viera has been systematically developed since the 1980s, emphasizing a high quality of life, environmental stewardship, and modern suburban living.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('viera', 'viera-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('viera', 'viera-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('viera', 'viera-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('viera', 'viera-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('viera', 'viera-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('viera', 'viera-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="viera-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Viera is known for its modern commercial centers and blend of sports with nature.</p>
+            <ul>
+                <li><strong><a href="https://www.avenueviera.com/" target="_blank">The Avenue Viera</a>:</strong> An outdoor lifestyle center featuring over 80 premier national and local retailers, restaurants, and entertainment options.</li>
+                <li><strong><a href="https://www.visitspacecoast.com/listing/viera-wetlands/437/" target="_blank">Viera Wetlands (Rich Grissom Memorial Wetlands)</a>:</strong> A major local attraction known for birdwatching and wildlife viewing (alligators, waded birds, otters) along scenic driving and walking trails.</li>
+                <li><strong><a href="https://brevardzoo.org/" target="_blank">The Brevard Zoo</a>:</strong> Located near Viera, this is a conservation-focused zoo with unique opportunities like kayaking and feeding giraffes.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="viera-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Healthcare is a critical sector, with Viera anchoring the county's medical services.</p>
+            <ul>
+                <li><strong><a href="https://www.hf.org/healthcare-home/location-directory/viera-hospital" target="_blank">Health First Viera Hospital</a>:</strong> The centerpiece of the Viera Health Park campus. It is a modern acute-care facility providing a 24-hour Emergency Department, specialized care, and services like The Birth Suites.</li>
+                <li><strong>Health Network:</strong> The hospital is part of the larger Health First system, the dominant healthcare provider on the Space Coast.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="viera-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Viera is highly regarded for its educational commitment, falling under the Brevard Public Schools district.</p>
+            <ul>
+                <li><strong>K-12 Education:</strong> The area features several top-rated public and charter schools, including <a href="https://www.brevardschools.org/VieraHS" target="_blank">Viera High School</a>, Viera Charter School, and Manatee Elementary School.</li>
+                <li><strong>Higher Education:</strong> While Viera does not host a major university, it is located near institutions like <a href="https://www.fit.edu/" target="_blank">Florida Tech (Florida Institute of Technology)</a> in Melbourne.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="viera-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The community is designed with abundant green space and top-tier athletic facilities.</p>
+            <ul>
+                <li><strong><a href="https://brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInViera/Viera" target="_blank">Viera Regional Park</a>:</strong> A massive 117-acre complex with multiple fields (including AstroTurf), indoor and outdoor courts, pavilions, playgrounds, and the Viera Regional Community Center.</li>
+                <li><strong><a href="https://www.durangolf.com/" target="_blank">Duran Golf Club</a>:</strong> A highly-rated, championship golf course located within the community.</li>
+                <li><strong>Natural Trails:</strong> The community boasts an extensive system of paved biking and walking trails that connect neighborhoods and parks.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="viera-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">Viera has established itself as a major center for amateur and youth sports in the Southeast.</p>
+            <ul>
+                <li><strong>USSSA Space Coast Complex:</strong> This massive facility hosts hundreds of youth, college, and amateur baseball, softball, and other sports leagues and tournaments annually, drawing athletes from across the country.</li>
+                <li><strong>Local Leagues:</strong> The community supports active local leagues like the <a href="https://svyfl.com/" target="_blank">Suntree Viera Youth Football & Cheerleading League (SVYFL)</a>.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="viera-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Viera's economy is diversified, driven by government, healthcare, and proximity to the aerospace industry.</p>
+            <ul>
+                <li><strong>Government Hub:</strong> The city hosts the Brevard County Government Center, the Moore Justice Center, and the Brevard County School Board, making the public sector a major local employer.</li>
+                <li><strong>Technology & Aerospace:</strong> While many companies are located in nearby Melbourne, Viera residents work for major defense and aerospace firms on the Space Coast, including Northrop Grumman and L3Harris.</li>
+                <li><strong>Media:</strong> Florida Today (Gannett Corporation) maintains offices in Viera.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('viera')">Search Homes in Viera</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- MELBOURNE MODAL -->
+<div class="modal" id="melbourne-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Harbor City of the Space Coast</div>
+        <h1>Melbourne</h1>
+        <p>Melbourne is a principal city on Florida's Space Coast, situated along the Indian River Lagoon and the Atlantic Ocean. Known as "The Harbor City," it serves as the cultural and economic anchor for southern Brevard County, blending a historic downtown and waterfront districts with a powerful presence in the aerospace, high-tech, and defense industries.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('melbourne', 'melbourne-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('melbourne', 'melbourne-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('melbourne', 'melbourne-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('melbourne', 'melbourne-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('melbourne', 'melbourne-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('melbourne', 'melbourne-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="melbourne-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">The city is divided by water, offering distinct historic and waterfront experiences.</p>
+            <ul>
+                <li><strong>Historic Downtown Melbourne:</strong> A vibrant, walkable area featuring original brick streets, local boutiques, art galleries, and restaurants, especially along East New Haven Avenue.</li>
+                <li><strong>Eau Gallie Arts District (EGAD):</strong> Located north of the main downtown, this district is known for its art galleries, museums, and murals. It is home to the <a href="https://www.foosanerartmuseum.org/" target="_blank">Foosaner Art Museum</a> and the Henegar Center For the Arts.</li>
+                <li><strong><a href="https://www.kingcenter.com/" target="_blank">Maxwell C. King Center for the Performing Arts</a>:</strong> A major venue for Broadway shows, concerts, and major touring acts.</li>
+                <li><strong><a href="https://brevardzoo.org/" target="_blank">Brevard Zoo</a>:</strong> A highly-regarded, conservation-focused zoo featuring unique experiences like kayak tours and the Treetop Trek Aerial Adventure.</li>
+                <li><strong>Beaches:</strong> The city is a short drive from the barrier island beaches, including the popular Paradise Beach & Park and nearby Melbourne Beach Pier.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="melbourne-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Melbourne is the center of the largest healthcare system on the Space Coast.</p>
+            <ul>
+                <li><strong><a href="https://www.hf.org/healthcare-home/location-directory/holmes-regional-medical-center" target="_blank">Holmes Regional Medical Center</a>:</strong> The flagship hospital of the Health First system, providing comprehensive, high-level acute care, including specialized services in cardiology, cancer, and neurosciences.</li>
+                <li><strong>Other Facilities:</strong> Melbourne Regional Medical Center (a Steward Health facility) and various outpatient centers contribute to the area's robust medical offerings.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="melbourne-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Education is key to supporting the area's high-tech workforce.</p>
+            <ul>
+                <li><strong><a href="https://www.fit.edu/" target="_blank">Florida Tech (Florida Institute of Technology)</a>:</strong> A private research university globally known for its programs in engineering, science, computing, aeronautics, and business.</li>
+                <li><strong><a href="https://www.easternflorida.edu/campuses/melbourne/" target="_blank">Eastern Florida State College (EFSC)</a>:</strong> Its Melbourne Campus is a major center for public safety, health sciences, and technical training.</li>
+                <li><strong>K-12 Education:</strong> Served by Brevard Public Schools, with notable schools including Melbourne Senior High School and the highly-ranked West Shore Junior/Senior High School.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="melbourne-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The city's park system manages over 230 acres of facilities for residents and visitors.</p>
+            <ul>
+                <li><strong><a href="https://www.melbourneflorida.org/Government/Departments/Parks-Recreation" target="_blank">City of Melbourne Parks & Recreation Department</a>:</strong> Maintains facilities including community centers, pools, and athletic fields.</li>
+                <li><strong>Waterfront Parks:</strong> Claude Edge Front Street Park (with a fishing pier and boat ramp on the Indian River) and Ballard Park (offers boat ramps and scenic views).</li>
+                <li><strong>Conservation:</strong> The city is committed to protecting the Indian River Lagoon, a vital estuary for manatees and other wildlife.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="melbourne-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">Melbourne does not host a major professional sports team but has a strong collegiate and amateur sports presence.</p>
+            <ul>
+                <li><strong>College Athletics:</strong> The Florida Tech Panthers compete in NCAA Division II in the Sunshine State Conference.</li>
+                <li><strong>Amateur & Youth Sports:</strong> The city hosts numerous adult and youth athletic leagues through the Parks and Recreation Department, including <a href="https://www.melbourneflorida.org/Government/Departments/Parks-Recreation/Athletics" target="_blank">Adult Softball Leagues</a>, soccer, and baseball.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="melbourne-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Melbourne is a key employment hub on the Space Coast, dominated by aerospace and defense contractors.</p>
+            <ul>
+                <li><strong><a href="https://www.l3harris.com/" target="_blank">L3Harris Technologies</a>:</strong> Headquarters and a massive employer, focusing on C6ISR and electronic systems.</li>
+                <li><strong>Northrop Grumman:</strong> Major operations related to aerospace and defense.</li>
+                <li><strong>Rockwell Collins, Inc.:</strong> Aviation systems.</li>
+                <li><strong><a href="https://www.mlbair.com/" target="_blank">Melbourne Orlando International Airport</a></strong></li>
+                <li><strong>Other Major Employers:</strong> Health First, Inc. and Brevard Public Schools.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('melbourne')">Search Homes in Melbourne</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- TITUSVILLE MODAL (WITH ADTV) -->
+<div class="modal" id="titusville-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Launch Site City</div>
+        <h1>Titusville</h1>
+        <p>Titusville is known as the "Gateway to the Space Coast," situated on the western shore of the Indian River, directly across from the Kennedy Space Center. It's a prime spot for nature lovers and space enthusiasts.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('titusville', 'titusville-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('titusville', 'titusville-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('titusville', 'titusville-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('titusville', 'titusville-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('titusville', 'titusville-business')">🏢 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('titusville', 'titusville-adtv')">📺 ADTV</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="titusville-notable">
+            <h2><span class="modal-section-icon">🔭</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Titusville is the best place for close-up views of rocket launches and is packed with space-themed and natural attractions.</p>
+            <ul>
+                <li><strong><a href="https://www.kennedyspacecenter.com/" target="_blank">Kennedy Space Center Visitor Complex</a>:</strong> Located on nearby Merritt Island, but Titusville is the closest city and major gateway.</li>
+                <li><strong><a href="https://www.nps.gov/cana/index.htm" target="_blank">Canaveral National Seashore</a> & John F. Kennedy Space Center:</strong> Offers a pristine coastline for wildlife viewing and a historical perspective on the space program.</li>
+                <li><strong>Parrish Park - Titusville:</strong> A local gem on the Indian River, renowned for having the absolute best public view of launches from the Cape. It also has a fishing pier and a boat ramp.</li>
+                <li><strong>American Space Museum & Walk of Fame:</strong> Features artifacts and displays on space exploration history.</li>
+                <li><strong><a href="https://www.valiantaircommand.com/" target="_blank">Valiant Air Command Warbird Museum</a>:</strong> Showcases vintage military aircraft and aviation history.</li>
+                <li><strong>Enchanted Forest Sanctuary:</strong> A large preserve for walking and nature exploration.</li>
+                <li><strong><a href="https://www.visitspacecoast.com/profile/merritt-island/nature-outdoors/merritt-island-national-wildlife-refuge/" target="_blank">Merritt Island National Wildlife Refuge</a>:</strong> Over 500 species of wildlife and more than 140 species of freshwater and saltwater fish. Over 358 bird species have been identified here.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="titusville-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">The primary hospital serving Titusville and North Brevard County is:</p>
+            <ul>
+                <li><strong><a href="https://www.parrishhealthcare.com/about-us/" target="_blank">Parrish Medical Center</a>:</strong> Located in Titusville, it is a key component of the local healthcare system.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="titusville-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">The public K-12 schools are part of the Brevard Public Schools system. For higher education, Titusville hosts:</p>
+            <ul>
+                <li><strong>Eastern Florida State College (EFSC) - Titusville Campus:</strong> This campus offers Associate in Arts (A.A.) degrees for university transfer and a range of career-focused programs. It is also slated to be the future home of the Aerospace Center of Excellence.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="titusville-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The city boasts a rich system of parks and natural areas.</p>
+            <ul>
+                <li><strong><a href="https://www.brevardfl.gov/ParksAndRecreation/Campgrounds/ManateeHammockPark" target="_blank">Manatee Hammock</a>:</strong> A waterfront county park that features a campground and views of the Indian River.</li>
+                <li><strong><a href="https://www.brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInTitusville/ChainOfLakes" target="_blank">Chain of Lakes Park</a>:</strong> A popular spot for sports fields, walking trails, and natural scenery.</li>
+                <li><strong><a href="https://www.titusville.com/645/Sand-Point-Park" target="_blank">Sand Point Park</a>:</strong> A large park on the Indian River with a boat ramp, playground, and fishing.</li>
+                <li><strong>The city serves as a hub for the Florida Coast-to-Coast Trail.</strong></li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="titusville-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">The local economy is heavily influenced by the aerospace industry.</p>
+            <ul>
+                <li><strong>Aerospace & Aviation:</strong> As a major part of the Space Coast, the area is home to companies like Astrotech Space Operations and supporting firms in Advanced Manufacturing and Technology.</li>
+                <li><strong>Defense & Specialty Manufacturing:</strong> Knight's Armament (firearm manufacturing) and Professional Aircraft Accessories are notable private-sector employers.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="titusville-adtv">
+            <h2><span class="modal-section-icon">📺</span>ADTV Episode</h2>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Valiant Air Command Warbird Museum</p>
+            </div>
+            <p class="adtv-description">Explore Titusville's iconic Valiant Air Command Warbird Museum and its collection of vintage military aircraft through this American Dream TV episode with Kathy Huang.</p>
+            <p class="video-note">Developer Note: Embed YouTube video here — URL TBD from client</p>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('titusville')">Search Homes in Titusville</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- MERRITT ISLAND MODAL -->
+<div class="modal" id="merrittisland-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Where Space Meets Sanctuary</div>
+        <h1>Merritt Island</h1>
+        <p>Merritt Island, Florida, is a geographically unique and historically rich community on the state's Central East Coast, nestled between the mainland and the Atlantic barrier island. Often referred to as a peninsula, this Brevard County enclave is most famous as the gateway to the cosmos, hosting <a href="https://www.nasa.gov/centers-and-facilities/kennedy/" target="_blank">NASA's John F. Kennedy Space Center</a> in its northern section.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('merrittisland', 'merrittisland-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('merrittisland', 'merrittisland-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('merrittisland', 'merrittisland-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('merrittisland', 'merrittisland-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('merrittisland', 'merrittisland-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('merrittisland', 'merrittisland-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="merrittisland-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Merritt Island's attractions are diverse, catering to both the curious explorer and the nature enthusiast.</p>
+            <ul>
+                <li><strong><a href="https://www.kennedyspacecenter.com/" target="_blank">Kennedy Space Center Visitor Complex</a>:</strong> The island's most famous attraction, offering visitors the chance to explore the Rocket Garden, see the Space Shuttle Atlantis, and even meet an astronaut.</li>
+                <li><strong><a href="https://www.fws.gov/refuge/merritt-island" target="_blank">Merritt Island National Wildlife Refuge</a>:</strong> Established in 1963, this massive 140,000-acre refuge shares land with KSC and is a critical habitat for over 350 species of birds, manatees, alligators, and sea turtles.</li>
+                <li><strong>Water Activities:</strong> The surrounding waterways (Indian River Lagoon, Banana River, Sykes Creek) offer exceptional opportunities for <a href="https://www.visitflorida.com/places-to-go/central-east/merritt-island/" target="_blank">fishing, boating, and bioluminescent kayaking tours</a> during the summer months.</li>
+                <li><strong><a href="http://www.brevardfl.gov/EELProgram/Sanctuaries/SamsHouse" target="_blank">Sams House at Pine Island Conservation Area</a>:</strong> Home to the oldest standing house in Brevard County, offering a glimpse into the island's pioneer and citrus farming history.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="merrittisland-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Merritt Island residents have convenient access to extensive healthcare services, primarily through the larger Brevard County hospital networks.</p>
+            <ul>
+                <li><strong><a href="https://www.hf.org/" target="_blank">Health First Hospitals and Medical Group</a>:</strong> Serving the county with major hospitals and specialty care nearby.</li>
+                <li><strong><a href="https://www.medfastcare.com/urgent-care-centers/merritt-island.html" target="_blank">Medfast Urgent Care Center Merritt Island</a>:</strong> Provides walk-in care for minor illnesses and injuries within the community.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="merrittisland-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">The community is served by the Brevard Public Schools district, which includes several well-regarded institutions.</p>
+            <ul>
+                <li><strong><a href="https://www.brevardschools.org/MerrittIslandHS" target="_blank">Merritt Island High School</a></strong></li>
+                <li><strong><a href="https://www.brevardschools.org/EdgewoodJSHS" target="_blank">Edgewood Junior/Senior High School</a> (a highly-rated choice school)</strong></li>
+                <li><strong><a href="https://www.brevardschools.org/JeffersonMS" target="_blank">Thomas Jefferson Middle School</a></strong></li>
+                <li><strong><a href="https://www.brevardschools.org/TropicalES" target="_blank">Tropical Elementary School</a></strong></li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="merrittisland-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Merritt Island is an outdoor enthusiast's dream, with numerous county parks offering diverse recreational opportunities.</p>
+            <ul>
+                <li><strong><a href="http://www.brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInMerrittIsland/KiwanisIsland" target="_blank">Kiwanis Island Park</a>:</strong> A popular spot featuring a community center, boat ramp access, and pickleball courts.</li>
+                <li><strong><a href="http://www.brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInMerrittIsland/Rotary" target="_blank">Rotary Park Merritt Island</a>:</strong> Features a nature center, boardwalk, playgrounds, and soccer fields.</li>
+                <li><strong><a href="http://www.brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInMerrittIsland/MitchellEllington" target="_blank">Mitchell Ellington Park</a>:</strong> A major hub for organized sports, including fields and courts.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="merrittisland-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">While Merritt Island does not host professional sports, it is part of the larger Space Coast sports culture.</p>
+            <ul>
+                <li><strong>Local Sports:</strong> Youth and high school sports thrive, particularly at <a href="https://www.brevardschools.org/MerrittIslandHS" target="_blank">Merritt Island High School</a> (the Mustangs) and <a href="http://www.brevardfl.gov/ParksAndRecreation/ParksByCity/ParksInMerrittIsland/MitchellEllington" target="_blank">Mitchell Ellington Park</a>. Residents support the nearby minor league baseball team, the <a href="https://www.milb.com/daytona" target="_blank">Daytona Tortugas</a> (a short drive away).</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="merrittisland-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">The community's major economic driver is its proximity to the Kennedy Space Center.</p>
+            <ul>
+                <li><strong><a href="https://www.craigtechinc.com/" target="_blank">Craig Technologies</a></strong></li>
+                <li><strong><a href="https://www.launchfcu.com/" target="_blank">Launch Federal Credit Union</a></strong></li>
+                <li><strong><a href="https://www.spaceflorida.gov/" target="_blank">Space Florida</a> (the state's aerospace economic development agency)</strong></li>
+                <li><strong>Retail services are centered around <a href="https://www.merrittsquaremall.com/" target="_blank">Merritt Square Mall</a>.</strong></li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('merrittisland')">Search Homes in Merritt Island</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- COCOA BEACH MODAL -->
+<div class="modal" id="cocoabeach-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Surf Town</div>
+        <h1>Cocoa Beach</h1>
+        <p>Cocoa Beach is the classic Florida beach town, famous for surfing, its lively pier, and a casual, laid-back atmosphere. It is located on a barrier island between the Atlantic Ocean and the Banana River.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('cocoabeach', 'cocoabeach-notable')">🏖️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('cocoabeach', 'cocoabeach-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('cocoabeach', 'cocoabeach-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('cocoabeach', 'cocoabeach-parks')">🏄 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('cocoabeach', 'cocoabeach-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="cocoabeach-notable">
+            <h2><span class="modal-section-icon">🏖️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">The attractions here are focused on the beach and the surf culture.</p>
+            <ul>
+                <li><strong>Ron Jon Surf Shop:</strong> The world's largest surf shop, and an iconic landmark open 24/7.</li>
+                <li><strong><a href="https://www.cocoabeachpier.com/" target="_blank">Cocoa Beach Pier</a>:</strong> A historic landmark extending 800 feet over the Atlantic Ocean, featuring restaurants, bars, and shops.</li>
+                <li><strong>Lori Wilson Park & Alan Shepard Beachfront Park:</strong> Popular beach parks offering facilities, boardwalks, and direct beach access.</li>
+                <li><strong><a href="https://www.brevardfl.gov/EELProgram/Sanctuaries/ThousandIslandsConservationArea" target="_blank">Thousand Islands Conservation Area</a>:</strong> Offers kayaking and paddle-boarding through a mangrove estuary system.</li>
+                <li><strong><a href="https://www.portcanaveral.com/" target="_blank">Port Canaveral</a>:</strong> Located just north, it is known as one of the busiest cruise ports in the world and a major hub for cargo, commercial fishing, and military operations.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="cocoabeach-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare Systems</h2>
+            <p class="modal-section-intro">The main hospital serving the immediate area is located directly in Cocoa Beach.</p>
+            <ul>
+                <li><strong><a href="https://www.hf.org/healthcare-home/location-directory/cape-canaveral-hospital" target="_blank">Cape Canaveral Hospital</a>:</strong> This HealthFirst hospital is recognized for patient safety and is the most convenient option for residents and visitors on the barrier island.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="cocoabeach-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">The city is served by Brevard County Public Schools, including Freedom 7 Elementary School of International Studies in Cocoa Beach itself.</p>
+            <ul>
+                <li><strong>Eastern Florida State College (EFSC) - Cocoa Campus:</strong> The largest and oldest campus of EFSC is just a short drive away. It is a major educational center for the county, housing a STEM building and offering joint-use library and learning facilities with the University of Central Florida (UCF).</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="cocoabeach-parks">
+            <h2><span class="modal-section-icon">🏄</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Cocoa Beach's Leisure Services Department manages extensive recreational facilities.</p>
+            <ul>
+                <li><strong>Beach Access:</strong> Multiple parks offer direct beach access, including designated areas for surfing.</li>
+                <li><strong>Aquatic Center:</strong> Features a 50-meter pool, spray park, and jumbo slide.</li>
+                <li><strong><a href="https://www.cityofcocoabeach.com/413/Cocoa-Beach-Country-Club-A-Public-Facili" target="_blank">Cocoa Beach Country Club</a>:</strong> This public facility is home to a 27-hole championship golf course.</li>
+                <li><strong>Ramp Road Park:</strong> Offers boat launching, picnic areas, tennis, and pickleball courts.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="cocoabeach-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses & Employers</h2>
+            <p class="modal-section-intro">The economy is highly dependent on tourism, retail, and hospitality, but also benefits from the Space Coast's tech sector.</p>
+            <ul>
+                <li><strong>Retail & Tourism:</strong> Key employers include Ron Jon Surf Shop, Cocoa Beach Pier, and numerous other hotels and restaurants like Coconuts On The Beach.</li>
+                <li><strong>Technology & Professional Services:</strong> Companies like LeanSwift (eCommerce/tech) and Quantum Technology Sciences (security/tech) represent the area's professional base.</li>
+                <li><strong>Broader Aerospace Impact:</strong> Although not located within Cocoa Beach city limits, the presence of major aerospace and defense companies like L3Harris, Boeing, and SpaceX in the greater Space Coast region heavily influences employment and the local demographic.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('cocoabeach')">Search Homes in Cocoa Beach</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- DAYTONA BEACH MODAL -->
+<div class="modal" id="daytonabeach-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The World's Most Famous Beach</div>
+        <h1>Daytona Beach</h1>
+        <p>Daytona Beach is a city on the east coast of Florida, famous globally for its wide, hard-packed sandy beaches that once allowed for automobiles and racing. This history cemented its reputation as the "World's Most Famous Beach" and the birthplace of NASCAR.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('daytonabeach', 'daytonabeach-notable')">🎢 Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('daytonabeach', 'daytonabeach-healthcare')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('daytonabeach', 'daytonabeach-schools')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('daytonabeach', 'daytonabeach-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('daytonabeach', 'daytonabeach-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('daytonabeach', 'daytonabeach-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <div class="modal-section" id="daytonabeach-notable">
+            <h2><span class="modal-section-icon">🎢</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Daytona Beach's attractions are closely tied to the Atlantic coast and its racing history.</p>
+            <ul>
+                <li><strong>Motorsports:</strong> <a href="https://www.daytonainternationalspeedway.com/" target="_blank">Daytona International Speedway</a> (Home of the Daytona 500, NASCAR's most prestigious race, and the Rolex 24 at Daytona) and the Motorsports Hall of Fame of America.</li>
+                <li><strong>Coastal Attractions:</strong> Daytona Beach Boardwalk and Pier (a classic beachfront entertainment area), Daytona Lagoon Water Park (a major water park and family entertainment center), and Beach Driving (designated areas with speed limits).</li>
+                <li><strong>Culture & History:</strong> <a href="https://www.moas.org/" target="_blank">Museum of Arts and Sciences (MOAS)</a> (featuring Cuban art, prehistory, and Americana collections) and The Casements (John D. Rockefeller's winter home, now a cultural center).</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="daytonabeach-healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">The healthcare network is anchored by a major regional medical center.</p>
+            <ul>
+                <li><strong><a href="https://www.adventhealth.com/hospital/adventhealth-daytona-beach" target="_blank">AdventHealth Daytona Beach</a>:</strong> The primary full-service hospital for the area, offering comprehensive emergency, surgical, and specialized care.</li>
+                <li><strong>Other Facilities:</strong> The area also includes the Halifax Health Medical Center of Daytona Beach, which houses a Level II Trauma Center, providing advanced services for Volusia and Flagler counties.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="daytonabeach-schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Education</h2>
+            <p class="modal-section-intro">Daytona Beach is a significant center for higher education, particularly in specialized fields.</p>
+            <ul>
+                <li><strong>Universities:</strong> <a href="https://erau.edu/" target="_blank">Embry-Riddle Aeronautical University (ERAU)</a> (A globally renowned private university specializing in aviation and aerospace), <a href="https://www.cookman.edu/" target="_blank">Bethune-Cookman University (B-CU)</a> (A private, historically black university founded by Dr. Mary McLeod Bethune), and <a href="https://www.daytonastate.edu/" target="_blank">Daytona State College (DSC)</a> (A large public college).</li>
+                <li><strong>K-12 Education:</strong> Served by Volusia County Public Schools, including Seabreeze High School and Mainland High School.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="daytonabeach-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Beyond the famous beach, the city provides various parks and nature spots.</p>
+            <ul>
+                <li><strong><a href="https://www.daytonabeach.com/parks/" target="_blank">City of Daytona Beach Parks & Recreation</a>:</strong> Manages dozens of parks and facilities.</li>
+                <li><strong>Tuscawilla Park:</strong> A large urban park with a nature trail system and various amenities.</li>
+                <li><strong><a href="https://www.volusia.org/services/public-works/coastal-division/coastal-parks/lighthouse-point-park.stml" target="_blank">Lighthouse Point Park (Ponce Inlet)</a>:</strong> Located just south of the city, featuring the tallest lighthouse in Florida and excellent wildlife viewing and fishing.</li>
+                <li><strong>Halifax River:</strong> The city's western boundary is popular for boating, fishing, and kayaking.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="daytonabeach-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">Motorsports is the dominant sporting identity, though the city also hosts minor league baseball.</p>
+            <ul>
+                <li><strong>Minor League Baseball (MiLB):</strong> The <a href="https://www.milb.com/daytona" target="_blank">Daytona Tortugas</a> (Low-A affiliate of the Cincinnati Reds) play at Jackie Robinson Ballpark.</li>
+                <li><strong>Motorsports:</strong> The <a href="https://www.daytonainternationalspeedway.com/" target="_blank">Daytona International Speedway</a> is the epicenter for several major racing events, including NASCAR, IMSA, and AMA Supercross.</li>
+                <li><strong>College Athletics:</strong> The Embry-Riddle Eagles and the Bethune-Cookman Wildcats field competitive NCAA and NAIA teams, respectively.</li>
+            </ul>
+        </div>
+
+        <div class="modal-section" id="daytonabeach-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">The economy is heavily reliant on tourism, education, and the supporting service industries.</p>
+            <ul>
+                <li><strong>Tourism & Hospitality:</strong> Major hotel chains and resorts, along with the <a href="https://www.flydaytonafirst.com/" target="_blank">Daytona Beach International Airport</a>, are key economic drivers.</li>
+                <li><strong>Education:</strong> Embry-Riddle Aeronautical University and Bethune-Cookman University are among the area's largest non-governmental employers.</li>
+                <li><strong>Manufacturing & High-Tech:</strong> The presence of ERAU and DSC supports a small but growing sector in aviation technology and related manufacturing.</li>
+            </ul>
+        </div>
+
+        <button class="modal-cta" onclick="searchHomes('daytonabeach')">Search Homes in Daytona Beach</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<script>
+    function openModal(communityId) {
+        const modal = document.getElementById(communityId + '-modal');
+        const overlay = document.getElementById('modalOverlay');
+        if (modal) {
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeModal(event) {
+        if (event && event.target.id !== 'modalOverlay') return;
+        const modals = document.querySelectorAll('.modal.active');
+        modals.forEach(modal => modal.classList.remove('active'));
+        const overlay = document.getElementById('modalOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function toggleFAQ(element) {
+        const item = element.closest('.faq-item');
+        item.classList.toggle('active');
+    }
+
+    function scrollToSection(communityId, sectionId) {
+        const modal = document.getElementById(communityId + '-modal');
+        const section = document.getElementById(sectionId);
+
+        if (section && modal) {
+            const navPills = modal.querySelectorAll('.nav-pill');
+            navPills.forEach(pill => pill.classList.remove('active'));
+            event.target.closest('.nav-pill').classList.add('active');
+
+            const modalContent = modal.querySelector('.modal-content');
+            const sectionPosition = section.offsetTop - modalContent.offsetTop - 150;
+            modalContent.scrollTop = sectionPosition;
+        }
+    }
+
+    function searchHomes(community) {
+        alert('Link to Showcase IDX saved search for ' + community + ' — URL TBD');
+    }
+</script>
+
+</body>
+</html>

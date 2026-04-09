@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bay Area Houston Communities | La Porte, Deer Park, Baytown, Clear Lake | Misty Bacon</title>
+<meta name="description" content="Explore 8 Bay Area Houston communities from La Porte to Clear Lake. Find your neighborhood with Misty Bacon, your local real estate broker. Schools, lifestyle, and homes for sale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #674891;
+  --primary-dark: #4e3570;
+  --accent: #921bd8;
+  --secondary: #9c79c7;
+  --dark: #1a1530;
+  --mid: #555;
+  --light: #f4f1ec;
+  --neutral: #ffffff;
+  --font-head: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --max: 1200px;
+  --radius: 4px;
+  --shadow: 0 4px 20px rgba(103,72,145,0.10);
+  --shadow-hover: 0 12px 32px rgba(103,72,145,0.18);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--dark);
+  background: var(--neutral);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--dark);
+}
+h1 { font-size: clamp(36px, 5.5vw, 60px); }
+h2 { font-size: clamp(26px, 3.5vw, 42px); }
+h3 { font-size: 22px; }
+h4 { font-size: 18px; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+/* ── SECTION BACKGROUNDS ── */
+.section-light { padding: 96px 0; background: var(--neutral); }
+.section-alt   { padding: 96px 0; background: var(--light); }
+.section-dark  { padding: 96px 0; background: var(--dark); color: #fff; }
+.section-dark h2, .section-dark h3, .section-dark h4 { color: #fff; }
+.section-dark .eyebrow { color: var(--secondary); }
+.section-dark .eyebrow::before { background: var(--secondary); }
+.section-dark p { color: rgba(255,255,255,0.7); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-secondary {
+  display: inline-block;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-white {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--accent);
+  z-index: 1002;
+  transition: width 0.1s linear;
+}
+
+/* ── HEADER ── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 40px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.site-header.nav-transparent { background: transparent; }
+.site-header.nav-solid {
+  background: var(--neutral);
+  box-shadow: 0 2px 8px rgba(103,72,145,0.08);
+}
+.header-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.header-brand {
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-transparent .header-brand { color: #fff; }
+.nav-solid .header-brand { color: var(--dark); }
+
+.header-nav { display: flex; align-items: center; gap: 28px; }
+.header-nav a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-transparent .header-nav a { color: rgba(255,255,255,0.85); }
+.nav-transparent .header-nav a:hover { color: #fff; }
+.nav-solid .header-nav a { color: var(--mid); }
+.nav-solid .header-nav a:hover { color: var(--primary); }
+
+.header-nav .nav-cta {
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-transparent .nav-cta { background: var(--primary); color: #fff; }
+.nav-transparent .nav-cta:hover { background: var(--primary-dark); }
+.nav-solid .nav-cta { background: var(--primary); color: #fff; }
+.nav-solid .nav-cta:hover { background: var(--primary-dark); }
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-toggle svg { width: 28px; height: 28px; }
+.nav-transparent .mobile-toggle svg { color: #fff; }
+.nav-solid .mobile-toggle svg { color: var(--dark); }
+
+/* ── NAV DROPDOWNS ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.nav-dropdown-trigger svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s;
+}
+.nav-transparent .nav-dropdown-trigger svg { color: rgba(255,255,255,0.85); }
+.nav-solid .nav-dropdown-trigger svg { color: var(--mid); }
+.nav-dropdown:hover .nav-dropdown-trigger svg,
+.nav-dropdown.open .nav-dropdown-trigger svg { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  background: var(--neutral);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 1001;
+}
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-bottom-color: var(--neutral);
+  border-top: 0;
+}
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mid) !important;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-dropdown-menu a:hover {
+  background: var(--light);
+  color: var(--primary) !important;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: var(--dark);
+  border-top: 3px solid var(--accent);
+  padding: 64px 40px 32px;
+  color: rgba(255,255,255,0.6);
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.footer-col h4 {
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.footer-col p { font-size: 14px; line-height: 1.8; }
+.footer-col a {
+  display: block;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  padding: 3px 0;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--secondary); }
+.footer-brand {
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.footer-tagline {
+  font-style: italic;
+  color: var(--secondary);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.footer-social { display: flex; gap: 16px; margin-top: 16px; }
+.footer-social a {
+  display: inline-flex;
+  padding: 0;
+}
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+  fill: rgba(255,255,255,0.6);
+  transition: fill 0.2s;
+}
+.footer-social a:hover svg { fill: var(--secondary); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+}
+.footer-bottom a { display: inline; color: rgba(255,255,255,0.5); }
+.footer-bottom a:hover { color: var(--secondary); }
+.footer-legal { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--neutral);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 3px solid transparent;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-left-color: var(--primary);
+}
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 20px 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--primary); }
+.faq-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding-bottom 0.3s ease;
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.8;
+  padding-bottom: 0;
+}
+
+/* ── PLACEHOLDER BADGE ── */
+.placeholder-badge {
+  display: inline-block;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  color: #856404;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ── PREVIEW BANNER ── */
+.preview-banner {
+  background: var(--dark);
+  color: rgba(255,255,255,0.7);
+  padding: 8px 20px;
+  font-size: 11px;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.03em;
+}
+.preview-banner span { color: var(--secondary); font-weight: 600; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  height: 1px;
+  background: var(--primary);
+  opacity: 0.15;
+  margin: 0;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ── STAGGER H1 WORDS ── */
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: wordReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes wordReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── COUNTER ANIMATION ── */
+.counter { display: inline-block; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .site-header { padding: 0 20px; }
+  .header-nav { display: none; }
+  .header-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--neutral);
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    gap: 16px;
+  }
+  .header-nav.open a { color: var(--dark); }
+  .header-nav.open .nav-dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: max-height 0.3s, visibility 0.3s, padding 0.3s;
+    background: var(--light);
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  .header-nav.open .nav-dropdown-menu::before { display: none; }
+  .header-nav.open .nav-dropdown.open .nav-dropdown-menu {
+    visibility: visible;
+    max-height: 200px;
+    padding: 4px 0;
+  }
+  .header-nav.open .nav-dropdown:hover .nav-dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+  }
+  .header-nav.open .nav-dropdown.open:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 200px;
+  }
+  .mobile-toggle { display: block; }
+  .section-light, .section-alt, .section-dark { padding: 64px 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  h1 { font-size: clamp(30px, 8vw, 48px); }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════ */
+/* COMMUNITIES PAGE STYLES                     */
+/* ═══════════════════════════════════════════ */
+
+/* ── HERO ── */
+.hero-communities {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-communities .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1582407947092-68b900e2e8c2?w=1600&q=80') center/cover no-repeat;
+  z-index: 0;
+}
+.hero-communities .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.75) 100%);
+  z-index: 1;
+}
+.hero-communities .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 40px;
+  max-width: 800px;
+}
+.hero-communities h1 { color: #fff; margin-bottom: 20px; }
+.hero-communities p {
+  color: rgba(255,255,255,0.8);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+/* ── INTRO TWO-COL ── */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.intro-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.intro-stat {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  border-left: 3px solid var(--primary);
+}
+.intro-stat .stat-value {
+  font-family: var(--font-head);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 4px;
+}
+.intro-stat .stat-label {
+  font-size: 13px;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* ── LIFESTYLE FEATURES ── */
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.lifestyle-card {
+  text-align: center;
+  padding: 40px 24px;
+  background: var(--neutral);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.lifestyle-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.lifestyle-card .lc-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  background: rgba(103,72,145,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lifestyle-card .lc-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+}
+.lifestyle-card h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.lifestyle-card p {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+/* ── COMMUNITY CARDS GRID ── */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.community-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  height: 320px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.community-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.community-card .cc-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.community-card:hover .cc-img {
+  transform: scale(1.08);
+}
+.community-card .cc-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,21,48,0.85) 0%, rgba(26,21,48,0.2) 50%, transparent 100%);
+  z-index: 1;
+}
+.community-card .cc-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+  color: #fff;
+}
+.community-card .cc-content h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.community-card .cc-content .cc-zip {
+  font-size: 13px;
+  color: var(--secondary);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: block;
+}
+.community-card .cc-btn {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  transition: background 0.2s, border-color 0.2s;
+}
+.community-card:hover .cc-btn {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ── MODALS ── */
+.community-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+.community-modal.active {
+  display: flex;
+}
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(26,21,48,0.92);
+  z-index: 0;
+}
+.modal-content {
+  position: relative;
+  z-index: 1;
+  background: var(--neutral);
+  border-radius: 8px;
+  max-width: 860px;
+  width: 100%;
+  margin: 40px auto;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: rgba(26,21,48,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--primary); }
+.modal-close svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+/* Modal Image Carousel */
+.modal-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+}
+.modal-carousel::-webkit-scrollbar { height: 4px; }
+.modal-carousel::-webkit-scrollbar-track { background: var(--light); }
+.modal-carousel::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
+.modal-carousel-img {
+  min-width: 100%;
+  height: 340px;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+/* Modal Body */
+.modal-body { padding: 40px; }
+.modal-vibe {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+/* Modal Quick Stats */
+.modal-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.modal-stat {
+  text-align: center;
+  padding: 16px 8px;
+  background: var(--light);
+  border-radius: var(--radius);
+}
+.modal-stat .ms-value {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.modal-stat .ms-label {
+  font-size: 11px;
+  color: var(--mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* Modal Sections */
+.modal-section { margin-bottom: 32px; }
+.modal-section h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.modal-section p {
+  font-size: 15px;
+  color: var(--mid);
+  line-height: 1.8;
+}
+
+/* Modal Highlights */
+.modal-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.modal-highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--dark);
+  font-weight: 600;
+}
+.modal-highlight svg {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Modal Comparison */
+.modal-compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.compare-item {
+  text-align: center;
+  padding: 20px 12px;
+  background: var(--light);
+  border-radius: var(--radius);
+}
+.compare-item .ci-value {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.compare-item .ci-label {
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+/* Misty's Take */
+.mistys-take {
+  background: linear-gradient(135deg, rgba(103,72,145,0.06) 0%, rgba(146,27,216,0.04) 100%);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+.mistys-take .mt-label {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+.mistys-take p {
+  font-size: 15px;
+  color: var(--dark);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* Modal Map */
+.modal-map {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.modal-map iframe {
+  width: 100%;
+  height: 280px;
+  border: 0;
+}
+
+/* Modal CTAs */
+.modal-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── BUYER PERSONAS ── */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.persona-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.persona-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--secondary);
+}
+.persona-card .pc-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(156,121,199,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.persona-card .pc-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--secondary);
+}
+.persona-card h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.persona-card p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.persona-card .pc-areas {
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stats-bar .sb-item {
+  text-align: center;
+  padding: 36px 20px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.stats-bar .sb-item:last-child { border-right: none; }
+.stats-bar .sb-value {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.stats-bar .sb-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* ── BOTTOM CTA ── */
+.cta-bottom {
+  padding: 64px 0;
+  text-align: center;
+}
+.cta-bottom h2 { color: #fff; margin-bottom: 16px; }
+.cta-bottom p { margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+/* ── RESPONSIVE OVERRIDES ── */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: repeat(2, 1fr); }
+  .lifestyle-grid { grid-template-columns: repeat(2, 1fr); }
+  .persona-grid { grid-template-columns: repeat(2, 1fr); }
+  .modal-stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 40px; }
+  .community-grid { grid-template-columns: 1fr; }
+  .lifestyle-grid { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar .sb-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .modal-body { padding: 24px; }
+  .modal-highlights { grid-template-columns: 1fr; }
+  .modal-compare { grid-template-columns: 1fr; }
+  .modal-ctas { flex-direction: column; }
+  .community-modal { padding: 20px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Preview Banner -->
+<div class="preview-banner">
+  <span>BACON REALTY GROUP</span> Design Preview &mdash; Communities &mdash; March 2026
+</div>
+
+<!-- Header -->
+<header class="site-header nav-transparent" id="siteHeader">
+  <div class="header-inner">
+    <a href="01-home.html" class="header-brand">Bacon Realty Group</a>
+    <nav class="header-nav" id="mainNav">
+      <a href="09-home-search.html">Search Homes</a>
+      <div class="nav-dropdown">
+        <a href="03-buy.html" class="nav-dropdown-trigger">Buy <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="03-buy.html">Buyer's Guide</a>
+          <a href="08-mortgage.html">Mortgage Info</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="04-sell.html" class="nav-dropdown-trigger">Sell <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="04-sell.html">Seller's Guide</a>
+          <a href="07-home-valuation.html">Home Valuation</a>
+        </div>
+      </div>
+      <a href="06-communities.html">Communities</a>
+      <div class="nav-dropdown">
+        <a href="02-about.html" class="nav-dropdown-trigger">About <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="02-about.html">About Misty</a>
+          <a href="10-testimonials.html">Testimonials</a>
+        </div>
+      </div>
+      <a href="05-contact.html" class="nav-cta">Contact</a>
+    </nav>
+    <button class="mobile-toggle" onclick="document.getElementById('mainNav').classList.toggle('open')" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 1. HERO                                 -->
+<!-- ═══════════════════════════════════════ -->
+<section class="hero-communities">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow" style="justify-content:center; color: var(--secondary);">
+      <span style="display:inline-block; width:32px; height:2px; background:var(--secondary);"></span>
+      8 Neighborhoods, One Local Broker
+    </div>
+    <h1 class="hero-stagger">Explore Bay Area Houston Communities</h1>
+    <p>From the NASA corridor to the shores of Galveston Bay, find the neighborhood that fits your life. Misty Bacon has sold homes across every zip code listed here.</p>
+    <a href="#community-cards" class="btn-primary">View Communities</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 2. INTRO - WHY BAY AREA HOUSTON         -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-light">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="reveal-left">
+        <div class="eyebrow">The Region</div>
+        <h2>Why Bay Area Houston?</h2>
+        <p style="margin-top:20px;">Bay Area Houston runs along the NASA corridor from Clear Lake to Baytown, hugging the western shore of Galveston Bay. This is where aerospace engineers, medical professionals, teachers, and families have put down roots for decades. The University of Houston-Clear Lake anchors the education scene. Medical facilities stretch from Clear Lake Regional to HCA Houston Healthcare. And the bay itself delivers weekend fishing, sunset kayaking, and waterfront dining that most Houston commuters only dream about.</p>
+        <p style="margin-top:16px;">Six school districts serve the region, including top-rated Clear Creek ISD and the tight-knit campuses of Deer Park ISD and La Porte ISD. Homes range from $55K condos near NASA to $300K waterfront properties along the bay, giving first-time buyers and downsizers real options without compromising on lifestyle.</p>
+      </div>
+      <div class="reveal-right">
+        <div class="intro-stats">
+          <div class="intro-stat">
+            <span class="stat-value counter" data-target="8">0</span>
+            <span class="stat-label">Communities</span>
+          </div>
+          <div class="intro-stat">
+            <span class="stat-value counter" data-target="6">0</span>
+            <span class="stat-label">School Districts</span>
+          </div>
+          <div class="intro-stat">
+            <span class="stat-value">NASA</span>
+            <span class="stat-label">Corridor</span>
+          </div>
+          <div class="intro-stat">
+            <span class="stat-value">Bay</span>
+            <span class="stat-label">Galveston Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 3. LIFESTYLE FEATURES                   -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-alt">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:12px;">
+      <div class="eyebrow" style="justify-content:center;">Life on the Bay</div>
+      <h2>What Makes This Region Different</h2>
+    </div>
+    <div class="lifestyle-grid">
+      <div class="lifestyle-card reveal">
+        <div class="lc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/><path d="M12 2L9 7h6l-3-5z"/></svg>
+        </div>
+        <h4>Waterfront Living</h4>
+        <p>Boat docks, fishing piers, and bay breezes. La Porte's Sylvan Beach Park and Clear Lake's marina district put you minutes from the water.</p>
+      </div>
+      <div class="lifestyle-card reveal" style="transition-delay:0.1s;">
+        <div class="lc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+        </div>
+        <h4>Aerospace &amp; Education Hub</h4>
+        <p>NASA's Johnson Space Center, UHCL, and San Jacinto College create a knowledge corridor that drives careers and property values alike.</p>
+      </div>
+      <div class="lifestyle-card reveal" style="transition-delay:0.2s;">
+        <div class="lc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+        </div>
+        <h4>Dining &amp; Entertainment</h4>
+        <p>Kemah Boardwalk for date nights, Baybrook Mall for weekend shopping, and a growing restaurant scene across Deer Park, League City, and Webster.</p>
+      </div>
+      <div class="lifestyle-card reveal" style="transition-delay:0.3s;">
+        <div class="lc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h4>Top-Rated Schools</h4>
+        <p>Clear Creek ISD consistently ranks among the state's best. Deer Park ISD, La Porte ISD, and Goose Creek CISD serve tight-knit family communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 4. COMMUNITY CARDS GRID                 -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-light" id="community-cards">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:12px;">
+      <div class="eyebrow" style="justify-content:center;">Explore Each Area</div>
+      <h2>8 Bay Area Houston Communities</h2>
+      <p style="max-width:600px; margin:16px auto 0; color:var(--mid);">Click any community to see school info, price ranges, lifestyle details, and Misty's personal recommendations.</p>
+    </div>
+    <div class="community-grid">
+
+      <!-- La Porte -->
+      <div class="community-card reveal" data-community="la-porte" onclick="openModal('la-porte')">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>La Porte</h3>
+          <span class="cc-zip">77571</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Deer Park -->
+      <div class="community-card reveal" data-community="deer-park" onclick="openModal('deer-park')" style="transition-delay:0.1s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Deer Park</h3>
+          <span class="cc-zip">77536</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Pasadena 77503 -->
+      <div class="community-card reveal" data-community="pasadena-77503" onclick="openModal('pasadena-77503')" style="transition-delay:0.2s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Pasadena</h3>
+          <span class="cc-zip">77503</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Pasadena 77505 -->
+      <div class="community-card reveal" data-community="pasadena-77505" onclick="openModal('pasadena-77505')" style="transition-delay:0.3s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Pasadena South</h3>
+          <span class="cc-zip">77505</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Baytown 77521 -->
+      <div class="community-card reveal" data-community="baytown-77521" onclick="openModal('baytown-77521')">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Baytown</h3>
+          <span class="cc-zip">77521</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Baytown 77523 -->
+      <div class="community-card reveal" data-community="baytown-77523" onclick="openModal('baytown-77523')" style="transition-delay:0.1s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Baytown West</h3>
+          <span class="cc-zip">77523</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Clear Lake 77058 -->
+      <div class="community-card reveal" data-community="clear-lake-77058" onclick="openModal('clear-lake-77058')" style="transition-delay:0.2s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Houston / Clear Lake</h3>
+          <span class="cc-zip">77058</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+      <!-- Clear Lake 77062 -->
+      <div class="community-card reveal" data-community="clear-lake-77062" onclick="openModal('clear-lake-77062')" style="transition-delay:0.3s;">
+        <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&q=80');"></div>
+        <div class="cc-overlay"></div>
+        <div class="cc-content">
+          <h3>Houston / Clear Lake</h3>
+          <span class="cc-zip">77062</span>
+          <span class="cc-btn">Learn More</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 5. COMMUNITY MODALS                     -->
+<!-- ═══════════════════════════════════════ -->
+
+<!-- ── LA PORTE MODAL ── -->
+<div class="community-modal" id="modal-la-porte">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80" alt="La Porte neighborhood">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="La Porte homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1582407947092-68b900e2e8c2?w=900&q=80" alt="Galveston Bay waterfront">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Small-town soul with bay water at your doorstep.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$175K-$280K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">La Porte ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">35 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~36,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Mornings start with a walk along Sylvan Beach Park, where pelicans glide over Galveston Bay and the Bayshore neighborhood wakes up slowly. Kids head to La Porte ISD schools, known for strong athletics and community involvement. Afternoons might mean fishing off the pier or grabbing tacos at a local spot on Spencer Highway. The petrochemical industry anchors employment here, but La Porte's appeal is in what you come home to: quiet streets, friendly neighbors, and sunsets over the water.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Single-family homes dominate La Porte's inventory, from well-maintained 1970s ranch houses in the $170K range to newer construction near Fairmont Parkway pushing $280K. Waterfront lots along Bayshore Drive command premiums but deliver unobstructed bay views. A handful of townhomes and condos offer lower-maintenance options for buyers who want the La Porte lifestyle without yard work.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+            Sylvan Beach Park &amp; Pier
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            La Porte ISD
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Bayshore Community
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            35-Min Downtown Commute
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Strong Petrochemical Jobs
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            San Jacinto Battleground
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">22% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">8/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Bay Access</span>
+            <span class="ci-label">Direct Galveston Bay waterfront</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>La Porte is my pick for buyers who want waterfront vibes without Clear Lake prices. The Bayshore neighborhood is the hidden gem here. You get bay views, a real sense of community, and La Porte ISD schools that families love. If you work along the ship channel or in the petrochemical corridor, your commute practically disappears.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55439.82!2d-95.04!3d29.6655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640914b42a1b2d1%3A0x7d47e809e34c1e6d!2sLa%20Porte%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="La Porte map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in La Porte</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About La Porte</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── DEER PARK MODAL ── -->
+<div class="community-modal" id="modal-deer-park">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=80" alt="Deer Park neighborhood">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="Deer Park homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Deer Park community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">The family neighborhood where everyone knows your name.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$180K-$300K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Deer Park ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">30 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~35,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Deer Park runs on Friday night football and neighborhood cookouts. Families here chose this city for a reason: Deer Park ISD is one of the most well-funded districts in the region, and the schools show it. The San Jacinto Monument and Battleground State Historic Site sit right on the edge of town, a reminder that this area has deep Texas roots. The refinery industry provides stable, high-paying jobs within a 10-minute drive. Weekends are for Dow Park, little league games, and slow evenings on the back patio.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Deer Park skews toward single-family homes on generous lots. Older sections near Center Street offer renovated 3-bedroom homes in the $180K range. Newer builds east of Highway 225 push into the $250K to $300K territory with updated finishes and open floor plans. Very little condo or townhome inventory here. This is a single-family market built for families who want space.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Deer Park ISD (top-funded)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            San Jacinto Monument
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Refinery Corridor Jobs
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Large Single-Family Lots
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            Dow Park &amp; Recreation
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            30-Min Downtown Commute
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">15% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">9/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">2x Larger</span>
+            <span class="ci-label">Average lot size vs. inner loop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>Deer Park is where I send families who want the best schools in the area without breaking the budget. The district is phenomenal, the neighborhoods are safe and walkable, and the community spirit is real. If you or your spouse works in the refinery corridor, you can be at work in under 10 minutes. That work-life balance is hard to beat.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55439.82!2d-95.12!3d29.7055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640903aa7a50be3%3A0x7bbd3b3e46b87b65!2sDeer%20Park%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Deer Park map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Deer Park</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Deer Park</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PASADENA 77503 MODAL ── -->
+<div class="community-modal" id="modal-pasadena-77503">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="Pasadena neighborhood">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80" alt="Pasadena homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="Pasadena community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Diverse, affordable, and closer to everything than you think.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$120K-$220K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Pasadena ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">25 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~155,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Pasadena is the largest city in Bay Area Houston, and 77503 puts you in the heart of it. The Strawberry Festival draws 100,000+ visitors every May, but the real draw is everyday affordability. Families here get more house for their money, quick access to the Texas Medical Center via Highway 225, and a cultural diversity that shows up in the restaurants, shops, and neighborhood festivals. San Jacinto College's central campus is right here, making continuing education accessible for working adults.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>This zip code offers the most affordable entry point in the Bay Area Houston market. Starter homes in the $120K to $150K range are common, many with recent updates and 3-bedroom floor plans. Move-up buyers find renovated properties with modern kitchens in the $180K to $220K bracket. The inventory turns over quickly because the price-to-location ratio is strong.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            Strawberry Festival (annual)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            San Jacinto College
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Medical Center Access (25 min)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+            Most Affordable Zip Code
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Diverse Cultural Scene
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Quick Hwy 225 Commute
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">38% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">7/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">25 Min</span>
+            <span class="ci-label">To Texas Medical Center</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>If you are a first-time buyer and every dollar matters, Pasadena 77503 is where I start the conversation. You get a real house with a yard for under $150K, and you are 25 minutes from the Medical Center. The food scene alone is worth the move. I have helped multiple nurses and medical staff find homes here because the commute and the price just work.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55439.82!2d-95.17!3d29.6911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864090be233e2a27%3A0x7d47e809e34c1e6d!2sPasadena%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pasadena map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Pasadena 77503</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Pasadena</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PASADENA 77505 MODAL ── -->
+<div class="community-modal" id="modal-pasadena-77505">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80" alt="South Pasadena neighborhood">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&q=80" alt="South Pasadena homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80" alt="South Pasadena community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Newer builds, wider streets, and room to grow.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$160K-$260K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Pasadena ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">30 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~45,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>South Pasadena feels noticeably different from its northern neighbor. The subdivisions are newer, the streets are wider, and the developments trend suburban. You will find more two-story homes with attached garages, community pools, and HOA-maintained landscaping. Beltway 8 access makes commuting to Clear Lake, the Medical Center, or downtown Houston straightforward. Families here appreciate the balance: Pasadena ISD schools with a more suburban feel than the urban core.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Expect newer construction from the 2000s and 2010s in the $200K to $260K range. Older sections closer to Fairmont Parkway offer 3-bedroom homes starting around $160K with solid bones and room for updates. This area attracts move-up buyers who want more square footage than Clear Lake offers at the same price point.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Newer Suburban Subdivisions
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Beltway 8 Access
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Pasadena ISD Schools
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            HOA Community Amenities
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+            More Space Per Dollar
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Growing Family Community
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">28% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">7/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">20% Newer</span>
+            <span class="ci-label">Avg home age vs. north Pasadena</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>South Pasadena 77505 is my recommendation for growing families who looked at Clear Lake and felt priced out. You get the newer construction, the community amenities, and the suburban feel, but at $50K to $80K less than comparable homes near NASA. The Beltway 8 connection makes Clear Lake employers easy to reach. It is a smart move for buyers thinking ahead.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27719.91!2d-95.17!3d29.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864090d0bb7c1a67%3A0x1234567890abcdef!2sPasadena%2C%20TX%2077505!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pasadena 77505 map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Pasadena 77505</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About South Pasadena</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BAYTOWN 77521 MODAL ── -->
+<div class="community-modal" id="modal-baytown-77521">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Baytown waterfront">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=80" alt="Baytown homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=80" alt="Baytown community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Waterfront grit meets a downtown that is finally waking up.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$100K-$220K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Goose Creek CISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">40 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~85,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Baytown 77521 sits along the bay with direct water views and the energy of a city that is reinventing itself. The downtown district has added new restaurants, a farmers market, and public art installations over the past few years. ExxonMobil's Baytown Complex is the area's largest employer and the economic engine that keeps housing affordable while wages stay competitive. Bayland Marina and the Eddie Gray Wetlands Center give residents outdoor escapes without leaving city limits.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>This is one of the most affordable zip codes in the entire Bay Area Houston region. Starter homes under $120K are common, and you can find updated 3-bedroom properties in the $150K to $200K range. Waterfront properties along Burnet Bay offer something unique: bay views at prices that would be impossible in Clear Lake. The inventory includes a mix of 1960s-era ranches, 1990s builds, and scattered new construction.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+            Bayfront Waterfront Access
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            ExxonMobil Complex
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            Revitalizing Downtown
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Goose Creek CISD
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+            Lowest Price Entry Point
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Eddie Gray Wetlands Center
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">45% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">6/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Bay Views</span>
+            <span class="ci-label">At a fraction of Clear Lake cost</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>Baytown 77521 is my value pick. If you work at ExxonMobil or anywhere along the ship channel, you can own a home with bay views for under $200K. The downtown revival is real. New restaurants and community events keep popping up. I tell buyers who are on the fence: drive through on a Saturday morning, walk the waterfront, and see if the energy clicks. It usually does.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55439.82!2d-94.97!3d29.7355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863f6271b414b1c7%3A0xead8d9e7c1e2a9dd!2sBaytown%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Baytown map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Baytown 77521</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Baytown</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BAYTOWN 77523 MODAL ── -->
+<div class="community-modal" id="modal-baytown-77523">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&q=80" alt="West Baytown neighborhood">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80" alt="West Baytown homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80" alt="West Baytown community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Quiet residential streets where families put down real roots.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$140K-$250K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Goose Creek CISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">35 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~40,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>West Baytown is the quieter, more residential side of the city. The neighborhoods here feel established, with mature trees, cul-de-sacs, and the kind of streets where kids ride bikes after school. Goose Creek CISD serves the area with campuses that have strong extracurricular programs. Shopping and dining options along Garth Road put daily errands within a few minutes. The I-10 East corridor connects you to Houston proper, while the Fred Hartman Bridge links to La Porte and the rest of Bay Area Houston.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>West Baytown leans toward well-maintained single-family homes on quarter-acre lots. The $140K to $180K bracket gets you a solid 3-bedroom with a two-car garage. Newer subdivisions along the N. Main corridor push into $220K to $250K with updated finishes. This area attracts families upgrading from apartments and first-time buyers who want a neighborhood feel without condo living.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Established Family Neighborhoods
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Goose Creek CISD
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            I-10 East &amp; Fred Hartman Bridge
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+            Garth Road Shopping Corridor
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Mature Tree-Lined Streets
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Strong Resale Market
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">35% Lower</span>
+            <span class="ci-label">Home prices vs. Houston metro avg</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">7/10</span>
+            <span class="ci-label">School rating (GreatSchools avg)</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Larger Lots</span>
+            <span class="ci-label">Avg 0.25 acres vs. inner city</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>West Baytown 77523 is where I point first-time buyers who want a real neighborhood, not a complex. The lots are bigger, the streets are quieter, and you get a true suburban feel. Couples starting families especially love the cul-de-sac neighborhoods here. If you work along I-10 East or in the plant corridor, the commute is painless.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27719.91!2d-95.01!3d29.76!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863f6271b414b1c7%3A0xbcd1234567890abc!2sBaytown%2C%20TX%2077523!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Baytown 77523 map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Baytown 77523</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About West Baytown</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLEAR LAKE 77058 MODAL ── -->
+<div class="community-modal" id="modal-clear-lake-77058">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80" alt="Clear Lake area">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80" alt="Clear Lake homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="NASA corridor">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">Where rocket scientists and UHCL grads call home.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$55K-$280K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Clear Creek ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">35 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~25,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>This is the epicenter of Bay Area Houston. NASA's Johnson Space Center sits at the heart of 77058, and the entire community revolves around aerospace, education, and the lake. UHCL students grab coffee before class while Boeing and Lockheed Martin engineers head to campus. Space Center Houston draws tourists, but locals know the real draw is the condo communities, lakefront dining, and a school district that consistently ranks among the best in the state. Clear Creek ISD is the anchor, and the STEM pipeline from school to JSC is a real thing here.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>This is Misty's core market. The 77058 zip code has the widest price spread in the region, from $55K condos near El Camino Village to $280K single-family homes in established subdivisions. Condo and townhome communities like Oakbrook, El Dorado Trace, and Nassau Bay condos cater to NASA professionals, UHCL students, and downsizers. Single-family homes cluster in subdivisions with mature trees and easy JSC access.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+            NASA Johnson Space Center
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            UHCL &amp; Clear Creek ISD
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Condo &amp; Townhome Communities
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            Space Center Houston
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+            Lakefront Dining &amp; Marina
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Boeing &amp; Lockheed Martin
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">Top 10%</span>
+            <span class="ci-label">Clear Creek ISD statewide ranking</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">$55K Entry</span>
+            <span class="ci-label">Lowest condo prices in the corridor</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">5 Min</span>
+            <span class="ci-label">To NASA/JSC campus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>This is my backyard. I have sold more condos and townhomes in 77058 than any other zip code. If you work at NASA, Boeing, or UHCL, this is where you want to be. The condo market here is unique to the entire Houston metro. You can own a two-bedroom condo for under $80K, walk to campus, and live in a top-rated school district. I know every complex, every HOA, and every corner of this zip code. Call me first.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27719.91!2d-95.10!3d29.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409ccbf6b6ffa1%3A0x65e6e839b68e3eb6!2sHouston%2C%20TX%2077058!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clear Lake 77058 map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Clear Lake 77058</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Clear Lake</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CLEAR LAKE 77062 MODAL ── -->
+<div class="community-modal" id="modal-clear-lake-77062">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-carousel">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&q=80" alt="Clear Lake residential">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&q=80" alt="Clear Lake homes">
+      <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&q=80" alt="Clear Lake community">
+    </div>
+    <div class="modal-body">
+      <div class="modal-vibe">The residential heart of Clear Lake, built for families who stay.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat">
+          <span class="ms-value">$180K-$300K</span>
+          <span class="ms-label">Median Range</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">Clear Creek ISD</span>
+          <span class="ms-label">School District</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">35 min</span>
+          <span class="ms-label">To Downtown</span>
+        </div>
+        <div class="modal-stat">
+          <span class="ms-value">~35,000</span>
+          <span class="ms-label">Population</span>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>If 77058 is Clear Lake's professional core, 77062 is where those professionals come home to. This is a residential neighborhood through and through. Families walk to Clear Creek ISD elementary schools, weekend errands revolve around Baybrook Mall and the shops along Bay Area Boulevard, and backyard barbecues are a weekly occurrence. The vibe is suburban, stable, and family-first. Aerospace careers at JSC are still the primary driver, but you will also find teachers, healthcare workers, and small business owners who chose 77062 for the schools and the neighborhood character.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Single-family homes dominate 77062. Ranch-style homes from the 1970s and 1980s start in the $180K to $220K range and offer large lots with mature landscaping. Updated and expanded homes push $250K to $300K. A smaller selection of townhomes provides options for buyers who prefer lower maintenance. This is a move-up market for families who outgrew their starter home and want top-tier schools.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Clear Creek ISD (top-rated)
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Established Family Subdivisions
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1"/><circle cx="15" cy="9" r="1"/></svg>
+            Baybrook Mall &amp; Shopping
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            10 Min to NASA/JSC
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Walkable Neighborhoods
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Strong Resale Values
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">Top 10%</span>
+            <span class="ci-label">Clear Creek ISD statewide ranking</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">10 Min</span>
+            <span class="ci-label">To Johnson Space Center</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Strong</span>
+            <span class="ci-label">Appreciation over 10 years</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>If you have kids and you want the best schools in Bay Area Houston, 77062 is the answer. This is the zip code where families plant roots and stay for 15 to 20 years. The homes have character, the lots have size, and the schools speak for themselves. I raised my own family in this area, so when I tell you the neighborhood holds its value, I am speaking from experience. Baybrook Mall and the new restaurants along Bay Area Boulevard make it feel more connected than ever.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27719.91!2d-95.13!3d29.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409ccbf6b6ffa1%3A0xabc1234567890def!2sHouston%2C%20TX%2077062!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Clear Lake 77062 map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Clear Lake 77062</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Clear Lake</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 6. BUYER PERSONAS                       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-dark">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Find Your Fit</div>
+      <h2>Which Community Matches You?</h2>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-card reveal">
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <h4>First-Time Buyers</h4>
+        <p>You want a real home, not a condo, for under $200K. Good schools and a safe neighborhood matter. Your commute is flexible.</p>
+        <div class="pc-areas">Best Areas: Pasadena, Baytown</div>
+      </div>
+      <div class="persona-card reveal" style="transition-delay:0.1s;">
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+        </div>
+        <h4>Aerospace Professionals</h4>
+        <p>You work at NASA, Boeing, or Lockheed Martin. You need a short commute to JSC and want Clear Creek ISD for your kids.</p>
+        <div class="pc-areas">Best Area: Clear Lake 77058</div>
+      </div>
+      <div class="persona-card reveal" style="transition-delay:0.2s;">
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+        </div>
+        <h4>Waterfront Enthusiasts</h4>
+        <p>Fishing, boating, and bay sunsets drive your search. You want water access without paying Galveston or Kemah prices.</p>
+        <div class="pc-areas">Best Areas: La Porte, Clear Lake</div>
+      </div>
+      <div class="persona-card reveal" style="transition-delay:0.3s;">
+        <div class="pc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h4>Growing Families</h4>
+        <p>You need space, a big yard, strong schools, and neighborhoods where kids play outside. Budget stretches further here.</p>
+        <div class="pc-areas">Best Areas: Deer Park, Clear Lake 77062</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 7. STATS BAR                            -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-dark" style="padding:0;">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="sb-item">
+        <span class="sb-value counter" data-target="8">0</span>
+        <span class="sb-label">Communities</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-value">$55K-$300K</span>
+        <span class="sb-label">Price Range</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-value counter" data-target="6">0</span>
+        <span class="sb-label">School Districts</span>
+      </div>
+      <div class="sb-item">
+        <span class="sb-value">NASA</span>
+        <span class="sb-label">Corridor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 8. FAQ                                  -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-alt">
+  <div class="container" style="max-width:800px;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="eyebrow" style="justify-content:center;">Common Questions</div>
+      <h2>Bay Area Houston Communities FAQ</h2>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is Bay Area Houston and where is it located?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Bay Area Houston is the region stretching along the western shore of Galveston Bay, roughly from Pasadena south to Clear Lake and east to Baytown. It includes cities like La Porte, Deer Park, Pasadena, Baytown, and the Clear Lake area of Houston. NASA's Johnson Space Center sits at the center of the corridor, and the region is served by six school districts. It is approximately 25 to 40 minutes southeast of downtown Houston.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Which community has the best schools in the area?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Clear Creek ISD, which serves the Clear Lake 77058 and 77062 zip codes, consistently ranks in the top 10% of Texas school districts. Deer Park ISD is also highly rated and well-funded, making it a strong choice for families. La Porte ISD and Goose Creek CISD (Baytown) round out the options with solid community-focused campuses.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is the most affordable community in Bay Area Houston?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Pasadena 77503 and Baytown 77521 offer the lowest entry points, with homes starting under $120K. For condo buyers, Clear Lake 77058 has units starting around $55K near the NASA corridor. Each area offers a different lifestyle, so affordability depends on what kind of home and community you are looking for.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How long is the commute from Bay Area Houston to downtown Houston?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Commute times range from 25 minutes (Pasadena) to 40 minutes (Baytown) during typical traffic. Clear Lake and La Porte average around 35 minutes to downtown via I-45 South or Highway 225. Many residents work locally at NASA, the refineries, medical facilities, or UHCL, keeping their commutes under 15 minutes.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is Bay Area Houston a good place for waterfront living?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Absolutely. La Porte offers direct Galveston Bay access at Sylvan Beach Park. Clear Lake has marinas and lakefront dining. Baytown 77521 provides bay views at the most affordable prices in the region. For boating, fishing, and sunset views, Bay Area Houston delivers waterfront living at a fraction of Galveston or Kemah prices.
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I choose the right community for my family?
+        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Start with three factors: where you work, what school district matters most, and your budget. If you work at NASA, Clear Lake is the obvious choice. If schools are the top priority and budget is moderate, Deer Park delivers. If affordability drives the decision, Pasadena and Baytown offer the most house for your money. Misty Bacon has sold in all eight communities and can match your priorities to the right neighborhood. <a href="05-contact.html" style="color:var(--primary); font-weight:600;">Reach out for a free consultation.</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 9. BOTTOM CTA                           -->
+<!-- ═══════════════════════════════════════ -->
+<section class="section-dark cta-bottom">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Ready to Explore?</div>
+    <h2>Find Your Community</h2>
+    <p>Eight neighborhoods, one local broker who knows every street. Tell Misty what matters most and she will match you with the right Bay Area Houston community.</p>
+    <a href="05-contact.html" class="btn-primary">Get Personalized Recommendations</a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Bacon Realty Group</div>
+        <p class="footer-tagline">"Remember Everybody Loves Bacon!"</p>
+        <p>Misty Bacon, Broker/Owner<br>281-303-5511<br>misty@thebaconrealtygroup.com</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/thebaconrealtygroup" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mistybacon" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="01-home.html">Home</a>
+        <a href="03-buy.html">Buyer's Guide</a>
+        <a href="04-sell.html">Seller's Guide</a>
+        <a href="06-communities.html">Communities</a>
+        <a href="02-about.html">About Misty</a>
+        <a href="05-contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Communities</h4>
+        <a href="06-communities.html">La Porte</a>
+        <a href="06-communities.html">Deer Park</a>
+        <a href="06-communities.html">Pasadena</a>
+        <a href="06-communities.html">Baytown</a>
+        <a href="06-communities.html">Clear Lake</a>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="09-home-search.html">Home Search</a>
+        <a href="07-home-valuation.html">Home Valuation</a>
+        <a href="08-mortgage.html">Mortgage Info</a>
+        <a href="10-testimonials.html">Testimonials</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Bacon Realty Group LLC. All rights reserved. TX License #0579821. Website by Agentic Press.</p>
+      <div class="footer-legal">
+        <a href="https://www.trec.texas.gov/forms/consumer-protection-notice" target="_blank" rel="noopener">TREC Consumer Protection</a>
+        <a href="https://www.trec.texas.gov/forms/information-about-brokerage-services" target="_blank" rel="noopener">TREC Brokerage Info</a>
+        <a href="https://www.hud.gov/program_offices/fair_housing_equal_opp" target="_blank" rel="noopener">Equal Housing Opportunity</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+/* ── Mobile Dropdown Toggle ── */
+document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+  trigger.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = this.closest('.nav-dropdown');
+      document.querySelectorAll('.nav-dropdown').forEach(d => {
+        if (d !== dropdown) d.classList.remove('open');
+      });
+      dropdown.classList.toggle('open');
+    }
+  });
+});
+
+/* ── FAQ Accordion ── */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => {
+    b.nextElementSibling.style.maxHeight = '0px';
+    b.nextElementSibling.style.paddingBottom = '0';
+    const ic = b.querySelector('.faq-icon');
+    if (ic) ic.style.transform = '';
+    b.style.color = '';
+  });
+  if (!isOpen) {
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.paddingBottom = '20px';
+    if (icon) icon.style.transform = 'rotate(45deg)';
+    btn.style.color = 'var(--primary)';
+  }
+}
+
+/* ── Scroll Progress Bar ── */
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  document.getElementById('scrollProgress').style.width = progress + '%';
+});
+
+/* ── Nav Scroll State ── */
+(function() {
+  const header = document.getElementById('siteHeader');
+  if (!header) return;
+  function checkScroll() {
+    if (window.scrollY > 80) {
+      header.classList.remove('nav-transparent');
+      header.classList.add('nav-solid');
+    } else {
+      header.classList.remove('nav-solid');
+      header.classList.add('nav-transparent');
+    }
+  }
+  window.addEventListener('scroll', checkScroll);
+  checkScroll();
+})();
+
+/* ── Scroll Reveal Observer ── */
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+  });
+})();
+
+/* ── H1 Stagger Animation ── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.hero-stagger').forEach(h1 => {
+    const text = h1.textContent.trim();
+    h1.innerHTML = text.split(' ').map((word, i) =>
+      `<span class="hero-word" style="animation-delay:${0.1 + i * 0.1}s">${word}</span>`
+    ).join(' ');
+  });
+});
+
+/* ── Counter Animation ── */
+(function() {
+  const counters = document.querySelectorAll('.counter');
+  if (!counters.length) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const prefix = el.dataset.prefix || '';
+      const duration = 2000;
+      const start = performance.now();
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = prefix + Math.floor(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => observer.observe(c));
+})();
+
+/* ── Parallax on Hero ── */
+(function() {
+  const heroBg = document.querySelector('.hero-bg');
+  if (!heroBg) return;
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    heroBg.style.transform = 'translateY(' + scrolled * 0.3 + 'px)';
+  });
+})();
+
+/* ═══════════════════════════════════════ */
+/* MODAL OPEN / CLOSE                      */
+/* ═══════════════════════════════════════ */
+let activeModal = null;
+
+function openModal(community) {
+  const modal = document.getElementById('modal-' + community);
+  if (!modal) return;
+  closeModal();
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  activeModal = modal;
+}
+
+function closeModal() {
+  if (activeModal) {
+    activeModal.classList.remove('active');
+    activeModal = null;
+  }
+  document.querySelectorAll('.community-modal.active').forEach(m => m.classList.remove('active'));
+  document.body.style.overflow = '';
+}
+
+/* Close on Escape */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>

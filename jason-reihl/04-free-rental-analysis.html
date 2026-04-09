@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Rental Analysis San Diego | Red House Property Management</title>
+<meta name="description" content="Get a free rental analysis for your San Diego property. Find out what your rental is worth with a complimentary market evaluation from Red House Property Management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+/* ── TOKENS ── */
+:root {
+  --blue: #033769;
+  --blue-mid: #567490;
+  --teal: #81afb7;
+  --teal-bright: #68ccd1;
+  --coral: #f76060;
+  --coral-dark: #e04f4f;
+  --cream: #fefbf7;
+  --dark: #333333;
+  --mid: #555555;
+  --light-gray: #939393;
+  --neutral: #ffffff;
+  --light: #f7f5f2;
+  --border: rgba(0,0,0,0.08);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-nav: 'Montserrat', system-ui, sans-serif;
+  --font: 'Inter', system-ui, sans-serif;
+  --max: 960px;
+  --max-wide: 1140px;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-hover: 0 6px 28px rgba(0,0,0,0.1);
+  --pad: 80px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--dark); background: var(--neutral); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+/* ── LAYOUT ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.container-wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; }
+.section-white { padding: var(--pad) 0; background: var(--neutral); }
+.section-cream { padding: var(--pad) 0; background: var(--cream); }
+.section-dark  { padding: var(--pad) 0; background: var(--blue); color: #fff; }
+.section-coral { padding: var(--pad) 0; background: var(--coral); color: #fff; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 10px; }
+.section-header p { max-width: 520px; margin: 0 auto; }
+
+/* ── TYPOGRAPHY ── */
+h1 { font-family: var(--font-head); font-size: clamp(36px, 4.5vw, 48px); font-weight: 500; line-height: 1.12; color: var(--blue); }
+h2 { font-family: var(--font-nav); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.2; color: var(--blue); }
+h3 { font-family: var(--font-nav); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--blue-mid); }
+p { font-size: 16px; color: var(--mid); line-height: 1.7; }
+.section-dark h1, .section-dark h2, .section-dark h3 { color: #fff; }
+.section-dark p { color: rgba(255,255,255,0.6); }
+.section-coral h1, .section-coral h2, .section-coral h3 { color: #fff; }
+.section-coral p { color: rgba(255,255,255,0.85); }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; display: inline-block; }
+
+/* ── BUTTONS ── */
+.btn-coral { display: inline-block; background: var(--coral); color: #fff; font-weight: 700; font-size: 13px; text-align: center; padding: 11px 26px; border-radius: var(--radius); border: 2px solid transparent; letter-spacing: 0.03em; text-transform: uppercase; transition: background .25s; }
+.btn-coral:hover { background: var(--blue); }
+.btn-outline-white { display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 24px; border-radius: var(--radius); letter-spacing: 0.03em; text-transform: uppercase; transition: border-color .25s, background .25s; }
+.btn-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.btn-outline-blue { display: inline-block; border: 2px solid var(--blue); color: var(--blue); font-weight: 700; font-size: 14px; padding: 10px 26px; border-radius: var(--radius); transition: background .25s, color .25s; }
+.btn-outline-blue:hover { background: var(--blue); color: #fff; }
+.btn-white { display: inline-block; background: #fff; color: var(--coral); font-weight: 700; font-size: 14px; padding: 13px 32px; border-radius: var(--radius); letter-spacing: 0.03em; text-transform: uppercase; transition: background .25s, transform .15s; }
+.btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+
+/* ── PREVIEW BANNER ── */
+.preview-banner { background: var(--dark); color: rgba(255,255,255,0.45); font-size: 11px; padding: 8px 0; text-align: center; letter-spacing: 0.04em; border-bottom: 2px solid var(--coral); }
+.preview-banner strong { color: var(--coral); font-weight: 700; }
+
+/* ═══ UTILITY BAR ═══ */
+.utility-bar { position: fixed; top: 33px; left: 0; right: 0; z-index: 101; background: rgba(2,40,70,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); transition: top .3s, opacity .3s; }
+.utility-bar.hidden { top: -28px; opacity: 0; pointer-events: none; }
+.utility-inner { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; height: 28px; display: flex; align-items: center; justify-content: space-between; }
+.utility-links { display: flex; gap: 20px; }
+.utility-links a { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; transition: color .2s; }
+.utility-links a:hover { color: var(--coral); }
+.utility-contact a { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; transition: color .2s; }
+.utility-contact a:hover { color: #fff; }
+
+/* ═══ NAV ═══ */
+.nav { position: fixed; top: 61px; left: 0; right: 0; z-index: 100; background: transparent; transition: top .3s, background .3s, box-shadow .3s; }
+.nav.scrolled { top: 0; background: rgba(3,55,105,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+@media (max-width: 640px) { .utility-bar { display: none; } .nav { top: 33px; } }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-wide); margin: 0 auto; padding: 0 40px; height: 72px; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 84px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-family: var(--font-nav); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { background: var(--coral); color: #fff !important; padding: 10px 22px; border-radius: var(--radius); font-size: 12px; font-weight: 700 !important; letter-spacing: 0.04em; text-transform: uppercase; transition: background .25s !important; }
+.nav-cta:hover { background: var(--coral-dark) !important; }
+
+/* ═══ INNER HERO ═══ */
+.hero-inner { min-height: 45vh; position: relative; display: flex; align-items: flex-end; padding: 120px 0 60px; background: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/home-two-1920w.jpeg') center/cover no-repeat; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(3,55,105,0.78) 0%, rgba(3,55,105,0.55) 40%, rgba(3,55,105,0.85) 100%); }
+.hero-inner .container { position: relative; z-index: 2; }
+.hero-content { max-width: 600px; text-align: center; margin: 0 auto; padding: 40px 0; }
+.hero-content .eyebrow { color: var(--coral); margin-bottom: 14px; }
+.hero-content h1 { color: #fff; margin-bottom: 16px; font-size: clamp(32px, 4.5vw, 46px); }
+.hero-content p { color: rgba(255,255,255,0.75); font-size: 17px; line-height: 1.75; margin-bottom: 0; }
+
+/* ═══ LEAD CAPTURE SPLIT ═══ */
+.lead-split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.lead-content h2 { margin-bottom: 14px; }
+.lead-content > p { font-size: 16px; margin-bottom: 24px; line-height: 1.75; }
+.check-list { display: flex; flex-direction: column; gap: 14px; }
+.check-item { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--mid); line-height: 1.6; }
+.check-icon { width: 22px; height: 22px; background: rgba(104,204,209,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.check-icon svg { width: 12px; height: 12px; color: var(--blue); }
+
+/* ═══ FORM CARD ═══ */
+.form-card { background: var(--neutral); border-radius: var(--radius); box-shadow: var(--shadow-hover); padding: 36px; border-top: 4px solid var(--coral); }
+.form-title { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+.form-sub { font-size: 14px; color: var(--mid); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { margin-bottom: 14px; }
+.form-label { display: block; font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.03em; }
+.form-input { width: 100%; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.12); border-radius: var(--radius-sm); font-size: 14px; color: var(--dark); transition: border-color .2s; }
+.form-input:focus { border-color: var(--coral); }
+select.form-input { appearance: auto; cursor: pointer; }
+textarea.form-input { resize: vertical; min-height: 72px; }
+.form-submit { width: 100%; padding: 13px; background: var(--coral); color: #fff; font-weight: 700; font-size: 14px; border-radius: var(--radius); cursor: pointer; margin-top: 4px; transition: background .2s; }
+.form-submit:hover { background: var(--coral-dark); }
+.form-fine { font-size: 12px; color: var(--light-gray); text-align: center; margin-top: 12px; }
+
+/* ═══ HOW IT WORKS ═══ */
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.step-card { text-align: center; padding: 32px 24px; }
+.step-num { width: 56px; height: 56px; border-radius: 50%; background: rgba(104,204,209,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-family: var(--font-nav); font-size: 22px; font-weight: 800; color: var(--blue); }
+.step-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--blue); }
+.step-card p { font-size: 14px; }
+
+/* ═══ WHY PROFESSIONAL ═══ */
+.why-split { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: start; }
+.why-content h2 { margin-bottom: 18px; }
+.why-content p { margin-bottom: 16px; font-size: 15px; line-height: 1.8; }
+.why-content p:last-child { margin-bottom: 0; }
+.stats-card { background: var(--blue); border-radius: var(--radius); padding: 40px 32px; }
+.stats-card-item { text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.stats-card-item:last-child { border-bottom: none; padding-bottom: 0; }
+.stats-card-item:first-child { padding-top: 0; }
+.stats-card-num { font-size: 36px; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 4px; }
+.stats-card-num span { color: var(--coral); }
+.stats-card-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+/* ═══ TESTIMONIALS ═══ */
+.test-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 800px; margin: 0 auto; }
+.test-card { background: var(--neutral); padding: 28px 24px; border-radius: var(--radius); box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+.test-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.test-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.test-star { width: 15px; height: 15px; fill: #c29a1f; }
+.test-quote { font-size: 14px; color: var(--mid); line-height: 1.8; font-style: italic; flex: 1; margin-bottom: 18px; }
+.test-author { font-size: 14px; font-weight: 700; color: var(--dark); }
+.test-role { font-size: 12px; color: var(--light-gray); margin-top: 1px; }
+
+/* ═══ FAQ ═══ */
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--dark); background: none; border: none; width: 100%; text-align: left; transition: color .2s; }
+.faq-question:hover { color: var(--blue); }
+.faq-icon { font-size: 20px; font-weight: 300; color: var(--coral); transition: transform .3s; flex-shrink: 0; margin-left: 16px; }
+.faq-answer { max-height: 0; overflow: hidden; padding-bottom: 0; font-size: 15px; color: var(--mid); line-height: 1.75; transition: max-height .35s ease, padding-bottom .35s ease; }
+
+/* ═══ CTA CORAL ═══ */
+.cta-coral-inner { text-align: center; max-width: 600px; margin: 0 auto; }
+.cta-coral-inner h2 { color: #fff; margin-bottom: 14px; }
+.cta-coral-inner p { color: rgba(255,255,255,0.85); margin-bottom: 28px; font-size: 16px; }
+
+/* ═══ FOOTER ═══ */
+.footer-top { background: var(--dark); padding: 56px 0 48px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand-col { }
+.footer-logo-img { height: 130px; width: auto; margin-bottom: 12px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.footer-logo svg { width: 24px; height: 24px; }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); font-style: italic; margin-bottom: 20px; }
+.footer-contact-block { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+.footer-contact-block a { color: var(--coral); transition: color .2s; }
+.footer-contact-block a:hover { color: #fff; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); transition: border-color .2s, color .2s, background .2s; }
+.footer-social a:hover { border-color: var(--coral); color: var(--coral); background: rgba(104,204,209,0.08); }
+.footer-social a svg { width: 15px; height: 15px; }
+.footer-col-title { font-size: 11px; font-weight: 700; color: var(--coral); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s, padding-left .2s; }
+.footer-links a:hover { color: #fff; padding-left: 4px; }
+.footer-portals { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+.portal-link { padding: 9px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700; text-align: center; letter-spacing: 0.03em; text-transform: uppercase; transition: all .2s; }
+.portal-link:hover { border-color: var(--coral); color: var(--coral); background: rgba(104,204,209,0.06); }
+
+.footer-bottom-bar { background: rgba(0,0,0,0.15); padding: 20px 0; }
+.footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-legal { font-size: 11px; color: rgba(255,255,255,0.2); }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cert-badge { border: 1px solid rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 3px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; transition: border-color .2s, color .2s; }
+.cert-badge:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); }
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .lead-split, .why-split { grid-template-columns: 1fr; }
+  .test-grid-2 { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 640px) {
+  :root { --pad: 56px; }
+  .container, .container-wide { padding: 0 20px; }
+  .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &nbsp;/&nbsp; Red House Property Management &nbsp;/&nbsp; Free Rental Analysis &nbsp;/&nbsp; April 2026
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="utility-bar">
+  <div class="utility-inner">
+    <div class="utility-links">
+      <a href="11-owner-portal.html">Owner Portal</a>
+      <a href="12-tenant-portal.html">Resident Portal</a>
+      <a href="13-vendor-proposals.html">Vendor Proposals</a>
+      <a href="14-agent-referral-program.html">Agent Referrals</a>
+    </div>
+    <div class="utility-contact">
+      <a href="tel:8587553031">(858) 755-3031</a>
+    </div>
+  </div>
+</div>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management"></a>
+    <div class="nav-links">
+      <a href="02-property-management.html">Property Management</a>
+      <a href="03-service-areas.html">Service Areas</a>
+      <a href="07-available-rentals.html">Available Rentals</a>
+      <a href="06-about.html">About</a>
+      <a href="10-resources.html">Resources</a>
+      <a href="04-free-rental-analysis.html" class="nav-cta">Free Rental Analysis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO (inner page) ============ -->
+<section class="hero-inner">
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Free Rental Analysis</span>
+      <h1>Find Out What Your San Diego Rental Property Is Worth</h1>
+      <p>Get a complimentary rental market evaluation from our Solana Beach team. No obligation, no upfront fees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEAD CAPTURE FORM ============ -->
+<section class="section-cream" id="rental-form">
+  <div class="container-wide">
+    <div class="lead-split reveal">
+      <div class="lead-content">
+        <span class="eyebrow">No Cost, No Obligation</span>
+        <h2>Request Your Free Rental Analysis</h2>
+        <p>Our team will prepare a detailed rental market evaluation for your San Diego property. You will receive a personalized report with pricing recommendations, comparable rental data, and strategies to maximize your income, all at no cost.</p>
+        <div class="check-list">
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Current market rent estimate for your property
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Comparable rental analysis for your neighborhood
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Recommendations to maximize your rental income
+          </div>
+          <div class="check-item">
+            <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Overview of our management services and fees
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="form-card">
+          <div class="form-title">Get Your Free Rental Analysis</div>
+          <div class="form-sub">Tell us about your property and we will prepare your report.</div>
+          <!-- Connects to GHL in production -->
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Jane"></div>
+            <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Smith"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="jane@email.com"></div>
+          <div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="(858) 555-0000"></div>
+          <div class="form-group"><label class="form-label">Property Address</label><input type="text" class="form-input" placeholder="123 Main St, Solana Beach, CA"></div>
+          <div class="form-group">
+            <label class="form-label">Property Type</label>
+            <select class="form-input">
+              <option value="" disabled selected>Select property type</option>
+              <option value="single-family">Single-Family</option>
+              <option value="condo">Condo</option>
+              <option value="townhome">Townhome</option>
+              <option value="duplex">Duplex / Multi-unit</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Message (optional)</label><textarea class="form-input" placeholder="Any details about your property or questions for our team..."></textarea></div>
+          <button class="form-submit">Get My Free Analysis</button>
+          <p class="form-fine">We respond within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Simple Process</span>
+      <h2>How Your Rental Analysis Works</h2>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Submit Your Property Details</h3>
+        <p>Fill out the form above with your property address and basic information. It takes less than two minutes.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>We Analyze the Market</h3>
+        <p>Our team reviews comparable rents, vacancy rates, seasonal trends, and local demand specific to your San Diego neighborhood.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Receive Your Report</h3>
+        <p>You get a detailed rental analysis with income projections, pricing recommendations, and next steps if you want to move forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY A PROFESSIONAL ANALYSIS ============ -->
+<section class="section-cream">
+  <div class="container-wide">
+    <div class="why-split reveal">
+      <div class="why-content">
+        <span class="eyebrow">Local Expertise Matters</span>
+        <h2>Why a Professional Rental Analysis Beats Online Estimates</h2>
+        <p>Automated rental estimates from sites like Zillow and Rentometer pull from broad datasets that miss the details that actually drive rent in San Diego. They cannot account for the condition of your property, recent upgrades, or whether your unit has a view that adds $200 per month to the asking price.</p>
+        <p>San Diego is a collection of micro-markets. A condo in Pacific Beach rents very differently than one in Carmel Valley, even if the square footage is identical. Our free rental analysis San Diego report factors in neighborhood-level demand, walkability, school districts, and proximity to the coast, details that algorithms simply overlook.</p>
+        <p>We also account for seasonal trends that shift rental pricing throughout the year. Summer months bring higher demand in beach communities, while university-adjacent areas see spikes in August and January. Timing your listing correctly can mean hundreds of dollars in additional monthly rent.</p>
+        <p>With 15+ years managing properties across San Diego County, our team knows which amenities command premiums, which renovations deliver real ROI, and how to position your property to attract quality tenants fast. That is the difference between a number on a screen and a rental strategy that works.</p>
+      </div>
+      <div>
+        <div class="stats-card">
+          <div class="stats-card-item">
+            <div class="stats-card-num">98<span>%</span></div>
+            <div class="stats-card-label">Owner Satisfaction</div>
+          </div>
+          <div class="stats-card-item">
+            <div class="stats-card-num">500<span>+</span></div>
+            <div class="stats-card-label">Properties Managed</div>
+          </div>
+          <div class="stats-card-item">
+            <div class="stats-card-num">15<span>+</span></div>
+            <div class="stats-card-label">Years in San Diego</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Owner Reviews</span>
+      <h2>What Property Owners Say About Red House</h2>
+    </div>
+    <div class="test-grid-2 reveal">
+      <div class="test-card">
+        <div class="test-stars"><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="test-quote">Red House gave us a thorough rental analysis before we even signed up. Their estimate was within $50 of what we actually rented for, and they had the property leased in under three weeks. Professional from start to finish.</p>
+        <div class="test-author">Patrick A.</div><div class="test-role">La Jolla Property Owner</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="test-quote">Cost-effective and professional. They handle everything so we don't have to worry. The monthly reporting gives us complete visibility into our portfolio, and their team is always a phone call away.</p>
+        <div class="test-author">Joanne C.</div><div class="test-role">Solana Beach Investor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Rental Analysis FAQs</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Is the rental analysis really free?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Yes, completely free with no strings attached. We provide a complimentary rental market evaluation for any San Diego property. There is no obligation to sign up for management services, and we will never pressure you. We offer the free rental analysis San Diego property owners need to make informed decisions about their investments.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How accurate is your rental estimate?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Our estimates are based on real-time market data, comparable properties in your specific neighborhood, current vacancy rates, and our team's 15+ years of local experience. Unlike automated tools, we factor in property condition, upgrades, views, and seasonal demand. Our rental estimates typically land within 3-5% of the actual lease price.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How long does it take to get my analysis?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">We respond within one business day of receiving your request. Most property owners receive their full rental analysis within 24 to 48 hours, depending on how much research your specific property and neighborhood requires.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What information do you need from me?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Just the basics: your property address, property type, and your contact information. If you can share details about the number of bedrooms, bathrooms, recent renovations, or any unique features, that helps us deliver a more accurate analysis. But the form takes less than two minutes to complete.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Am I obligated to sign up for management services?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Not at all. The rental analysis is a standalone service we offer to San Diego property owners at no cost. Many owners use the report simply to understand their property's value in the current market. If you decide professional management is a fit, we are here to help. If not, the report is yours to keep.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What areas do you cover?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">We manage properties throughout San Diego County, including Solana Beach, Del Mar, La Jolla, Pacific Beach, Carlsbad, Encinitas, Cardiff, Carmel Valley, North Park, South Park, Mission Hills, Mission Valley, Downtown San Diego, Point Loma, Clairemont, and surrounding communities. If your property is in San Diego County, we can help.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="section-coral">
+  <div class="container">
+    <div class="cta-coral-inner reveal">
+      <h2>Your Property Could Be Earning More</h2>
+      <p>Get a free rental analysis San Diego property owners trust. Find out what your rental is actually worth in today's market, with real data from a local team that manages 500+ properties across the county.</p>
+      <a href="#rental-form" class="btn-white">Request Your Free Analysis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-top">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management" class="footer-logo-img"></div>
+          <div class="footer-tagline">Peace of Mind, One Door at a Time</div>
+          <div class="footer-contact-block">
+            444 S Cedros Ave, Suite 215<br>
+            Solana Beach, CA 92075<br><br>
+            Office: <a href="tel:8587553031">(858) 755-3031</a><br>
+            24/7 Maintenance: <a href="tel:8588082420">(858) 808-2420</a><br>
+            <a href="mailto:admin@redhousemgt.com">admin@redhousemgt.com</a>
+          </div>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="07-available-rentals.html">Available Rentals</a>
+            <a href="02-property-management.html">Management Services</a>
+            <a href="05-the-red-house-difference.html">The Red House Difference</a>
+            <a href="03-service-areas.html">Service Areas</a>
+            <a href="06-about.html">About Us</a>
+            <a href="09-contact.html">Contact</a>
+            <a href="10-resources.html">News</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Service Areas</div>
+          <div class="footer-links">
+            <a href="03-service-areas.html">Solana Beach</a>
+            <a href="03-service-areas.html">Del Mar</a>
+            <a href="03-service-areas.html">La Jolla</a>
+            <a href="03-service-areas.html">Pacific Beach</a>
+            <a href="03-service-areas.html">Carlsbad</a>
+            <a href="03-service-areas.html">Encinitas</a>
+            <a href="03-service-areas.html">Point Loma</a>
+            <a href="03-service-areas.html">All Areas</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Portals</div>
+          <div class="footer-portals">
+            <a href="11-owner-portal.html" class="portal-link">Owner Portal</a>
+            <a href="12-tenant-portal.html" class="portal-link">Resident Portal</a>
+          </div>
+          <div style="margin-top: 28px;">
+            <div class="footer-col-title">For Partners</div>
+            <div class="footer-links">
+              <a href="13-vendor-proposals.html">Vendor Proposals</a>
+              <a href="14-agent-referral-program.html">Agent Referral Program</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <div class="container-wide">
+      <div class="footer-bottom-inner">
+        <div class="footer-legal">&copy; 2026 Red House Property Management &nbsp;|&nbsp; CA DRE# 01877634 &nbsp;|&nbsp; Equal Housing Opportunity</div>
+        <div class="cert-row">
+          <span class="cert-badge">NARPM</span>
+          <span class="cert-badge">SDAR</span>
+          <span class="cert-badge">CAR</span>
+          <span class="cert-badge">NAR</span>
+          <span class="cert-badge">SCRHA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling, icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => { b.nextElementSibling.style.maxHeight='0px'; b.nextElementSibling.style.paddingBottom='0'; const ic=b.querySelector('.faq-icon'); if(ic) ic.style.transform=''; b.style.color=''; });
+  if (!isOpen) { answer.style.maxHeight='320px'; answer.style.paddingBottom='20px'; if(icon) icon.style.transform='rotate(45deg)'; btn.style.color='var(--blue)'; }
+}
+(function(){ const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:0.12}); document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.reveal').forEach(el=>o.observe(el))}); })();
+(function(){ document.addEventListener('DOMContentLoaded',()=>{ const n=document.getElementById('mainNav'); const u=document.querySelector('.utility-bar'); if(!n) return; window.addEventListener('scroll',()=>{ const scrolled=window.scrollY>60; n.classList.toggle('scrolled',scrolled); if(u) u.classList.toggle('hidden',scrolled); }); }); })();
+</script>
+</body>
+</html>

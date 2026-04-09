@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Your Phoenix Home Worth? | Free Home Value Estimate | Amy Koch</title>
+<meta name="description" content="Get a free, personalized home value estimate for your Phoenix or Scottsdale property. Amy Koch provides detailed reports based on recent comparable sales, property condition, and current market demand.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AMY KOCH - BASE TEMPLATE
+   Design vibe: The Brokery luxury aesthetic
+   Gold accent, dark/moody, generous whitespace
+   ============================================ */
+
+/* --- CSS RESET & VARIABLES --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Brand Colors */
+  --gold: #4bb9d4;
+  --gold-dark: #3a9ab8;
+  --gold-light: #7dd3e8;
+  --warm-accent: #d4a04b;
+  --warm-accent-dark: #b8882f;
+  --teal: #4bb9d4;
+  --teal-dark: #3a9ab8;
+  --navy: #0f1f2e;
+  --navy-light: #162536;
+  --charcoal: #1a1a1a;
+  --dark: #111111;
+  --white: #ffffff;
+  --off-white: #f7fafb;
+  --warm-gray: #eef5f7;
+  --text-primary: #1a2a35;
+  --text-secondary: #6b6b6b;
+  --text-light: #999999;
+  --border-light: #e8e6e1;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(80px, 10vw, 120px);
+  --container-width: 1200px;
+  --container-narrow: 800px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+.container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+.container-narrow { width: 90%; max-width: var(--container-narrow); margin: 0 auto; }
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; color: var(--charcoal); }
+h1 { font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 46px); letter-spacing: -0.01em; }
+h3 { font-size: clamp(22px, 2.5vw, 30px); }
+h4 { font-size: clamp(18px, 1.5vw, 22px); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrow-center {
+  justify-content: center;
+}
+.eyebrow-center::before {
+  display: none;
+}
+.eyebrow-center::after {
+  display: none;
+}
+
+.section-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Light section headings */
+.light-section h2 { color: var(--charcoal); }
+.light-section .eyebrow { color: var(--gold); }
+.light-section .eyebrow::before { background: var(--gold); }
+
+/* Dark section headings */
+.dark-section { background: var(--navy); }
+.dark-section h2, .dark-section h3, .dark-section h4 { color: var(--white); }
+.dark-section p { color: rgba(255,255,255,0.75); }
+.dark-section .eyebrow { color: var(--gold); }
+.dark-section .eyebrow::before { background: var(--gold); }
+
+/* Alt section */
+.alt-section { background: var(--off-white); }
+
+/* Warm tinted section */
+.warm-section { background: #faf8f3; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(75, 185, 212, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-white {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.btn-white:hover {
+  background: var(--off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+}
+
+/* --- HEADER (Transparent + Sticky) --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-out);
+}
+.site-header.scrolled {
+  background: rgba(12, 26, 42, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-mark span {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.logo-brokery {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.main-nav { display: flex; align-items: center; gap: 36px; }
+.main-nav a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  position: relative;
+}
+.main-nav a:hover { color: var(--gold); }
+.main-nav a.active { color: var(--gold); }
+.nav-cta {
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--white) !important;
+  border-radius: 2px;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover {
+  background: var(--gold-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile Nav */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.mobile-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.mobile-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* --- SCROLL PROGRESS BAR --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1001;
+  transition: width 0.1s linear;
+}
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(12,26,42,0.85) 0%, rgba(12,26,42,0.5) 50%, rgba(12,26,42,0.3) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 0 100px;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 560px; margin-bottom: 36px; }
+.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow::before { background: var(--gold); }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* --- STATS BAR (overlapping hero) --- */
+.stats-bar {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px;
+  margin-bottom: 0;
+}
+.stats-bar-inner {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* --- CARDS --- */
+.card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.card-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.card-body { padding: 32px; }
+.card-body h3 { margin-bottom: 12px; font-size: 22px; }
+.card-body p { color: var(--text-secondary); font-size: 15px; }
+
+/* Dark card variant */
+.card-dark {
+  background: var(--navy-light);
+}
+.card-dark h3, .card-dark h4 { color: var(--white); }
+.card-dark p { color: rgba(255,255,255,0.7); }
+
+/* --- SERVICE GRID --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.service-card {
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-light);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.service-icon svg { width: 100%; height: 100%; }
+.service-card h4 { margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); }
+
+/* --- FAQ ACCORDION --- */
+.faq-list { max-width: 800px; }
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  transition: transform 0.3s ease;
+}
+.faq-icon::before { width: 14px; height: 1.5px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 1.5px; height: 14px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-item.active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+}
+.faq-item.active .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Dark FAQ variant */
+.dark-section .faq-item { border-color: rgba(255,255,255,0.1); }
+.dark-section .faq-question { color: var(--white); }
+.dark-section .faq-question:hover { color: var(--gold); }
+.dark-section .faq-answer-inner { color: rgba(255,255,255,0.7); }
+
+/* --- TESTIMONIALS --- */
+.testimonial-card {
+  background: var(--white);
+  padding: 48px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.testimonial-quote-icon {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 32px;
+}
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  position: relative;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--gold);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* --- CTA BANNER --- */
+.cta-banner {
+  background: linear-gradient(rgba(12,26,42,0.85), rgba(12,26,42,0.85)), url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1600&h=600&fit=crop&q=75') center/cover no-repeat;
+  padding: var(--section-padding) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.08) 0%, transparent 70%);
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+.cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 18px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+/* --- FOOTER --- */
+.site-footer {
+  background: var(--dark);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo-name { font-size: 22px; margin-bottom: 4px; }
+.footer-brand .logo-brokery { margin-bottom: 20px; display: block; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 300px; }
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+.footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-social svg { width: 14px; height: 14px; }
+
+/* --- SCROLL ANIMATIONS --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- COUNTER ANIMATION --- */
+.counter { display: inline-block; }
+
+/* --- SECTION DIVIDER (angled) --- */
+.angled-divider {
+  position: relative;
+}
+.angled-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+  z-index: 2;
+}
+
+/* --- PAGE-SPECIFIC: HOME VALUE --- */
+
+/* Form Section */
+.valuation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.valuation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  background: var(--white);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(75, 185, 212, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.info-box {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 48px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.06) 0%, transparent 70%);
+}
+
+.info-box h3 {
+  color: var(--white);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.info-list li svg {
+  width: 20px;
+  height: 20px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-note {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+  position: relative;
+}
+
+/* Process Steps */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.step-card {
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.step-number {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 6vw, 80px);
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.step-card h4 {
+  margin-bottom: 14px;
+}
+
+.step-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Comparison Section */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.comparison-text p {
+  color: rgba(255,255,255,0.75);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.comparison-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.compare-card {
+  border-radius: 4px;
+  padding: 32px;
+  position: relative;
+}
+
+.compare-card.online {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.compare-card.amy {
+  background: rgba(75, 185, 212, 0.08);
+  border: 1px solid rgba(75, 185, 212, 0.25);
+}
+
+.compare-card h4 {
+  color: var(--white);
+  margin-bottom: 18px;
+  font-size: 18px;
+}
+
+.compare-card.amy h4 {
+  color: var(--gold);
+}
+
+.compare-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.compare-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+}
+
+.compare-list li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.compare-card.online .compare-list li svg {
+  color: rgba(255,255,255,0.5);
+}
+
+.compare-card.amy .compare-list li svg {
+  color: var(--gold);
+}
+
+.compare-card.amy .compare-list li {
+  color: rgba(255,255,255,0.8);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 36px 40px; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .valuation-grid { grid-template-columns: 1fr; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: flex; }
+
+  .main-nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--navy);
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 999;
+  }
+  .main-nav.mobile-open a {
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .hero { min-height: 90vh; }
+  .hero-content { padding: 120px 0 80px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+
+  .stats-bar { margin-top: -40px; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 24px; }
+  .stat-number { font-size: 36px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+
+  .steps-grid { grid-template-columns: 1fr; gap: 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .detailed-report-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+}
+
+/* --- SECTION PADDING UTILITY --- */
+section { padding: var(--section-padding) 0; }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="01-home.html" class="logo">
+      <div class="logo-mark"><span>AK</span></div>
+      <div class="logo-text">
+        <span class="logo-name">Amy Koch</span>
+        <span class="logo-brokery">The Brokery</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="09-search.html">Search Homes</a>
+      <a href="02-buy.html">Buy</a>
+      <a href="03-sell.html">Sell</a>
+      <a href="04-home-value.html" class="active">Home Value</a>
+      <a href="05-communities.html">Communities</a>
+      <a href="06-about.html">About</a>
+      <a href="08-canadian-buyers.html">Canadian Buyers</a>
+      <a href="07-contact.html" class="nav-cta">Get Started</a>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-open'); this.classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== -->
+<!-- PAGE CONTENT GOES HERE -->
+<!-- ===================== -->
+
+<main>
+
+<!-- SECTION 1: HERO -->
+<section class="hero">
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1600&h=900&fit=crop&q=75'); background-position: center 40%;"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow fade-up">HOME VALUE</div>
+    <h1 class="fade-up">What Is Your Phoenix Home Worth?</h1>
+    <p class="fade-up">Start with a free instant estimate, then go deeper with a personalized report from <a href="06-about.html" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Amy Koch</a> based on recent neighborhood sales, property condition, and current market demand.</p>
+    <div class="hero-actions fade-up">
+      <a href="#instant-estimate" class="btn btn-primary">Get Your Instant Estimate</a>
+      <a href="#detailed-report" class="btn btn-outline" style="color: var(--white); border-color: rgba(255,255,255,0.4);">Request a Detailed Report</a>
+    </div>
+  </div>
+</section>
+
+<!-- Instant Home Value Widget -->
+<section class="light-section" id="instant-estimate" style="padding-top: calc(var(--section-padding) + 40px);">
+  <div class="container" style="text-align: center;">
+    <div class="eyebrow eyebrow-center fade-up">INSTANT ESTIMATE</div>
+    <h2 class="fade-up" style="margin-bottom: 16px;">Get Your Instant Home Value</h2>
+    <p class="fade-up" style="font-size: 18px; color: var(--text-secondary); max-width: 640px; margin: 0 auto 40px;">Enter your address below for a free, instant estimate of your Phoenix or Scottsdale home's current market value.</p>
+    <!-- Widget Container -->
+    <div class="fade-up" style="max-width: 700px; margin: 0 auto; background: var(--off-white); border: 1px solid var(--border-light); border-radius: 8px; padding: 48px 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
+      <div style="min-height: 200px; display: flex; align-items: center; justify-content: center; font-family: monospace; color: var(--text-light); font-size: 14px;">
+        [home_value_widget]
+      </div>
+    </div>
+    <p class="fade-up" style="font-size: 14px; color: var(--text-light); margin-top: 24px; max-width: 500px; margin-left: auto; margin-right: auto;">This provides a preliminary estimate. For a comprehensive analysis based on property condition, upgrades, and hyperlocal sales data, <a href="#detailed-report" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">request Amy's detailed report below</a>.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: HOW IT WORKS -->
+<section class="alt-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <div class="eyebrow eyebrow-center fade-up">THE PROCESS</div>
+      <h2 class="fade-up">How Amy's Home Valuation Works</h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-number">01</div>
+        <h4>Get Your Instant Estimate</h4>
+        <p>Use the instant home value tool above to get a quick estimate based on public data. It takes 30 seconds and gives you a starting point.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">02</div>
+        <h4>Request Amy's Detailed Report</h4>
+        <p>Want the full picture? Submit your property details below and Amy will build a comprehensive valuation using comparable sales, property condition, upgrades, and hyperlocal market data.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-number">03</div>
+        <h4>Get Your Valuation + Next Steps</h4>
+        <p>Within 48 hours, Amy delivers a detailed report with your estimated value, supporting market data, and a recommended <a href="03-sell.html" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">listing strategy</a> if you're considering a sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: INSTANT ESTIMATE + DETAILED REPORT -->
+<section class="dark-section">
+  <div class="container">
+    <div class="eyebrow fade-up">TWO TOOLS, ONE CLEAR PICTURE</div>
+    <h2 class="fade-up" style="margin-bottom: 48px;">Instant Estimate + Expert Analysis</h2>
+
+    <div class="comparison-grid">
+      <!-- Left: Body Text -->
+      <div class="comparison-text fade-left">
+        <p>Automated home value tools are a great starting point. They give you a quick ballpark based on public records and broad market trends. Amy's detailed report takes it further by factoring in your home's specific condition, recent upgrades, lot position, and the hyperlocal comparable sales that algorithms miss. Use both together: the instant estimate for quick context, and Amy's report when you're ready to make pricing decisions.</p>
+      </div>
+
+      <!-- Right: Comparison Cards -->
+      <div class="comparison-cards fade-right">
+        <div class="compare-card online">
+          <h4>Instant Estimate</h4>
+          <ul class="compare-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Quick ballpark in seconds
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Based on public data and market trends
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Great starting point for research
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Available 24/7, no wait
+            </li>
+          </ul>
+        </div>
+
+        <div class="compare-card amy">
+          <h4>Amy's Detailed Report</h4>
+          <ul class="compare-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Based on real comparable sales
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Accounts for condition, upgrades, and lot
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Neighborhood-level expertise
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              The report you need for pricing decisions
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FAQ -->
+<section class="warm-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <div class="eyebrow eyebrow-center fade-up">COMMON QUESTIONS</div>
+      <h2 class="fade-up">Home Valuation FAQ</h2>
+    </div>
+
+    <div class="faq-list fade-up" style="margin: 0 auto;">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is the home valuation really free?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. There's no cost and no obligation. Amy provides home valuations as a service to homeowners whether you're planning to sell now, next year, or just want to know where you stand.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How accurate is this compared to a formal appraisal?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Amy's comparative market analysis uses the same data sources appraisers reference, including recent closed sales and active listings. While a formal appraisal is required for lending purposes, a CMA from Amy typically lands within a close range of the appraised value.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How long does it take to get my report?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most reports are delivered within 48 hours of receiving your property information. Complex properties or unique situations may take slightly longer.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you need to visit my home?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">An interior walkthrough improves accuracy, especially for homes with significant upgrades or unique features. However, Amy can provide an initial estimate based on property data and exterior assessment if an in-person visit isn't possible.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What if I'm not ready to sell yet?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">That's completely fine. Many homeowners request a valuation simply to understand their equity position or to plan ahead. There's no pressure and no follow-up you don't want.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What affects my home's value the most?
+          <span class="faq-icon"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Location, condition, square footage, lot size, and recent comparable sales are the primary drivers. Upgrades to kitchens, bathrooms, and outdoor living spaces tend to have the biggest impact in the Phoenix market.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Cross-link to Seller's Guide -->
+<section class="alt-section" style="padding: 60px 0;">
+  <div class="container">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+      <div>
+        <div class="eyebrow fade-up">READY TO LIST?</div>
+        <h3 class="fade-up" style="margin-top: 8px;">Know Your Value. Now Plan Your Sale.</h3>
+        <p class="fade-up" style="color: var(--text-secondary); margin-top: 8px; max-width: 500px;">Once you know what your home is worth, the next step is preparing it for market. Amy's selling process is designed to maximize your return from day one.</p>
+      </div>
+      <a href="03-sell.html" class="btn btn-primary fade-up">View Seller's Guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- Detailed Report Request Form -->
+<section class="dark-section" id="detailed-report">
+  <div class="container">
+    <div class="detailed-report-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+      <div class="fade-left">
+        <div class="eyebrow">GO DEEPER</div>
+        <h2 style="margin-bottom: 20px;">Request Amy's Detailed Home Value Report</h2>
+        <p style="margin-bottom: 24px;">A personalized comparative market analysis that accounts for your home's specific condition, upgrades, lot characteristics, and recent hyperlocal sales. Amy delivers this report within 24 to 48 hours.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="4 10 8 14 16 6"/></svg>
+            <span style="color: rgba(255,255,255,0.8); font-size: 15px;">Based on real comparable sales, not algorithms</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="4 10 8 14 16 6"/></svg>
+            <span style="color: rgba(255,255,255,0.8); font-size: 15px;">Accounts for upgrades, condition, and lot</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="4 10 8 14 16 6"/></svg>
+            <span style="color: rgba(255,255,255,0.8); font-size: 15px;">Delivered within 24 to 48 hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--gold)" stroke-width="1.5"><polyline points="4 10 8 14 16 6"/></svg>
+            <span style="color: rgba(255,255,255,0.8); font-size: 15px;">Free, no obligation, no pressure</span>
+          </div>
+        </div>
+      </div>
+      <div class="fade-right">
+        <form style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 40px;">
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">Full Name</label>
+            <input type="text" placeholder="Your name" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">Email</label>
+            <input type="email" placeholder="your@email.com" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none;">
+          </div>
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">Property Address</label>
+            <input type="text" placeholder="123 Main St, Phoenix, AZ" style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none;">
+          </div>
+          <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;">Anything Amy Should Know?</label>
+            <textarea rows="3" placeholder="Recent upgrades, timeline, etc." style="width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Request My Detailed Report</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="fade-up">Have Questions About Your Home's Value?</h2>
+    <p class="fade-up">Amy Koch has been pricing homes in the Phoenix and Scottsdale market for over 15 years. Schedule a call to discuss your property and what the numbers look like.</p>
+    <a href="07-contact.html" class="btn btn-primary fade-up">Talk to Amy</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name" style="color:#fff;">Amy Koch</span>
+        <span class="logo-brokery">The Brokery Real Estate</span>
+        <p>Relentlessly local. Serving the Phoenix, Scottsdale, and Northeast Valley communities with white-glove real estate service for over 15 years.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="02-buy.html">Buyer's Guide</a></li>
+          <li><a href="03-sell.html">Seller's Guide</a></li>
+          <li><a href="04-home-value.html">Home Value</a></li>
+          <li><a href="05-communities.html">Communities</a></li>
+          <li><a href="08-canadian-buyers.html">Canadian Buyers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Communities</h4>
+        <ul class="footer-links">
+          <li><a href="05-communities.html#desert-ridge">Desert Ridge</a></li>
+          <li><a href="05-communities.html#north-scottsdale">North Scottsdale</a></li>
+          <li><a href="05-communities.html#paradise-valley">Paradise Valley</a></li>
+          <li><a href="05-communities.html#fountain-hills">Fountain Hills</a></li>
+          <li><a href="05-communities.html#old-town-scottsdale">Old Town Scottsdale</a></li>
+          <li><a href="05-communities.html#north-phoenix">North Phoenix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:6023867343" style="color:rgba(255,255,255,0.5);">602.386.7343</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:amy@amykoch.com" style="color:rgba(255,255,255,0.5);">amy@amykoch.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Phoenix &amp; Scottsdale, AZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logos" style="display: flex; align-items: center; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; width: 100%; justify-content: center; flex-wrap: wrap;">
+        <!-- AK Logo Mark -->
+        <div style="width: 36px; height: 36px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-display); font-size: 14px; color: var(--gold); font-weight: 500;">AK</span>
+        </div>
+        <!-- REALTOR Logo -->
+        <svg viewBox="0 0 50 50" width="32" height="32" fill="none" style="flex-shrink: 0;">
+          <rect x="2" y="2" width="46" height="46" rx="4" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">REALTOR</text>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="400" letter-spacing="0.3" dy="10">&#174;</text>
+          <line x1="10" y1="36" x2="40" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+          <text x="25" y="44" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="4" letter-spacing="0.3">MLS</text>
+        </svg>
+        <!-- Equal Housing Opportunity Logo -->
+        <svg viewBox="0 0 40 44" width="28" height="31" fill="none" style="flex-shrink: 0;">
+          <path d="M20 2L2 18h6v22h24V18h6L20 2z" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+          <text x="20" y="26" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="700">=</text>
+          <text x="20" y="33" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3.5" letter-spacing="0.2">EQUAL</text>
+          <text x="20" y="37" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3" letter-spacing="0.2">HOUSING</text>
+        </svg>
+      </div>
+      <p>&copy; 2026 Amy Koch Real Estate | The Brokery. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SHARED JS -->
+<script>
+// Sticky header
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Scroll animations (fade-up, fade-left, fade-right)
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (index * 0.05) + 's';
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasActive = item.classList.contains('active');
+    item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  });
+});
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const prefix = counter.getAttribute('data-prefix') || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      counter.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) counterObserver.observe(statsBar);
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

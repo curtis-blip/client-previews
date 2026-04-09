@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Huang - Orlando Area Page Redesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* DESIGN PREVIEW BANNER */
+        .preview-banner {
+            background: linear-gradient(90deg, #d4b896, #c9a876);
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* HERO BLOCK */
+        .hero {
+            background: linear-gradient(135deg, #1a4d5c 0%, #3d5a5a 50%, #2d4a55 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: left;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(212, 184, 150, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e6e6e6;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .intro-section .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* COMMUNITY CARDS SECTION */
+        .community-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .community-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .community-section-subtitle {
+            text-align: center;
+            color: #ddd;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .community-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .community-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Unique gradient backgrounds for each Orlando card */
+        .card-orlando {
+            background: linear-gradient(135deg, #1e6b7e 0%, #2d5a6d 100%);
+        }
+
+        .card-winterpark {
+            background: linear-gradient(135deg, #c66b4a 0%, #a85a3a 100%);
+        }
+
+        .card-lakenona {
+            background: linear-gradient(135deg, #5a8b6b 0%, #4a7b5b 100%);
+        }
+
+        .card-kissimmee {
+            background: linear-gradient(135deg, #d4a574 0%, #c49564 100%);
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+            z-index: 2;
+        }
+
+        .community-card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            z-index: 3;
+        }
+
+        /* DESIGNER NOTE */
+        .designer-note {
+            background: #fff3e0;
+            border-left: 4px solid #d4b896;
+            padding: 20px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #666;
+            border-radius: 4px;
+        }
+
+        .designer-note strong {
+            color: #3d5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* WHY KATHY SECTION */
+        .why-kathy-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .why-kathy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .kathy-image {
+            background: linear-gradient(135deg, #3d5a5a, #2d4a55);
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-kathy-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .why-kathy-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .why-kathy-bullets {
+            list-style: none;
+        }
+
+        .why-kathy-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .why-kathy-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 184, 150, 0.2);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: rgba(212, 184, 150, 0.1);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #d4b896;
+            font-size: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(212, 184, 150, 0.15);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 25px 20px;
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #2d3d3d;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 85%;
+            max-width: 1000px;
+            background: #fff;
+            overflow-y: auto;
+            z-index: 1001;
+            animation: slideInRight 0.4s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .modal-header {
+            background: #3d5a5a;
+            color: #fff;
+            padding: 60px 40px 40px;
+            position: relative;
+            border-bottom: 1px solid #d4b896;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #d4b896;
+        }
+
+        .modal-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* STICKY NAV PILLS */
+        .modal-nav {
+            display: flex;
+            gap: 12px;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            flex-wrap: nowrap;
+        }
+
+        .nav-pill {
+            background: #f5f5f5;
+            border: 2px solid #eee;
+            color: #666;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-pill:hover {
+            background: #f0f0f0;
+            border-color: #d4b896;
+            color: #3d5a5a;
+        }
+
+        .nav-pill.active {
+            background: #3d5a5a;
+            border-color: #3d5a5a;
+            color: #fff;
+        }
+
+        /* MODAL CONTENT */
+        .modal-content {
+            padding: 40px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .modal-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 150px;
+        }
+
+        .modal-section-icon {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .modal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .modal-section-intro {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .modal-section ul {
+            list-style: none;
+        }
+
+        .modal-section li {
+            padding: 12px 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-section li strong {
+            color: #3d5a5a;
+            font-weight: 600;
+        }
+
+        .modal-section a {
+            color: #d4b896;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .modal-section a:hover {
+            color: #c9a876;
+            text-decoration: underline;
+        }
+
+        /* ADTV VIDEO PLACEHOLDER */
+        .video-placeholder {
+            background: #2d3d3d;
+            aspect-ratio: 16 / 9;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin: 25px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .video-placeholder p {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .video-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .adtv-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+
+        /* MODAL CTA */
+        .modal-cta {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .modal-cta:hover {
+            background: #c9a876;
+        }
+
+        .modal-cta-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                width: 100%;
+            }
+
+            .why-kathy-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .intro-section h2,
+            .community-section h2,
+            .faq-section h2 {
+                font-size: 32px;
+            }
+
+            .modal-nav {
+                gap: 8px;
+                padding: 15px 20px;
+            }
+
+            .nav-pill {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DESIGN PREVIEW BANNER -->
+<div class="preview-banner">
+    DESIGN PREVIEW — Kathy Huang | Orlando Area Page Redesign | AgenticPress | March 2026
+</div>
+
+<!-- HERO BLOCK -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Trusted Orlando Realtor For Central Florida Living</h1>
+        <p>Discover your dream home in Orlando's most sought-after neighborhoods with Kathy Huang, your trusted luxury real estate expert.</p>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div class="eyebrow">Welcome to Florida</div>
+    <h2>Expert Guidance For Buying And Selling In Orlando</h2>
+    <p>Whether you're drawn to the culture and charm of Winter Park, the innovation of Lake Nona, or the convenience of Kissimmee, Orlando offers diverse communities to match every lifestyle. With deep market expertise, I guide buyers and sellers through every step of the process.</p>
+</section>
+
+<!-- COMMUNITY CARDS SECTION -->
+<section class="community-section">
+    <h2>Find The Right Orlando Community For You</h2>
+    <p class="community-section-subtitle">Explore four distinctive neighborhoods across greater Orlando, each with its own unique character, amenities, and market dynamics.</p>
+
+    <div class="cards-grid">
+        <button class="community-card card-orlando" onclick="openModal('orlando')">
+            <div class="community-card-text">Orlando</div>
+        </button>
+        <button class="community-card card-winterpark" onclick="openModal('winterpark')">
+            <div class="community-card-text">Winter Park</div>
+        </button>
+        <button class="community-card card-lakenona" onclick="openModal('lakenona')">
+            <div class="community-card-text">Lake Nona</div>
+        </button>
+        <button class="community-card card-kissimmee" onclick="openModal('kissimmee')">
+            <div class="community-card-text">Kissimmee</div>
+        </button>
+    </div>
+
+    <div class="designer-note">
+        <strong>DESIGNER NOTE:</strong> Cards are now 1:1 squares with minimal bottom-only gradient overlay. Each card uses a unique background. The modal has been completely redesigned — click Orlando to see the new layout.
+    </div>
+</section>
+
+<!-- WHY KATHY SECTION -->
+<section class="why-kathy-section">
+    <div class="why-kathy-container">
+        <div class="kathy-image">Kathy Huang Photo Placeholder</div>
+        <div class="why-kathy-content">
+            <h2>Why Choose Kathy Huang</h2>
+            <p>With extensive experience in Central Florida real estate, Kathy brings both expertise and passion to every transaction. Her commitment to understanding your unique needs and goals ensures a seamless, rewarding experience.</p>
+            <ul class="why-kathy-bullets">
+                <li>20+ years of luxury real estate experience</li>
+                <li>Expert knowledge of all major Orlando communities</li>
+                <li>Award-winning customer service and market expertise</li>
+                <li>Strategic pricing and marketing for maximum results</li>
+                <li>Comprehensive guidance through the entire transaction</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the best area to buy a home in Orlando?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">The best area depends on lifestyle, commute, schools, and price range. Each community offers a different living experience. Whether you prefer the energy and culture of Downtown Orlando, the refined charm of Winter Park, the innovative tech focus of Lake Nona, or the gateway convenience of Kissimmee, Central Florida has options for every buyer.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>How much do homes cost in Orlando right now?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Home prices vary significantly by community, property type, and condition. Winter Park and Lake Nona tend to command higher prices due to their upscale character and amenities, while Kissimmee and other areas offer more accessible price points. Current market conditions, individual property features, and proximity to theme parks also play significant roles in pricing.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What should I get approved for before buying a home in Orlando?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Most buyers start with a mortgage pre-approval to understand their budget and strengthen their offers. A pre-approval letter shows sellers that you're a serious, qualified buyer and puts you in a stronger negotiating position, especially in competitive markets like Orlando's luxury communities.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there first time home buyer programs in Orlando?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. There are state and local programs that may offer assistance depending on income and eligibility. Florida and Orange County offer various down payment assistance programs, favorable loan products, and tax benefits for first-time homebuyers. I can connect you with resources to explore all available options.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What extra costs should I plan for when buying a home?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Buyers should plan for closing costs, inspections, insurance, taxes, and ongoing maintenance. Closing costs typically range from 2-5% of the purchase price and include lender fees, title insurance, escrow, and appraisal fees. Additionally, you'll want to budget for home inspections, homeowners insurance, and property taxes, which vary by location.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I buy a home in Orlando if I am relocating?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. Many buyers relocate and purchase homes using virtual tours, remote planning, and guided timelines. I specialize in working with relocation clients and can arrange virtual tours, connect you with trusted inspectors and contractors, and provide detailed market analysis to help you make confident decisions from afar.</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 Kathy Huang | Orlando Luxury Real Estate | All Rights Reserved</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"></div>
+
+<!-- ORLANDO MODAL -->
+<div class="modal" id="orlandomodal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Theme Park Capital of the World</div>
+        <h1>Orlando</h1>
+        <p>Orlando, often referred to as "The City Beautiful," is a major city in Central Florida and the heart of the Orlando metropolitan area. Globally recognized as the Theme Park Capital of the World, Orlando is a premier destination for tourism, conventions, and business. Beyond the magic and excitement of world-famous resorts, Orlando has a thriving downtown core, a strong tech and simulation industry presence, and a rapidly growing population contributing to its diverse cultural and commercial landscape.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('notable-areas', 'orlandomodal')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sights-culture', 'orlandomodal')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('healthcare', 'orlandomodal')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('schools', 'orlandomodal')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('parks', 'orlandomodal')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sports', 'orlandomodal')">🏀 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('business', 'orlandomodal')">🏢 Business</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="notable-areas">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Orlando's identity is defined by its massive entertainment complexes and vibrant city centers.</p>
+            <ul>
+                <li><strong>World-Famous Theme Parks:</strong></li>
+                <li><a href="https://www.disneyworld.disney.go.com/" target="_blank">Walt Disney World Resort</a> (Located southwest in Bay Lake/Lake Buena Vista, encompassing Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom)</li>
+                <li><a href="https://www.universalorlando.com/" target="_blank">Universal Orlando Resort</a> (Including Universal Studios Florida, Islands of Adventure, Volcano Bay, and Epic Universe)</li>
+                <li><a href="https://seaworld.com/orlando/" target="_blank">SeaWorld Orlando</a> (Known for marine life shows and thrill rides)</li>
+                <li><strong>Downtown & Cultural Attractions:</strong></li>
+                <li><strong>Lake Eola Park:</strong> The iconic centerpiece of downtown Orlando, known for its fountain and swan-shaped paddle boats</li>
+                <li><a href="https://www.internationaldriveorlando.com/" target="_blank">International Drive (I-Drive)</a> (A major tourist corridor featuring attractions like ICON Park and large convention centers)</li>
+                <li><a href="https://www.drphillipscenter.org/" target="_blank">Dr. Phillips Center for the Performing Arts</a> (A state-of-the-art venue hosting Broadway shows and major concerts)</li>
+                <li><a href="https://www.osc.org/" target="_blank">Orlando Science Center</a> (A hands-on science and technology museum)</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="sights-culture">
+            <h2><span class="modal-section-icon">⚓</span>Tourism & Cultural Highlights</h2>
+            <p class="modal-section-intro">Orlando is a major draw for tourism, offering diverse attractions and cultural institutions.</p>
+            <ul>
+                <li>World-class theme parks and entertainment resorts defining the region's identity</li>
+                <li>Dynamic downtown core with performing arts venues and cultural centers</li>
+                <li>International Drive corridor featuring museums, attractions, and convention spaces</li>
+                <li>Growing cultural scene with museums and entertainment venues</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Orlando is a regional healthcare hub for Central Florida and beyond, home to major hospital systems.</p>
+            <ul>
+                <li><strong><a href="https://www.orlandohealth.com/" target="_blank">Orlando Health</a>:</strong> A community-based system whose flagship is the Orlando Health Orlando Regional Medical Center (ORMC), which houses the area's only Level I Trauma Center. The system also includes specialized hospitals like Arnold Palmer Hospital for Children and Winnie Palmer Hospital for Women & Babies</li>
+                <li><strong><a href="https://www.adventhealth.com/hospital/adventhealth-orlando" target="_blank">AdventHealth Orlando</a>:</strong> Part of the largest non-profit Protestant healthcare system in the U.S. and often nationally ranked. Its facilities specialize in cardiology, cancer, and neurosciences</li>
+                <li>Both major systems offer comprehensive institutes for cancer, heart and vascular, orthopedics, and neurosciences</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Orlando is a significant center for education and research in Central Florida.</p>
+            <ul>
+                <li><strong><a href="https://www.ucf.edu/" target="_blank">University of Central Florida (UCF)</a>:</strong> One of the largest universities in the nation by enrollment, renowned for programs in optics, simulation, and engineering</li>
+                <li><strong><a href="https://www.rollins.edu/" target="_blank">Rollins College</a>:</strong> Located in Winter Park, a highly-ranked private liberal arts college</li>
+                <li><strong>Valencia College:</strong> A large and comprehensive community college system</li>
+                <li><strong>K-12 Education:</strong> Served primarily by <a href="https://www.ocps.net/" target="_blank">Orange County Public Schools (OCPS)</a>, one of the largest school districts in the U.S.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Beyond the theme parks, Orlando offers natural beauty and numerous opportunities for outdoor recreation.</p>
+            <ul>
+                <li><a href="https://www.orlando.gov/Parks-the-Environment/Directory" target="_blank">City of Orlando Parks, Recreation & Neighborhood Centers</a> manages over 100 parks and recreation sites</li>
+                <li><strong>Lakes:</strong> Orlando is known for its many lakes, offering fishing, boating, and scenic views, including Lake Eola and Lake Baldwin</li>
+                <li><a href="https://www.floridastateparks.org/parks-and-trails/wekiwa-springs-state-park" target="_blank">Wekiwa Springs State Park</a> (Located nearby): Offers natural springs, swimming, and kayaking</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sports">
+            <h2><span class="modal-section-icon">🏀</span>Sports Teams</h2>
+            <p class="modal-section-intro">Orlando hosts several major professional sports franchises.</p>
+            <ul>
+                <li><strong>National Basketball Association (NBA):</strong> The <a href="https://www.nba.com/magic/" target="_blank">Orlando Magic</a> play at the Kia Center (formerly Amway Center) downtown</li>
+                <li><strong>Major League Soccer (MLS):</strong> <a href="https://www.orlandocitysc.com/" target="_blank">Orlando City SC</a> (The Lions)</li>
+                <li><strong>National Women's Soccer League (NWSL):</strong> <a href="https://www.orlandocitysc.com/pride/" target="_blank">Orlando Pride</a></li>
+                <li>Both soccer teams play at Inter&Co Stadium (formerly Exploria Stadium)</li>
+                <li><strong>Minor League/Other:</strong> The Orlando Solar Bears (ECHL hockey) also play at the Kia Center</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses & Industries</h2>
+            <p class="modal-section-intro">While tourism is the largest sector, Orlando's economy is diversified, particularly in tech and defense industries.</p>
+            <ul>
+                <li><strong>Hospitality & Tourism:</strong> The Walt Disney Company (Largest employer in Central Florida), Universal Parks & Resorts, SeaWorld Parks & Entertainment</li>
+                <li><strong>Technology & Simulation:</strong> The area is a hub for modeling, simulation, and training due to major military and defense contractors like Lockheed Martin and Northrop Grumman</li>
+                <li><strong>Other Major Corporations:</strong> Darden Restaurants (Headquarters of Olive Garden and LongHorn Steakhouse), JetBlue (A major training center)</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Orlando')">Search Homes in Orlando</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- WINTER PARK MODAL -->
+<div class="modal" id="winterparkmodal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Village of Lakes and Culture</div>
+        <h1>Winter Park</h1>
+        <p>Winter Park is an affluent and picturesque city located immediately north of Orlando in Central Florida. Founded as a winter resort for wealthy New England industrialists in the late 19th century, it retains an Old World charm characterized by abundant lakes, canopy of ancient oak trees, quaint brick-lined streets, and a sophisticated cultural environment. Often described as an "urban village," Winter Park provides residents and visitors alike with a tranquil, elegant setting.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('notable-areas', 'winterparkmodal')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sights-culture', 'winterparkmodal')">⚓ Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('healthcare', 'winterparkmodal')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('schools', 'winterparkmodal')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('parks', 'winterparkmodal')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sports', 'winterparkmodal')">⚽ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('business', 'winterparkmodal')">🏢 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('adtv', 'winterparkmodal')">📺 ADTV</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="notable-areas">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">The city's cultural and commercial heart is a highly walkable area defined by European-style refinement.</p>
+            <ul>
+                <li><strong>Park Avenue Shopping District:</strong> The centerpiece of Winter Park, offering high-end boutiques, sidewalk cafés, and fine dining. It borders the beautiful Central Park, which hosts numerous festivals and events</li>
+                <li><strong><a href="https://www.morsemuseum.org/" target="_blank">The Charles Hosmer Morse Museum of American Art</a>:</strong> Home to the world's most comprehensive collection of works by Louis Comfort Tiffany, including jewelry, pottery, and the chapel from the 1893 World's Columbian Exposition</li>
+                <li><strong><a href="https://scenicboattours.com/" target="_blank">Winter Park Scenic Boat Tour</a>:</strong> An hour-long, guided cruise through the chain of lakes and man-made canals, offering views of waterfront homes and cypress trees</li>
+                <li><strong><a href="https://www.polasek.org/" target="_blank">Albin Polasek Museum & Sculpture Gardens</a>:</strong> Features the work of Czech-born American sculptor Albin Polasek in a beautiful lakeside setting</li>
+                <li><strong><a href="https://casafeliz.us/" target="_blank">Casa Feliz Historic Home Museum</a>:</strong> A beautifully restored Spanish farmhouse from the 1930s, offering tours and event space</li>
+                <li><strong>Hannibal Square Heritage Center:</strong> Dedicated to preserving and sharing the history of Winter Park's African American community</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="sights-culture">
+            <h2><span class="modal-section-icon">⚓</span>Culture & Community</h2>
+            <p class="modal-section-intro">Winter Park is renowned for its cultural institutions and refined lifestyle.</p>
+            <ul>
+                <li>World-class museums including the Morse Museum and Rollins Museum of Art</li>
+                <li>Sophisticated shopping and dining on Park Avenue</li>
+                <li>Year-round cultural events and festivals</li>
+                <li>Scenic boat tours and lakefront beauty</li>
+                <li>Historic architecture and preserved heritage sites</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Winter Park maintains a strong healthcare presence anchored by a major community hospital.</p>
+            <ul>
+                <li><strong><a href="https://www.adventhealth.com/hospital/adventhealth-winter-park" target="_blank">AdventHealth Winter Park</a> (formerly Winter Park Memorial):</strong> The city's main hospital providing comprehensive acute care, including orthopedic, cardiovascular, and women's health services. Known for its community focus and connection to the larger, nationally-ranked AdventHealth network</li>
+                <li><strong>Wellness & Prevention:</strong> The Center for Health & Wellbeing, funded by the Winter Park Health Foundation, includes the Crosby Wellness Center offering fitness and holistic health programs</li>
+                <li><strong>Specialized Services:</strong> Various medical centers and physician groups, including Orlando Health Women's Pavilion facility</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Education forms a core pillar of the Winter Park community, with prestigious institutions within the city.</p>
+            <ul>
+                <li><strong><a href="https://www.rollins.edu/" target="_blank">Rollins College</a>:</strong> The oldest recognized college in Florida and a highly-regarded private liberal arts college known for its beautiful lakeside campus and the Rollins Museum of Art</li>
+                <li><strong><a href="https://www.fullsail.edu/" target="_blank">Full Sail University</a>:</strong> A private university specializing in entertainment, media, arts, and technology</li>
+                <li><strong>Herzing University - Orlando</strong></li>
+                <li><strong>K-12 Education:</strong> Served by Orange County Public Schools (OCPS), including the nationally ranked Winter Park High School</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Winter Park is defined by its commitment to parks and natural beauty, earning the nickname "City of Lakes."</p>
+            <ul>
+                <li><strong>Central Park:</strong> The iconic 11-acre park located in the center of the Park Avenue district</li>
+                <li><strong><a href="https://www.meadgarden.org/" target="_blank">Mead Botanical Garden</a>:</strong> A 47.6-acre natural oasis with an amphitheater, butterfly garden, and boardwalk</li>
+                <li><strong>Kraft Azalea Garden:</strong> A secluded 5.22-acre public garden on the shore of Lake Maitland, perfect for a tranquil retreat</li>
+                <li><strong>Ward Park:</strong> A large community park focusing on active recreation, including sports fields and facilities</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sports">
+            <h2><span class="modal-section-icon">⚽</span>Sports & Recreation</h2>
+            <p class="modal-section-intro">Winter Park is heavily engaged in college and amateur sports.</p>
+            <ul>
+                <li><strong>College Sports:</strong> Rollins College Tars compete in NCAA Division II in the Sunshine State Conference, with popular teams in soccer, baseball, and basketball</li>
+                <li><strong>Community Sports:</strong> The city's parks host numerous community and youth sports leagues, including soccer, baseball, and tennis</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses & Local Commerce</h2>
+            <p class="modal-section-intro">While many residents commute to nearby Orlando's tech and hospitality hubs, Winter Park has a strong local business base.</p>
+            <ul>
+                <li><strong>Corporate Headquarters:</strong></li>
+                <li><a href="https://www.rhgi.com/" target="_blank">Ruth's Hospitality Group</a> (Parent company of Ruth's Chris Steak House)</li>
+                <li><a href="https://www.4rsmokehouse.com/" target="_blank">4 Rivers Smokehouse</a> (Headquarters for the regional barbecue chain)</li>
+                <li>Rollins College (A major employer for the city)</li>
+                <li><strong>Local Commerce:</strong> The Park Avenue District thrives on independent boutiques, local restaurants, and unique service businesses</li>
+                <li><strong>The Alfond Inn:</strong> A prestigious, luxury boutique hotel and significant cultural landmark, featuring the Rollins Museum of Art's collection</li>
+            </ul>
+        </div>
+
+        <!-- ADTV -->
+        <div class="modal-section" id="adtv">
+            <h2><span class="modal-section-icon">📺</span>ADTV Episode</h2>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Albin Polasek Museum & Sculpture Gardens</p>
+            </div>
+            <p class="adtv-description">Explore Winter Park's cultural treasures through this American Dream TV episode with Kathy Huang, featuring the Albin Polasek Museum & Sculpture Gardens.</p>
+            <p class="video-note">Developer Note: Embed YouTube video here — URL TBD from client</p>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Winter Park')">Search Homes in Winter Park</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- LAKE NONA MODAL -->
+<div class="modal" id="lakenonamodal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Orlando's Future-Focused Community</div>
+        <h1>Lake Nona</h1>
+        <p>Lake Nona is a master-planned community located in southeast Orlando, renowned globally as a living laboratory for innovation in health, wellness, and smart city technology. Developed by the Tavistock Group, this self-contained, rapidly growing area is designed around a core philosophy of "wellbeing and human performance." Its identity is defined by the Medical City cluster, vast sports facilities, high-tech amenities, and a commitment to integrating nature with a futuristic lifestyle.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('notable-areas', 'lakenonamodal')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sights-culture', 'lakenonamodal')">⚓ Attractions</button>
+        <button class="nav-pill" onclick="scrollToSection('healthcare', 'lakenonamodal')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('schools', 'lakenonamodal')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('parks', 'lakenonamodal')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sports', 'lakenonamodal')">🎾 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('business', 'lakenonamodal')">💻 Business</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="notable-areas">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Attractions</h2>
+            <p class="modal-section-intro">Attractions are a mix of innovative public art, entertainment venues, and performance-driven facilities.</p>
+            <ul>
+                <li><strong>Lake Nona Town Center:</strong> The commercial and social hub, featuring the iconic light and video installation "The Beacon and Code Wall"</li>
+                <li><strong><a href="https://lakenona.com/community/dining/boxi-park/" target="_blank">Boxi Park</a>:</strong> A unique outdoor event venue and food truck/shipping container park with live music and a dedicated playground</li>
+                <li><strong><a href="https://lakenonawavehotel.com/" target="_blank">Lake Nona Wave Hotel</a>:</strong> A luxury, high-tech hotel known for its architecture and the adjacent Lake Nona Sculpture Garden, featuring works by world-renowned artists like Fernando Botero</li>
+                <li><strong><a href="https://www.driveshack.com/locations/lake-nona/" target="_blank">Drive Shack</a>:</strong> A three-story golf entertainment complex with technology-driven bay games</li>
+                <li><strong><a href="https://nonaadventurepark.com/" target="_blank">Nona Adventure Park</a>:</strong> An outdoor recreation facility featuring an inflatable aqua park, a cable wakeboarding park, and a 60-foot climbing tower</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="sights-culture">
+            <h2><span class="modal-section-icon">⚓</span>Innovation & Community Life</h2>
+            <p class="modal-section-intro">Lake Nona is designed as a living laboratory for wellness and smart city innovation.</p>
+            <ul>
+                <li>State-of-the-art medical and research facilities leading healthcare innovation</li>
+                <li>World-class sports training and performance centers</li>
+                <li>Modern technology integration throughout the community</li>
+                <li>Unique architectural and public art installations</li>
+                <li>Integrated parks, trails, and wellness-focused lifestyle amenities</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare & Medical Innovation</h2>
+            <p class="modal-section-intro">Lake Nona is the site of the Lake Nona Medical City, a premier biomedical and clinical research hub.</p>
+            <ul>
+                <li><strong>UCF Lake Nona Hospital:</strong> A partnership academic hospital between the UCF College of Medicine and HCA Healthcare</li>
+                <li><strong><a href="https://www.nemours.org/about.html" target="_blank">Nemours Children's Hospital</a></strong></li>
+                <li><strong>Orlando VA Medical Center</strong> and the SimLEARN center for medical simulation</li>
+                <li><strong>University of Florida (UF) Research & Academic Center</strong></li>
+                <li><strong><a href="https://www.adventhealth.com/hospital-and-emergency-room/adventhealth-lake-nona-er" target="_blank">AdventHealth Lake Nona ER</a>:</strong> A hospital department of AdventHealth Orlando</li>
+                <li><strong>Wellness:</strong> The <a href="https://lakenona.com/community/sports-recreation/lake-nona-performance-club/" target="_blank">Lake Nona Performance Club (LNPC)</a> is a state-of-the-art facility focused on integrative health and performance</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">The community hosts institutions from K-12 through graduate medical education.</p>
+            <ul>
+                <li><strong>K-12 Education:</strong> Served by Orange County Public Schools (OCPS), including:</li>
+                <li>NorthLake Park Community School</li>
+                <li>Laureate Park Elementary</li>
+                <li><a href="https://lakenonahs.ocps.net/" target="_blank">Lake Nona High School</a></li>
+                <li><strong>Higher Education:</strong></li>
+                <li><a href="https://med.ucf.edu/" target="_blank">UCF College of Medicine</a> (The medical school of the University of Central Florida)</li>
+                <li><strong>UF Research & Academic Center</strong> (Part of the University of Florida)</li>
+                <li><strong>Valencia College</strong> (Significant presence nearby)</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Lake Nona integrates parks and natural areas with active-lifestyle facilities.</p>
+            <ul>
+                <li><strong>Large Parks:</strong></li>
+                <li>Heroes Community Park (Offers sports fields, a skate park, and a track)</li>
+                <li>Moss Park (A large natural preserve and recreational park known for lakefront views and nature trails)</li>
+                <li><strong>Trails:</strong> The community is designed with miles of scenic multi-use trails for running, cycling, and walking</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sports">
+            <h2><span class="modal-section-icon">🎾</span>Sports & Performance Training</h2>
+            <p class="modal-section-intro">Lake Nona is a destination for training and performance, housing major sports organizations.</p>
+            <ul>
+                <li><strong><a href="https://www.ustanationalcampus.com/en/home.html" target="_blank">USTA National Campus</a>:</strong> The United States Tennis Association's (USTA) massive national training and tournament center, open to the public for play and leagues</li>
+                <li><strong>Orlando City Soccer Club (OCSC):</strong> The area hosts the Orlando City Experience, the team's retail and interactive experience center</li>
+                <li><strong><a href="https://lakenonayouthsports.com/" target="_blank">Lake Nona Youth Sports</a>:</strong> Popular programs in football, cheerleading, and flag football</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="business">
+            <h2><span class="modal-section-icon">💻</span>Technology & Major Businesses</h2>
+            <p class="modal-section-intro">The community attracts companies in technology, health, and simulation.</p>
+            <ul>
+                <li><strong>Technology & Health:</strong></li>
+                <li>Siemens Energy (Relocated Orlando offices here)</li>
+                <li>Johnson & Johnson's Human Performance Institute</li>
+                <li>Leidos (Defense and technology contractor)</li>
+                <li><strong>Simulation/Training:</strong></li>
+                <li>SIMCOM Aviation Training (Pilot training)</li>
+                <li>Signature Flight Support (Aviation services)</li>
+                <li><a href="https://flymco.com/" target="_blank">Orlando International Airport</a></li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Lake Nona')">Search Homes in Lake Nona</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- KISSIMMEE MODAL -->
+<div class="modal" id="kissimmeemodal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Gateway to the Magic and Natural Florida</div>
+        <h1>Kissimmee</h1>
+        <p>Kissimmee is a major city in Central Florida and the county seat of Osceola County. Situated directly south of Orlando, Kissimmee serves as a primary gateway to the region's famous theme parks but distinguishes itself with a deep connection to "Old Florida" heritage, particularly in ranching and its extensive chain of lakes. The city's economy is heavily supported by hospitality, but it also maintains a focus on preserving its natural beauty, offering visitors and residents a mix of world-class entertainment access and authentic Floridian outdoor adventure.</p>
+    </div>
+
+    <!-- Sticky Nav Pills -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('notable-areas', 'kissimmeemodal')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sights-culture', 'kissimmeemodal')">🐊 Sights & Culture</button>
+        <button class="nav-pill" onclick="scrollToSection('healthcare', 'kissimmeemodal')">🏥 Healthcare</button>
+        <button class="nav-pill" onclick="scrollToSection('schools', 'kissimmeemodal')">📚 Schools</button>
+        <button class="nav-pill" onclick="scrollToSection('parks', 'kissimmeemodal')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sports', 'kissimmeemodal')">🏀 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('business', 'kissimmeemodal')">🏢 Business</button>
+    </div>
+
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="notable-areas">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Kissimmee's attractions blend historical Americana with proximity to global entertainment.</p>
+            <ul>
+                <li><strong>Entertainment Hubs:</strong></li>
+                <li><a href="https://myoldtownusa.com/" target="_blank">Old Town Kissimmee</a> (A classic Americana-style walking district and amusement area featuring vintage rides, shops, and weekly car shows)</li>
+                <li><a href="https://www.gatorland.com/" target="_blank">Gatorland</a> (Known as the "Alligator Capital of the World," offering close-up wildlife encounters and exciting shows, including the Screamin' Gator Zip Line)</li>
+                <li><strong>Theme Park Proximity:</strong> Kissimmee is the closest city to the main entrance of <a href="https://www.disneyworld.disney.go.com/" target="_blank">Walt Disney World Resort</a> and provides easy access to Universal and SeaWorld</li>
+                <li><strong>Historical & Cultural:</strong></li>
+                <li><strong>Historic Downtown Kissimmee:</strong> Features the Kissimmee Civic Center and local shops, retaining a sense of pre-tourism Florida</li>
+                <li><strong>Pioneer Village at Shingle Creek:</strong> A living history museum showcasing preserved buildings and artifacts from early Florida life</li>
+            </ul>
+        </div>
+
+        <!-- SIGHTS & CULTURE -->
+        <div class="modal-section" id="sights-culture">
+            <h2><span class="modal-section-icon">🐊</span>Nature & Heritage</h2>
+            <p class="modal-section-intro">Kissimmee uniquely blends theme park access with authentic Old Florida heritage and natural beauty.</p>
+            <ul>
+                <li>Direct gateway location to Walt Disney World and other major theme parks</li>
+                <li>Authentic Florida ranching heritage and historical sites</li>
+                <li>World-class wildlife and natural attractions</li>
+                <li>Traditional Florida small-town charm and local character</li>
+                <li>Extensive chain of lakes for outdoor recreation</li>
+            </ul>
+        </div>
+
+        <!-- HEALTHCARE -->
+        <div class="modal-section" id="healthcare">
+            <h2><span class="modal-section-icon">🏥</span>Healthcare</h2>
+            <p class="modal-section-intro">Kissimmee is a significant provider of medical services for Osceola County.</p>
+            <ul>
+                <li><strong><a href="https://hcafloridahealthcare.com/locations/osceola-hospital/" target="_blank">HCA Florida Osceola Hospital</a>:</strong> A full-service, Level II Trauma Center acute-care teaching hospital in collaboration with UCF College of Medicine, and one of the largest employers in the county</li>
+                <li><strong>Kissimmee Medical Center</strong> (Part of the Orlando Health network)</li>
+                <li><strong>AdventHealth Kissimmee:</strong> Which offers a wide range of services including advanced surgical and cancer care</li>
+                <li><strong>Orlando Health:</strong> Maintains a presence in the area, ensuring residents and visitors have access to robust medical and emergency services</li>
+            </ul>
+        </div>
+
+        <!-- SCHOOLS -->
+        <div class="modal-section" id="schools">
+            <h2><span class="modal-section-icon">📚</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Education is managed by a large county-wide district, supplemented by local college campuses.</p>
+            <ul>
+                <li><strong>K-12 Education:</strong> Served by the <a href="https://www.osceolaschools.net/" target="_blank">School District of Osceola County</a>, a major employer in the area</li>
+                <li><strong>Higher Education:</strong></li>
+                <li><a href="https://valenciacollege.edu/locations/osceola/" target="_blank">Valencia College Osceola Campus</a> (Offers Associate in Arts degrees and serves as a regional campus for the University of Central Florida)</li>
+                <li><a href="https://www.osceolaschools.net/otech/" target="_blank">Osceola Technical College (oTech)</a> (Provides workforce education and career training programs)</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Kissimmee capitalizes on its location within the vast Kissimmee Chain of Lakes.</p>
+            <ul>
+                <li><strong><a href="https://www.kissimmee.gov/government/parks-recreation" target="_blank">City of Kissimmee Parks & Recreation Department</a>:</strong> Manages community facilities and events</li>
+                <li><strong><a href="https://www.kissimmee.gov/government/parks-recreation/parks/kissimmee-lakefront-park" target="_blank">Kissimmee Lakefront Park</a>:</strong> A recently redeveloped waterfront park on Lake Tohopekaliga, offering walking paths, fishing piers, and playgrounds</li>
+                <li><strong>Shingle Creek Regional Park:</strong> Known as the "Headwaters of the Everglades," it offers beautiful trails for kayaking, canoeing, and airboat tours</li>
+                <li><strong>Outdoor Adventures:</strong> The large freshwater Lake Tohopekaliga (Lake Toho) is internationally famous for bass fishing. Airboat tours are a signature activity for spotting alligators and local wildlife</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sports">
+            <h2><span class="modal-section-icon">🏀</span>Sports Teams & Recreation</h2>
+            <p class="modal-section-intro">Kissimmee is the home court for professional and amateur sports.</p>
+            <ul>
+                <li><strong>NBA G League:</strong> The <a href="https://osceola.gleague.nba.com/" target="_blank">Osceola Magic</a> are the NBA G League affiliate of the Orlando Magic, playing at the Silver Spurs Arena within <a href="https://www.ohpark.com/" target="_blank">Osceola Heritage Park</a>, which also hosts concerts and events</li>
+                <li><strong>Spring Training History:</strong> The city was historically the spring training home for the Houston Astros (MLB) for over 30 years</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses & Local Economy</h2>
+            <p class="modal-section-intro">The local economy is heavily reliant on tourism and related industries, along with public services.</p>
+            <ul>
+                <li><strong>Hospitality & Tourism:</strong> Due to nearby theme parks, major hotels, resorts, and vacation rental management companies (Sterling Hospitality Inc., Reunion Resort) are among top employers</li>
+                <li><strong>Healthcare & Public Sector:</strong></li>
+                <li>School District of Osceola County (The largest employer)</li>
+                <li>AdventHealth and HCA Healthcare facilities</li>
+                <li>Osceola County Government and Sheriff's Office</li>
+                <li><strong>Utilities:</strong> Toho Water Authority is a key local utility</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Kissimmee')">Search Homes in Kissimmee</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<script>
+    function openModal(communityId) {
+        const modals = {
+            'orlando': 'orlandomodal',
+            'winterpark': 'winterparkmodal',
+            'lakenona': 'lakenonamodal',
+            'kissimmee': 'kissimmeemodal'
+        };
+
+        const modalId = modals[communityId];
+        if (!modalId) return;
+
+        const modal = document.getElementById(modalId);
+        const overlay = document.getElementById('modalOverlay');
+        modal.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+        if (event && event.target.id !== 'modalOverlay') return;
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => modal.classList.remove('active'));
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function toggleFAQ(element) {
+        const item = element.closest('.faq-item');
+        item.classList.toggle('active');
+    }
+
+    function scrollToSection(sectionId, modalId) {
+        const modal = document.getElementById(modalId);
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            const navPills = modal.querySelectorAll('.nav-pill');
+            navPills.forEach(pill => pill.classList.remove('active'));
+            event.target.closest('.nav-pill').classList.add('active');
+
+            const modalContent = modal.querySelector('.modal-content');
+            const sectionPosition = section.offsetTop - modalContent.offsetTop - 150;
+            modalContent.scrollTop = sectionPosition;
+        }
+    }
+
+    function searchHomes(community) {
+        alert('Link to Showcase IDX saved search for ' + community + ' — URL TBD');
+    }
+</script>
+
+</body>
+</html>

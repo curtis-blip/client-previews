@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Amy Koch | Scottsdale &amp; Phoenix REALTOR | The Brokery</title>
+<meta name="description" content="Meet Amy Koch, a Scottsdale and Phoenix REALTOR with The Brokery. Over 15 years of experience helping buyers, sellers, and Canadian families find their place in the Valley.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AMY KOCH - BASE TEMPLATE
+   Design vibe: The Brokery luxury aesthetic
+   Gold accent, dark/moody, generous whitespace
+   ============================================ */
+
+/* --- CSS RESET & VARIABLES --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Brand Colors */
+  --gold: #4bb9d4;
+  --gold-dark: #3a9ab8;
+  --gold-light: #7dd3e8;
+  --warm-accent: #d4a04b;
+  --warm-accent-dark: #b8882f;
+  --teal: #4bb9d4;
+  --teal-dark: #3a9ab8;
+  --navy: #0f1f2e;
+  --navy-light: #162536;
+  --charcoal: #1a1a1a;
+  --dark: #111111;
+  --white: #ffffff;
+  --off-white: #f7fafb;
+  --warm-gray: #eef5f7;
+  --text-primary: #1a2a35;
+  --text-secondary: #6b6b6b;
+  --text-light: #999999;
+  --border-light: #e8e6e1;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(80px, 10vw, 120px);
+  --container-width: 1200px;
+  --container-narrow: 800px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+.container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+.container-narrow { width: 90%; max-width: var(--container-narrow); margin: 0 auto; }
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; color: var(--charcoal); }
+h1 { font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 46px); letter-spacing: -0.01em; }
+h3 { font-size: clamp(22px, 2.5vw, 30px); }
+h4 { font-size: clamp(18px, 1.5vw, 22px); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrow-center {
+  justify-content: center;
+}
+.eyebrow-center::before {
+  display: none;
+}
+.eyebrow-center::after {
+  display: none;
+}
+
+.section-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Light section headings */
+.light-section h2 { color: var(--charcoal); }
+.light-section .eyebrow { color: var(--gold); }
+.light-section .eyebrow::before { background: var(--gold); }
+
+/* Dark section headings */
+.dark-section { background: var(--navy); }
+.dark-section h2, .dark-section h3, .dark-section h4 { color: var(--white); }
+.dark-section p { color: rgba(255,255,255,0.75); }
+.dark-section .eyebrow { color: var(--gold); }
+.dark-section .eyebrow::before { background: var(--gold); }
+
+/* Alt section */
+.alt-section { background: var(--off-white); }
+
+/* Warm tinted section */
+.warm-section { background: #faf8f3; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(75, 185, 212, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-white {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.btn-white:hover {
+  background: var(--off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+}
+
+/* --- HEADER (Transparent + Sticky) --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-out);
+}
+.site-header.scrolled {
+  background: rgba(12, 26, 42, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-mark span {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.logo-brokery {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.main-nav { display: flex; align-items: center; gap: 36px; }
+.main-nav a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  position: relative;
+}
+.main-nav a:hover { color: var(--gold); }
+.main-nav a.active { color: var(--gold); }
+.nav-cta {
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--white) !important;
+  border-radius: 2px;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover {
+  background: var(--gold-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile Nav */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.mobile-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.mobile-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* --- SCROLL PROGRESS BAR --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1001;
+  transition: width 0.1s linear;
+}
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(12,26,42,0.85) 0%, rgba(12,26,42,0.5) 50%, rgba(12,26,42,0.3) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 0 100px;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 560px; margin-bottom: 36px; }
+.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow::before { background: var(--gold); }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* --- STATS BAR (overlapping hero) --- */
+.stats-bar {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px;
+  margin-bottom: 0;
+}
+.stats-bar-inner {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* --- CARDS --- */
+.card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.card-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.card-body { padding: 32px; }
+.card-body h3 { margin-bottom: 12px; font-size: 22px; }
+.card-body p { color: var(--text-secondary); font-size: 15px; }
+
+/* Dark card variant */
+.card-dark {
+  background: var(--navy-light);
+}
+.card-dark h3, .card-dark h4 { color: var(--white); }
+.card-dark p { color: rgba(255,255,255,0.7); }
+
+/* --- SERVICE GRID --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.service-card {
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-light);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.service-icon svg { width: 100%; height: 100%; }
+.service-card h4 { margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); }
+
+/* --- FAQ ACCORDION --- */
+.faq-list { max-width: 800px; }
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  transition: transform 0.3s ease;
+}
+.faq-icon::before { width: 14px; height: 1.5px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 1.5px; height: 14px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-item.active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+}
+.faq-item.active .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Dark FAQ variant */
+.dark-section .faq-item { border-color: rgba(255,255,255,0.1); }
+.dark-section .faq-question { color: var(--white); }
+.dark-section .faq-question:hover { color: var(--gold); }
+.dark-section .faq-answer-inner { color: rgba(255,255,255,0.7); }
+
+/* --- TESTIMONIALS --- */
+.testimonial-card {
+  background: var(--white);
+  padding: 48px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.testimonial-quote-icon {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 32px;
+}
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  position: relative;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--gold);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* --- CTA BANNER --- */
+.cta-banner {
+  background: linear-gradient(rgba(12,26,42,0.85), rgba(12,26,42,0.85)), url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1600&h=600&fit=crop&q=75') center/cover no-repeat;
+  padding: var(--section-padding) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.08) 0%, transparent 70%);
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+.cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 18px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+/* --- FOOTER --- */
+.site-footer {
+  background: var(--dark);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo-name { font-size: 22px; margin-bottom: 4px; }
+.footer-brand .logo-brokery { margin-bottom: 20px; display: block; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 300px; }
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+.footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-social svg { width: 14px; height: 14px; }
+
+/* --- SCROLL ANIMATIONS --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- COUNTER ANIMATION --- */
+.counter { display: inline-block; }
+
+/* --- SECTION DIVIDER (angled) --- */
+.angled-divider {
+  position: relative;
+}
+.angled-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+  z-index: 2;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 36px 40px; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: flex; }
+
+  .main-nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--navy);
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 999;
+  }
+  .main-nav.mobile-open a {
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .hero { min-height: 90vh; }
+  .hero-content { padding: 120px 0 80px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+
+  .stats-bar { margin-top: -40px; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 24px; }
+  .stat-number { font-size: 36px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+/* --- SECTION PADDING UTILITY --- */
+section { padding: var(--section-padding) 0; }
+
+/* ============================================
+   ABOUT PAGE SPECIFIC STYLES
+   ============================================ */
+
+/* --- ABOUT HERO (shorter variant) --- */
+.about-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+.about-hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&h=900&fit=crop&q=75') center/cover no-repeat;
+}
+.about-hero .hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.06) 0%, transparent 70%);
+}
+.about-hero .hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.04) 0%, transparent 70%);
+}
+.about-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 160px 0 80px;
+}
+.about-hero h1 {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.about-hero p {
+  color: rgba(255,255,255,0.75);
+  font-size: 18px;
+  max-width: 620px;
+  line-height: 1.8;
+}
+
+/* --- BIO SECTION --- */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: start;
+}
+.bio-text p {
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+.bio-text p:last-child {
+  margin-bottom: 0;
+}
+.bio-text h2 {
+  margin-bottom: 28px;
+}
+.bio-photo-wrapper {
+  position: relative;
+  padding-top: 20px;
+}
+.bio-photo {
+  width: 100%;
+  height: 580px;
+  background: url('amy-headshot.jpg') center top/cover no-repeat;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.bio-photo::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+}
+.bio-photo-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+.bio-photo-placeholder svg {
+  width: 64px;
+  height: 64px;
+  color: var(--text-light);
+  opacity: 0.4;
+}
+.bio-photo-placeholder span {
+  font-size: 13px;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.bio-photo-border {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  bottom: 12px;
+  left: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.4;
+}
+.bio-photo-caption {
+  text-align: center;
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* --- VALUES CARDS --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.value-card {
+  padding: 48px 36px;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-light);
+}
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.value-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.value-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.value-card h4 {
+  margin-bottom: 14px;
+}
+.value-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* --- BY THE NUMBERS --- */
+.numbers-section {
+  text-align: center;
+}
+.numbers-section h2 {
+  color: var(--white);
+  margin-bottom: 56px;
+}
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.number-item {
+  text-align: center;
+}
+.number-value {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5vw, 64px);
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.number-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+/* --- BROKERY SECTION --- */
+.brokery-grid {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.brokery-logo-box {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--off-white);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+.brokery-logo-box::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(75,185,212,0.2);
+  border-radius: 2px;
+}
+.brokery-logo-box svg {
+  width: 80px;
+  height: 80px;
+  color: var(--gold);
+  opacity: 0.6;
+}
+.brokery-text h2 {
+  margin-bottom: 24px;
+}
+.brokery-text p {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.brokery-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* --- TESTIMONIALS SECTION --- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+/* --- RESPONSIVE ABOUT SPECIFICS --- */
+@media (max-width: 1024px) {
+  .bio-grid { grid-template-columns: 1fr; gap: 48px; }
+  .bio-photo { height: 480px; }
+  .bio-photo-border { display: none; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .brokery-grid { grid-template-columns: 1fr; gap: 36px; }
+  .brokery-logo-box { max-width: 200px; aspect-ratio: 1; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .about-hero { min-height: 50vh; }
+  .about-hero .hero-content { padding: 140px 0 60px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .number-value { font-size: 42px; }
+  .bio-photo { height: 400px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="01-home.html" class="logo">
+      <div class="logo-mark"><span>AK</span></div>
+      <div class="logo-text">
+        <span class="logo-name">Amy Koch</span>
+        <span class="logo-brokery">The Brokery</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="09-search.html">Search Homes</a>
+      <a href="02-buy.html">Buy</a>
+      <a href="03-sell.html">Sell</a>
+      <a href="04-home-value.html">Home Value</a>
+      <a href="05-communities.html">Communities</a>
+      <a href="06-about.html" class="active">About</a>
+      <a href="08-canadian-buyers.html">Canadian Buyers</a>
+      <a href="07-contact.html" class="nav-cta">Get Started</a>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-open'); this.classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== -->
+<!-- PAGE CONTENT GOES HERE -->
+<!-- ===================== -->
+
+<main>
+
+<!-- SECTION 1: HERO -->
+<section class="about-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow fade-up">About</div>
+    <h1 class="fade-up">Meet Amy Koch, Scottsdale REALTOR</h1>
+    <p class="fade-up">Amy Koch Realtor Scottsdale and Phoenix for over 15 years. Hundreds of families helped. One commitment: know the neighborhoods better than anyone and put that knowledge to work for every client.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: BIO -->
+<section class="light-section">
+  <div class="container">
+    <div class="bio-grid">
+      <div class="bio-text fade-left">
+        <div class="eyebrow">The Story</div>
+        <h2>From Canada to the Valley</h2>
+        <p>Amy Koch's path to Phoenix real estate started in Canada. Born in Ontario, she grew up in Vancouver and spent years in Calgary before she and her husband made the decision to relocate to Arizona in 2006. They settled in the Arcadia area of Scottsdale and never looked back.</p>
+        <p>That cross-border experience shaped the foundation of Amy's career. She understood firsthand what it meant to move to a new country, navigate unfamiliar markets, and build a life from scratch in the desert. When Canadian buyers started asking for help making the same transition, she was uniquely qualified to guide them.</p>
+        <p>Over the past 15 years, Amy has built her business entirely through referrals and repeat clients. She co-founded Desert Ridge Real Estate Advisors and Kreate Property Group before joining <a href="https://thebrokery.com" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">The Brokery</a>, one of Arizona's most respected independent brokerages. Her focus has always been the same: know the neighborhoods at a granular level and give every client the kind of attention that turns a transaction into a relationship.</p>
+        <p>Today, Amy Koch Realtor Scottsdale serves buyers and sellers across <a href="05-communities.html#desert-ridge" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Desert Ridge</a>, <a href="05-communities.html#north-scottsdale" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">North Scottsdale</a>, <a href="05-communities.html#paradise-valley" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Paradise Valley</a>, <a href="05-communities.html#fountain-hills" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Fountain Hills</a>, Old Town Scottsdale, and North Phoenix. Her clients include first-time buyers, luxury homeowners, investors, and a steady stream of Canadian families making Arizona their new home.</p>
+      </div>
+      <div class="bio-photo-wrapper fade-right">
+        <div class="bio-photo">
+          <div class="bio-photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Agent Photo</span>
+          </div>
+        </div>
+        <div class="bio-photo-border"></div>
+        <p class="bio-photo-caption">Amy Koch Realtor Scottsdale, The Brokery</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: VALUES / APPROACH -->
+<section class="alt-section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:640px; margin:0 auto;">
+      <div class="eyebrow eyebrow-center">The Approach</div>
+      <h2>What Working with Amy Looks Like</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h4>Relentlessly Local</h4>
+        <p>Amy doesn't cover the entire state. She focuses on six communities where her knowledge of streets, schools, builders, and pricing trends gives her clients a genuine advantage.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.42 4.58a5.4 5.4 0 00-7.65 0l-.77.78-.77-.78a5.4 5.4 0 00-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"/>
+            <path d="M12 5.36L8.87 8.5a2.13 2.13 0 000 3h0a2.13 2.13 0 003 0L12 11.37"/>
+          </svg>
+        </div>
+        <h4>Built on Referrals</h4>
+        <p>Amy's business comes from past clients who send their friends and family. That says more about the experience than any marketing ever could.</p>
+      </div>
+      <div class="value-card fade-up">
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+            <circle cx="12" cy="12" r="1"/>
+          </svg>
+        </div>
+        <h4>White-Glove Service</h4>
+        <p>From your first conversation through closing and beyond, Amy manages every detail so you can focus on the excitement of your next chapter, not the stress of the transaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: BY THE NUMBERS -->
+<section class="dark-section numbers-section" id="numbersSection">
+  <div class="container">
+    <div class="eyebrow eyebrow-center fade-up" style="justify-content:center;">By the Numbers</div>
+    <h2 class="fade-up">By the Numbers</h2>
+    <div class="numbers-grid">
+      <div class="number-item fade-up">
+        <div class="number-value"><span class="counter" data-target="15" data-suffix="+">0</span></div>
+        <div class="number-label">Years in Phoenix Real Estate</div>
+      </div>
+      <div class="number-item fade-up">
+        <div class="number-value"><span class="counter" data-target="500" data-suffix="+">0</span></div>
+        <div class="number-label">Families Served</div>
+      </div>
+      <div class="number-item fade-up">
+        <div class="number-value"><span class="counter" data-target="6">0</span></div>
+        <div class="number-label">Specialty Communities</div>
+      </div>
+      <div class="number-item fade-up">
+        <div class="number-value"><span class="counter" data-target="100" data-suffix="%">0</span></div>
+        <div class="number-label">Referral-Based Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: THE BROKERY -->
+<section class="light-section">
+  <div class="container">
+    <div class="brokery-grid">
+      <div class="brokery-logo-box fade-left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="brokery-text fade-right">
+        <div class="eyebrow">The Brokerage</div>
+        <h2>Backed by The Brokery</h2>
+        <p><a href="https://thebrokery.com" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">The Brokery</a> is an independent, agent-owned brokerage built on the belief that real estate should be personal, professional, and rooted in real relationships. Unlike franchise brokerages, The Brokery gives agents the freedom to serve clients their own way while providing the infrastructure, marketing support, and collaborative culture that elevates every transaction.</p>
+        <p>For Amy's clients, this means access to The Brokery's network, marketing resources, and industry connections without the rigid systems of a corporate brand. It's the best of both worlds: boutique attention backed by serious capability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: TESTIMONIALS -->
+<section class="warm-section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; max-width:640px; margin:0 auto 0;">
+      <div class="eyebrow eyebrow-center">Client Stories</div>
+      <h2>What Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">We were relocating from Toronto and had no idea where to start. Amy took the time to understand our lifestyle, our budget, and what we wanted from Arizona living. She drove us through five different neighborhoods in one day and we found our home in Desert Ridge by the end of the week.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">David & Lauren P.</div>
+            <div class="testimonial-role">Toronto to Desert Ridge</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">Amy represented us on the sale of our Paradise Valley home and the purchase of our new place in North Scottsdale. Both transactions closed without a single issue. She handled everything and kept us informed at every step. We've already referred her to two other families.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">H</div>
+          <div>
+            <div class="testimonial-name">The Hoffman Family</div>
+            <div class="testimonial-role">Paradise Valley</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cross-links -->
+<section class="alt-section" style="padding: 60px 0;">
+  <div class="container" style="text-align: center;">
+    <h3 class="fade-up" style="margin-bottom: 32px;">How Can Amy Help You?</h3>
+    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="fade-up">
+      <a href="02-buy.html" class="btn btn-primary">Buy a Home</a>
+      <a href="03-sell.html" class="btn btn-outline">Sell Your Home</a>
+      <a href="08-canadian-buyers.html" class="btn btn-outline">Relocate from Canada</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="eyebrow eyebrow-center fade-up" style="color:var(--gold); justify-content:center;">Get Started</div>
+    <h2 class="fade-up">Work With Amy</h2>
+    <p class="fade-up">Whether you're buying, selling, or just starting to explore the Phoenix market, Amy Koch Realtor Scottsdale is here to help.</p>
+    <a href="07-contact.html" class="btn btn-primary fade-up">Schedule a Consultation</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name" style="color:#fff;">Amy Koch</span>
+        <span class="logo-brokery">The Brokery Real Estate</span>
+        <p>Relentlessly local. Serving the Phoenix, Scottsdale, and Northeast Valley communities with white-glove real estate service for over 15 years.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="02-buy.html">Buyer's Guide</a></li>
+          <li><a href="03-sell.html">Seller's Guide</a></li>
+          <li><a href="04-home-value.html">Home Value</a></li>
+          <li><a href="05-communities.html">Communities</a></li>
+          <li><a href="08-canadian-buyers.html">Canadian Buyers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Communities</h4>
+        <ul class="footer-links">
+          <li><a href="05-communities.html#desert-ridge">Desert Ridge</a></li>
+          <li><a href="05-communities.html#north-scottsdale">North Scottsdale</a></li>
+          <li><a href="05-communities.html#paradise-valley">Paradise Valley</a></li>
+          <li><a href="05-communities.html#fountain-hills">Fountain Hills</a></li>
+          <li><a href="05-communities.html#old-town-scottsdale">Old Town Scottsdale</a></li>
+          <li><a href="05-communities.html#north-phoenix">North Phoenix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:6023867343" style="color:rgba(255,255,255,0.5);">602.386.7343</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:amy@amykoch.com" style="color:rgba(255,255,255,0.5);">amy@amykoch.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Phoenix &amp; Scottsdale, AZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logos" style="display: flex; align-items: center; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; width: 100%; justify-content: center; flex-wrap: wrap;">
+        <!-- AK Logo Mark -->
+        <div style="width: 36px; height: 36px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-display); font-size: 14px; color: var(--gold); font-weight: 500;">AK</span>
+        </div>
+        <!-- REALTOR Logo -->
+        <svg viewBox="0 0 50 50" width="32" height="32" fill="none" style="flex-shrink: 0;">
+          <rect x="2" y="2" width="46" height="46" rx="4" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">REALTOR</text>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="400" letter-spacing="0.3" dy="10">&#174;</text>
+          <line x1="10" y1="36" x2="40" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+          <text x="25" y="44" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="4" letter-spacing="0.3">MLS</text>
+        </svg>
+        <!-- Equal Housing Opportunity Logo -->
+        <svg viewBox="0 0 40 44" width="28" height="31" fill="none" style="flex-shrink: 0;">
+          <path d="M20 2L2 18h6v22h24V18h6L20 2z" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+          <text x="20" y="26" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="700">=</text>
+          <text x="20" y="33" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3.5" letter-spacing="0.2">EQUAL</text>
+          <text x="20" y="37" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3" letter-spacing="0.2">HOUSING</text>
+        </svg>
+      </div>
+      <p>&copy; 2026 Amy Koch Real Estate | The Brokery. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SHARED JS -->
+<script>
+// Sticky header
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Scroll animations (fade-up, fade-left, fade-right)
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (index * 0.05) + 's';
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasActive = item.classList.contains('active');
+    item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  });
+});
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const prefix = counter.getAttribute('data-prefix') || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      counter.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Counter observer - observe the numbers section
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const numbersSection = document.getElementById('numbersSection');
+if (numbersSection) counterObserver.observe(numbersSection);
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

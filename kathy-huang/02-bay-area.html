@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Huang - Bay Area Page Redesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* DESIGN PREVIEW BANNER */
+        .preview-banner {
+            background: linear-gradient(90deg, #d4b896, #c9a876);
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* HERO BLOCK */
+        .hero {
+            background: linear-gradient(135deg, #1a4d5c 0%, #3d5a5a 50%, #2d4a55 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: left;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(212, 184, 150, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #e6e6e6;
+        }
+
+        /* INTRO SECTION */
+        .intro-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .intro-section .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-section p {
+            font-size: 16px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* COMMUNITY CARDS SECTION */
+        .community-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .community-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .community-section-subtitle {
+            text-align: center;
+            color: #ddd;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .community-card {
+            aspect-ratio: 1 / 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .community-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Unique gradient backgrounds for each card */
+        .card-sf {
+            background: linear-gradient(135deg, #1e6b7e 0%, #2d5a6d 100%);
+        }
+
+        .card-sj {
+            background: linear-gradient(135deg, #c66b4a 0%, #a85a3a 100%);
+        }
+
+        .card-pa {
+            background: linear-gradient(135deg, #5a8b6b 0%, #4a7b5b 100%);
+        }
+
+        .card-mv {
+            background: linear-gradient(135deg, #d4a574 0%, #c49564 100%);
+        }
+
+        .card-sc {
+            background: linear-gradient(135deg, #8b6b5a 0%, #6b5b4a 100%);
+        }
+
+        .card-cp {
+            background: linear-gradient(135deg, #4a7a8b 0%, #3a6a7b 100%);
+        }
+
+        .card-lg {
+            background: linear-gradient(135deg, #7a5a4a 0%, #5a4a3a 100%);
+        }
+
+        .card-rc {
+            background: linear-gradient(135deg, #1e8b7e 0%, #2d7b6d 100%);
+        }
+
+        .card-sm {
+            background: linear-gradient(135deg, #c6884a 0%, #a8703a 100%);
+        }
+
+        .community-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+            z-index: 2;
+        }
+
+        .community-card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            color: #fff;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            z-index: 3;
+        }
+
+        /* DESIGNER NOTE */
+        .designer-note {
+            background: #fff3e0;
+            border-left: 4px solid #d4b896;
+            padding: 20px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 14px;
+            color: #666;
+            border-radius: 4px;
+        }
+
+        .designer-note strong {
+            color: #3d5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ADTV SECTION (DEAD CSS) */
+        .adtv-section {
+            background: #f9f7f3;
+            padding: 80px 40px;
+        }
+
+        .adtv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .adtv-image {
+            background: linear-gradient(135deg, #d4b896, #c9a876);
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .adtv-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .adtv-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .adtv-bullets {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .adtv-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .adtv-bullets li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: #c9a876;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 184, 150, 0.3);
+        }
+
+        /* WHY KATHY SECTION */
+        .why-kathy-section {
+            background: #fff;
+            padding: 80px 40px;
+        }
+
+        .why-kathy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .kathy-image {
+            background: linear-gradient(135deg, #3d5a5a, #2d4a55);
+            aspect-ratio: 3 / 4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+            font-size: 16px;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-kathy-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .why-kathy-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .why-kathy-bullets {
+            list-style: none;
+        }
+
+        .why-kathy-bullets li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .why-kathy-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #d4b896;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            background: #3d5a5a;
+            padding: 80px 40px;
+        }
+
+        .faq-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            color: #d4b896;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 600;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 184, 150, 0.2);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: rgba(212, 184, 150, 0.1);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #d4b896;
+            font-size: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+        }
+
+        .faq-question:hover {
+            background: rgba(212, 184, 150, 0.15);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 25px 20px;
+            color: #ddd;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #2d3d3d;
+            color: #ccc;
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 85%;
+            max-width: 1000px;
+            background: #fff;
+            overflow-y: auto;
+            z-index: 1001;
+            animation: slideInRight 0.4s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .modal-header {
+            background: #3d5a5a;
+            color: #fff;
+            padding: 60px 40px 40px;
+            position: relative;
+            border-bottom: 1px solid #d4b896;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #d4b896;
+        }
+
+        .modal-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #d4b896;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modal-header p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ddd;
+        }
+
+        /* STICKY NAV PILLS */
+        .modal-nav {
+            display: flex;
+            gap: 12px;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            flex-wrap: nowrap;
+        }
+
+        .nav-pill {
+            background: #f5f5f5;
+            border: 2px solid #eee;
+            color: #666;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-pill:hover {
+            background: #f0f0f0;
+            border-color: #d4b896;
+        }
+
+        .nav-pill.active {
+            background: #d4b896;
+            color: #3d5a5a;
+            border-color: #d4b896;
+        }
+
+        /* MODAL CONTENT */
+        .modal-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .modal-section {
+            margin-bottom: 60px;
+            scroll-margin-top: 180px;
+        }
+
+        .modal-section::before {
+            content: '';
+            display: block;
+            height: 1px;
+            background: #eee;
+            margin-bottom: 30px;
+        }
+
+        .modal-section:first-of-type::before {
+            display: none;
+        }
+
+        .modal-section-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .modal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: #3d5a5a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .modal-section-intro {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .modal-section ul {
+            list-style: none;
+        }
+
+        .modal-section li {
+            padding: 12px 0;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-section li strong {
+            color: #3d5a5a;
+            font-weight: 600;
+        }
+
+        .modal-section a {
+            color: #d4b896;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .modal-section a:hover {
+            color: #c9a876;
+            text-decoration: underline;
+        }
+
+        /* ADTV VIDEO PLACEHOLDER */
+        .video-placeholder {
+            background: #2d3d3d;
+            aspect-ratio: 16 / 9;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin: 25px 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .play-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .video-placeholder p {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .video-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .adtv-description {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.7;
+            margin-top: 20px;
+        }
+
+        /* MODAL CTA */
+        .modal-cta {
+            background: #d4b896;
+            color: #3d5a5a;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .modal-cta:hover {
+            background: #c9a876;
+        }
+
+        .modal-cta-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                width: 100%;
+            }
+
+            .adtv-container,
+            .why-kathy-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .intro-section h2,
+            .community-section h2,
+            .faq-section h2 {
+                font-size: 32px;
+            }
+
+            .modal-nav {
+                gap: 8px;
+                padding: 15px 20px;
+            }
+
+            .nav-pill {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .modal-content {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DESIGN PREVIEW BANNER -->
+<div class="preview-banner">
+    DESIGN PREVIEW — Kathy Huang | Bay Area Area Page Redesign | AgenticPress | March 2026
+</div>
+
+<!-- HERO BLOCK -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Trusted Bay Area Realtor For Silicon Valley & San Francisco</h1>
+        <p>Discover your dream home across the Bay Area's most prestigious communities with Kathy Huang, your trusted luxury real estate expert.</p>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div class="eyebrow">Welcome to California</div>
+    <h2>Expert Guidance For Buying And Selling In The Bay Area</h2>
+    <p>From the iconic city by the bay to the innovation epicenter of Silicon Valley, the Bay Area offers diverse communities, world-class education, and remarkable quality of life. With deep market expertise, I guide buyers and sellers through every step of the process.</p>
+</section>
+
+<!-- COMMUNITY CARDS SECTION -->
+<section class="community-section">
+    <h2>Find The Right Bay Area Community For You</h2>
+    <p class="community-section-subtitle">Explore nine distinctive neighborhoods across the Bay Area, each with its own unique character, amenities, and market dynamics.</p>
+
+    <div class="cards-grid">
+        <button class="community-card card-sf" onclick="openModal('sf-modal')">
+            <div class="community-card-text">San Francisco</div>
+        </button>
+        <button class="community-card card-sj" onclick="openModal('sj-modal')">
+            <div class="community-card-text">San Jose</div>
+        </button>
+        <button class="community-card card-pa" onclick="openModal('pa-modal')">
+            <div class="community-card-text">Palo Alto</div>
+        </button>
+        <button class="community-card card-mv" onclick="openModal('mv-modal')">
+            <div class="community-card-text">Mountain View</div>
+        </button>
+        <button class="community-card card-sc" onclick="openModal('sc-modal')">
+            <div class="community-card-text">Santa Clara</div>
+        </button>
+        <button class="community-card card-cp" onclick="openModal('cp-modal')">
+            <div class="community-card-text">Cupertino</div>
+        </button>
+        <button class="community-card card-lg" onclick="openModal('lg-modal')">
+            <div class="community-card-text">Los Gatos</div>
+        </button>
+        <button class="community-card card-rc" onclick="openModal('rc-modal')">
+            <div class="community-card-text">Redwood City</div>
+        </button>
+        <button class="community-card card-sm" onclick="openModal('sm-modal')">
+            <div class="community-card-text">San Mateo</div>
+        </button>
+    </div>
+
+    <div class="designer-note">
+        <strong>DESIGNER NOTE:</strong> Cards are now 1:1 squares with minimal bottom-only gradient overlay. Each card uses a unique background. The modal has been completely redesigned — click any community to see the new layout.
+    </div>
+</section>
+
+<!-- WHY KATHY SECTION -->
+<section class="why-kathy-section">
+    <div class="why-kathy-container">
+        <div class="kathy-image">Kathy Huang Photo Placeholder</div>
+        <div class="why-kathy-content">
+            <h2>Why Choose Kathy Huang</h2>
+            <p>With deep roots in the Bay Area and extensive experience in luxury real estate, Kathy brings both expertise and passion to every transaction. Her commitment to understanding your unique needs and goals ensures a seamless, rewarding experience.</p>
+            <ul class="why-kathy-bullets">
+                <li>20+ years of luxury real estate experience</li>
+                <li>Expert knowledge of all major Bay Area communities</li>
+                <li>Award-winning customer service and market expertise</li>
+                <li>Strategic pricing and marketing for maximum results</li>
+                <li>Comprehensive guidance through the entire transaction</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the best area to buy a home in the Bay Area?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">The best area depends on lifestyle, commute, schools, and price range. Each community offers a different living experience. Whether you prefer the urban energy of San Francisco, the innovation hub of San Jose, or the suburban charm of communities like Los Gatos, the Bay Area has options for every buyer.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>How much do homes cost in the Bay Area right now?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Home prices vary significantly by community, property type, and condition. San Francisco and Palo Alto command premium prices due to location and amenities. Silicon Valley communities like San Jose and Cupertino offer more varied pricing based on proximity to major employers. Current market conditions and individual property features also play significant roles in pricing.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What should I get approved for before buying a home in the Bay Area?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Most buyers start with a mortgage pre-approval to understand budget and strengthen their offers. A pre-approval letter shows sellers that you're a serious, qualified buyer and puts you in a stronger negotiating position, especially in competitive Bay Area markets.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Are there first time home buyer programs in the Bay Area?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. There are state and local programs that may offer assistance depending on income and eligibility. California and individual Bay Area counties offer various down payment assistance programs, favorable loan products, and tax benefits for first-time homebuyers. I can connect you with resources to explore all available options.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>What extra costs should I plan for when buying a home?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Buyers should plan for closing costs, inspections, insurance, taxes, and ongoing maintenance. Closing costs typically range from 2-5% of the purchase price and include lender fees, title insurance, escrow, and appraisal fees. Additionally, you'll want to budget for home inspections, homeowners insurance, and property taxes, which vary by location.</div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can I buy a home in the Bay Area if I am relocating?</span>
+                <span class="faq-toggle">▼</span>
+            </button>
+            <div class="faq-answer">Yes. Many buyers relocate and purchase homes using virtual tours, remote planning, and guided timelines. I specialize in working with relocation clients and can arrange virtual tours, connect you with trusted inspectors and contractors, and provide detailed market analysis to help you make confident decisions from afar.</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 Kathy Huang | Bay Area Luxury Real Estate | All Rights Reserved</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"></div>
+
+<!-- SAN FRANCISCO MODAL -->
+<div class="modal" id="sf-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The City by the Bay</div>
+        <h1>San Francisco</h1>
+        <p>San Francisco, often simply called "The City," is a dense, hilly, and culturally rich city at the tip of the San Francisco Peninsula. It is globally recognized for its fog, cable cars, Victorian architecture, and iconic landmarks like the Golden Gate Bridge. As a hub of finance, technology, and culture, it has historically been a center for progressive movements and technological innovation, defining its character as both a major world city and a collection of unique, diverse neighborhoods.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('sf-landmarks')">✨ Landmarks</button>
+        <button class="nav-pill" onclick="scrollToSection('sf-neighborhoods')">🏘️ Neighborhoods</button>
+        <button class="nav-pill" onclick="scrollToSection('sf-education')">🏫 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('sf-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sf-sports')">⚾ Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('sf-business')">💼 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- LANDMARKS -->
+        <div class="modal-section" id="sf-landmarks">
+            <h2><span class="modal-section-icon">✨</span>Iconic Landmarks</h2>
+            <p class="modal-section-intro">San Francisco's attractions span from natural wonders to historic sites and world-class museums.</p>
+            <ul>
+                <li><strong><a href="https://www.goldengatebridge.org/" target="_blank">Golden Gate Bridge</a>:</strong> An engineering marvel and one of the most photographed bridges in the world.</li>
+                <li><strong><a href="https://www.nps.gov/alca/index.htm" target="_blank">Alcatraz Island</a>:</strong> The infamous former federal prison, now a national park site accessible by ferry.</li>
+                <li><strong><a href="https://www.sfcablecar.com/" target="_blank">Cable Cars</a>:</strong> The world's last manually operated cable car system, a National Historic Landmark and a must-do city experience.</li>
+                <li><strong><a href="https://www.pier39.com/" target="_blank">Fisherman's Wharf & Pier 39</a>:</strong> A bustling waterfront area known for its seafood, attractions, and resident sea lions.</li>
+                <li><strong>Chinatown:</strong> The oldest and largest Chinatown in North America, offering a deep cultural experience.</li>
+                <li><strong>The Mission District:</strong> Known for its vibrant Latino culture, diverse restaurants, and historic murals.</li>
+                <li><strong>Lombard Street:</strong> Famous for a steep, one block section with eight hairpin turns. This is a major tourist attraction, receiving around 2 million visitors per year.</li>
+            </ul>
+        </div>
+
+        <!-- NEIGHBORHOODS -->
+        <div class="modal-section" id="sf-neighborhoods">
+            <h2><span class="modal-section-icon">🏘️</span>Notable Neighborhoods</h2>
+            <p class="modal-section-intro">San Francisco's distinctive neighborhoods each offer their own character and lifestyle.</p>
+            <ul>
+                <li><strong>Chinatown:</strong> The oldest and largest Chinatown in North America.</li>
+                <li><strong>The Mission District:</strong> Known for its vibrant Latino culture and diverse restaurants.</li>
+                <li><strong>Haight-Ashbury:</strong> Historic neighborhood known for the 1960s counterculture movement.</li>
+                <li><strong>Castro:</strong> Vibrant LGBTQ+ neighborhood known for its culture and community.</li>
+                <li><strong>Marina District:</strong> Upscale neighborhood with bay views and waterfront activities.</li>
+                <li><strong>North Beach:</strong> Historic Italian neighborhood with a strong community feel.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="sf-education">
+            <h2><span class="modal-section-icon">🏫</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">The city is home to several prestigious universities and colleges, driving academic excellence and technological research.</p>
+            <ul>
+                <li><strong><a href="https://www.ucsf.edu/" target="_blank">University of California, San Francisco (UCSF)</a>:</strong> A global leader in health sciences and biomedical research.</li>
+                <li><strong><a href="https://www.usfca.edu/" target="_blank">University of San Francisco (USF)</a>:</strong> A private Jesuit university.</li>
+                <li><strong><a href="https://www.sfsu.edu/" target="_blank">San Francisco State University (SFSU)</a>:</strong> A major public university within the California State University system.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="sf-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The city boasts vast green spaces, offering residents and visitors a retreat from the urban environment.</p>
+            <ul>
+                <li><strong><a href="https://goldengatepark.com/" target="_blank">Golden Gate Park</a>:</strong> A sprawling, 1,017-acre oasis that houses museums, gardens, and playgrounds. It is home to the <a href="https://www.calacademy.org/" target="_blank">California Academy of Sciences</a>, the de Young Museum, and the Japanese Tea Garden.</li>
+                <li><strong><a href="https://www.presidio.gov/" target="_blank">The Presidio</a>:</strong> A former military post turned national park with spectacular views, hiking trails, and the Walt Disney Family Museum.</li>
+                <li><strong>Twin Peaks:</strong> Offers 360-degree city views.</li>
+                <li><strong>Dolores Park:</strong> A popular gathering spot in the Mission District.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sf-sports">
+            <h2><span class="modal-section-icon">⚾</span>Sports Teams</h2>
+            <p class="modal-section-intro">San Francisco hosts major professional teams with dedicated fan bases.</p>
+            <ul>
+                <li><strong><a href="https://www.mlb.com/giants/" target="_blank">San Francisco Giants</a>:</strong> (MLB - Baseball) play at the scenic Oracle Park.</li>
+                <li><strong><a href="https://www.nba.com/warriors/" target="_blank">Golden State Warriors</a>:</strong> (NBA - Basketball, Bay Area team) play at the Chase Center in the Mission Bay neighborhood.</li>
+                <li><strong>Golden State Valkyries:</strong> (WNBA - Women's Basketball, beginning in 2025) will also play at the Chase Center.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="sf-business">
+            <h2><span class="modal-section-icon">💼</span>Major Businesses</h2>
+            <p class="modal-section-intro">As a global financial and technology hub, San Francisco is the headquarters for numerous Fortune 500 and influential tech companies.</p>
+            <ul>
+                <li><strong><a href="https://www.salesforce.com/" target="_blank">Salesforce</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.uber.com/" target="_blank">Uber</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.airbnb.com/" target="_blank">Airbnb</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://about.x.com/" target="_blank">Twitter (X)</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.dropbox.com/" target="_blank">Dropbox</a>:</strong> (Headquarters)</li>
+                <li><strong>Visa:</strong> (Global Operations Center)</li>
+                <li><strong>Wells Fargo:</strong> (Major Operations)</li>
+                <li><strong><a href="https://www.levistrauss.com/" target="_blank">Levi Strauss & Co.</a>:</strong> (Headquarters)</li>
+                <li><strong>Gap Inc.:</strong> (Headquarters)</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('San Francisco')">Search Homes in San Francisco</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- SAN JOSE MODAL -->
+<div class="modal" id="sj-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Capital of Silicon Valley</div>
+        <h1>San Jose</h1>
+        <p>San Jose, the third-largest city in California and the largest city in Northern California, sits at the heart of Silicon Valley, serving as its cultural, financial, and political center. Known for its innovation, high-tech industry, diverse culture, and sunny Mediterranean climate, San Jose offers a blend of historic charm and modern advancement. The city boasts a rich history, once serving as California's first state capital, alongside a forward-thinking environment driven by the numerous global technology companies headquartered here.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('sj-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sj-education')">🏫 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('sj-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sj-sports')">🏒 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('sj-business')">💻 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('sj-adtv')">📺 ADTV</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="sj-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">San Jose's attractions reflect its unique history and role as a tech hub.</p>
+            <ul>
+                <li><strong>Downtown San Jose:</strong> The vibrant urban core featuring the <a href="https://sjmusart.org/" target="_blank">San Jose Museum of Art</a>, the <a href="https://www.cdm.org/" target="_blank">Children's Discovery Museum of San Jose</a>, and the Cathedral Basilica of St. Joseph.</li>
+                <li><strong><a href="https://winchestermysteryhouse.com/" target="_blank">Winchester Mystery House</a>:</strong> A sprawling, famously bizarre mansion known for its architectural oddities.</li>
+                <li><strong><a href="https://egyptianmuseum.org/" target="_blank">Rosicrucian Egyptian Museum</a>:</strong> Home to the largest collection of ancient Egyptian artifacts in the Western United States.</li>
+                <li><strong>Japantown:</strong> One of the last three remaining authentic Japantowns in the United States, offering cultural experiences and historic sites.</li>
+                <li><strong><a href="https://www.santanarow.com/" target="_blank">Santana Row</a>:</strong> A premier destination for upscale shopping, dining, and living.</li>
+                <li><strong><a href="https://www.thetech.org/" target="_blank">The Tech Interactive</a>:</strong> A hands-on science and technology center focused on innovation.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="sj-education">
+            <h2><span class="modal-section-icon">🏫</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Education is a critical component of the community, ranging from large public school districts to renowned universities.</p>
+            <ul>
+                <li><strong><a href="https://www.sjusd.org/" target="_blank">San José Unified School District (SJUSD)</a>:</strong> Operates over 40 schools.</li>
+                <li><strong>San José State University (SJSU):</strong> The oldest public university on the West Coast and a foundational institution for Silicon Valley.</li>
+                <li><strong>Evergreen Valley College & San Jose City College:</strong> Local community colleges.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="sj-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">San Jose prioritizes green space, offering numerous parks and trail systems for outdoor activities.</p>
+            <ul>
+                <li><strong>Almaden Quicksilver County Park:</strong> A large historical park on the site of former mercury mines, featuring extensive hiking trails.</li>
+                <li><strong>Kelley Park:</strong> Home to Happy Hollow Park & Zoo and the historical exhibits of <a href="https://historysanjose.org/" target="_blank">History Park San José</a>.</li>
+                <li><strong>Guadalupe River Park:</strong> A linear park running through Downtown San Jose.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sj-sports">
+            <h2><span class="modal-section-icon">🏒</span>Sports Teams</h2>
+            <p class="modal-section-intro">San Jose has a strong fan base for its major professional sports franchises.</p>
+            <ul>
+                <li><strong><a href="https://www.nhl.com/sharks/" target="_blank">San Jose Sharks</a>:</strong> (NHL) play at the SAP Center, known locally as "The Shark Tank."</li>
+                <li><strong><a href="https://www.sjearthquakes.com/" target="_blank">San Jose Earthquakes</a>:</strong> (MLS - Major League Soccer) are a charter member of the MLS.</li>
+                <li><strong>San Jose Barracuda:</strong> (AHL) an affiliate of the Sharks.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="sj-business">
+            <h2><span class="modal-section-icon">💻</span>Major Businesses</h2>
+            <p class="modal-section-intro">As the "Capital of Silicon Valley," San Jose is a powerhouse of technology and innovation.</p>
+            <ul>
+                <li><strong><a href="https://www.adobe.com/" target="_blank">Adobe Inc.</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.cisco.com/" target="_blank">Cisco Systems</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.ebayinc.com/" target="_blank">eBay</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.paypal.com/" target="_blank">PayPal</a>:</strong> (Headquarters)</li>
+                <li><strong>Broadcom</strong></li>
+                <li><strong>Zoom:</strong> (Headquarters)</li>
+            </ul>
+        </div>
+
+        <!-- ADTV -->
+        <div class="modal-section" id="sj-adtv">
+            <h2><span class="modal-section-icon">📺</span>ADTV Episodes</h2>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Winchester Mystery House</p>
+            </div>
+            <p class="adtv-description">Explore San Jose's iconic Winchester Mystery House through this American Dream TV episode with Kathy Huang.</p>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Hotel Valencia & Santana Row Farmers Market</p>
+            </div>
+            <p class="adtv-description">Discover the luxury and lifestyle of Santana Row and the Hotel Valencia in San Jose.</p>
+            <p class="video-note">Developer Note: Embed YouTube videos here — URLs TBD from client</p>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('San Jose')">Search Homes in San Jose</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- PALO ALTO MODAL -->
+<div class="modal" id="pa-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Birthplace of Silicon Valley</div>
+        <h1>Palo Alto</h1>
+        <p>Palo Alto is a city that defines the phrase "college town meets global innovation." Situated in the northern part of Silicon Valley, the city's identity is inextricably linked to Stanford University, which borders it, and to the technological revolution it helped launch. Known for its affluent neighborhoods, intellectual atmosphere, and high concentration of venture capital firms and startups, Palo Alto is a beautiful, tree-lined community that serves as a historic and contemporary hub of technology.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('pa-notable')">✨ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('pa-education')">🎓 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('pa-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('pa-sports')">🏈 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('pa-business')">💰 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="pa-notable">
+            <h2><span class="modal-section-icon">✨</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Palo Alto's attractions often bridge its academic, historical, and commercial aspects.</p>
+            <ul>
+                <li><strong><a href="https://www.destinationpaloalto.com/downtown/" target="_blank">Downtown Palo Alto</a>:</strong> The vibrant main street (University Avenue), featuring upscale dining, boutiques, bookshops, and the historic Stanford Theatre.</li>
+                <li><strong>The Stanford Campus:</strong> A vast, beautiful area to explore, home to the <a href="https://museum.stanford.edu/" target="_blank">Cantor Arts Center</a> (world-class art museum with free admission), Hoover Tower (observation deck with panoramic views), and <a href="https://dish.stanford.edu/" target="_blank">The Dish</a> (popular scenic hiking trail).</li>
+                <li><strong><a href="https://hp.com/go/garage" target="_blank">HP Garage</a>:</strong> Located at 367 Addison Avenue, widely considered the "Birthplace of Silicon Valley" where Hewlett-Packard began in 1939.</li>
+                <li><strong>Palo Alto Junior Museum & Zoo:</strong> A dedicated center for children's science and wildlife education.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="pa-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">The city's educational profile is dominated by one of the world's leading research universities.</p>
+            <ul>
+                <li><strong>Stanford University:</strong> The prestigious private university's campus sits adjacent to the city. <a href="https://visit.stanford.edu/" target="_blank">Stanford University Visitor Information</a> provides details on tours and points of interest.</li>
+                <li><strong><a href="https://www.pausd.org/" target="_blank">Palo Alto Unified School District (PAUSD)</a>:</strong> Known for its strong academic performance.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="pa-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Palo Alto offers access to the Baylands and the nearby foothills, providing diverse outdoor opportunities.</p>
+            <ul>
+                <li><strong><a href="https://www.cityofpaloalto.org/Government/Community-Services/Open-Space-Parks-and-Golf/Baylands-Nature-Preserve" target="_blank">Palo Alto Baylands Nature Preserve</a>:</strong> The largest tract of undisturbed marshland remaining in the San Francisco Bay, with miles of trails perfect for hiking, cycling, and bird watching.</li>
+                <li><strong><a href="https://www.paloalto.gov/About/Visiting" target="_blank">Rinconada Park</a>:</strong> A central community park featuring a pool, tennis courts, and the city's Children's Library.</li>
+                <li><strong>Elizabeth F. Gamble Garden:</strong> A public garden with a historic home and tea room.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="pa-sports">
+            <h2><span class="modal-section-icon">🏈</span>Sports Teams</h2>
+            <p class="modal-section-intro">The city's major sports activity revolves around the collegiate level, with a strong fan base for Stanford Athletics.</p>
+            <ul>
+                <li><strong>Stanford Cardinal:</strong> Compete in NCAA Division I, with major venues including Stanford Stadium for football and Maples Pavilion for basketball.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="pa-business">
+            <h2><span class="modal-section-icon">💰</span>Major Businesses</h2>
+            <p class="modal-section-intro">Palo Alto is a global center for venture capital and technology due to its close proximity to Stanford University.</p>
+            <ul>
+                <li><strong><a href="https://www.hp.com/" target="_blank">Hewlett-Packard (HP)</a>:</strong> (Historical Founding Location)</li>
+                <li><strong><a href="https://www.vmware.com/" target="_blank">VMware</a>:</strong> (Major Headquarters)</li>
+                <li><strong>Venture Capital (VC) Firms:</strong> Many of the most powerful and influential VC firms are located on Sand Hill Road in nearby Menlo Park.</li>
+                <li><strong>Tesla:</strong> The electric vehicle pioneer had its original headquarters here.</li>
+                <li><strong>IDEO & PARC:</strong> Palo Alto Research Center, a subsidiary of Xerox, were pivotal in early computer science and innovation.</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Palo Alto')">Search Homes in Palo Alto</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- MOUNTAIN VIEW MODAL -->
+<div class="modal" id="mv-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Home of Global Innovation</div>
+        <h1>Mountain View</h1>
+        <p>Mountain View, nestled in the heart of Silicon Valley, is globally recognized as the headquarters of Google and a pivotal location in the history of technology. The city seamlessly blends its role as a major hub for innovation with a charming, walkable downtown and extensive open spaces on the shores of the San Francisco Bay. Its name is derived from the views of the Santa Cruz Mountains to the southwest.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('mv-business')">💻 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('mv-notable')">🏛️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('mv-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('mv-education')">🎓 Education</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- BUSINESS -->
+        <div class="modal-section" id="mv-business">
+            <h2><span class="modal-section-icon">💻</span>Major Businesses</h2>
+            <p class="modal-section-intro">Mountain View is the corporate base for some of the world's most influential technology companies.</p>
+            <ul>
+                <li><strong><a href="https://www.google.com/about/careers/" target="_blank">Google / Alphabet Inc.</a>:</strong> The company's vast global headquarters, known as the Googleplex, is located here.</li>
+                <li><strong><a href="https://www.intuit.com/" target="_blank">Intuit</a>:</strong> Creator of QuickBooks and TurboTax.</li>
+                <li><strong><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>:</strong> The professional networking service (major offices).</li>
+                <li><strong>Waymo:</strong> An American autonomous driving technology development company.</li>
+                <li><strong>NASA Ames Research Center:</strong> A key center for R&D and flight missions, located at Moffett Federal Airfield adjacent to the city.</li>
+            </ul>
+        </div>
+
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="mv-notable">
+            <h2><span class="modal-section-icon">🏛️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">The city's attractions reflect both its technological heritage and its community focus.</p>
+            <ul>
+                <li><strong>Downtown Mountain View (Castro Street):</strong> A vibrant, pedestrian-oriented street lined with international restaurants, cafes, and shops, serving as the city's commercial and social heart.</li>
+                <li><strong><a href="https://computerhistory.org/" target="_blank">Computer History Museum</a>:</strong> Home to the world's largest collection of computing artifacts, telling the story of the Information Age.</li>
+                <li><strong><a href="https://www.mountainview.gov/our-city/places-to-see/shoreline-amphitheatre" target="_blank">Shoreline Amphitheatre</a>:</strong> A massive outdoor concert venue that hosts major touring musical acts.</li>
+                <li><strong><a href="https://www.mountainview.gov/our-city/places-to-see/rengstorff-house" target="_blank">Rengstorff House</a>:</strong> One of the oldest homes in the area, a beautifully restored Victorian mansion on the edge of the bay.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="mv-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Mountain View is committed to its green spaces, offering significant parkland and nature access.</p>
+            <ul>
+                <li><strong><a href="https://www.mountainview.gov/our-city/places-to-see/shoreline-at-mountain-view" target="_blank">Shoreline at Mountain View</a>:</strong> A 750-acre park featuring a wildlife sanctuary, golf course, Shoreline Lake for sailing and kayaking, and trails.</li>
+                <li><strong>Stevens Creek Trail:</strong> A popular, multi-use path for pedestrians and bicyclists that connects the city's parks and residential areas.</li>
+                <li><strong><a href="https://www.mountainview.gov/our-city/places-to-see/city-parks/cuesta-park" target="_blank">Cuesta Park</a>:</strong> A community favorite featuring tennis courts, picnic areas, and play structures.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="mv-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Education</h2>
+            <p class="modal-section-intro">Education is highly valued, served by excellent public schools and local higher education institutions.</p>
+            <ul>
+                <li><strong><a href="https://www.mvwsd.org/" target="_blank">Mountain View-Whisman School District (MVWSD)</a>:</strong> For elementary and middle schools.</li>
+                <li><strong>Mountain View-Los Altos Union High School District (MVLA):</strong> For high school.</li>
+                <li><strong>Mountain View Center for the Performing Arts (MVCPA):</strong> A central cultural venue that hosts a variety of theater, music, and dance performances.</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Mountain View')">Search Homes in Mountain View</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- SANTA CLARA MODAL -->
+<div class="modal" id="sc-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Center of Silicon Valley</div>
+        <h1>Santa Clara</h1>
+        <p>Santa Clara, often called the "Heart of Silicon Valley," is a major technology hub nestled in the southern San Francisco Bay Area. Named after the historic mission established in 1777, the city beautifully balances a rich historical past with its role as a global center for high-tech innovation. Santa Clara is home to major corporate headquarters, a major university, world-class entertainment venues, and a diverse, highly educated population, making it a dynamic place to live and visit.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('sc-notable')">🏟️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sc-education')">🎓 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('sc-parks')">🏞️ Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sc-sports')">🏈 Sports</button>
+        <button class="nav-pill" onclick="scrollToSection('sc-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="sc-notable">
+            <h2><span class="modal-section-icon">🏟️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Santa Clara offers a range of attractions from historical missions to modern amusement parks and sports arenas.</p>
+            <ul>
+                <li><strong><a href="https://www.levisstadium.com/" target="_blank">Levi's Stadium</a>:</strong> Home of the NFL's San Francisco 49ers and a premier venue for major concerts and events.</li>
+                <li><strong><a href="https://www.cagreatamerica.com/" target="_blank">California's Great America</a>:</strong> A large amusement park featuring thrill rides and the attached South Bay Shores waterpark.</li>
+                <li><strong><a href="https://www.scu.edu/mission/" target="_blank">Mission Santa Clara de Asís</a>:</strong> The eighth of California's 21 Spanish missions, located on the campus of Santa Clara University.</li>
+                <li><strong><a href="https://www.intel.com/content/www/us/en/history/museum-home.html" target="_blank">Intel Museum</a>:</strong> An interactive, self-guided museum detailing the history of Intel, silicon chips, and computer technology.</li>
+                <li><strong><a href="https://tritonmuseum.org/" target="_blank">Triton Museum of Art</a>:</strong> Focuses on regional contemporary and historical California art.</li>
+                <li><strong><a href="https://santaclaraconventioncenter.org/" target="_blank">Santa Clara Convention Center</a>:</strong> A major hub for tech industry trade shows and conferences.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="sc-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Education is a centerpiece of the community, anchored by its distinguished private university.</p>
+            <ul>
+                <li><strong><a href="https://www.scu.edu/" target="_blank">Santa Clara University (SCU)</a>:</strong> A private Jesuit university, founded in 1851, and one of the oldest operating institutions of higher learning in California.</li>
+                <li><strong><a href="https://missioncollege.edu/" target="_blank">Mission College</a>:</strong> A local community college offering a variety of academic and vocational programs.</li>
+                <li><strong><a href="https://www.santaclarausd.org/" target="_blank">Santa Clara Unified School District (SCUSD)</a>:</strong> Includes local high schools like Santa Clara High School and Wilcox High School.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="sc-parks">
+            <h2><span class="modal-section-icon">🏞️</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Santa Clara maintains several well-equipped parks and recreation areas for its residents.</p>
+            <ul>
+                <li><strong><a href="https://www.santaclaraca.gov/Home/Components/FacilityDirectory/FacilityDirectory/150/15258" target="_blank">Central Park</a>:</strong> Spans over 52 acres and includes the popular Magical Bridge Playground, the International Swim Center, and the Central Park Library.</li>
+                <li><strong>Ulistac Natural Area:</strong> The city's only dedicated natural open space, a popular spot for hiking and bird watching.</li>
+                <li><strong>Reed & Grant Sports Park:</strong> A newer, versatile facility featuring multi-purpose sports fields.</li>
+            </ul>
+        </div>
+
+        <!-- SPORTS -->
+        <div class="modal-section" id="sc-sports">
+            <h2><span class="modal-section-icon">🏈</span>Sports Teams</h2>
+            <p class="modal-section-intro">While only one major league team makes its home in Santa Clara, its presence is significant for the region.</p>
+            <ul>
+                <li><strong><a href="https://www.49ers.com/" target="_blank">San Francisco 49ers</a>:</strong> (NFL) Despite their name, are based and play their home games at Levi's Stadium in Santa Clara.</li>
+                <li><strong>Santa Clara University Broncos:</strong> Compete in NCAA Division I, notably in basketball, soccer, and baseball.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="sc-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">Santa Clara is a global powerhouse of the tech industry, home to the corporate headquarters of several Fortune 500 companies.</p>
+            <ul>
+                <li><strong><a href="https://www.intel.com/" target="_blank">Intel</a>:</strong> (Headquarters/Major Facility)</li>
+                <li><strong><a href="https://www.nvidia.com/" target="_blank">NVIDIA</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.appliedmaterials.com/" target="_blank">Applied Materials</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.delltechnologies.com/en-us/index.htm" target="_blank">Dell EMC</a>:</strong> (Major Facility)</li>
+                <li><strong><a href="https://www.servicenow.com/" target="_blank">ServiceNow</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.amd.com/" target="_blank">AMD (Advanced Micro Devices)</a>:</strong> (Headquarters)</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Santa Clara')">Search Homes in Santa Clara</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- CUPERTINO MODAL -->
+<div class="modal" id="cp-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Apple Hub</div>
+        <h1>Cupertino</h1>
+        <p>Cupertino, located on the western edge of Silicon Valley, is a globally recognized city synonymous with technological innovation, primarily as the corporate headquarters of Apple Inc. A small city with a highly educated, diverse population, Cupertino offers a suburban feel combined with an intellectual and innovative atmosphere. Nestled against the scenic foothills of the Santa Cruz Mountains, the city is renowned for its excellent public schools and quality of life.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('cp-business')">💻 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('cp-notable')">🏛️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('cp-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('cp-education')">🎓 Education</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- BUSINESS -->
+        <div class="modal-section" id="cp-business">
+            <h2><span class="modal-section-icon">💻</span>Major Businesses</h2>
+            <p class="modal-section-intro">Cupertino is defined by its role as the home of the world's most valuable technology company and several other key players in the tech industry.</p>
+            <ul>
+                <li><strong><a href="https://www.apple.com/" target="_blank">Apple Inc.</a>:</strong> The multinational tech giant is headquartered at the iconic Apple Park, a massive, circular campus.</li>
+                <li><strong><a href="https://www.apple.com/retail/appleparkvisitorcenter/" target="_blank">Apple Park Visitor Center</a>:</strong> Located near the main campus, offering a retail store, a café, and an augmented reality model of the campus for the public to explore.</li>
+                <li><strong>Other major companies:</strong> Seagate Technology and Juniper Networks (now HPE Juniper Networking) have a presence or historical significance.</li>
+            </ul>
+        </div>
+
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="cp-notable">
+            <h2><span class="modal-section-icon">🏛️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Beyond its corporate headquarters, Cupertino features several unique attractions and shopping destinations.</p>
+            <ul>
+                <li><strong>Main Street Cupertino:</strong> A modern, mixed-use development that serves as a vibrant hub for shopping, dining, and community gathering.</li>
+                <li><strong>De Anza College:</strong> A major community college that hosts key cultural facilities including the <a href="https://www.deanza.edu/planetarium/" target="_blank">Fujitsu Planetarium</a>, one of the largest school planetariums west of the Rocky Mountains.</li>
+                <li><strong>Wineries:</strong> The city's location near the mountains offers access to local wine culture, including <a href="https://www.ridgewine.com/" target="_blank">Ridge Vineyards</a> and <a href="https://picchetti.com/" target="_blank">Picchetti Winery</a> in the nearby hills.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="cp-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">Cupertino's parks provide access to nature, hiking, and extensive recreational facilities.</p>
+            <ul>
+                <li><strong><a href="https://www.sccgov.org/sites/parks/parkinfo/Pages/McClellan.aspx" target="_blank">McClellan Ranch Preserve</a>:</strong> A beautiful park and nature area with walking trails, a community garden, and well-preserved historic buildings.</li>
+                <li><strong>Cupertino Memorial Park:</strong> A central 28-acre park featuring a veterans memorial, an amphitheater, and sports courts.</li>
+                <li><strong>Blackberry Farm Golf Course:</strong> A local facility offering golf and recreational opportunities.</li>
+                <li><strong>Open Space:</strong> The city is a gateway to expansive open space preserves, including Stevens Creek County Park and Rancho San Antonio County Park & Open Space Preserve.</li>
+                <li><strong><a href="https://www.lifetimeactivities.com/cupertino/" target="_blank">Cupertino Sports Center</a>:</strong> Offering extensive programs in tennis, badminton, and pickleball.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="cp-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Cupertino is renowned for having one of the highest-performing public school systems in the state.</p>
+            <ul>
+                <li><strong><a href="https://www.cusdk8.org/" target="_blank">Cupertino Union School District (CUSD)</a>:</strong> Operates numerous elementary and middle schools.</li>
+                <li><strong><a href="https://www.fuhsd.org/" target="_blank">Fremont Union High School District (FUHSD)</a>:</strong> Includes Cupertino High School and Monta Vista High School.</li>
+                <li><strong>De Anza College:</strong> A major community college located on Stevens Creek Boulevard.</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Cupertino')">Search Homes in Cupertino</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- LOS GATOS MODAL -->
+<div class="modal" id="lg-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Small-Town Charm Meets Silicon Valley</div>
+        <h1>Los Gatos</h1>
+        <p>Los Gatos, Spanish for "The Cats," is an affluent and picturesque town nestled in the foothills of the Santa Cruz Mountains at the southwest border of Silicon Valley. Known for its charming, historic downtown, high quality of life, and natural beauty, Los Gatos successfully maintains a small-town atmosphere despite its proximity to the technological hustle of San Jose. The town serves as both a thriving residential community and a center for corporate innovation.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('lg-notable')">🏘️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('lg-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('lg-education')">🎓 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('lg-business')">💻 Business</button>
+        <button class="nav-pill" onclick="scrollToSection('lg-adtv')">📺 ADTV</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="lg-notable">
+            <h2><span class="modal-section-icon">🏘️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">Los Gatos offers a blend of historic architecture, boutique shopping, and unique local attractions.</p>
+            <ul>
+                <li><strong><a href="https://www.losgatosca.gov/3/Visiting-Los-Gatos" target="_blank">Downtown Los Gatos</a>:</strong> A pedestrian-friendly district featuring tree-lined streets, high-end boutiques, antique shops, and a wide array of top-rated restaurants and cafes.</li>
+                <li><strong>Wineries:</strong> The town is part of the historic Santa Cruz Mountains American Viticultural Area. <a href="https://byington.com/" target="_blank">Byington Vineyard & Winery</a> is a lovely winery with great views, and <a href="https://www.hotellosgatos.com/local-area" target="_blank">Testarossa Winery</a>, a notable destination, operates out of the historic Novitiate building.</li>
+                <li><strong>Forbes Mill:</strong> A historic landmark that formerly housed a history museum.</li>
+                <li><strong>NUMU (New Museum Los Gatos):</strong> Merges local art and history.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="lg-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The natural setting provides excellent access to trails and expansive recreational areas, often connected by the Los Gatos Creek Trail.</p>
+            <ul>
+                <li><strong><a href="https://parks.santaclaracounty.gov/locations/vasona-lake-county-park" target="_blank">Vasona Lake County Park</a>:</strong> A popular regional park featuring Vasona Lake for non-power boating, picnic areas, and walking paths.</li>
+                <li><strong>Oak Meadow Park:</strong> Adjacent to Vasona Park, it's home to the <a href="https://www.bjwrr.org/" target="_blank">Billy Jones Wildcat Railroad</a> and the W.E. "Bill" Mason Carousel, making it a family favorite.</li>
+                <li><strong>Los Gatos Creek Trail:</strong> A paved, multi-use trail perfect for biking, walking, and jogging, running through the town and connecting to San Jose.</li>
+                <li><strong>St. Joseph's Hill Open Space Preserve:</strong> Offers scenic hiking and biking trails in the foothills.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="lg-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Education</h2>
+            <p class="modal-section-intro">Los Gatos is known for its highly-rated public schools, attracting families to the area.</p>
+            <ul>
+                <li><strong><a href="https://en.wikipedia.org/wiki/Los_Gatos-Saratoga_Joint_Union_High_School_District" target="_blank">Los Gatos Union School District</a>:</strong> Includes schools like Daves Avenue and Blossom Hill Elementary.</li>
+                <li><strong><a href="https://www.lgsuhsd.org/" target="_blank">Los Gatos-Saratoga Union High School District</a>:</strong> Home to Los Gatos High School.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="lg-business">
+            <h2><span class="modal-section-icon">💻</span>Major Businesses</h2>
+            <p class="modal-section-intro">Despite its small size, Los Gatos holds a prominent place in the tech world as the headquarters of a global streaming leader.</p>
+            <ul>
+                <li><strong>Netflix:</strong> The streaming and content creation giant is headquartered in Los Gatos at <a href="https://exa.ai/websets/directory/netflix-offices" target="_blank">121 Albright Way, Los Gatos, CA 95032</a>.</li>
+                <li><strong>Other Employers:</strong> The town is also home to major employers like El Camino Hospital Los Gatos and the Los Gatos Union School District.</li>
+            </ul>
+        </div>
+
+        <!-- ADTV -->
+        <div class="modal-section" id="lg-adtv">
+            <h2><span class="modal-section-icon">📺</span>ADTV Episodes</h2>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Billy Jones Wildcat Railroad</p>
+            </div>
+            <p class="adtv-description">Explore Los Gatos' charming family attractions, including the beloved Billy Jones Wildcat Railroad through this American Dream TV episode with Kathy Huang.</p>
+            <div class="video-placeholder">
+                <div class="play-icon">▶</div>
+                <p>ADTV Episode: Centonove Restaurant</p>
+            </div>
+            <p class="adtv-description">Discover the culinary excellence and charm of Centonove Restaurant in Los Gatos.</p>
+            <p class="video-note">Developer Note: Embed YouTube videos here — URLs TBD from client</p>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Los Gatos')">Search Homes in Los Gatos</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- REDWOOD CITY MODAL -->
+<div class="modal" id="rc-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">Climate Best By Government Test</div>
+        <h1>Redwood City</h1>
+        <p>Redwood City is a vibrant city on the San Francisco Peninsula, situated roughly halfway between San Francisco and San Jose. It is the county seat of San Mateo County and is known for its mild climate, thanks to a 1925 government study that gave it the famous slogan, "Climate Best By Government Test." Redwood City has transitioned from a port and lumber town to a thriving hub of technology and local government, combining a historic downtown with a modern, burgeoning tech scene.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('rc-notable')">🏛️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('rc-education')">🏫 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('rc-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('rc-business')">💻 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="rc-notable">
+            <h2><span class="modal-section-icon">🏛️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">The city's cultural life is centered around its historic downtown, which has undergone significant revitalization.</p>
+            <ul>
+                <li><strong>Downtown Redwood City:</strong> Known for its renovated City Square, which hosts numerous community events, including the Music on the Square summer concert series and Oktoberfest. The area is anchored by the San Mateo County History Museum, housed in the beautiful, historic former courthouse.</li>
+                <li><strong><a href="https://www.foxrwc.com/" target="_blank">Fox Theatre</a>:</strong> A beautifully restored 1920s-era movie palace that hosts a variety of performances and events.</li>
+                <li><strong><a href="https://www.cinemark.com/" target="_blank">Cinemark Century Redwood Downtown 20 and XD</a>:</strong> A popular modern movie complex offering the latest releases.</li>
+                <li><strong><a href="https://sfwater.org/index.aspx%3Fpage%3D384" target="_blank">Pulgas Water Temple</a>:</strong> A grand, picturesque stone structure commemorating the completion of the Hetch Hetchy Aqueduct.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="rc-education">
+            <h2><span class="modal-section-icon">🏫</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Redwood City serves students through several public school districts and is home to a major community college.</p>
+            <ul>
+                <li><strong><a href="https://www.rcsdk8.net/" target="_blank">Redwood City School District (RCSD)</a>:</strong> Serves K-8 students.</li>
+                <li><strong><a href="https://www.seq.org/" target="_blank">Sequoia Union High School District</a>:</strong> Operates high schools, including Sequoia High School.</li>
+                <li><strong><a href="https://canadacollege.edu/" target="_blank">Cañada College</a>:</strong> A community college offering associate degrees, certificates, and transfer programs. The campus also hosts the University Center at Cañada College.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="rc-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">The city is committed to green spaces, offering a range of parks for outdoor activities and nature appreciation.</p>
+            <ul>
+                <li><strong><a href="https://www.redwoodcity.org/departments/parks-recreation-and-community-services" target="_blank">Redwood City Parks, Recreation and Community Services</a>:</strong> Manages local parks and programs.</li>
+                <li><strong>Red Morton Community Park:</strong> The city's crown jewel, featuring sports fields, a skate park, and a recreation center.</li>
+                <li><strong>Stulsaft Park:</strong> A natural retreat with wooded trails and creeks.</li>
+                <li><strong><a href="https://parks.smcgov.org/edgewood-park-natural-preserve" target="_blank">Edgewood Park & Natural Preserve</a>:</strong> Located just outside the city, renowned for its biodiversity and stunning wildflower displays in the spring.</li>
+                <li><strong>Bair Island:</strong> Part of the Don Edwards San Francisco Bay National Wildlife Refuge, offering marshlands for wildlife viewing.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="rc-business">
+            <h2><span class="modal-section-icon">💻</span>Major Businesses</h2>
+            <p class="modal-section-intro">Redwood City is a key location within Silicon Valley, hosting the headquarters or major offices of several high-profile technology and gaming companies.</p>
+            <ul>
+                <li><strong><a href="https://www.box.com/" target="_blank">Box, Inc.</a>:</strong> (Headquarters)</li>
+                <li><strong><a href="https://www.ea.com/" target="_blank">Electronic Arts (EA)</a>:</strong> (Headquarters - a major video game developer/publisher)</li>
+                <li><strong><a href="https://www.shutterfly.com/" target="_blank">Shutterfly</a>:</strong> (Major photo and personalized gift company)</li>
+                <li><strong><a href="https://impossiblefoods.com/" target="_blank">Impossible Foods</a>:</strong> (Food technology company)</li>
+                <li><strong><a href="https://www.informatica.com/" target="_blank">Informatica</a>:</strong> (Enterprise cloud data management)</li>
+                <li><strong><a href="https://www.gofundme.com/" target="_blank">GoFundMe</a>:</strong> (Crowdfunding platform)</li>
+                <li><strong>Kaiser Permanente Redwood City:</strong> (Medical Center) is a significant local employer.</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('Redwood City')">Search Homes in Redwood City</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<!-- SAN MATEO MODAL -->
+<div class="modal" id="sm-modal">
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-eyebrow">The Peninsula Hub</div>
+        <h1>San Mateo</h1>
+        <p>San Mateo is a thriving suburban city located in the heart of the San Francisco Peninsula, approximately halfway between San Francisco and San Jose. It serves as a major commercial and residential hub for the region, known for its pleasant Mediterranean climate, diverse downtown, and close proximity to both the Bay and the Pacific coast. The city seamlessly blends its historic roots—evident in its older architecture—with a modern, forward-thinking environment driven by its presence in the Bay Area's high-tech corridor.</p>
+    </div>
+
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('sm-notable')">🏞️ Notable Areas</button>
+        <button class="nav-pill" onclick="scrollToSection('sm-education')">🎓 Education</button>
+        <button class="nav-pill" onclick="scrollToSection('sm-parks')">🌳 Parks</button>
+        <button class="nav-pill" onclick="scrollToSection('sm-business')">🏢 Business</button>
+    </div>
+
+    <div class="modal-content">
+        <!-- NOTABLE AREAS -->
+        <div class="modal-section" id="sm-notable">
+            <h2><span class="modal-section-icon">🏞️</span>Notable Areas & Tourist Sights</h2>
+            <p class="modal-section-intro">San Mateo's attractions offer a mix of historical, natural, and urban experiences.</p>
+            <ul>
+                <li><strong>Downtown San Mateo:</strong> The highly walkable city center is filled with restaurants, cafes, and shops, featuring a collection of historic buildings from the 1920s and 1930s. It's easily accessible via the Caltrain station.</li>
+                <li><strong><a href="https://historysmc.org/" target="_blank">San Mateo County History Museum</a>:</strong> Located in the beautiful former county courthouse in nearby Redwood City, this museum showcases the region's rich history.</li>
+                <li><strong>San Mateo-Hayward Bridge:</strong> This famous bridge, part of State Route 92, links the Peninsula with the East Bay and offers dramatic views across the San Francisco Bay.</li>
+                <li><strong>Hillsdale Shopping Center:</strong> A large, popular retail destination featuring a wide selection of major brands.</li>
+            </ul>
+        </div>
+
+        <!-- EDUCATION -->
+        <div class="modal-section" id="sm-education">
+            <h2><span class="modal-section-icon">🎓</span>Schools & Higher Education</h2>
+            <p class="modal-section-intro">Education is a key focus, supported by a large public school district and a reputable community college.</p>
+            <ul>
+                <li><strong><a href="https://www.smfcsd.net/" target="_blank">San Mateo-Foster City School District (SMFCSD)</a>:</strong> For elementary and middle schools.</li>
+                <li><strong><a href="https://www.smuhsd.org/" target="_blank">San Mateo Union High School District (SMUHSD)</a>:</strong> For high schools, including San Mateo High School.</li>
+                <li><strong><a href="https://collegeofsanmateo.edu/" target="_blank">College of San Mateo (CSM)</a>:</strong> A large public community college known for its beautiful campus overlooking the Bay.</li>
+            </ul>
+        </div>
+
+        <!-- PARKS -->
+        <div class="modal-section" id="sm-parks">
+            <h2><span class="modal-section-icon">🌳</span>Parks & Recreation</h2>
+            <p class="modal-section-intro">San Mateo provides extensive open spaces for recreation, from urban gardens to coastal trails.</p>
+            <ul>
+                <li><strong><a href="https://www.cityofsanmateo.org/335/Central-Park" target="_blank">San Mateo Central Park</a>:</strong> The city's premier park, home to a beautiful Japanese Garden designed by Nagao Sakurai of the Imperial Palace of Tokyo and often hosts community events.</li>
+                <li><strong><a href="https://www.smcgov.org/parks/coyote-point-recreation-area" target="_blank">Coyote Point Recreation Area</a>:</strong> A large regional park on the Bay shoreline featuring a marina, windsurfing access, a large playground, and CuriOdyssey (a science and wildlife center).</li>
+                <li><strong>Seal Point Park:</strong> Offers panoramic Bay views, birdwatching, and a section of the San Francisco Bay Trail.</li>
+                <li><strong><a href="https://www.smcgov.org/parks/crystal-springs-regional-trail" target="_blank">Crystal Springs Regional Trail</a>:</strong> With the popular Sawyer Camp segment, offers miles of scenic paved trail for bicycling and running along the San Francisco Watershed.</li>
+            </ul>
+        </div>
+
+        <!-- BUSINESS -->
+        <div class="modal-section" id="sm-business">
+            <h2><span class="modal-section-icon">🏢</span>Major Businesses</h2>
+            <p class="modal-section-intro">San Mateo is a significant anchor of the Silicon Valley economy, hosting headquarters for several prominent technology, software, and finance companies.</p>
+            <ul>
+                <li><strong><a href="https://corp.roblox.com/" target="_blank">Roblox Corporation</a></strong></li>
+                <li><strong><a href="https://www.gopro.com/" target="_blank">GoPro</a></strong></li>
+                <li><strong><a href="https://www.momentive.ai/" target="_blank">SurveyMonkey (Momentive)</a></strong></li>
+                <li><strong><a href="https://www.marketo.com/" target="_blank">Marketo (Adobe)</a></strong></li>
+                <li><strong><a href="https://www.franklintempleton.com/" target="_blank">Franklin Templeton Investments</a>:</strong> (Finance/Asset Management)</li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <button class="modal-cta" onclick="searchHomes('San Mateo')">Search Homes in San Mateo</button>
+        <p class="modal-cta-note">Link to Showcase IDX saved search — URL TBD</p>
+    </div>
+</div>
+
+<script>
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        const overlay = document.getElementById('modalOverlay');
+        modal.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Reset to first nav pill
+        const navPills = modal.querySelectorAll('.nav-pill');
+        navPills.forEach((pill, index) => {
+            pill.classList.remove('active');
+            if (index === 0) pill.classList.add('active');
+        });
+
+        // Scroll to top of modal content
+        const content = modal.querySelector('.modal-content');
+        if (content) content.scrollTop = 0;
+    }
+
+    function closeModal(event) {
+        if (event && event.target.id !== 'modalOverlay') return;
+        const modals = document.querySelectorAll('.modal');
+        const overlay = document.getElementById('modalOverlay');
+        modals.forEach(modal => modal.classList.remove('active'));
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    function toggleFAQ(element) {
+        const item = element.closest('.faq-item');
+        item.classList.toggle('active');
+    }
+
+    function scrollToSection(sectionId) {
+        const modal = event.target.closest('.modal');
+        const section = modal.querySelector('#' + sectionId);
+
+        if (section) {
+            const navPills = modal.querySelectorAll('.nav-pill');
+            navPills.forEach(pill => pill.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const modalContent = modal.querySelector('.modal-content');
+            const sectionPosition = section.offsetTop - modalContent.offsetTop - 150;
+            modalContent.scrollTop = sectionPosition;
+        }
+    }
+
+    function searchHomes(community) {
+        alert('Link to Showcase IDX saved search for ' + community + ' — URL TBD');
+    }
+</script>
+
+</body>
+</html>

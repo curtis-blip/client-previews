@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Diego Property Management Services | Red House Property Management</title>
+<meta name="description" content="Full-service property management in San Diego County. Marketing, tenant screening, maintenance, rent collection, and financial reporting for rental property owners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; border: none; outline: none; background: none; }
+
+/* ── TOKENS ── */
+:root {
+  --blue: #033769;
+  --blue-mid: #567490;
+  --teal: #81afb7;
+  --teal-bright: #68ccd1;
+  --coral: #f76060;
+  --coral-dark: #e04f4f;
+  --cream: #fefbf7;
+  --dark: #333333;
+  --mid: #555555;
+  --light-gray: #939393;
+  --neutral: #ffffff;
+  --light: #f7f5f2;
+  --border: rgba(0,0,0,0.08);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-nav: 'Montserrat', system-ui, sans-serif;
+  --font: 'Inter', system-ui, sans-serif;
+  --max: 960px;
+  --max-wide: 1140px;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --shadow-hover: 0 6px 28px rgba(0,0,0,0.1);
+  --pad: 80px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--dark); background: var(--neutral); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+/* ── LAYOUT ── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.container-wide { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; }
+.section-white { padding: var(--pad) 0; background: var(--neutral); }
+.section-cream { padding: var(--pad) 0; background: var(--cream); }
+.section-dark  { padding: var(--pad) 0; background: var(--blue); color: #fff; }
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { margin-bottom: 10px; }
+.section-header p { max-width: 520px; margin: 0 auto; }
+
+/* ── TYPOGRAPHY ── */
+h1 { font-family: var(--font-head); font-size: clamp(36px, 4.5vw, 48px); font-weight: 500; line-height: 1.12; color: var(--blue); }
+h2 { font-family: var(--font-nav); font-size: clamp(24px, 3vw, 32px); font-weight: 700; line-height: 1.2; color: var(--blue); }
+h3 { font-family: var(--font-nav); font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--blue-mid); }
+p { font-size: 16px; color: var(--mid); line-height: 1.7; }
+.section-dark h1, .section-dark h2, .section-dark h3 { color: #fff; }
+.section-dark p { color: rgba(255,255,255,0.6); }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; display: inline-block; }
+
+/* ── BUTTONS ── */
+.btn-coral { display: inline-block; background: var(--coral); color: #fff; font-weight: 700; font-size: 13px; text-align: center; padding: 11px 26px; border-radius: var(--radius); border: 2px solid transparent; letter-spacing: 0.03em; text-transform: uppercase; transition: background .25s; }
+.btn-coral:hover { background: var(--blue); }
+.btn-outline-white { display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: #fff; font-weight: 700; font-size: 13px; padding: 9px 24px; border-radius: var(--radius); letter-spacing: 0.03em; text-transform: uppercase; transition: border-color .25s, background .25s; }
+.btn-outline-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.btn-outline-blue { display: inline-block; border: 2px solid var(--blue); color: var(--blue); font-weight: 700; font-size: 14px; padding: 10px 26px; border-radius: var(--radius); transition: background .25s, color .25s; }
+.btn-outline-blue:hover { background: var(--blue); color: #fff; }
+.btn-teal { display: inline-block; background: var(--teal-bright); color: var(--blue); font-weight: 700; font-size: 14px; padding: 12px 28px; border-radius: var(--radius); transition: background .25s, transform .15s; }
+.btn-teal:hover { background: #55c0c6; transform: translateY(-1px); }
+
+/* ── PREVIEW BANNER ── */
+.preview-banner { background: var(--dark); color: rgba(255,255,255,0.45); font-size: 11px; padding: 8px 0; text-align: center; letter-spacing: 0.04em; border-bottom: 2px solid var(--coral); }
+.preview-banner strong { color: var(--coral); font-weight: 700; }
+
+/* ═══ UTILITY BAR ═══ */
+.utility-bar { position: fixed; top: 33px; left: 0; right: 0; z-index: 101; background: rgba(2,40,70,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); transition: top .3s, opacity .3s; }
+.utility-bar.hidden { top: -28px; opacity: 0; pointer-events: none; }
+.utility-inner { max-width: var(--max-wide); margin: 0 auto; padding: 0 32px; height: 28px; display: flex; align-items: center; justify-content: space-between; }
+.utility-links { display: flex; gap: 20px; }
+.utility-links a { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; transition: color .2s; }
+.utility-links a:hover { color: var(--coral); }
+.utility-contact a { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.02em; transition: color .2s; }
+.utility-contact a:hover { color: #fff; }
+
+/* ═══ NAV ═══ */
+.nav { position: fixed; top: 61px; left: 0; right: 0; z-index: 100; background: transparent; transition: top .3s, background .3s, box-shadow .3s; }
+.nav.scrolled { top: 0; background: rgba(3,55,105,0.97); backdrop-filter: blur(8px); box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+@media (max-width: 640px) { .utility-bar { display: none; } .nav { top: 33px; } }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: var(--max-wide); margin: 0 auto; padding: 0 40px; height: 72px; }
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 84px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-family: var(--font-nav); font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-cta { background: var(--coral); color: #fff !important; padding: 10px 22px; border-radius: var(--radius); font-size: 12px; font-weight: 700 !important; letter-spacing: 0.04em; text-transform: uppercase; transition: background .25s !important; }
+.nav-cta:hover { background: var(--coral-dark) !important; }
+
+/* ═══ INNER HERO ═══ */
+.hero-inner { min-height: 45vh; position: relative; display: flex; align-items: flex-end; padding: 120px 0 60px; background: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/250-redwood-avenue-032_web-1920w.jpg') center/cover no-repeat; }
+.hero-inner .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(3,55,105,0.78) 0%, rgba(3,55,105,0.55) 40%, rgba(3,55,105,0.82) 100%); }
+.hero-inner .container { position: relative; z-index: 2; }
+.hero-inner .hero-content { max-width: 620px; text-align: left; }
+.hero-inner .hero-content .eyebrow { color: var(--coral); margin-bottom: 12px; }
+.hero-inner .hero-content h1 { color: #fff; margin-bottom: 16px; font-size: clamp(32px, 4.5vw, 46px); }
+.hero-inner .hero-content p { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.75; margin-bottom: 0; }
+
+/* ═══ ACCORDION ═══ */
+.accordion-list { max-width: 740px; margin: 0 auto; }
+.accordion-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.accordion-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.accordion-trigger { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--dark); background: none; border: none; width: 100%; text-align: left; transition: color .2s; gap: 16px; }
+.accordion-trigger:hover { color: var(--blue); }
+.accordion-trigger .acc-icon-wrap { width: 36px; height: 36px; border-radius: 50%; background: rgba(104,204,209,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-right: 14px; }
+.accordion-trigger .acc-icon-wrap svg { width: 18px; height: 18px; color: var(--blue); }
+.accordion-trigger .acc-label { flex: 1; }
+.accordion-trigger .acc-toggle { font-size: 22px; font-weight: 300; color: var(--coral); transition: transform .3s; flex-shrink: 0; }
+.accordion-body { max-height: 0; overflow: hidden; padding-bottom: 0; font-size: 15px; color: var(--mid); line-height: 1.75; padding-left: 50px; transition: max-height .35s ease, padding-bottom .35s ease; }
+
+/* ═══ INTRO SPLIT ═══ */
+.intro-split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.intro-content { padding: 48px 44px; background: var(--neutral); display: flex; flex-direction: column; justify-content: center; }
+.intro-image { background-size: cover; background-position: center; min-height: 360px; }
+
+/* ═══ IMAGE BAND ═══ */
+.image-band { height: 300px; background-size: cover; background-position: center; position: relative; }
+.image-band-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(3,55,105,0.5) 0%, rgba(3,55,105,0.2) 100%); }
+
+/* ═══ PROCESS GRID ═══ */
+.process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.process-card { padding: 32px; border-radius: var(--radius); background: var(--neutral); border: 1px solid rgba(0,0,0,0.06); transition: box-shadow .3s, transform .3s; }
+.process-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+.process-num { font-size: 42px; font-weight: 800; color: rgba(104,204,209,0.2); line-height: 1; margin-bottom: 12px; }
+.process-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--blue); }
+.process-card p { font-size: 14px; }
+
+/* ═══ GUARANTEE PILLARS ═══ */
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.pillar-card { text-align: center; }
+.pillar-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(104,204,209,0.12); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.pillar-icon svg { width: 24px; height: 24px; color: var(--teal-bright); }
+.pillar-card h3 { color: #fff; font-size: 18px; margin-bottom: 8px; }
+.pillar-card p { font-size: 14px; color: rgba(255,255,255,0.55); }
+
+/* ═══ PROPERTY TYPES ═══ */
+.types-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.type-card { display: grid; grid-template-columns: 180px 1fr; border-radius: var(--radius); overflow: hidden; background: var(--neutral); box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; }
+.type-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.type-card-img { background-size: cover; background-position: center; min-height: 160px; }
+.type-card-body { padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; }
+.type-card-body h3 { font-size: 18px; color: var(--blue); margin-bottom: 6px; }
+.type-card-body p { font-size: 14px; color: var(--mid); line-height: 1.65; }
+
+/* ═══ TESTIMONIALS ═══ */
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.test-card { background: var(--neutral); padding: 28px 24px; border-radius: var(--radius); box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s; }
+.test-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.test-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.test-star { width: 15px; height: 15px; fill: #c29a1f; }
+.test-quote { font-size: 14px; color: var(--mid); line-height: 1.8; font-style: italic; flex: 1; margin-bottom: 18px; }
+.test-author { font-size: 14px; font-weight: 700; color: var(--dark); }
+.test-role { font-size: 12px; color: var(--light-gray); margin-top: 1px; }
+
+/* ═══ FAQ ═══ */
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; cursor: pointer; font-size: 15px; font-weight: 600; color: var(--dark); background: none; border: none; width: 100%; text-align: left; transition: color .2s; }
+.faq-question:hover { color: var(--blue); }
+.faq-icon { font-size: 20px; font-weight: 300; color: var(--coral); transition: transform .3s; flex-shrink: 0; margin-left: 16px; }
+.faq-answer { max-height: 0; overflow: hidden; padding-bottom: 0; font-size: 15px; color: var(--mid); line-height: 1.75; transition: max-height .35s ease, padding-bottom .35s ease; }
+
+/* ═══ CTA BAND ═══ */
+.cta-band { padding: 64px 0; background: var(--coral); text-align: center; }
+.cta-band h2 { color: #fff; margin-bottom: 20px; }
+.cta-band p { color: rgba(255,255,255,0.85); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.btn-white { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 14px; padding: 13px 32px; border-radius: var(--radius); transition: background .25s, transform .15s; }
+.btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+
+/* ═══ FOOTER ═══ */
+.footer-top { background: var(--dark); padding: 56px 0 48px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand-col { }
+.footer-logo-img { height: 130px; width: auto; margin-bottom: 12px; }
+.footer-logo { font-size: 18px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.footer-logo svg { width: 24px; height: 24px; }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); font-style: italic; margin-bottom: 20px; }
+.footer-contact-block { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.9; }
+.footer-contact-block a { color: var(--coral); transition: color .2s; }
+.footer-contact-block a:hover { color: #fff; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); transition: border-color .2s, color .2s, background .2s; }
+.footer-social a:hover { border-color: var(--coral); color: var(--coral); background: rgba(104,204,209,0.08); }
+.footer-social a svg { width: 15px; height: 15px; }
+.footer-col-title { font-size: 11px; font-weight: 700; color: var(--coral); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 18px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s, padding-left .2s; }
+.footer-links a:hover { color: #fff; padding-left: 4px; }
+.footer-portals { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+.portal-link { padding: 9px 16px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 700; text-align: center; letter-spacing: 0.03em; text-transform: uppercase; transition: all .2s; }
+.portal-link:hover { border-color: var(--coral); color: var(--coral); background: rgba(104,204,209,0.06); }
+
+.footer-bottom-bar { background: rgba(0,0,0,0.15); padding: 20px 0; }
+.footer-bottom-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-legal { font-size: 11px; color: rgba(255,255,255,0.2); }
+.cert-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.cert-badge { border: 1px solid rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 3px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; transition: border-color .2s, color .2s; }
+.cert-badge:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.4); }
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .intro-split { grid-template-columns: 1fr; }
+  .intro-image { min-height: 280px; }
+  .process-grid, .pillars-grid { grid-template-columns: 1fr; }
+  .types-grid { grid-template-columns: 1fr; }
+  .type-card { grid-template-columns: 140px 1fr; }
+  .test-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 640px) {
+  :root { --pad: 56px; }
+  .container, .container-wide { padding: 0 20px; }
+  .nav-links { display: none; }
+  .types-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+  <strong>DESIGN PREVIEW</strong> &nbsp;/&nbsp; Red House Property Management &nbsp;/&nbsp; Property Management &nbsp;/&nbsp; April 2026
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="utility-bar">
+  <div class="utility-inner">
+    <div class="utility-links">
+      <a href="11-owner-portal.html">Owner Portal</a>
+      <a href="12-tenant-portal.html">Resident Portal</a>
+      <a href="13-vendor-proposals.html">Vendor Proposals</a>
+      <a href="14-agent-referral-program.html">Agent Referrals</a>
+    </div>
+    <div class="utility-contact">
+      <a href="tel:8587553031">(858) 755-3031</a>
+    </div>
+  </div>
+</div>
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="homepage-preview.html" class="nav-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management"></a>
+    <div class="nav-links">
+      <a href="02-property-management.html">Property Management</a>
+      <a href="03-service-areas.html">Service Areas</a>
+      <a href="07-available-rentals.html">Available Rentals</a>
+      <a href="06-about.html">About</a>
+      <a href="10-resources.html">Resources</a>
+      <a href="04-free-rental-analysis.html" class="nav-cta">Free Rental Analysis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ INNER HERO ============ -->
+<section class="hero-inner">
+  <div class="hero-overlay"></div>
+  <div class="container" style="padding-left: 60px; padding-right: 40px; max-width: 1200px;">
+    <div class="hero-content">
+      <span class="eyebrow">Full-Service Management</span>
+      <h1>San Diego Property Management Services That Protect Your Investment</h1>
+      <p>Red House manages residential rental properties across San Diego County, handling marketing, tenant placement, maintenance coordination, rent collection, and financial reporting so you can focus on building long-term wealth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO WITH IMAGE ============ -->
+<section class="section-cream">
+  <div class="container-wide">
+    <div class="intro-split reveal">
+      <div class="intro-content">
+        <span class="eyebrow">Our Approach</span>
+        <h2 style="margin-bottom: 16px;">Our Aim Is to Exceed Expectations</h2>
+        <p style="font-size: 16px; line-height: 1.8;">Red House Property Management was built on one principle: treat every property like it belongs to us. That means proactive communication, thorough tenant vetting, and financial transparency from day one.</p>
+        <p style="font-size: 16px; line-height: 1.8; margin-top: 14px;">We work with rental owners in Solana Beach, Del Mar, La Jolla, Pacific Beach, and 17+ communities throughout San Diego County to maximize returns and minimize hassle.</p>
+      </div>
+      <div class="intro-image" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/250-redwood-avenue-032_web-1920w.jpg');"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ACCORDION ============ -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Our Services</span>
+      <h2>What's Included in Our Property Management Services</h2>
+      <p>San Diego property management services designed around what owners actually need, from listing to lease renewal and everything between.</p>
+    </div>
+    <div class="accordion-list reveal">
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <span class="acc-label">Marketing Your Property</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">We advertise your San Diego rental across 20+ platforms including Zillow, Apartments.com, and the MLS. Professional photography, detailed listings, strategic pricing based on local comps, and targeted social media exposure get qualified applicants to your door faster. Most properties lease within two to four weeks.</div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+          <span class="acc-label">Tenant Screening</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">Every applicant goes through a multi-step screening process: credit checks, nationwide background reports, income verification (minimum 3x rent), and rental history references. We follow all fair housing laws and place tenants who are financially qualified and respectful of the property. This reduces late payments and turnover significantly.</div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+          <span class="acc-label">Rent Collection</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">Tenants pay rent online through AppFolio, and funds are deposited directly to your account. We enforce late fee policies consistently, track payment history, and handle any delinquency issues promptly. Owner portal access lets you view rent status, payment history, and upcoming deposits anytime.</div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <span class="acc-label">Maintenance &amp; Repairs</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">Our 24/7 emergency maintenance line at (858) 808-2420 is always staffed. Routine and emergency requests are triaged, dispatched to our trusted local vendor network, and tracked through completion. We negotiate competitive rates, oversee quality, and keep you informed with photos and updates throughout the process. Regular property inspections catch small issues before they become costly repairs.</div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+          <span class="acc-label">Financial Reporting</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">Monthly owner statements are delivered through your AppFolio portal, detailing income, expenses, maintenance costs, and net distributions. Year-end 1099 tax documents and annual summaries are provided automatically. You have 24/7 access to your financial dashboard from any device, giving you full visibility into your property's performance.</div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          <span class="acc-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <span class="acc-label">Property Inspections</span>
+          <span class="acc-toggle">+</span>
+        </button>
+        <div class="accordion-body">We perform detailed move-in and move-out inspections with timestamped photo documentation. Routine inspections are scheduled periodically throughout each tenancy to verify property condition, identify maintenance needs, and confirm lease compliance. Inspection reports are shared with you through the owner portal.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Our San Diego Property Management Process</h2>
+      <p>From first call to ongoing management, here is how we onboard your rental property.</p>
+    </div>
+    <div class="process-grid reveal">
+      <div class="process-card">
+        <div class="process-num">01</div>
+        <h3>Free Consultation</h3>
+        <p>We assess your property, discuss your investment goals, and provide a rental market analysis with comparable listings and projected rent. No obligation, no fees.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">02</div>
+        <h3>Property Prep</h3>
+        <p>Our team walks the property to identify any rent-ready improvements. We coordinate professional photography, write optimized listing copy, and prepare your property for the market.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">03</div>
+        <h3>Tenant Placement</h3>
+        <p>We launch multi-platform marketing, schedule and conduct showings, screen all applicants thoroughly, and execute the lease. Most San Diego rentals fill within two to four weeks.</p>
+      </div>
+      <div class="process-card">
+        <div class="process-num">04</div>
+        <h3>Ongoing Management</h3>
+        <p>Once placed, we handle rent collection, maintenance coordination, financial reporting, lease renewals, and all tenant communication. You get monthly statements and 24/7 portal access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMAGE BAND ============ -->
+<div class="image-band" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/cardiff+3-2880w.jpg');">
+  <div class="image-band-overlay"></div>
+</div>
+
+<!-- ============ GUARANTEE / RED HOUSE DIFFERENCE ============ -->
+<section class="section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color: var(--teal-bright);">Why Red House</span>
+      <h2>The Red House Difference</h2>
+      <p>Three commitments that set our San Diego property management services apart from the competition.</p>
+    </div>
+    <div class="pillars-grid reveal">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Money-Back Guarantee</h3>
+        <p>100% satisfaction guarantee on our property management services. If you are not satisfied within the first 60 days, we will refund your management fees. No questions asked.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>Month-to-Month Contracts</h3>
+        <p>No long-term commitments and no upfront fees. We earn your business every month. You stay because we deliver results, not because a contract locks you in.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Local Expertise</h3>
+        <p>Based in Solana Beach with 15+ years of experience across 17+ San Diego communities. We know the local rental market, regulations, and neighborhoods inside and out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROPERTY TYPES ============ -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">What We Manage</span>
+      <h2>Types of Rental Properties We Manage</h2>
+      <p>Our San Diego property management services cover a range of residential property types.</p>
+    </div>
+    <div class="types-grid reveal">
+      <div class="type-card">
+        <div class="type-card-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/325-s-sierra-ave-2-043_web-2880w.jpg');"></div>
+        <div class="type-card-body">
+          <h3>Single-Family Homes</h3>
+          <p>Detached houses across Solana Beach, Del Mar, La Jolla, Carlsbad, and San Diego's coastal and inland neighborhoods.</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-card-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/4075-carmel-view-rd-6-024_web-2880w.jpg');"></div>
+        <div class="type-card-body">
+          <h3>Condominiums</h3>
+          <p>Units in HOA-managed communities throughout San Diego County, including high-rises and gated complexes.</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-card-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/7534-navigator-cir-067_web-2880w.jpg');"></div>
+        <div class="type-card-body">
+          <h3>Townhomes</h3>
+          <p>Attached residences and row houses in planned communities from Carlsbad to Pacific Beach.</p>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-card-img" style="background-image: url('https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/4610-leathers-st-043_web-2880w.jpg');"></div>
+        <div class="type-card-body">
+          <h3>Duplexes &amp; Multi-Unit</h3>
+          <p>2-4 unit residential buildings for investors looking to maximize rental income across multiple tenants.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section-cream">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Client Reviews</span>
+      <h2>What Property Owners Say</h2>
+    </div>
+    <div class="test-grid reveal">
+      <div class="test-card">
+        <div class="test-stars"><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="test-quote">Red House took over management of our two Solana Beach rentals three years ago. Since then, vacancy time dropped to nearly zero and our net income went up 12%. Patrick and his team communicate clearly and handle everything proactively.</p>
+        <div class="test-author">Patrick A.</div><div class="test-role">Multi-Property Owner, Solana Beach</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="test-quote">The monthly financial reports are detailed and always on time. I live out of state and never worry about my La Jolla condo because Red House keeps me informed with photos, statements, and honest updates about everything.</p>
+        <div class="test-author">Joanne C.</div><div class="test-role">Out-of-State Investor, La Jolla</div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="test-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="test-quote">I switched to Red House after a bad experience with another property manager. Night and day difference. They screened a great tenant in under three weeks, and maintenance issues get resolved the same day. Highly recommend for San Diego rentals.</p>
+        <div class="test-author">Sam G.</div><div class="test-role">Single-Family Owner, Del Mar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Common Questions</span>
+      <h2>Frequently Asked Questions About Property Management in San Diego</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How much does property management cost in San Diego?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Red House charges a competitive monthly management fee based on a percentage of collected rent, with no hidden charges. There are no upfront fees and no long-term contracts. We provide a detailed fee breakdown during your free consultation so you know exactly what to expect before signing anything.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What types of properties does Red House manage?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">We manage single-family homes, condominiums, townhomes, duplexes, and small multi-unit properties (2-4 units) throughout San Diego County. Whether you own one rental in Pacific Beach or a portfolio spread across North County, our systems and team scale to match your needs.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How do you find and screen tenants?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">We market your property across 20+ listing platforms and handle all showings. Every applicant undergoes credit checks, nationwide background reports, income verification (minimum 3x monthly rent), and rental history reference checks. We follow all fair housing guidelines and place tenants who are financially qualified and respectful of the property.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What happens if a tenant doesn't pay rent?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">We enforce the lease terms consistently. Late fees are applied per the lease agreement, and we begin the formal notice process immediately if payment is not received. Our team handles all communications, legal notices, and coordinates with attorneys when necessary. We keep you informed at every stage.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How do I access my financial statements?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">All financial data is available 24/7 through your AppFolio owner portal, accessible from any device. Monthly statements, rent payment history, maintenance invoices, and year-end 1099 tax documents are uploaded automatically. You can also download reports and export data anytime.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can I switch property managers mid-lease?<span class="faq-icon">+</span></button>
+        <div class="faq-answer">Absolutely. We handle property management transitions regularly and make the process straightforward. We coordinate directly with your current management company to transfer security deposits, lease documents, vendor contacts, and tenant communications. Most transitions complete within two to three weeks with zero disruption to your tenants.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="cta-band" id="contact">
+  <div class="container reveal">
+    <h2>Get a Free Rental Analysis for Your San Diego Property</h2>
+    <p>Find out what your rental property could earn under professional management. No obligation, no pressure, just real numbers from a local team with 15+ years of experience.</p>
+    <a href="04-free-rental-analysis.html" class="btn-white">Request Your Free Analysis</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-top">
+    <div class="container-wide">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo"><img src="https://lirp.cdn-website.com/dfe19943/dms3rep/multi/opt/Red-House-Logo-white-text-1920w.png" alt="Red House Property Management" class="footer-logo-img"></div>
+          <div class="footer-tagline">Peace of Mind, One Door at a Time</div>
+          <div class="footer-contact-block">
+            444 S Cedros Ave, Suite 215<br>
+            Solana Beach, CA 92075<br><br>
+            Office: <a href="tel:8587553031">(858) 755-3031</a><br>
+            24/7 Maintenance: <a href="tel:8588082420">(858) 808-2420</a><br>
+            <a href="mailto:admin@redhousemgt.com">admin@redhousemgt.com</a>
+          </div>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Quick Links</div>
+          <div class="footer-links">
+            <a href="07-available-rentals.html">Available Rentals</a>
+            <a href="02-property-management.html">Management Services</a>
+            <a href="05-the-red-house-difference.html">The Red House Difference</a>
+            <a href="03-service-areas.html">Service Areas</a>
+            <a href="06-about.html">About Us</a>
+            <a href="09-contact.html">Contact</a>
+            <a href="10-resources.html">News</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Service Areas</div>
+          <div class="footer-links">
+            <a href="03-service-areas.html">Solana Beach</a>
+            <a href="03-service-areas.html">Del Mar</a>
+            <a href="03-service-areas.html">La Jolla</a>
+            <a href="03-service-areas.html">Pacific Beach</a>
+            <a href="03-service-areas.html">Carlsbad</a>
+            <a href="03-service-areas.html">Encinitas</a>
+            <a href="03-service-areas.html">Point Loma</a>
+            <a href="03-service-areas.html">All Areas</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Portals</div>
+          <div class="footer-portals">
+            <a href="11-owner-portal.html" class="portal-link">Owner Portal</a>
+            <a href="12-tenant-portal.html" class="portal-link">Resident Portal</a>
+          </div>
+          <div style="margin-top: 28px;">
+            <div class="footer-col-title">For Partners</div>
+            <div class="footer-links">
+              <a href="13-vendor-proposals.html">Vendor Proposals</a>
+              <a href="14-agent-referral-program.html">Agent Referral Program</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom-bar">
+    <div class="container-wide">
+      <div class="footer-bottom-inner">
+        <div class="footer-legal">&copy; 2026 Red House Property Management &nbsp;|&nbsp; CA DRE# 01877634 &nbsp;|&nbsp; Equal Housing Opportunity</div>
+        <div class="cert-row">
+          <span class="cert-badge">NARPM</span>
+          <span class="cert-badge">SDAR</span>
+          <span class="cert-badge">CAR</span>
+          <span class="cert-badge">NAR</span>
+          <span class="cert-badge">SCRHA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* FAQ accordion (same as homepage) */
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling, icon = btn.querySelector('.faq-icon');
+  const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+  document.querySelectorAll('.faq-question').forEach(b => { b.nextElementSibling.style.maxHeight='0px'; b.nextElementSibling.style.paddingBottom='0'; const ic=b.querySelector('.faq-icon'); if(ic) ic.style.transform=''; b.style.color=''; });
+  if (!isOpen) { answer.style.maxHeight='320px'; answer.style.paddingBottom='20px'; if(icon) icon.style.transform='rotate(45deg)'; btn.style.color='var(--blue)'; }
+}
+
+/* Services accordion */
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling, toggle = btn.querySelector('.acc-toggle');
+  const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+  document.querySelectorAll('.accordion-trigger').forEach(b => { b.nextElementSibling.style.maxHeight='0px'; b.nextElementSibling.style.paddingBottom='0'; const t=b.querySelector('.acc-toggle'); if(t) t.style.transform=''; b.style.color=''; });
+  if (!isOpen) { body.style.maxHeight='400px'; body.style.paddingBottom='20px'; if(toggle) toggle.style.transform='rotate(45deg)'; btn.style.color='var(--blue)'; }
+}
+
+/* Scroll reveal */
+(function(){ const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:0.12}); document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.reveal').forEach(el=>o.observe(el))}); })();
+
+/* Nav scroll behavior */
+(function(){ document.addEventListener('DOMContentLoaded',()=>{ const n=document.getElementById('mainNav'); const u=document.querySelector('.utility-bar'); if(!n) return; window.addEventListener('scroll',()=>{ const scrolled=window.scrollY>60; n.classList.toggle('scrolled',scrolled); if(u) u.classList.toggle('hidden',scrolled); }); }); })();
+</script>
+</body>
+</html>

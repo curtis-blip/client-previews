@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phoenix & Scottsdale Communities | Desert Ridge, Paradise Valley, Fountain Hills | Amy Koch</title>
+<meta name="description" content="Explore the top communities in Phoenix and Scottsdale with Amy Koch. Learn about Desert Ridge, North Scottsdale, Paradise Valley, Fountain Hills, Old Town Scottsdale, and North Phoenix.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AMY KOCH - BASE TEMPLATE
+   Design vibe: The Brokery luxury aesthetic
+   Gold accent, dark/moody, generous whitespace
+   ============================================ */
+
+/* --- CSS RESET & VARIABLES --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Brand Colors */
+  --gold: #4bb9d4;
+  --gold-dark: #3a9ab8;
+  --gold-light: #7dd3e8;
+  --warm-accent: #d4a04b;
+  --warm-accent-dark: #b8882f;
+  --teal: #4bb9d4;
+  --teal-dark: #3a9ab8;
+  --navy: #0f1f2e;
+  --navy-light: #162536;
+  --charcoal: #1a1a1a;
+  --dark: #111111;
+  --white: #ffffff;
+  --off-white: #f7fafb;
+  --warm-gray: #eef5f7;
+  --text-primary: #1a2a35;
+  --text-secondary: #6b6b6b;
+  --text-light: #999999;
+  --border-light: #e8e6e1;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(80px, 10vw, 120px);
+  --container-width: 1200px;
+  --container-narrow: 800px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+.container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+.container-narrow { width: 90%; max-width: var(--container-narrow); margin: 0 auto; }
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; color: var(--charcoal); }
+h1 { font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 46px); letter-spacing: -0.01em; }
+h3 { font-size: clamp(22px, 2.5vw, 30px); }
+h4 { font-size: clamp(18px, 1.5vw, 22px); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrow-center {
+  justify-content: center;
+}
+.eyebrow-center::before {
+  display: none;
+}
+.eyebrow-center::after {
+  display: none;
+}
+
+.section-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Light section headings */
+.light-section h2 { color: var(--charcoal); }
+.light-section .eyebrow { color: var(--gold); }
+.light-section .eyebrow::before { background: var(--gold); }
+
+/* Dark section headings */
+.dark-section { background: var(--navy); }
+.dark-section h2, .dark-section h3, .dark-section h4 { color: var(--white); }
+.dark-section p { color: rgba(255,255,255,0.75); }
+.dark-section .eyebrow { color: var(--gold); }
+.dark-section .eyebrow::before { background: var(--gold); }
+
+/* Alt section */
+.alt-section { background: var(--off-white); }
+
+/* Warm tinted section */
+.warm-section { background: #faf8f3; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(75, 185, 212, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-white {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.btn-white:hover {
+  background: var(--off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+}
+
+/* --- HEADER (Transparent + Sticky) --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-out);
+}
+.site-header.scrolled {
+  background: rgba(12, 26, 42, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-mark span {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.logo-brokery {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.main-nav { display: flex; align-items: center; gap: 36px; }
+.main-nav a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  position: relative;
+}
+.main-nav a:hover { color: var(--gold); }
+.main-nav a.active { color: var(--gold); }
+.nav-cta {
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--white) !important;
+  border-radius: 2px;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover {
+  background: var(--gold-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile Nav */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.mobile-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.mobile-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* --- SCROLL PROGRESS BAR --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1001;
+  transition: width 0.1s linear;
+}
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(12,26,42,0.85) 0%, rgba(12,26,42,0.5) 50%, rgba(12,26,42,0.3) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 0 100px;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 560px; margin-bottom: 36px; }
+.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow::before { background: var(--gold); }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* --- STATS BAR (overlapping hero) --- */
+.stats-bar {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px;
+  margin-bottom: 0;
+}
+.stats-bar-inner {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* --- CARDS --- */
+.card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.card-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.card-body { padding: 32px; }
+.card-body h3 { margin-bottom: 12px; font-size: 22px; }
+.card-body p { color: var(--text-secondary); font-size: 15px; }
+
+/* Dark card variant */
+.card-dark {
+  background: var(--navy-light);
+}
+.card-dark h3, .card-dark h4 { color: var(--white); }
+.card-dark p { color: rgba(255,255,255,0.7); }
+
+/* --- SERVICE GRID --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.service-card {
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-light);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.service-icon svg { width: 100%; height: 100%; }
+.service-card h4 { margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); }
+
+/* --- FAQ ACCORDION --- */
+.faq-list { max-width: 800px; }
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--charcoal);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  transition: transform 0.3s ease;
+}
+.faq-icon::before { width: 14px; height: 1.5px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 1.5px; height: 14px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.faq-item.active .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+}
+.faq-item.active .faq-answer { max-height: 300px; }
+.faq-answer-inner {
+  padding: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* Dark FAQ variant */
+.dark-section .faq-item { border-color: rgba(255,255,255,0.1); }
+.dark-section .faq-question { color: var(--white); }
+.dark-section .faq-question:hover { color: var(--gold); }
+.dark-section .faq-answer-inner { color: rgba(255,255,255,0.7); }
+
+/* --- TESTIMONIALS --- */
+.testimonial-card {
+  background: var(--white);
+  padding: 48px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.testimonial-quote-icon {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 32px;
+}
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  position: relative;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--gold);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* --- CTA BANNER --- */
+.cta-banner {
+  background: linear-gradient(rgba(12,26,42,0.85), rgba(12,26,42,0.85)), url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1600&h=600&fit=crop&q=75') center/cover no-repeat;
+  padding: var(--section-padding) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.08) 0%, transparent 70%);
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+.cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 18px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+/* --- FOOTER --- */
+.site-footer {
+  background: var(--dark);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .logo-name { font-size: 22px; margin-bottom: 4px; }
+.footer-brand .logo-brokery { margin-bottom: 20px; display: block; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 300px; }
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+.footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+}
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-social svg { width: 14px; height: 14px; }
+
+/* --- SCROLL ANIMATIONS --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- COUNTER ANIMATION --- */
+.counter { display: inline-block; }
+
+/* --- SECTION DIVIDER (angled) --- */
+.angled-divider {
+  position: relative;
+}
+.angled-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: inherit;
+  clip-path: polygon(0 0, 100% 0, 100% 30%, 0 100%);
+  z-index: 2;
+}
+
+/* --- SECTION PADDING UTILITY --- */
+section { padding: var(--section-padding) 0; }
+
+/* =============================================
+   COMMUNITIES PAGE - SPECIFIC STYLES
+   ============================================= */
+
+/* Hero - shorter for interior page */
+.hero-interior {
+  min-height: 60vh;
+}
+.hero-interior .hero-content {
+  padding: 160px 0 80px;
+}
+
+/* --- COMMUNITY GRID --- */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.community-card {
+  position: relative;
+  height: 380px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.community-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.community-card:hover .community-card-bg {
+  transform: scale(1.08);
+}
+
+.community-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.05) 100%);
+  transition: background 0.4s ease;
+}
+
+.community-card:hover .community-card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.02) 100%);
+}
+
+.community-card-tag {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(75, 185, 212, 0.9);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 14px;
+  border-radius: 2px;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+.community-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  z-index: 2;
+}
+
+.community-card-name {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+.community-card:hover .community-card-name {
+  color: var(--gold-light);
+}
+
+.community-card-explore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-out);
+  margin-top: 8px;
+}
+
+.community-card:hover .community-card-explore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.community-card-explore svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.community-card:hover .community-card-explore svg {
+  transform: translateX(4px);
+}
+
+/* --- MODAL SYSTEM --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  pointer-events: none;
+  transition: background 0.4s ease, visibility 0s 0.4s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 40px 20px;
+}
+
+.modal-overlay.active {
+  background: rgba(0, 0, 0, 0.85);
+  visibility: visible;
+  pointer-events: all;
+  transition: background 0.4s ease, visibility 0s 0s;
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 900px;
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+  margin: auto;
+}
+
+.modal-overlay.active .modal-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--gold);
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+  color: var(--white);
+}
+
+.modal-hero {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+}
+
+.modal-body {
+  padding: 48px;
+}
+
+.modal-body h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  margin-bottom: 24px;
+}
+
+/* Modal Quick Stats */
+.modal-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--off-white);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.modal-stat {
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border-light);
+}
+
+.modal-stat:last-child {
+  border-right: none;
+}
+
+.modal-stat-value {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.modal-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* Modal Description */
+.modal-description p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.modal-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* What Makes It Unique */
+.modal-unique {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-light);
+}
+
+.modal-unique h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.modal-unique-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-unique-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.modal-unique-list li svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+/* Best For Tags */
+.modal-best-for {
+  margin-top: 32px;
+}
+
+.modal-best-for-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-tag {
+  padding: 8px 18px;
+  background: var(--off-white);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Modal CTA */
+.modal-cta {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.modal-cta .btn {
+  font-size: 12px;
+}
+
+.modal-cta-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-cta-link:hover {
+  color: var(--gold-dark);
+}
+
+.modal-cta-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- AREA OVERVIEW (Dark Section) --- */
+.area-overview-body {
+  max-width: 700px;
+}
+
+.area-overview-body p {
+  font-size: 17px;
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+.area-overview-body p:last-of-type {
+  margin-bottom: 36px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 36px 40px; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .modal-stats { grid-template-columns: repeat(2, 1fr); }
+  .modal-stat:nth-child(2) { border-right: none; }
+  .modal-stat:nth-child(1), .modal-stat:nth-child(2) { border-bottom: 1px solid var(--border-light); }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: flex; }
+
+  .main-nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--navy);
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    z-index: 999;
+  }
+  .main-nav.mobile-open a {
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .hero { min-height: 90vh; }
+  .hero-content { padding: 120px 0 80px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+  .hero-interior { min-height: 50vh; }
+
+  .stats-bar { margin-top: -40px; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 24px; }
+  .stat-number { font-size: 36px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+
+  .community-grid { grid-template-columns: 1fr; }
+  .community-card { height: 300px; }
+
+  .modal-overlay { padding: 20px 12px; }
+  .modal-body { padding: 32px 24px; }
+  .modal-stats { grid-template-columns: repeat(2, 1fr); }
+  .modal-stat:nth-child(2) { border-right: none; }
+  .modal-stat:nth-child(1), .modal-stat:nth-child(2) { border-bottom: 1px solid var(--border-light); }
+  .modal-cta { flex-direction: column; align-items: flex-start; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .modal-stats { grid-template-columns: 1fr; }
+  .modal-stat { border-right: none; border-bottom: 1px solid var(--border-light); }
+  .modal-stat:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="01-home.html" class="logo">
+      <div class="logo-mark"><span>AK</span></div>
+      <div class="logo-text">
+        <span class="logo-name">Amy Koch</span>
+        <span class="logo-brokery">The Brokery</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="09-search.html">Search Homes</a>
+      <a href="02-buy.html">Buy</a>
+      <a href="03-sell.html">Sell</a>
+      <a href="04-home-value.html">Home Value</a>
+      <a href="05-communities.html" class="active">Communities</a>
+      <a href="06-about.html">About</a>
+      <a href="08-canadian-buyers.html">Canadian Buyers</a>
+      <a href="07-contact.html" class="nav-cta">Get Started</a>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-open'); this.classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== -->
+<!-- PAGE CONTENT GOES HERE -->
+<!-- ===================== -->
+
+<main>
+
+<!-- SECTION 1: HERO -->
+<section class="hero hero-interior">
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&h=900&fit=crop&q=75');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow fade-up">COMMUNITIES</div>
+    <h1 class="fade-up">Phoenix & Scottsdale Communities Worth Calling Home</h1>
+    <p class="fade-up">Amy Koch specializes in six of the Phoenix metro's most sought-after communities. Each offers a distinct lifestyle, price range, and character. Click any community to learn what makes it unique.</p>
+  </div>
+</section>
+
+
+<!-- SECTION 2: COMMUNITY GRID -->
+<section class="light-section">
+  <div class="container">
+    <div class="community-grid">
+
+      <!-- Desert Ridge -->
+      <div class="community-card fade-up" data-community="desert-ridge">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Master-Planned Living</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Desert Ridge</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- North Scottsdale -->
+      <div class="community-card fade-up" data-community="north-scottsdale">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1535090042247-30387644aec5?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Golf &amp; Desert Luxury</div>
+        <div class="community-card-content">
+          <div class="community-card-name">North Scottsdale</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paradise Valley -->
+      <div class="community-card fade-up" data-community="paradise-valley">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Ultra-Luxury Estates</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Paradise Valley</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fountain Hills -->
+      <div class="community-card fade-up" data-community="fountain-hills">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Small-Town Mountain Views</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Fountain Hills</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Old Town Scottsdale -->
+      <div class="community-card fade-up" data-community="old-town-scottsdale">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Dining &amp; Nightlife District</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Old Town Scottsdale</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- North Phoenix -->
+      <div class="community-card fade-up" data-community="north-phoenix">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Family-Friendly Suburbs</div>
+        <div class="community-card-content">
+          <div class="community-card-name">North Phoenix</div>
+          <div class="community-card-explore">
+            Explore
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL OVERLAY (single container, content swapped via JS) -->
+<div class="modal-overlay" id="communityModal">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-hero" id="modalHero"></div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-stats" id="modalStats"></div>
+      <div class="modal-description" id="modalDesc"></div>
+      <div class="modal-unique">
+        <h3>What Makes It Unique</h3>
+        <ul class="modal-unique-list" id="modalUnique"></ul>
+      </div>
+      <div class="modal-best-for">
+        <div class="modal-best-for-label">Best For</div>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+      <div class="modal-cta">
+        <a href="#" class="btn btn-primary" id="modalCtaBtn">Search Homes</a>
+        <a href="07-contact.html" class="btn btn-outline" id="modalContactBtn">Talk to Amy About Community</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SECTION 4: AREA OVERVIEW (dark) -->
+<section class="dark-section">
+  <div class="container">
+    <div class="eyebrow fade-up">THE VALLEY AT A GLANCE</div>
+    <h2 class="fade-up" style="margin-bottom: 28px;">Finding the Right Fit</h2>
+    <div class="area-overview-body fade-up">
+      <p>Every community in the Phoenix metro has its own personality. Desert Ridge offers master-planned convenience. North Scottsdale delivers resort-style luxury. Paradise Valley is exclusivity and privacy. Fountain Hills is small-town charm with desert views. Old Town Scottsdale is walkable urban energy. And North Phoenix is growing value with modern amenities.</p>
+      <p><a href="06-about.html" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Amy Koch</a> doesn't just sell homes in these communities. She lives here, shops here, and has spent 15 years building relationships with the people and businesses that make each neighborhood what it is.</p>
+      <a href="07-contact.html" class="btn btn-primary">Schedule a Community Tour</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 5: CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="fade-up">Not Sure Which Neighborhood Is Right for You?</h2>
+    <p class="fade-up">Amy Koch will help you match your lifestyle, budget, and priorities to the neighborhood that fits best.</p>
+    <a href="07-contact.html" class="btn btn-primary fade-up">Talk to Amy</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-name" style="color:#fff;">Amy Koch</span>
+        <span class="logo-brokery">The Brokery Real Estate</span>
+        <p>Relentlessly local. Serving the Phoenix, Scottsdale, and Northeast Valley communities with white-glove real estate service for over 15 years.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="02-buy.html">Buyer's Guide</a></li>
+          <li><a href="03-sell.html">Seller's Guide</a></li>
+          <li><a href="04-home-value.html">Home Value</a></li>
+          <li><a href="05-communities.html">Communities</a></li>
+          <li><a href="08-canadian-buyers.html">Canadian Buyers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Communities</h4>
+        <ul class="footer-links">
+          <li><a href="05-communities.html#desert-ridge">Desert Ridge</a></li>
+          <li><a href="05-communities.html#north-scottsdale">North Scottsdale</a></li>
+          <li><a href="05-communities.html#paradise-valley">Paradise Valley</a></li>
+          <li><a href="05-communities.html#fountain-hills">Fountain Hills</a></li>
+          <li><a href="05-communities.html#old-town-scottsdale">Old Town Scottsdale</a></li>
+          <li><a href="05-communities.html#north-phoenix">North Phoenix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:6023867343" style="color:rgba(255,255,255,0.5);">602.386.7343</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:amy@amykoch.com" style="color:rgba(255,255,255,0.5);">amy@amykoch.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Phoenix &amp; Scottsdale, AZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-logos" style="display: flex; align-items: center; gap: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 20px; width: 100%; justify-content: center; flex-wrap: wrap;">
+        <!-- AK Logo Mark -->
+        <div style="width: 36px; height: 36px; border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: var(--font-display); font-size: 14px; color: var(--gold); font-weight: 500;">AK</span>
+        </div>
+        <!-- REALTOR Logo -->
+        <svg viewBox="0 0 50 50" width="32" height="32" fill="none" style="flex-shrink: 0;">
+          <rect x="2" y="2" width="46" height="46" rx="4" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="7" font-weight="700" letter-spacing="0.5">REALTOR</text>
+          <text x="25" y="22" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="400" letter-spacing="0.3" dy="10">&#174;</text>
+          <line x1="10" y1="36" x2="40" y2="36" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+          <text x="25" y="44" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="4" letter-spacing="0.3">MLS</text>
+        </svg>
+        <!-- Equal Housing Opportunity Logo -->
+        <svg viewBox="0 0 40 44" width="28" height="31" fill="none" style="flex-shrink: 0;">
+          <path d="M20 2L2 18h6v22h24V18h6L20 2z" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+          <text x="20" y="26" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="5" font-weight="700">=</text>
+          <text x="20" y="33" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3.5" letter-spacing="0.2">EQUAL</text>
+          <text x="20" y="37" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="3" letter-spacing="0.2">HOUSING</text>
+        </svg>
+      </div>
+      <p>&copy; 2026 Amy Koch Real Estate | The Brokery. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SHARED JS -->
+<script>
+// Sticky header
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Scroll animations (fade-up, fade-left, fade-right)
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (index * 0.05) + 's';
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const wasActive = item.classList.contains('active');
+    item.closest('.faq-list').querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  });
+});
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const prefix = counter.getAttribute('data-prefix') || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      counter.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) counterObserver.observe(statsBar);
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+
+// =============================================
+// COMMUNITY MODAL SYSTEM
+// =============================================
+
+const communityData = {
+  'desert-ridge': {
+    name: 'Desert Ridge',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$525K', label: 'Median Price' },
+      { value: '2,000-3,500', label: 'Avg Sq Ft' },
+      { value: 'Single Family, Townhomes', label: 'Property Types' },
+      { value: 'Master-Planned', label: 'Lifestyle' }
+    ],
+    description: [
+      'Desert Ridge is one of North Phoenix\'s premier master-planned communities, spanning over 5,700 acres between the 51 and 101 freeways. Managed by the <a href="https://www.desertridgelifestyles.com" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Desert Ridge Community Association</a>, the community is anchored by Desert Ridge Marketplace, one of the Valley\'s largest open-air shopping destinations, and offers easy access to major employment centers along the I-17 corridor.',
+      'Homes in Desert Ridge range from gated townhome communities to custom single-family residences with mountain views. The community\'s HOA maintains parks, trails, and common areas to a high standard, and several sub-communities like Aviano, Fireside, and Toscana offer distinct architectural styles and amenities.'
+    ],
+    unique: [
+      'Walking trails connecting to Phoenix Sonoran Preserve',
+      'Top-rated schools in the Paradise Valley Unified district',
+      'Minutes from Mayo Clinic and major medical centers',
+      'Resort-style community pools and fitness centers'
+    ],
+    bestFor: ['Families', 'Move-Up Buyers', 'Canadian Relocators']
+  },
+  'north-scottsdale': {
+    name: 'North Scottsdale',
+    image: 'https://images.unsplash.com/photo-1535090042247-30387644aec5?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$875K', label: 'Median Price' },
+      { value: '2,500-5,000', label: 'Avg Sq Ft' },
+      { value: 'Luxury Single Family, Custom', label: 'Property Types' },
+      { value: 'Resort Living', label: 'Lifestyle' }
+    ],
+    description: [
+      'North Scottsdale stretches from Pinnacle Peak Road to Carefree, encompassing some of the Valley\'s most prestigious addresses. Communities like DC Ranch, Grayhawk, Troon, and Silverleaf offer varying levels of luxury from high-end production homes to multi-million dollar custom estates on oversized lots.',
+      'The area is defined by Sonoran Desert landscape, championship golf courses, and proximity to outdoor recreation. Residents enjoy access to the McDowell Sonoran Preserve\'s 30,000+ acres of hiking trails while being minutes from Scottsdale\'s dining and retail corridors.'
+    ],
+    unique: [
+      'Access to world-class golf at Troon North, Grayhawk, and Silverleaf',
+      'McDowell Sonoran Preserve trail access',
+      'Top-rated Scottsdale Unified and Cave Creek school districts',
+      'Guard-gated communities with resort amenities'
+    ],
+    bestFor: ['Luxury Buyers', 'Golf Enthusiasts', 'Executives']
+  },
+  'paradise-valley': {
+    name: 'Paradise Valley',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$3.2M', label: 'Median Price' },
+      { value: '4,000-10,000+', label: 'Avg Sq Ft' },
+      { value: 'Custom Estates, Luxury', label: 'Property Types' },
+      { value: 'Ultra-Premium', label: 'Lifestyle' }
+    ],
+    description: [
+      'Paradise Valley is Arizona\'s wealthiest municipality and one of the most exclusive residential communities in the American Southwest. Governed by the <a href="https://www.paradisevalleyaz.gov" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Town of Paradise Valley</a>, it is nestled between Camelback Mountain and Mummy Mountain, maintaining a rural feel with large lot minimums, no commercial development outside the resort corridor, and strict architectural guidelines.',
+      'Properties here range from mid-century modern estates to newly built contemporary showpieces. The town has no property tax beyond Maricopa County\'s base rate, making it attractive for high-net-worth buyers looking for both lifestyle and tax advantages.'
+    ],
+    unique: [
+      'Minimum one-acre lot sizes throughout the town',
+      'No commercial zoning outside the resort corridor',
+      'Walking distance to Camelback Mountain hiking',
+      'Home to the Phoenician, Mountain Shadows, and Sanctuary resorts'
+    ],
+    bestFor: ['Ultra-Luxury Buyers', 'Privacy Seekers', 'High-Net-Worth Relocators']
+  },
+  'fountain-hills': {
+    name: 'Fountain Hills',
+    image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$575K', label: 'Median Price' },
+      { value: '1,800-3,500', label: 'Avg Sq Ft' },
+      { value: 'Single Family, Patio Homes', label: 'Property Types' },
+      { value: 'Small Town', label: 'Lifestyle' }
+    ],
+    description: [
+      'Fountain Hills is a close-knit community of about 25,000 residents located east of Scottsdale, known for its iconic 560-foot fountain, one of the tallest in the world. The <a href="https://www.fountainhillschamber.com" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Fountain Hills Chamber of Commerce</a> anchors a strong local business scene, and the town offers a quieter pace of life with mountain views in nearly every direction.',
+      'The real estate market here ranges from affordable patio homes and condos to custom hillside properties with panoramic views. Fountain Hills is popular with retirees, remote workers, and families who want access to the Valley\'s amenities without the density of Phoenix or Scottsdale.'
+    ],
+    unique: [
+      'Home to one of the world\'s tallest fountains',
+      'Award-winning public art installations and cultural events',
+      'Adjacent to the Fort McDowell Yavapai Nation and Saguaro Lake',
+      'Low-density zoning preserves mountain and desert views'
+    ],
+    bestFor: ['Retirees', 'Remote Workers', 'Nature Lovers']
+  },
+  'old-town-scottsdale': {
+    name: 'Old Town Scottsdale',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$650K', label: 'Median Price' },
+      { value: '1,200-3,000', label: 'Avg Sq Ft' },
+      { value: 'Condos, Townhomes, Infill', label: 'Property Types' },
+      { value: 'Urban Lifestyle', label: 'Lifestyle' }
+    ],
+    description: [
+      'Old Town Scottsdale is the cultural and entertainment heart of the <a href="https://www.scottsdaleaz.gov" target="_blank" rel="noopener" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">City of Scottsdale</a>, stretching from the Scottsdale Waterfront to the Arts District and Fifth Avenue shopping corridor. Living here means walking to restaurants, galleries, nightlife, and the Saturday Farmers Market without getting in a car.',
+      'The real estate mix includes luxury high-rise condos with city views, renovated mid-century homes on quiet streets, and modern infill townhomes. Old Town is popular with professionals, couples, and investors looking for rental income in one of Arizona\'s most visited destinations.'
+    ],
+    unique: [
+      'Walkable access to 100+ restaurants, bars, and galleries',
+      'Scottsdale Waterfront and Fashion Square shopping',
+      'Annual events including the Arabian Horse Show and Art Walk',
+      'Strong short-term rental demand for investors'
+    ],
+    bestFor: ['Young Professionals', 'Investors', 'Urban Lifestyle']
+  },
+  'north-phoenix': {
+    name: 'North Phoenix',
+    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop&q=75',
+    stats: [
+      { value: '$450K', label: 'Median Price' },
+      { value: '1,600-2,800', label: 'Avg Sq Ft' },
+      { value: 'Single Family, New Construction', label: 'Property Types' },
+      { value: 'Suburban', label: 'Lifestyle' }
+    ],
+    description: [
+      'North Phoenix covers the area roughly between the I-17 corridor and the 101 loop north of Thunderbird Road. This stretch of the city has seen significant growth over the past decade, with new master-planned communities, retail centers, and infrastructure improvements drawing families and first-time buyers.',
+      'Neighborhoods like Norterra, Tramonto, and Sonoran Foothills offer modern floor plans, community amenities, and relatively affordable price points compared to Scottsdale. Access to the I-17 and 101 makes commuting to downtown Phoenix, Tempe, or North Scottsdale straightforward.'
+    ],
+    unique: [
+      'New construction options from major builders like Taylor Morrison and Meritage',
+      'Direct access to hiking at Deem Hills and Sonoran Preserve',
+      'Strong value compared to neighboring Scottsdale',
+      'Growing retail and dining at Norterra and Happy Valley Towne Center'
+    ],
+    bestFor: ['First-Time Buyers', 'Families', 'Value Seekers']
+  }
+};
+
+// SVG checkmark icon
+const checkSVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+
+const modal = document.getElementById('communityModal');
+const modalPanel = modal.querySelector('.modal-panel');
+const modalClose = document.getElementById('modalClose');
+const modalHero = document.getElementById('modalHero');
+const modalTitle = document.getElementById('modalTitle');
+const modalStats = document.getElementById('modalStats');
+const modalDesc = document.getElementById('modalDesc');
+const modalUnique = document.getElementById('modalUnique');
+const modalTags = document.getElementById('modalTags');
+const modalCtaBtn = document.getElementById('modalCtaBtn');
+const modalContactBtn = document.getElementById('modalContactBtn');
+
+function openModal(communityKey) {
+  const data = communityData[communityKey];
+  if (!data) return;
+
+  // Populate hero
+  modalHero.style.backgroundImage = 'url(' + data.image + ')';
+  modalHero.innerHTML = '<div class="modal-hero-overlay"></div>';
+
+  // Title
+  modalTitle.textContent = data.name;
+
+  // Stats
+  modalStats.innerHTML = data.stats.map(s =>
+    '<div class="modal-stat"><div class="modal-stat-value">' + s.value + '</div><div class="modal-stat-label">' + s.label + '</div></div>'
+  ).join('');
+
+  // Description
+  modalDesc.innerHTML = data.description.map(p => '<p>' + p + '</p>').join('');
+
+  // Unique
+  modalUnique.innerHTML = data.unique.map(item =>
+    '<li>' + checkSVG + '<span>' + item + '</span></li>'
+  ).join('');
+
+  // Tags
+  modalTags.innerHTML = data.bestFor.map(tag =>
+    '<span class="modal-tag">' + tag + '</span>'
+  ).join('');
+
+  // CTA button text
+  modalCtaBtn.href = '#saved-search-' + communityKey;
+  modalCtaBtn.textContent = 'Search Homes in ' + data.name;
+  modalContactBtn.textContent = 'Talk to Amy About ' + data.name;
+
+  // Show modal
+  modal.classList.add('active');
+  document.body.classList.add('modal-open');
+
+  // Scroll modal overlay to top
+  modal.scrollTop = 0;
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+
+// Click on community cards
+document.querySelectorAll('.community-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.getAttribute('data-community');
+    openModal(key);
+  });
+});
+
+// Close button
+modalClose.addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeModal();
+});
+
+// Click outside modal panel to close
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+// ESC key to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// Auto-open modal from URL hash
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.substring(1);
+  if (hash && document.querySelector('[data-community="' + hash + '"]')) {
+    openModal(hash);
+  }
+});
+</script>
+
+</body>
+</html>

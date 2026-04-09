@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kathy Huang - Modal Redesign Preview | Downtown San Diego</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { font-family: 'Inter', sans-serif; color: #333; line-height: 1.6; }
+
+        /* ─── PREVIEW BANNER ─── */
+        .preview-banner {
+            background: linear-gradient(90deg, #d4b896, #c9a876);
+            color: #fff;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── HERO BLOCK ─── */
+        .hero {
+            background: linear-gradient(135deg, #1a4d5c 0%, #3d5a5a 50%, #2d4a55 100%);
+            color: #fff;
+            padding: 120px 40px;
+            text-align: left;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: radial-gradient(circle at 150% 0%, rgba(212,184,150,0.1), transparent);
+            pointer-events: none;
+        }
+        .hero-content { max-width: 600px; position: relative; z-index: 1; }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px; font-weight: 700; line-height: 1.2; margin-bottom: 20px;
+        }
+        .hero p { font-size: 18px; line-height: 1.6; color: #e6e6e6; }
+
+        /* ─── INTRO ─── */
+        .intro-section { background: #f9f7f3; padding: 80px 40px; text-align: center; }
+        .intro-section .eyebrow {
+            font-size: 12px; font-weight: 600; letter-spacing: 2px; color: #d4b896;
+            text-transform: uppercase; margin-bottom: 15px;
+        }
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px; color: #3d5a5a; margin-bottom: 20px; font-weight: 600;
+        }
+        .intro-section p { font-size: 16px; color: #666; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+
+        /* ─── COMMUNITY CARDS ─── */
+        .community-section { background: #3d5a5a; padding: 80px 40px; }
+        .community-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px; color: #d4b896; text-align: center; margin-bottom: 15px; font-weight: 600;
+        }
+        .community-section-subtitle {
+            text-align: center; color: #ddd; margin-bottom: 50px;
+            max-width: 700px; margin-left: auto; margin-right: auto; font-size: 16px; line-height: 1.6;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; max-width: 1200px; margin: 0 auto;
+        }
+        .community-card {
+            aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden; cursor: pointer;
+            position: relative; transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none; padding: 0; background: #f5f5f5;
+        }
+        .community-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+        .card-downtown { background: linear-gradient(135deg, #1e6b7e, #2d5a6d); }
+        .card-lajolla { background: linear-gradient(135deg, #c66b4a, #a85a3a); }
+        .card-delmar { background: linear-gradient(135deg, #5a8b6b, #4a7b5b); }
+        .card-carmelvalley { background: linear-gradient(135deg, #d4a574, #c49564); }
+        .card-ranchosantafe { background: linear-gradient(135deg, #8b6b5a, #6b5b4a); }
+        .card-santaluz { background: linear-gradient(135deg, #4a7a8b, #3a6a7b); }
+        .card-ranchobernardo { background: linear-gradient(135deg, #7a5a4a, #5a4a3a); }
+        .card-solanasbeach { background: linear-gradient(135deg, #1e8b7e, #2d7b6d); }
+        .card-carlsbad { background: linear-gradient(135deg, #c6884a, #a8703a); }
+        .community-card::before {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+            height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent); z-index: 2;
+        }
+        .community-card-text {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
+            color: #fff; font-family: 'Cormorant Garamond', serif;
+            font-size: 24px; font-weight: 600; z-index: 3;
+        }
+
+        /* ─── DESIGNER NOTE ─── */
+        .designer-note {
+            background: #fff3e0; border-left: 4px solid #d4b896;
+            padding: 20px; margin-top: 50px; max-width: 1200px;
+            margin-left: auto; margin-right: auto; font-size: 14px;
+            color: #666; border-radius: 4px;
+        }
+        .designer-note strong { color: #3d5a5a; display: block; margin-bottom: 8px; }
+
+        /* ═══════════════════════════════════════════
+           REDESIGNED MODAL SYSTEM
+           ═══════════════════════════════════════════ */
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6); z-index: 1000; animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal {
+            display: none; position: fixed; top: 0; right: 0;
+            height: 100vh; width: 85%; max-width: 1000px;
+            background: #fff; overflow-y: auto; z-index: 1001;
+            animation: slideInRight 0.4s ease;
+        }
+        .modal.active { display: flex; flex-direction: column; }
+        @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+        /* ─── MODAL HEADER (COMPACT) ─── */
+        .modal-header {
+            background: #3d5a5a; color: #fff;
+            padding: 30px 40px 24px; position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 16px; right: 20px;
+            width: 36px; height: 36px; background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+            color: #fff; font-size: 18px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .modal-close:hover { background: rgba(255,255,255,0.2); color: #d4b896; }
+        .modal-eyebrow {
+            font-size: 11px; font-weight: 600; letter-spacing: 2px;
+            color: #d4b896; text-transform: uppercase; margin-bottom: 8px;
+        }
+        .modal-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px; margin-bottom: 0; font-weight: 700;
+        }
+
+        /* ─── HERO IMAGE BAND + STATS ─── */
+        .modal-hero-image {
+            position: relative; width: 100%;
+            height: 220px; overflow: hidden;
+            background: linear-gradient(135deg, #1e6b7e 0%, #2d5a6d 100%);
+        }
+        .modal-hero-image img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .modal-hero-image .hero-gradient {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 100%;
+            background: linear-gradient(to top, rgba(61,90,90,0.95) 0%, rgba(61,90,90,0.4) 50%, transparent 100%);
+        }
+        .modal-stats-bar {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            display: flex; justify-content: center; gap: 0;
+            padding: 0 20px 20px;
+        }
+        .modal-stat {
+            text-align: center; padding: 0 28px;
+            border-right: 1px solid rgba(212,184,150,0.3);
+        }
+        .modal-stat:last-child { border-right: none; }
+        .modal-stat-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px; font-weight: 700; color: #d4b896;
+            line-height: 1.2;
+        }
+        .modal-stat-label {
+            font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+            text-transform: uppercase; color: rgba(255,255,255,0.7);
+            margin-top: 2px;
+        }
+
+        /* ─── INTRO PARAGRAPH (below hero image) ─── */
+        .modal-intro-text {
+            padding: 28px 40px 20px;
+            font-size: 15px; line-height: 1.7; color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* ─── NAVIGATION (CLEANER, ICON + TEXT) ─── */
+        .modal-nav {
+            display: flex; gap: 4px; padding: 12px 40px;
+            background: #fafafa; border-bottom: 1px solid #eee;
+            overflow-x: auto; position: sticky; top: 0; z-index: 999;
+            flex-wrap: nowrap;
+        }
+        .nav-pill {
+            background: transparent; border: none;
+            color: #888; padding: 8px 14px; border-radius: 6px;
+            font-size: 12px; font-weight: 600; cursor: pointer;
+            transition: all 0.2s ease; white-space: nowrap;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .nav-pill:hover { background: #f0ede8; color: #3d5a5a; }
+        .nav-pill.active {
+            background: #3d5a5a; color: #fff;
+        }
+        .nav-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .nav-pill.active svg { fill: #d4b896; stroke: #d4b896; }
+
+        /* ─── MODAL CONTENT AREA ─── */
+        .modal-body {
+            flex: 1; padding: 0 40px 120px;
+            max-width: 100%; width: 100%;
+        }
+
+        /* ─── SECTION BASE ─── */
+        .modal-section {
+            padding: 32px 0; scroll-margin-top: 120px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .modal-section:last-of-type { border-bottom: none; }
+        .section-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+        }
+        .section-header svg { width: 22px; height: 22px; flex-shrink: 0; }
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px; color: #3d5a5a; font-weight: 600; margin: 0;
+        }
+        .section-intro {
+            font-size: 14px; color: #888; margin-bottom: 20px; line-height: 1.6;
+        }
+
+        /* ─── LAYOUT: CARD GRID (for Notable Areas) ─── */
+        .area-cards {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .area-card {
+            background: #f9f7f3; border-radius: 8px; padding: 18px 20px;
+            border: 1px solid #eee; transition: all 0.2s ease;
+            text-decoration: none; color: inherit; display: block;
+        }
+        .area-card:hover {
+            border-color: #d4b896; transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .area-card-name {
+            font-weight: 600; font-size: 15px; color: #3d5a5a; margin-bottom: 4px;
+        }
+        .area-card-name a {
+            color: #3d5a5a; text-decoration: none;
+        }
+        .area-card-name a:hover { color: #d4b896; }
+        .area-card-desc {
+            font-size: 13px; color: #888; line-height: 1.5;
+        }
+
+        /* ─── LAYOUT: HORIZONTAL CARDS (for Sights, Parks) ─── */
+        .sight-cards {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .sight-card {
+            display: flex; gap: 14px; padding: 14px 16px;
+            background: #fff; border: 1px solid #f0f0f0; border-radius: 8px;
+            transition: all 0.2s ease; align-items: flex-start;
+        }
+        .sight-card:hover {
+            border-color: #d4b896;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .sight-icon {
+            width: 38px; height: 38px; min-width: 38px;
+            background: #f9f7f3; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .sight-icon svg { width: 18px; height: 18px; }
+        .sight-info { flex: 1; }
+        .sight-name {
+            font-weight: 600; font-size: 14px; color: #3d5a5a; margin-bottom: 2px;
+        }
+        .sight-name a { color: #3d5a5a; text-decoration: none; }
+        .sight-name a:hover { color: #d4b896; }
+        .sight-detail { font-size: 13px; color: #888; line-height: 1.5; }
+        .sight-tag {
+            display: inline-block; background: #f0ede8; color: #8b7a6b;
+            font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+            text-transform: uppercase; padding: 2px 8px; border-radius: 4px;
+            margin-left: 8px; vertical-align: middle;
+        }
+
+        /* ─── LAYOUT: ICON LIST (for Healthcare, Business) ─── */
+        .icon-list { display: flex; flex-direction: column; gap: 12px; }
+        .icon-list-item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 12px 16px; background: #f9f7f3;
+            border-radius: 8px; border: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        .icon-list-item:hover { border-color: #eee; }
+        .icon-list-item .il-icon {
+            width: 36px; height: 36px; min-width: 36px;
+            background: #3d5a5a; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .icon-list-item .il-icon svg { width: 16px; height: 16px; }
+        .il-content { flex: 1; }
+        .il-name { font-weight: 600; font-size: 14px; color: #3d5a5a; margin-bottom: 2px; }
+        .il-name a { color: #3d5a5a; text-decoration: none; }
+        .il-name a:hover { color: #d4b896; }
+        .il-desc { font-size: 13px; color: #888; line-height: 1.5; }
+
+        /* ─── LAYOUT: CATEGORIZED GROUPS (for Schools) ─── */
+        .school-groups { display: flex; flex-direction: column; gap: 24px; }
+        .school-group {}
+        .school-group-header {
+            font-size: 13px; font-weight: 700; color: #3d5a5a;
+            text-transform: uppercase; letter-spacing: 1px;
+            padding-bottom: 8px; border-bottom: 2px solid #d4b896;
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+        }
+        .school-group-header svg { width: 14px; height: 14px; }
+        .school-items { display: flex; flex-direction: column; gap: 6px; }
+        .school-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 14px; background: #fafafa; border-radius: 6px;
+            font-size: 14px; color: #555; transition: background 0.2s ease;
+        }
+        .school-item:hover { background: #f5f2ed; }
+        .school-item a { color: #3d5a5a; text-decoration: none; font-weight: 500; }
+        .school-item a:hover { color: #d4b896; }
+        .school-item .school-type {
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; color: #aaa; margin-left: auto; white-space: nowrap;
+        }
+
+        /* ─── LAYOUT: TRANSIT ROUTE CARDS ─── */
+        .transit-cards { display: flex; flex-direction: column; gap: 10px; }
+        .transit-card {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 16px; background: #fff; border: 1px solid #f0f0f0;
+            border-radius: 8px; transition: all 0.2s ease;
+        }
+        .transit-card:hover {
+            border-color: #d4b896;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .transit-badge {
+            width: 42px; height: 42px; min-width: 42px;
+            border-radius: 10px; display: flex; align-items: center;
+            justify-content: center; font-weight: 700; font-size: 11px;
+            color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .transit-badge.air { background: #3d5a5a; }
+        .transit-badge.rail { background: #8b6b5a; }
+        .transit-badge.tram { background: #1e6b7e; }
+        .transit-badge.sea { background: #5a8b6b; }
+        .transit-badge svg { width: 20px; height: 20px; }
+        .transit-info { flex: 1; }
+        .transit-name { font-weight: 600; font-size: 14px; color: #3d5a5a; margin-bottom: 3px; }
+        .transit-desc { font-size: 13px; color: #888; line-height: 1.5; }
+        .transit-desc a { color: #d4b896; text-decoration: none; font-weight: 500; }
+        .transit-desc a:hover { text-decoration: underline; }
+
+        /* ─── LAYOUT: SPORTS HIGHLIGHT ─── */
+        .sport-cards { display: flex; flex-direction: column; gap: 10px; }
+        .sport-card {
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 18px; background: #f9f7f3; border-radius: 8px;
+            border: 1px solid #eee; transition: all 0.2s ease;
+        }
+        .sport-card:hover {
+            border-color: #d4b896;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .sport-badge {
+            background: #3d5a5a; color: #d4b896; font-size: 10px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            padding: 4px 10px; border-radius: 4px; white-space: nowrap;
+        }
+        .sport-info { flex: 1; }
+        .sport-team { font-weight: 600; font-size: 15px; color: #3d5a5a; }
+        .sport-team a { color: #3d5a5a; text-decoration: none; }
+        .sport-team a:hover { color: #d4b896; }
+        .sport-venue { font-size: 13px; color: #888; }
+
+        /* ─── ADTV VIDEO SECTION ─── */
+        .adtv-embed {
+            background: #2d3d3d; border-radius: 10px;
+            aspect-ratio: 16 / 9; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; color: #fff;
+            position: relative; overflow: hidden; margin-bottom: 16px;
+        }
+        .adtv-play-btn {
+            width: 64px; height: 64px; background: rgba(212,184,150,0.9);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; margin-bottom: 12px;
+            transition: transform 0.2s ease;
+        }
+        .adtv-play-btn:hover { transform: scale(1.1); }
+        .adtv-play-btn svg { width: 24px; height: 24px; margin-left: 3px; }
+        .adtv-embed-label { font-size: 14px; font-weight: 500; opacity: 0.8; }
+        .adtv-desc { font-size: 14px; color: #888; line-height: 1.6; }
+        .adtv-note { font-size: 12px; color: #bbb; font-style: italic; margin-top: 8px; }
+
+        /* ─── MID-CONTENT CTA ─── */
+        .mid-cta {
+            background: #f9f7f3; border: 1px solid #eee;
+            border-radius: 10px; padding: 24px 28px;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 20px; margin: 8px 0;
+        }
+        .mid-cta-text { font-size: 15px; color: #3d5a5a; font-weight: 500; }
+        .mid-cta-btn {
+            background: #d4b896; color: #3d5a5a; border: none;
+            padding: 10px 24px; border-radius: 6px; font-size: 13px;
+            font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+            white-space: nowrap; font-family: 'Inter', sans-serif;
+        }
+        .mid-cta-btn:hover { background: #c9a876; transform: translateY(-1px); }
+
+        /* ─── STICKY BOTTOM CTA ─── */
+        .modal-sticky-cta {
+            position: sticky; bottom: 0; left: 0; right: 0;
+            background: #fff; border-top: 1px solid #eee;
+            padding: 14px 40px; display: flex; align-items: center;
+            justify-content: space-between; z-index: 998;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+        }
+        .sticky-cta-text {
+            font-size: 14px; color: #888;
+        }
+        .sticky-cta-text strong { color: #3d5a5a; }
+        .sticky-cta-btn {
+            background: #d4b896; color: #3d5a5a; border: none;
+            padding: 12px 32px; border-radius: 6px; font-size: 14px;
+            font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .sticky-cta-btn:hover { background: #c9a876; transform: translateY(-1px); }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: #2d3d3d; color: #ccc; padding: 40px; text-align: center; font-size: 14px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .modal { width: 100%; }
+            .modal-header { padding: 24px 20px 20px; }
+            .modal-header h1 { font-size: 32px; }
+            .modal-hero-image { height: 160px; }
+            .modal-stats-bar { padding: 0 12px 12px; gap: 0; }
+            .modal-stat { padding: 0 16px; }
+            .modal-stat-value { font-size: 22px; }
+            .modal-intro-text { padding: 20px; }
+            .modal-nav { padding: 10px 16px; gap: 2px; }
+            .nav-pill { padding: 6px 10px; font-size: 11px; }
+            .modal-body { padding: 0 20px 120px; }
+            .area-cards { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .hero h1 { font-size: 36px; }
+            .intro-section h2, .community-section h2 { font-size: 32px; }
+            .mid-cta { flex-direction: column; text-align: center; }
+            .modal-sticky-cta { padding: 12px 20px; flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- DESIGN PREVIEW BANNER -->
+<div class="preview-banner">
+    MODAL REDESIGN PREVIEW — Kathy Huang | Downtown San Diego | AgenticPress | March 2026
+</div>
+
+<!-- HERO BLOCK -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Trusted San Diego Realtor For Luxury Coastal Living</h1>
+        <p>Discover your dream home in San Diego's most coveted neighborhoods with Kathy Huang, your trusted luxury real estate expert.</p>
+    </div>
+</section>
+
+<!-- INTRO SECTION -->
+<section class="intro-section">
+    <div class="eyebrow">Welcome to California</div>
+    <h2>San Diego and Surrounding Suburbs and Cities</h2>
+    <p>Whether you're seeking the vibrant urban lifestyle of Downtown, the coastal charm of La Jolla, or the suburban elegance of Rancho Santa Fe, San Diego offers diverse communities to match every lifestyle. With over two decades of experience, I guide buyers and sellers through every step of the process.</p>
+</section>
+
+<!-- COMMUNITY CARDS SECTION -->
+<section class="community-section">
+    <h2>Find The Right San Diego Community For You</h2>
+    <p class="community-section-subtitle">Explore nine distinctive, upscale cities/communities across greater San Diego, each with its own unique character, amenities, and market dynamics.</p>
+
+    <div class="cards-grid">
+        <button class="community-card card-downtown" onclick="openModal('downtown')">
+            <div class="community-card-text">Downtown San Diego</div>
+        </button>
+        <button class="community-card card-lajolla" onclick="openModal('lajolla')">
+            <div class="community-card-text">La Jolla</div>
+        </button>
+        <button class="community-card card-delmar" onclick="openModal('delmar')">
+            <div class="community-card-text">Del Mar</div>
+        </button>
+        <button class="community-card card-carmelvalley" onclick="openModal('carmelvalley')">
+            <div class="community-card-text">Carmel Valley</div>
+        </button>
+        <button class="community-card card-ranchosantafe" onclick="openModal('ranchosantafe')">
+            <div class="community-card-text">Rancho Santa Fe</div>
+        </button>
+        <button class="community-card card-santaluz" onclick="openModal('santaluz')">
+            <div class="community-card-text">Santaluz & Del Sur</div>
+        </button>
+        <button class="community-card card-ranchobernardo" onclick="openModal('ranchobernardo')">
+            <div class="community-card-text">Rancho Bernardo</div>
+        </button>
+        <button class="community-card card-solanasbeach" onclick="openModal('solanasbeach')">
+            <div class="community-card-text">Solana Beach</div>
+        </button>
+        <button class="community-card card-carlsbad" onclick="openModal('carlsbad')">
+            <div class="community-card-text">Carlsbad</div>
+        </button>
+    </div>
+
+    <div class="designer-note">
+        <strong>DESIGNER NOTE: MODAL REDESIGN</strong>
+        Click "Downtown San Diego" to see the redesigned modal. Changes: SVG icons replace emoji, hero image band with stats overlay, varied layouts per section type (card grids, icon lists, categorized groups, transit route cards), mid-content CTA, sticky bottom CTA bar. All hyperlinks preserved from Kathy's source docs. Kathy's email corrections (Part 1) incorporated.
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>&copy; 2026 Kathy Huang | San Diego Luxury Real Estate | All Rights Reserved</p>
+</footer>
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     DOWNTOWN SAN DIEGO MODAL (REDESIGNED)
+     ═══════════════════════════════════════════════════════ -->
+<div class="modal" id="downtownModal">
+
+    <!-- COMPACT HEADER -->
+    <div class="modal-header">
+        <button class="modal-close" onclick="closeModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="modal-eyebrow">The Heart of America's Finest City</div>
+        <h1>Downtown San Diego</h1>
+    </div>
+
+    <!-- HERO IMAGE BAND WITH STATS -->
+    <div class="modal-hero-image">
+        <!-- Replace with real community photo -->
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1e6b7e 0%,#2d5a6d 40%,#1a4d5c 100%);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:14px;">Community Photo: Downtown San Diego Skyline</div>
+        <div class="hero-gradient"></div>
+        <div class="modal-stats-bar">
+            <div class="modal-stat">
+                <div class="modal-stat-value">92101</div>
+                <div class="modal-stat-label">Zip Code</div>
+            </div>
+            <div class="modal-stat">
+                <div class="modal-stat-value">7</div>
+                <div class="modal-stat-label">Districts</div>
+            </div>
+            <div class="modal-stat">
+                <div class="modal-stat-value">50K+</div>
+                <div class="modal-stat-label">Residents</div>
+            </div>
+            <div class="modal-stat">
+                <div class="modal-stat-value">Waterfront</div>
+                <div class="modal-stat-label">Setting</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTRO PARAGRAPH -->
+    <div class="modal-intro-text">
+        Downtown San Diego is a dynamic urban center on the waterfront that serves as the region's hub for business, culture, and entertainment. Stretching from the San Diego Bay inland, Downtown is a tapestry of distinct, vibrant neighborhoods, each offering its own unique lifestyle and atmosphere.
+    </div>
+
+    <!-- NAVIGATION (SVG ICONS) -->
+    <div class="modal-nav">
+        <button class="nav-pill active" onclick="scrollToSection('downtown-notable')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Areas
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-sights')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            Sights
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-healthcare')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Health
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-schools')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Schools
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-parks')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8 8a5 5 0 0 1 8 0"/></svg>
+            Parks
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-sports')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            Sports
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-business')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Business
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-transit')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="3"/><path d="M4 11h16"/><path d="M12 3v16"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/></svg>
+            Transit
+        </button>
+        <button class="nav-pill" onclick="scrollToSection('downtown-adtv')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            ADTV
+        </button>
+    </div>
+
+    <!-- SCROLLABLE CONTENT -->
+    <div class="modal-body">
+
+        <!-- ══ NOTABLE AREAS (Card Grid Layout) ══ -->
+        <div class="modal-section" id="downtown-notable">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <h2>Notable Areas of the City</h2>
+            </div>
+            <p class="section-intro">Downtown San Diego is composed of seven major districts, each with a unique character:</p>
+
+            <div class="area-cards">
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Gaslamp_Quarter" target="_blank">Gaslamp Quarter</a></div>
+                    <div class="area-card-desc">Historic 16-block district famous for Victorian architecture, nightlife, restaurants, and shopping.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/East_Village,_San_Diego" target="_blank">East Village</a></div>
+                    <div class="area-card-desc">The largest neighborhood, known for rapid redevelopment, urban-chic vibe, and home of the city's main sports venue.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Little_Italy,_San_Diego" target="_blank">Little Italy</a></div>
+                    <div class="area-card-desc">Walkable neighborhood honoring Italian heritage with trendy restaurants, street festivals, and a popular farmers market.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Marina,_San_Diego" target="_blank">Marina</a></div>
+                    <div class="area-card-desc">Tranquil residential district along the waterfront with tree-lined streets, public art, and proximity to major attractions.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Columbia,_San_Diego" target="_blank">Columbia</a></div>
+                    <div class="area-card-desc">Western waterfront district, home to luxury condos (Pacific Gate, Savina, Bayside, The Grande, Sapphire Towers), the <a href="https://www.midway.org/" target="_blank">USS Midway Museum</a>, and the <a href="https://sdmaritime.org/" target="_blank">Maritime Museum</a>.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Core,_San_Diego" target="_blank">Core</a></div>
+                    <div class="area-card-desc">Central business district with civic buildings, theaters, and corporate offices.</div>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-name"><a href="https://en.wikipedia.org/wiki/Cortez_Hill,_San_Diego" target="_blank">Cortez Hill</a></div>
+                    <div class="area-card-desc">Quieter, elevated neighborhood offering residential serenity and easy freeway access.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ SIGHTS & CULTURE (Horizontal Cards Layout) ══ -->
+        <div class="modal-section" id="downtown-sights">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <h2>Tourist Sights & Culture</h2>
+            </div>
+            <p class="section-intro">Downtown is a major draw for tourism, offering coastal attractions and cultural institutions:</p>
+
+            <div class="sight-cards">
+                <div class="sight-card">
+                    <div class="sight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a5a" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name"><a href="https://www.midway.org/" target="_blank">USS Midway Museum</a> <span class="sight-tag">Columbia</span></div>
+                        <div class="sight-detail">A historic aircraft carrier museum docked on the bay.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a5a" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name">San Diego Convention Center <span class="sight-tag">Marina / East Village</span></div>
+                        <div class="sight-detail">The city's primary convention and meeting venue, home to <a href="https://www.comic-con.org/" target="_blank" style="color:#d4b896;text-decoration:none;font-weight:500;">Comic-Con</a> every year.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a5a" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name"><a href="https://www.theshell.org/" target="_blank">The Rady Shell at Jacobs Park</a> <span class="sight-tag">Embarcadero</span></div>
+                        <div class="sight-detail">An architectural wonder and state-of-the-art outdoor venue for the San Diego Symphony.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a5a" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name"><a href="https://www.sandiegotheatres.org/balboa-theatre/" target="_blank">Balboa Theatre</a> &amp; <a href="https://www.sandiegotheatres.org/san-diego-civic-theatre/" target="_blank">Civic Theatre</a> <span class="sight-tag">Core</span></div>
+                        <div class="sight-detail">Historic venues for performing arts, opera, and traveling shows.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ HEALTHCARE (Icon List Layout) ══ -->
+        <div class="modal-section" id="downtown-healthcare">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <h2>Healthcare</h2>
+            </div>
+            <p class="section-intro">While major hospitals are located in adjacent neighborhoods like Hillcrest, Downtown 92101 offers convenient access to top medical services:</p>
+
+            <div class="icon-list">
+                <div class="icon-list-item">
+                    <div class="il-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <div class="il-content">
+                        <div class="il-name"><a href="https://health.ucsd.edu/locations/" target="_blank">UC San Diego Health</a></div>
+                        <div class="il-desc">Specialty and primary care clinics downtown, with major hospitals in Hillcrest (92103).</div>
+                    </div>
+                </div>
+                <div class="icon-list-item">
+                    <div class="il-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div class="il-content">
+                        <div class="il-name"><a href="https://www.fhcsd.org/downtown-family-health-center-at-connections/" target="_blank">Family Health Centers of San Diego</a></div>
+                        <div class="il-desc">Low-cost health care and social services, including a clinic co-located with Connections Housing in East Village.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ MID-CONTENT CTA ══ -->
+        <div class="mid-cta">
+            <div class="mid-cta-text">Ready to explore Downtown San Diego?</div>
+            <button class="mid-cta-btn" onclick="searchHomes('downtown')">Search Available Homes</button>
+        </div>
+
+        <!-- ══ SCHOOLS (Categorized Groups Layout) ══ -->
+        <div class="modal-section" id="downtown-schools">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <h2>Schools & Education</h2>
+            </div>
+            <p class="section-intro">Downtown residents are served by the <a href="https://www.sandiegounified.org/" target="_blank" style="color:#d4b896;text-decoration:none;font-weight:500;">San Diego Unified School District</a>, with in-district options and nearby charters:</p>
+
+            <div class="school-groups">
+                <div class="school-group">
+                    <div class="school-group-header">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3d5a5a" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Charter Schools
+                    </div>
+                    <div class="school-items">
+                        <div class="school-item">
+                            <a href="https://www.urbansd.com/" target="_blank">Urban Discovery Schools</a>
+                            <span class="school-type">TK-12 Charter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ PARKS & RECREATION (Horizontal Cards Layout) ══ -->
+        <div class="modal-section" id="downtown-parks">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M8 8a5 5 0 0 1 8 0"/></svg>
+                <h2>Parks & Recreation</h2>
+            </div>
+            <p class="section-intro">Green spaces and waterfront parks offer residents a chance to relax and recreate:</p>
+
+            <div class="sight-cards">
+                <div class="sight-card">
+                    <div class="sight-icon" style="background:#e8f5e9;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2"><path d="M12 22V8"/><path d="M5 12H2a10 10 0 0 0 20 0h-3"/><path d="M5 12a7 7 0 0 1 14 0"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name"><a href="https://balboapark.org/" target="_blank">Balboa Park</a> <span class="sight-tag">Borders Downtown</span></div>
+                        <div class="sight-detail">1,200-acre historic cultural park with museums, gardens, walking trails, and the world-famous <a href="https://zoo.sandiegozoo.org/" target="_blank" style="color:#d4b896;text-decoration:none;font-weight:500;">San Diego Zoo</a>.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon" style="background:#e3f2fd;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#2196f3" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name">Waterfront Park <span class="sight-tag">Columbia</span></div>
+                        <div class="sight-detail">Popular destination with ocean views, a large splash fountain, and play areas.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon" style="background:#fce4ec;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e91e63" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name">Martin Luther King Jr. Promenade <span class="sight-tag">East Village / Marina</span></div>
+                        <div class="sight-detail">A linear park along the trolley line featuring public art.</div>
+                    </div>
+                </div>
+                <div class="sight-card">
+                    <div class="sight-icon" style="background:#f3e5f5;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#9c27b0" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                    </div>
+                    <div class="sight-info">
+                        <div class="sight-name">Pantoja Park <span class="sight-tag">Marina</span></div>
+                        <div class="sight-detail">San Diego's oldest public park.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ SPORTS (Highlight Cards Layout) ══ -->
+        <div class="modal-section" id="downtown-sports">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                <h2>Sports Teams</h2>
+            </div>
+            <p class="section-intro">Downtown is the epicenter of San Diego's professional sports scene:</p>
+
+            <div class="sport-cards">
+                <div class="sport-card">
+                    <div class="sport-badge">MLB</div>
+                    <div class="sport-info">
+                        <div class="sport-team"><a href="https://www.mlb.com/padres" target="_blank">San Diego Padres</a></div>
+                        <div class="sport-venue">Petco Park, East Village</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ BUSINESS (Icon List Layout) ══ -->
+        <div class="modal-section" id="downtown-business">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <h2>Major Businesses</h2>
+            </div>
+            <p class="section-intro">Key industries include finance, technology, and utilities:</p>
+
+            <div class="icon-list">
+                <div class="icon-list-item">
+                    <div class="il-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="il-content">
+                        <div class="il-name"><a href="https://www.sempra.com/" target="_blank">Sempra Energy</a></div>
+                        <div class="il-desc">Fortune 500 energy infrastructure company headquartered downtown.</div>
+                    </div>
+                </div>
+                <div class="icon-list-item">
+                    <div class="il-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="il-content">
+                        <div class="il-name"><a href="https://www.sdge.com/" target="_blank">San Diego Gas & Electric (SDG&E)</a></div>
+                        <div class="il-desc">Regional electric and gas utility serving San Diego County.</div>
+                    </div>
+                </div>
+                <div class="icon-list-item">
+                    <div class="il-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <div class="il-content">
+                        <div class="il-name"><a href="https://www.lpl.com/" target="_blank">LPL Financial</a></div>
+                        <div class="il-desc">One of the largest independent broker-dealers in the nation.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ TRANSIT (Route Cards Layout) ══ -->
+        <div class="modal-section" id="downtown-transit">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="3"/><path d="M4 11h16"/><path d="M12 3v16"/><circle cx="8" cy="15" r="1" fill="#d4b896"/><circle cx="16" cy="15" r="1" fill="#d4b896"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/></svg>
+                <h2>Transportation</h2>
+            </div>
+            <p class="section-intro">Downtown San Diego (92101) serves as the region's central transportation hub, highly accessible via air, rail, and sea.</p>
+
+            <div class="transit-cards">
+                <div class="transit-card">
+                    <div class="transit-badge air">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1l5.5 3.3-2.7 2.7-2 .3c-.4.1-.7.3-.8.7l-.2.5c-.1.4.1.8.5.9L7 17.5l1.2 3c.1.4.5.6.9.5l.5-.2c.4-.1.6-.4.7-.8l.3-2 2.7-2.7 3.3 5.5c.2.4.7.5 1.1.3l.5-.3c.4-.2.6-.6.5-1.1z"/></svg>
+                    </div>
+                    <div class="transit-info">
+                        <div class="transit-name">San Diego International Airport (SAN)</div>
+                        <div class="transit-desc">Just three miles north. Easy access via ride-share or the free <a href="https://www.san.org/to-from/san-diego-flyer" target="_blank">San Diego Flyer</a> shuttle.</div>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-badge rail">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="3"/><path d="M4 11h16"/><circle cx="8" cy="15" r="1" fill="#fff"/><circle cx="16" cy="15" r="1" fill="#fff"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/></svg>
+                    </div>
+                    <div class="transit-info">
+                        <div class="transit-name">Regional Rail</div>
+                        <div class="transit-desc">The <a href="https://www.amtrak.com/stations/snd" target="_blank">Santa Fe Depot</a> is the hub for <a href="https://www.amtrak.com/california-train-routes" target="_blank">Amtrak</a> (Pacific Surfliner) and the <a href="https://gonctd.com/services/coaster-commuter-rail/" target="_blank">Coaster</a> commuter line.</div>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-badge tram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="3"/><path d="M4 11h16"/><path d="M12 3v16"/><circle cx="8" cy="15" r="1" fill="#fff"/><circle cx="16" cy="15" r="1" fill="#fff"/></svg>
+                    </div>
+                    <div class="transit-info">
+                        <div class="transit-name">San Diego Trolley</div>
+                        <div class="transit-desc">The <a href="https://www.sdmts.com/transit-services/trolley" target="_blank">MTS Trolley</a> (Blue, Green, and Orange Lines) connects Downtown to the entire region.</div>
+                    </div>
+                </div>
+                <div class="transit-card">
+                    <div class="transit-badge sea">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 20s2-2 4-2 4 2 6 2 4-2 6-2 4 2 4 2"/><path d="M2 16s2-2 4-2 4 2 6 2 4-2 6-2 4 2 4 2"/><path d="M8 4l4 8 4-8"/></svg>
+                    </div>
+                    <div class="transit-info">
+                        <div class="transit-name">Cruise Ship Terminal</div>
+                        <div class="transit-desc">The <a href="https://www.portofsandiego.org/cruise-terminal" target="_blank">B Street Cruise Terminal</a> is on the waterfront, walking distance from Downtown amenities.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ MID-CONTENT CTA ══ -->
+        <div class="mid-cta">
+            <div class="mid-cta-text">Find your perfect home in Downtown San Diego</div>
+            <button class="mid-cta-btn" onclick="searchHomes('downtown')">Browse Listings</button>
+        </div>
+
+        <!-- ══ ADTV (Video Section) ══ -->
+        <div class="modal-section" id="downtown-adtv">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#d4b896" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <h2>ADTV Episode</h2>
+            </div>
+
+            <div class="adtv-embed">
+                <div class="adtv-play-btn">
+                    <svg viewBox="0 0 24 24" fill="#3d5a5a" stroke="none"><polygon points="8 5 20 12 8 19 8 5"/></svg>
+                </div>
+                <div class="adtv-embed-label">Little Italy & Savina High Rise Condos</div>
+            </div>
+            <p class="adtv-desc">Explore Downtown San Diego's iconic Little Italy neighborhood and the luxurious Savina high-rise condos through this American Dream TV episode with Kathy Huang.</p>
+            <p class="adtv-note">Developer Note: Embed YouTube video here. URL TBD from client.</p>
+        </div>
+
+    </div>
+
+    <!-- STICKY BOTTOM CTA -->
+    <div class="modal-sticky-cta">
+        <div class="sticky-cta-text">Interested in <strong>Downtown San Diego</strong>?</div>
+        <button class="sticky-cta-btn" onclick="searchHomes('downtown')">Search Homes in Downtown</button>
+    </div>
+
+</div>
+
+<script>
+    function openModal(communityId) {
+        const modal = document.getElementById(communityId + 'Modal');
+        const overlay = document.getElementById('modalOverlay');
+        if (modal && overlay) {
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Reset nav pills
+            const pills = modal.querySelectorAll('.nav-pill');
+            pills.forEach((p, i) => p.classList.toggle('active', i === 0));
+            // Scroll modal content to top
+            const body = modal.querySelector('.modal-body');
+            if (body) body.scrollTop = 0;
+            modal.scrollTop = 0;
+        }
+    }
+
+    function closeModal(event) {
+        if (event && event.target && !event.target.classList.contains('modal-overlay') && !event.target.closest('.modal-close')) {
+            if (event.target.closest('.modal')) return;
+        }
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function scrollToSection(sectionId) {
+        const activeModal = document.querySelector('.modal.active');
+        if (!activeModal) return;
+        const section = activeModal.querySelector('#' + sectionId);
+        if (!section) return;
+
+        // Update pills
+        activeModal.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active'));
+        event.target.closest('.nav-pill').classList.add('active');
+
+        // Smooth scroll
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function searchHomes(community) {
+        alert('Showcase IDX search for: ' + community + '\n\nThis will link to the saved search URL once configured.');
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+</script>
+
+</body>
+</html>
