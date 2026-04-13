@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Coast Real Estate Blog | Titusville FL Insights | Millie Gwin</title>
+    <meta name="description" content="Stay informed with Space Coast real estate insights, Titusville market updates, community guides, and home buying tips from Millie Gwin.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .blog-card {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            transition: box-shadow var(--transition), transform var(--transition);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .blog-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+        .blog-card__image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .blog-card__image-placeholder {
+            width: 100%;
+            height: 100%;
+        }
+        .blog-card__category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-family: var(--font-heading);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+        }
+        .blog-card__body {
+            padding: 28px;
+        }
+        .blog-card__title {
+            font-family: var(--font-heading);
+            font-weight: 200;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        .blog-card__excerpt {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .blog-card__link {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .blog-card__link svg {
+            transition: transform var(--transition);
+        }
+        .blog-card:hover .blog-card__link svg {
+            transform: translateX(4px);
+        }
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--gray-bg);
+            text-align: center;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 520px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid var(--border-light);
+            font-family: var(--font-body);
+            font-size: 15px;
+            outline: none;
+        }
+        .newsletter-form input:focus {
+            border-color: var(--primary);
+        }
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="index.html" class="nav__logo">
+        <img src="https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/5fa9335e-006a-4951-9505-c3283246f5cc" alt="Millie Gwin Sold by Millie logo" id="navLogo">
+    </a>
+    <ul class="nav__links">
+        <li class="nav__dropdown">
+            <a href="properties.html">Properties</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="properties.html">Featured Properties</a></li>
+                <li><a href="sold.html">Past Transactions</a></li>
+            </ul>
+        </li>
+        <li><a href="communities.html">Communities</a></li>
+        <li><a href="search.html">Home Search</a></li>
+        <li><a href="home-valuation.html">Home Valuation</a></li>
+        <li><a href="buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="contact.html">Let's Connect</a></li>
+    </ul>
+    <a href="tel:8475298919" class="nav__phone">(847) 529-8919</a>
+    <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu__overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="properties.html">Featured Properties</a></li>
+        <li><a href="sold.html">Past Transactions</a></li>
+        <li><a href="communities.html">Communities</a></li>
+        <li><a href="search.html">Home Search</a></li>
+        <li><a href="home-valuation.html">Home Valuation</a></li>
+        <li><a href="buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="contact.html">Let's Connect</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="tel:8475298919">(847) 529-8919</a></li>
+    </ul>
+</div>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero hero--medium" style="min-height:50vh;">
+    <div class="hero__bg" style="background-image: url('https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/0ab112ee-ad0f-430f-9371-e4d4d4b9280b');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+        <h1 class="hero__title">Space Coast Real Estate Insights and Titusville Living</h1>
+        <p class="hero__subtitle">Market updates, community guides, and home buying tips from your Space Coast real estate expert.</p>
+    </div>
+</section>
+
+<!-- ============================================
+     BLOG GRID
+     ============================================ -->
+<section class="section">
+    <div class="container">
+        <div class="blog-grid">
+
+            <!-- Post 1 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#272078 0%,#3a32a0 50%,#5a4fcf 100%);"></div>
+                    <span class="blog-card__category">Market Update</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">Titusville Housing Market Update: What Buyers and Sellers Need to Know</h3>
+                    <p class="blog-card__excerpt">A look at current pricing trends, inventory levels, and what the latest data means for your next move in the Titusville real estate market.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Post 2 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);"></div>
+                    <span class="blog-card__category">Community Guide</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">Is Titusville a Good Place to Live? Everything You Need to Know</h3>
+                    <p class="blog-card__excerpt">From Kennedy Space Center views to affordable waterfront living, discover why Titusville is attracting families and professionals from across the country.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Post 3 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#2d4a3e 0%,#3d6b56 50%,#4f8c6f 100%);"></div>
+                    <span class="blog-card__category">Community Guide</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">The Complete Guide to Canaveral Groves: Space Coast's Best Kept Secret</h3>
+                    <p class="blog-card__excerpt">Spacious lots, no HOA, and a rural feel just minutes from the coast. Here is everything you should know about buying in Canaveral Groves.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Post 4 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#4a2d2d 0%,#6b3d3d 50%,#8c4f4f 100%);"></div>
+                    <span class="blog-card__category">Relocation</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">Moving to the Space Coast? What to Know About Living Near Kennedy Space Center</h3>
+                    <p class="blog-card__excerpt">Relocating for work at KSC, Blue Origin, or SpaceX? Here is what to expect from the housing market, commute times, and lifestyle in Brevard County.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Post 5 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#3a3278 0%,#5248a0 50%,#6b5fcf 100%);"></div>
+                    <span class="blog-card__category">Buying Tips</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">Brevard County First-Time Buyer Programs You Should Know About</h3>
+                    <p class="blog-card__excerpt">Down payment assistance, closing cost grants, and state-level incentives that can help first-time buyers get into a home sooner than they think.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Post 6 -->
+            <a href="#" class="blog-card">
+                <div class="blog-card__image">
+                    <div class="blog-card__image-placeholder" style="background:linear-gradient(135deg,#2d3a4a 0%,#3d516b 50%,#4f6b8c 100%);"></div>
+                    <span class="blog-card__category">Community Guide</span>
+                </div>
+                <div class="blog-card__body">
+                    <h3 class="blog-card__title">Best Neighborhoods in Brevard County for Families</h3>
+                    <p class="blog-card__excerpt">Top-rated schools, safe streets, and family-friendly amenities. A neighborhood-by-neighborhood breakdown for parents moving to Brevard County.</p>
+                    <span class="blog-card__link">
+                        Read More
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     NEWSLETTER
+     ============================================ -->
+<section class="section newsletter-section">
+    <div class="container">
+        <div class="section__header">
+            <h2>Stay Informed</h2>
+            <p>Get Space Coast market updates, new listing alerts, and neighborhood insights delivered to your inbox. No spam, just useful local real estate information.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="return false;">
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__top">
+            <div class="footer__brand">
+                <h3>Millie Gwin</h3>
+                <div class="footer__contact-item">
+                    <label>Let's Connect</label>
+                    <a href="contact.html">Get in Touch</a>
+                </div>
+                <div class="footer__contact-item">
+                    <label>Email</label>
+                    <a href="mailto:milliegwinrealtor@gmail.com">milliegwinrealtor@gmail.com</a>
+                </div>
+                <div class="footer__contact-item">
+                    <label>Phone</label>
+                    <a href="tel:8475298919">(847) 529-8919</a>
+                </div>
+                <div class="footer__contact-item">
+                    <label>Office</label>
+                    <a href="https://maps.google.com/?q=2510+S+Washington+Ave+Titusville+FL+32780" target="_blank" rel="noopener">2510 S Washington Ave, Titusville, FL 32780</a>
+                </div>
+                <div class="footer__logo">
+                    <img src="https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/16372c9a-d992-4e3e-94ff-50ce707478fd" alt="Coldwell Banker Coast Realty brokerage logo">
+                </div>
+            </div>
+            <div>
+                <ul class="footer__social">
+                    <li><a href="https://www.tiktok.com/@selling_spacecoast" target="_blank" rel="noopener">TikTok</a></li>
+                    <li><a href="https://www.linkedin.com/in/millie-gwin-166543346/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://www.instagram.com/selling_spacecoast/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="#" target="_blank" rel="noopener">Google</a></li>
+                    <li><a href="https://www.yelp.com/biz/millie-gwin-coldwell-banker-coast-realty-titusville" target="_blank" rel="noopener">Yelp</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer__disclaimer">The information provided herein is deemed accurate but subject to errors, omissions, price changes, and withdrawal without notice. Coldwell Banker Coast Realty and its agents are not responsible for the accuracy of information. Buyer to verify all data. Equal Housing Opportunity. Based on information from the Space Coast Association of REALTORS MLS as of 2026. All rights reserved.</p>
+        <div class="footer__bottom">
+            <span>&copy; 2026 Millie Gwin, Coldwell Banker Coast Realty. All rights reserved.</span>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Mobile Contact Button -->
+<a href="tel:8475298919" class="mobile-contact-btn" aria-label="Call Millie Gwin">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
+</a>
+
+<script>
+// Mobile Menu
+(function() {
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileClose = document.getElementById('mobileClose');
+    function openMenu() {
+        mobileMenu.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    if (hamburger) hamburger.addEventListener('click', openMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+})();
+
+// Nav Scroll
+(function() {
+    const nav = document.getElementById('mainNav');
+    const navLogo = document.getElementById('navLogo');
+    const lightLogo = 'https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/5fa9335e-006a-4951-9505-c3283246f5cc';
+    const darkLogo = 'https://media-production.lp-cdn.com/cdn-cgi/image/format=auto,quality=85,fit=scale-down,width=1280/https://media-production.lp-cdn.com/media/16372c9a-d992-4e3e-94ff-50ce707478fd';
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 80) {
+            nav.classList.remove('nav--transparent');
+            nav.classList.add('nav--solid');
+            navLogo.src = darkLogo;
+        } else {
+            nav.classList.remove('nav--solid');
+            nav.classList.add('nav--transparent');
+            navLogo.src = lightLogo;
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
