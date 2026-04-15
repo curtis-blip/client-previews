@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Buy a Home in Phoenix & Scottsdale | Amy Koch, REALTOR</title>
-<meta name="description" content="Your complete guide to buying a home in Phoenix and Scottsdale. Amy Koch walks you through the 8-step buyer process, closing costs, financing, and neighborhood selection. The Brokery.">
+<title>Buy a Home in Greater Phoenix | Buyer's Guide | Amy Koch, REALTOR</title>
+<meta name="description" content="Your complete guide to buying a home across Greater Phoenix. Amy Koch offers thoughtful, white-glove guidance through every step of the buyer process. The Brokery.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
@@ -946,6 +946,259 @@ section { padding: var(--section-padding) 0; }
     grid-template-columns: 1fr;
   }
 }
+
+/* --- INTRO 2-COL --- */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.intro-image {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.intro-image-accent {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .intro-image-accent { display: none; }
+}
+
+/* --- PARALLAX IMAGE BREAK --- */
+.parallax-break {
+  height: 45vh;
+  min-height: 320px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.parallax-break::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,31,46,0.3) 0%, rgba(15,31,46,0.1) 50%, rgba(15,31,46,0.3) 100%);
+}
+@media (max-width: 768px) {
+  .parallax-break { background-attachment: scroll; height: 35vh; }
+}
+
+/* --- POST-OFFER MILESTONES (Light) --- */
+.milestones-section {
+  background: var(--white);
+  position: relative;
+}
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.milestone-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 36px 32px;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+}
+.milestone-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border-color: var(--gold);
+}
+.milestone-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.milestone-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.milestone-card h4 {
+  font-size: 20px;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+.milestone-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.milestone-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 20px;
+  padding: 6px 14px;
+  background: rgba(75,185,212,0.08);
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  .milestones-grid { grid-template-columns: 1fr; }
+}
+
+/* --- CLOSING COSTS WITH IMAGE --- */
+.costs-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.costs-image {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+}
+.costs-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.costs-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  background: linear-gradient(0deg, rgba(15,31,46,0.85) 0%, transparent 100%);
+}
+.costs-image-overlay p {
+  color: var(--white);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.costs-image-overlay .costs-stat {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+@media (max-width: 768px) {
+  .costs-layout { grid-template-columns: 1fr; }
+  .costs-image { min-height: 280px; }
+}
+
+/* --- WIRE FRAUD CALLOUT (minimal) --- */
+.wire-fraud-callout {
+  margin-top: 40px;
+  padding: 20px 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border-left: 2px solid var(--text-light);
+}
+.wire-fraud-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.wire-fraud-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-secondary);
+  fill: none;
+  stroke-width: 2;
+}
+.wire-fraud-callout p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.wire-fraud-callout p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* --- PDF DOWNLOAD BLOCK (with image) --- */
+.download-resource {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--navy);
+}
+.download-resource-image {
+  position: relative;
+  min-height: 320px;
+}
+.download-resource-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+.download-resource-content {
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.download-resource-content .eyebrow {
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.download-resource-content .eyebrow::before {
+  background: var(--gold);
+}
+.download-resource-content h3 {
+  color: var(--white);
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+.download-resource-content p {
+  color: rgba(255,255,255,0.65);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .download-resource { grid-template-columns: 1fr; }
+  .download-resource-image { min-height: 220px; }
+  .download-resource-content { padding: 32px 24px; }
+}
 </style>
 </head>
 <body>
@@ -991,8 +1244,9 @@ section { padding: var(--section-padding) 0; }
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="eyebrow fade-up">Buyer's Guide</div>
-    <h1 class="fade-up">Buy a Home in Phoenix<br>with Confidence</h1>
-    <p class="fade-up">From first-time buyers to luxury investors, Amy Koch's buyer process is designed to help you find the right home at the right price in the right neighborhood.</p>
+    <h1 class="fade-up">Thoughtful Guidance for Buying<br>Across Greater Phoenix</h1>
+    <p class="fade-up" style="font-size: 20px; font-weight: 300; margin-bottom: 8px;">A relentlessly local, elevated approach to helping buyers navigate the Valley with clarity, confidence, and personalized support.</p>
+    <p class="fade-up">Whether you're a first-time buyer or a seasoned investor, Amy Koch brings white-glove service and deep local knowledge to every step of your home search.</p>
     <div class="hero-actions fade-up">
       <a href="07-contact.html" class="btn btn-primary">Schedule a Buyer Consultation</a>
     </div>
@@ -1002,10 +1256,17 @@ section { padding: var(--section-padding) 0; }
 <!-- SECTION 2: INTRO -->
 <section class="light-section">
   <div class="container">
-    <div style="max-width: 680px;">
-      <div class="eyebrow fade-up">Your Buying Journey</div>
-      <h2 class="fade-up" style="margin-bottom: 24px;">How Buying a Home in Phoenix Actually Works</h2>
-      <p class="fade-up" style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">The Phoenix metro area stretches across 500+ square miles of diverse neighborhoods, each with its own personality, price points, and lifestyle. Finding the right home starts with understanding where you want to be and what matters most to you. Amy Koch's buyer process cuts through the noise and focuses on what actually moves the needle: the right neighborhoods, realistic pricing, and offers that win.</p>
+    <div class="intro-grid">
+      <div class="fade-left">
+        <div class="eyebrow">Your Buying Journey</div>
+        <h2 style="margin-bottom: 24px;">How Buying a Home in Greater Phoenix Actually Works</h2>
+        <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">Greater Phoenix stretches across 500+ square miles of diverse neighborhoods, each with its own personality, price points, and lifestyle. Finding the right home starts with understanding where you want to be and what matters most to you.</p>
+        <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">Amy's approach is personal, not transactional. She focuses on the right neighborhoods, realistic pricing, and offers that win, all guided by the kind of local insight that only comes from 15+ years in the Valley.</p>
+      </div>
+      <div class="intro-image fade-right" style="position: relative;">
+        <div class="intro-image-accent"></div>
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=750&fit=crop&q=75" alt="Modern Greater Phoenix home exterior" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -1033,7 +1294,7 @@ section { padding: var(--section-padding) 0; }
         <div class="step-card">
           <div class="step-label">Step 02</div>
           <h4>Pre-Approval &amp; Budget</h4>
-          <p>Before touring homes, you'll connect with a trusted lender to establish your buying power. Knowing your numbers upfront means you're shopping with purpose, not guessing. <a href="04-home-value.html" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Check your home's value</a></p>
+          <p>Before touring homes, you'll connect with a trusted lender to establish your buying power. Knowing your numbers upfront means you're shopping with purpose, not guessing. Amy connects you with lenders who specialize in the Greater Phoenix market.</p>
         </div>
       </div>
       <!-- Step 3 -->
@@ -1060,7 +1321,7 @@ section { padding: var(--section-padding) 0; }
         <div class="step-card">
           <div class="step-label">Step 05</div>
           <h4>Offer Strategy</h4>
-          <p>Crafting a competitive offer in Phoenix requires local knowledge. Amy structures offers based on market conditions, seller motivation, and comparable sales to give you the strongest position.</p>
+          <p>Crafting a competitive offer in Greater Phoenix requires local knowledge. Amy structures offers based on market conditions, seller motivation, and comparable sales to give you the strongest position.</p>
         </div>
       </div>
       <!-- Step 6 -->
@@ -1094,15 +1355,89 @@ section { padding: var(--section-padding) 0; }
   </div>
 </section>
 
+<!-- PARALLAX IMAGE BREAK -->
+<div class="parallax-break" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&fit=crop&q=75');"></div>
+
+<!-- SECTION 3B: WHAT TO EXPECT AFTER YOUR OFFER -->
+<section class="milestones-section" style="padding: var(--section-padding) 0;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 16px;">
+      <div class="eyebrow eyebrow-center fade-up">After Your Offer Is Accepted</div>
+      <h2 class="fade-up">What Happens Between Contract and Keys</h2>
+      <p class="section-intro fade-up" style="max-width: 720px; margin: 20px auto 0;">Once your offer is accepted, the real work begins. Amy coordinates every milestone so nothing falls through the cracks. Here's what to expect in the weeks ahead.</p>
+    </div>
+    <div class="milestones-grid">
+      <div class="milestone-card fade-up">
+        <div class="milestone-card-header">
+          <div class="milestone-number">1</div>
+          <h4>Earnest Money & Escrow</h4>
+        </div>
+        <p>Your Earnest Money must be delivered to the Title Company no later than the next business day after the Purchase Contract is accepted, via personal check or wire. Within the first week, the Title Company issues a Preliminary Title Commitment revealing any liens, easements, or issues that need to be resolved before closing. Amy reviews everything and flags what needs your attention.</p>
+        <span class="milestone-detail">Due: Next business day</span>
+      </div>
+      <div class="milestone-card fade-up">
+        <div class="milestone-card-header">
+          <div class="milestone-number">2</div>
+          <h4>Disclosures & Inspections</h4>
+        </div>
+        <p>The seller has 3 calendar days to provide the Seller Property Disclosure Statement (SPDS) and 5 days for Insurance Claims History. You'll also have a 10-day inspection window. A home inspection ($350-600) is highly recommended. Amy meets the inspector at the home with you and reviews every finding. If issues arise, she guides you through the BINSR process to request repairs.</p>
+        <span class="milestone-detail">3-10 day window</span>
+      </div>
+      <div class="milestone-card fade-up">
+        <div class="milestone-card-header">
+          <div class="milestone-number">3</div>
+          <h4>Appraisal & Financing</h4>
+        </div>
+        <p>Your lender orders the appraisal to confirm the home's value supports the loan amount. If the home doesn't appraise at the offered value, you have options: renegotiate the price, cover the gap, compromise, or cancel the contract and receive your Earnest Money back. Amy's pricing expertise helps avoid this situation in the first place.</p>
+        <span class="milestone-detail">$500-600, required by lender</span>
+      </div>
+      <div class="milestone-card fade-up">
+        <div class="milestone-card-header">
+          <div class="milestone-number">4</div>
+          <h4>Final Walkthrough & Closing</h4>
+        </div>
+        <p>Your lender issues the Closing Disclosure at least 3 business days before signing. Amy coordinates a final walkthrough to confirm the property's condition matches the contract. The Title Company schedules your signing, and closing costs (2-6% of purchase price) are due via wire or cashier's check. Then the keys are yours.</p>
+        <span class="milestone-detail">Final 1-2 weeks</span>
+      </div>
+    </div>
+    <div class="wire-fraud-callout fade-up">
+      <div class="wire-fraud-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <p><strong>Wire fraud alert:</strong> Always verify wire instructions directly with your Escrow Officer by phone before sending any funds. Amy and her team will never send wire instructions via email.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUYER GUIDE DOWNLOAD -->
+<section style="padding: var(--section-padding) 0; background: var(--off-white);">
+  <div class="container">
+    <div class="download-resource fade-up">
+      <div class="download-resource-image">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop&q=75" alt="Greater Phoenix neighborhood street view" loading="lazy">
+      </div>
+      <div class="download-resource-content">
+        <div class="eyebrow">Free Resource</div>
+        <h3>Amy's Complete Buyer Guide</h3>
+        <p>A step-by-step companion for your entire buying journey. Covers every milestone from purchase contract through closing day, plus important contacts, a utility setup checklist, and Arizona-specific guidance.</p>
+        <!-- DESIGNER NOTE: Replace href with WordPress media library URL for Amy_Koch-Buyers_Guides.pdf -->
+        <a href="#buyer-guide-pdf" class="btn btn-primary" style="padding: 14px 32px; font-size: 12px;">Download Buyer Guide (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 4: CLOSING COSTS -->
 <section class="alt-section">
   <div class="container">
-    <div style="text-align: center; margin-bottom: 56px;">
-      <div class="eyebrow eyebrow-center fade-up">What to Expect</div>
+    <div style="margin-bottom: 56px;">
+      <div class="eyebrow fade-up">What to Expect</div>
       <h2 class="fade-up">Understanding Buyer Closing Costs in Arizona</h2>
-      <p class="section-intro fade-up" style="max-width: 720px; margin: 24px auto 0;">Arizona buyers typically pay between 2% and 4% of the purchase price in closing costs. Here's a breakdown of what to expect so there are no surprises at the closing table.</p>
+      <p class="section-intro fade-up" style="margin-top: 16px;">Arizona buyers typically pay between 2% and 4% of the purchase price in closing costs. Here's a breakdown so there are no surprises at the closing table.</p>
     </div>
-    <div class="costs-grid">
+    <div class="costs-layout">
       <div class="fade-left">
         <table class="costs-table">
           <tr>
@@ -1138,11 +1473,12 @@ section { padding: var(--section-padding) 0; }
             <td>6-12 months</td>
           </tr>
         </table>
-      </div>
-      <div class="fade-right">
-        <div class="cost-callout">
+        <div class="cost-callout" style="margin-top: 24px;">
           <p>On a $500,000 home, expect to bring approximately $10,000 to $20,000 in closing costs in addition to your down payment. <a href="07-contact.html" style="color: var(--gold); font-weight: 500; border-bottom: 1px solid var(--gold);">Amy will provide a detailed estimate</a> specific to your purchase early in the process.</p>
         </div>
+      </div>
+      <div class="costs-image fade-right">
+        <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&h=1000&fit=crop&q=75" alt="Greater Phoenix luxury home interior" loading="lazy">
       </div>
     </div>
   </div>
@@ -1167,7 +1503,7 @@ section { padding: var(--section-padding) 0; }
       </div>
       <div class="faq-item">
         <button class="faq-question">
-          How long does it take to buy a home in Phoenix?
+          How long does it take to buy a home in Greater Phoenix?
           <span class="faq-icon"></span>
         </button>
         <div class="faq-answer">
@@ -1198,7 +1534,7 @@ section { padding: var(--section-padding) 0; }
           <span class="faq-icon"></span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Absolutely. A pre-approval letter shows sellers you're a serious, qualified buyer. In competitive Phoenix neighborhoods, submitting an offer without pre-approval puts you at a significant disadvantage.</div>
+          <div class="faq-answer-inner">Absolutely. A pre-approval letter shows sellers you're a serious, qualified buyer. In competitive Greater Phoenix neighborhoods, submitting an offer without pre-approval puts you at a significant disadvantage.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -1232,7 +1568,7 @@ section { padding: var(--section-padding) 0; }
 <section class="cta-banner" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1600&h=600&fit=crop&q=75'); background-size: cover; background-position: center;">
   <div class="container" style="position: relative; z-index: 2;">
     <h2 class="fade-up">Ready to Start Your Home Search?</h2>
-    <p class="fade-up">Schedule a buyer consultation with Amy Koch to discuss your goals, timeline, and what the Phoenix market looks like right now.</p>
+    <p class="fade-up">Schedule a buyer consultation with Amy Koch to discuss your goals, timeline, and what the Greater Phoenix market looks like right now.</p>
     <div class="fade-up" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
       <a href="09-search.html" class="btn btn-primary">Start Your Home Search</a>
       <a href="07-contact.html" class="btn btn-outline" style="color: var(--white); border-color: rgba(255,255,255,0.5);">Schedule a Buyer Consultation</a>
@@ -1249,7 +1585,7 @@ section { padding: var(--section-padding) 0; }
       <div class="footer-brand">
         <span class="logo-name" style="color:#fff;">Amy Koch</span>
         <span class="logo-brokery">The Brokery Real Estate</span>
-        <p>Relentlessly local. Serving the Phoenix, Scottsdale, and Northeast Valley communities with white-glove real estate service for over 15 years.</p>
+        <p>Relentlessly local. Serving Greater Phoenix and the Northeast Valley with white-glove real estate service for over 15 years.</p>
       </div>
       <div>
         <h4 class="footer-heading">Explore</h4>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sell Your Home in Phoenix & Scottsdale | Amy Koch, REALTOR</title>
-<meta name="description" content="Sell your Phoenix or Scottsdale home for maximum value. Amy Koch's 8-step selling process covers pricing strategy, professional marketing, negotiation, and closing coordination. The Brokery.">
+<title>Sell Your Home in Greater Phoenix | Seller's Guide | Amy Koch, REALTOR</title>
+<meta name="description" content="Your Home. My Mission. Amy Koch's white-glove selling process covers pricing strategy, professional marketing, and closing coordination across Greater Phoenix. The Brokery.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
@@ -959,30 +959,19 @@ section { padding: var(--section-padding) 0; }
   color: var(--gold);
   flex-shrink: 0;
 }
-.value-decorative {
+.value-image {
+  border-radius: 12px;
+  overflow: hidden;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 360px;
+  min-height: 400px;
 }
-.value-decorative-icon {
-  font-family: var(--font-display);
-  font-size: 280px;
-  color: var(--gold);
-  opacity: 0.08;
-  line-height: 1;
+.value-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
-}
-.value-decorative-home {
-  position: relative;
-  z-index: 2;
-}
-.value-decorative-home svg {
-  width: 140px;
-  height: 140px;
-  color: var(--gold);
-  opacity: 0.35;
+  inset: 0;
+  border-radius: 12px;
 }
 
 @media (max-width: 768px) {
@@ -990,14 +979,238 @@ section { padding: var(--section-padding) 0; }
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .value-decorative {
-    display: none;
+  .value-image {
+    min-height: 280px;
   }
 }
 
 /* --- FAQ WARM --- */
 .faq-warm-section .faq-list {
   margin: 0 auto;
+}
+
+/* --- PARALLAX IMAGE BREAK --- */
+.parallax-break {
+  height: 45vh;
+  min-height: 320px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.parallax-break::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,31,46,0.3) 0%, rgba(15,31,46,0.1) 50%, rgba(15,31,46,0.3) 100%);
+}
+@media (max-width: 768px) {
+  .parallax-break { background-attachment: scroll; height: 35vh; }
+}
+
+/* --- WHITE-GLOVE ACCORDION --- */
+.wg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.wg-image {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+}
+.wg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+}
+.wg-accordion { display: flex; flex-direction: column; gap: 0; }
+.wg-item {
+  border-bottom: 1px solid var(--border-light);
+}
+.wg-item:first-child { border-top: 1px solid var(--border-light); }
+.wg-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  text-align: left;
+}
+.wg-trigger-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(75,185,212,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s var(--ease-out);
+}
+.wg-trigger-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+.wg-trigger h4 {
+  font-size: 18px;
+  color: var(--charcoal);
+  font-weight: 500;
+  flex: 1;
+}
+.wg-trigger .wg-arrow {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-light);
+  fill: none;
+  stroke-width: 2;
+  transition: transform 0.3s var(--ease-out);
+  flex-shrink: 0;
+}
+.wg-item.active .wg-arrow { transform: rotate(180deg); }
+.wg-item.active .wg-trigger-icon { background: var(--gold); }
+.wg-item.active .wg-trigger-icon svg { stroke: var(--white); }
+.wg-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out);
+}
+.wg-panel-inner {
+  padding: 0 0 24px 56px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+@media (max-width: 768px) {
+  .wg-grid { grid-template-columns: 1fr; }
+  .wg-image { min-height: 300px; }
+}
+
+/* --- GLOBAL EXPOSURE --- */
+.exposure-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+  margin-bottom: 40px;
+}
+.exposure-stat {
+  text-align: center;
+}
+.exposure-stat-number {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.exposure-stat-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  .exposure-stats { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+
+/* --- SELLER RESOURCE KIT --- */
+.resource-kit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.resource-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border-color: var(--gold);
+}
+.resource-card-image {
+  height: 180px;
+  overflow: hidden;
+}
+.resource-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.resource-card-body {
+  padding: 28px 24px;
+}
+.resource-card-body h4 { font-size: 18px; margin-bottom: 8px; color: var(--charcoal); }
+.resource-card-body p { font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 16px; }
+.resource-card-body .resource-link {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.resource-card-body .resource-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+}
+@media (max-width: 768px) {
+  .resource-kit-grid { grid-template-columns: 1fr; }
+}
+
+/* --- INTRO 2-COL --- */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.intro-image {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.intro-image-accent {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .intro-image-accent { display: none; }
 }
 
 </style>
@@ -1045,8 +1258,9 @@ section { padding: var(--section-padding) 0; }
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="eyebrow fade-up">Seller's Guide</div>
-    <h1 class="fade-up">Sell Your Phoenix Home for Maximum Value</h1>
-    <p class="fade-up">Amy Koch's selling process is built around data-driven pricing, professional presentation, and aggressive marketing. The goal is simple: strong offers, clean contracts, and a closing that stays on schedule.</p>
+    <h1 class="fade-up">Your Home. My Mission.<br>Sell Your Greater Phoenix Home with Confidence.</h1>
+    <p class="fade-up" style="font-size: 20px; font-weight: 300; margin-bottom: 8px;">A relentlessly local, elevated approach to selling across Greater Phoenix.</p>
+    <p class="fade-up">Amy Koch's white-glove selling process is built around data-driven pricing, professional presentation, and strategic marketing. Strong offers, clean contracts, and a closing that stays on schedule.</p>
     <div class="hero-actions fade-up">
       <a href="04-home-value.html" class="btn btn-primary">Get Your Home Value</a>
       <a href="07-contact.html" class="btn btn-outline" style="color: var(--white); border-color: rgba(255,255,255,0.5);">Schedule a Seller Consultation</a>
@@ -1058,63 +1272,52 @@ section { padding: var(--section-padding) 0; }
 <!-- SECTION 2: INTRO -->
 <section class="light-section">
   <div class="container">
-    <div style="max-width: 680px;">
-      <div class="eyebrow fade-up">Your Selling Journey</div>
-      <h2 class="fade-up" style="margin-bottom: 24px;">How to Sell a Home in Phoenix the Right Way</h2>
-      <p class="fade-up" style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">Selling a home in the Phoenix market requires more than a sign in the yard and a listing on the MLS. How your property is priced, presented, and marketed determines how many offers you receive, how strong those offers are, and whether the deal actually closes. Amy Koch's selling process covers every detail from the initial pricing strategy through the final walk-through.</p>
+    <div class="intro-grid">
+      <div class="fade-left">
+        <div class="eyebrow">Your Selling Journey</div>
+        <h2 style="margin-bottom: 24px;">How to Sell a Home in Greater Phoenix the Right Way</h2>
+        <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">Selling a home in the Greater Phoenix market requires more than a sign in the yard and a listing on the MLS. How your property is priced, presented, and marketed determines how many offers you receive, how strong those offers are, and whether the deal actually closes.</p>
+        <p style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">Amy's white-glove selling process covers every detail from the initial pricing strategy through the final walk-through. Her goal is simple: position your home to attract the strongest offers and close on your timeline.</p>
+      </div>
+      <div class="intro-image fade-right" style="position: relative;">
+        <div class="intro-image-accent"></div>
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=750&fit=crop&q=75" alt="Luxury Greater Phoenix home for sale" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SECTION 2B: WHY PRICING MATTERS -->
-<section class="dark-section" style="position: relative; overflow: hidden;">
-  <div style="position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(75,185,212,0.06) 0%, transparent 70%);"></div>
+<section class="alt-section">
   <div class="container">
-    <div style="text-align: center; margin-bottom: 60px;">
-      <div class="eyebrow eyebrow-center fade-up" style="justify-content: center;">Pricing Strategy</div>
-      <h2 class="fade-up" style="color: var(--white);">The Right Price Changes Everything</h2>
+    <div style="max-width: 680px; margin-bottom: 56px;">
+      <div class="eyebrow fade-up">Pricing Strategy</div>
+      <h2 class="fade-up" style="margin-bottom: 20px;">The Right Price Changes Everything</h2>
+      <p class="fade-up" style="font-size: 18px; line-height: 1.8; color: var(--text-secondary);">Overpricing drives buyers away. Underpricing leaves money on the table. Amy uses a data-driven approach to find the pricing sweet spot that attracts qualified buyers and generates competitive offers.</p>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-      <!-- Chart side -->
-      <div class="fade-left">
-        <h4 style="font-family: var(--font-display); font-size: 18px; color: var(--gold); margin-bottom: 32px; letter-spacing: 0.02em;">Pricing Impact on Days on Market</h4>
-        <div style="display: flex; flex-direction: column; gap: 32px;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-              <span style="font-size: 15px; font-weight: 600; color: var(--white);">Priced Right</span>
-              <span style="font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--gold);">14-21 <span style="font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.4);">days</span></span>
-            </div>
-            <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
-              <div style="width: 25%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-dark)); border-radius: 3px;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-              <span style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.5);">5% Over Market</span>
-              <span style="font-family: var(--font-display); font-size: 28px; font-weight: 500; color: rgba(255,255,255,0.35);">45-60 <span style="font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.25);">days</span></span>
-            </div>
-            <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
-              <div style="width: 60%; height: 100%; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
-            </div>
-          </div>
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px;">
-              <span style="font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.35);">10%+ Over Market</span>
-              <span style="font-family: var(--font-display); font-size: 28px; font-weight: 500; color: rgba(255,255,255,0.2);">90+ <span style="font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.15);">days</span></span>
-            </div>
-            <div style="height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden;">
-              <div style="width: 92%; height: 100%; background: rgba(255,255,255,0.08); border-radius: 3px;"></div>
-            </div>
-          </div>
-        </div>
-        <p style="font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 28px;">Based on Phoenix metro MLS averages</p>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px;">
+      <div class="fade-up" style="background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 36px; text-align: center; transition: all 0.4s ease;">
+        <div style="font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 8px;">14-21</div>
+        <div style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 16px;">Days on Market</div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 8px;">Priced Right</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Homes priced at market value sell faster and often receive multiple offers, driving the final price higher.</p>
       </div>
-      <!-- Text side -->
-      <div class="fade-right">
-        <p style="font-size: 17px; line-height: 1.9; color: rgba(255,255,255,0.7); margin-bottom: 20px;">Overpricing drives buyers away and leads to price reductions that signal desperation. Underpricing leaves money on the table. Amy uses a data-driven approach to find the pricing sweet spot that attracts the most qualified buyers and generates competitive offers.</p>
-        <p style="font-size: 17px; line-height: 1.9; color: rgba(255,255,255,0.7); margin-bottom: 32px;">Her pricing analysis includes recent comparable sales within a half-mile radius, current active and pending inventory, buyer demand trends in your specific neighborhood, and the impact of your home's condition and upgrades relative to the competition.</p>
-        <a href="07-contact.html" class="btn btn-primary">Discuss Your Pricing Strategy</a>
+      <div class="fade-up" style="background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 36px; text-align: center; transition: all 0.4s ease;">
+        <div style="font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--text-light); line-height: 1; margin-bottom: 8px;">45-60</div>
+        <div style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 16px;">Days on Market</div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 8px;">5% Over Market</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Buyers skip overpriced listings. Extended time on market leads to price reductions and weaker negotiating position.</p>
       </div>
+      <div class="fade-up" style="background: var(--white); border: 1px solid var(--border-light); border-radius: 12px; padding: 36px; text-align: center; transition: all 0.4s ease;">
+        <div style="font-family: var(--font-display); font-size: 48px; font-weight: 600; color: var(--border-light); line-height: 1; margin-bottom: 8px;">90+</div>
+        <div style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 16px;">Days on Market</div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 8px;">10%+ Over Market</div>
+        <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Stale listings signal desperation. Buyers assume something is wrong and offers come in well below the original ask.</p>
+      </div>
+    </div>
+    <div class="fade-up" style="border-left: 2px solid var(--gold); padding-left: 24px; max-width: 680px;">
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">Amy's pricing analysis includes recent comparable sales within a half-mile radius, current active and pending inventory, buyer demand trends in your neighborhood, and the impact of your home's condition and upgrades relative to the competition.</p>
+      <a href="07-contact.html" class="btn btn-primary" style="margin-top: 24px;">Discuss Your Pricing Strategy</a>
     </div>
   </div>
 </section>
@@ -1204,6 +1407,9 @@ section { padding: var(--section-padding) 0; }
   </div>
 </section>
 
+<!-- PARALLAX IMAGE BREAK -->
+<div class="parallax-break" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1600&h=900&fit=crop&q=75');"></div>
+
 <!-- SECTION 3B: MARKETING STRATEGY -->
 <section class="light-section">
   <div class="container">
@@ -1259,14 +1465,161 @@ section { padding: var(--section-padding) 0; }
   </div>
 </section>
 
+<!-- WHITE-GLOVE SERVICE -->
+<section class="light-section">
+  <div class="container">
+    <div style="margin-bottom: 48px;">
+      <div class="eyebrow fade-up">Full-Service Luxury Real Estate</div>
+      <h2 class="fade-up">Amy's White-Glove Approach</h2>
+    </div>
+    <div class="wg-grid">
+      <div class="wg-image fade-left">
+        <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=700&h=900&fit=crop&q=75" alt="Luxury Greater Phoenix home living space" loading="lazy">
+      </div>
+      <div class="fade-right">
+        <p style="font-size: 17px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 32px;">Every listing receives the same elevated level of service. Amy brings a dedicated team of professionals and a hands-on approach to every detail of your sale.</p>
+        <div class="wg-accordion" id="wgAccordion">
+          <div class="wg-item active">
+            <button class="wg-trigger">
+              <div class="wg-trigger-icon"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
+              <h4>Your Marketing Expert</h4>
+              <svg class="wg-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="wg-panel" style="max-height: 200px;">
+              <div class="wg-panel-inner">Amy's extensive knowledge and experience in marketing determines the right price to get your home sold for top dollar. A full-time marketing manager rolls out your custom marketing plan and assists with showcasing your home.</div>
+            </div>
+          </div>
+          <div class="wg-item">
+            <button class="wg-trigger">
+              <div class="wg-trigger-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <h4>Your Skilled Negotiator</h4>
+              <svg class="wg-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="wg-panel">
+              <div class="wg-panel-inner">Amy presents any and all offers to you and helps you weigh the pros and cons of each one. Her top priorities will always be to honor your best interests and keep the most money in your pocket.</div>
+            </div>
+          </div>
+          <div class="wg-item">
+            <button class="wg-trigger">
+              <div class="wg-trigger-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <h4>Your Personal Liaison</h4>
+              <svg class="wg-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="wg-panel">
+              <div class="wg-panel-inner">Amy networks with agents and brokers to promote your home and gauge interest. She ensures interested buyers are qualified and provides constructive feedback that buyers offer when viewing your home.</div>
+            </div>
+          </div>
+          <div class="wg-item">
+            <button class="wg-trigger">
+              <div class="wg-trigger-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <h4>Your Trusted Concierge</h4>
+              <svg class="wg-arrow" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="wg-panel">
+              <div class="wg-panel-inner">You'll have access to Amy's vast network of service professionals, including legal advisors, insurance experts, builders, landscapers, interior designers, home stagers, painters, handymen, inspectors, and movers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL EXPOSURE -->
+<section class="light-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 16px;">
+      <div class="eyebrow eyebrow-center fade-up">International Reach</div>
+      <h2 class="fade-up">Global Exposure for Your Listing</h2>
+      <p class="section-intro fade-up" style="max-width: 680px; margin: 20px auto 0;">Every listing Amy represents is published to realtor.com/international, reaching qualified buyers across the globe. Your home doesn't just sell locally, it's seen worldwide.</p>
+    </div>
+    <div class="exposure-stats">
+      <div class="exposure-stat fade-up">
+        <div class="exposure-stat-number">200M+</div>
+        <div class="exposure-stat-label">People reached monthly</div>
+      </div>
+      <div class="exposure-stat fade-up">
+        <div class="exposure-stat-number">70+</div>
+        <div class="exposure-stat-label">Countries</div>
+      </div>
+      <div class="exposure-stat fade-up">
+        <div class="exposure-stat-number">10</div>
+        <div class="exposure-stat-label">Languages</div>
+      </div>
+      <div class="exposure-stat fade-up">
+        <div class="exposure-stat-number">20+</div>
+        <div class="exposure-stat-label">Currencies supported</div>
+      </div>
+    </div>
+    <div class="fade-up" style="border-left: 2px solid var(--gold); padding-left: 24px; max-width: 680px;">
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">Through The Brokery's Global Property Network, your listing is displayed alongside 4.5 million international listings across 17 major market portals in 14 countries. This is especially valuable for attracting international and Canadian buyers relocating to Greater Phoenix.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SELLER RESOURCE KIT -->
+<section class="alt-section">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <div class="eyebrow eyebrow-center fade-up">Your Seller Resources</div>
+      <h2 class="fade-up">Amy's Seller Resource Kit</h2>
+      <p class="section-intro fade-up" style="max-width: 640px; margin: 16px auto 0;">Download Amy's branded guides to understand every step of the selling process, from preparing your home to global marketing reach.</p>
+    </div>
+    <div class="resource-kit-grid">
+      <div class="resource-card fade-up">
+        <div class="resource-card-image">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=360&fit=crop&q=75" alt="Luxury home exterior" loading="lazy">
+        </div>
+        <div class="resource-card-body">
+          <h4>The Roadmap to Sold</h4>
+          <p>Amy's 9-step selling process plus a room-by-room home preparation checklist to get your property show-ready.</p>
+          <!-- DESIGNER NOTE: Replace href with WordPress media library URL for Print_road_map.pdf -->
+          <a href="#seller-roadmap-pdf" class="resource-link">
+            Download PDF
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="resource-card fade-up">
+        <div class="resource-card-image">
+          <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=600&h=360&fit=crop&q=75" alt="Modern kitchen interior" loading="lazy">
+        </div>
+        <div class="resource-card-body">
+          <h4>Listing Introduction</h4>
+          <p>Amy's full-service luxury real estate overview. Covers her marketing approach, negotiation strategy, and concierge-level support.</p>
+          <!-- DESIGNER NOTE: Replace href with WordPress media library URL for Amy_Koch_-_Listing_Introduction.pdf -->
+          <a href="#listing-intro-pdf" class="resource-link">
+            Download PDF
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="resource-card fade-up">
+        <div class="resource-card-image">
+          <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=360&fit=crop&q=75" alt="Greater Phoenix neighborhood" loading="lazy">
+        </div>
+        <div class="resource-card-body">
+          <h4>Global Exposure</h4>
+          <p>See exactly how and where your listing reaches international buyers across 70+ countries and 17 major market portals.</p>
+          <!-- DESIGNER NOTE: Replace href with WordPress media library URL for Amy_Branded_global_exposure_print_form.pdf -->
+          <a href="#global-exposure-pdf" class="resource-link">
+            Download PDF
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 4: HOME VALUE CONNECTION -->
 <section class="value-section alt-section">
   <div class="container">
     <div class="value-grid">
       <div class="fade-left">
         <div class="eyebrow">Know Your Position</div>
-        <h2 style="margin-bottom: 20px;">What Is Your Phoenix Home Worth Today?</h2>
-        <p class="section-intro">Before you list, know where you stand. The Phoenix market shifts month to month, and last year's estimate may not reflect what your home would sell for today. Amy provides detailed, neighborhood-level valuations based on recent sales, current inventory, and buyer demand patterns.</p>
+        <h2 style="margin-bottom: 20px;">What Is Your Greater Phoenix Home Worth Today?</h2>
+        <p class="section-intro">Before you list, know where you stand. The Greater Phoenix market shifts month to month, and last year's estimate may not reflect what your home would sell for today. Amy provides detailed, neighborhood-level valuations based on recent sales, current inventory, and buyer demand patterns.</p>
         <div class="value-badges">
           <div class="value-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -1279,11 +1632,8 @@ section { padding: var(--section-padding) 0; }
         </div>
         <a href="04-home-value.html#detailed-report" class="btn btn-primary">Request Amy's Detailed Report</a>
       </div>
-      <div class="value-decorative fade-right">
-        <div class="value-decorative-icon">&ldquo;</div>
-        <div class="value-decorative-home">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
+      <div class="value-image fade-right">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=750&fit=crop&q=75" alt="Greater Phoenix home exterior at sunset" loading="lazy">
       </div>
     </div>
   </div>
@@ -1316,7 +1666,7 @@ section { padding: var(--section-padding) 0; }
           <div class="faq-icon"></div>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">In the current Phoenix market, well-priced homes in desirable neighborhoods typically receive offers within 7 to 21 days. Factors like price point, condition, location, and seasonality all affect timeline. Amy provides realistic expectations based on your specific situation.</div>
+          <div class="faq-answer-inner">In the current Greater Phoenix market, well-priced homes in desirable neighborhoods typically receive offers within 7 to 21 days. Factors like price point, condition, location, and seasonality all affect timeline. Amy provides realistic expectations based on your specific situation.</div>
         </div>
       </div>
 
@@ -1397,7 +1747,7 @@ section { padding: var(--section-padding) 0; }
       <div class="footer-brand">
         <span class="logo-name" style="color:#fff;">Amy Koch</span>
         <span class="logo-brokery">The Brokery Real Estate</span>
-        <p>Relentlessly local. Serving the Phoenix, Scottsdale, and Northeast Valley communities with white-glove real estate service for over 15 years.</p>
+        <p>Relentlessly local. Serving Greater Phoenix and the Northeast Valley with white-glove real estate service for over 15 years.</p>
       </div>
       <div>
         <h4 class="footer-heading">Explore</h4>
@@ -1498,6 +1848,23 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// White-Glove Accordion
+document.querySelectorAll('.wg-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.wg-item');
+    const panel = item.querySelector('.wg-panel');
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.wg-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.wg-panel').style.maxHeight = '0';
+    });
+    if (!wasActive) {
+      item.classList.add('active');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  });
+});
 
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
