@@ -188,8 +188,43 @@ p{margin-bottom:1rem}
   .contact-grid{grid-template-columns:1fr;gap:48px}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
+/* Nav desktop dropdown (Sell submenu) */
+.nav-desktop-dropdown{position:relative;display:inline-flex;align-items:center}
+.nav-desktop-link--has-submenu{color:#e0e0e0;font-size:15px;font-weight:500;padding:8px 14px;border-radius:4px;transition:all .25s}
+.nav-desktop-link--has-submenu:hover{color:#fff}
+.nav-desktop-link--has-submenu::after{
+  content:'';display:inline-block;width:6px;height:6px;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-2px);margin-left:8px;opacity:.7;
+  transition:transform .22s ease,opacity .22s ease;
+}
+.nav-desktop-dropdown:hover .nav-desktop-link--has-submenu::after,
+.nav-desktop-dropdown:focus-within .nav-desktop-link--has-submenu::after{opacity:1;transform:rotate(225deg) translateY(2px)}
+.nav-desktop-submenu{
+  position:absolute;top:calc(100% + 12px);left:50%;
+  transform:translateX(-50%) translateY(-6px);
+  background:#162130;border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 12px 32px rgba(0,0,0,.3);
+  border-radius:8px;padding:8px 0;min-width:200px;
+  opacity:0;visibility:hidden;
+  transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:200;
+}
+.nav-desktop-dropdown:hover .nav-desktop-submenu,
+.nav-desktop-dropdown:focus-within .nav-desktop-submenu{
+  opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
+}
+.nav-desktop-submenu a{
+  display:block;padding:10px 20px;color:#e0e0e0;
+  font-size:14px;font-weight:500;white-space:nowrap;
+  transition:background .18s ease,color .18s ease;
+}
+.nav-desktop-submenu a:hover{background:rgba(255,255,255,.06);color:#fff}
+.mobile-nav__child,
+.mobile-nav a.mobile-nav__child{padding-left:32px;font-size:15px;opacity:.85}
+
 @media(max-width:768px){
   .nav-desktop{display:none}
+  .nav-desktop-dropdown,.nav-desktop-submenu{display:none !important}
   .hamburger{display:flex}
   .hero{min-height:auto;padding:130px 0 80px}
   .hero p{font-size:16px}
@@ -258,7 +293,12 @@ p{margin-bottom:1rem}
     <nav class="nav-desktop">
       <a href="#">Search Homes</a>
       <a href="02-buy.html">Buy</a>
-      <a href="03-sell.html">Sell</a>
+      <div class="nav-desktop-dropdown">
+        <a href="03-sell.html" class="nav-desktop-link--has-submenu">Sell</a>
+        <div class="nav-desktop-submenu">
+          <a href="10-ive-got-a-guy.html">I've Got A Guy</a>
+        </div>
+      </div>
       <a href="04-communities.html">Communities</a>
       <a href="05-home-value.html">Home Value</a>
       <a href="06-about.html">About</a>
@@ -274,6 +314,7 @@ p{margin-bottom:1rem}
   <a href="#">Search Homes</a>
   <a href="02-buy.html">Buy</a>
   <a href="03-sell.html">Sell</a>
+  <a href="10-ive-got-a-guy.html" class="mobile-nav__child">&mdash; I've Got A Guy</a>
   <a href="04-communities.html">Communities</a>
   <a href="05-home-value.html">Home Value</a>
   <a href="06-about.html">About</a>
@@ -503,6 +544,8 @@ p{margin-bottom:1rem}
           <a href="04-communities.html">Communities</a>
           <a href="05-home-value.html">Home Value</a>
           <a href="06-about.html">About</a>
+          <a href="08-what-to-expect.html">What to Expect</a>
+          <a href="09-recruiting.html">Careers</a>
           <a href="07-contact.html">Contact</a>
         </nav>
       </div>
