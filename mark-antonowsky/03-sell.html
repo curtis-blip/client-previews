@@ -137,40 +137,39 @@ h3 { font-size: 21px; }
 .section-light .section-header h2, .section-alt .section-header h2 { color: #1a1a2e; }
 .section-header p { margin-top: 16px; font-size: 17px; line-height: 1.8; }
 
-/* ========== PROCESS TIMELINE ========== */
-.timeline { position: relative; max-width: 1000px; margin: 0 auto; }
-.timeline::before {
-  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
-  background: #E56440; transform: translateX(-50%);
-}
-.timeline-step {
-  position: relative; width: 50%; padding: 0 48px 60px;
-  opacity: 0; transform: translateY(32px);
+/* ========== PROCESS (ALTERNATING ROWS) ========== */
+.process-steps { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 80px; }
+.process-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  opacity: 0; transform: translateY(40px);
   transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
 }
-.timeline-step.visible { opacity: 1; transform: translateY(0); }
-.timeline-step:nth-child(odd) { left: 0; text-align: right; }
-.timeline-step:nth-child(even) { left: 50%; text-align: left; }
-.timeline-circle {
-  position: absolute; top: 0; width: 48px; height: 48px; border-radius: 50%;
-  border: 2px solid #E56440; background: #0f1923;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #ffffff;
-  z-index: 2; transition: all 0.35s ease;
+.process-row.visible { opacity: 1; transform: translateY(0); }
+.process-row:nth-child(even) .process-row__media { order: 2; }
+.process-row:nth-child(even) .process-row__text { order: 1; }
+.process-row__media {
+  position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
-.timeline-step:nth-child(odd) .timeline-circle { right: -24px; }
-.timeline-step:nth-child(even) .timeline-circle { left: -24px; }
-.timeline-step:hover .timeline-circle { background: #E56440; box-shadow: 0 0 20px rgba(247,88,35,0.4); }
-.timeline-card {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px; padding: 32px 28px; transition: all 0.35s ease;
+.process-row__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.4,0,0.2,1); }
+.process-row:hover .process-row__media img { transform: scale(1.04); }
+.process-row__media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(229,100,64,0.12) 0%, transparent 60%);
+  pointer-events: none;
 }
-.timeline-card:hover {
-  background: rgba(255,255,255,0.07); transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+.process-row__text { padding: 0 8px; }
+.process-row__num {
+  display: inline-flex; align-items: center; gap: 14px; margin-bottom: 20px;
+  font-family: 'Playfair Display', serif; font-weight: 700;
 }
-.timeline-card h3 { color: #ffffff; margin-bottom: 10px; font-size: 20px; }
-.timeline-card p { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7; margin-bottom: 0; }
+.process-row__num-digit { font-size: 56px; line-height: 1; color: #E56440; letter-spacing: -0.02em; }
+.process-row__num-label {
+  font-family: 'Source Sans 3', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); padding-top: 8px;
+}
+.process-row__text h3 { color: #ffffff; font-size: 28px; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.01em; }
+.process-row__text p { color: rgba(255,255,255,0.72); font-size: 17px; line-height: 1.75; margin-bottom: 0; }
 
 /* ========== MARKETING ACCORDION ========== */
 .marketing-intro { text-align: center; max-width: 660px; margin: 0 auto 48px; font-size: 17px; color: #555; line-height: 1.8; }
@@ -439,9 +438,12 @@ h3 { font-size: 21px; }
   .hero-btns { flex-direction: column; }
   .btn-primary, .btn-outline { justify-content: center; }
   /* Timeline mobile: single column, line on left */
-  .timeline::before { left: 24px; transform: none; }
-  .timeline-step { width: 100% !important; left: 0 !important; text-align: left !important; padding: 0 0 48px 64px; }
-  .timeline-circle { left: 0 !important; right: auto !important; }
+  .process-steps { gap: 48px; }
+  .process-row { grid-template-columns: 1fr; gap: 24px; }
+  .process-row:nth-child(even) .process-row__media { order: 0; }
+  .process-row:nth-child(even) .process-row__text { order: 0; }
+  .process-row__num-digit { font-size: 44px; }
+  .process-row__text h3 { font-size: 22px; }
   .hvc-highlights { flex-direction: column; gap: 16px; }
   .hvc-icon-side { display: none; }
   .home-value-connect { padding: 72px 0; }
@@ -560,69 +562,71 @@ h3 { font-size: 21px; }
       <div class="eyebrow">THE PROCESS</div>
       <h2>8 Steps to Selling Your Phoenix Home</h2>
     </div>
-    <div class="timeline">
+    <div class="process-steps">
 
-      <div class="timeline-step">
-        <div class="timeline-circle">1</div>
-        <div class="timeline-card">
-          <h3>Initial Consultation</h3>
-          <p>Review your goals, timeline, and property details. Discuss market conditions and what to expect throughout the selling process.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-01-consultation.webp" alt="Real estate agent meeting with seller to review paperwork">
+        </div>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">01</span><span class="process-row__num-label">Start Here</span></div>
+          <h3>Consultation &amp; Pricing Strategy</h3>
+          <p>Mark walks your property, pulls recent comps in your half-mile, and maps the Phoenix market you're listing into. You leave the meeting with a clear pricing strategy that attracts real buyers without leaving money on the table.</p>
         </div>
       </div>
 
-      <div class="timeline-step">
-        <div class="timeline-circle">2</div>
-        <div class="timeline-card">
-          <h3>Pricing Strategy</h3>
-          <p>Analyze recent comparable sales, current inventory, and buyer demand to determine a listing price that attracts qualified offers without leaving money on the table.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-02-prep.webp" alt="Staged modern living room ready for listing photos">
+        </div>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">02</span><span class="process-row__num-label">Prep &amp; Stage</span></div>
+          <h3>Get the Home Listing-Ready</h3>
+          <p>Mark identifies the repairs and touch-ups that move the needle, plus what to skip. He connects you with his trusted Phoenix tradesmen from the I've Got A Guy network, and coordinates staging so buyers walk in and see themselves living there.</p>
         </div>
       </div>
 
-      <div class="timeline-step">
-        <div class="timeline-circle">3</div>
-        <div class="timeline-card">
-          <h3>Property Preparation</h3>
-          <p>Evaluate the home's condition and presentation. Address repairs, declutter, and stage key areas so buyers can clearly see the home's potential.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-03-marketing.webp" alt="Professional real estate photographer capturing home interior">
+        </div>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">03</span><span class="process-row__num-label">Go to Market</span></div>
+          <h3>Professional Marketing Launch</h3>
+          <p>Pro photography, aerial drone, video tour, compelling copy, and full syndication across the MLS, Zillow, Realtor.com, and social. First impressions matter and Mark doesn't let the listing go live until every detail is right.</p>
         </div>
       </div>
 
-      <div class="timeline-step">
-        <div class="timeline-circle">4</div>
-        <div class="timeline-card">
-          <h3>Professional Marketing</h3>
-          <p>Launch the listing with professional photography, compelling descriptions, and distribution across the MLS and major real estate platforms.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-04-showings.webp" alt="Open house sign on a front lawn">
+        </div>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">04</span><span class="process-row__num-label">Showings &amp; Offers</span></div>
+          <h3>Tour Traffic, Feedback, and Offers</h3>
+          <p>Coordinated showings and open houses with structured buyer feedback. When offers come in, Mark evaluates price, financing strength, contingencies, and close timeline, then negotiates the terms that maximize your net at closing.</p>
         </div>
       </div>
 
-      <div class="timeline-step">
-        <div class="timeline-circle">5</div>
-        <div class="timeline-card">
-          <h3>Showings & Open Houses</h3>
-          <p>Coordinate showings and manage buyer access. Gather feedback from each visit to adjust strategy if needed.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-05-inspection.webp" alt="Home inspector on a ladder examining the exterior roof">
+        </div>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">05</span><span class="process-row__num-label">Under Contract</span></div>
+          <h3>Inspection &amp; Appraisal</h3>
+          <p>The buyer's inspector and appraiser do their walk-throughs. Mark manages every request, pushes back on unreasonable asks, and negotiates credits or repairs using market leverage so the deal stays on track.</p>
         </div>
       </div>
 
-      <div class="timeline-step">
-        <div class="timeline-circle">6</div>
-        <div class="timeline-card">
-          <h3>Offer Review & Negotiation</h3>
-          <p>Evaluate each offer based on price, financing strength, contingencies, and closing timeline. Negotiate terms to maximize your return.</p>
+      <div class="process-row fade-up">
+        <div class="process-row__media">
+          <img src="images/process/sell-step-06-closing.webp" alt="Sold sign in front of a Phoenix home">
         </div>
-      </div>
-
-      <div class="timeline-step">
-        <div class="timeline-circle">7</div>
-        <div class="timeline-card">
-          <h3>Inspection & Appraisal</h3>
-          <p>Manage the buyer's inspection and appraisal process. Negotiate repair requests or credits based on findings and market leverage.</p>
-        </div>
-      </div>
-
-      <div class="timeline-step">
-        <div class="timeline-circle">8</div>
-        <div class="timeline-card">
-          <h3>Closing & Transfer</h3>
-          <p>Coordinate with the title company to finalize documents, verify ownership, and complete the property transfer on schedule.</p>
+        <div class="process-row__text">
+          <div class="process-row__num"><span class="process-row__num-digit">06</span><span class="process-row__num-label">Closing</span></div>
+          <h3>Close and Hand Over the Keys</h3>
+          <p>Title docs finalized, funds wired, ownership transferred. Mark stays hands-on through signing and coordinates every detail with the title company so you close on schedule and walk away clean.</p>
         </div>
       </div>
 
@@ -983,19 +987,19 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// ========== TIMELINE SCROLL ANIMATION ==========
-const timelineObserver = new IntersectionObserver((entries) => {
+// ========== PROCESS ROW SCROLL ANIMATION ==========
+const processObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      timelineObserver.unobserve(entry.target);
+      processObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
 
-document.querySelectorAll('.timeline-step').forEach((step, i) => {
-  step.style.transitionDelay = (i * 0.12) + 's';
-  timelineObserver.observe(step);
+document.querySelectorAll('.process-row').forEach((row, i) => {
+  row.style.transitionDelay = (i * 0.08) + 's';
+  processObserver.observe(row);
 });
 </script>
 </body>
