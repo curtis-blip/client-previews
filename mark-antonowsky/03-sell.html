@@ -204,9 +204,11 @@ h3 { font-size: 21px; }
 /* ========== VALUE FACTORS CARDS ========== */
 .factors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .factor-card {
-  background: #ffffff; border-radius: 16px; padding: 40px 28px; text-align: center;
+  background: #ffffff; border-radius: 16px; padding: 40px 28px 32px; text-align: center;
   border: 1px solid #eaeaea; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  text-decoration: none; color: inherit; cursor: pointer;
 }
 .factor-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -217,11 +219,21 @@ h3 { font-size: 21px; }
 .factor-icon {
   width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 24px;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(247,88,35,0.08);
+  background: rgba(229,100,64,0.08);
 }
 .factor-icon svg { width: 28px; height: 28px; }
 .factor-card h3 { color: #1a1a2e; margin-bottom: 12px; }
-.factor-card p { color: #666; font-size: 15px; line-height: 1.7; }
+.factor-card p { color: #666; font-size: 15px; line-height: 1.7; margin-bottom: 20px; flex: 1; }
+.factor-card__link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #E56440; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.03em; text-transform: uppercase;
+  margin-top: auto; opacity: 0.9; transition: gap 0.25s ease, opacity 0.25s ease;
+}
+.factor-card__link svg { transition: transform 0.25s ease; }
+.factor-card:hover .factor-card__link { opacity: 1; gap: 10px; }
+.factor-card:hover .factor-card__link svg { transform: translateX(3px); }
+.factors-cta { text-align: center; margin-top: 48px; }
 
 /* ========== VENDOR CROSS-LINK ========== */
 .vendor-section { text-align: center; }
@@ -684,36 +696,47 @@ h3 { font-size: 21px; }
   <div class="container">
     <div class="section-header fade-up">
       <h2>What Determines Your Home's Value</h2>
+      <p style="color: rgba(255,255,255,0.7); max-width: 680px; margin: 16px auto 0; font-size: 17px; line-height: 1.7;">Four factors move the needle more than the rest. Mark reads all of them in every Phoenix market, and builds your pricing strategy around what the data actually shows.</p>
     </div>
     <div class="factors-grid">
-      <div class="factor-card fade-up fade-up-delay-1">
+      <a href="05-home-value.html" class="factor-card fade-up fade-up-delay-1">
         <div class="factor-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/><rect x="2" y="20" width="20" height="1" rx="0.5" fill="#E56440" opacity="0.2"/></svg>
         </div>
-        <h3>Recent Sales</h3>
-        <p>Buyers and appraisers compare homes that sold nearby within the past few months.</p>
-      </div>
-      <div class="factor-card fade-up fade-up-delay-2">
+        <h3>Comparable Sales</h3>
+        <p>The biggest lever. Buyers and appraisers anchor to homes sold in the last 90 days within half a mile, with similar size, age, and condition. Mark pulls the real comps, not Zillow's guesses.</p>
+        <span class="factor-card__link">See how Mark values your home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="05-home-value.html" class="factor-card fade-up fade-up-delay-2">
         <div class="factor-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
         </div>
-        <h3>Property Condition</h3>
-        <p>Updated interiors and maintained systems attract stronger offers than homes showing visible wear.</p>
-      </div>
-      <div class="factor-card fade-up fade-up-delay-3">
+        <h3>Condition &amp; Updates</h3>
+        <p>Kitchens, bathrooms, roof age, HVAC, windows, and flooring. Updated systems and turn-key finishes drive stronger offers. Visible wear costs more than most sellers expect.</p>
+        <span class="factor-card__link">See how Mark values your home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="05-home-value.html" class="factor-card fade-up fade-up-delay-3">
         <div class="factor-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
-        <h3>Buyer Activity</h3>
-        <p>The number of active buyers affects how quickly homes receive offers. High demand means faster results.</p>
-      </div>
-      <div class="factor-card fade-up fade-up-delay-4">
+        <h3>Size &amp; Layout</h3>
+        <p>Finished square footage, bed and bath count, and how the floor plan actually lives. Open-plan kitchens, primary bedrooms on the main floor, and functional storage all lift value in Phoenix.</p>
+        <span class="factor-card__link">See how Mark values your home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a href="05-home-value.html" class="factor-card fade-up fade-up-delay-4">
         <div class="factor-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#E56440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
-        <h3>Location Influence</h3>
-        <p>Access to major roads, employers, schools, and amenities shapes how buyers evaluate price.</p>
-      </div>
+        <h3>Location &amp; Lot</h3>
+        <p>School district, commute time, walkability, and lot specifics. In Phoenix, mountain views, cul-de-sac position, pool, RV gates, and desert-adapted landscaping all show up in the final number.</p>
+        <span class="factor-card__link">See how Mark values your home<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></span>
+    </a>
+    </div>
+    <div class="factors-cta fade-up">
+      <a href="05-home-value.html" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Get a detailed value report from Mark
+      </a>
     </div>
   </div>
 </section>
