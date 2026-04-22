@@ -87,66 +87,45 @@ p{margin-bottom:1rem}
 .btn-outline-dark:hover{background:var(--accent);color:var(--white)}
 
 /* ========== HEADER ========== */
-.site-header{
-  position:fixed;top:0;left:0;width:100%;z-index:1000;
-  background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;
-  border-bottom:1px solid transparent;box-shadow:none;
-  transition:background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; border-bottom: 1px solid transparent; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease; }
+.site-header.scrolled { background: rgba(15, 25, 35, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px; }
+.logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px; text-decoration: none; }
+.logo span { color: #E56440; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.nav-links li { margin: 0; }
+.nav-links a { color: #e0e0e0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.3s; position: relative; text-decoration: none; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #E56440; transition: width 0.3s; }
+.nav-links a:hover { color: #ffffff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: #E56440; }
+.btn-nav { background: #E56440; color: #fff !important; padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase; transition: background 0.3s, transform 0.2s; text-decoration: none; }
+.btn-nav:hover { background: #C94D2F; transform: translateY(-1px); }
+.btn-nav::after { display: none !important; }
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.mobile-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-link--has-submenu::after { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px); margin-left: 8px; opacity: 0.7; transition: transform 0.22s ease, opacity 0.22s ease; }
+.nav-dropdown:hover .nav-link--has-submenu::after, .nav-dropdown:focus-within .nav-link--has-submenu::after { opacity: 1; transform: rotate(225deg) translateY(2px); }
+.nav-submenu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-6px); background: #ffffff; box-shadow: 0 12px 32px rgba(15,25,35,0.14); border-radius: 8px; padding: 8px 0; min-width: 200px; opacity: 0; visibility: hidden; list-style: none; margin: 0; transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; z-index: 200; }
+.nav-dropdown:hover .nav-submenu, .nav-dropdown:focus-within .nav-submenu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.nav-submenu li { margin: 0; }
+.nav-submenu a { display: block; padding: 10px 20px; color: #1a1a2e; font-size: 14px; font-weight: 500; white-space: nowrap; text-transform: none; letter-spacing: normal; transition: background 0.18s ease, color 0.18s ease; }
+.nav-submenu a:hover { background: #f0f0f0; color: #E56440; }
+.nav-submenu a::after { display: none !important; }
+.nav-mobile-child { display: none; }
+@media (max-width: 768px) {
+  .nav-links { display: none; position: fixed; top: 72px; left: 0; right: 0; background: #0f1923; flex-direction: column; padding: 24px; gap: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .nav-links.open { display: flex; }
+  .mobile-toggle { display: flex; }
+  .nav-dropdown, .nav-submenu { display: none !important; }
+  .nav-mobile-child { display: block; }
+  .mobile-nav__child { padding-left: 32px !important; font-size: 15px !important; opacity: 0.85; }
 }
-.site-header.scrolled{
-  background:rgba(15,25,35,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,.06);box-shadow:0 4px 24px rgba(0,0,0,.3);
-}
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;
-  max-width:1400px;margin:0 auto;padding:0 32px;height:72px;
-}
-.logo{
-  font-family:var(--heading);font-size:20px;font-weight:700;color:var(--white);
-  letter-spacing:1px;display:flex;align-items:center;gap:4px;
-}
-.logo span{font-weight:400;color:var(--text-light);opacity:.7;font-size:16px}
-.main-nav{display:flex;align-items:center;gap:4px}
-.main-nav a{
-  color:var(--text-light);font-size:14.5px;font-weight:500;
-  padding:8px 16px;border-radius:6px;transition:var(--transition);position:relative;
-}
-.main-nav a:hover{color:var(--white);background:rgba(255,255,255,.06)}
-.nav-dropdown{position:relative}
-.nav-dropdown .dropdown-menu{
-  position:absolute;top:100%;left:0;min-width:160px;
-  background:var(--dark-alt);border:1px solid rgba(255,255,255,.08);
-  border-radius:8px;padding:8px 0;opacity:0;visibility:hidden;
-  transform:translateY(8px);transition:var(--transition);
-  box-shadow:0 12px 32px rgba(0,0,0,.3);
-}
-.nav-dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown-menu a{display:block;padding:10px 20px;font-size:14px}
-.dropdown-menu a:hover{background:rgba(255,255,255,.05)}
-.nav-cta{
-  background:var(--accent)!important;color:var(--white)!important;
-  border-radius:8px!important;padding:10px 24px!important;font-weight:600!important;
-}
-.nav-cta:hover{background:var(--accent-hover)!important;transform:translateY(-1px)}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;cursor:pointer}
-.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
-.mobile-overlay{
-  display:none;position:fixed;top:72px;left:0;width:100%;height:calc(100vh - 72px);
-  background:rgba(15,25,35,.98);backdrop-filter:blur(20px);z-index:999;
-  flex-direction:column;align-items:center;justify-content:flex-start;
-  padding:48px 24px;gap:8px;
-}
-.mobile-overlay.active{display:flex}
-.mobile-overlay a{
-  color:var(--white);font-size:18px;font-weight:500;padding:16px 32px;
-  border-radius:8px;width:100%;max-width:400px;text-align:center;
-  transition:var(--transition);
-}
-.mobile-overlay a:hover{background:rgba(255,255,255,.06)}
 
 /* ========== HERO ========== */
 .hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
+  position:relative;min-height:60vh;display:flex;align-items:center;
   background:
     linear-gradient(135deg, rgba(15, 25, 35, 0.72) 0%, rgba(15, 25, 35, 0.58) 100%),
     url('images/heroes/02-buy.webp') center center / cover no-repeat;
@@ -440,45 +419,9 @@ p{margin-bottom:1rem}
   .footer-grid{grid-template-columns:1fr 1fr}
   .footer-brand{grid-column:1 / -1}
 }
-/* Main nav dropdown (Sell submenu) */
-.main-nav-dropdown{position:relative;display:inline-flex;align-items:center}
-.main-nav-link--has-submenu::after{
-  content:'';display:inline-block;width:6px;height:6px;
-  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
-  transform:rotate(45deg) translateY(-2px);margin-left:8px;opacity:.7;
-  transition:transform .22s ease,opacity .22s ease;
-}
-.main-nav-dropdown:hover .main-nav-link--has-submenu::after,
-.main-nav-dropdown:focus-within .main-nav-link--has-submenu::after{opacity:1;transform:rotate(225deg) translateY(2px)}
-.main-nav-submenu{
-  position:absolute;top:calc(100% + 12px);left:50%;
-  transform:translateX(-50%) translateY(-6px);
-  background:var(--dark-alt);
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 12px 32px rgba(0,0,0,.3);
-  border-radius:8px;padding:8px 0;min-width:200px;
-  opacity:0;visibility:hidden;
-  transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:200;
-}
-.main-nav-dropdown:hover .main-nav-submenu,
-.main-nav-dropdown:focus-within .main-nav-submenu{
-  opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);
-}
-.main-nav-submenu a{
-  display:block;padding:10px 20px;color:var(--text-light);
-  text-decoration:none;font-size:14px;font-weight:500;
-  white-space:nowrap;transition:background .18s ease,color .18s ease;
-}
-.main-nav-submenu a:hover{background:rgba(255,255,255,.06);color:var(--white)}
-.mobile-nav__child,
-.mobile-overlay a.mobile-nav__child{padding-left:48px;font-size:16px;opacity:.85}
-
 @media(max-width:768px){
-  .main-nav{display:none}
-  .main-nav-dropdown,.main-nav-submenu{display:none !important}
-  .hamburger{display:flex}
   .section-padding{padding:72px 0}
-  .hero{min-height:90vh;background-attachment:scroll}
+  .hero{min-height:50vh;background-attachment:scroll}
   .hero-content{padding:48px 0}
   .hero-content p{font-size:16px}
   .stats-bar{margin-top:-40px}
@@ -552,36 +495,29 @@ p{margin-bottom:1rem}
 <body>
 
 <!-- ========== HEADER ========== -->
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="header-inner">
-    <a href="01-homepage.html" class="logo">MARK ANTONOWSKY <span>| real</span></a>
-    <nav class="main-nav">
-      <a href="#">Search Homes</a>
-      <a href="02-buy.html">Buy</a>
-      <div class="main-nav-dropdown">
-        <a href="03-sell.html" class="main-nav-link--has-submenu">Sell</a>
-        <div class="main-nav-submenu">
-          <a href="10-ive-got-a-guy.html">I've Got A Guy</a>
-        </div>
-      </div>
-      <a href="04-communities.html">Communities</a>
-      <a href="05-home-value.html">Home Value</a>
-      <a href="06-about.html">About</a>
-      <a href="07-contact.html" class="nav-cta">Contact</a>
+    <a href="01-homepage.html" class="logo">Mark <span>Antonowsky</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Search Homes</a></li>
+        <li><a href="02-buy.html" class="active">Buy</a></li>
+        <li class="nav-dropdown">
+          <a href="03-sell.html" class="nav-link--has-submenu">Sell</a>
+          <ul class="nav-submenu">
+            <li><a href="10-ive-got-a-guy.html">I've Got A Guy</a></li>
+          </ul>
+        </li>
+        <li class="nav-mobile-child"><a href="10-ive-got-a-guy.html" class="mobile-nav__child">&mdash; I've Got A Guy</a></li>
+        <li><a href="04-communities.html">Communities</a></li>
+        <li><a href="05-home-value.html">Home Value</a></li>
+        <li><a href="06-about.html">About</a></li>
+        <li><a href="07-contact.html" class="btn-nav">Contact</a></li>
+      </ul>
     </nav>
-    <div class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
-    </div>
-  </div>
-  <div class="mobile-overlay" id="mobileNav">
-    <a href="#">Search Homes</a>
-    <a href="02-buy.html">Buy</a>
-    <a href="03-sell.html">Sell</a>
-    <a href="10-ive-got-a-guy.html" class="mobile-nav__child">&mdash; I've Got A Guy</a>
-    <a href="04-communities.html">Communities</a>
-    <a href="05-home-value.html">Home Value</a>
-    <a href="06-about.html">About</a>
-    <a href="07-contact.html" class="btn btn-primary" style="margin-top:16px;max-width:400px;justify-content:center">Contact</a>
+    </button>
   </div>
 </header>
 
@@ -593,13 +529,6 @@ p{margin-bottom:1rem}
       <span class="eyebrow">Buyer's Guide</span>
       <h1>Buying a Home in Phoenix Made Simple</h1>
       <p>From understanding neighborhoods and pricing to financing and market trends, this guide covers the practical steps to find the right property, make competitive offers, and close with confidence.</p>
-      <div class="hero-ctas">
-        <a href="07-contact.html" class="btn btn-primary">Schedule a Consultation</a>
-        <a href="tel:6024691111" class="btn btn-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          (602) 469-1111
-        </a>
-      </div>
     </div>
   </div>
 </section>
@@ -1052,21 +981,36 @@ p{margin-bottom:1rem}
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-// Mobile nav toggle
-function toggleMobile(){
-  const nav=document.getElementById('mobileNav');
-  nav.classList.toggle('active');
-  const spans=document.querySelectorAll('.hamburger span');
-  if(nav.classList.contains('active')){
-    spans[0].style.transform='rotate(45deg) translate(5px,5px)';
-    spans[1].style.opacity='0';
-    spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';
-  }else{
-    spans[0].style.transform='none';
-    spans[1].style.opacity='1';
-    spans[2].style.transform='none';
+// Header scroll
+(function() {
+  const header = document.getElementById('siteHeader');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+    });
   }
-}
+})();
+
+// Mobile nav toggle
+(function() {
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const spans = mobileToggle.querySelectorAll('span');
+      if (navLinks.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
+  }
+})();
 
 // FAQ accordion
 function toggleFAQ(el){
@@ -1110,11 +1054,6 @@ document.querySelectorAll('.timeline-step').forEach((el,i)=>{
   timelineObserver.observe(el);
 });
 
-// Header scroll effect
-const header=document.querySelector('.site-header');
-window.addEventListener('scroll',()=>{
-  header.classList.toggle('scrolled', window.scrollY > 80);
-},{passive:true});
 </script>
 </body>
 </html>

@@ -228,215 +228,90 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 
-/* ========================================
-   HEADER
-   ======================================== */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+/* ========== HEADER ========== */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: transparent; border-bottom: 1px solid transparent;
+  box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
 }
-
-.header.scrolled {
-  background: #0f1923;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+.site-header.scrolled {
+  background: rgba(15, 25, 35, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06); box-shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
-
-.header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 72px;
 }
-
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+  color: #ffffff; letter-spacing: 0.5px; text-decoration: none;
 }
+.logo span { color: #E56440; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+.nav-links li { margin: 0; }
+.nav-links a {
+  color: #e0e0e0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+  text-transform: uppercase; transition: color 0.3s; position: relative; text-decoration: none;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: #E56440; transition: width 0.3s;
+}
+.nav-links a:hover { color: #ffffff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: #E56440; }
+.btn-nav {
+  background: #E56440; color: #fff !important; padding: 10px 24px; border-radius: 6px;
+  font-weight: 600; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase;
+  transition: background 0.3s, transform 0.2s; text-decoration: none;
+}
+.btn-nav:hover { background: #C94D2F; transform: translateY(-1px); }
+.btn-nav::after { display: none !important; }
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.mobile-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
 
-.logo__mark {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 18px;
-  letter-spacing: 3px;
+/* Nav dropdown (Sell submenu) */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-link--has-submenu::after {
+  content: ''; display: inline-block; width: 6px; height: 6px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-2px); margin-left: 8px; opacity: 0.7;
+  transition: transform 0.22s ease, opacity 0.22s ease;
 }
-
-.logo__divider {
-  width: 1px;
-  height: 24px;
-  background: rgba(255,255,255,0.25);
+.nav-dropdown:hover .nav-link--has-submenu::after,
+.nav-dropdown:focus-within .nav-link--has-submenu::after {
+  opacity: 1; transform: rotate(225deg) translateY(2px);
 }
-
-.logo__brokerage {
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  color: var(--color-text-muted);
-  font-style: italic;
+.nav-submenu {
+  position: absolute; top: calc(100% + 12px); left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  background: #ffffff; box-shadow: 0 12px 32px rgba(15,25,35,0.14);
+  border-radius: 8px; padding: 8px 0; min-width: 200px;
+  opacity: 0; visibility: hidden; list-style: none; margin: 0;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s; z-index: 200;
 }
-
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+.nav-dropdown:hover .nav-submenu,
+.nav-dropdown:focus-within .nav-submenu {
+  opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
 }
-
-.nav__link {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.75);
-  transition: color var(--transition-fast);
-  position: relative;
+.nav-submenu li { margin: 0; }
+.nav-submenu a {
+  display: block; padding: 10px 20px; color: #1a1a2e;
+  font-size: 14px; font-weight: 500; white-space: nowrap; text-transform: none; letter-spacing: normal;
+  transition: background 0.18s ease, color 0.18s ease;
 }
-
-.nav__link:hover {
-  color: var(--color-white);
-}
-
-.nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-primary);
-  transition: width var(--transition-base);
-}
-
-.nav__link:hover::after {
-  width: 100%;
-}
-
-.nav__cta {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-white);
-  background: var(--color-primary);
-  padding: 10px 22px;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-base);
-}
-
-.nav__cta:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-1px);
-}
-
-/* Hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
-}
-
-.hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-white);
-  transition: all var(--transition-base);
-  border-radius: 2px;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Mobile Nav */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 320px;
-  height: 100vh;
-  background: var(--color-dark);
-  z-index: 999;
-  padding: 100px 32px 40px;
-  transition: right var(--transition-base);
-  overflow-y: auto;
-}
-
-.mobile-nav.open {
-  right: 0;
-}
-
-.mobile-nav__overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 998;
-  opacity: 0;
-  transition: opacity var(--transition-base);
-}
-
-.mobile-nav__overlay.open {
-  opacity: 1;
-}
-
-.mobile-nav a {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 18px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.8);
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: color var(--transition-fast);
-}
-
-.mobile-nav a:hover {
-  color: var(--color-primary);
-}
-
-.mobile-nav .nav__cta {
-  display: inline-block;
-  margin-top: 24px;
-  font-size: 15px;
-  padding: 14px 28px;
-  text-align: center;
-  width: 100%;
-}
+.nav-submenu a:hover { background: #f0f0f0; color: #E56440; }
+.nav-submenu a::after { display: none !important; }
+.nav-mobile-child { display: none; }
 
 /* ========================================
    HERO (Interior page style)
    ======================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 440px;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   padding: 120px 0 100px;
@@ -993,84 +868,22 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   }
 }
 
-/* Nav dropdown (Sell submenu) */
-.nav__dropdown {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-.nav__link--has-submenu::after {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translateY(-2px);
-  margin-left: 8px;
-  opacity: 0.7;
-  transition: transform 0.22s ease, opacity 0.22s ease;
-}
-.nav__dropdown:hover .nav__link--has-submenu::after,
-.nav__dropdown:focus-within .nav__link--has-submenu::after {
-  opacity: 1;
-  transform: rotate(225deg) translateY(2px);
-}
-.nav__submenu {
-  position: absolute;
-  top: calc(100% + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  background: var(--color-white);
-  box-shadow: 0 12px 32px rgba(15, 25, 35, 0.14);
-  border-radius: 8px;
-  padding: 8px 0;
-  min-width: 200px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
-  z-index: 200;
-}
-.nav__dropdown:hover .nav__submenu,
-.nav__dropdown:focus-within .nav__submenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-.nav__submenu a {
-  display: block;
-  padding: 10px 20px;
-  color: var(--color-text-dark);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: background 0.18s ease, color 0.18s ease;
-}
-.nav__submenu a:hover {
-  background: var(--color-light-alt);
-  color: var(--color-primary);
-}
-
 @media (max-width: 768px) {
   :root {
     --section-padding: clamp(32px, 4vw, 52px);
     --header-height: 70px;
   }
 
-  .nav { display: none; }
-  .nav__dropdown, .nav__submenu { display: none !important; }
-  .hamburger { display: flex; }
-  .mobile-nav { display: block; }
-  .mobile-nav__child,
-  .mobile-nav a.mobile-nav__child {
-    padding-left: 32px;
-    font-size: 15px;
-    opacity: 0.85;
-  }
+  .nav-links { display: none; position: fixed; top: 72px; left: 0; right: 0; background: #0f1923; flex-direction: column; padding: 24px; gap: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .nav-links.open { display: flex; }
+  .mobile-toggle { display: flex; }
+  .nav-dropdown, .nav-submenu { display: none !important; }
+  .nav-mobile-child { display: block; }
+  .mobile-nav__child { padding-left: 32px !important; font-size: 15px !important; opacity: 0.85; }
 
   .hero {
-    min-height: auto;
+    min-height: 380px;
+    min-height: 50vh;
     padding: calc(var(--header-height) + 48px) 0 60px;
   }
 
@@ -1169,47 +982,31 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
 <!-- ========================================
      HEADER
      ======================================== -->
-<header class="header" id="header">
-  <div class="container">
-    <a href="01-homepage.html" class="logo">
-      <span class="logo__mark">MARK ANTONOWSKY</span>
-      <span class="logo__divider"></span>
-      <span class="logo__brokerage">real</span>
-    </a>
-    <nav class="nav">
-      <a href="#" class="nav__link">Search Homes</a>
-      <a href="02-buy.html" class="nav__link">Buy</a>
-      <div class="nav__dropdown">
-        <a href="03-sell.html" class="nav__link nav__link--has-submenu">Sell</a>
-        <div class="nav__submenu">
-          <a href="10-ive-got-a-guy.html">I've Got A Guy</a>
-        </div>
-      </div>
-      <a href="04-communities.html" class="nav__link">Communities</a>
-      <a href="05-home-value.html" class="nav__link">Home Value</a>
-      <a href="06-about.html" class="nav__link">About</a>
-      <a href="07-contact.html" class="nav__cta">Contact</a>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="01-homepage.html" class="logo">Mark <span>Antonowsky</span></a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Search Homes</a></li>
+        <li><a href="02-buy.html">Buy</a></li>
+        <li class="nav-dropdown">
+          <a href="03-sell.html" class="nav-link--has-submenu">Sell</a>
+          <ul class="nav-submenu">
+            <li><a href="10-ive-got-a-guy.html">I've Got A Guy</a></li>
+          </ul>
+        </li>
+        <li class="nav-mobile-child"><a href="10-ive-got-a-guy.html" class="mobile-nav__child">&mdash; I've Got A Guy</a></li>
+        <li><a href="04-communities.html">Communities</a></li>
+        <li><a href="05-home-value.html">Home Value</a></li>
+        <li><a href="06-about.html">About</a></li>
+        <li><a href="07-contact.html" class="btn-nav">Contact</a></li>
+      </ul>
     </nav>
-    <div class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
-
-<!-- Mobile Nav -->
-<div class="mobile-nav__overlay" id="mobileOverlay"></div>
-<div class="mobile-nav" id="mobileNav">
-  <a href="#">Search Homes</a>
-  <a href="02-buy.html">Buy</a>
-  <a href="03-sell.html">Sell</a>
-  <a href="10-ive-got-a-guy.html" class="mobile-nav__child">&mdash; I've Got A Guy</a>
-  <a href="04-communities.html">Communities</a>
-  <a href="05-home-value.html">Home Value</a>
-  <a href="06-about.html">About</a>
-  <a href="07-contact.html" class="nav__cta">Contact</a>
-</div>
 
 <!-- ========================================
      HERO
@@ -1224,12 +1021,6 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
       <span class="eyebrow eyebrow--light">WHAT TO EXPECT</span>
       <h1>What to Expect When Buying a Home in Phoenix</h1>
       <p class="hero__body">Buying a home in Phoenix involves more than choosing a property. Pricing, financing, inspections, and contract terms all affect how the purchase moves forward. Knowing how each part works helps you make informed decisions along the way.</p>
-      <div class="hero__buttons">
-        <a href="07-contact.html" class="btn btn--primary">
-          Schedule a Consultation
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-      </div>
     </div>
   </div>
 </section>
@@ -1445,11 +1236,7 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
     <div class="footer__grid">
       <!-- Brand / Disclaimer -->
       <div class="footer__brand">
-        <div class="logo">
-          <span class="logo__mark">MARK ANTONOWSKY</span>
-          <span class="logo__divider"></span>
-          <span class="logo__brokerage">real</span>
-        </div>
+        <a href="01-homepage.html" class="logo" style="font-size: 24px;">Mark <span>Antonowsky</span></a>
         <p>Mark Antonowsky is a licensed real estate professional affiliated with Real Brokerage. All information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
       </div>
       <!-- Quick Links -->
@@ -1510,41 +1297,32 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
 (function() {
   'use strict';
 
-  // ---- Header scroll effect ----
-  var header = document.getElementById('header');
-
-  function onScroll() {
-    if (window.scrollY > 80) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+  // ---- Header scroll ----
+  var header = document.getElementById('siteHeader');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
   }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
 
   // ---- Mobile nav toggle ----
-  var hamburger = document.getElementById('hamburger');
-  var mobileNav = document.getElementById('mobileNav');
-  var mobileOverlay = document.getElementById('mobileOverlay');
-
-  function toggleMobileNav() {
-    hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('open');
-    mobileOverlay.classList.toggle('open');
-    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
-  }
-
-  hamburger.addEventListener('click', toggleMobileNav);
-  mobileOverlay.addEventListener('click', toggleMobileNav);
-
-  mobileNav.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      if (mobileNav.classList.contains('open')) {
-        toggleMobileNav();
+  var mobileToggle = document.getElementById('mobileToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+      var spans = mobileToggle.querySelectorAll('span');
+      if (navLinks.classList.contains('open')) {
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
       }
     });
-  });
+  }
 
   // ---- FAQ accordion (one open at a time) ----
   var faqItems = document.querySelectorAll('.faq__item');
