@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass Concierge | Half Moon Bay | Stephanie Sills</title>
+<meta name="description" content="Compass Concierge in Half Moon Bay covers staging, painting, landscaping, and repairs at $0 upfront. Sell your home faster with Stephanie Sills at Compass.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #D9B992; --primary-dark: #C4A070; --primary-light: #EDD9C0;
+  --dark: #2A2825; --mid: #6B6B6B; --light: #FBF6EB; --neutral: #ffffff;
+  --coastal: #6E828E;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --max: 1200px; --radius: 2px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 12px 32px rgba(0,0,0,0.14);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: #2C2C2C; background: var(--neutral); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 400; line-height: 1.15; color: var(--dark); }
+h1 { font-size: clamp(44px, 6vw, 80px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.01em; }
+h3 { font-size: 22px; font-weight: 500; }
+h4 { font-size: 18px; font-weight: 500; }
+.eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+.btn-primary { display: inline-block; background: var(--primary); color: #000; font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px 34px; border-radius: var(--radius); border: none; cursor: pointer; transition: background 0.25s, transform 0.2s; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+.btn-outline { display: inline-block; border: 1.5px solid var(--dark); color: var(--dark); font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; border-radius: var(--radius); background: transparent; cursor: pointer; transition: background 0.25s, color 0.25s; }
+.btn-outline:hover { background: var(--dark); color: #fff; }
+
+/* ── NAV ── */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: transparent; transition: background 0.4s, box-shadow 0.4s, padding 0.3s; padding: 24px 0; }
+.nav.nav-solid { background: rgba(255,255,255,0.97); box-shadow: 0 1px 20px rgba(0,0,0,0.06); padding: 14px 0; }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { height: 72px; transition: height 0.3s; }
+.nav.nav-solid .nav-logo { height: 56px; }
+.nav-logo img { height: 100%; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+.nav.nav-solid .nav-logo img { filter: none; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links > a, .nav-dropdown > a { font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; transition: color 0.3s; }
+.nav.nav-solid .nav-links > a, .nav.nav-solid .nav-dropdown > a { color: var(--dark); }
+.nav-links > a:hover, .nav-dropdown > a:hover { color: var(--primary); }
+.nav-links > a.active { color: var(--primary); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a::after { content: ''; display: inline-block; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid currentColor; margin-left: 6px; vertical-align: middle; }
+.nav-dropdown-menu { position: absolute; top: 100%; left: 0; background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-radius: var(--radius); padding: 12px 0; min-width: 220px; opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.25s; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-dropdown-menu a { display: block; padding: 8px 20px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--dark); white-space: nowrap; transition: color 0.2s, background 0.2s; }
+.nav-dropdown-menu a:hover { color: var(--primary); background: var(--light); }
+.nav-cta { background: transparent; border: 1.5px solid rgba(255,255,255,0.6); color: #fff; font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 22px; border-radius: var(--radius); cursor: pointer; transition: all 0.3s; }
+.nav.nav-solid .nav-cta { border-color: var(--primary); color: var(--primary); }
+.nav-cta:hover { background: var(--primary); border-color: var(--primary); color: #000; }
+.nav-mobile { display: none; }
+.nav::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0)); pointer-events: none; transition: opacity 0.4s; z-index: -1; }
+.nav.nav-solid::before { opacity: 0; }
+
+/* ── HERO (Compass-style) ── */
+.concierge-hero { padding: 180px 0 100px; background: var(--light); position: relative; }
+.concierge-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+.concierge-hero h1 { color: var(--dark); margin-bottom: 24px; font-weight: 400; }
+.concierge-hero h1 em { color: var(--primary-dark); font-style: italic; }
+.concierge-hero-sub { font-family: var(--font-head); font-size: clamp(22px, 2.4vw, 28px); color: var(--dark); line-height: 1.4; margin-bottom: 24px; font-weight: 400; }
+.concierge-hero-body { color: var(--mid); font-size: 17px; line-height: 1.75; max-width: 580px; }
+.concierge-hero-body a { color: var(--primary-dark); border-bottom: 1px solid var(--primary-light); transition: color 0.2s; }
+.concierge-hero-body a:hover { color: var(--primary); }
+
+/* Agent Card */
+.agent-card { background: var(--neutral); border-radius: var(--radius); box-shadow: 0 10px 40px rgba(42,40,37,0.12); padding: 40px; }
+.agent-card-header { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.agent-card-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; }
+.agent-card-name { font-family: var(--font-head); font-size: 22px; color: var(--dark); margin-bottom: 2px; }
+.agent-card-creds { font-size: 11px; color: var(--mid); letter-spacing: 0.08em; text-transform: uppercase; }
+.agent-card-contact { font-size: 13px; color: var(--mid); margin-top: 4px; }
+.agent-card-contact a { color: var(--dark); font-weight: 500; }
+.agent-card-intro { font-size: 14px; color: var(--mid); line-height: 1.6; margin-bottom: 20px; }
+.agent-form-field { margin-bottom: 12px; }
+.agent-form-field label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); margin-bottom: 4px; }
+.agent-form-field input { width: 100%; padding: 10px 14px; border: 1px solid rgba(0,0,0,0.12); border-radius: var(--radius); font-family: var(--font-body); font-size: 14px; background: var(--light); transition: border-color 0.2s; }
+.agent-form-field input:focus { outline: none; border-color: var(--primary); }
+.agent-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.agent-form button { width: 100%; margin-top: 10px; }
+
+/* ── 3-PHASE ── */
+.phases { padding: 120px 0; background: var(--neutral); }
+.phases-header { text-align: center; max-width: 720px; margin: 0 auto 80px; }
+.phases-header h2 { margin-top: 12px; }
+.phases-header p { color: var(--mid); font-size: 17px; line-height: 1.7; margin-top: 20px; }
+.phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative; }
+.phase-grid::before { content: ''; position: absolute; top: 40px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--primary-light), var(--primary-light)); z-index: 0; }
+.phase-card { position: relative; text-align: center; z-index: 1; }
+.phase-num { width: 80px; height: 80px; margin: 0 auto 28px; background: var(--dark); color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 32px; font-weight: 400; border: 4px solid var(--neutral); box-shadow: 0 0 0 2px var(--primary-light); }
+.phase-card h3 { font-size: 26px; margin-bottom: 14px; color: var(--dark); }
+.phase-card p { color: var(--mid); font-size: 15px; line-height: 1.7; max-width: 300px; margin: 0 auto; }
+
+/* ── KEY BENEFITS ── */
+.benefits { padding: 120px 0; background: var(--light); }
+.benefits-header { text-align: center; max-width: 680px; margin: 0 auto 80px; }
+.benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.benefit { text-align: center; }
+.benefit-icon { width: 64px; height: 64px; margin: 0 auto 20px; background: var(--neutral); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.benefit-icon svg { width: 28px; height: 28px; stroke: var(--primary-dark); fill: none; stroke-width: 1.5; }
+.benefit h4 { font-family: var(--font-head); font-size: 24px; margin-bottom: 10px; color: var(--dark); }
+.benefit p { color: var(--mid); font-size: 14px; line-height: 1.65; }
+
+/* ── SUCCESS STORIES ── */
+.stories { padding: 120px 0; background: var(--neutral); }
+.stories-header { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+.stories-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.story-card { background: var(--light); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+.story-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.story-ba { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--dark); aspect-ratio: 2/1; }
+.story-ba-half { position: relative; overflow: hidden; background-size: cover; background-position: center; }
+.story-ba-half::after { content: attr(data-label); position: absolute; top: 16px; left: 16px; background: rgba(42,40,37,0.8); color: #fff; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 2px; }
+.story-body { padding: 36px; }
+.story-stats { display: flex; gap: 32px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+.story-stat-num { font-family: var(--font-head); font-size: 32px; color: var(--primary-dark); line-height: 1; }
+.story-stat-label { font-size: 11px; color: var(--mid); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px; }
+.story-quote { font-family: var(--font-head); font-style: italic; color: var(--dark); font-size: 17px; line-height: 1.6; margin-bottom: 16px; }
+.story-author { font-size: 13px; color: var(--mid); font-weight: 500; }
+.story-disclaimer { font-size: 10px; color: var(--mid); margin-top: 10px; opacity: 0.7; }
+
+/* ── COVERED SERVICES ── */
+.services-covered { padding: 120px 0; background: var(--light); }
+.services-covered-header { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 32px; max-width: 980px; margin: 0 auto; }
+.service-item { display: flex; gap: 14px; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 15px; color: var(--dark); }
+.service-item svg { width: 20px; height: 20px; stroke: var(--primary-dark); fill: none; stroke-width: 2; flex-shrink: 0; }
+.services-more { text-align: center; margin-top: 40px; color: var(--mid); font-style: italic; }
+
+/* ── STATS ── */
+.stats { padding: 100px 0; background: var(--dark); color: #fff; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; text-align: center; }
+.stat-big { padding: 20px; }
+.stat-big-num { font-family: var(--font-head); font-size: clamp(64px, 7vw, 96px); color: var(--primary); line-height: 1; margin-bottom: 16px; }
+.stat-big-label { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.5; margin-bottom: 10px; max-width: 260px; margin-left: auto; margin-right: auto; }
+.stat-big-source { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ── HOW IT WORKS ── */
+.how { padding: 120px 0; background: var(--neutral); }
+.how-header { text-align: center; max-width: 680px; margin: 0 auto 70px; }
+.how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+.how-step { text-align: left; }
+.how-step-num { font-family: var(--font-head); font-size: 64px; color: var(--primary); line-height: 1; margin-bottom: 20px; opacity: 0.6; }
+.how-step h4 { font-family: var(--font-head); font-size: 20px; margin-bottom: 12px; color: var(--dark); }
+.how-step p { color: var(--mid); font-size: 14px; line-height: 1.65; }
+
+/* ── BEFORE/AFTER PLACEHOLDER ── */
+.ba-placeholder { padding: 100px 0; background: var(--light); }
+.ba-placeholder-box { background: var(--neutral); border: 2px dashed rgba(0,0,0,0.12); border-radius: var(--radius); padding: 80px 40px; text-align: center; max-width: 900px; margin: 0 auto; }
+.ba-placeholder-box svg { width: 48px; height: 48px; stroke: var(--primary-dark); fill: none; stroke-width: 1.5; margin: 0 auto 20px; display: block; }
+.ba-placeholder-box h3 { margin-bottom: 10px; color: var(--dark); }
+.ba-placeholder-box p { color: var(--mid); font-size: 15px; max-width: 480px; margin: 0 auto; }
+
+/* ── FAQ ── */
+.faq { padding: 120px 0; background: var(--light); }
+.faq-header { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+.faq-list { max-width: 820px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(42,40,37,0.12); }
+.faq-q { padding: 28px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.faq-q h4 { font-family: var(--font-head); font-size: 22px; font-weight: 400; color: var(--dark); line-height: 1.35; }
+.faq-toggle { width: 32px; height: 32px; border-radius: 50%; background: var(--neutral); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; }
+.faq-toggle svg { width: 14px; height: 14px; stroke: var(--dark); fill: none; stroke-width: 2; transition: transform 0.3s; }
+.faq-item.active .faq-toggle { background: var(--primary); }
+.faq-item.active .faq-toggle svg { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-a-inner { padding: 0 0 28px; color: var(--mid); font-size: 15px; line-height: 1.75; max-width: 720px; }
+.faq-item.active .faq-a { max-height: 400px; }
+
+/* ── CTA BAND ── */
+.cta-band { padding: 100px 0; background: var(--primary); text-align: center; }
+.cta-band h2 { color: var(--dark); margin-bottom: 14px; }
+.cta-band p { color: rgba(42,40,37,0.75); font-size: 17px; margin-bottom: 32px; max-width: 580px; margin-left: auto; margin-right: auto; }
+.cta-band .btn-dark { display: inline-block; background: var(--dark); color: #fff; font-family: var(--font-body); font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 42px; border-radius: var(--radius); border: none; cursor: pointer; transition: background 0.25s; }
+.cta-band .btn-dark:hover { background: #000; }
+
+/* ── DISCLAIMER ── */
+.disclaimer-section { padding: 50px 0; background: var(--neutral); }
+.disclaimer-section p { max-width: 900px; margin: 0 auto; font-size: 12px; color: var(--mid); line-height: 1.7; text-align: center; }
+
+/* ── FOOTER ── */
+.footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 80px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+.footer-brand img { height: 80px; width: auto; filter: brightness(0) invert(1); margin-bottom: 20px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 280px; }
+.footer-brand-socials { display: flex; gap: 12px; margin-top: 20px; }
+.footer-brand-socials a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, background 0.3s; }
+.footer-brand-socials a:hover { border-color: var(--primary); background: rgba(217,185,146,0.1); }
+.footer-brand-socials svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.6); }
+.footer h4 { color: #fff; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+.footer-links a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); padding: 5px 0; transition: color 0.3s; }
+.footer-links a:hover { color: var(--primary); }
+.footer-contact p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+.footer-contact a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+.footer-contact a:hover { color: var(--primary); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .concierge-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .phase-grid { grid-template-columns: 1fr; gap: 48px; }
+  .phase-grid::before { display: none; }
+  .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .stories-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: 1fr; gap: 48px; }
+  .how-steps { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .concierge-hero { padding: 140px 0 70px; }
+  .nav-links { display: none; }
+  .nav-mobile { display: block; }
+  .nav-mobile button { background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-mobile svg { width: 24px; height: 24px; stroke: #fff; }
+  .nav.nav-solid .nav-mobile svg { stroke: var(--dark); }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .how-steps { grid-template-columns: 1fr; gap: 40px; }
+  .story-stats { flex-direction: column; gap: 12px; }
+  .agent-form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="01-home.html" class="nav-logo">
+      <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <a href="10-featured-listings.html">Homes for Sale</a>
+        <div class="nav-dropdown-menu">
+          <a href="10-featured-listings.html">Featured Listings</a>
+          <a href="09-search.html">Search All Homes</a>
+          <a href="11-hmb-homes.html">Half Moon Bay Homes</a>
+        </div>
+      </div>
+      <a href="04-communities.html">Communities</a>
+      <a href="05-buy.html">Buy</a>
+      <a href="06-sell.html">Sell</a>
+      <a href="02-about.html">About</a>
+      <a href="07-services.html" class="active">Services</a>
+      <a href="08-testimonials.html">Testimonials</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <div class="nav-mobile">
+      <button aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="concierge-hero">
+  <div class="container">
+    <div class="concierge-hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Exclusive Seller Program</div>
+        <h1>Compass Concierge <em>in Half Moon Bay</em></h1>
+        <p class="concierge-hero-sub">Get fronted for the cost of home improvement services with zero due until closing.</p>
+        <p class="concierge-hero-body">A hassle-free way to sell your home faster and for a higher price. Compass Concierge covers staging, flooring, painting, landscaping, and more. Stephanie coordinates everything. You pay nothing until your home sells. <a href="https://www.compass.com/concierge/stephanie-sills/" target="_blank" rel="noopener">View the official program page</a>.</p>
+      </div>
+      <div class="agent-card reveal">
+        <div class="agent-card-header">
+          <img src="images/stephanie_headshot_full_length.jpg" alt="Stephanie Sills, Compass Concierge Half Moon Bay" class="agent-card-photo">
+          <div>
+            <div class="agent-card-name">Stephanie Sills</div>
+            <div class="agent-card-creds">MBA, MIM, REALTOR&reg;</div>
+            <div class="agent-card-contact"><a href="tel:6506785707">(650) 678-5707</a></div>
+          </div>
+        </div>
+        <p class="agent-card-intro">Learn how Stephanie can help sell your Coastside home faster and for a higher price with Compass Concierge.</p>
+        <!-- BUILDER: Connect this form to email stephanie.sills@compass.com via Gravity Forms (do NOT use GHL CRM). -->
+        <form class="agent-form">
+          <div class="agent-form-field">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="agent-form-row">
+            <div class="agent-form-field">
+              <label>Zip</label>
+              <input type="text" placeholder="94019">
+            </div>
+            <div class="agent-form-field">
+              <label>Phone</label>
+              <input type="tel" placeholder="(650) 000-0000">
+            </div>
+          </div>
+          <div class="agent-form-field">
+            <label>Email</label>
+            <input type="email" placeholder="you@email.com">
+          </div>
+          <button type="submit" class="btn-primary">Work With Stephanie</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3-PHASE ── -->
+<section class="phases">
+  <div class="container">
+    <div class="phases-header reveal">
+      <div class="eyebrow">Sell Smarter</div>
+      <h2>The 3-Phase Marketing Strategy</h2>
+      <p>Stephanie uses a three-phase strategy to build demand before the public sees your home. Validate pricing, generate early interest, and launch with momentum.</p>
+    </div>
+    <div class="phase-grid">
+      <div class="phase-card reveal">
+        <div class="phase-num">01</div>
+        <h3>Private Exclusive</h3>
+        <p>Your home launches to 340,000 Compass agents before the public. Generate early buyer demand and gain pricing insights without accruing days on market.</p>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-num">02</div>
+        <h3>Coming Soon</h3>
+        <p>As improvements near completion, your listing expands to Compass.com and Redfin, reaching 60 million potential buyers while protecting home value.</p>
+      </div>
+      <div class="phase-card reveal">
+        <div class="phase-num">03</div>
+        <h3>Full Market Launch</h3>
+        <p>Once Concierge work wraps, your home hits the MLS with refined pricing and demonstrated demand. Homes marketed this way close 2.9% higher and 20% faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KEY BENEFITS ── -->
+<section class="benefits">
+  <div class="container">
+    <div class="benefits-header reveal">
+      <div class="eyebrow">Why Sellers Choose Concierge</div>
+      <h2>Smart. Fast. Transparent. Easy.</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h4>Smart</h4>
+        <p>Stephanie analyzes which improvements deliver the highest return for your specific property and Coastside neighborhood.</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h4>Fast</h4>
+        <p>The process is built for speed. Work starts quickly so your home gets to market without delay.</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h4>Transparent</h4>
+        <p>Zero due until closing. No hidden fees. Repayment terms are clear from day one.</p>
+      </div>
+      <div class="benefit reveal">
+        <div class="benefit-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2h7"/><polyline points="16 3 21 3 21 8"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <h4>Easy</h4>
+        <p>Stephanie manages the coordination. You pick the improvements, she handles the vendors, timelines, and oversight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUCCESS STORIES ── -->
+<section class="stories">
+  <div class="container">
+    <div class="stories-header reveal">
+      <div class="eyebrow">Concierge Results</div>
+      <h2>Real Sellers. Real Outcomes.</h2>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card reveal">
+        <div class="story-ba">
+          <div class="story-ba-half" data-label="Before" style="background-image:url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&h=600&fit=crop');"></div>
+          <div class="story-ba-half" data-label="After" style="background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&h=600&fit=crop');"></div>
+        </div>
+        <div class="story-body">
+          <div class="story-stats">
+            <div><div class="story-stat-num">12</div><div class="story-stat-label">Days on Market</div></div>
+            <div><div class="story-stat-num">47%</div><div class="story-stat-label">Over Asking</div></div>
+          </div>
+          <p class="story-quote">"The most daunting part of selling was getting the home to market on a limited income. Concierge was absolutely remarkable."</p>
+          <div class="story-author">Julia, Oakland</div>
+          <div class="story-disclaimer">Individual results may vary. Compass Concierge client story.</div>
+        </div>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-ba">
+          <div class="story-ba-half" data-label="Before" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop');"></div>
+          <div class="story-ba-half" data-label="After" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop');"></div>
+        </div>
+        <div class="story-body">
+          <div class="story-stats">
+            <div><div class="story-stat-num">$200K</div><div class="story-stat-label">Over List Price</div></div>
+            <div><div class="story-stat-num">4</div><div class="story-stat-label">Days on Market</div></div>
+          </div>
+          <p class="story-quote">"Compass Concierge was a true gift. The finances to get my home of 18 years ready to sell, with no upfront cost. Call it the Concierge stress relief program."</p>
+          <div class="story-author">Jo Ann, San Francisco Bay Area</div>
+          <div class="story-disclaimer">Individual results may vary. Compass Concierge client story.</div>
+        </div>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-ba">
+          <div class="story-ba-half" data-label="Before" style="background-image:url('https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop');"></div>
+          <div class="story-ba-half" data-label="After" style="background-image:url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&h=600&fit=crop');"></div>
+        </div>
+        <div class="story-body">
+          <div class="story-stats">
+            <div><div class="story-stat-num">20%</div><div class="story-stat-label">Value Increase</div></div>
+            <div><div class="story-stat-num">$2.2M</div><div class="story-stat-label">Final Sale</div></div>
+          </div>
+          <p class="story-quote">"Concierge paid for staging, interior and exterior painting, and a big landscaping project. It made the house look so beautiful, fresh and clean."</p>
+          <div class="story-author">Christina, San Francisco Bay Area</div>
+          <div class="story-disclaimer">Individual results may vary. Compass Concierge client story.</div>
+        </div>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-ba">
+          <div class="story-ba-half" data-label="Before" style="background-image:url('https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=800&h=600&fit=crop');"></div>
+          <div class="story-ba-half" data-label="After" style="background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop');"></div>
+        </div>
+        <div class="story-body">
+          <div class="story-stats">
+            <div><div class="story-stat-num">$250K</div><div class="story-stat-label">Over List Price</div></div>
+            <div><div class="story-stat-num">12</div><div class="story-stat-label">Days on Market</div></div>
+          </div>
+          <p class="story-quote">"Concierge let us address every final touch. The house sold quickly and above our target price. I'm sure we made more because of it."</p>
+          <div class="story-author">Sarah, Oakland</div>
+          <div class="story-disclaimer">Individual results may vary. Compass Concierge client story.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE/AFTER PLACEHOLDER ── -->
+<section class="ba-placeholder">
+  <div class="container">
+    <div class="ba-placeholder-box reveal">
+      <!-- BUILDER: Insert Stephanie's before/after photos here (she is providing soon). Use side-by-side images or a slider. -->
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <h3>Coastside Before &amp; After</h3>
+      <p>See how Concierge has transformed homes in Half Moon Bay, Moss Beach, Montara, and El Granada. Photos from Stephanie's clients coming soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── COVERED SERVICES ── -->
+<section class="services-covered">
+  <div class="container">
+    <div class="services-covered-header reveal">
+      <div class="eyebrow">Over 100 Services Covered</div>
+      <h2>What Concierge Pays For</h2>
+      <p style="color:var(--mid); margin-top:18px; font-size:17px; line-height:1.7;">From cosmetic updates to structural repairs, Concierge covers a wide range of pre-sale improvements. Stephanie helps identify the ones that matter most for your Coastside home.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Interior and exterior painting</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Flooring and hardwood refinishing</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional staging</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Deep cleaning and decluttering</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kitchen improvements</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Bathroom improvements</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Landscaping and fencing</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>HVAC, roofing, electrical</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pool and tennis court services</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Pest control</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Moving, storage, custom closets</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Seller-side inspections</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cosmetic renovations</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Water heating and plumbing</div>
+      <div class="service-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sewer lateral inspections</div>
+    </div>
+    <p class="services-more">And more than 100 additional home improvement services.</p>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-big reveal">
+        <div class="stat-big-num">147%</div>
+        <div class="stat-big-label">Cost recovery from refinishing hardwood floors</div>
+        <div class="stat-big-source">National Association of Realtors, 2022</div>
+      </div>
+      <div class="stat-big reveal">
+        <div class="stat-big-num">$400</div>
+        <div class="stat-big-label">Potential return for every $100 invested in staging</div>
+        <div class="stat-big-source">National Association of Realtors, 2019</div>
+      </div>
+      <div class="stat-big reveal">
+        <div class="stat-big-num">48%</div>
+        <div class="stat-big-label">Of sellers' agents say staging decreases time on market</div>
+        <div class="stat-big-source">National Association of Realtors, 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how">
+  <div class="container">
+    <div class="how-header reveal">
+      <div class="eyebrow">The Process</div>
+      <h2>How Compass Concierge Works</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">01</div>
+        <h4>Identify Improvements</h4>
+        <p>Walk through your Coastside home with Stephanie. She identifies which updates will generate the strongest return based on your neighborhood and buyer expectations.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">02</div>
+        <h4>Engage Contractors</h4>
+        <p>When you are ready to start, Stephanie coordinates with trusted Coastside vendors. Work begins fast. No upfront payment required.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">03</div>
+        <h4>Go to Market</h4>
+        <p>Once the transformation is complete, your home lists with the 3-phase marketing strategy to maximize exposure and demand.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">04</div>
+        <h4>Repay at Closing</h4>
+        <p>Pay for services when your home sells, you terminate your listing, or 12 months pass from your Concierge start date, whichever comes first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="eyebrow">Common Questions</div>
+      <h2>Concierge Questions, Answered</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>Are there services Concierge does not cover?</h4>
+          <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Concierge works with a wide range of vendors for your convenience and covers over 100 improvement types. Stephanie helps determine which services qualify for your Coastside property during your consultation.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>When do I pay for Concierge services?</h4>
+          <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Zero due until closing. Repayment is triggered when your home sells, you terminate your listing agreement with Compass, or 12 months pass from your Concierge start date, whichever comes first. Depending on your state of residence, fees or interest may apply.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>Who coordinates the vendors?</h4>
+          <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Stephanie handles the coordination using her trusted Coastside vendor network. You approve the work and budget. She manages the timeline, the contractors, and quality control so you focus on your move.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <h4>How do I participate in the program?</h4>
+          <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><p>Contact Stephanie for a walkthrough of your property. She will assess which improvements make sense for your home and outline the Concierge process from start to finish. Call (650) 678-5707 or use the form above.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Ready to Prepare Your Coastside Home?</h2>
+    <p>Contact Stephanie to walk through your property and see which Concierge improvements will deliver the strongest return on your sale.</p>
+    <a href="#contact" class="btn-dark">Talk to Stephanie</a>
+  </div>
+</section>
+
+<!-- ── DISCLAIMER ── -->
+<section class="disclaimer-section">
+  <div class="container">
+    <p>Compass Concierge loans are provided by Notable Finance, LLC, NMLS# 1824748, and are made or arranged pursuant to a California Finance Lenders Law license. Compass is not a lender. Loan eligibility is not guaranteed. All loans are subject to credit approval and underwriting by Notable. Subject to the terms of your Compass Concierge Loan Agreement. Funds are repaid once your home sells, your listing agreement terminates, or 12 months pass from your Concierge start date, whichever comes first. Depending on your state of residence, fees or interest may apply. Individual results may vary. The success story examples shown above are from Compass Concierge clients nationwide and are not intended to guarantee similar results. See compass.com/concierge for complete program terms.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/agent_lockupblack_stephaniesills.png" alt="Palermo Properties Team - Stephanie Sills">
+        <p>Half Moon Bay real estate agent. Palermo Properties Team at Compass.</p>
+        <div class="footer-brand-socials">
+          <a href="https://www.instagram.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/stephaniesillsrealty/" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/stephaniesills/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@StephanieSills" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="02-about.html">About Us</a>
+          <a href="03-team.html">Meet the Team</a>
+          <a href="04-communities.html">Communities</a>
+          <a href="05-buy.html">Buy</a>
+          <a href="06-sell.html">Sell</a>
+          <a href="07-services.html">Services</a>
+          <a href="12-concierge.html">Compass Concierge</a>
+          <a href="08-testimonials.html">Testimonials</a>
+        </div>
+      </div>
+      <div>
+        <h4>Communities</h4>
+        <div class="footer-links">
+          <a href="04-communities.html#half-moon-bay">Half Moon Bay</a>
+          <a href="04-communities.html#el-granada">El Granada</a>
+          <a href="04-communities.html#montara">Montara</a>
+          <a href="04-communities.html#moss-beach">Moss Beach</a>
+          <a href="04-communities.html#pacifica">Pacifica</a>
+          <a href="04-communities.html#san-mateo">San Mateo</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><strong style="color:#fff;">Stephanie Sills</strong></p>
+        <p>MBA, MIM, REALTOR&reg; | DRE 02060529</p>
+        <p style="margin-top:12px;"><a href="tel:6506785707">(650) 678-5707</a></p>
+        <p><a href="mailto:stephanie.sills@compass.com">stephanie.sills@compass.com</a></p>
+        <p style="margin-top:14px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Coastside Office</p>
+        <p>42 Cabrillo Highway North<br>Half Moon Bay, CA 94019</p>
+        <p style="margin-top:10px; color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Peninsula Office</p>
+        <p>1440 Chapin St, Suite 200<br>Burlingame, CA 94010</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Stephanie Sills | Palermo Properties Team at Compass. All rights reserved. DRE 02060529</p>
+      <p>Equal Housing Opportunity</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── JS ── -->
+<script>
+(function() {
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav-solid', window.scrollY > 80);
+    });
+  }
+})();
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  });
+})();
+(function() {
+  document.addEventListener('click', (e) => {
+    const q = e.target.closest('.faq-q');
+    if (q) {
+      const item = q.closest('.faq-item');
+      item.classList.toggle('active');
+    }
+  });
+})();
+</script>
+</body>
+</html>
