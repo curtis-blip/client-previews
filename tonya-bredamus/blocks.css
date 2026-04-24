@@ -3727,42 +3727,47 @@ body.modal-open { overflow: hidden; }
    HOME VALUATION PAGE — RESTRUCTURED (hero + intro + widget at top, form below Zestimate)
    ============================================================ */
 
-/* Instant Estimate widget section */
+/* Instant Estimate widget section — left-aligned editorial split, matches intro-split rhythm */
 .valuation-widget-section {
   padding: var(--s-20) var(--s-10);
-  background: var(--cream);
+  background: var(--cream-alt);
 }
 .valuation-widget-section__inner {
   max-width: var(--container);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--s-14);
+  align-items: start;
 }
-.valuation-widget-section__header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto var(--s-10);
-}
+.valuation-widget-section__header { text-align: left; }
 .valuation-widget-section__header .eyebrow { margin-bottom: var(--s-3); }
-.valuation-widget-section__header h2 { margin-bottom: var(--s-4); }
+.valuation-widget-section__header h2 { margin-bottom: var(--s-5); }
 .valuation-widget-section__sub {
   color: var(--ink-muted);
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.8;
   font-weight: 300;
+  margin: 0;
+}
+.valuation-widget-section .shortcode-zone--idx { max-width: none; margin: 0; }
+@media (max-width: 1000px) {
+  .valuation-widget-section__inner { grid-template-columns: 1fr; gap: var(--s-8); }
 }
 
-/* Personal Valuation Form section (moved from hero) */
+/* Personal Valuation Form section — single-column centered, intro stacked above form */
 .valuation-form-section {
   padding: var(--s-24) var(--s-10);
   background: var(--cream);
   scroll-margin-top: 100px;
 }
 .valuation-form-section__inner {
-  max-width: var(--container);
+  max-width: 760px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: var(--s-14);
-  align-items: start;
+}
+.valuation-form-section__intro {
+  text-align: center;
+  margin-bottom: var(--s-10);
 }
 .valuation-form-section__intro .eyebrow { margin-bottom: var(--s-3); }
 .valuation-form-section__intro h2 { margin-bottom: var(--s-5); }
@@ -3771,25 +3776,56 @@ body.modal-open { overflow: hidden; }
   font-size: 15px;
   line-height: 1.8;
   font-weight: 300;
-  margin-bottom: var(--s-8);
-}
-.valuation-form-section__intro .hero-form-split__trust {
-  border-top: 1px solid var(--rule);
-  padding-top: var(--s-6);
-  border-color: var(--rule);
-}
-.valuation-form-section__intro .trust-stat__num {
-  color: var(--amber);
-}
-.valuation-form-section__intro .trust-stat__label {
-  color: var(--ink-dim);
+  margin: 0 auto;
+  max-width: 620px;
 }
 .valuation-form-section__form {
   background: var(--white);
   padding: var(--s-10) var(--s-8);
   border: 1px solid var(--rule);
 }
-.valuation-form-section__form .valuation-form { max-width: none; }
-@media (max-width: 1000px) {
-  .valuation-form-section__inner { grid-template-columns: 1fr; gap: var(--s-10); }
+.valuation-form-section__form .valuation-form__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+@media (max-width: 560px) {
+  .valuation-form-section__form .valuation-form__fields { grid-template-columns: 1fr; }
+}
+
+/* Tight trust-stat row at bottom of form */
+.valuation-form-section__trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-6);
+  margin-top: var(--s-8);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--rule);
+}
+.trust-stat-light { text-align: center; }
+.trust-stat-light__num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+.trust-stat-light__label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-weight: 500;
+}
+.trust-stat-light__divider {
+  width: 1px;
+  height: 32px;
+  background: var(--rule);
+}
+@media (max-width: 560px) {
+  .valuation-form-section__trust { flex-direction: column; gap: var(--s-4); }
+  .trust-stat-light__divider { width: 32px; height: 1px; }
 }
