@@ -4192,13 +4192,13 @@ body.modal-open { overflow: hidden; }
 }
 .pdf-download-band .btn-outline svg { width: 12px; height: 14px; }
 
-/* Triad CTA blocks (3 image cards side by side) */
+/* Triad CTA blocks (3 image cards side by side, flush to footer) */
 .triad-cta {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: rgba(247,212,234,0.14);
-  margin-bottom: var(--s-10);
+  margin-bottom: 0;
 }
 .triad-cta__block {
   position: relative;
@@ -4271,4 +4271,114 @@ body.modal-open { overflow: hidden; }
 .triad-cta__block:hover .triad-cta__cue { color: var(--amber-light); border-color: var(--amber-light); }
 @media (max-width: 900px) {
   .triad-cta { grid-template-columns: 1fr; }
+}
+
+/* Explore More — 2-tile row (mortgage + communities) shown after testimonials, before triad */
+.explore-more {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(247,212,234,0.14);
+  margin: 0 0 1px;
+}
+.explore-more__tile {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: var(--ink-inverse);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--charcoal);
+  min-height: 380px;
+  overflow: hidden;
+  transition: transform var(--dur-med) var(--ease);
+}
+.explore-more__tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,12,0.25) 0%, rgba(10,10,12,0.45) 50%, rgba(10,10,12,0.85) 100%);
+  transition: background var(--dur-med);
+}
+.explore-more__tile:hover::after { background: linear-gradient(180deg, rgba(10,10,12,0.15) 0%, rgba(10,10,12,0.32) 50%, rgba(10,10,12,0.9) 100%); }
+.explore-more__overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: var(--s-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.explore-more__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber-light);
+  font-weight: 500;
+  margin-bottom: var(--s-3);
+}
+.explore-more__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.15;
+  margin: 0 0 var(--s-3);
+  color: var(--ink-inverse);
+  letter-spacing: -0.005em;
+}
+.explore-more__title em { font-style: italic; color: var(--amber-light); }
+.explore-more__desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(247,235,229,0.78);
+  font-weight: 300;
+  margin: 0 0 var(--s-5);
+  max-width: 460px;
+}
+.explore-more__cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-inverse);
+  font-weight: 500;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(247,235,229,0.3);
+  align-self: flex-start;
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.explore-more__cue svg { width: 12px; height: 8px; }
+.explore-more__tile:hover .explore-more__cue { color: var(--amber-light); border-color: var(--amber-light); }
+@media (max-width: 900px) {
+  .explore-more { grid-template-columns: 1fr; }
+}
+
+/* Placeholder testimonial card — visually distinct so it can't be missed */
+.clientele-quote--placeholder {
+  background: rgba(168,149,110,0.08);
+  border: 1.5px dashed rgba(168,149,110,0.45);
+  padding: var(--s-6) var(--s-5);
+}
+.clientele-quote--placeholder p {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+.clientele-quote__placeholder-label {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: var(--s-3);
+}
+.clientele-quote--placeholder .clientele-quote__attribution {
+  color: var(--ink-dim);
+  font-style: italic;
 }
