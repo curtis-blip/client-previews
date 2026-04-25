@@ -425,142 +425,439 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
 
 .communities__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin-top: 48px;
 }
 
 .community-card {
-  background: var(--color-white);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
-}
-
-.community-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.community-card__image {
   position: relative;
+  aspect-ratio: 1 / 1;
   width: 100%;
-  height: 240px;
   overflow: hidden;
   background: var(--color-dark-alt);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  display: block;
 }
 
-.community-card__image img {
+.community-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
 }
 
-.community-card:hover .community-card__image img {
+.community-card:hover img,
+.community-card:focus-visible img {
   transform: scale(1.06);
 }
 
-.community-card__image::after {
+.community-card::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60%;
-  background: linear-gradient(to top, rgba(15,25,35,0.5), transparent);
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(15,25,35,0.92) 0%,
+    rgba(15,25,35,0.55) 38%,
+    rgba(15,25,35,0.05) 70%,
+    transparent 100%);
+  transition: background var(--transition-base);
   pointer-events: none;
 }
 
-.community-card__badge {
+.community-card:hover::after,
+.community-card:focus-visible::after {
+  background: linear-gradient(to top,
+    rgba(15,25,35,0.96) 0%,
+    rgba(15,25,35,0.72) 45%,
+    rgba(15,25,35,0.22) 75%,
+    rgba(15,25,35,0.05) 100%);
+}
+
+.community-card__content {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  inset: 0;
   z-index: 2;
-  background: var(--color-primary);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   color: var(--color-white);
+}
+
+.community-card__location {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
+  color: var(--color-primary-light);
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
-.community-card__body {
-  padding: 28px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.community-card__name {
+  font-family: var(--font-heading);
+  font-size: clamp(19px, 1.5vw, 24px);
+  line-height: 1.15;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 14px;
 }
 
-.community-card__body h3 {
-  margin-bottom: 12px;
-  color: var(--color-text-dark);
-}
-
-.community-card__body p {
-  color: var(--color-text-muted);
-  font-size: 15px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  flex: 1;
-}
-
-.community-card__highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 24px;
-  padding-top: 20px;
-  border-top: 1px solid var(--color-border-light);
-}
-
-.community-card__highlight {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-dark);
-}
-
-.community-card__highlight svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--color-primary);
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-.community-card__link {
+.community-card__cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  align-self: flex-start;
+  padding: 9px 16px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
-  color: var(--color-primary);
-  transition: gap var(--transition-base);
+  color: var(--color-white);
+  letter-spacing: 0.5px;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(4px);
 }
 
-.community-card__link:hover {
-  gap: 12px;
+.community-card:hover .community-card__cta,
+.community-card:focus-visible .community-card__cta {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
-.community-card__link svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--color-primary);
-  fill: none;
+.community-card__cta svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+  fill: none;
+  transition: transform var(--transition-base);
+}
+
+.community-card:hover .community-card__cta svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 1100px) {
+  .communities__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .communities__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .communities__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   COMMUNITY MODAL
+   ======================================== */
+.community-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 16px;
+  background: rgba(15, 25, 35, 0.78);
+  backdrop-filter: blur(6px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.community-modal.open {
+  display: flex;
+  animation: cmFade 0.25s ease forwards;
+}
+
+@keyframes cmFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.community-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  margin: auto;
+}
+
+.community-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(15,25,35,0.6);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-base);
+}
+
+.community-modal__close:hover {
+  background: var(--color-primary);
+}
+
+.community-modal__close svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.community-modal__hero {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--color-dark-alt);
+  overflow: hidden;
+}
+
+.community-modal__hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.community-modal__hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,25,35,0.78), transparent 55%);
+}
+
+.community-modal__hero-text {
+  position: absolute;
+  left: clamp(22px, 4vw, 36px);
+  right: clamp(22px, 4vw, 36px);
+  bottom: 22px;
+  z-index: 2;
+  color: var(--color-white);
+}
+
+.community-modal__hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.community-modal__hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.15;
+  margin: 0;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.community-modal__body {
+  padding: 32px clamp(22px, 4vw, 44px) 40px;
+}
+
+.community-modal__quick-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--color-border-light);
+  margin-bottom: 28px;
+}
+
+.community-modal__fact {
+  padding: 14px 16px;
+  background: var(--color-light);
+  border-radius: var(--radius-sm);
+}
+
+.community-modal__fact-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.community-modal__fact-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  line-height: 1.4;
+}
+
+.community-modal__section {
+  margin-bottom: 28px;
+}
+
+.community-modal__section:last-of-type {
+  margin-bottom: 32px;
+}
+
+.community-modal__eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.community-modal__note {
+  padding: 16px 20px;
+  background: rgba(229,100,64,0.06);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-dark);
+}
+
+.community-modal__about p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--color-text-dark);
+  margin-bottom: 14px;
+}
+
+.community-modal__about p:last-child {
+  margin-bottom: 0;
+}
+
+.community-modal__highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.community-modal__highlight {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.community-modal__highlight svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  margin-top: 2px;
+}
+
+.community-modal__highlight-text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-dark);
+}
+
+.community-modal__highlight-text strong {
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.community-modal__cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.community-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.community-modal__btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.community-modal__btn--primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.community-modal__btn--secondary {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.community-modal__btn--secondary:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.community-modal__btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+@media (max-width: 560px) {
+  .community-modal__cta {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 /* ========================================
@@ -1177,103 +1474,679 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   <div class="container">
     <div class="section-header section-header--center reveal">
       <span class="eyebrow">EXPLORE PHOENIX</span>
-      <h2>Where to Live in the Phoenix Metro</h2>
-      <p class="section-subtitle">From upscale Scottsdale to family-friendly Anthem, the Phoenix metro offers distinct communities for every lifestyle and budget.</p>
+      <h2>Where to Live North of the 101</h2>
+      <p class="section-subtitle">Mark covers North Phoenix, North Scottsdale, the Northwest Valley, and Cave Creek. These ten communities are where Mark spends most of his time, from established master plans to brand-new builder releases.</p>
     </div>
 
     <div class="communities__grid">
-      <!-- Scottsdale -->
-      <div class="community-card reveal reveal-delay-1">
-        <div class="community-card__image">
-          <img src="https://images.unsplash.com/photo-1582407947092-27e79f448a68?auto=format&fit=crop&w=800&q=80" alt="Scottsdale Arizona downtown district with upscale dining and shops">
-          <span class="community-card__badge">Popular</span>
-        </div>
-        <div class="community-card__body">
-          <h3>Scottsdale</h3>
-          <p>Scottsdale delivers a mix of upscale living, arts-driven culture, and outdoor recreation. Residents enjoy walkable dining districts, top-rated golf courses, and quick access to the McDowell Sonoran Preserve. The housing market here ranges from modern condos near Old Town to luxury estates in the foothills.</p>
-          <div class="community-card__highlights">
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Dining &amp; nightlife
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-              Golf &amp; outdoor recreation
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              Luxury and mid-range options
-            </div>
-          </div>
-          <a href="#" class="community-card__link">
-            Explore Scottsdale
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
 
-      <!-- Northwest Valley -->
-      <div class="community-card reveal reveal-delay-2">
-        <div class="community-card__image">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" alt="Master-planned community homes in the Northwest Valley of Phoenix">
-          <span class="community-card__badge">Fast Growing</span>
-        </div>
-        <div class="community-card__body">
-          <h3>Northwest Valley</h3>
-          <p>The Northwest Valley has become one of the fastest-growing corridors in the Phoenix metro. With newer master-planned communities, competitive pricing, and access to Lake Pleasant and White Tank Mountains, families and retirees are drawn to the space, value, and lifestyle this area offers.</p>
-          <div class="community-card__highlights">
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-              Master-planned communities
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-              Lake Pleasant recreation
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              Competitive home prices
-            </div>
-          </div>
-          <a href="#" class="community-card__link">
-            Explore NW Valley
+      <button type="button" class="community-card reveal" data-community="tatum-highlands" aria-label="Open details for Tatum Highlands">
+        <img src="images/communities/01-tatum-highlands.jpg" alt="Tatum Highlands community in North Phoenix surrounded by desert">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">Tatum Highlands</h3>
+          <span class="community-card__cta">
+            Explore
             <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </button>
 
-      <!-- Anthem -->
-      <div class="community-card reveal reveal-delay-3">
-        <div class="community-card__image">
-          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Family neighborhood in Anthem Arizona with well-maintained homes and parks">
-          <span class="community-card__badge">Family Favorite</span>
-        </div>
-        <div class="community-card__body">
-          <h3>Anthem</h3>
-          <p>Anthem combines small-town community feel with proximity to Phoenix and Scottsdale. Known for its award-winning parks, hiking trails, and active HOA-supported events, it attracts families who want a connected neighborhood with excellent schools and well-maintained common areas.</p>
-          <div class="community-card__highlights">
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              Award-winning parks
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Family-oriented community
-            </div>
-            <div class="community-card__highlight">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Easy access to I-17
-            </div>
-          </div>
-          <a href="#" class="community-card__link">
-            Explore Anthem
+      <button type="button" class="community-card reveal" data-community="verdin" aria-label="Open details for Verdin by Taylor Morrison">
+        <img src="images/communities/02-verdin.jpg" alt="Verdin by Taylor Morrison master-planned community in North Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">Verdin by Taylor Morrison</h3>
+          <span class="community-card__cta">
+            Explore
             <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
-      </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="serenity" aria-label="Open details for Serenity at Sonoran Foothills">
+        <img src="images/communities/03-serenity-sonoran-foothills.jpg" alt="Serenity at Sonoran Foothills gated townhome community in North Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">Serenity at Sonoran Foothills</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="talinn" aria-label="Open details for Talinn at Desert Ridge">
+        <img src="images/communities/04-talinn-desert-ridge.jpg" alt="Talinn at Desert Ridge gated community in North Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">Desert Ridge</span>
+          <h3 class="community-card__name">Talinn at Desert Ridge</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="northpark" aria-label="Open details for NorthPark by PulteGroup">
+        <img src="images/communities/05-northpark.jpg" alt="NorthPark master-planned community by PulteGroup in north Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">NorthPark by PulteGroup</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="halo-vista" aria-label="Open details for Halo Vista">
+        <img src="images/communities/06-halo-vista.jpg" alt="Halo Vista mixed-use development around the TSMC campus in north Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">TSMC Corridor</span>
+          <h3 class="community-card__name">Halo Vista</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="storyrock" aria-label="Open details for Toll Brothers at Storyrock">
+        <img src="images/communities/07-storyrock.jpg" alt="Toll Brothers at Storyrock gated luxury community in North Scottsdale">
+        <div class="community-card__content">
+          <span class="community-card__location">North Scottsdale</span>
+          <h3 class="community-card__name">Toll Brothers at Storyrock</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="desert-ridge" aria-label="Open details for Desert Ridge">
+        <img src="images/communities/08-desert-ridge.jpg" alt="Desert Ridge master-planned community in North Phoenix">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">Desert Ridge</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="lone-mountain" aria-label="Open details for Lone Mountain Estates">
+        <img src="images/communities/09-lone-mountain-estates.jpg" alt="Lone Mountain Estates gated community in Cave Creek Arizona">
+        <div class="community-card__content">
+          <span class="community-card__location">Cave Creek</span>
+          <h3 class="community-card__name">Lone Mountain Estates</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
+      <button type="button" class="community-card reveal" data-community="sky-crossing" aria-label="Open details for Sky Crossing">
+        <img src="images/communities/10-sky-crossing.jpg" alt="Sky Crossing community in North Phoenix by Taylor Morrison and Pulte">
+        <div class="community-card__content">
+          <span class="community-card__location">North Phoenix</span>
+          <h3 class="community-card__name">Sky Crossing</h3>
+          <span class="community-card__cta">
+            Explore
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </button>
+
     </div>
   </div>
 </section>
+
+<!-- ========================================
+     COMMUNITY MODALS
+     ======================================== -->
+
+<div class="community-modal" id="community-modal-tatum-highlands" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-tatum-highlands-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/01-tatum-highlands.jpg" alt="Tatum Highlands community in North Phoenix">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-tatum-highlands-name">Tatum Highlands</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Desert on three sides</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Seven original builders</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Centerpiece</span><span class="community-modal__fact-value">Teets Park</span></div>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">From Mark</span>
+        <p class="community-modal__note">I've been a Tatum Highlands homeowner since 1998 and I'm proud to be one of the original founding families. I've loved living here ever since.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Tatum Highlands sits in North Phoenix, surrounded by natural desert on three sides, with stunning scenery and easy access to hiking and mountain biking right out the door.</p>
+        <p>The community centerpiece is Teets Park, a five-acre grassy hub with a tot lot, lighted basketball and volleyball courts, and fitness stations. Developed by seven original builders (TW Lewis, US Home, Richmond American, KB Homes, Presley, Graystone, and Coventry by Del Webb), Tatum Highlands offers a wide mix of home styles and price points.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Outdoor access:</strong> Hiking and mountain biking on three sides</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="community-modal__highlight-text"><strong>Builder mix:</strong> Seven original builders with a broad range of home styles</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+            <span class="community-modal__highlight-text"><strong>Teets Park:</strong> Lighted courts, fitness stations, five-acre lawn</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Connectivity:</strong> Quick reach to North Phoenix amenities and SR-51</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Tatum Highlands<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Tatum Highlands</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-verdin" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-verdin-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/02-verdin.jpg" alt="Verdin by Taylor Morrison in North Phoenix">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-verdin-name">Verdin by Taylor Morrison</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">Taylor Morrison</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">470+ acres</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">2,000 to 4,800 sq ft</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Pricing</span><span class="community-modal__fact-value">Mid $600K to $1.5M+</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Verdin is a brand-new master-planned community by Taylor Morrison along Sonoran Desert Drive, with direct access to Apache Wash Trailhead and the Sonoran Preserve. Spanning 470+ acres, it pairs modern living with natural desert surroundings.</p>
+        <p>Five home collections (Discovery, Passage, Odyssey, Summit, and Capstone) range from 2,000 to 4,800 sq ft, with options like RV garages and NextGen-style casitas. Over 100 acres are preserved as open space. Model homes debut Summer 2025, with move-ins expected by late 2026.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M2 22V8l10-6 10 6v14h-7v-7h-6v7H2z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Resort amenities:</strong> Pools, fitness, pickleball, and scenic trails</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Five collections:</strong> Discovery, Passage, Odyssey, Summit, and Capstone</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="community-modal__highlight-text"><strong>Trail access:</strong> Apache Wash Trailhead and the Sonoran Preserve</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="community-modal__highlight-text"><strong>Flexible plans:</strong> RV garages and NextGen casitas available</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Verdin<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Verdin</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-serenity" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-serenity-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/03-serenity-sonoran-foothills.jpg" alt="Serenity at Sonoran Foothills townhomes">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-serenity-name">Serenity at Sonoran Foothills</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">K. Hovnanian Great Western</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Style</span><span class="community-modal__fact-value">Gated townhomes</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Layout</span><span class="community-modal__fact-value">Up to 2,637 sq ft, 4 bed / 3.5 bath</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Serenity at Sonoran Foothills is a gated, new-construction townhome community in Phoenix. K. Hovnanian offers four floor plans up to 2,637 sq ft, with 4 beds, 3.5 baths, and 2-car garages.</p>
+        <p>Buyers can simplify their interior selections through K. Hovnanian's Looks program, choosing curated palettes like Loft, Farmhouse, or Classic. On-site amenities include a pool, playground, shaded gathering area, and pool restrooms, with quick highway access via I-17, Loop 101, Loop 303, and SR-51.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span class="community-modal__highlight-text"><strong>Gated entry:</strong> Private, low-maintenance setting</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span class="community-modal__highlight-text"><strong>Designer presets:</strong> Three curated interior palettes</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+            <span class="community-modal__highlight-text"><strong>Pool and playground:</strong> On-site amenities for residents</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="community-modal__highlight-text"><strong>Commute friendly:</strong> I-17, Loop 101, Loop 303, and SR-51</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Serenity<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Serenity</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-talinn" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-talinn-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/04-talinn-desert-ridge.jpg" alt="Talinn at Desert Ridge gated community">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">Desert Ridge</span>
+        <h3 class="community-modal__hero-name" id="cm-talinn-name">Talinn at Desert Ridge</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">D.R. Horton, Pulte, Shea, Blandford</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">1,611 to 3,744 sq ft</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Pricing</span><span class="community-modal__fact-value">Townhomes from $606K, single-family $900K+</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Schools</span><span class="community-modal__fact-value">Paradise Valley USD</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Talinn is a master-planned, gated community in North Phoenix's Desert Ridge area, with both single-family homes and townhomes from top builders like D.R. Horton, Pulte, Shea, and Blandford.</p>
+        <p>Homes range from 1,611 to 3,744 sq ft with smart-home features, 9 to 10 ft ceilings, and upscale finishes including granite or quartz countertops and gourmet kitchens. The community sits minutes from Desert Ridge Marketplace, Mayo Clinic, Loop 101, and SR-51.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M2 22V8l10-6 10 6v14h-7v-7h-6v7H2z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Resort amenities:</strong> Heated pool, clubhouse, fitness, yoga lawn, pocket parks</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Multiple builders:</strong> D.R. Horton, Pulte, Shea, and Blandford on offer</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span class="community-modal__highlight-text"><strong>School district:</strong> Paradise Valley USD (Pinnacle High, Explorer Middle)</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="community-modal__highlight-text"><strong>Connectivity:</strong> Loop 101 and SR-51 just minutes away</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Talinn<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Talinn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-northpark" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-northpark-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/05-northpark.jpg" alt="NorthPark master-planned community by PulteGroup">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-northpark-name">NorthPark by PulteGroup</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Developer</span><span class="community-modal__fact-value">PulteGroup</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">6,355 acres</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Planned homes</span><span class="community-modal__fact-value">~20,000</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Anchor</span><span class="community-modal__fact-value">Near TSMC campus</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>NorthPark is a proposed PulteGroup master-planned community covering 6,355 acres in north Phoenix. The plan calls for close to 20,000 homes alongside commercial and recreational space, creating a true live, work, play environment near the Taiwan Semiconductor Manufacturing Company facility.</p>
+        <p>As one of the largest community announcements in north Phoenix, NorthPark is positioned to reshape the corridor over the coming decade.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></svg>
+            <span class="community-modal__highlight-text"><strong>Scale:</strong> 6,355 acres and roughly 20,000 planned homes</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Live, work, play:</strong> Residential, commercial, and recreational mix</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="2" x2="12" y2="22"/><path d="M2 12h20"/></svg>
+            <span class="community-modal__highlight-text"><strong>Location anchor:</strong> Adjacent to the new TSMC campus</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="community-modal__highlight-text"><strong>Developer:</strong> PulteGroup, a national master-planned leader</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in NorthPark<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About NorthPark</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-halo-vista" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-halo-vista-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/06-halo-vista.jpg" alt="Halo Vista mixed-use development">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">TSMC Corridor</span>
+        <h3 class="community-modal__hero-name" id="cm-halo-vista-name">Halo Vista</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Investment</span><span class="community-modal__fact-value">$7B mixed-use plan</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Anchor</span><span class="community-modal__fact-value">TSMC campus</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Mix</span><span class="community-modal__fact-value">Residential, retail, office, industrial</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Timeline</span><span class="community-modal__fact-value">Vertical builds early 2026</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Halo Vista is a planned $7 billion mixed-use development centered around the TSMC campus in north Phoenix. Designed as a self-sustaining city within a city, the project will combine residential neighborhoods with retail, office, and industrial space.</p>
+        <p>The vision is to attract talent and create jobs near the chip manufacturing complex. Infrastructure work is set to begin in summer 2025, with vertical construction starting in early 2026.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span class="community-modal__highlight-text"><strong>Scale:</strong> $7 billion in planned investment</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Mixed use:</strong> Homes, retail, office, and industrial in one footprint</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+            <span class="community-modal__highlight-text"><strong>TSMC anchor:</strong> Built around the new chip campus</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+            <span class="community-modal__highlight-text"><strong>Timeline:</strong> Infrastructure 2025, vertical builds 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Halo Vista<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Halo Vista</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-storyrock" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-storyrock-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/07-storyrock.jpg" alt="Toll Brothers at Storyrock luxury community in Scottsdale">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Scottsdale</span>
+        <h3 class="community-modal__hero-name" id="cm-storyrock-name">Toll Brothers at Storyrock</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">Toll Brothers</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Gated, McDowell Sonoran Preserve</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Canyon Collection</span><span class="community-modal__fact-value">3,665 to 4,108 sq ft, from $1.95M</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Overlook Collection</span><span class="community-modal__fact-value">4,121 to 5,035+ sq ft, from $2.37M</span></div>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">From Mark</span>
+        <p class="community-modal__note">I've watched North Scottsdale grow for three decades. Storyrock is one of the most exciting new luxury enclaves out here.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Toll Brothers at Storyrock is a newly opened, gated luxury community within the larger Storyrock master plan in Scottsdale. Located off E Black Rock Road, it backs up to the McDowell Sonoran Preserve with sweeping desert and mountain views.</p>
+        <p>The Canyon Collection offers single-level homes from 3,665 to 4,108 sq ft (3 to 4 bedrooms, 3-car garages) starting around $1.95M. The Overlook Collection ranges 4,121 to 5,035+ sq ft (3 to 7 bedrooms, garages for up to eight cars) starting around $2.37M.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 21l5-9 4 5 3-3 6 7H3z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Preserve frontage:</strong> McDowell Sonoran Preserve out the back door</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Two collections:</strong> Canyon (single-level) and Overlook (estate-scale)</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M2 12h6l2 -4l4 8l2 -4h6"/></svg>
+            <span class="community-modal__highlight-text"><strong>Design Studio:</strong> Toll Brothers customization options</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Resort access:</strong> Mountain House Lodge at Sereno Canyon</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes at Storyrock<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Storyrock</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-desert-ridge" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-desert-ridge-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/08-desert-ridge.jpg" alt="Desert Ridge master-planned community">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-desert-ridge-name">Desert Ridge</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">5,700 acres</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Toll Brothers, D.R. Horton, Del Webb, Pulte, and more</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Mix</span><span class="community-modal__fact-value">Luxury, townhomes, condos, retail</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Hub</span><span class="community-modal__fact-value">Desert Ridge Marketplace</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Desert Ridge is one of North Phoenix's premier master-planned communities, spanning 5,700 acres with a full mix of residential and commercial. Its convenient position near Loop 101 and SR-51, paired with upscale amenities, has made it one of the most established corridors in the metro.</p>
+        <p>Sub-communities include Aviano (Toll Brothers luxury), Fireside (D.R. Horton), Talinn (gated townhome and single-family), and Toscana (upscale condominiums). The area is anchored by Desert Ridge Marketplace and the Mayo Clinic Phoenix campus nearby.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Established master plan:</strong> 5,700 acres with decades of build-out</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="community-modal__highlight-text"><strong>Sub-community variety:</strong> Aviano, Fireside, Talinn, and Toscana</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Marketplace anchor:</strong> Dining, retail, and entertainment at the core</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span class="community-modal__highlight-text"><strong>Healthcare access:</strong> Mayo Clinic Phoenix nearby</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Desert Ridge<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Desert Ridge</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-lone-mountain" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-lone-mountain-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/09-lone-mountain-estates.jpg" alt="Lone Mountain Estates gated community in Cave Creek">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">Cave Creek</span>
+        <h3 class="community-modal__hero-name" id="cm-lone-mountain-name">Lone Mountain Estates</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Gated, Cave Creek</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">~600 acres (300 open space)</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">2,166 to 4,000+ sq ft</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Richmond American, Lennar</span></div>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">From Mark</span>
+        <p class="community-modal__note">Cave Creek has been my backyard for almost 30 years. Lone Mountain Estates is the kind of view-lot living that keeps people here.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Lone Mountain Estates is a premier gated community in Cave Creek, near Scottsdale Road and Lone Mountain Road. The master plan spans roughly 600 acres, with about 300 acres dedicated to permanent open space, set against the Sonoran Desert and Black Mountain.</p>
+        <p>Single-family homes from Richmond American and Lennar typically range 2,166 to 4,000+ sq ft, with 3 to 5 beds, great-room layouts, gourmet kitchens, and resort-style backyards. Most lots back up to natural open space.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 21l5-9 4 5 3-3 6 7H3z"/></svg>
+            <span class="community-modal__highlight-text"><strong>Open-space setting:</strong> Half the master plan preserved as desert</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
+            <span class="community-modal__highlight-text"><strong>View lots:</strong> Most homes back to open space and Black Mountain</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <span class="community-modal__highlight-text"><strong>Schools:</strong> Cave Creek Unified School District</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            <span class="community-modal__highlight-text"><strong>Lifestyle:</strong> Hiking, biking, and equestrian trails at the door</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Lone Mountain<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Lone Mountain</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="community-modal" id="community-modal-sky-crossing" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="cm-sky-crossing-name">
+  <div class="community-modal__panel">
+    <button class="community-modal__close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="community-modal__hero">
+      <img src="images/communities/10-sky-crossing.jpg" alt="Sky Crossing community in North Phoenix">
+      <div class="community-modal__hero-text">
+        <span class="community-modal__hero-eyebrow">North Phoenix</span>
+        <h3 class="community-modal__hero-name" id="cm-sky-crossing-name">Sky Crossing</h3>
+      </div>
+    </div>
+    <div class="community-modal__body">
+      <div class="community-modal__quick-facts">
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Taylor Morrison, Pulte</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">1,850 to 4,900 sq ft</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Designs</span><span class="community-modal__fact-value">45 floor plans</span></div>
+        <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Near Mayo Clinic, Sonoran Preserve</span></div>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">Overview</span>
+        <p>Sky Crossing is a thoughtfully designed, deed-restricted community in North Phoenix (ZIP 85050), developed by Taylor Morrison and Pulte Homes. The plan spans nearly 1,200 home sites across 16 neighborhoods, with both gated and non-gated parcels.</p>
+        <p>Buyers choose from 45 single-family designs, ranging from about 1,850 sq ft up to nearly 4,900 sq ft, with up to 6 bedrooms and 5 baths. Architectural styles blend desert modern and Southwestern, with multi-sliding patio doors, gourmet kitchens, and integrated smart home tech.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">What you'll find here</span>
+        <div class="community-modal__highlights">
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            <span class="community-modal__highlight-text"><strong>Two builders:</strong> Taylor Morrison (Discovery, Passage) and Pulte (Life Tested)</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="community-modal__highlight-text"><strong>45 floor plans:</strong> Wide range across 16 neighborhoods</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-14 0"/><path d="M12 5V2"/><path d="M12 22v-3"/></svg>
+            <span class="community-modal__highlight-text"><strong>Smart home tech:</strong> Integrated across Pulte designs</span>
+          </div>
+          <div class="community-modal__highlight">
+            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <span class="community-modal__highlight-text"><strong>Loop 101 access:</strong> Quick to Scottsdale, downtown, and Mayo Clinic</span>
+          </div>
+        </div>
+      </div>
+      <div class="community-modal__cta">
+        <a href="#" class="community-modal__btn community-modal__btn--primary">Search Homes in Sky Crossing<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="community-modal__btn community-modal__btn--secondary">Contact Mark About Sky Crossing</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ========================================
      MARKET SNAPSHOT
@@ -1605,6 +2478,50 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
         window.scrollTo({ top: offsetTop, behavior: 'smooth' });
       }
     });
+  });
+
+  // ---- Community modals ----
+  var communityCards = document.querySelectorAll('.community-card[data-community]');
+  var communityModals = document.querySelectorAll('.community-modal');
+
+  function closeCommunityModals() {
+    communityModals.forEach(function(m) {
+      m.classList.remove('open');
+      m.setAttribute('aria-hidden', 'true');
+    });
+    document.body.classList.remove('modal-open');
+  }
+
+  function openCommunityModal(slug) {
+    var modal = document.getElementById('community-modal-' + slug);
+    if (!modal) return;
+    closeCommunityModals();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    var closeBtn = modal.querySelector('.community-modal__close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  communityCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      openCommunityModal(card.getAttribute('data-community'));
+    });
+  });
+
+  communityModals.forEach(function(m) {
+    m.addEventListener('click', function(e) {
+      if (e.target === m) closeCommunityModals();
+    });
+    var closeBtn = m.querySelector('.community-modal__close');
+    if (closeBtn) closeBtn.addEventListener('click', closeCommunityModals);
+    m.querySelectorAll('a[href="#contact"]').forEach(function(link) {
+      link.addEventListener('click', closeCommunityModals);
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCommunityModals();
   });
 
 })();
