@@ -423,16 +423,20 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   background: var(--color-light);
 }
 
+.communities .container {
+  max-width: 1480px;
+}
+
 .communities__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
-  margin-top: 48px;
+  margin-top: 56px;
 }
 
 .community-card {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   width: 100%;
   overflow: hidden;
   background: var(--color-dark-alt);
@@ -441,7 +445,7 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   margin: 0;
   cursor: pointer;
   font-family: inherit;
-  text-align: left;
+  text-align: center;
   display: block;
 }
 
@@ -483,48 +487,40 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   position: absolute;
   inset: 0;
   z-index: 2;
-  padding: 22px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
+  text-align: center;
   color: var(--color-white);
-}
-
-.community-card__location {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--color-primary-light);
-  margin-bottom: 8px;
-  font-weight: 600;
 }
 
 .community-card__name {
   font-family: var(--font-heading);
-  font-size: clamp(19px, 1.5vw, 24px);
+  font-size: clamp(22px, 1.7vw, 28px);
   line-height: 1.15;
   font-weight: 600;
   color: var(--color-white);
-  margin-bottom: 14px;
+  margin-bottom: 20px;
+  max-width: 90%;
 }
 
 .community-card__cta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  align-self: flex-start;
-  padding: 9px 16px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.4);
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.55);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
   color: var(--color-white);
-  letter-spacing: 0.5px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   transition: all var(--transition-base);
-  backdrop-filter: blur(4px);
 }
 
 .community-card:hover .community-card__cta,
@@ -685,6 +681,54 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
 
 .community-modal__body {
   padding: 32px clamp(22px, 4vw, 44px) 40px;
+}
+
+.community-modal__vibe {
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-dark);
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.community-modal__compare {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.community-modal__compare-item {
+  text-align: center;
+  padding: 18px 12px;
+  background: var(--color-light);
+  border-radius: var(--radius-sm);
+}
+
+.community-modal__compare-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.community-modal__compare-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+@media (max-width: 560px) {
+  .community-modal__compare {
+    grid-template-columns: 1fr;
+  }
 }
 
 .community-modal__quick-facts {
@@ -1483,7 +1527,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="tatum-highlands" aria-label="Open details for Tatum Highlands">
         <img src="images/communities/01-tatum-highlands.jpg" alt="Tatum Highlands community in North Phoenix surrounded by desert">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">Tatum Highlands</h3>
           <span class="community-card__cta">
             Explore
@@ -1495,7 +1538,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="verdin" aria-label="Open details for Verdin by Taylor Morrison">
         <img src="images/communities/02-verdin.jpg" alt="Verdin by Taylor Morrison master-planned community in North Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">Verdin by Taylor Morrison</h3>
           <span class="community-card__cta">
             Explore
@@ -1507,7 +1549,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="serenity" aria-label="Open details for Serenity at Sonoran Foothills">
         <img src="images/communities/03-serenity-sonoran-foothills.jpg" alt="Serenity at Sonoran Foothills gated townhome community in North Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">Serenity at Sonoran Foothills</h3>
           <span class="community-card__cta">
             Explore
@@ -1519,7 +1560,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="talinn" aria-label="Open details for Talinn at Desert Ridge">
         <img src="images/communities/04-talinn-desert-ridge.jpg" alt="Talinn at Desert Ridge gated community in North Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">Desert Ridge</span>
           <h3 class="community-card__name">Talinn at Desert Ridge</h3>
           <span class="community-card__cta">
             Explore
@@ -1531,7 +1571,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="northpark" aria-label="Open details for NorthPark by PulteGroup">
         <img src="images/communities/05-northpark.jpg" alt="NorthPark master-planned community by PulteGroup in north Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">NorthPark by PulteGroup</h3>
           <span class="community-card__cta">
             Explore
@@ -1543,7 +1582,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="halo-vista" aria-label="Open details for Halo Vista">
         <img src="images/communities/06-halo-vista.jpg" alt="Halo Vista mixed-use development around the TSMC campus in north Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">TSMC Corridor</span>
           <h3 class="community-card__name">Halo Vista</h3>
           <span class="community-card__cta">
             Explore
@@ -1555,7 +1593,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="storyrock" aria-label="Open details for Toll Brothers at Storyrock">
         <img src="images/communities/07-storyrock.jpg" alt="Toll Brothers at Storyrock gated luxury community in North Scottsdale">
         <div class="community-card__content">
-          <span class="community-card__location">North Scottsdale</span>
           <h3 class="community-card__name">Toll Brothers at Storyrock</h3>
           <span class="community-card__cta">
             Explore
@@ -1567,7 +1604,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="desert-ridge" aria-label="Open details for Desert Ridge">
         <img src="images/communities/08-desert-ridge.jpg" alt="Desert Ridge master-planned community in North Phoenix">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">Desert Ridge</h3>
           <span class="community-card__cta">
             Explore
@@ -1579,7 +1615,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="lone-mountain" aria-label="Open details for Lone Mountain Estates">
         <img src="images/communities/09-lone-mountain-estates.jpg" alt="Lone Mountain Estates gated community in Cave Creek Arizona">
         <div class="community-card__content">
-          <span class="community-card__location">Cave Creek</span>
           <h3 class="community-card__name">Lone Mountain Estates</h3>
           <span class="community-card__cta">
             Explore
@@ -1591,7 +1626,6 @@ body.modal-open {
       <button type="button" class="community-card reveal" data-community="sky-crossing" aria-label="Open details for Sky Crossing">
         <img src="images/communities/10-sky-crossing.jpg" alt="Sky Crossing community in North Phoenix by Taylor Morrison and Pulte">
         <div class="community-card__content">
-          <span class="community-card__location">North Phoenix</span>
           <h3 class="community-card__name">Sky Crossing</h3>
           <span class="community-card__cta">
             Explore
@@ -1621,6 +1655,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Where founders still know the neighbors.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Desert on three sides</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Seven original builders</span></div>
@@ -1634,6 +1669,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Tatum Highlands sits in North Phoenix, surrounded by natural desert on three sides, with stunning scenery and easy access to hiking and mountain biking right out the door.</p>
         <p>The community centerpiece is Teets Park, a five-acre grassy hub with a tot lot, lighted basketball and volleyball courts, and fitness stations. Developed by seven original builders (TW Lewis, US Home, Richmond American, KB Homes, Presley, Graystone, and Coventry by Del Webb), Tatum Highlands offers a wide mix of home styles and price points.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Mornings start with a hike on one of the desert trails ringing the community, then a quick stop at Teets Park where the lighted courts come alive in the afternoon. Weekends are easy here, with neighbors who have known each other for decades and a community history that newer master plans simply can't replicate.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">7</span><span class="community-modal__compare-label">Original builders</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">5 acres</span><span class="community-modal__compare-label">Teets Park lawn</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">1998</span><span class="community-modal__compare-label">Year Mark moved in</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1677,6 +1720,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Brand-new desert living, built around the preserve.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">Taylor Morrison</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">470+ acres</span></div>
@@ -1687,6 +1731,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Verdin is a brand-new master-planned community by Taylor Morrison along Sonoran Desert Drive, with direct access to Apache Wash Trailhead and the Sonoran Preserve. Spanning 470+ acres, it pairs modern living with natural desert surroundings.</p>
         <p>Five home collections (Discovery, Passage, Odyssey, Summit, and Capstone) range from 2,000 to 4,800 sq ft, with options like RV garages and NextGen-style casitas. Over 100 acres are preserved as open space. Model homes debut Summer 2025, with move-ins expected by late 2026.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Step out the back of a Verdin home and you're at the Apache Wash Trailhead in minutes. Mornings here lean toward fitness center sessions and pickleball, and the open Sonoran Preserve beyond the community line keeps the sightlines wide. Late afternoons mean the resort pool and casual gatherings on the trail.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">470+</span><span class="community-modal__compare-label">Total acres</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">100+</span><span class="community-modal__compare-label">Acres open space</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">5</span><span class="community-modal__compare-label">Home collections</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1730,6 +1782,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Lock and leave the highways out front.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">K. Hovnanian Great Western</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Style</span><span class="community-modal__fact-value">Gated townhomes</span></div>
@@ -1739,6 +1792,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Serenity at Sonoran Foothills is a gated, new-construction townhome community in Phoenix. K. Hovnanian offers four floor plans up to 2,637 sq ft, with 4 beds, 3.5 baths, and 2-car garages.</p>
         <p>Buyers can simplify their interior selections through K. Hovnanian's Looks program, choosing curated palettes like Loft, Farmhouse, or Classic. On-site amenities include a pool, playground, shaded gathering area, and pool restrooms, with quick highway access via I-17, Loop 101, Loop 303, and SR-51.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Townhome buyers here choose Serenity for what they don't have to think about. The interior palette is curated, the yard is handled, and four major freeways are close enough that Sky Harbor or downtown is under thirty minutes when you want them. Afternoons drift toward the community pool or a walk to the playground.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">4</span><span class="community-modal__compare-label">Floor plans</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">2,637</span><span class="community-modal__compare-label">Max sq ft</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">4 freeways</span><span class="community-modal__compare-label">Within reach</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1782,6 +1843,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Gated North Phoenix, minutes from everything that matters.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">D.R. Horton, Pulte, Shea, Blandford</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">1,611 to 3,744 sq ft</span></div>
@@ -1792,6 +1854,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Talinn is a master-planned, gated community in North Phoenix's Desert Ridge area, with both single-family homes and townhomes from top builders like D.R. Horton, Pulte, Shea, and Blandford.</p>
         <p>Homes range from 1,611 to 3,744 sq ft with smart-home features, 9 to 10 ft ceilings, and upscale finishes including granite or quartz countertops and gourmet kitchens. The community sits minutes from Desert Ridge Marketplace, Mayo Clinic, Loop 101, and SR-51.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>The day starts with coffee at Desert Ridge Marketplace and ends with a swim in the heated community pool. Schools, hospitals, and the freeway are within a few minutes' drive, and Mayo Clinic Phoenix is just up the road. Buyers here trade square footage of yard for square footage of amenities.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">4 builders</span><span class="community-modal__compare-label">On site</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">1,611–3,744</span><span class="community-modal__compare-label">Sq ft range</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">$606K+</span><span class="community-modal__compare-label">Townhome start</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1835,6 +1905,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">The next chapter of north Phoenix, anchored by TSMC.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Developer</span><span class="community-modal__fact-value">PulteGroup</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">6,355 acres</span></div>
@@ -1845,6 +1916,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>NorthPark is a proposed PulteGroup master-planned community covering 6,355 acres in north Phoenix. The plan calls for close to 20,000 homes alongside commercial and recreational space, creating a true live, work, play environment near the Taiwan Semiconductor Manufacturing Company facility.</p>
         <p>As one of the largest community announcements in north Phoenix, NorthPark is positioned to reshape the corridor over the coming decade.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>This community is a long-game investment. Buyers paying attention to north Phoenix's transformation around the TSMC campus are positioning themselves early on what could become one of the largest master plans in the state, with retail, jobs, and recreation all within the footprint as it builds out.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">6,355</span><span class="community-modal__compare-label">Acres</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">~20,000</span><span class="community-modal__compare-label">Planned homes</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">PulteGroup</span><span class="community-modal__compare-label">Developer</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1888,6 +1967,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">A city within a city, rising next to the chip campus.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Investment</span><span class="community-modal__fact-value">$7B mixed-use plan</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Anchor</span><span class="community-modal__fact-value">TSMC campus</span></div>
@@ -1898,6 +1978,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Halo Vista is a planned $7 billion mixed-use development centered around the TSMC campus in north Phoenix. Designed as a self-sustaining city within a city, the project will combine residential neighborhoods with retail, office, and industrial space.</p>
         <p>The vision is to attract talent and create jobs near the chip manufacturing complex. Infrastructure work is set to begin in summer 2025, with vertical construction starting in early 2026.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Halo Vista is being built for the people who will work at TSMC and the businesses that follow them. Living here means having retail, office, and industry in the same footprint as your home, with the kind of self-contained convenience that's rare in metro Phoenix.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">$7B</span><span class="community-modal__compare-label">Planned investment</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">Summer 2025</span><span class="community-modal__compare-label">Infrastructure starts</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">Early 2026</span><span class="community-modal__compare-label">Vertical builds</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1941,6 +2029,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Luxury at the edge of the McDowell Sonoran Preserve.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builder</span><span class="community-modal__fact-value">Toll Brothers</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Gated, McDowell Sonoran Preserve</span></div>
@@ -1955,6 +2044,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Toll Brothers at Storyrock is a newly opened, gated luxury community within the larger Storyrock master plan in Scottsdale. Located off E Black Rock Road, it backs up to the McDowell Sonoran Preserve with sweeping desert and mountain views.</p>
         <p>The Canyon Collection offers single-level homes from 3,665 to 4,108 sq ft (3 to 4 bedrooms, 3-car garages) starting around $1.95M. The Overlook Collection ranges 4,121 to 5,035+ sq ft (3 to 7 bedrooms, garages for up to eight cars) starting around $2.37M.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Mornings begin on a trail in the McDowell Sonoran Preserve. Afternoons are split between Design Studio appointments and an hour at the Mountain House Lodge pool. When it's time to head into town, Scottsdale Quarter, Kierland Commons, and downtown Cave Creek are minutes away.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">2</span><span class="community-modal__compare-label">Home collections</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">8 cars</span><span class="community-modal__compare-label">Largest garage option</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">5,035+</span><span class="community-modal__compare-label">Largest sq ft</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -1998,6 +2095,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">The benchmark master plan for North Phoenix.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">5,700 acres</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Toll Brothers, D.R. Horton, Del Webb, Pulte, and more</span></div>
@@ -2008,6 +2106,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Desert Ridge is one of North Phoenix's premier master-planned communities, spanning 5,700 acres with a full mix of residential and commercial. Its convenient position near Loop 101 and SR-51, paired with upscale amenities, has made it one of the most established corridors in the metro.</p>
         <p>Sub-communities include Aviano (Toll Brothers luxury), Fireside (D.R. Horton), Talinn (gated townhome and single-family), and Toscana (upscale condominiums). The area is anchored by Desert Ridge Marketplace and the Mayo Clinic Phoenix campus nearby.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Most residents structure the day around the Marketplace and Loop 101. Morning errands or appointments at JW Marriott or Mayo Clinic, lunch at one of the dozens of restaurants nearby, and the High Street walking district for evenings out. Sub-communities like Aviano, Fireside, Talinn, and Toscana let buyers pick their pace.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">5,700</span><span class="community-modal__compare-label">Total acres</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">4+</span><span class="community-modal__compare-label">Sub-communities</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">Loop 101</span><span class="community-modal__compare-label">Main artery</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -2051,6 +2157,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">View lots and open desert at the foot of Black Mountain.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Setting</span><span class="community-modal__fact-value">Gated, Cave Creek</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Acreage</span><span class="community-modal__fact-value">~600 acres (300 open space)</span></div>
@@ -2065,6 +2172,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Lone Mountain Estates is a premier gated community in Cave Creek, near Scottsdale Road and Lone Mountain Road. The master plan spans roughly 600 acres, with about 300 acres dedicated to permanent open space, set against the Sonoran Desert and Black Mountain.</p>
         <p>Single-family homes from Richmond American and Lennar typically range 2,166 to 4,000+ sq ft, with 3 to 5 beds, great-room layouts, gourmet kitchens, and resort-style backyards. Most lots back up to natural open space.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>Hike Black Mountain at sunrise, then come home to a backyard that backs up to permanent open desert. Cave Creek's restaurants and boutique shops are five minutes down Scottsdale Road for evenings out, and the equestrian trails are right where you live for the riders in the family.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">600</span><span class="community-modal__compare-label">Total acres</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">300</span><span class="community-modal__compare-label">Open-space acres</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">Black Mountain</span><span class="community-modal__compare-label">Daily backdrop</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
@@ -2108,6 +2223,7 @@ body.modal-open {
       </div>
     </div>
     <div class="community-modal__body">
+      <p class="community-modal__vibe">Forty-five floor plans, Sonoran Preserve at the back.</p>
       <div class="community-modal__quick-facts">
         <div class="community-modal__fact"><span class="community-modal__fact-label">Builders</span><span class="community-modal__fact-value">Taylor Morrison, Pulte</span></div>
         <div class="community-modal__fact"><span class="community-modal__fact-label">Home sizes</span><span class="community-modal__fact-value">1,850 to 4,900 sq ft</span></div>
@@ -2118,6 +2234,14 @@ body.modal-open {
         <span class="community-modal__eyebrow">Overview</span>
         <p>Sky Crossing is a thoughtfully designed, deed-restricted community in North Phoenix (ZIP 85050), developed by Taylor Morrison and Pulte Homes. The plan spans nearly 1,200 home sites across 16 neighborhoods, with both gated and non-gated parcels.</p>
         <p>Buyers choose from 45 single-family designs, ranging from about 1,850 sq ft up to nearly 4,900 sq ft, with up to 6 bedrooms and 5 baths. Architectural styles blend desert modern and Southwestern, with multi-sliding patio doors, gourmet kitchens, and integrated smart home tech.</p>
+      </div>
+      <div class="community-modal__section community-modal__about">
+        <span class="community-modal__eyebrow">A day in the life</span>
+        <p>With Mayo Clinic, the Sonoran Mountain Preserve, and Loop 101 all close by, the day flows easily between fitness, family time, and quick city trips. The community's sixteen neighborhoods give plenty of variety in pace, with both gated and non-gated parcels and home sizes that range from townhome-tight to estate-scale.</p>
+      </div>
+      <div class="community-modal__section">
+        <span class="community-modal__eyebrow">By the numbers</span>
+        <div class="community-modal__compare"><div class="community-modal__compare-item"><span class="community-modal__compare-value">45</span><span class="community-modal__compare-label">Floor plans</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">16</span><span class="community-modal__compare-label">Neighborhoods</span></div><div class="community-modal__compare-item"><span class="community-modal__compare-value">4,900</span><span class="community-modal__compare-label">Max sq ft</span></div></div>
       </div>
       <div class="community-modal__section">
         <span class="community-modal__eyebrow">What you'll find here</span>
