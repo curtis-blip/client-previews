@@ -504,47 +504,25 @@ h3 { font-size: var(--h3-size); font-weight: 600; }
   color: var(--color-white);
   margin: 0;
   max-width: 90%;
+  position: relative;
+  padding-bottom: 14px;
 }
 
-.community-card__cta {
+.community-card__name::after {
+  content: '';
   position: absolute;
-  left: 24px;
-  bottom: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.55);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--color-white);
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  transition: all var(--transition-base);
-}
-
-.community-card:hover .community-card__cta,
-.community-card:focus-visible .community-card__cta {
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
   background: var(--color-primary);
-  border-color: var(--color-primary);
+  transform: translateX(-50%);
+  transition: width var(--transition-base);
 }
 
-.community-card__cta svg {
-  width: 13px;
-  height: 13px;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  transition: transform var(--transition-base);
-}
-
-.community-card:hover .community-card__cta svg {
-  transform: translateX(3px);
+.community-card:hover .community-card__name::after,
+.community-card:focus-visible .community-card__name::after {
+  width: 56px;
 }
 
 @media (max-width: 1100px) {
@@ -1531,10 +1509,6 @@ body.modal-open {
         <img src="images/communities/01-tatum-highlands.jpg" alt="Tatum Highlands community in North Phoenix surrounded by desert">
         <div class="community-card__content">
           <h3 class="community-card__name">Tatum Highlands</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1542,10 +1516,6 @@ body.modal-open {
         <img src="images/communities/02-verdin.jpg" alt="Verdin by Taylor Morrison master-planned community in North Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">Verdin by Taylor Morrison</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1553,10 +1523,6 @@ body.modal-open {
         <img src="images/communities/03-serenity-sonoran-foothills.jpg" alt="Serenity at Sonoran Foothills gated townhome community in North Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">Serenity at Sonoran Foothills</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1564,10 +1530,6 @@ body.modal-open {
         <img src="images/communities/04-talinn-desert-ridge.jpg" alt="Talinn at Desert Ridge gated community in North Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">Talinn at Desert Ridge</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1575,10 +1537,6 @@ body.modal-open {
         <img src="images/communities/05-northpark.jpg" alt="NorthPark master-planned community by PulteGroup in north Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">NorthPark by PulteGroup</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1586,10 +1544,6 @@ body.modal-open {
         <img src="images/communities/06-halo-vista.jpg" alt="Halo Vista mixed-use development around the TSMC campus in north Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">Halo Vista</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1597,10 +1551,6 @@ body.modal-open {
         <img src="images/communities/07-storyrock.jpg" alt="Toll Brothers at Storyrock gated luxury community in North Scottsdale">
         <div class="community-card__content">
           <h3 class="community-card__name">Toll Brothers at Storyrock</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1608,10 +1558,6 @@ body.modal-open {
         <img src="images/communities/08-desert-ridge.jpg" alt="Desert Ridge master-planned community in North Phoenix">
         <div class="community-card__content">
           <h3 class="community-card__name">Desert Ridge</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1619,10 +1565,6 @@ body.modal-open {
         <img src="images/communities/09-lone-mountain-estates.jpg" alt="Lone Mountain Estates gated community in Cave Creek Arizona">
         <div class="community-card__content">
           <h3 class="community-card__name">Lone Mountain Estates</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
@@ -1630,10 +1572,6 @@ body.modal-open {
         <img src="images/communities/10-sky-crossing.jpg" alt="Sky Crossing community in North Phoenix by Taylor Morrison and Pulte">
         <div class="community-card__content">
           <h3 class="community-card__name">Sky Crossing</h3>
-          <span class="community-card__cta">
-            Explore
-            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          </span>
         </div>
       </button>
 
