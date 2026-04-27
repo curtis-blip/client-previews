@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephanie Sills, Palermo Properties Team — Preview Index</title>
+<meta name="description" content="Preview index for the Stephanie Sills / Palermo Properties Team site build. 12 pages, Half Moon Bay & San Mateo County Coastside.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Palermo Coastal palette */
+  --primary: #D9B992;          /* camel brown */
+  --primary-dark: #C4A070;     /* camel dark */
+  --primary-light: #EDD9C0;    /* camel soft */
+  --coastal: #6E828E;          /* coastal slate */
+  --coastal-dark: #4F6168;
+  --sandstone: #FBF6EB;        /* page background */
+  --sandstone-2: #F2EBDA;      /* section alt */
+  --charcoal: #2A2825;         /* dark text + sections */
+  --ink: #2A2825;
+  --text: #3D3A36;
+  --text-light: #6B6B6B;
+  --border: rgba(42, 40, 37, 0.10);
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --container: 1200px;
+  --radius: 2px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--sandstone);
+  -webkit-font-smoothing: antialiased;
+}
+.container { width: 90%; max-width: var(--container); margin: 0 auto; }
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: clamp(96px, 12vw, 160px) 0 clamp(64px, 8vw, 96px);
+  text-align: center;
+  background-color: var(--charcoal);
+  background-image: linear-gradient(rgba(42, 40, 37, 0.55), rgba(42, 40, 37, 0.55)),
+                    url('https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1800&q=85&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
+.hero .eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 66px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.hero p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.88);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+.hero .meta {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 32px;
+}
+.hero .pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+/* Section headers */
+.section { padding: clamp(72px, 9vw, 112px) 0; }
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-header .eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coastal);
+  display: inline-block;
+  margin-bottom: 14px;
+}
+.section-header h2 {
+  font-family: var(--font-head);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 40px);
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.section-header p {
+  font-size: 17px;
+  color: var(--text-light);
+  max-width: 640px;
+  margin: 16px auto 0;
+  line-height: 1.7;
+}
+
+/* Page grid */
+.pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.page-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.page-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 3px;
+  background: var(--primary);
+  transition: width 0.4s var(--ease);
+}
+.page-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(42,40,37,0.10);
+}
+.page-card:hover::before { width: 100%; }
+.page-card__num {
+  font-family: var(--font-head);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--primary-dark);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  display: block;
+}
+.page-card__title {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.page-card__desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.page-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coastal-dark);
+  margin-top: auto;
+}
+.page-card__cta svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease); }
+.page-card:hover .page-card__cta svg { transform: translateX(4px); }
+
+/* Notes section */
+.notes-section { background: var(--sandstone-2); }
+.notes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 980px; margin: 0 auto; }
+.note-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.note-card h3 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.note-card ul { list-style: none; padding: 0; margin: 0; }
+.note-card li {
+  display: flex; gap: 12px;
+  padding: 8px 0;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.55;
+}
+.note-card li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px; height: 6px;
+  background: var(--primary-dark);
+  border-radius: 50%;
+  margin-top: 9px;
+}
+.note-card code {
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 13px;
+  background: var(--sandstone);
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+/* Footer */
+.footer {
+  background: var(--charcoal);
+  color: rgba(255,255,255,0.72);
+  text-align: center;
+  padding: 48px 0;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+.footer strong { color: #fff; font-weight: 500; }
+.footer a { color: var(--primary); text-decoration: none; }
+
+@media (max-width: 1024px) {
+  .pages-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .pages-grid { grid-template-columns: 1fr; }
+  .notes-grid { grid-template-columns: 1fr; }
+  .hero { background-attachment: scroll; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Palermo Properties Team at Compass</span>
+    <h1>Stephanie Sills, Half Moon Bay Site Build</h1>
+    <p>Twelve-page preview for the Palermo Coastal palette site, Half Moon Bay and San Mateo County Coastside positioning. Click any card to open the page in a new tab.</p>
+    <div class="meta">
+      <span class="pill">12 Pages</span>
+      <span class="pill">Palermo Coastal Palette</span>
+      <span class="pill">Compass Concierge + IDX</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Page Index</span>
+      <h2>Twelve Pages, Ready for Build</h2>
+      <p>Every page uses the Palermo Coastal palette (camel brown <code>#D9B992</code>, sandstone <code>#FBF6EB</code>, coastal slate <code>#6E828E</code>, charcoal <code>#2A2825</code>). Per-page focus keywords pulled from the Stephanie Sills Rank Math reference doc.</p>
+    </div>
+
+    <div class="pages-grid">
+
+      <a class="page-card" href="01-home.html" target="_blank" rel="noopener">
+        <span class="page-card__num">01</span>
+        <h3 class="page-card__title">Home</h3>
+        <p class="page-card__desc">Hero, agent spotlight, services overview, featured listings, communities, testimonials, CTA. Focus keyword: Half Moon Bay real estate agent.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="02-about.html" target="_blank" rel="noopener">
+        <span class="page-card__num">02</span>
+        <h3 class="page-card__title">About</h3>
+        <p class="page-card__desc">Team story, Stephanie's spotlight (BFA / MBA / MIM, Top 1.5%), credentials, Why Compass, FAQ. Focus keyword: Palermo Properties Team Compass.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="03-team.html" target="_blank" rel="noopener">
+        <span class="page-card__num">03</span>
+        <h3 class="page-card__title">Meet the Team</h3>
+        <p class="page-card__desc">Eight-agent roster across Coastside + Peninsula. Focus keyword: Palermo Properties Team agents.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="04-communities.html" target="_blank" rel="noopener">
+        <span class="page-card__num">04</span>
+        <h3 class="page-card__title">Communities</h3>
+        <p class="page-card__desc">Half Moon Bay, El Granada, Montara, Moss Beach, Pacifica, San Mateo (six modals). Bay Area Market Reports flipbook. Focus keyword: San Mateo County Coastside communities.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="05-buy.html" target="_blank" rel="noopener">
+        <span class="page-card__num">05</span>
+        <h3 class="page-card__title">Buy</h3>
+        <p class="page-card__desc">Buyer process, costs, communities preview, featured listings, testimonials, FAQ. Focus keyword: buying a home Half Moon Bay.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="06-sell.html" target="_blank" rel="noopener">
+        <span class="page-card__num">06</span>
+        <h3 class="page-card__title">Sell</h3>
+        <p class="page-card__desc">Selling process, seller costs, Compass Concierge callout, featured listings, testimonials, FAQ. Focus keyword: sell my home Half Moon Bay.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="07-services.html" target="_blank" rel="noopener">
+        <span class="page-card__num">07</span>
+        <h3 class="page-card__title">Services</h3>
+        <p class="page-card__desc">Vendor Network, Compass Concierge, Bridge Loan Services. Focus keyword: Compass Concierge Half Moon Bay.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="08-testimonials.html" target="_blank" rel="noopener">
+        <span class="page-card__num">08</span>
+        <h3 class="page-card__title">Testimonials</h3>
+        <p class="page-card__desc">35+ five-star reviews, seller and buyer split sections. Focus keyword: Stephanie Sills reviews.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="09-search.html" target="_blank" rel="noopener">
+        <span class="page-card__num">09</span>
+        <h3 class="page-card__title">Home Search</h3>
+        <p class="page-card__desc">Showcase IDX search shortcode placeholder. Focus keyword: Half Moon Bay homes for sale.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="10-featured-listings.html" target="_blank" rel="noopener">
+        <span class="page-card__num">10</span>
+        <h3 class="page-card__title">Featured Listings</h3>
+        <p class="page-card__desc">Showcase IDX hotsheet shortcode placeholder. Focus keyword: Stephanie Sills listings.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="11-hmb-homes.html" target="_blank" rel="noopener">
+        <span class="page-card__num">11</span>
+        <h3 class="page-card__title">Half Moon Bay Homes for Sale</h3>
+        <p class="page-card__desc">Exact-match SEO landing page. halfmoonbayhomesforsale.com 301 redirects here with WPCode replaceState. Focus keyword: Half Moon Bay homes for sale.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+      <a class="page-card" href="12-concierge.html" target="_blank" rel="noopener">
+        <span class="page-card__num">12</span>
+        <h3 class="page-card__title">Compass Concierge</h3>
+        <p class="page-card__desc">Dedicated page expanding the concierge program: $0 upfront staging, painting, landscaping, repairs. Before/after photos pending from Stephanie. Focus keyword: Compass Concierge Half Moon Bay.</p>
+        <span class="page-card__cta">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section notes-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Builder Notes</span>
+      <h2>What's in This Build</h2>
+    </div>
+
+    <div class="notes-grid">
+      <div class="note-card">
+        <h3>Brand Tokens</h3>
+        <ul>
+          <li>Camel brown primary <code>#D9B992</code>, sandstone backgrounds <code>#FBF6EB</code>, coastal slate accent <code>#6E828E</code>, charcoal dark <code>#2A2825</code></li>
+          <li>Playfair Display headings, Inter body</li>
+          <li>Body 17px / 1.7 line-height</li>
+          <li>Logo: thicker variant for nav (Stephanie will provide alt color if needed)</li>
+        </ul>
+      </div>
+
+      <div class="note-card">
+        <h3>SEO Setup (Rank Math)</h3>
+        <ul>
+          <li>Per-page focus keywords + secondary + long-tail in <code>Stephanie-Sills-Rank-Math-SEO-Reference.md</code></li>
+          <li>Verified stats only: Top 1.5%, 35+ Yelp reviews, 8-agent team, BFA/MBA/MIM</li>
+          <li>No fabricated stats: <code>$150M+</code>, <code>200+ families served</code>, <code>25+ years in real estate</code> are unverified</li>
+          <li>halfmoonbayhomesforsale.com 301 to /11-hmb-homes/ with WPCode replaceState</li>
+        </ul>
+      </div>
+
+      <div class="note-card">
+        <h3>CRM &amp; Forms</h3>
+        <ul>
+          <li>Stephanie is NOT using GHL. All Gravity Forms email her directly at <code>stephanie.sills@compass.com</code></li>
+          <li>No Zapier to LeadConnector for this client</li>
+          <li>IDX = Showcase IDX on pages 09, 10, 11</li>
+        </ul>
+      </div>
+
+      <div class="note-card">
+        <h3>Open Items</h3>
+        <ul>
+          <li>Compass Concierge before/after photos (Stephanie providing)</li>
+          <li>Hero image crops (faces not behind text overlay) and brightness adjustment</li>
+          <li>Bay Area Market Reports flipbook embed on page 04</li>
+          <li>Evoker brand video YouTube embed: <code>TW-NZBFORZ4</code></li>
+          <li>3-phase Compass Exclusives content (per Stephanie's marketing.compass.com link)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p><strong>Stephanie Sills / Palermo Properties Team at Compass</strong> &middot; Half Moon Bay Site Build</p>
+    <p>Built by AgenticPress &middot; <a href="mailto:curtis@agenticpress.io">curtis@agenticpress.io</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
