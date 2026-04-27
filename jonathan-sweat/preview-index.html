@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jonathan Sweat — Preview Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0a2540; --ink-2:#142e4f; --gold:#c9a352; --burgundy:#6e2229;
+    --cream:#f8f3eb; --paper:#ffffff; --char:#161616; --slate:#5a6373;
+    --line:rgba(10,37,64,.12); --line-on-dark:rgba(255,255,255,.14);
+    --serif:'Fraunces',serif; --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:var(--cream);color:var(--char);min-height:100vh}
+  .header{background:var(--ink);color:#fff;padding:48px 0;border-bottom:4px solid var(--gold)}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,3.6vw,52px);margin-top:14px}
+  h1 em{font-style:italic;color:var(--gold);font-weight:400}
+  .subtitle{margin-top:14px;color:rgba(255,255,255,.78);font-size:15px;max-width:60ch}
+  .meta{display:flex;gap:32px;margin-top:24px;flex-wrap:wrap;color:rgba(255,255,255,.72);font-size:13px}
+  .meta strong{color:#fff;font-weight:600}
+
+  .pages{padding:60px 0 40px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .page{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:32px 30px;transition:transform .25s,box-shadow .25s,border-color .25s;display:flex;flex-direction:column;gap:14px;position:relative;text-decoration:none}
+  .page:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(10,37,64,.1);border-color:var(--gold)}
+  .page .num{font-family:var(--serif);font-size:42px;color:var(--gold);font-weight:400;line-height:1}
+  .page h3{font-family:var(--serif);font-size:24px;color:var(--ink);font-weight:500}
+  .page .desc{font-size:14.5px;color:var(--slate);line-height:1.6}
+  .page .focus{font-size:12px;color:var(--burgundy);letter-spacing:.06em;font-weight:600;padding:6px 10px;background:rgba(110,34,41,.06);border-radius:3px;width:fit-content}
+  .page .focus code{background:transparent;padding:0;font-family:'SF Mono',Menlo,monospace;font-size:11.5px}
+  .page .status{display:inline-block;padding:4px 10px;border-radius:3px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;width:fit-content}
+  .status.live{background:rgba(0,128,80,.1);color:#0e7a4d;border:1px solid rgba(0,128,80,.3)}
+  .page .open{margin-top:auto;padding-top:14px;font-size:13px;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:.1em;display:inline-flex;align-items:center;gap:6px}
+  .page .open svg{width:12px;height:12px;transition:transform .25s}
+  .page:hover .open svg{transform:translateX(4px)}
+
+  .system{padding:40px 0 80px}
+  .system .card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:28px 32px;margin-bottom:18px}
+  .system h2{font-family:var(--serif);font-size:24px;color:var(--ink);font-weight:500;margin-bottom:14px}
+  .system .head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .system .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .system ul{list-style:none;color:var(--slate);font-size:14px;line-height:1.75}
+  .system li{padding-left:18px;position:relative;margin-bottom:6px}
+  .system li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--gold)}
+  .system code{background:var(--cream);padding:2px 6px;border-radius:3px;font-size:13px;color:var(--ink);font-family:'SF Mono',Menlo,monospace}
+  .system a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--gold);transition:color .2s}
+  .system a:hover{color:var(--burgundy)}
+  .system .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  .questions{background:rgba(201,163,82,.08);border:1px solid var(--gold);border-radius:6px;padding:24px 28px;margin-bottom:18px}
+  .questions h2{color:var(--ink)}
+  .questions p{font-size:14px;color:var(--slate);margin-top:8px;line-height:1.65}
+  .questions ol{margin-top:14px;padding-left:20px;color:var(--char);font-size:14.5px;line-height:1.8}
+  .questions ol li::marker{color:var(--burgundy);font-weight:700}
+
+  @media (max-width:768px){.grid,.system .grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="wrap">
+    <span class="eyebrow">Preview · All 8 pages live</span>
+    <h1>Jonathan Sweat <em>& The Legacy Team</em></h1>
+    <p class="subtitle">Mortgage loan officer site preview, Roanoke VA + Lakeland/Tampa FL. Brand register: deep navy + warm gold + burgundy accent + cream. Editorial serif (Fraunces) over Inter. Unified hero pattern across all pages: image background, eyebrow + H1 + subtext + 2 CTAs. About page exception: dedicated bio block with portrait split below the hero.</p>
+    <div class="meta">
+      <span><strong>Markets:</strong> Roanoke VA · Lakeland & Tampa FL</span>
+      <span><strong>NMLS:</strong> #308553</span>
+      <span><strong>Best of Roanoke:</strong> 2023</span>
+      <span><strong>Pages live:</strong> 8 / 8</span>
+    </div>
+  </div>
+</div>
+
+<div class="pages">
+  <div class="wrap">
+    <div class="grid">
+
+      <a class="page" href="01-home.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">01</span><span class="status live">Live</span></div>
+        <h3>Home</h3>
+        <span class="focus">Focus: <code>mortgage lender near me</code> · 27,100/mo</span>
+        <p class="desc">Image-bg hero with focus kw in H1 · trust strip with internal links · 8-program grid · pre-approval differentiator · meet Jonathan strip · 4-step process · testimonials · refi visualizer · For Realtors cross-sell · resources · compliance footer with Compass Sales Coaching footer line.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="02-about.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">02</span><span class="status live">Live</span></div>
+        <h3>About Jonathan</h3>
+        <span class="focus">Focus: <code>jonathan sweat</code> · 70/mo (branded)</span>
+        <p class="desc">Unified hero (no portrait, no bio) · dedicated bio-block with portrait split + 3-paragraph bio + pull quote + LinkedIn signature · three-belief grid · credentials strip · Legacy Team grid (Jonathan + Dixie/Ellyson placeholders) · areas served with map visual · big testimonial pull · For Realtors teaser · CTA close.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="03-loan-programs.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">03</span><span class="status live">Live</span></div>
+        <h3>Loan Programs</h3>
+        <span class="focus">Focus: <code>va loans</code> · 40,500/mo · $9.63 CPC</span>
+        <p class="desc">Unified hero with H1 including focus kw · 8-card programs overview grid · 8 alternating-bg program detail sections (Conventional · VA · FHA · USDA · Jumbo · Construction-to-Perm · Bridge · Refinance) each with key terms + ideal-borrower + apply CTA · CFPB authority strip · pre-approval cross-link · ItemList JSON-LD.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="04-pre-approval-difference.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">04</span><span class="status live">Live</span></div>
+        <h3>The Pre-Approval Difference</h3>
+        <span class="focus">Focus: <code>pre approval vs pre qualification</code> · 8,100/mo</span>
+        <p class="desc">The brand-asset page. Unified hero · side-by-side comparison cards (pre-qual vs pre-approval) · 4-step "fully underwritten" walkthrough · dark Realtors editorial section with trust badge strip · 3-card "contract test" scenarios · CFPB authority strip · 4-question buyer FAQ + 3-question Realtor FAQ accordions · Article + FAQPage JSON-LD.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="05-apply.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">05</span><span class="status live">Live</span></div>
+        <h3>Apply / Get Started</h3>
+        <span class="focus">Focus: <code>apply for mortgage</code> · 5,400/mo · $17.01 CPC</span>
+        <p class="desc">Conversion landing for the IHM application portal. Unified hero · big Apply Now panel linking to ihmcloans.com/jonathan-sweat (external, new tab) · 4-column document checklist with SVG icons · 4-step expectations timeline · 4-question pre-application FAQ · CFPB Loan Estimate authority strip · trust badges · HowTo schema.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="06-testimonials.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">06</span><span class="status live">Live</span></div>
+        <h3>Reviews</h3>
+        <span class="focus">Focus: <code>jonathan sweat reviews</code> · branded</span>
+        <p class="desc">Unified hero · 4-cell aggregate rating strip · full-width featured testimonial pull-out (J. O'Neill verbatim) · 6-card testimonial grid (1 real + 1 partial-placeholder + 4 PLACEHOLDER cards visually flagged) · Realtor-testimonials placeholder section · Zillow + Google review CTAs · AggregateRating + Review JSON-LD.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="07-for-realtors.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">07</span><span class="status live">Live</span></div>
+        <h3>For Realtors</h3>
+        <span class="focus">Focus: <code>preferred lender</code> · 260/mo · 0.19 comp (low!)</span>
+        <p class="desc">B2B page (replaces original Coaching slot per Compass option B). Unified hero with focus kw in H1 · three-pillar value prop · 6-item Realtors-get checklist · dark "letter that holds" editorial with 3 case scenarios · 3-card team grid (Jonathan + Dixie/Ellyson placeholders) · 4-cell trust signals · Realtor testimonials placeholder · referral CTA close · Service + Person JSON-LD.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a class="page" href="08-faq-contact.html">
+        <div style="display:flex;justify-content:space-between;align-items:start;"><span class="num">08</span><span class="status live">Live</span></div>
+        <h3>FAQ + Contact</h3>
+        <span class="focus">Focus: <code>first time home buyer virginia</code> · 2,900/mo</span>
+        <p class="desc">Combined utility page. Unified hero · 8-question native HTML5 details/summary FAQ accordion · 3 calculator placeholder cards (payment / affordability / rent vs buy) · 2-col contact form + branch info card with map pin · areas-served strip · NMLS Consumer Access trust strip · CFPB authority strip · FAQPage + ContactPage + LocalBusiness JSON-LD.</p>
+        <span class="open">Open page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-with="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<div class="system">
+  <div class="wrap">
+    <div class="grid2">
+      <div class="card">
+        <div class="head"><span class="lbl">Project files</span></div>
+        <h2>Build artifacts</h2>
+        <ul>
+          <li><strong><a href="CLAUDE.md">CLAUDE.md</a></strong> · project memory, brand decisions, page recipe, decisions log</li>
+          <li><strong><a href="brief.md">brief.md</a></strong> · mortgage-shaped project brief, 12 sections</li>
+          <li><strong><a href="seo-brief.md">seo-brief.md</a></strong> · API-confirmed Keywords Everywhere data, 93 keywords, full ranked list</li>
+          <li><strong><a href="seo-strategy.md">seo-strategy.md</a></strong> · per-page Rank Math values, internal/external linking matrix, LocalBusiness schema</li>
+          <li><strong><a href="theme.json">theme.json</a></strong> · WordPress design tokens (color, typography, spacing, shadow, brand metadata)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="head"><span class="lbl">Pipeline status</span></div>
+        <h2>What's wired</h2>
+        <ul>
+          <li><strong>Unified hero pattern</strong> across all 8 pages: image bg + dark gradient + eyebrow/H1/subtext/2 CTAs</li>
+          <li><strong>SEO meta + Rank Math comments</strong> baked into every page head — wp-claude-builder <code>/sync-seo</code> can pull via REST</li>
+          <li><strong>Schema.org JSON-LD</strong> per page type (LocalBusiness, Person, ItemList, Article, FAQPage, HowTo, Review, Service, ContactPage)</li>
+          <li><strong>Full 8-page navigation</strong> on every page</li>
+          <li><strong>Smart internal linking</strong> from every section CTA to a real destination</li>
+          <li><strong>External authority links</strong> per page: NMLS Consumer Access, Best of Roanoke, CFPB explainers, VA.gov, USDA.gov, LinkedIn, Zillow profile</li>
+          <li><strong>Compliance footer</strong> on every page: NMLS, Branch NMLS, VA + FL licenses, Equal Housing Lender mark, full disclaimer</li>
+          <li><strong>Compass Sales Coaching</strong> reduced to footer-only line (option B) plus contextual mention in About bio</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="lbl">Decisions log</span></div>
+      <h2>Pivots from initial preview</h2>
+      <ul>
+        <li><strong>Skipped preview-studio /compose-pages</strong> — references are real-estate-agent-shaped, would force-fit a mortgage LO into wrong page spines. Built manually using mortgage-shaped patterns. Authoring back into preview-studio after ship.</li>
+        <li><strong>Hero variants killed.</strong> All pages use one shared hero pattern: image bg, eyebrow, H1, subtext, 2 CTAs. About's portrait moved to a dedicated bio-block below the hero.</li>
+        <li><strong>H1s contain focus keyword</strong> where natural. Home: "The mortgage lender near me. Built for your *legacy.*" Pre-Approval: "Pre-approval vs pre-qualification. Why one *closes.*" For Realtors: "The preferred lender Realtors *trust.*" etc.</li>
+        <li><strong>SEO based on real data.</strong> Keywords Everywhere API run, 93 keywords, real volume / CPC / competition. Initial educated guesses replaced with confirmed picks per page.</li>
+        <li><strong>Compass Sales Coaching = option B.</strong> Footer-only mention. Page 07 slot now For Realtors (B2B trust page targeting Realtor referrals).</li>
+        <li><strong>Hero CTA never goes external first.</strong> All primary CTAs route to /apply (internal landing) which itself routes externally to ihmcloans.com/jonathan-sweat. Buys conversion-tracking + pre-frames the application.</li>
+        <li><strong>theme.json built in WordPress v3 schema</strong> with brand metadata in custom.client block (NMLS, licenses, phone, application URL). wp-claude-builder reads tokens AND brand facts from one file.</li>
+        <li><strong>Removed Jeff/Kane handoff language</strong> from CLAUDE.md and brief.md. wp-claude-builder is end-to-end automated, no human handoff.</li>
+      </ul>
+    </div>
+
+    <div class="questions">
+      <div class="head"><span class="lbl">Open client questions</span></div>
+      <h2>Need from client before final ship</h2>
+      <p>These were flagged in brief.md and remain open. Each is marked PLACEHOLDER on the relevant pages so nothing fabricated ships.</p>
+      <ol>
+        <li><strong>Team size / member confirmation</strong> — CS form said Team Size = 0, but IHM lists Dixie Lowe (MLO) + Ellyson Spickard (LOA). Need confirmation + headshots for both.</li>
+        <li><strong>Jason Tolbert review text</strong> — name + 5★ rating + Roanoke location confirmed in CS, but body left blank. Need review body.</li>
+        <li><strong>4 additional client testimonials</strong> for the Reviews page (currently 2 real + 4 placeholders).</li>
+        <li><strong>Realtor partner testimonials</strong> — none yet, B2B trust signal we haven't built. Strong addition for both Reviews + For Realtors pages.</li>
+        <li><strong>Hero photography</strong> — using Unsplash placeholder image across all 8 pages. Recommend running image-library skill to curate Blue Ridge / Roanoke / Tampa landscape shots before final ship.</li>
+        <li><strong>Calculator service</strong> — placeholders on FAQ + Contact for payment / affordability / rent-vs-buy. Need to pick a calculator widget service before WP build.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="head"><span class="lbl">Next steps</span></div>
+      <h2>To ship</h2>
+      <ul>
+        <li>Curtis review of all 8 pages in browser — flag any voice / layout corrections</li>
+        <li>Run image-library skill to curate hero photography</li>
+        <li>Collect missing client content (testimonials 3-7, Tolbert review, team headshots)</li>
+        <li>Hand off to wp-claude-builder for WP production build (Astra + UAGB + Rank Math sync via REST)</li>
+        <li>Author 4 mortgage page-pattern docs back into preview-studio/references for future LO clients</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
