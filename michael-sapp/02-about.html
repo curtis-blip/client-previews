@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Michael Sapp | North Atlanta REALTOR® · Keller Williams</title>
+    <meta name="description" content="Meet Michael Sapp, a Cumming GA realtor with 15+ years guiding North Atlanta buyers and sellers. Eagle Scout, investor, community-rooted.">
+    <meta name="keywords" content="michael sapp realtor, michael sapp keller williams, keller williams cumming ga, realtor cumming ga, forsyth county realtor">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+    /* ============ PAGE-SPECIFIC: ABOUT ============ */
+
+    /* Bio 2-col layout */
+    .about-bio {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        gap: 64px;
+        align-items: start;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .about-bio__photo {
+        position: relative;
+        max-width: 380px;
+    }
+    .about-bio__photo::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary);
+        z-index: 2;
+    }
+    .about-bio__photo img {
+        width: 100%;
+        max-width: 380px;
+        max-height: 500px;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+    .about-bio__copy .eyebrow {
+        color: var(--primary);
+        font-family: var(--font-heading);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+        display: block;
+    }
+    .about-bio__copy h2 {
+        margin-bottom: 28px;
+    }
+    .about-bio__copy p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+    }
+    .about-bio__cta {
+        margin-top: 12px;
+    }
+
+    /* Why Michael icon cards */
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .why-card {
+        background: var(--white);
+        padding: 48px 36px;
+        border: 1px solid var(--border-light);
+        transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .why-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .why-card__icon {
+        color: var(--primary);
+        margin-bottom: 24px;
+        display: block;
+    }
+    .why-card h3 {
+        font-family: var(--font-heading);
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+        color: var(--text-dark);
+    }
+    .why-card p {
+        font-size: 15px;
+        line-height: 1.75;
+        color: var(--text-muted);
+    }
+
+    /* Highlighted testimonials grid (overrides default list-style .testimonial-card) */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .testimonial-grid-card {
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        padding: 40px 32px;
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-grid-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.08);
+    }
+    .testimonial-grid-card__stars {
+        display: flex;
+        gap: 4px;
+        color: var(--primary);
+        margin-bottom: 20px;
+    }
+    .testimonial-grid-card blockquote {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin: 0 0 24px;
+        flex: 1;
+        font-weight: 400;
+    }
+    .testimonial-grid-card cite {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: var(--primary);
+    }
+    .testimonials-cta-link {
+        display: block;
+        text-align: center;
+        margin-top: 48px;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--primary);
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 4px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .testimonials-cta-link:hover {
+        color: var(--primary-light);
+        border-color: var(--primary-light);
+    }
+
+    /* Connect CTA */
+    .connect-cta {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .connect-cta .eyebrow {
+        color: var(--primary);
+        font-family: var(--font-heading);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+        display: block;
+    }
+    .connect-cta h2 {
+        margin-bottom: 20px;
+    }
+    .connect-cta p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 36px;
+    }
+    .connect-cta__buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Hero eyebrow on dark hero */
+    .hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--white);
+        opacity: 0.85;
+        margin-bottom: 24px;
+        display: block;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+        .about-bio {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .about-bio__photo {
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .why-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Michael Sapp · About Michael · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="michael-logo.png" alt="Michael Sapp North Atlanta Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+                <li><a href="08-luxury.html">Luxury Listings</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Michael</a></li>
+                <li><a href="09-testimonials.html">Testimonials</a></li>
+                <li><a href="11-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="10-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7706082314" class="nav__phone">(770) 608-2314</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="08-luxury.html">Luxury Listings</a></li>
+        <li><a href="02-about.html">About Michael</a></li>
+        <li><a href="09-testimonials.html">Testimonials</a></li>
+        <li><a href="11-blog.html">Blog</a></li>
+        <li><a href="10-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7706082314">(770) 608-2314</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO: medium 60vh ============ -->
+    <section class="hero hero--medium" data-bg-hint="north-atlanta-architectural-detail-warm" style="background-image: url('https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+        <div class="hero__bg" style="background-image:linear-gradient(rgba(13,13,13,0.55),rgba(13,13,13,0.55)),url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1800&q=80');"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__eyebrow">MEET MICHAEL · NORTH ATLANTA REALTOR®</span>
+            <h1 class="hero__title">A realtor with deep roots, sharp instincts, and a long view.</h1>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ BIO 2-COL ============ -->
+    <section class="section">
+        <div class="about-bio">
+            <div class="about-bio__photo">
+                <img src="michael-headshot.jpg" alt="Michael Sapp, North Atlanta REALTOR®">
+            </div>
+            <div class="about-bio__copy">
+                <span class="eyebrow">FIFTEEN YEARS, ONE MARKET</span>
+                <h2>Built in North Atlanta. Tested on Kilimanjaro.</h2>
+
+                <p>Michael Sapp has spent more than fifteen years selling real estate in North Atlanta, and more than sixteen years living in the community he serves. That isn't a tagline. It's the reason he can tell you which Cumming subdivisions hold value through a soft market, which Suwanee streets back up to noise, and which Forsyth County schools keep families in the same house for a decade.</p>
+
+                <p>Michael is an Eagle Scout and an avid adventurer who has summited peaks including Mount Kilimanjaro. That background isn't a hobby line on a bio. It's how he runs a transaction. Disciplined preparation before a listing goes live. Integrity when the numbers get hard. Results-driven follow-through from offer to closing, especially when something inevitably goes sideways at inspection or appraisal.</p>
+
+                <p>What you get when you work with Michael is the combined judgment of a realtor who has helped hundreds of families buy and sell, an active real estate investor who underwrites his own deals, and a neighbor who serves on local boards and supports several area nonprofits. Knowledgeable guidance, strong negotiation, and a seamless process from the first conversation to the keys in your hand.</p>
+
+                <div class="about-bio__cta">
+                    <a href="10-contact.html" class="btn btn--outline">Schedule a conversation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END BIO 2-COL ============ -->
+
+
+    <!-- ============ WHY MICHAEL: 3-col icon cards ============ -->
+    <section class="section section--gray">
+        <div class="section__header">
+            <span style="color:var(--primary);font-family:var(--font-heading);font-size:13px;text-transform:uppercase;letter-spacing:3px;display:block;margin-bottom:16px;">WHY MICHAEL</span>
+            <h2>Three things that show up in every transaction.</h2>
+        </div>
+        <div class="why-grid">
+
+            <div class="why-card">
+                <svg class="why-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 20l5-9 4 6 3-4 6 7H3z"/>
+                    <circle cx="17" cy="6" r="1.5"/>
+                </svg>
+                <h3>Discipline</h3>
+                <p>Eagle Scout standards and an adventurer's mindset translate into preparation most agents skip. Michael runs comps before the seller asks, walks the property before the photographer arrives, and pressure-tests an offer before it hits the table. When a deal hits a snag at inspection or financing, the prep work he banked weeks earlier is what keeps it on track.</p>
+            </div>
+
+            <div class="why-card">
+                <svg class="why-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 21s-7-7.5-7-12a7 7 0 0114 0c0 4.5-7 12-7 12z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                <h3>Local Depth</h3>
+                <p>Sixteen-plus years living in North Atlanta, board service, and active community involvement mean Michael knows neighborhoods at the street level, not the zip code level. He can tell you which Halcyon homes get afternoon sun, why Edinburgh's HOA matters at resale, and where the next school redistricting line is likely to fall before the news cycle catches it.</p>
+            </div>
+
+            <div class="why-card">
+                <svg class="why-card__icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12l4-1 3 3 4-7 3 5 4-2"/>
+                    <path d="M3 17l4-1 3 3 4-7 3 5 4-2"/>
+                </svg>
+                <h3>Investor's Lens</h3>
+                <p>Michael is an active investor who buys, holds, and sells in the same market his clients live in. That means sellers get a sharper read on pricing leverage and timing, and buyers get an honest view of long-term value, opportunity cost, and which improvements will actually pay back at resale. You're working with someone whose own money has been on the line in this market.</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END WHY MICHAEL ============ -->
+
+
+    <!-- ============ STATS BAR (dark) ============ -->
+    <section class="section section--dark" style="padding:0;">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years in business</p>
+            </div>
+            <div class="stat-item">
+                <h3>16+</h3>
+                <p>Years in community</p>
+            </div>
+            <div class="stat-item">
+                <h3>Hundreds</h3>
+                <p>Of clients served</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Eagle Scout</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END STATS BAR ============ -->
+
+
+    <!-- ============ FULL-BLEED IMAGE BREAK ============ -->
+    <section class="image-break" data-bg-hint="forsyth-county-aerial-trees-suburban" style="background-image:linear-gradient(rgba(13,13,13,0.55),rgba(13,13,13,0.55)),url('https://images.unsplash.com/photo-1592595896616-c37162298647?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;">
+        <div class="image-break__content">
+            <span class="image-break__eyebrow">FORSYTH COUNTY · NORTH ATLANTA</span>
+            <p class="image-break__line">I learned this market by living in it. Same houses. Same streets. Same neighbors.</p>
+        </div>
+    </section>
+    <!-- ============ END IMAGE BREAK ============ -->
+
+
+    <!-- ============ HIGHLIGHTED TESTIMONIALS: 3-col grid ============ -->
+    <section class="section">
+        <div class="section__header">
+            <span style="color:var(--primary);font-family:var(--font-heading);font-size:13px;text-transform:uppercase;letter-spacing:3px;display:block;margin-bottom:16px;">WHAT CLIENTS SAY</span>
+            <h2>Real words from real North Atlanta clients.</h2>
+        </div>
+        <div class="testimonials-grid">
+
+            <article class="testimonial-grid-card">
+                <div class="testimonial-grid-card__stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Michael always goes above and beyond in helping us look for a house. One of Cumming's best Realtors."</blockquote>
+                <cite>Candy E. · Cumming, GA</cite>
+            </article>
+
+            <article class="testimonial-grid-card">
+                <div class="testimonial-grid-card__stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Michael's patience and communication throughout the process of looking for a new home was above and beyond my expectations, not to mention his help after the purchase. He is a good and caring man who will help you greatly."</blockquote>
+                <cite>Kellie · Cumming, GA</cite>
+            </article>
+
+            <article class="testimonial-grid-card">
+                <div class="testimonial-grid-card__stars" aria-label="5 out of 5 stars">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>"Micheal was with us every step of the way when we put our old home for sale. I appreciate how he was always communicating with us whenever we had concerns. When we purchased our new home, Michael was there to help. Thank you for such a wonderful experience. You made selling and buying a home stress free. I recommend his wonderful service."</blockquote>
+                <cite>Thanii · Suwanee, GA</cite>
+            </article>
+
+        </div>
+        <a href="09-testimonials.html" class="testimonials-cta-link">Read all testimonials</a>
+    </section>
+    <!-- ============ END HIGHLIGHTED TESTIMONIALS ============ -->
+
+
+    <!-- ============ CONNECT CTA ============ -->
+    <section class="section">
+        <div class="connect-cta">
+            <span class="eyebrow">READY TO TALK?</span>
+            <h2>Let's start with a conversation, not a pitch.</h2>
+            <p>Whether you're a year out from buying, ready to list next month, or just curious what your home is worth in today's North Atlanta market, the first step is the same. A direct, no-pressure conversation about where you are and where you want to go.</p>
+            <div class="connect-cta__buttons">
+                <a href="10-contact.html" class="btn btn--primary">Schedule a Call</a>
+                <a href="06-home-valuation.html" class="btn btn--outline">Get Home Value</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CONNECT CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Michael Sapp</h4>
+                <p class="footer__tagline">North Atlanta REALTOR®, guiding buyers and sellers across Forsyth County and the surrounding metro.</p>
+                <p class="footer__brokerage">Keller Williams Realty Community Partners<br>540 Lake Center Parkway, Cumming, GA 30040</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/MichaelSappKellerWilliamsRealty" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/sappinthesouth/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/michaelbsapp" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Michael</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="08-luxury.html">Luxury Listings</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="09-testimonials.html">Testimonials</a></li>
+                    <li><a href="11-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#cumming">Cumming</a></li>
+                    <li><a href="05-communities.html#suwanee">Suwanee</a></li>
+                    <li><a href="05-communities.html#alpharetta">Alpharetta</a></li>
+                    <li><a href="05-communities.html#sugar-hill">Sugar Hill</a></li>
+                    <li><a href="05-communities.html#buford">Buford</a></li>
+                    <li><a href="05-communities.html#johns-creek">Johns Creek</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7706082314">(770) 608-2314</a></li>
+                    <li><a href="mailto:Michaelbsapp@kw.com">Michaelbsapp@kw.com</a></li>
+                    <li>540 Lake Center Parkway<br>Cumming, GA 30040</li>
+                </ul>
+                <a href="10-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Michael Sapp · Keller Williams Realty Community Partners · Licensed REALTOR® in Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each KW office is independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ MODAL OPEN/CLOSE (Communities) ============
+document.querySelectorAll('[data-modal-open]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-modal-open');
+        const modal = document.getElementById('modal-' + id);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el || el.classList.contains('modal-close')) {
+            const overlay = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+});
+
+// ============ TESTIMONIAL CAROUSEL ============
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+}
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+
+const nextBtn = document.querySelector('.testimonial-nav__next');
+const prevBtn = document.querySelector('.testimonial-nav__prev');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (slides.length) setInterval(nextSlide, 6000);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>

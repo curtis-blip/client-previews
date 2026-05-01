@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Atlanta Communities | Cumming, Suwanee, Alpharetta · Michael Sapp</title>
+    <meta name="description" content="Explore North Atlanta neighborhoods with Michael Sapp: Cumming, Suwanee, Alpharetta, Sugar Hill, Buford, Johns Creek. Schools, lifestyle, and homes for sale.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ COMMUNITIES PAGE-SPECIFIC STYLES ============ */
+    .communities-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+    .communities-grid .gallery-card {
+        height: 380px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    .communities-grid .gallery-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.7) 100%);
+        transition: background 0.4s ease;
+    }
+    .communities-grid .gallery-card:hover::before {
+        background: linear-gradient(180deg, rgba(92,26,26,0.15) 0%, rgba(0,0,0,0.85) 100%);
+    }
+    .communities-grid .gallery-card__overlay {
+        z-index: 2;
+    }
+    .communities-grid .gallery-card__overlay h3 {
+        font-family: var(--font-heading);
+        font-size: 26px;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin: 0 0 6px;
+        color: var(--white);
+    }
+    .communities-grid .gallery-card__caption {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.85);
+        margin: 0;
+    }
+    .communities-grid .gallery-card__cta {
+        display: inline-block;
+        margin-top: 14px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #E8B5B5;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .communities-grid .gallery-card:hover .gallery-card__cta {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @media (max-width: 1024px) {
+        .communities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+        .communities-grid { grid-template-columns: 1fr; }
+        .communities-grid .gallery-card { height: 320px; }
+    }
+    /* Intro block */
+    .communities-intro {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .communities-intro h2 {
+        margin-bottom: 24px;
+    }
+    .communities-intro p {
+        font-size: 17px;
+        line-height: 1.85;
+        color: var(--text-muted);
+    }
+    /* Dark CTA */
+    .cta-strip {
+        text-align: center;
+    }
+    .cta-strip .eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #E8B5B5;
+        margin-bottom: 16px;
+        display: block;
+    }
+    .cta-strip h2 {
+        max-width: 800px;
+        margin: 0 auto 32px;
+        color: var(--white);
+        font-weight: 200;
+    }
+    /* Modal extras */
+    .modal-hero h2 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(30px, 4vw, 44px);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        text-align: center;
+        margin: 0;
+    }
+    .modal-body h3 {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--purple);
+        margin-bottom: 20px;
+    }
+    .modal-section p {
+        color: var(--text-muted);
+        line-height: 1.8;
+        font-size: 15px;
+    }
+    /* Hero eyebrow */
+    .hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #E8B5B5;
+        margin-bottom: 18px;
+        display: block;
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Michael Sapp · Communities · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="michael-logo.png" alt="Michael Sapp North Atlanta Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+                <li><a href="08-luxury.html">Luxury Listings</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Michael</a></li>
+                <li><a href="09-testimonials.html">Testimonials</a></li>
+                <li><a href="11-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="10-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7706082314" class="nav__phone">(770) 608-2314</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="08-luxury.html">Luxury Listings</a></li>
+        <li><a href="02-about.html">About Michael</a></li>
+        <li><a href="09-testimonials.html">Testimonials</a></li>
+        <li><a href="11-blog.html">Blog</a></li>
+        <li><a href="10-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7706082314">(770) 608-2314</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<main>
+
+    <!-- ============ HERO: medium 60vh ============ -->
+    <section class="hero hero--medium" data-bg-hint="north-atlanta-aerial-suburban-trees" style="background-image: url('https://images.unsplash.com/photo-1592595896616-c37162298647?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+        <div class="hero__bg" style="background-image:linear-gradient(135deg, #2a1a1a 0%, #5C1A1A 50%, #1a1a1a 100%);"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__eyebrow">North Atlanta · Forsyth County</span>
+            <h1 class="hero__title">Six communities I know like home.</h1>
+            <p class="hero__text">Cumming, Suwanee, Alpharetta, Sugar Hill, Buford, Johns Creek.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ INTRO: white centered ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="communities-intro fade-up">
+                <h2>Forsyth County neighborhoods, from new-build subdivisions to gated golf communities.</h2>
+                <p>I have lived in North Atlanta for more than 16 years and worked these streets as a REALTOR for over a decade and a half. That depth shows up at the neighborhood level, not the city level. I can tell you which side of Halcyon walks easiest to dinner, why Laurel Springs feels different from The River Club, how Edinburgh compares to Rivermoore Park on lot size and price, and what the trade-offs look like between Sugar Hill and Buford on schools. Cumming, Suwanee, Alpharetta, Sugar Hill, Buford, Johns Creek, I work clients in all six on a regular basis.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END INTRO ============ -->
+
+
+    <!-- ============ 6-CARD COMMUNITY GRID ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="communities-grid">
+
+                <!-- Cumming -->
+                <div class="gallery-card" data-modal-open="cumming" data-image-hint="cumming-ga-suburban-tree-lined-street" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                    <div class="gallery-card__overlay">
+                        <h3 id="cumming">Cumming</h3>
+                        <p class="gallery-card__caption">Forsyth County · Halcyon, Laurel Springs</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Suwanee (uses real client photo) -->
+                <div class="gallery-card" data-modal-open="suwanee" style="background-image:url('communities/river-club.jpeg');">
+                    <div class="gallery-card__overlay">
+                        <h3 id="suwanee">Suwanee</h3>
+                        <p class="gallery-card__caption">Gwinnett County · Edinburgh, River Club, Rivermoore</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Alpharetta -->
+                <div class="gallery-card" data-modal-open="alpharetta" data-image-hint="alpharetta-ga-modern-home-suburban" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                    <div class="gallery-card__overlay">
+                        <h3 id="alpharetta">Alpharetta</h3>
+                        <p class="gallery-card__caption">North Fulton · Avalon, Downtown Alpharetta</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Sugar Hill -->
+                <div class="gallery-card" data-modal-open="sugar-hill" data-image-hint="sugar-hill-ga-residential-neighborhood" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                    <div class="gallery-card__overlay">
+                        <h3 id="sugar-hill">Sugar Hill</h3>
+                        <p class="gallery-card__caption">Gwinnett County · E Center, downtown arts</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Buford -->
+                <div class="gallery-card" data-modal-open="buford" data-image-hint="buford-ga-lake-lanier-area" style="background-image: url('https://images.unsplash.com/photo-1505739998589-00bdfb125906?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                    <div class="gallery-card__overlay">
+                        <h3 id="buford">Buford</h3>
+                        <p class="gallery-card__caption">Gwinnett County · Lake Lanier corridor</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Johns Creek -->
+                <div class="gallery-card" data-modal-open="johns-creek" data-image-hint="johns-creek-ga-luxury-home-exterior" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                    <div class="gallery-card__overlay">
+                        <h3 id="johns-creek">Johns Creek</h3>
+                        <p class="gallery-card__caption">North Fulton · gated golf, Chattahoochee access</p>
+                        <span class="gallery-card__cta">Learn More &rarr;</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END 6-CARD COMMUNITY GRID ============ -->
+
+
+    <!-- ============ DARK CTA STRIP ============ -->
+    <section class="section section--dark">
+        <div class="container">
+            <div class="cta-strip">
+                <span class="eyebrow">Don't See Your Area?</span>
+                <h2>I work North Atlanta widely. Tell me what you're looking for.</h2>
+                <a href="10-contact.html" class="btn btn--white">Reach Out</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END DARK CTA STRIP ============ -->
+
+</main>
+
+
+<!-- ============ MODAL: CUMMING ============ -->
+<div class="modal-overlay" id="modal-cumming">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-image-hint="cumming-ga-suburban-tree-lined-street" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+            <h2>Cumming</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Cumming is the county seat of Forsyth County and the heart of where I work. It is a mix of historic downtown, new-build family subdivisions, and gated golf communities. My office sits at 540 Lake Center Parkway, so I am here daily. The Forsyth County School System consistently ranks among the strongest in Georgia, GA-400 puts you 45 minutes from Midtown Atlanta, and Lake Lanier sits a short drive east. Buyers move here for the schools and the trade-off of suburban quiet with metro access.</p>
+
+            <div class="modal-section">
+                <h3>Featured Neighborhoods</h3>
+                <ul>
+                    <li><strong>Halcyon:</strong> mixed-use lifestyle community, walkable to dining and shops, townhomes and single-family. Newer construction, designed around a town-square feel.</li>
+                    <li><strong>Laurel Springs:</strong> gated Jack Nicklaus signature golf community, 24-hour security, established luxury homes on larger lots, country-club lifestyle.</li>
+                </ul>
+            </div>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $500s to $2M+</div>
+                    <div class="modal-stat__label">Median Home Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Forsyth County Schools</div>
+                    <div class="modal-stat__label">Top School District</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Family + Golf</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Commute:</strong> direct GA-400 access, roughly 45 minutes to Midtown Atlanta in normal traffic.</li>
+                    <li><strong>Schools:</strong> Forsyth County School System, regularly ranked top tier in Georgia.</li>
+                    <li><strong>Lifestyle:</strong> golf and country clubs anchor the luxury end, family subdivisions everywhere else.</li>
+                    <li><strong>Parks:</strong> Sawnee Mountain Preserve, riverside parks along the Chattahoochee, plus Lake Lanier within 20 minutes.</li>
+                    <li><strong>Dining:</strong> downtown Cumming and Halcyon hold the best concentration of local restaurants and breweries.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>The Forsyth County School System is one of the main reasons families relocate here. Test scores, graduation rates, and program depth (gifted, AP, athletics) all sit at or near the top of state rankings year over year. Pair that with the GA-400 corridor, the lake, and a downtown that has invested heavily in walkability, and you get a market that holds value through every cycle I have worked.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: CUMMING ============ -->
+
+
+<!-- ============ MODAL: SUWANEE ============ -->
+<div class="modal-overlay" id="modal-suwanee">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('communities/river-club.jpeg');">
+            <h2>Suwanee</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Suwanee sits in Gwinnett County right on the Forsyth border, repeatedly named one of the best places to live in Georgia. The Town Center is the heart of the city, complete with a green, an amphitheater, and a year-round festival calendar. Suwanee buyers tend to want the community feel and the school options, with easy I-85 access for north metro commuters. The luxury end here, especially along the Chattahoochee, rivals anything in North Atlanta.</p>
+
+            <div class="modal-section">
+                <h3>Featured Neighborhoods</h3>
+                <ul>
+                    <li><strong>Edinburgh:</strong> golf-course community, generous lots, well-established, traditional architecture, strong family demographic.</li>
+                    <li><strong>The River Club:</strong> Greg Norman-designed luxury golf along the Chattahoochee, gated, member-driven, the high-end anchor of Suwanee.</li>
+                    <li><strong>Rivermoore Park:</strong> gated community with Chattahoochee River access, swim/tennis amenities, lower entry than River Club.</li>
+                </ul>
+            </div>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $500s to $3M+</div>
+                    <div class="modal-stat__label">Price Range (River Club tops)</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Gwinnett County Schools</div>
+                    <div class="modal-stat__label">Top School District</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Luxury Golf + Parks</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Town Center:</strong> the social hub, weekly events on the green, restaurants, walkable from several neighborhoods.</li>
+                    <li><strong>Festivals:</strong> Suwanee Fest, Food Truck Fridays, summer concert series. Strong community calendar.</li>
+                    <li><strong>River access:</strong> Chattahoochee greenway, kayak put-ins, scenic trails through River Club and Rivermoore.</li>
+                    <li><strong>Schools:</strong> Gwinnett County Public Schools, with several top-ranked elementary, middle, and high schools serving Suwanee.</li>
+                    <li><strong>Connectivity:</strong> I-85 corridor, fast access to Buford, Duluth, Alpharetta, and into Atlanta proper.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Gwinnett County Schools serve Suwanee, and the Suwanee feeders consistently rank among the best in the county. Beyond academics, this is a community-first city, the Town Center is intentionally programmed to bring people together, and the parks system is unusually strong for a town this size. If you want neighbors who know your kids' names plus a luxury golf option around the corner, Suwanee delivers both.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: SUWANEE ============ -->
+
+
+<!-- ============ MODAL: ALPHARETTA ============ -->
+<div class="modal-overlay" id="modal-alpharetta">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-image-hint="alpharetta-ga-modern-home-suburban" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+            <h2>Alpharetta</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Alpharetta is the affluent core of North Fulton, anchored by the Avalon mixed-use district, a charming walkable downtown, and a tech corridor that brought a wave of executive relocations over the past decade. Buyers come for the lifestyle: top-tier shopping, dining, schools, and proximity to Microsoft, Google, and other tech employers nearby. The market here moves fast, and the price ceiling keeps climbing as demand outpaces inventory year after year.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $600s to $2M+</div>
+                    <div class="modal-stat__label">Median Home Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Fulton County Schools</div>
+                    <div class="modal-stat__label">Top-Tier Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Tech + Dining</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Avalon:</strong> outdoor shopping, dining, and luxury hotel district, the social hub of North Fulton.</li>
+                    <li><strong>Downtown Alpharetta:</strong> walkable historic district, restaurants and bars, weekend events.</li>
+                    <li><strong>Tech jobs:</strong> Microsoft, Google, and the broader tech corridor along GA-400 keep relocation demand strong.</li>
+                    <li><strong>Schools:</strong> Fulton County Schools plus a deep bench of top private schools (Mount Vernon, Kings Ridge, others).</li>
+                    <li><strong>Parks:</strong> Wills Park, Big Creek Greenway, and the equestrian center for active families.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Fulton County Schools serving Alpharetta consistently rank in the top tier statewide, and the private school options are some of the strongest in the metro. Lifestyle here leans upscale-casual: Avalon for evenings out, downtown for weekend strolls, and the GA-400 corridor for tech-job convenience. Inventory is tight at every price point, so buyers benefit from local representation that hears about listings before they hit the MLS.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: ALPHARETTA ============ -->
+
+
+<!-- ============ MODAL: SUGAR HILL ============ -->
+<div class="modal-overlay" id="modal-sugar-hill">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-image-hint="sugar-hill-ga-residential-neighborhood" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+            <h2>Sugar Hill</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Sugar Hill is the smaller-feel city in Gwinnett County, and one of my favorite recommendations for first-time buyers and young families who want North Atlanta lifestyle without Alpharetta or Suwanee price tags. The downtown has been completely revitalized around The Bowl, an outdoor amphitheater, and the E Center for arts and entertainment. Lake Lanier sits a few minutes north. Strong value, growing fast, real community feel.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Low $400s to $900K</div>
+                    <div class="modal-stat__label">Median Home Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Gwinnett County Schools</div>
+                    <div class="modal-stat__label">Top School District</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Affordable Family + Arts</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>The Bowl &amp; E Center:</strong> outdoor amphitheater and arts complex, year-round programming, the heart of downtown.</li>
+                    <li><strong>Downtown events:</strong> concerts, food trucks, family festivals, the city does community programming exceptionally well.</li>
+                    <li><strong>Lake Lanier:</strong> roughly 10 minutes to the closest boat ramp, an easy weekend amenity.</li>
+                    <li><strong>Family parks:</strong> Sugar Hill Greenway, E.E. Robinson Park, plenty of green space for an active family.</li>
+                    <li><strong>Dining scene:</strong> downtown is growing fast, new restaurants and breweries opening regularly.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Gwinnett County Schools serve Sugar Hill, with the Lanier cluster generally being the feeder pattern for most neighborhoods. Lifestyle here is community-first and budget-friendly, you can buy a real home with a real yard at numbers that simply do not exist in Alpharetta or Johns Creek anymore. Buyers who want growth potential plus a real downtown often land here.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: SUGAR HILL ============ -->
+
+
+<!-- ============ MODAL: BUFORD ============ -->
+<div class="modal-overlay" id="modal-buford">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-image-hint="buford-ga-lake-lanier-area" style="background-image: url('https://images.unsplash.com/photo-1505739998589-00bdfb125906?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+            <h2>Buford</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Buford is where Lake Lanier meets North Atlanta convenience. Sitting on the southern shore, with the Mall of Georgia corridor just south, it offers a mix of older established neighborhoods, newer subdivisions, and waterfront homes with private docks. Strong value compared to Suwanee and Alpharetta, especially for buyers who want lake access. The city operates its own school district (separate from Gwinnett), which is a meaningful factor for many families.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $400s to $1.5M+</div>
+                    <div class="modal-stat__label">Range (lakefront tops)</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Buford City + Gwinnett</div>
+                    <div class="modal-stat__label">Two School Systems</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Lake + Value</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Lake Lanier:</strong> private docks, marinas, boating culture, lakefront homes at every price tier.</li>
+                    <li><strong>Mall of Georgia corridor:</strong> retail, dining, and entertainment all 5 to 10 minutes south.</li>
+                    <li><strong>Friendship Park:</strong> walking trails, ball fields, family-friendly green space.</li>
+                    <li><strong>Buford City Schools:</strong> small standalone district with strong reputation, separate from Gwinnett County.</li>
+                    <li><strong>Boating culture:</strong> if you want to live the lake life, Buford is the address.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Buford has two school systems serving residents: Buford City Schools (a small, well-regarded standalone district) and Gwinnett County Public Schools, depending on where the home sits. That distinction matters at the address level and shapes pricing. Lifestyle is unmistakably lake-driven, weekends on the water are part of the value proposition, and the homes that sit closest to the water hold their value through every market.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: BUFORD ============ -->
+
+
+<!-- ============ MODAL: JOHNS CREEK ============ -->
+<div class="modal-overlay" id="modal-johns-creek">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-image-hint="johns-creek-ga-luxury-home-exterior" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+            <h2>Johns Creek</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Johns Creek is a master-planned, family-focused North Fulton city, known for its country-club communities, low-traffic neighborhoods, and Chattahoochee River frontage. Buyers tend to be families chasing the schools, executives commuting to the GA-400 tech corridor, and empty-nesters drawn to the country-club lifestyle. It is quieter than Alpharetta, more polished than Suwanee, and the inventory leans toward larger homes on larger lots.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $600s to $2.5M+</div>
+                    <div class="modal-stat__label">Median Home Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Fulton County Schools</div>
+                    <div class="modal-stat__label">Top School District</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Family + Golf</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Country-club communities:</strong> Country Club of the South, St. Ives, Atlanta Athletic Club, all anchor luxury living.</li>
+                    <li><strong>River greenway:</strong> Chattahoochee River parks and trails through Newtown Park and the Riverwalk.</li>
+                    <li><strong>Schools:</strong> Fulton County Schools, with the Northview cluster especially well regarded.</li>
+                    <li><strong>Low-traffic neighborhoods:</strong> the master-planned street design keeps residential streets calm, a real selling point with kids.</li>
+                    <li><strong>Tech corridor commute:</strong> easy access to Alpharetta and the GA-400 tech employers without paying Avalon-zip pricing.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Fulton County Schools serve Johns Creek, with several schools sitting at or near the top of state rankings. Lifestyle is family-centric and country-club-flavored, multiple gated golf neighborhoods anchor the high end, and the river greenway gives residents an outdoor reset within five minutes of most addresses. If you want family-first North Atlanta living with luxury options, Johns Creek is a natural fit.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="10-contact.html" class="btn btn--primary">Talk to Michael</a>
+                <a href="07-home-search.html" class="btn btn--outline">See Homes for Sale</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: JOHNS CREEK ============ -->
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Michael Sapp</h4>
+                <p class="footer__tagline">North Atlanta REALTOR®, guiding buyers and sellers across Forsyth County and the surrounding metro.</p>
+                <p class="footer__brokerage">Keller Williams Realty Community Partners<br>540 Lake Center Parkway, Cumming, GA 30040</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/MichaelSappKellerWilliamsRealty" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/sappinthesouth/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/michaelbsapp" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Michael</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="08-luxury.html">Luxury Listings</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="09-testimonials.html">Testimonials</a></li>
+                    <li><a href="11-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#cumming">Cumming</a></li>
+                    <li><a href="05-communities.html#suwanee">Suwanee</a></li>
+                    <li><a href="05-communities.html#alpharetta">Alpharetta</a></li>
+                    <li><a href="05-communities.html#sugar-hill">Sugar Hill</a></li>
+                    <li><a href="05-communities.html#buford">Buford</a></li>
+                    <li><a href="05-communities.html#johns-creek">Johns Creek</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7706082314">(770) 608-2314</a></li>
+                    <li><a href="mailto:Michaelbsapp@kw.com">Michaelbsapp@kw.com</a></li>
+                    <li>540 Lake Center Parkway<br>Cumming, GA 30040</li>
+                </ul>
+                <a href="10-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Michael Sapp · Keller Williams Realty Community Partners · Licensed REALTOR® in Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each KW office is independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ MODAL OPEN/CLOSE (Communities) ============
+document.querySelectorAll('[data-modal-open]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-modal-open');
+        const modal = document.getElementById('modal-' + id);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el || el.classList.contains('modal-close')) {
+            const overlay = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+});
+
+// ============ TESTIMONIAL CAROUSEL ============
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+}
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+
+const nextBtn = document.querySelector('.testimonial-nav__next');
+const prevBtn = document.querySelector('.testimonial-nav__prev');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (slides.length) setInterval(nextSlide, 6000);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>

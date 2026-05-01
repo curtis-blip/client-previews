@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North Atlanta Real Estate Blog | Market Updates · Michael Sapp</title>
+    <meta name="description" content="Atlanta real estate market updates, North Atlanta neighborhood spotlights, and home buying/selling tips from Michael Sapp.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ PAGE-SPECIFIC STYLES (Blog) ============ */
+
+    /* HERO (short variant) */
+    .hero.hero--short {
+        position: relative;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: linear-gradient(135deg, #2a1010 0%, #5C1A1A 60%, #7A2828 100%);
+        color: var(--white);
+        padding: 140px 24px 80px;
+        overflow: hidden;
+    }
+    .hero.hero--short::before {
+        content: "";
+        position: absolute; inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 1;
+    }
+    .hero.hero--short > * { position: relative; z-index: 2; }
+    .hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent-gold, #A8956E);
+        margin-bottom: 20px;
+    }
+    .hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 1.15;
+        max-width: 900px;
+        margin: 0 auto 24px;
+    }
+    .hero__subhead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.4vw, 18px);
+        line-height: 1.7;
+        max-width: 680px;
+        margin: 0 auto;
+        color: rgba(255,255,255,0.85);
+    }
+
+    /* SECTIONS */
+    .section { padding: 96px 24px; }
+    .section--white { background: var(--white); }
+    .section--gray  { background: var(--gray-bg, #F2F1F1); }
+    .section--dark  { background: var(--black); color: var(--white); }
+    .section__container { max-width: var(--max-width, 1280px); margin: 0 auto; }
+    .section__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--primary, #5C1A1A);
+        margin-bottom: 16px;
+    }
+    .section--dark .section__eyebrow { color: var(--accent-gold, #A8956E); }
+    .section__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: clamp(26px, 3vw, 38px);
+        line-height: 1.2;
+        margin-bottom: 48px;
+    }
+    .section__title--centered { text-align: center; }
+    .section__center { text-align: center; }
+
+    /* FEATURED POST */
+    .featured-post {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        gap: 0;
+        background: var(--white);
+        border: 1px solid var(--border-light, #E0E0E0);
+        overflow: hidden;
+    }
+    .featured-post__image {
+        background: linear-gradient(135deg, #cdb8a0 0%, #8a7560 50%, #4a3a2a 100%);
+        min-height: 520px;
+        position: relative;
+    }
+    .featured-post__image::after {
+        content: "Featured Image Placeholder";
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-heading);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+    }
+    .featured-post__body {
+        padding: 56px 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .featured-post__date {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-muted, #666);
+        margin-bottom: 16px;
+    }
+    .featured-post__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: clamp(22px, 2.4vw, 30px);
+        line-height: 1.25;
+        margin-bottom: 20px;
+        color: var(--text-dark, #1A1A1A);
+    }
+    .featured-post__excerpt {
+        font-family: var(--font-body);
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--text-muted, #666);
+        margin-bottom: 32px;
+    }
+
+    /* BUTTONS (page-scoped fallback) */
+    .btn-outline {
+        display: inline-block;
+        padding: 14px 32px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary, #5C1A1A);
+        border: 1.5px solid var(--primary, #5C1A1A);
+        background: transparent;
+        text-decoration: none;
+        transition: all var(--transition, 0.3s ease);
+        align-self: flex-start;
+    }
+    .btn-outline:hover {
+        background: var(--primary, #5C1A1A);
+        color: var(--white);
+    }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--black);
+        background: var(--white);
+        border: 1.5px solid var(--white);
+        text-decoration: none;
+        transition: all var(--transition, 0.3s ease);
+    }
+    .btn-white:hover {
+        background: transparent;
+        color: var(--white);
+    }
+
+    /* CATEGORIES STRIP */
+    .categories-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 8px;
+    }
+    .category-pill {
+        display: inline-block;
+        padding: 12px 22px;
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary, #5C1A1A);
+        border: 1.5px solid var(--primary, #5C1A1A);
+        background: transparent;
+        text-decoration: none;
+        transition: all var(--transition, 0.3s ease);
+    }
+    .category-pill:hover {
+        background: var(--primary, #5C1A1A);
+        color: var(--white);
+    }
+
+    /* POST GRID */
+    .post-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+    }
+    .post-card {
+        background: var(--white);
+        border: 1px solid var(--border-light, #E0E0E0);
+        display: flex;
+        flex-direction: column;
+        transition: all var(--transition, 0.3s ease);
+    }
+    .post-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+    }
+    .post-card__image {
+        aspect-ratio: 4 / 3;
+        background: linear-gradient(135deg, #d4c8b8 0%, #8a7965 60%, #5C1A1A 120%);
+        position: relative;
+    }
+    .post-card__image::after {
+        content: "Image Placeholder";
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-heading);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.55);
+    }
+    .post-card__body {
+        padding: 28px 26px 30px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .post-card__category {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary, #5C1A1A);
+        margin-bottom: 10px;
+    }
+    .post-card__date {
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-muted, #666);
+        margin-bottom: 14px;
+    }
+    .post-card__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-size: 22px;
+        line-height: 1.3;
+        margin-bottom: 14px;
+        color: var(--text-dark, #1A1A1A);
+    }
+    .post-card__excerpt {
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted, #666);
+        margin-bottom: 20px;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .post-card__link {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--primary, #5C1A1A);
+        text-decoration: none;
+        transition: all var(--transition, 0.3s ease);
+    }
+    .post-card__link:hover { color: var(--primary-light, #7A2828); letter-spacing: 3px; }
+
+    /* NEWSLETTER */
+    .newsletter {
+        max-width: 620px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .newsletter__form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-width: 480px;
+        margin: 24px auto 16px;
+    }
+    .newsletter__input {
+        padding: 16px 20px;
+        font-family: var(--font-body);
+        font-size: 15px;
+        background: var(--white);
+        border: 1.5px solid var(--border-light, #E0E0E0);
+        color: var(--text-dark, #1A1A1A);
+        transition: border-color var(--transition, 0.3s ease);
+    }
+    .newsletter__input:focus {
+        outline: none;
+        border-color: var(--primary, #5C1A1A);
+    }
+    .newsletter__submit {
+        padding: 16px 32px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--primary, #5C1A1A);
+        border: 1.5px solid var(--primary, #5C1A1A);
+        cursor: pointer;
+        transition: all var(--transition, 0.3s ease);
+    }
+    .newsletter__submit:hover {
+        background: var(--primary-light, #7A2828);
+        border-color: var(--primary-light, #7A2828);
+    }
+    .newsletter__fineprint {
+        font-family: var(--font-body);
+        font-size: 13px;
+        color: var(--text-muted, #666);
+        margin-top: 8px;
+    }
+
+    /* CTA */
+    .cta-block {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto;
+    }
+    .cta-block .section__title {
+        margin-bottom: 36px;
+        color: var(--white);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .featured-post { grid-template-columns: 1fr; }
+        .featured-post__image { min-height: 320px; }
+        .featured-post__body { padding: 40px 28px; }
+        .post-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+    @media (max-width: 600px) {
+        .section { padding: 72px 20px; }
+        .post-grid { grid-template-columns: 1fr; }
+        .btn-outline { align-self: stretch; text-align: center; }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Michael Sapp · Blog · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="michael-logo.png" alt="Michael Sapp North Atlanta Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+                <li><a href="08-luxury.html">Luxury Listings</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Michael</a></li>
+                <li><a href="09-testimonials.html">Testimonials</a></li>
+                <li><a href="11-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="10-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7706082314" class="nav__phone">(770) 608-2314</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="08-luxury.html">Luxury Listings</a></li>
+        <li><a href="02-about.html">About Michael</a></li>
+        <li><a href="09-testimonials.html">Testimonials</a></li>
+        <li><a href="11-blog.html">Blog</a></li>
+        <li><a href="10-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7706082314">(770) 608-2314</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<!-- ============================================
+     CONTENT SLOT
+     ============================================ -->
+<main>
+
+    <!-- ============ HERO: hero-short-blog ============ -->
+    <section class="hero hero--short" data-bg-hint="north-atlanta-real-estate-news-modern-home" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+        <div>
+            <div class="hero__eyebrow">Real Estate Blog · North Atlanta</div>
+            <h1 class="hero__title">Notes from the North Atlanta market.</h1>
+            <p class="hero__subhead">Monthly market updates, neighborhood spotlights, and the things buyers and sellers ask me most.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ FEATURED POST: featured-2col-60-40 ============ -->
+    <section class="section section--white">
+        <div class="section__container">
+            <article class="featured-post">
+                <div class="featured-post__image" data-image-hint="cumming-ga-aerial-spring-housing-market" style="background-image: url('https://images.unsplash.com/photo-1592595896616-c37162298647?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                <div class="featured-post__body">
+                    <div class="section__eyebrow">Featured · Market Report</div>
+                    <div class="featured-post__date">May 2026</div>
+                    <h2 class="featured-post__title">Atlanta real estate market: where Forsyth County stands going into Q3.</h2>
+                    <p class="featured-post__excerpt">Q2 has been a quieter season across Cumming, Suwanee, and Alpharetta than the spring rush we saw last year. Days on market have stretched in some price bands while well-prepped homes in the right school zones still see early offers. Inventory is loosening just enough to give serious buyers room to negotiate without flipping the whole market on its head. Here is what the numbers and the showings are actually telling me on the ground.</p>
+                    <a href="#" class="btn-outline">Read the Full Report</a>
+                </div>
+            </article>
+            <!-- WordPress posts auto-populate in production. This is a structural placeholder. -->
+        </div>
+    </section>
+    <!-- ============ END FEATURED POST ============ -->
+
+
+    <!-- ============ CATEGORIES STRIP: categories-pills-6 ============ -->
+    <section class="section section--gray">
+        <div class="section__container section__center">
+            <div class="section__eyebrow">Browse by Category</div>
+            <div class="categories-strip">
+                <a href="#" class="category-pill">Market Updates</a>
+                <a href="#" class="category-pill">Buying Tips</a>
+                <a href="#" class="category-pill">Selling Tips</a>
+                <a href="#" class="category-pill">Cumming</a>
+                <a href="#" class="category-pill">Suwanee</a>
+                <a href="#" class="category-pill">Luxury</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CATEGORIES STRIP ============ -->
+
+
+    <!-- ============ POST GRID: posts-3col-6cards ============ -->
+    <section class="section section--white">
+        <div class="section__container">
+            <h2 class="section__title">Recent posts.</h2>
+            <div class="post-grid">
+
+                <!-- Post 1 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="graph-housing-data-laptop" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Market Updates</div>
+                        <div class="post-card__date">Apr 2026</div>
+                        <h3 class="post-card__title">Forsyth County housing inventory: a softening or a seasonal lull?</h3>
+                        <p class="post-card__excerpt">Listings have ticked up across Cumming and Suwanee in the past 60 days. Whether that is a real shift or a normal late-spring breath, here is how to read it.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="first-time-home-buyer-couple-discussion" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Buying Tips</div>
+                        <div class="post-card__date">Apr 2026</div>
+                        <h3 class="post-card__title">First time home buyer in Georgia: down payment programs that still work in 2026.</h3>
+                        <p class="post-card__excerpt">Georgia Dream, FHA, and a handful of lender-specific assistance programs are still meaningfully open. A walk through which ones North Atlanta buyers actually qualify for.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="luxury-golf-course-aerial-georgia" style="background-image: url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Communities</div>
+                        <div class="post-card__date">Mar 2026</div>
+                        <h3 class="post-card__title">Edinburgh vs The River Club: which Suwanee golf community fits your life?</h3>
+                        <p class="post-card__excerpt">Both are gated, both have golf, both pull strong buyers. They feel very different on a Tuesday afternoon. Here is how I help clients pick between them.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="house-pricing-strategy-paperwork" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Selling Tips</div>
+                        <div class="post-card__date">Mar 2026</div>
+                        <h3 class="post-card__title">Pricing strategy in a slower Cumming market: when aggressive pays off.</h3>
+                        <p class="post-card__excerpt">There is a version of "list low, drive a bidding war" that still works, and a version that costs sellers real money. The difference is in the comps and the prep.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="luxury-home-private-tour" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Luxury</div>
+                        <div class="post-card__date">Feb 2026</div>
+                        <h3 class="post-card__title">Off-market luxury listings in North Atlanta: how the agent network actually works.</h3>
+                        <p class="post-card__excerpt">A real look at how pocket listings move between agents in Forsyth and Fulton, what gets shared at what stage, and how serious buyers get a seat at that table.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Post 6 -->
+                <article class="post-card">
+                    <div class="post-card__image" data-image-hint="school-bus-suburban-neighborhood" style="background-image: url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+                    <div class="post-card__body">
+                        <div class="post-card__category">Market Updates</div>
+                        <div class="post-card__date">Feb 2026</div>
+                        <h3 class="post-card__title">Forsyth County school district shifts and what they mean for home values.</h3>
+                        <p class="post-card__excerpt">Boundary changes do not just move kids, they move comps. A breakdown of which neighborhoods are likely to feel the pricing impact first.</p>
+                        <a href="#" class="post-card__link">Read more &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+            <!-- WordPress posts auto-populate in production. Card structure and category styling shown as placeholder. -->
+        </div>
+    </section>
+    <!-- ============ END POST GRID ============ -->
+
+
+    <!-- ============ NEWSLETTER: newsletter-stacked-centered ============ -->
+    <section class="section section--gray">
+        <div class="section__container">
+            <div class="newsletter">
+                <div class="section__eyebrow">Stay Close</div>
+                <h2 class="section__title section__title--centered">Monthly market notes from a realtor who lives the area.</h2>
+                <form class="newsletter__form" onsubmit="event.preventDefault();">
+                    <input type="email" class="newsletter__input" placeholder="Your email address" aria-label="Email address" required>
+                    <button type="submit" class="newsletter__submit">Subscribe</button>
+                </form>
+                <p class="newsletter__fineprint">No spam. One email a month, max. Always real numbers, never fluff.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END NEWSLETTER ============ -->
+
+
+    <!-- ============ CTA: cta-dark-centered ============ -->
+    <section class="section section--dark">
+        <div class="section__container">
+            <div class="cta-block">
+                <div class="section__eyebrow">Ready to Talk?</div>
+                <h2 class="section__title section__title--centered">Have a question I should write about?</h2>
+                <a href="10-contact.html" class="btn-white">Send Michael a Note</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CTA ============ -->
+
+</main>
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Michael Sapp</h4>
+                <p class="footer__tagline">North Atlanta REALTOR®, guiding buyers and sellers across Forsyth County and the surrounding metro.</p>
+                <p class="footer__brokerage">Keller Williams Realty Community Partners<br>540 Lake Center Parkway, Cumming, GA 30040</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/MichaelSappKellerWilliamsRealty" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/sappinthesouth/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/michaelbsapp" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Michael</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="08-luxury.html">Luxury Listings</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="09-testimonials.html">Testimonials</a></li>
+                    <li><a href="11-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#cumming">Cumming</a></li>
+                    <li><a href="05-communities.html#suwanee">Suwanee</a></li>
+                    <li><a href="05-communities.html#alpharetta">Alpharetta</a></li>
+                    <li><a href="05-communities.html#sugar-hill">Sugar Hill</a></li>
+                    <li><a href="05-communities.html#buford">Buford</a></li>
+                    <li><a href="05-communities.html#johns-creek">Johns Creek</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7706082314">(770) 608-2314</a></li>
+                    <li><a href="mailto:Michaelbsapp@kw.com">Michaelbsapp@kw.com</a></li>
+                    <li>540 Lake Center Parkway<br>Cumming, GA 30040</li>
+                </ul>
+                <a href="10-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Michael Sapp · Keller Williams Realty Community Partners · Licensed REALTOR® in Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each KW office is independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

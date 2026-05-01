@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Value Calculator · Cumming GA | Free Home Valuation · Michael Sapp</title>
+    <meta name="description" content="What is your house worth? Get a free home valuation from Michael Sapp. Local comps, market context, and a real conversation, no obligation.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ HOME VALUATION PAGE-SPECIFIC STYLING ============ */
+
+    /* Hero - short editorial register */
+    .val-hero {
+        background: linear-gradient(135deg, #1a0808 0%, #2a0c0c 60%, #5C1A1A 100%);
+        position: relative;
+    }
+    .val-hero__bg {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.55;
+    }
+    .val-hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .val-hero .hero__content {
+        max-width: 960px;
+        position: relative; z-index: 2;
+    }
+    .val-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        display: block;
+    }
+    .val-hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(32px, 5vw, 54px);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1.2;
+        color: var(--white);
+        margin-bottom: 20px;
+    }
+    .val-hero__subhead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.7;
+        color: rgba(255,255,255,0.88);
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    /* Section header (shared, gray + white sections) */
+    .val-section-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 56px;
+    }
+    .val-section-header__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .val-section-header h2 {
+        font-size: clamp(28px, 3.5vw, 38px);
+        margin-bottom: 16px;
+        line-height: 1.25;
+    }
+    .val-section-header p {
+        color: var(--text-muted);
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    /* Form + Benefits split */
+    .val-split {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: start;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .val-split__col-eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .val-split h2,
+    .val-split h3 {
+        font-size: clamp(24px, 3vw, 32px);
+        line-height: 1.3;
+        margin-bottom: 24px;
+    }
+
+    /* Form */
+    .val-form {
+        margin-top: 32px;
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        padding: 40px;
+    }
+    .val-form__row {
+        margin-bottom: 20px;
+    }
+    .val-form__row--2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .val-form label {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        display: block;
+    }
+    .val-form input,
+    .val-form textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid var(--border-light);
+        background: var(--white);
+        font-family: var(--font-body);
+        font-size: 15px;
+        color: var(--text-dark);
+        outline: none;
+        transition: border-color var(--transition);
+    }
+    .val-form input:focus,
+    .val-form textarea:focus {
+        border-color: var(--purple);
+    }
+    .val-form textarea {
+        resize: vertical;
+        min-height: 96px;
+    }
+    .val-form__submit {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .val-form__note {
+        margin-top: 16px;
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        text-align: center;
+    }
+
+    /* Benefits */
+    .val-benefits {
+        position: sticky;
+        top: 120px;
+    }
+    .val-benefits__list {
+        list-style: none;
+        padding: 0;
+        margin: 24px 0 0;
+    }
+    .val-benefits__list li {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-light);
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-dark);
+    }
+    .val-benefits__list li:last-child {
+        border-bottom: none;
+    }
+    .val-benefits__check {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        margin-top: 2px;
+        color: var(--purple);
+    }
+    .val-benefits__note {
+        margin-top: 24px;
+        font-family: var(--font-body);
+        font-style: italic;
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+        .val-split {
+            grid-template-columns: 1fr;
+            gap: 56px;
+        }
+        .val-benefits {
+            position: static;
+        }
+    }
+    @media (max-width: 768px) {
+        .val-form {
+            padding: 28px 20px;
+        }
+        .val-form__row--2col {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Stats - gold numerals, dark bg */
+    .val-stats .stat-item h3 {
+        color: var(--gold);
+        font-family: var(--font-heading);
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 200;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+    .val-stats .stat-item p {
+        color: rgba(255,255,255,0.65);
+        font-family: var(--font-heading);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    /* Cross-link block */
+    .val-crosslink {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .val-crosslink__text h3 {
+        font-size: clamp(24px, 3vw, 32px);
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+    .val-crosslink__text p {
+        color: var(--text-muted);
+        font-size: 16px;
+        line-height: 1.85;
+        margin-bottom: 28px;
+        max-width: 520px;
+    }
+    .val-crosslink__image {
+        aspect-ratio: 4 / 3;
+        background-size: cover;
+        background-position: center;
+        background-color: #2a1414;
+        background-image: linear-gradient(135deg, rgba(92,26,26,0.5) 0%, rgba(13,13,13,0.7) 100%);
+    }
+    @media (max-width: 1024px) {
+        .val-crosslink {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .val-crosslink__image {
+            order: -1;
+            min-height: 280px;
+        }
+    }
+
+    /* Final CTA */
+    .val-final-cta {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .val-final-cta__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .val-final-cta h2 {
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: 28px;
+        line-height: 1.25;
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Michael Sapp · Home Valuation · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="michael-logo.png" alt="Michael Sapp North Atlanta Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+                <li><a href="08-luxury.html">Luxury Listings</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Michael</a></li>
+                <li><a href="09-testimonials.html">Testimonials</a></li>
+                <li><a href="11-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="10-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7706082314" class="nav__phone">(770) 608-2314</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="08-luxury.html">Luxury Listings</a></li>
+        <li><a href="02-about.html">About Michael</a></li>
+        <li><a href="09-testimonials.html">Testimonials</a></li>
+        <li><a href="11-blog.html">Blog</a></li>
+        <li><a href="10-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7706082314">(770) 608-2314</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<!-- ============================================
+     CONTENT SLOT - Home Valuation page sections
+     ============================================ -->
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+
+    <!-- ============ HERO: HERO-SHORT-1 ============ -->
+    <section class="hero hero--short val-hero" data-bg-hint="modern-cumming-ga-home-curb-appeal" style="background-image: url('https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+        <div class="val-hero__bg" data-bg-hint="modern-cumming-ga-home-curb-appeal" style="background-image: url('https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+        <div class="hero__content">
+            <span class="val-hero__eyebrow">Free Home Valuation · North Atlanta</span>
+            <h1 class="val-hero__title">What's your Cumming home really worth?</h1>
+            <p class="val-hero__subhead">An honest read on your home's value, free, with no pressure to list.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ INTRO + FORM SPLIT: FORM-2COL-1 ============ -->
+    <section class="section">
+        <div class="val-split">
+
+            <!-- LEFT: Form column -->
+            <div class="val-split__form-col">
+                <span class="val-split__col-eyebrow">Get Your Home Value</span>
+                <h2>Tell me about your home and I'll send you a real estimate, not a robot guess.</h2>
+
+                <!-- Connects to GHL in production -->
+                <form class="val-form" id="valuation-form" action="#" onsubmit="return false;">
+                    <div class="val-form__row">
+                        <label for="val-address">Property Address</label>
+                        <input type="text" id="val-address" name="address" placeholder="123 Main Street" autocomplete="street-address">
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-city">City</label>
+                        <input type="text" id="val-city" name="city" placeholder="Cumming" autocomplete="address-level2">
+                    </div>
+                    <div class="val-form__row val-form__row--2col">
+                        <div>
+                            <label for="val-beds">Bedrooms</label>
+                            <input type="text" id="val-beds" name="bedrooms" placeholder="4">
+                        </div>
+                        <div>
+                            <label for="val-baths">Bathrooms</label>
+                            <input type="text" id="val-baths" name="bathrooms" placeholder="3">
+                        </div>
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-sqft">Approx Square Footage</label>
+                        <input type="text" id="val-sqft" name="sqft" placeholder="2,800">
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-renos">Recent Renovations</label>
+                        <textarea id="val-renos" name="renovations" rows="3" placeholder="Kitchen remodel 2023, new roof 2024, refinished hardwoods..."></textarea>
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-name">Your Name</label>
+                        <input type="text" id="val-name" name="name" autocomplete="name">
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-email">Email</label>
+                        <input type="email" id="val-email" name="email" autocomplete="email">
+                    </div>
+                    <div class="val-form__row">
+                        <label for="val-phone">Phone</label>
+                        <input type="tel" id="val-phone" name="phone" autocomplete="tel">
+                    </div>
+                    <button type="submit" class="btn btn--primary val-form__submit">Get My Home Value</button>
+                    <!-- Connects to GHL in production -->
+                    <p class="val-form__note">Your data goes to Michael directly. No email blasts, no robot follow-ups.</p>
+                </form>
+            </div>
+
+            <!-- RIGHT: Benefits column -->
+            <aside class="val-benefits">
+                <span class="val-split__col-eyebrow">What You Get</span>
+                <h3>More than a Zestimate.</h3>
+                <ul class="val-benefits__list">
+                    <li>
+                        <svg class="val-benefits__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Local comps from the last 90 days, not a national average</span>
+                    </li>
+                    <li>
+                        <svg class="val-benefits__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Active inventory and days-on-market context for your area</span>
+                    </li>
+                    <li>
+                        <svg class="val-benefits__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Renovation impact analysis based on your actual upgrades</span>
+                    </li>
+                    <li>
+                        <svg class="val-benefits__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>A frank conversation about price vs sit-time</span>
+                    </li>
+                    <li>
+                        <svg class="val-benefits__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>No obligation to list, ever</span>
+                    </li>
+                </ul>
+                <p class="val-benefits__note">Most reports come back within 24 hours.</p>
+            </aside>
+
+        </div>
+    </section>
+    <!-- ============ END INTRO + FORM SPLIT ============ -->
+
+
+    <!-- ============ HOW IT WORKS: PROCESS-3STEP-ALT-1 ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="val-section-header">
+                <span class="val-section-header__eyebrow">How It Works</span>
+                <h2>Three steps from question to answer</h2>
+                <p>The home valuation process is simple, but the work behind it is not. Here's what happens after you hit submit.</p>
+            </div>
+
+            <div class="process-rows">
+
+                <!-- Step 01 - image left -->
+                <div class="process-row">
+                    <div class="process-row__media" data-image-hint="calculator-on-desk-modern" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format" alt="Calculator on a modern desk for home valuation" data-image-hint="calculator-on-desk-modern" style="background:#1a1a1a;width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="process-row__text">
+                        <span class="process-row__number">01</span>
+                        <span class="process-row__eyebrow">The Form</span>
+                        <h3 class="process-row__heading">Submit your details</h3>
+                        <p>Fill out the short form with your address, basic specs, and a note on any recent renovations. The renovation field matters more than people realize, a refreshed kitchen or a new roof can shift the comp picture by tens of thousands of dollars.</p>
+                        <p>It takes about two minutes. No account to create, no follow-up funnel. Just the information needed to do the work properly.</p>
+                    </div>
+                </div>
+
+                <!-- Step 02 - image right -->
+                <div class="process-row process-row--reverse">
+                    <div class="process-row__media" data-image-hint="real-estate-agent-laptop-research" style="background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&h=900&q=75&fit=crop&auto=format" alt="Real estate agent researching local market on a laptop" data-image-hint="real-estate-agent-laptop-research" style="background:#1a1a1a;width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="process-row__text">
+                        <span class="process-row__number">02</span>
+                        <span class="process-row__eyebrow">The Work</span>
+                        <h3 class="process-row__heading">Michael pulls comps and analyzes</h3>
+                        <p>This is where the work happens. Michael pulls active, pending, and sold comparables from the last 90 days inside your subdivision and the surrounding mile, then layers in days-on-market trends and active inventory pressure.</p>
+                        <p>Renovations are weighted against current buyer expectations for your price band. The output is a written valuation range with the reasoning behind it, not a single number from an algorithm.</p>
+                    </div>
+                </div>
+
+                <!-- Step 03 - image left -->
+                <div class="process-row">
+                    <div class="process-row__media" data-image-hint="home-valuation-report-handoff" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format" alt="Home valuation report handoff between agent and homeowner" data-image-hint="home-valuation-report-handoff" style="background:#1a1a1a;width:100%;height:100%;object-fit:cover;">
+                    </div>
+                    <div class="process-row__text">
+                        <span class="process-row__number">03</span>
+                        <span class="process-row__eyebrow">The Handoff</span>
+                        <h3 class="process-row__heading">You get a written report and a follow-up call</h3>
+                        <p>The report lands in your inbox, usually within 24 hours. It includes the valuation range, the comps that drove it, and a short note on what is happening in your specific market right now.</p>
+                        <p>If you want to talk it through, Michael will book a 20 minute call to walk through the numbers and answer questions. If you do not, no follow-up sequence will chase you. That is the deal.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END HOW IT WORKS ============ -->
+
+
+    <!-- ============ STATS BAR: STATS-DARK-4UP-1 ============ -->
+    <section class="section section--dark val-stats" style="padding: 0;">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <h3><span data-target="24">0</span></h3>
+                    <p>Avg Report Time (Hours)</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span data-target="15">0</span>+</h3>
+                    <p>Years Local Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span data-target="6">0</span></h3>
+                    <p>Forsyth + Gwinnett + Fulton</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span data-target="100">0</span>%</h3>
+                    <p>Free + No Obligation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END STATS BAR ============ -->
+
+
+    <!-- ============ CROSS-LINK TO SELLER'S GUIDE: CROSSLINK-2COL-1 ============ -->
+    <section class="section section--gray">
+        <div class="val-crosslink">
+            <div class="val-crosslink__text">
+                <span class="val-section-header__eyebrow">Next Step</span>
+                <h3>Thinking about selling?</h3>
+                <p>Once you have a number you trust, the next question is when, how, and at what price to actually list. Read the seller's guide.</p>
+                <a href="04-sell.html" class="btn btn--outline">See the Seller's Guide</a>
+            </div>
+            <div class="val-crosslink__image" data-image-hint="for-sale-sign-curb-cumming-ga" style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
+        </div>
+    </section>
+    <!-- ============ END CROSS-LINK ============ -->
+
+
+    <!-- ============ FAQ: FAQ-ACCORDION-1 ============ -->
+    <section class="section">
+        <div class="val-section-header">
+            <span class="val-section-header__eyebrow">Frequently Asked</span>
+            <h2>Home valuation, Cumming and beyond</h2>
+            <p>Honest answers to the questions that come up most often before someone hits submit.</p>
+        </div>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How accurate is your home valuation compared to Zestimate or Redfin estimates?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Algorithm estimates use national models with sparse local data. They miss subdivisions, school district lines, golf course frontage, and any renovation that does not show up in tax records. A local valuation pulls actual sold comps from the last 90 days inside your specific market, then weights them against your home's condition and upgrades. The range is usually tighter and the reasoning is auditable.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do I have to list with you to get a free home valuation?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>No. The valuation is free and there is no obligation, ever. Some homeowners get a number, decide to wait two years, and that's that. Others use the report to refinance, settle an estate, or set an asking price for a private sale. The work gets done either way.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How long does the report take?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Most reports come back within 24 hours. If your home is in a complex submarket, like a luxury golf community with thin recent comps, it can take an extra day to do it right. You will get an email confirming receipt either way, so you are never wondering where it is.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What information do you need from me?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Address, city, bedrooms, bathrooms, approximate square footage, and a short note about any renovations from the last few years. That is enough to start. If something looks off in the public records, Michael will follow up by email or text before guessing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do you valuate luxury and golf-community homes?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Yes. The luxury price band is where local knowledge matters most. The River Club in Suwanee, Laurel Springs in Cumming, and the gated estate communities of Alpharetta each have their own comp pools and buyer pools. A national algorithm cannot tell the difference between a lakefront and a fairway lot. A local report can, and does.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What if my home isn't in Cumming?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Cumming is the home base, but the working footprint covers Suwanee, Alpharetta, Sugar Hill, Buford, and Johns Creek, plus the surrounding parts of Forsyth, Gwinnett, and Fulton. If your home sits well outside that radius, Michael will say so up front and refer you to a colleague who works that submarket every day.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END FAQ ============ -->
+
+
+    <!-- ============ FINAL CTA: CTA-CENTERED-1 ============ -->
+    <section class="section">
+        <div class="val-final-cta">
+            <span class="val-final-cta__eyebrow">Ready to Start?</span>
+            <h2>Get the number, then decide.</h2>
+            <a href="#valuation-form" class="btn btn--primary">Get My Home Value</a>
+        </div>
+    </section>
+    <!-- ============ END FINAL CTA ============ -->
+
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Michael Sapp</h4>
+                <p class="footer__tagline">North Atlanta REALTOR®, guiding buyers and sellers across Forsyth County and the surrounding metro.</p>
+                <p class="footer__brokerage">Keller Williams Realty Community Partners<br>540 Lake Center Parkway, Cumming, GA 30040</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/MichaelSappKellerWilliamsRealty" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/sappinthesouth/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/michaelbsapp" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Michael</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="08-luxury.html">Luxury Listings</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="09-testimonials.html">Testimonials</a></li>
+                    <li><a href="11-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#cumming">Cumming</a></li>
+                    <li><a href="05-communities.html#suwanee">Suwanee</a></li>
+                    <li><a href="05-communities.html#alpharetta">Alpharetta</a></li>
+                    <li><a href="05-communities.html#sugar-hill">Sugar Hill</a></li>
+                    <li><a href="05-communities.html#buford">Buford</a></li>
+                    <li><a href="05-communities.html#johns-creek">Johns Creek</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7706082314">(770) 608-2314</a></li>
+                    <li><a href="mailto:Michaelbsapp@kw.com">Michaelbsapp@kw.com</a></li>
+                    <li>540 Lake Center Parkway<br>Cumming, GA 30040</li>
+                </ul>
+                <a href="10-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Michael Sapp · Keller Williams Realty Community Partners · Licensed REALTOR® in Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each KW office is independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>
