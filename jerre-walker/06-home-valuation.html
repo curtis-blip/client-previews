@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Value Calculator · San Diego | Free Valuation</title>
+    <meta name="description" content="What is your house worth? Get a free home valuation from Jerre Walker. Local comps, market context, and a real conversation, no obligation.">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ============ PAGE-SPECIFIC STYLES ============ -->
+    <style>
+    /* HERO SHORT */
+    .hero--short {
+        position: relative;
+        height: 50vh;
+        min-height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        overflow: hidden;
+        background: linear-gradient(135deg, #1A3A5C 0%, #0d2137 60%, #050d18 100%);
+    }
+    .hero--short::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.35);
+        z-index: 1;
+    }
+    .hero--short .hero__inner {
+        position: relative;
+        z-index: 2;
+        max-width: 880px;
+        padding: 0 24px;
+    }
+    .hero--short .hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--accent-blue, #A1D3FE);
+        margin-bottom: 20px;
+        display: block;
+    }
+    .hero--short h1 {
+        font-family: var(--font-heading);
+        font-size: clamp(34px, 5vw, 56px);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+    .hero--short .hero__sub {
+        font-size: 17px;
+        line-height: 1.7;
+        max-width: 640px;
+        margin: 0 auto;
+        color: rgba(255,255,255,0.85);
+    }
+
+    /* INTRO + FORM SPLIT */
+    .valuation-split {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 80px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+        align-items: start;
+    }
+    .valuation-split__col {
+        padding: 8px 0;
+    }
+    .valuation-split__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--primary, #1A3A5C);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .valuation-split__heading {
+        font-family: var(--font-heading);
+        font-size: clamp(26px, 3vw, 34px);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.25;
+        margin-bottom: 28px;
+        color: var(--text-dark);
+    }
+    .valuation-split__heading--right {
+        font-size: clamp(22px, 2.4vw, 28px);
+    }
+
+    /* FORM */
+    .valuation-form {
+        background: var(--gray-bg);
+        padding: 40px;
+        border-top: 3px solid var(--primary, #1A3A5C);
+    }
+    .valuation-form__row {
+        margin-bottom: 20px;
+    }
+    .valuation-form__row--split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .valuation-form__label {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+    }
+    .valuation-form__input,
+    .valuation-form__textarea,
+    .valuation-form__select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #d8d8d8;
+        background: var(--white);
+        font-family: var(--font-body);
+        font-size: 15px;
+        color: var(--text-dark);
+        transition: border-color var(--transition);
+    }
+    .valuation-form__input:focus,
+    .valuation-form__textarea:focus,
+    .valuation-form__select:focus {
+        outline: none;
+        border-color: var(--primary, #1A3A5C);
+    }
+    .valuation-form__textarea {
+        resize: vertical;
+        min-height: 90px;
+        line-height: 1.6;
+        font-family: var(--font-body);
+    }
+    .valuation-form__checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        background: var(--white);
+        border: 1px solid #d8d8d8;
+    }
+    .valuation-form__checkbox-row input[type="checkbox"] {
+        margin-top: 3px;
+        width: 16px;
+        height: 16px;
+        accent-color: var(--primary, #1A3A5C);
+    }
+    .valuation-form__checkbox-row label {
+        font-size: 14px;
+        color: var(--text-dark);
+        line-height: 1.5;
+        cursor: pointer;
+    }
+    .valuation-form__submit {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .valuation-form__note {
+        font-size: 13px;
+        color: var(--text-muted);
+        margin-top: 16px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    /* BENEFITS LIST */
+    .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px 0;
+    }
+    .benefits-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid #ebebeb;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-dark);
+    }
+    .benefits-list li:last-child {
+        border-bottom: none;
+    }
+    .benefits-list svg {
+        flex-shrink: 0;
+        margin-top: 2px;
+        color: var(--primary, #1A3A5C);
+    }
+    .benefits-note {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-style: normal;
+        padding-top: 8px;
+        border-top: 1px solid #ebebeb;
+    }
+
+    /* RENTAL CALLOUT */
+    .rental-callout {
+        max-width: 880px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 24px;
+    }
+    .rental-callout__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--primary, #1A3A5C);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .rental-callout h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 3.4vw, 38px);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.25;
+        margin-bottom: 24px;
+        color: var(--text-dark);
+    }
+    .rental-callout p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        max-width: 720px;
+        margin: 0 auto 32px;
+    }
+
+    /* CROSS-LINK */
+    .crosslink {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .crosslink__text h3 {
+        font-family: var(--font-heading);
+        font-size: clamp(26px, 3vw, 34px);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.25;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+    }
+    .crosslink__text p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 28px;
+    }
+    .crosslink__media {
+        aspect-ratio: 4 / 3;
+        background: linear-gradient(135deg, #1A3A5C 0%, #0d2137 100%);
+        overflow: hidden;
+    }
+    .crosslink__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .final-cta__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--primary, #1A3A5C);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .final-cta h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 3.4vw, 42px);
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        line-height: 1.25;
+        margin-bottom: 32px;
+        color: var(--text-dark);
+    }
+
+    /* STATS DARK CUSTOM */
+    .section--dark .stats-bar {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .section--dark .stat-item h3 {
+        color: var(--gold, #A8956E);
+    }
+    .section--dark .stat-item p {
+        color: rgba(255,255,255,0.7);
+    }
+
+    /* FAQ wrapper header */
+    .faq-section .section__header {
+        max-width: 720px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+        .valuation-split,
+        .crosslink {
+            grid-template-columns: 1fr;
+            gap: 56px;
+        }
+        .crosslink__media {
+            order: -1;
+        }
+    }
+    @media (max-width: 768px) {
+        .valuation-form {
+            padding: 28px 20px;
+        }
+        .valuation-form__row--split {
+            grid-template-columns: 1fr;
+        }
+        .section--dark .stats-bar {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            padding: 0 20px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Jerre Walker · Home Valuation · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="aare-logo.png" alt="Jerre Walker · AARE · North County San Diego Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Jerre</a></li>
+                <li><a href="08-testimonials.html">Testimonials</a></li>
+                <li><a href="10-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="09-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:6198185734" class="nav__phone">(619) 818-5734</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="02-about.html">About Jerre</a></li>
+        <li><a href="08-testimonials.html">Testimonials</a></li>
+        <li><a href="10-blog.html">Blog</a></li>
+        <li><a href="09-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:6198185734">(619) 818-5734</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO-SHORT (50vh) ============ -->
+    <section class="hero--short" data-bg-hint="modern-coastal-home-curb-appeal-san-diego" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Modern coastal home exterior with curb appeal">
+        <div class="hero__inner">
+            <span class="hero__eyebrow">Free Home Valuation · North County San Diego</span>
+            <h1>What's your North County home really worth?</h1>
+            <p class="hero__sub">An honest read on your home's value, free, with no pressure to list.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO-SHORT ============ -->
+
+
+    <!-- ============ INTRO + FORM (white, 2-col split) ============ -->
+    <section class="section" id="valuation-form">
+        <div class="valuation-split">
+
+            <!-- LEFT: Form -->
+            <div class="valuation-split__col">
+                <span class="valuation-split__eyebrow">Get Your Home Value</span>
+                <h2 class="valuation-split__heading">Tell me about your home and I'll send you a real estimate, not a robot guess.</h2>
+
+                <!-- Connects to GHL in production -->
+                <form class="valuation-form" action="#" onsubmit="return false;">
+
+                    <div class="valuation-form__row">
+                        <label class="valuation-form__label" for="vf-address">Property Address</label>
+                        <input class="valuation-form__input" type="text" id="vf-address" name="address" placeholder="123 Coastal Way">
+                    </div>
+
+                    <div class="valuation-form__row">
+                        <label class="valuation-form__label" for="vf-city">City</label>
+                        <input class="valuation-form__input" type="text" id="vf-city" name="city" placeholder="Carlsbad">
+                    </div>
+
+                    <div class="valuation-form__row valuation-form__row--split">
+                        <div>
+                            <label class="valuation-form__label" for="vf-beds">Bedrooms</label>
+                            <input class="valuation-form__input" type="text" id="vf-beds" name="bedrooms" placeholder="3">
+                        </div>
+                        <div>
+                            <label class="valuation-form__label" for="vf-baths">Bathrooms</label>
+                            <input class="valuation-form__input" type="text" id="vf-baths" name="bathrooms" placeholder="2">
+                        </div>
+                    </div>
+
+                    <div class="valuation-form__row">
+                        <label class="valuation-form__label" for="vf-sqft">Approx Square Footage</label>
+                        <input class="valuation-form__input" type="text" id="vf-sqft" name="sqft" placeholder="2,100">
+                    </div>
+
+                    <div class="valuation-form__row">
+                        <label class="valuation-form__label" for="vf-renos">Recent Renovations</label>
+                        <textarea class="valuation-form__textarea" id="vf-renos" name="renovations" rows="3" placeholder="Kitchen remodel 2023, new roof, ADU added, etc."></textarea>
+                    </div>
+
+                    <div class="valuation-form__row">
+                        <div class="valuation-form__checkbox-row">
+                            <input type="checkbox" id="vf-rental" name="rental_conversion">
+                            <label for="vf-rental">Considering rental conversion? Jerre also runs a rental portfolio and can include a lease-vs-sell projection.</label>
+                        </div>
+                    </div>
+
+                    <div class="valuation-form__row">
+                        <label class="valuation-form__label" for="vf-name">Your Name</label>
+                        <input class="valuation-form__input" type="text" id="vf-name" name="name" placeholder="Full name">
+                    </div>
+
+                    <div class="valuation-form__row valuation-form__row--split">
+                        <div>
+                            <label class="valuation-form__label" for="vf-email">Email</label>
+                            <input class="valuation-form__input" type="email" id="vf-email" name="email" placeholder="you@email.com">
+                        </div>
+                        <div>
+                            <label class="valuation-form__label" for="vf-phone">Phone</label>
+                            <input class="valuation-form__input" type="tel" id="vf-phone" name="phone" placeholder="(619) 555-0123">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary valuation-form__submit">Get My Home Value</button>
+
+                    <p class="valuation-form__note">Your message goes straight to Jerre. No bots, no auto-responders, no email blasts.</p>
+                </form>
+            </div>
+
+            <!-- RIGHT: Benefits -->
+            <div class="valuation-split__col">
+                <span class="valuation-split__eyebrow">What You Get</span>
+                <h3 class="valuation-split__heading valuation-split__heading--right">More than a Zestimate.</h3>
+
+                <ul class="benefits-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Local comps from the last 90 days, not a national average.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Active inventory and days-on-market context for your micro-market.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Renovation impact analysis based on your actual upgrades.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>A frank conversation about list price vs sit-time.</span>
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Optional rental income projection if you're considering leasing instead.</span>
+                    </li>
+                </ul>
+
+                <p class="benefits-note">Most reports come back within 24 hours.</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END INTRO + FORM ============ -->
+
+
+    <!-- ============ HOW IT WORKS (3-step alternating image+text) ============ -->
+    <section class="section section--gray">
+        <div class="section__header">
+            <span style="display:block;font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--primary,#1A3A5C);margin-bottom:16px;">How It Works</span>
+            <h2 style="font-family:var(--font-heading);font-size:clamp(28px,3.4vw,38px);font-weight:200;text-transform:uppercase;letter-spacing:2px;line-height:1.25;">Three steps, and you have a real number.</h2>
+        </div>
+
+        <div class="process-rows" style="max-width:var(--max-width);margin:0 auto;padding:0 24px;">
+
+            <!-- Step 01 (image left) -->
+            <div class="process-row">
+                <div class="process-row__media process-row__media--gradient-1" data-image-hint="calculator-on-desk-modern" style="background-image:url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Calculator and budget paperwork on a modern desk">
+                    <!-- Image: calculator-on-desk-modern -->
+                </div>
+                <div class="process-row__text">
+                    <span class="process-row__number">01</span>
+                    <span class="process-row__eyebrow">Submit Your Details</span>
+                    <h3 class="process-row__heading">Tell Jerre about the home.</h3>
+                    <p>Fill out the short form above with your address, square footage, bedrooms, bathrooms, and any recent renovations. The more detail you share about upgrades, the more accurate the comp work.</p>
+                    <p>If you're weighing a rental conversion, check that box and Jerre will run a parallel lease projection.</p>
+                </div>
+            </div>
+
+            <!-- Step 02 (image right) -->
+            <div class="process-row process-row--reverse">
+                <div class="process-row__media process-row__media--gradient-2" data-image-hint="real-estate-agent-laptop-research" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Real estate market data on a laptop screen">
+                    <!-- Image: real-estate-agent-laptop-research -->
+                </div>
+                <div class="process-row__text">
+                    <span class="process-row__number">02</span>
+                    <span class="process-row__eyebrow">Jerre Pulls Comps and Analyzes</span>
+                    <h3 class="process-row__heading">Real comps, micro-market context.</h3>
+                    <p>Jerre pulls active, pending, and sold comparables from the last 90 days within your micro-market, not the whole zip code. She layers in current inventory, average days on market, and how renovations are pricing locally right now.</p>
+                    <p>This is the same analysis she runs before listing any of her own clients' homes.</p>
+                </div>
+            </div>
+
+            <!-- Step 03 (image left) -->
+            <div class="process-row">
+                <div class="process-row__media process-row__media--gradient-1" data-image-hint="home-valuation-report-handoff" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Real estate contract and paperwork on a desk">
+                    <!-- Image: home-valuation-report-handoff -->
+                </div>
+                <div class="process-row__text">
+                    <span class="process-row__number">03</span>
+                    <span class="process-row__eyebrow">You Get a Written Report and a Follow-up Call</span>
+                    <h3 class="process-row__heading">A real conversation, not a robot email.</h3>
+                    <p>You get a written valuation report with the comp set, a recommended pricing range, and notes on what's driving each number. Then Jerre calls to walk through it, answer questions, and talk through your timing.</p>
+                    <p>If you decide not to list, that's fine. The report is yours either way.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END HOW IT WORKS ============ -->
+
+
+    <!-- ============ STATS DARK ============ -->
+    <section class="section section--dark">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h3><span data-target="24">0</span></h3>
+                <p>Avg Report Time (Hrs)</p>
+            </div>
+            <div class="stat-item">
+                <h3><span data-target="20">0</span>+</h3>
+                <p>Years Local Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3><span data-target="8">0</span></h3>
+                <p>North County SD Cities Served</p>
+            </div>
+            <div class="stat-item">
+                <h3><span data-target="100">0</span>%</h3>
+                <p>Free + No Obligation</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END STATS DARK ============ -->
+
+
+    <!-- ============ RENTAL CONVERSION CALLOUT ============ -->
+    <section class="section">
+        <div class="rental-callout">
+            <span class="rental-callout__eyebrow">Rental or Sale?</span>
+            <h2>Sell, lease, or both? Jerre runs both sides.</h2>
+            <p>Most agents only see one path forward. Jerre has run an active North County rental portfolio for almost two decades alongside her sales practice, so when you're weighing whether to list or lease, you get real numbers on both. She'll show you the projected sale price, the local rent comparables, the carrying costs, and what owners in your same micro-market are actually netting on long-term holds. Then you decide what fits your life.</p>
+            <a href="02-about.html" class="btn btn--outline">Read about Jerre's PM practice</a>
+        </div>
+    </section>
+    <!-- ============ END RENTAL CONVERSION CALLOUT ============ -->
+
+
+    <!-- ============ CROSS-LINK TO SELLER'S GUIDE ============ -->
+    <section class="section section--gray">
+        <div class="crosslink">
+            <div class="crosslink__text">
+                <h3>Thinking about selling?</h3>
+                <p>Once you have a number you trust, the next question is when, how, and at what price to actually list. Read the seller's guide.</p>
+                <a href="04-sell.html" class="btn btn--outline">Open the Seller's Guide</a>
+            </div>
+            <div class="crosslink__media" data-image-hint="for-sale-sign-curb-coastal-home" style="background-image:url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="For-sale sign in front of a coastal home">
+                <!-- Image: for-sale-sign-curb-coastal-home -->
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CROSS-LINK ============ -->
+
+
+    <!-- ============ FAQ (6 items) ============ -->
+    <section class="section faq-section">
+        <div class="section__header">
+            <span style="display:block;font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--primary,#1A3A5C);margin-bottom:16px;">Common Questions</span>
+            <h2 style="font-family:var(--font-heading);font-size:clamp(28px,3.4vw,38px);font-weight:200;text-transform:uppercase;letter-spacing:2px;line-height:1.25;">Home Valuation FAQs</h2>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>How accurate is your home valuation compared to Zestimate or Redfin estimates?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Automated estimates pull from broad national data and miss local nuance. Jerre's valuation uses recent sold comparables in your specific micro-market, layered with current inventory, days on market, and adjustments for your renovations and lot specifics. In practice, that produces a tighter and more defendable price range than any algorithm.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>Do I have to list with you to get a free home valuation?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>No. The valuation is free and there is no obligation to list. Some owners use it for refinancing, estate planning, divorce, or just to know where they stand. If you eventually decide to sell, great. If not, the report is still yours.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>How long does the report take?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Most reports come back within 24 hours of submission. If the property is unusual, larger acreage, mixed-use, or has a complex renovation history, it may take a day or two longer so the analysis is right.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>What information do you need from me?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>The address, city, bedroom and bathroom count, approximate square footage, and a quick description of any recent renovations or upgrades. The form above captures everything needed. If Jerre needs anything else, she'll follow up directly when she calls to walk through the report.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>Can you also estimate rental income if I'm thinking about leasing?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Yes. Jerre runs both a sales practice and a rental portfolio, so she can pull current rent comparables for your area and project monthly income, vacancy assumptions, and net carrying costs. Check the rental conversion box on the form and she'll include that side-by-side with the sale valuation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-item__question faq-question" type="button">
+                    <span>What if my home isn't in North County San Diego?</span>
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-item__answer">
+                    <p>Jerre focuses on North County San Diego: Carlsbad, Encinitas, Solana Beach, Del Mar, La Jolla, Carmel Valley, Pacific Beach, Escondido, and San Marcos. If your home is just outside that footprint, send the form anyway. She'll either run the comps herself or connect you with a trusted agent who knows your specific area well.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END FAQ ============ -->
+
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section">
+        <div class="final-cta">
+            <span class="final-cta__eyebrow">Ready to Start?</span>
+            <h2>Get the number, then decide.</h2>
+            <a href="#valuation-form" class="btn btn--primary">Get My Home Value</a>
+        </div>
+    </section>
+    <!-- ============ END FINAL CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Jerre Walker</h4>
+                <p class="footer__tagline">Find your San Diego dream property, with a guide who knows North County by heart.</p>
+                <p class="footer__brokerage">AARE · Andrew Arroyo Real Estate<br>1205 Auto Park Way #204, Escondido, CA 92029<br>DRE #01431708</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100049656770416" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/jerrewalker_realtor/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jerre-walker-92396a7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/Jerre%20Walker" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Jerre</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="08-testimonials.html">Testimonials</a></li>
+                    <li><a href="10-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#carlsbad">Carlsbad</a></li>
+                    <li><a href="05-communities.html#encinitas">Encinitas</a></li>
+                    <li><a href="05-communities.html#solana-beach">Solana Beach</a></li>
+                    <li><a href="05-communities.html#del-mar">Del Mar</a></li>
+                    <li><a href="05-communities.html#la-jolla">La Jolla</a></li>
+                    <li><a href="05-communities.html#carmel-valley">Carmel Valley</a></li>
+                    <li><a href="05-communities.html#pacific-beach">Pacific Beach</a></li>
+                    <li><a href="05-communities.html#escondido">Escondido + San Marcos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:6198185734">(619) 818-5734</a></li>
+                    <li><a href="mailto:jerre@jerrewalker.com">jerre@jerrewalker.com</a></li>
+                    <li>1205 Auto Park Way #204<br>Escondido, CA 92029</li>
+                </ul>
+                <a href="09-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Jerre Walker · AARE · Andrew Arroyo Real Estate · Licensed REALTOR® in California · DRE #01431708</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. AARE offices are independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ MODAL OPEN/CLOSE (Communities) ============
+document.querySelectorAll('[data-modal-open]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-modal-open');
+        const modal = document.getElementById('modal-' + id);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el || el.classList.contains('modal-close')) {
+            const overlay = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+});
+
+// ============ TESTIMONIAL CAROUSEL ============
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+function showSlide(i) { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); }
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+const nextBtn = document.querySelector('.testimonial-nav__next');
+const prevBtn = document.querySelector('.testimonial-nav__prev');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (slides.length) setInterval(nextSlide, 6000);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>

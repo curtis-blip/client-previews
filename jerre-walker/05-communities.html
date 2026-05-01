@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North County San Diego Communities | Jerre Walker</title>
+    <meta name="description" content="Explore North County San Diego with Jerre Walker: Carlsbad, Encinitas, Del Mar, La Jolla, Carmel Valley, Pacific Beach, Solana Beach, Escondido.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ COMMUNITIES PAGE - local overrides ============ */
+
+    /* Force 4-col desktop community grid for the 8-card layout */
+    .community-grid--4col {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .community-grid--4col .community-card {
+        height: 320px;
+        border-radius: 0;
+    }
+
+    /* Background hint placeholder (no client images) - coastal navy gradient */
+    .community-card__bg {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #1A3A5C 0%, #2A5478 50%, #0d2137 100%);
+    }
+
+    .community-card__bg::after {
+        content: attr(data-hint);
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        font-family: 'Courier New', monospace;
+        font-size: 10px;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.55);
+        text-transform: uppercase;
+        line-height: 1.4;
+    }
+
+    .community-card__caption {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.85);
+        margin-top: 4px;
+        margin-bottom: 12px;
+        font-weight: 300;
+    }
+
+    .community-card__overlay h3 {
+        margin-bottom: 4px;
+        letter-spacing: 2px;
+    }
+
+    .community-card__overlay .learn-more {
+        color: var(--white);
+    }
+
+    /* Modal hero hint (no client images) */
+    .modal-hero {
+        background: linear-gradient(135deg, #1A3A5C 0%, #2A5478 50%, #0d2137 100%);
+    }
+
+    .modal-hero__hint {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-family: 'Courier New', monospace;
+        font-size: 10px;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.55);
+        text-transform: uppercase;
+        z-index: 2;
+    }
+
+    /* Intro section */
+    .communities-intro {
+        text-align: center;
+    }
+
+    .communities-intro p {
+        max-width: 760px;
+        margin: 24px auto 0;
+        font-size: 17px;
+        line-height: 1.85;
+        color: var(--text-muted);
+    }
+
+    /* Modal-section heading uniformity */
+    .modal-section h3 {
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        font-weight: 600;
+    }
+
+    .modal-section p {
+        color: var(--text-muted);
+        line-height: 1.8;
+    }
+
+    /* CTA strip (dark) */
+    .cta-strip {
+        text-align: center;
+    }
+
+    .cta-strip .eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--gold);
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .cta-strip h2 {
+        max-width: 720px;
+        margin: 0 auto 32px;
+    }
+
+    /* Hero eyebrow specifically gold-tinted */
+    .hero__subtitle--gold {
+        color: var(--gold);
+        opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+        .community-grid--4col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .community-grid--4col {
+            grid-template-columns: 1fr;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Jerre Walker · Communities · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="aare-logo.png" alt="Jerre Walker · AARE · North County San Diego Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Jerre</a></li>
+                <li><a href="08-testimonials.html">Testimonials</a></li>
+                <li><a href="10-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="09-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:6198185734" class="nav__phone">(619) 818-5734</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="02-about.html">About Jerre</a></li>
+        <li><a href="08-testimonials.html">Testimonials</a></li>
+        <li><a href="10-blog.html">Blog</a></li>
+        <li><a href="09-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:6198185734">(619) 818-5734</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<main>
+
+    <!-- ============ HERO MEDIUM: communities ============ -->
+    <section class="hero hero--medium" data-bg-hint="north-county-san-diego-aerial-pacific-coast" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific coastal cliffs and ocean below">
+        <div class="hero__bg" style="background: linear-gradient(135deg, #1A3A5C 0%, #2A5478 50%, #0d2137 100%);"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__subtitle hero__subtitle--gold">North County San Diego &middot; Pacific Coast</p>
+            <h1 class="hero__title">Eight Communities I Know Like Home.</h1>
+            <p class="hero__text">Carlsbad, Encinitas, Solana Beach, Del Mar, La Jolla, Carmel Valley, Pacific Beach, Escondido.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO MEDIUM ============ -->
+
+
+    <!-- ============ INTRO: communities-intro ============ -->
+    <section class="section communities-intro">
+        <div class="container">
+            <h2>North County San Diego, From Beach Cities to Inland Suburbs.</h2>
+            <p>I have spent 20+ years working this coast, and what I have learned is that every city here has its own pockets, its own personality, and its own price logic. Carlsbad is not just one market, it is Aviara, La Costa, Olde Carlsbad, and the village by the lagoon. Encinitas is Cardiff one minute, downtown 101 the next. I work buyers and sellers in all eight of these markets, and I run rentals across most of them too. That dual lens, sales plus property management, shows up in every conversation.</p>
+        </div>
+    </section>
+    <!-- ============ END INTRO ============ -->
+
+
+    <!-- ============ 8-CARD COMMUNITY GRID ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="community-grid community-grid--4col">
+
+                <!-- Card 1: Carlsbad -->
+                <a href="#" class="community-card" data-modal-open="carlsbad">
+                    <div class="community-card__bg" data-image-hint="carlsbad-ca-coastal-luxury-home-aerial" data-hint="carlsbad-ca-coastal-luxury-home-aerial" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Modern coastal luxury home at twilight"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="carlsbad">Carlsbad</h3>
+                        <p class="community-card__caption">Beach + Lagoon + Golf</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 2: Encinitas -->
+                <a href="#" class="community-card" data-modal-open="encinitas">
+                    <div class="community-card__bg" data-image-hint="encinitas-ca-cardiff-by-the-sea-coast" data-hint="encinitas-ca-cardiff-by-the-sea-coast" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Ocean sunset over a North County San Diego beach"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="encinitas">Encinitas</h3>
+                        <p class="community-card__caption">Surf + Coast Highway 101</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 3: Solana Beach -->
+                <a href="#" class="community-card" data-modal-open="solana-beach">
+                    <div class="community-card__bg" data-image-hint="solana-beach-ca-cliffs-pacific-ocean" data-hint="solana-beach-ca-cliffs-pacific-ocean" style="background-image:url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific coastal cliffs and ocean below"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="solana-beach">Solana Beach</h3>
+                        <p class="community-card__caption">Cedros + Cliffs + Quiet Luxury</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 4: Del Mar -->
+                <a href="#" class="community-card" data-modal-open="del-mar">
+                    <div class="community-card__bg" data-image-hint="del-mar-ca-village-luxury-coastal" data-hint="del-mar-ca-village-luxury-coastal" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Modern coastal luxury home at twilight"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="del-mar">Del Mar</h3>
+                        <p class="community-card__caption">Village + Racetrack + Luxury</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 5: La Jolla -->
+                <a href="#" class="community-card" data-modal-open="la-jolla">
+                    <div class="community-card__bg" data-image-hint="la-jolla-ca-cove-mt-soledad-luxury" data-hint="la-jolla-ca-cove-mt-soledad-luxury" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Ocean coastline in North County San Diego"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="la-jolla">La Jolla</h3>
+                        <p class="community-card__caption">The Cove + Mt. Soledad + Coastal Luxury</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 6: Carmel Valley -->
+                <a href="#" class="community-card" data-modal-open="carmel-valley">
+                    <div class="community-card__bg" data-image-hint="carmel-valley-san-diego-master-planned-community" data-hint="carmel-valley-san-diego-master-planned-community" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Aerial view of a North County San Diego suburban neighborhood"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="carmel-valley">Carmel Valley</h3>
+                        <p class="community-card__caption">Family + Schools + Master-Planned</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 7: Pacific Beach -->
+                <a href="#" class="community-card" data-modal-open="pacific-beach">
+                    <div class="community-card__bg" data-image-hint="pacific-beach-san-diego-boardwalk-beach" data-hint="pacific-beach-san-diego-boardwalk-beach" style="background-image:url('https://images.unsplash.com/photo-1530695440407-21fef47230b1?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Beach boardwalk along the San Diego coast"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="pacific-beach">Pacific Beach</h3>
+                        <p class="community-card__caption">Boardwalk + Rentals + Vibe</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 8: Escondido -->
+                <a href="#" class="community-card" data-modal-open="escondido">
+                    <div class="community-card__bg" data-image-hint="escondido-ca-inland-suburbs-vineyard" data-hint="escondido-ca-inland-suburbs-vineyard" style="background-image:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Inland Escondido vineyard with rolling hills"></div>
+                    <div class="community-card__overlay">
+                        <h3 id="escondido">Escondido + San Marcos</h3>
+                        <p class="community-card__caption">Inland Value + Wine + Family</p>
+                        <span class="learn-more">Learn More &rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END 8-CARD COMMUNITY GRID ============ -->
+
+
+    <!-- ============ DARK CTA STRIP ============ -->
+    <section class="section section--dark cta-strip">
+        <div class="container">
+            <span class="eyebrow">Don't See Your Area?</span>
+            <h2>I work North County widely. Tell me what you're looking for.</h2>
+            <a href="09-contact.html" class="btn btn--white">Reach Out</a>
+        </div>
+    </section>
+    <!-- ============ END DARK CTA STRIP ============ -->
+
+</main>
+
+
+<!-- ============ MODAL: CARLSBAD ============ -->
+<div class="modal-overlay" id="modal-carlsbad">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="carlsbad-ca-coastal-luxury-home-aerial" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Modern coastal luxury home at twilight">
+            <span class="modal-hero__hint">carlsbad-ca-coastal-luxury-home-aerial</span>
+            <h2>Carlsbad</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Carlsbad sits at the northern edge of San Diego County and stretches across coastal luxury, family suburbs, three lagoons, and two of the better golf clubs in Southern California (Aviara and La Costa). The schools here, Carlsbad Unified, consistently rank near the top of the state. You can buy a coastal estate west of the I-5, a family home east near La Costa, or a townhome closer to the village by the lagoon. Resale is strong, rentals turn quickly, and the market has held value through multiple cycles.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $1M to $5M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Carlsbad Unified</div>
+                    <div class="modal-stat__label">Schools (top California)</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Beach + Golf + Family</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Beach access:</strong> Tamarack, Ponto, and South Carlsbad State Beach</li>
+                    <li><strong>Lagoon trails:</strong> Batiquitos, Agua Hedionda, Buena Vista</li>
+                    <li><strong>Top schools:</strong> Carlsbad Unified consistently ranks at the top of the state</li>
+                    <li><strong>Golf clubs:</strong> Aviara, La Costa Resort, The Crossings</li>
+                    <li><strong>Weekends:</strong> State Street farmers market, the village, Legoland</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Carlsbad Unified is the anchor for most family buyers, with strong elementary feeders into Carlsbad High and Sage Creek High. Expect a mix of beach-oriented coastal blocks west of the I-5 and master-planned family neighborhoods east. The rental market in Carlsbad is one of the most active I work, both vacation-style stays near the lagoons and longer-term family rentals near the schools.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Carlsbad Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: CARLSBAD ============ -->
+
+
+<!-- ============ MODAL: ENCINITAS ============ -->
+<div class="modal-overlay" id="modal-encinitas">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="encinitas-ca-cardiff-by-the-sea-coast" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Ocean sunset over a North County San Diego beach">
+            <span class="modal-hero__hint">encinitas-ca-cardiff-by-the-sea-coast</span>
+            <h2>Encinitas</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Encinitas, including Cardiff-by-the-Sea, is the heart of the surf-and-coast-highway register of North County. Walkable downtown along 101, a string of beach towns from Leucadia south through Cardiff, and a vibe that locals fight to protect. This is where I helped found Fisher Real Estate Advisors back in 2006, and a meaningful part of my client base still lives within a few miles of that office. Cardiff buyers tend to want the sand, downtown 101 buyers tend to want the walk, and Olivenhain buyers want acreage with proximity. All three are Encinitas.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Low $1M to $4M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">EUSD + SDUHSD</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Surf + Coast Highway</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Featured Neighborhoods</h3>
+                <ul>
+                    <li><strong>Cardiff-by-the-Sea:</strong> the most coastal pocket, Cardiff Reef and the Composer District</li>
+                    <li><strong>Leucadia:</strong> walkable to the beach, eclectic small-shop 101 character</li>
+                    <li><strong>Old Encinitas:</strong> the downtown 101 core, walkable to Moonlight Beach</li>
+                    <li><strong>Olivenhain:</strong> larger lots, semi-rural pockets east of the I-5</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Cardiff Reef &amp; Swami's:</strong> two of the most recognized surf breaks in California</li>
+                    <li><strong>Downtown 101:</strong> dining, coffee, boutique shops, walkable from much of the city</li>
+                    <li><strong>Cottonwood Creek &amp; Moonlight Beach:</strong> the family-day defaults</li>
+                    <li><strong>San Diego Botanic Garden:</strong> 37 acres of public gardens</li>
+                    <li><strong>Encinitas Sports Park &amp; YMCA:</strong> youth sports anchor for the city</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Encinitas Union Elementary feeds into the San Dieguito Union High School District (SDUHSD), one of the strongest high school districts in San Diego County. Cardiff School District covers the Cardiff pocket separately. The combination of beach access, downtown walkability, and strong schools is what keeps demand here high through every market cycle.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Encinitas Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: ENCINITAS ============ -->
+
+
+<!-- ============ MODAL: SOLANA BEACH ============ -->
+<div class="modal-overlay" id="modal-solana-beach">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="solana-beach-ca-cliffs-pacific-ocean" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific coastal cliffs and ocean below">
+            <span class="modal-hero__hint">solana-beach-ca-cliffs-pacific-ocean</span>
+            <h2>Solana Beach</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Solana Beach is the smaller, slower coastal town tucked between Encinitas and Del Mar. Cedros Avenue Design District, Fletcher Cove, and the cliffs at Tide Beach define the city more than any single neighborhood does. For buyers searching the Del Mar / Solana Beach corridor, this is often the better-value entry point at the same beach. Quiet luxury is the right phrase, less ostentatious than Del Mar, less busy than Encinitas, with a meaningful walkable downtown and a Coaster station that puts you in downtown San Diego in 35 minutes.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $1.5M to $4M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">SBSD + SDUHSD</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Quiet Coastal Luxury</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Cedros Avenue Design District:</strong> design showrooms, galleries, the Belly Up Tavern</li>
+                    <li><strong>Fletcher Cove:</strong> the city's flagship beach access, sand and ramp</li>
+                    <li><strong>Tide Beach Park:</strong> tidepools, cliff stairs, quieter than Fletcher</li>
+                    <li><strong>Coaster station:</strong> direct rail to downtown San Diego and Old Town</li>
+                    <li><strong>Del Mar / Solana corridor:</strong> beach access at lower entry than Del Mar proper</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Solana Beach Elementary School District feeds into the San Dieguito Union High School District, the same SDUHSD that serves Encinitas, Cardiff, Del Mar, and Carmel Valley. That high school district is one of the main reasons families in this corridor are willing to stretch on the entry price. Lifestyle here is quieter than the cities on either side, which is exactly the point for the buyers who choose it.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Solana Beach Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: SOLANA BEACH ============ -->
+
+
+<!-- ============ MODAL: DEL MAR ============ -->
+<div class="modal-overlay" id="modal-del-mar">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="del-mar-ca-village-luxury-coastal" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Modern coastal luxury home at twilight">
+            <span class="modal-hero__hint">del-mar-ca-village-luxury-coastal</span>
+            <h2>Del Mar</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Del Mar is roughly 5 kilometers long and 10 minutes wide, and that compactness is the whole point. The Village, the racetrack, Powerhouse Park, and a string of homes that sit closer to the Pacific than almost anywhere else in California. This is coastal luxury at its most concentrated. If you want walking proximity to the ocean, the Village's restaurants, and the Del Mar Fairgrounds for summer racing season, this is the address. Inventory is tight by design, the city is small.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $2M to $10M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Del Mar Union + SDUHSD</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Village + Racetrack + Beach</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>15th Street Beach:</strong> the Village's primary sand access</li>
+                    <li><strong>Del Mar Village:</strong> walkable dining and boutique core</li>
+                    <li><strong>Powerhouse Park &amp; Seagrove:</strong> ocean-facing parks, bluff walks</li>
+                    <li><strong>Summer racing:</strong> Del Mar Thoroughbred Club season</li>
+                    <li><strong>Fairgrounds events:</strong> San Diego County Fair plus year-round events</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Del Mar Union Elementary School District is one of the most competitive elementary districts in the county, feeding into the San Dieguito Union High School District. For families weighing Del Mar versus Carmel Valley, the schools overlap meaningfully. Lifestyle is the differentiator: Del Mar is village walkability and beach immediacy, Carmel Valley is family-suburb master-planned. Both are valid choices, and I have walked clients into both.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Del Mar Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: DEL MAR ============ -->
+
+
+<!-- ============ MODAL: LA JOLLA ============ -->
+<div class="modal-overlay" id="modal-la-jolla">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="la-jolla-ca-cove-mt-soledad-luxury" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Ocean coastline in North County San Diego">
+            <span class="modal-hero__hint">la-jolla-ca-cove-mt-soledad-luxury</span>
+            <h2>La Jolla</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">La Jolla literally translates as "the jewel," and it earns the name. The Cove, Mount Soledad's view corridor, Bird Rock, and La Jolla Shores anchor a coastal luxury market that draws domestic and international buyers in roughly equal measure. The price ceiling here runs higher than anywhere else on this page. Bird Rock is the more residential walkable pocket, the Village is shopping and dining and ocean, and Mount Soledad is the view-line homes. La Jolla Shores is the family-beach neighborhood. Each pocket is its own market.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $2M to $25M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Muirlands + La Jolla High</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Coastal Luxury + Tide Pools</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Featured Neighborhoods</h3>
+                <ul>
+                    <li><strong>The Village:</strong> the heart, Prospect Street, Cove access</li>
+                    <li><strong>Bird Rock:</strong> walkable residential pocket between the Village and Pacific Beach</li>
+                    <li><strong>Mount Soledad:</strong> view-line homes, the Mt. Soledad Memorial</li>
+                    <li><strong>La Jolla Shores:</strong> wide flat sand, family-beach register</li>
+                    <li><strong>La Jolla Farms / Country Club:</strong> the highest end of the price ceiling</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>The Cove:</strong> sea lions, snorkeling, the postcard view</li>
+                    <li><strong>La Jolla Shores beach:</strong> the family beach, calm water, boardwalk</li>
+                    <li><strong>Mount Soledad:</strong> 360-degree view summit, memorial, view-line homes</li>
+                    <li><strong>Children's Pool:</strong> seal colony, breakwater</li>
+                    <li><strong>Prospect Street:</strong> dining, galleries, walkable luxury</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>La Jolla is part of San Diego Unified, with Muirlands Middle School and La Jolla High as the most-asked-about feeders. The Bishop's School and La Jolla Country Day School are the two private options that often factor into family decisions here. Lifestyle skews older and more international than the rest of this list, which shows up in the pacing of the market and the way listings are positioned.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search La Jolla Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: LA JOLLA ============ -->
+
+
+<!-- ============ MODAL: CARMEL VALLEY ============ -->
+<div class="modal-overlay" id="modal-carmel-valley">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="carmel-valley-san-diego-master-planned-community" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Aerial view of a North County San Diego suburban neighborhood">
+            <span class="modal-hero__hint">carmel-valley-san-diego-master-planned-community</span>
+            <h2>Carmel Valley</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Carmel Valley is the master-planned, family-focused, top-schools answer to "we want Del Mar but we want a yard." It sits north of La Jolla, east of Del Mar, and runs from Carmel Valley proper up through Pacific Highlands Ranch. The biotech corridor along Torrey Pines Mesa drives a lot of the buyer demand here, the schools drive the rest. One Paseo at the center has changed the city's walkability story over the last several years. Trail access through Pacific Highlands Ranch and Torrey Pines State Reserve is a real selling point.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $1.2M to $4M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">DMUSD + SBSD + Torrey Pines</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Family + Tech + Schools</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Torrey Pines State Reserve:</strong> hiking, beach access, the namesake pines</li>
+                    <li><strong>One Paseo:</strong> dining, retail, residential, the new walkable center</li>
+                    <li><strong>Pacific Highlands Ranch:</strong> trails, family-suburb master-planned pockets</li>
+                    <li><strong>Top schools:</strong> Del Mar Union and Solana Beach Elementary feeders into Torrey Pines High</li>
+                    <li><strong>Biotech corridor:</strong> Torrey Pines Mesa employers within a 10-minute commute</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Carmel Valley pulls from Del Mar Union and Solana Beach Elementary at the elementary level, with Torrey Pines High School as the most-cited feeder. That combination is the single biggest reason families pay the premium here over similar inland family-suburb pockets. Lifestyle is the tradeoff: Carmel Valley is family suburb with biotech-corridor access, not beach village.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Carmel Valley Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: CARMEL VALLEY ============ -->
+
+
+<!-- ============ MODAL: PACIFIC BEACH ============ -->
+<div class="modal-overlay" id="modal-pacific-beach">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="pacific-beach-san-diego-boardwalk-beach" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1530695440407-21fef47230b1?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Beach boardwalk along the San Diego coast">
+            <span class="modal-hero__hint">pacific-beach-san-diego-boardwalk-beach</span>
+            <h2>Pacific Beach</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Pacific Beach (PB to locals) is the younger, vibier coastal pocket between La Jolla and Mission Beach. The boardwalk, Crystal Pier, Garnet Avenue's bars and dining, and a high concentration of rentals define the city. PB is one of the strongest rental markets I work, both vacation-style boardwalk units and longer-term housing for the SDSU and UCSD population. For investors looking at coastal San Diego rental yield, this is the first conversation. Starter coastal homes show up here at meaningfully lower entry prices than La Jolla one mile north.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $900K to $3M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">San Diego Unified</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Boardwalk + Rentals + Vibe</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Crystal Pier:</strong> the iconic over-the-water pier and pier hotel</li>
+                    <li><strong>Garnet Avenue:</strong> dining, bars, the city's main commercial spine</li>
+                    <li><strong>Boardwalk:</strong> 3+ miles of beachfront path, runs into Mission Beach</li>
+                    <li><strong>Mission Beach access:</strong> Belmont Park, the bay, walkable south</li>
+                    <li><strong>Rental-friendly market:</strong> strong vacation and long-term rental demand</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Pacific Beach is part of San Diego Unified. The lifestyle skews younger here than anywhere else on this page, with rental velocity that reflects it. For investor clients I work, PB is often the strongest case for coastal rental yield in North County's broader footprint. Owner-occupants tend to be first-time coastal buyers willing to trade size for proximity to the sand and the boardwalk.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Pacific Beach Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: PACIFIC BEACH ============ -->
+
+
+<!-- ============ MODAL: ESCONDIDO + SAN MARCOS ============ -->
+<div class="modal-overlay" id="modal-escondido">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" data-bg-hint="escondido-ca-inland-suburbs-vineyard" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Inland Escondido vineyard with rolling hills">
+            <span class="modal-hero__hint">escondido-ca-inland-suburbs-vineyard</span>
+            <h2>Escondido + San Marcos</h2>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro">Escondido is my home market and where my office sits at 1205 Auto Park Way #204. Inland North County, paired here with neighboring San Marcos, gives buyers meaningfully more square footage per dollar than the coast, plus a different lifestyle: vineyards (Stone Brewing's flagship is here), Lake Hodges, the San Diego Zoo Safari Park, downtown Grand Avenue's restaurant row, and Cal State San Marcos as the regional anchor university. This is where a lot of my rental investment clients buy, and where families who have been priced out of the coast find homes they actually want to raise kids in.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Mid $700K to $2M+</div>
+                    <div class="modal-stat__label">Price Range</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">EUSD + SMUSD + CSU San Marcos</div>
+                    <div class="modal-stat__label">Schools</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Inland Value + Wine + Family</div>
+                    <div class="modal-stat__label">Lifestyle</div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3>Featured Areas</h3>
+                <ul>
+                    <li><strong>Escondido:</strong> Grand Avenue downtown, Lake Hodges, Stone Brewing World Bistro</li>
+                    <li><strong>San Marcos:</strong> Cal State San Marcos anchor, Lake San Marcos pocket, family suburbs</li>
+                    <li><strong>Hidden Meadows:</strong> semi-rural acreage, golf-community pocket north of Escondido</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li><strong>Stone Brewing World Bistro:</strong> the flagship of one of the West's biggest craft breweries</li>
+                    <li><strong>Lake Hodges:</strong> hiking, kayaking, mountain biking, regional open space</li>
+                    <li><strong>Grand Avenue:</strong> Escondido's downtown restaurant and shop spine</li>
+                    <li><strong>San Diego Zoo Safari Park:</strong> 1,800 acres, anchor regional attraction</li>
+                    <li><strong>Cal State San Marcos:</strong> regional university, drives the rental market in San Marcos</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3>Schools &amp; Lifestyle</h3>
+                <p>Escondido Union Elementary and San Marcos Unified are the two main districts, with Cal State San Marcos as the anchor higher-ed institution. Inland North County is where my property management practice runs deepest, both single-family rentals for families and student-adjacent rentals around CSUSM. For investor clients, the math here is the most defensible in the region: lower entry, higher cap rates, and a renter pool that does not depend on coastal vacation demand.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="09-contact.html" class="btn btn--primary">Talk to Jerre</a>
+                <a href="07-home-search.html" class="btn btn--outline">Search Escondido Homes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: ESCONDIDO + SAN MARCOS ============ -->
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Jerre Walker</h4>
+                <p class="footer__tagline">Find your San Diego dream property, with a guide who knows North County by heart.</p>
+                <p class="footer__brokerage">AARE · Andrew Arroyo Real Estate<br>1205 Auto Park Way #204, Escondido, CA 92029<br>DRE #01431708</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100049656770416" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/jerrewalker_realtor/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jerre-walker-92396a7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/Jerre%20Walker" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Jerre</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="08-testimonials.html">Testimonials</a></li>
+                    <li><a href="10-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#carlsbad">Carlsbad</a></li>
+                    <li><a href="05-communities.html#encinitas">Encinitas</a></li>
+                    <li><a href="05-communities.html#solana-beach">Solana Beach</a></li>
+                    <li><a href="05-communities.html#del-mar">Del Mar</a></li>
+                    <li><a href="05-communities.html#la-jolla">La Jolla</a></li>
+                    <li><a href="05-communities.html#carmel-valley">Carmel Valley</a></li>
+                    <li><a href="05-communities.html#pacific-beach">Pacific Beach</a></li>
+                    <li><a href="05-communities.html#escondido">Escondido + San Marcos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:6198185734">(619) 818-5734</a></li>
+                    <li><a href="mailto:jerre@jerrewalker.com">jerre@jerrewalker.com</a></li>
+                    <li>1205 Auto Park Way #204<br>Escondido, CA 92029</li>
+                </ul>
+                <a href="09-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Jerre Walker · AARE · Andrew Arroyo Real Estate · Licensed REALTOR® in California · DRE #01431708</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. AARE offices are independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ MODAL OPEN/CLOSE (Communities) ============
+document.querySelectorAll('[data-modal-open]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-modal-open');
+        const modal = document.getElementById('modal-' + id);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el || el.classList.contains('modal-close')) {
+            const overlay = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+});
+
+// ============ TESTIMONIAL CAROUSEL ============
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+function showSlide(i) { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); }
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+const nextBtn = document.querySelector('.testimonial-nav__next');
+const prevBtn = document.querySelector('.testimonial-nav__prev');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (slides.length) setInterval(nextSlide, 6000);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>

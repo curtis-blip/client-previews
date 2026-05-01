@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>North County San Diego Realtor | Jerre Walker · AARE</title>
+    <meta name="description" content="Jerre Walker, North County San Diego REALTOR® at AARE. 20+ years guiding buyers, sellers, and rental owners across Carlsbad, Encinitas, Del Mar.">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- ============ PAGE-SPECIFIC STYLES (01-home.html) ============ -->
+    <style>
+    /* Hero (full-bleed, 100vh) */
+    .home-hero {
+        position: relative;
+        height: 100vh;
+        min-height: 640px;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        background: #0D0D0D;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        overflow: hidden;
+    }
+    .home-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0.35) 45%, rgba(13,13,13,0.75) 100%);
+        z-index: 1;
+    }
+    .home-hero__content {
+        position: relative;
+        z-index: 2;
+        max-width: 1100px;
+        padding: 0 24px;
+        text-align: center;
+    }
+    .home-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--gold);
+        margin-bottom: 32px;
+        display: block;
+    }
+    .home-hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        font-size: clamp(34px, 5vw, 64px);
+        line-height: 1.15;
+        letter-spacing: 2px;
+        margin-bottom: 28px;
+        color: var(--white);
+    }
+    .home-hero__sub {
+        font-family: var(--font-body);
+        font-size: clamp(16px, 1.4vw, 19px);
+        font-weight: 300;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.85);
+        max-width: 760px;
+        margin: 0 auto 40px;
+    }
+    .home-hero__attr {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: rgba(255,255,255,0.7);
+        position: absolute;
+        bottom: 48px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+    }
+
+    /* About preview 2-col */
+    .about-preview {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 80px;
+        align-items: center;
+        max-width: 1180px;
+        margin: 0 auto;
+    }
+    .about-preview__photo {
+        max-width: 420px;
+        width: 100%;
+    }
+    .about-preview__photo img {
+        width: 100%;
+        max-width: 420px;
+        max-height: 540px;
+        height: auto;
+        object-fit: cover;
+        display: block;
+    }
+    .about-preview__text .eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--primary);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .about-preview__text h2 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        font-size: clamp(26px, 3vw, 38px);
+        letter-spacing: 1.5px;
+        line-height: 1.25;
+        margin-bottom: 24px;
+        color: var(--text-dark);
+    }
+    .about-preview__text p {
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+    }
+    .about-preview__text .btn {
+        margin-top: 16px;
+    }
+    @media (max-width: 900px) {
+        .about-preview {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .about-preview__photo {
+            max-width: 360px;
+            margin: 0 auto;
+        }
+    }
+
+    /* Stats bar override (gold values) */
+    .home-stats .stat-item h3 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        color: var(--gold);
+        letter-spacing: 2px;
+    }
+    .home-stats .stat-item p {
+        color: rgba(255,255,255,0.75);
+    }
+
+    /* Home valuation split */
+    .val-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        align-items: stretch;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .val-split__text {
+        background: var(--black);
+        color: var(--white);
+        padding: clamp(48px, 6vw, 96px) clamp(24px, 5vw, 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .val-split__text .eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--gold);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .val-split__text h2 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        font-size: clamp(26px, 3vw, 38px);
+        letter-spacing: 1.5px;
+        line-height: 1.25;
+        margin-bottom: 24px;
+        color: var(--white);
+    }
+    .val-split__text p {
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.75);
+        margin-bottom: 32px;
+        max-width: 520px;
+    }
+    .val-split__image {
+        background-size: cover;
+        background-position: center;
+        background-color: #1A3A5C;
+        min-height: 420px;
+    }
+    @media (max-width: 900px) {
+        .val-split {
+            grid-template-columns: 1fr;
+        }
+        .val-split__image {
+            min-height: 320px;
+        }
+    }
+
+    /* Testimonials section background placeholder */
+    .home-testimonials {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-color: #1A3A5C;
+        padding: clamp(80px, 10vw, 140px) 24px;
+        color: var(--white);
+        text-align: center;
+    }
+    .home-testimonials::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(13,13,13,0.65);
+    }
+    .home-testimonials > * {
+        position: relative;
+        z-index: 2;
+    }
+    .home-testimonials .testimonial-slide {
+        display: none;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .home-testimonials .testimonial-slide.active {
+        display: block;
+    }
+    .home-testimonials blockquote {
+        font-family: var(--font-body);
+        font-size: clamp(18px, 2vw, 24px);
+        line-height: 1.7;
+        font-weight: 300;
+        font-style: italic;
+        color: rgba(255,255,255,0.95);
+        margin-bottom: 32px;
+        quotes: none;
+    }
+    .home-testimonials cite {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--gold);
+    }
+    .home-testimonials .testimonial-nav {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 40px;
+    }
+    .home-testimonials .testimonial-nav button {
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255,255,255,0.3);
+        background: transparent;
+        color: var(--white);
+        cursor: pointer;
+        transition: all var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .home-testimonials .testimonial-nav button:hover {
+        background: var(--white);
+        color: var(--black);
+    }
+
+    /* Featured communities (3-col) tweak: card subtitle line */
+    .featured-comms .gallery-card__overlay h3 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        text-transform: uppercase;
+        font-size: 22px;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+    .featured-comms .gallery-card__overlay p {
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.5;
+    }
+
+    /* Image hint placeholder visual */
+    [data-bg-hint], [data-image-hint] {
+        background: linear-gradient(135deg, #1A3A5C 0%, #2A5478 60%, #A1D3FE 100%);
+    }
+    [data-bg-hint]::after, .gallery-card[data-image-hint]::after {
+        content: attr(data-bg-hint) attr(data-image-hint);
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        font-family: var(--font-heading);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: rgba(255,255,255,0.5);
+        background: rgba(0,0,0,0.4);
+        padding: 4px 8px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Newsletter section spacing */
+    .newsletter-section .section__header h2 {
+        margin-bottom: 12px;
+    }
+    .newsletter-section__note {
+        font-family: var(--font-body);
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-top: 18px;
+    }
+    </style>
+</head>
+<body>
+
+<!-- ============ PREVIEW BANNER ============ -->
+<div class="preview-banner">
+    <span class="preview-banner__label">Design Preview</span> &nbsp; Jerre Walker · Home · 2026-05-01
+</div>
+<!-- ============ END PREVIEW BANNER ============ -->
+
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo">
+        <img src="aare-logo.png" alt="Jerre Walker · AARE · North County San Diego Real Estate" id="navLogo" style="max-width:120px;filter:brightness(0) invert(1);">
+    </a>
+    <ul class="nav__links">
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="03-buy.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="03-buy.html">Buyer's Guide</a></li>
+                <li><a href="07-home-search.html">Home Search</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="04-sell.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="04-sell.html">Seller's Guide</a></li>
+                <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            </ul>
+        </li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Jerre</a></li>
+                <li><a href="08-testimonials.html">Testimonials</a></li>
+                <li><a href="10-blog.html">Blog</a></li>
+            </ul>
+        </li>
+        <li><a href="09-contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:6198185734" class="nav__phone">(619) 818-5734</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="07-home-search.html">Search Homes</a></li>
+        <li><a href="03-buy.html">Buyer's Guide</a></li>
+        <li><a href="04-sell.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a href="05-communities.html">Communities</a></li>
+        <li><a href="02-about.html">About Jerre</a></li>
+        <li><a href="08-testimonials.html">Testimonials</a></li>
+        <li><a href="10-blog.html">Blog</a></li>
+        <li><a href="09-contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:6198185734">(619) 818-5734</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO-FULL: HOME-100VH ============ -->
+    <section class="home-hero" data-bg-hint="north-county-san-diego-beach-sunset-pacific-ocean-encinitas" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific Ocean sunset over a North County San Diego beach">
+        <div class="home-hero__content">
+            <span class="home-hero__eyebrow">North County San Diego &middot; Carlsbad &middot; Encinitas &middot; Del Mar</span>
+            <h1 class="home-hero__title">North County San Diego real estate, with two decades of local roots.</h1>
+            <p class="home-hero__sub">Sales and property management across the coast and inland, from a guide who has lived this market.</p>
+        </div>
+        <div class="home-hero__attr">Jerre Walker &middot; AARE &middot; DRE #01431708</div>
+    </section>
+    <!-- ============ END HERO-FULL ============ -->
+
+
+    <!-- ============ 3-COL GALLERY: HOME-PRIMARY-NAV ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-grid featured-comms">
+                <a href="07-home-search.html" class="gallery-card" data-image-hint="modern-coastal-home-front-elevation-twilight" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>Search Homes</h3>
+                        <p>Live MLS listings across North County and greater San Diego.</p>
+                    </div>
+                </a>
+                <a href="05-communities.html" class="gallery-card" data-image-hint="encinitas-cardiff-coastal-bluff-overhead" style="background-image:url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>Communities</h3>
+                        <p>Eight North County markets, from the coast to inland Escondido.</p>
+                    </div>
+                </a>
+                <a href="06-home-valuation.html" class="gallery-card" data-image-hint="north-county-san-diego-suburban-aerial-afternoon" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>Home Valuation</h3>
+                        <p>Free, no-obligation read on what your home is worth today.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END 3-COL GALLERY ============ -->
+
+
+    <!-- ============ ABOUT PREVIEW: HOME-MEET-JERRE ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="about-preview">
+                <div class="about-preview__photo">
+                    <img src="jerre-headshot.jpg" alt="Jerre Walker, North County San Diego REALTOR®">
+                </div>
+                <div class="about-preview__text">
+                    <span class="eyebrow">Meet Jerre</span>
+                    <h2>Two decades, one market, both sides of the table.</h2>
+                    <p>Jerre Walker is a long-time North County resident and has maintained her strong ties to the community by staying in touch with friends, former co-workers and fostering community relationships for many years. Before becoming a successful REALTOR® and Property Manager, Jerre had a career in the legal field, and her experience working in the courtroom environment is evident in her dedication and attention to detail.</p>
+                    <p>Jerre began her real estate career at Judson Real Estate in Escondido, then joined Dave Stubbs Real Estate in Solana Beach. There she helped to develop a loyal following of property management and sales clients. In 2006 she helped form Fisher Real Estate Advisors in Encinitas and continued to build her property management business there until 2019. In April 2019, she brought her experience and growth back to Judson Real Estate, where she efficiently manages an extensive portfolio of rental properties while also excelling in sales with numerous multi-transaction clients.</p>
+                    <a href="02-about.html" class="btn btn--outline">More about Jerre</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END ABOUT PREVIEW ============ -->
+
+
+    <!-- ============ STATS BAR: HOME-CREDENTIAL-ONLY ============ -->
+    <section class="section section--dark home-stats">
+        <div class="container">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <h3>20+</h3>
+                    <p>Years In Real Estate</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8</h3>
+                    <p>North County Markets</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2X</h3>
+                    <p>Sales + Property Management Specialty</p>
+                </div>
+                <div class="stat-item">
+                    <h3>DRE 01431708</h3>
+                    <p>Licensed REALTOR®</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END STATS BAR ============ -->
+
+
+    <!-- ============ FULL-BLEED IMAGE BREAK: HOME-COAST ============ -->
+    <section class="image-break" data-bg-hint="san-diego-coastal-aerial-pacific-ocean-cliffs" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Pacific coastal cliffs and ocean below">
+        <div class="image-break__content">
+            <span class="image-break__eyebrow">Pacific Coast &middot; North County</span>
+            <p class="image-break__line">From the Carlsbad cliffs to the Carmel Valley canyons, this is the coast I work.</p>
+        </div>
+    </section>
+    <!-- ============ END FULL-BLEED IMAGE BREAK ============ -->
+
+
+    <!-- ============ TESTIMONIALS CAROUSEL: HOME-PARALLAX-3 ============ -->
+    <section class="home-testimonials testimonials-section" data-bg-hint="coastal-luxury-living-room-natural-light" style="background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Bright, professionally staged coastal living room">
+        <div class="testimonial-slider">
+            <div class="testimonial-slide active">
+                <blockquote>"I have worked with Jerre on and off over the last 12 years. She is exceptional, knowledgeable, responsive, fair, warm and kind."</blockquote>
+                <cite>Adrianne &middot; Past Client</cite>
+            </div>
+            <div class="testimonial-slide">
+                <blockquote>"Jerre and Charlie were amazing partners in our recent home sale... again! It sold in just over 2 days on the market."</blockquote>
+                <cite>Karey &middot; Past Client</cite>
+            </div>
+            <div class="testimonial-slide">
+                <blockquote>"Moving across state lines, selling one house to buy another, was a whirlwind of challenges. Jerre was a calm, comforting, reliable port in the storm..."</blockquote>
+                <cite>Past Client &middot; North County San Diego</cite>
+            </div>
+        </div>
+        <div class="testimonial-nav">
+            <button class="testimonial-nav__prev" aria-label="Previous testimonial">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="testimonial-nav__next" aria-label="Next testimonial">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </section>
+    <!-- ============ END TESTIMONIALS CAROUSEL ============ -->
+
+
+    <!-- ============ FEATURED COMMUNITIES: HOME-3-COL ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header" style="text-align:center;margin-bottom:48px;">
+                <span class="eyebrow" style="font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--primary);display:block;margin-bottom:12px;">Featured Communities</span>
+                <h2 style="font-family:var(--font-heading);font-weight:200;text-transform:uppercase;font-size:clamp(26px, 3vw, 38px);letter-spacing:1.5px;">Three corners of North County San Diego.</h2>
+            </div>
+            <div class="gallery-grid featured-comms">
+                <a href="05-communities.html#carlsbad" class="gallery-card" data-image-hint="carlsbad-village-flower-fields-coastal-bluff" style="background-image:url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>Carlsbad</h3>
+                        <p>Village walkability, flower fields, and a beach-town rhythm that holds value year over year.</p>
+                    </div>
+                </a>
+                <a href="05-communities.html#encinitas" class="gallery-card" data-image-hint="encinitas-moonlight-beach-cardiff-sunset" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>Encinitas</h3>
+                        <p>Surf-town soul plus Cardiff-by-the-Sea, with a downtown that still feels like a neighborhood.</p>
+                    </div>
+                </a>
+                <a href="05-communities.html#la-jolla" class="gallery-card" data-image-hint="la-jolla-cove-mt-soledad-pacific-ocean" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <div class="gallery-card__overlay">
+                        <h3>La Jolla</h3>
+                        <p>Coastal luxury anchored by The Cove, Mt. Soledad views, and some of San Diego's most sought-after blocks.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END FEATURED COMMUNITIES ============ -->
+
+
+    <!-- ============ HOME VALUATION CTA: HOME-DARK-SPLIT ============ -->
+    <section class="val-split">
+        <div class="val-split__text">
+            <span class="eyebrow">Home Valuation</span>
+            <h2>What's your North County home worth?</h2>
+            <p>An honest read on local comps, market context, and your home's position in this micro-market. Free, no obligation.</p>
+            <div>
+                <a href="06-home-valuation.html" class="btn btn--white">Request a Valuation</a>
+            </div>
+        </div>
+        <div class="val-split__image" data-image-hint="staged-coastal-living-room-modern" style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1600&h=900&q=75&fit=crop&auto=format');background-size:cover;background-position:center;background-repeat:no-repeat;" aria-label="Bright, professionally staged coastal living room"></div>
+    </section>
+    <!-- ============ END HOME VALUATION CTA ============ -->
+
+
+    <!-- ============ FAQ: HOME-6Q ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="section__header" style="text-align:center;margin-bottom:48px;">
+                <span class="eyebrow" style="font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--primary);display:block;margin-bottom:12px;">Common Questions</span>
+                <h2 style="font-family:var(--font-heading);font-weight:200;text-transform:uppercase;font-size:clamp(26px, 3vw, 38px);letter-spacing:1.5px;">What buyers, sellers, and rental owners ask first.</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How long have you worked in North County San Diego?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>More than 20 years. I started at Judson Real Estate in Escondido, then joined Dave Stubbs Real Estate in Solana Beach, and helped form Fisher Real Estate Advisors in Encinitas back in 2006. I have lived and worked this market through multiple cycles.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Which areas do you specialize in?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Eight North County markets: Carlsbad, Encinitas (including Cardiff-by-the-Sea), Solana Beach, Del Mar, La Jolla, Carmel Valley, Pacific Beach, and the Escondido and San Marcos inland corridor. Coast and inland are different markets, and I work both.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you handle sales and property management?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Yes, both. I manage an extensive portfolio of rental properties and run an active sales practice with many multi-transaction clients. Owners who started with a single rental have come back to me for sales, second homes, and investor purchases over the years.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What's the best way to reach you?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Call or text (619) 818-5734, email <a href="mailto:jerre@jerrewalker.com">jerre@jerrewalker.com</a>, or use the contact page to schedule a call. I respond personally, not through an assistant, and I keep clients in the loop at every stage of a transaction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Are you with AARE or independent?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>I'm with AARE, Andrew Arroyo Real Estate, based at 1205 Auto Park Way #204, Escondido, CA 92029. AARE offices are independently owned and operated, which keeps my client work close to the ground while plugging into a larger California brokerage network.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you work with first-time buyers and luxury clients?</span>
+                        <span class="faq-question__icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Both. I've helped first-time buyers find their first home in Escondido and San Marcos, and I work with move-up and luxury clients in Del Mar, La Jolla, and the coastal villages. The process is the same: listen, do the homework, protect your position. Price point doesn't change that.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END FAQ ============ -->
+
+
+    <!-- ============ NEWSLETTER CTA: HOME-CENTERED ============ -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="section__header">
+                <h2 style="font-family:var(--font-heading);font-weight:200;text-transform:uppercase;font-size:clamp(26px, 3vw, 38px);letter-spacing:1.5px;">Stay close to North County listings</h2>
+            </div>
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Your email address" aria-label="Email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-section__note">Monthly market notes from a realtor who has lived this market for two decades.</p>
+        </div>
+    </section>
+    <!-- ============ END NEWSLETTER CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+
+<!-- ============ FOOTER (Amy Koch 4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Jerre Walker</h4>
+                <p class="footer__tagline">Find your San Diego dream property, with a guide who knows North County by heart.</p>
+                <p class="footer__brokerage">AARE · Andrew Arroyo Real Estate<br>1205 Auto Park Way #204, Escondido, CA 92029<br>DRE #01431708</p>
+                <ul class="footer__social">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100049656770416" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/jerrewalker_realtor/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jerre-walker-92396a7/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.zillow.com/profile/Jerre%20Walker" target="_blank" rel="noopener" aria-label="Zillow">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Jerre</a></li>
+                    <li><a href="03-buy.html">Buyer's Guide</a></li>
+                    <li><a href="04-sell.html">Seller's Guide</a></li>
+                    <li><a href="07-home-search.html">Search Homes</a></li>
+                    <li><a href="06-home-valuation.html">Home Valuation</a></li>
+                    <li><a href="08-testimonials.html">Testimonials</a></li>
+                    <li><a href="10-blog.html">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="05-communities.html#carlsbad">Carlsbad</a></li>
+                    <li><a href="05-communities.html#encinitas">Encinitas</a></li>
+                    <li><a href="05-communities.html#solana-beach">Solana Beach</a></li>
+                    <li><a href="05-communities.html#del-mar">Del Mar</a></li>
+                    <li><a href="05-communities.html#la-jolla">La Jolla</a></li>
+                    <li><a href="05-communities.html#carmel-valley">Carmel Valley</a></li>
+                    <li><a href="05-communities.html#pacific-beach">Pacific Beach</a></li>
+                    <li><a href="05-communities.html#escondido">Escondido + San Marcos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:6198185734">(619) 818-5734</a></li>
+                    <li><a href="mailto:jerre@jerrewalker.com">jerre@jerrewalker.com</a></li>
+                    <li>1205 Auto Park Way #204<br>Escondido, CA 92029</li>
+                </ul>
+                <a href="09-contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>&copy; 2026 Jerre Walker · AARE · Andrew Arroyo Real Estate · Licensed REALTOR® in California · DRE #01431708</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. AARE offices are independently owned and operated.</p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+
+<style>
+/* ============ FOOTER CSS (page-template scope) ============ */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 80px 0 32px;
+}
+.footer__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 64px;
+}
+.footer__brand {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+}
+.footer__tagline {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+    max-width: 360px;
+}
+.footer__brokerage {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+}
+.footer__heading {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.footer__col a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
+}
+.footer__col a:hover {
+    color: var(--white);
+}
+.footer__social {
+    display: flex !important;
+    gap: 16px;
+    list-style: none;
+    margin-top: 8px !important;
+    padding: 0;
+}
+.footer__social li {
+    margin: 0 !important;
+}
+.footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    transition: all var(--transition);
+}
+.footer__social a:hover {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
+}
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+}
+.footer__disclaimer {
+    margin-top: 4px;
+}
+@media (max-width: 768px) {
+    .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+</style>
+
+
+<script>
+// ============ NAV: TRANSPARENT-TO-SOLID ON SCROLL ============
+const mainNav = document.getElementById('mainNav');
+function updateNav() {
+    if (window.scrollY > 80) {
+        mainNav.classList.remove('nav--transparent');
+        mainNav.classList.add('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'none';
+    } else {
+        mainNav.classList.add('nav--transparent');
+        mainNav.classList.remove('nav--solid');
+        const logo = document.getElementById('navLogo');
+        if (logo) logo.style.filter = 'brightness(0) invert(1)';
+    }
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+
+// ============ MOBILE MENU TOGGLE ============
+const hamburger = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileMenuOverlay');
+const mobileClose = document.getElementById('mobileMenuClose');
+function openMobile() { mobileMenu.classList.add('active'); mobileOverlay.classList.add('active'); }
+function closeMobile() { mobileMenu.classList.remove('active'); mobileOverlay.classList.remove('active'); }
+if (hamburger) hamburger.addEventListener('click', openMobile);
+if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+
+// ============ FAQ ACCORDION (single-open) ============
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+    });
+});
+
+// ============ MODAL OPEN/CLOSE (Communities) ============
+document.querySelectorAll('[data-modal-open]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = trigger.getAttribute('data-modal-open');
+        const modal = document.getElementById('modal-' + id);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+        if (e.target === el || el.classList.contains('modal-close')) {
+            const overlay = el.classList.contains('modal-overlay') ? el : el.closest('.modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
+});
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+});
+
+// ============ TESTIMONIAL CAROUSEL ============
+const slides = document.querySelectorAll('.testimonial-slide');
+let currentSlide = 0;
+function showSlide(i) { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); }
+function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+const nextBtn = document.querySelector('.testimonial-nav__next');
+const prevBtn = document.querySelector('.testimonial-nav__prev');
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+if (slides.length) setInterval(nextSlide, 6000);
+
+// ============ FADE-UP ON SCROLL ============
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ============ STATS COUNTER ============
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            (function tick(now) {
+                const p = Math.min((now - start) / duration, 1);
+                el.textContent = Math.floor(p * target).toLocaleString();
+                if (p < 1) requestAnimationFrame(tick);
+            })(performance.now());
+            statObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>
