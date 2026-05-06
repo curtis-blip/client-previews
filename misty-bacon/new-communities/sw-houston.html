@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S.W. Houston Community Modal — Misty Bacon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #674891; --primary-dark: #4e3570; --accent: #921bd8;
+  --secondary: #9c79c7; --dark: #1a1530; --mid: #555;
+  --light: #f4f1ec; --neutral: #ffffff;
+  --font-head: 'Raleway', sans-serif; --font-body: 'Open Sans', sans-serif;
+  --radius: 4px;
+  --shadow-hover: 0 12px 32px rgba(103,72,145,0.18);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--dark); background: #efeae3; -webkit-font-smoothing: antialiased; padding: 40px 20px; }
+img { max-width: 100%; display: block; }
+
+.preview-banner { max-width: 860px; margin: 0 auto 24px; padding: 14px 24px; background: var(--dark); color: #fff; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+.preview-banner .pb-label { color: var(--secondary); }
+.preview-stage { max-width: 860px; margin: 0 auto; }
+.modal-content { position: relative; background: var(--neutral); border-radius: 8px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
+.modal-hero { width: 100%; height: 420px; object-fit: cover; display: block; }
+.modal-body { padding: 48px; }
+.modal-vibe { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 28px; line-height: 1.3; }
+
+.modal-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+.modal-stat { text-align: center; padding: 18px 10px; background: var(--light); border-radius: var(--radius); }
+.modal-stat .ms-value { display: block; font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.modal-stat .ms-label { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+.modal-section { margin-bottom: 32px; }
+.modal-section h4 { font-family: var(--font-head); font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--dark); text-transform: uppercase; letter-spacing: 0.08em; }
+.modal-section p { font-size: 15px; color: var(--mid); line-height: 1.8; }
+
+.modal-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.modal-highlight { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dark); font-weight: 600; line-height: 1.4; }
+.modal-highlight svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; display: block; }
+
+.modal-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.compare-item { text-align: center; padding: 22px 14px; background: var(--light); border-radius: var(--radius); }
+.compare-item .ci-value { display: block; font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.compare-item .ci-label { font-size: 12px; color: var(--mid); line-height: 1.4; }
+
+.mistys-take { background: linear-gradient(135deg, rgba(103,72,145,0.06) 0%, rgba(146,27,216,0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 32px; }
+.mistys-take .mt-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 8px; }
+.mistys-take p { font-size: 15px; color: var(--dark); line-height: 1.7; font-style: italic; }
+
+.modal-map { border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; }
+.modal-map iframe { width: 100%; height: 280px; border: 0; display: block; }
+
+.modal-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary, .btn-secondary { display: inline-block; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border-radius: var(--radius); cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--primary); color: #fff; border: none; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 12px 28px; }
+.btn-secondary:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .modal-body { padding: 28px; }
+  .modal-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .modal-highlights { grid-template-columns: 1fr; }
+  .modal-compare { grid-template-columns: 1fr; }
+  .modal-ctas { flex-direction: column; }
+  .modal-hero { height: 280px; }
+  .preview-banner { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <div><span class="pb-label">Misty Bacon ·</span> Community Modal Preview</div>
+  <div>S.W. Houston · 77071 / 77074</div>
+</div>
+
+<div class="preview-stage">
+  <div class="modal-content">
+    <img class="modal-hero" src="https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=1600&q=80" alt="Southwest Houston neighborhood">
+
+    <div class="modal-body">
+      <div class="modal-vibe">Where Houston's diversity meets neighborhood affordability.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat"><span class="ms-value">$200K-$340K</span><span class="ms-label">Median Range</span></div>
+        <div class="modal-stat"><span class="ms-value">HISD / Alief</span><span class="ms-label">School Districts</span></div>
+        <div class="modal-stat"><span class="ms-value">25 min</span><span class="ms-label">To Downtown</span></div>
+        <div class="modal-stat"><span class="ms-value">~150,000</span><span class="ms-label">Population</span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Southwest Houston is one of the most internationally flavored corners of the city. Mornings might mean dim sum on Bellaire Boulevard or a coffee run in Sharpstown. Afternoons could pull you toward Brays Bayou trails, Westbury Square, or a quick drive over to the Galleria. Schools serve a mix of HISD and Alief ISD families, and commutes to the Texas Medical Center, Greenway Plaza, and downtown all sit inside a reasonable window. Buyers come here for one main reason: square footage and location at a price point that the inner loop cannot touch.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Inventory in S.W. Houston ranges from 1960s and 70s ranch homes in established subdivisions to mid-rise condos and townhomes near the Westchase and Galleria edges. Westbury and Maplewood deliver well-kept three and four-bedroom homes in the $220K to $300K range. Townhome and condo product near Bellaire and Hillcroft starts in the high $100s, which makes this corner of the city a real option for first-time buyers and investors. Lots are larger than what you will find inside the loop, and tree-lined streets are common.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Affordable Single-Family Stock
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            International Communities
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            25-Min Medical Center Drive
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+            Brays Bayou Greenway
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            HISD &amp; Alief ISD Options
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Bellaire Boulevard Dining
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">30% Lower</span>
+            <span class="ci-label">Price per square foot vs. inner loop</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Bigger Lots</span>
+            <span class="ci-label">7,000-9,000 sq ft typical lot size</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">Central</span>
+            <span class="ci-label">Equal reach to Med Center, Galleria, downtown</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>S.W. Houston is where I send buyers who want Houston access without Houston prices. If you work at the Medical Center or Greenway and don't need a brand new build, Westbury and the streets around Maplewood are full of solid homes with good bones. The cultural mix is part of the appeal, you'll never run out of new restaurants to try. Just know the schools vary block to block, so I always pull the assigned campuses before we tour.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55435.0!2d-95.55!3d29.6755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640c1f3b5ec3f37%3A0x0!2sSouthwest%20Houston%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Southwest Houston map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in S.W. Houston</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About S.W. Houston</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  INTEGRATION SNIPPETS — paste into 06-communities.html           ║
+  ╚══════════════════════════════════════════════════════════════════╝
+
+  ── 1) CARD (paste inside <div class="community-grid">) ────────────
+
+  <!-- S.W. Houston -->
+  <div class="community-card reveal" data-community="sw-houston" onclick="openModal('sw-houston')">
+    <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=600&q=80');"></div>
+    <div class="cc-overlay"></div>
+    <div class="cc-content">
+      <h3>S.W. Houston</h3>
+      <span class="cc-zip">77071 / 77074</span>
+      <span class="cc-btn">Learn More</span>
+    </div>
+  </div>
+
+
+  ── 2) MODAL (paste alongside other modals; single hero in carousel) ──
+
+  <!-- ── S.W. HOUSTON MODAL ── -->
+  <div class="community-modal" id="modal-sw-houston">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-carousel">
+        <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?w=1600&q=80" alt="Southwest Houston neighborhood">
+      </div>
+      <div class="modal-body">
+        [vibe + stats-row + sections + highlights + compare + mistys-take + map + ctas — copy from preview body above]
+      </div>
+    </div>
+  </div>
+-->
+
+</body>
+</html>

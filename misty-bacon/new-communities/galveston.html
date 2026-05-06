@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galveston Community Modal — Misty Bacon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #674891; --primary-dark: #4e3570; --accent: #921bd8;
+  --secondary: #9c79c7; --dark: #1a1530; --mid: #555;
+  --light: #f4f1ec; --neutral: #ffffff;
+  --font-head: 'Raleway', sans-serif; --font-body: 'Open Sans', sans-serif;
+  --radius: 4px;
+  --shadow-hover: 0 12px 32px rgba(103,72,145,0.18);
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--dark); background: #efeae3; -webkit-font-smoothing: antialiased; padding: 40px 20px; }
+img { max-width: 100%; display: block; }
+
+.preview-banner { max-width: 860px; margin: 0 auto 24px; padding: 14px 24px; background: var(--dark); color: #fff; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-head); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+.preview-banner .pb-label { color: var(--secondary); }
+.preview-stage { max-width: 860px; margin: 0 auto; }
+.modal-content { position: relative; background: var(--neutral); border-radius: 8px; overflow: hidden; box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
+.modal-hero { width: 100%; height: 420px; object-fit: cover; display: block; }
+.modal-body { padding: 48px; }
+.modal-vibe { font-family: var(--font-head); font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 28px; line-height: 1.3; }
+
+.modal-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+.modal-stat { text-align: center; padding: 18px 10px; background: var(--light); border-radius: var(--radius); }
+.modal-stat .ms-value { display: block; font-family: var(--font-head); font-size: 17px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+.modal-stat .ms-label { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+.modal-section { margin-bottom: 32px; }
+.modal-section h4 { font-family: var(--font-head); font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--dark); text-transform: uppercase; letter-spacing: 0.08em; }
+.modal-section p { font-size: 15px; color: var(--mid); line-height: 1.8; }
+
+.modal-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.modal-highlight { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--dark); font-weight: 600; line-height: 1.4; }
+.modal-highlight svg { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; display: block; }
+
+.modal-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.compare-item { text-align: center; padding: 22px 14px; background: var(--light); border-radius: var(--radius); }
+.compare-item .ci-value { display: block; font-family: var(--font-head); font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+.compare-item .ci-label { font-size: 12px; color: var(--mid); line-height: 1.4; }
+
+.mistys-take { background: linear-gradient(135deg, rgba(103,72,145,0.06) 0%, rgba(146,27,216,0.04) 100%); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 32px; }
+.mistys-take .mt-label { font-family: var(--font-head); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 8px; }
+.mistys-take p { font-size: 15px; color: var(--dark); line-height: 1.7; font-style: italic; }
+
+.modal-map { border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; }
+.modal-map iframe { width: 100%; height: 280px; border: 0; display: block; }
+
+.modal-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary, .btn-secondary { display: inline-block; font-family: var(--font-head); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 30px; border-radius: var(--radius); cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--primary); color: #fff; border: none; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 12px 28px; }
+.btn-secondary:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .modal-body { padding: 28px; }
+  .modal-stats-row { grid-template-columns: repeat(2, 1fr); }
+  .modal-highlights { grid-template-columns: 1fr; }
+  .modal-compare { grid-template-columns: 1fr; }
+  .modal-ctas { flex-direction: column; }
+  .modal-hero { height: 280px; }
+  .preview-banner { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <div><span class="pb-label">Misty Bacon ·</span> Community Modal Preview</div>
+  <div>Galveston · 77550 / 77554</div>
+</div>
+
+<div class="preview-stage">
+  <div class="modal-content">
+    <img class="modal-hero" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Galveston coast">
+
+    <div class="modal-body">
+      <div class="modal-vibe">An island address with 32 miles of Gulf coast at your back door.</div>
+
+      <div class="modal-stats-row">
+        <div class="modal-stat"><span class="ms-value">$260K-$525K</span><span class="ms-label">Median Range</span></div>
+        <div class="modal-stat"><span class="ms-value">Galveston ISD</span><span class="ms-label">School District</span></div>
+        <div class="modal-stat"><span class="ms-value">50 min</span><span class="ms-label">To Clear Lake</span></div>
+        <div class="modal-stat"><span class="ms-value">~53,000</span><span class="ms-label">Population</span></div>
+      </div>
+
+      <div class="modal-section">
+        <h4>A Day in the Life</h4>
+        <p>Galveston wakes up to salt air and seagulls. Mornings on the seawall, afternoons at Stewart Beach or Pleasure Pier, and evenings on a Strand patio listening to live music. The historic East End is full of Victorian homes that survived the 1900 storm and now sit in one of the largest historic districts in the country. UTMB anchors the medical economy on the east end, while the West End beach communities stretch toward San Luis Pass with stilt homes, vacation rentals, and quiet sand. Cruise terminals, the Pleasure Pier, and Moody Gardens keep the tourism engine running year round.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>What You'll Find</h4>
+        <p>Galveston offers two very different markets. The East End and historic district hold restored Victorians, brick bungalows, and walkable condos starting in the $260s and climbing well into the $700s for landmark properties. The West End is stilt-home country, where 3-bedroom beach houses run $400K to $700K and double as short-term rentals. Mid-island and seawall condos start around $200K and are popular with second-home buyers. Insurance and elevation matter here more than anywhere else in the metro, and the right structure plus the right zone can make a six-figure difference at closing.</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>Highlights</h4>
+        <div class="modal-highlights">
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h1l2-3 3 2 4-4 3 3 2-2h3"/><path d="M2 20h20"/></svg>
+            32 Miles of Gulf Beach
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/></svg>
+            Historic East End District
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            Short-Term Rental Income
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            UTMB Medical Anchor
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 010 20"/></svg>
+            Cruise Terminal &amp; Tourism
+          </div>
+          <div class="modal-highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Galveston ISD &amp; Ball High
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h4>How It Compares</h4>
+        <div class="modal-compare">
+          <div class="compare-item">
+            <span class="ci-value">+40-60%</span>
+            <span class="ci-label">Beachfront premium vs. mainland comps</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">$40K-80K</span>
+            <span class="ci-label">Annual gross on West End short-term rentals</span>
+          </div>
+          <div class="compare-item">
+            <span class="ci-value">$4K-10K</span>
+            <span class="ci-label">Annual wind &amp; flood insurance load</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mistys-take">
+        <div class="mt-label">Misty's Take</div>
+        <p>Galveston is the dream second home or the bold full-time move. I tell every buyer the same thing: the price you see online is not the cost of ownership here. Wind, flood, and elevation drive everything. The right Pirates Beach or Sea Isle home with a strong rental history can pencil out beautifully. The wrong unelevated bungalow can hand you an insurance bill that ruins it. We tour with both eyes open, and we run the numbers before we fall in love.</p>
+      </div>
+
+      <div class="modal-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111000!2d-94.85!3d29.27!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863f967b0f928d51%3A0x0!2sGalveston%2C%20TX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Galveston map"></iframe>
+      </div>
+
+      <div class="modal-ctas">
+        <a href="09-home-search.html" class="btn-primary">Search Homes in Galveston</a>
+        <a href="05-contact.html" class="btn-secondary">Talk to Misty About Galveston</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  INTEGRATION SNIPPETS — paste into 06-communities.html           ║
+  ╚══════════════════════════════════════════════════════════════════╝
+
+  ── 1) CARD (paste inside <div class="community-grid">) ────────────
+
+  <!-- Galveston -->
+  <div class="community-card reveal" data-community="galveston" onclick="openModal('galveston')">
+    <div class="cc-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80');"></div>
+    <div class="cc-overlay"></div>
+    <div class="cc-content">
+      <h3>Galveston</h3>
+      <span class="cc-zip">77550 / 77554</span>
+      <span class="cc-btn">Learn More</span>
+    </div>
+  </div>
+
+
+  ── 2) MODAL (paste alongside other modals; single hero in carousel) ──
+
+  <!-- ── GALVESTON MODAL ── -->
+  <div class="community-modal" id="modal-galveston">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-carousel">
+        <img class="modal-carousel-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80" alt="Galveston coast">
+      </div>
+      <div class="modal-body">
+        [vibe + stats-row + sections + highlights + compare + mistys-take + map + ctas — copy from preview body above]
+      </div>
+    </div>
+  </div>
+-->
+
+</body>
+</html>
