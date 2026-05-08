@@ -255,47 +255,77 @@
     }
 
 
-    /* Buyer-path Search CTA */
-    .home-search-cta {
-        background: var(--charcoal, var(--black));
-        color: var(--white);
-        padding: 96px 24px;
+
+    /* 4-Way Action Grid (Search / Buyer / Seller / Home Value) */
+    .home-actions { background: var(--gray-bg); }
+    .home-actions .home-section-header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+    .home-actions .home-section-header__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px; font-weight: 600;
+        letter-spacing: 4px; text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px; display: block;
     }
-    .home-search-cta__inner { max-width: 880px; margin: 0 auto; text-align: center; }
-    .home-search-cta__eyebrow {
+    .home-actions .home-section-header h2 { margin-bottom: 16px; line-height: 1.2; }
+    .home-actions .home-section-header p { color: var(--text-muted); font-size: 16px; line-height: 1.7; }
+
+    .home-actions__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+    .action-card {
+        background: var(--white);
+        padding: 40px 28px;
+        text-align: left;
+        border-top: 3px solid var(--purple);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .action-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+    .action-card__icon {
+        color: var(--purple);
+        margin-bottom: 24px;
+    }
+    .action-card h3 {
+        font-size: 21px;
+        font-weight: 200;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        color: var(--text-dark);
+    }
+    .action-card p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+    .action-card__arrow {
         font-family: var(--font-heading);
         font-size: 12px;
         font-weight: 600;
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 20px;
-        display: block;
-    }
-    .home-search-cta h2 {
-        color: var(--white);
-        margin-bottom: 24px;
-        line-height: 1.25;
-    }
-    .home-search-cta p {
-        color: rgba(255,255,255,0.75);
-        font-size: 16px;
-        line-height: 1.85;
-        margin: 0 auto 36px;
-        max-width: 640px;
-    }
-    .home-search-cta__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn--outline-white {
-        border: 1px solid var(--white);
-        color: var(--white);
-        padding: 14px 32px;
-        font-family: var(--font-heading);
-        font-size: 13px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        transition: all var(--transition);
+        color: var(--purple);
+        border-bottom: 1px solid var(--purple);
+        padding-bottom: 4px;
+        align-self: flex-start;
     }
-    .btn--outline-white:hover { background: var(--white); color: var(--black); }
+    @media (max-width: 1024px) {
+        .home-actions__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+        .home-actions__grid { grid-template-columns: 1fr; }
+    }
+
 
     /* Final Contact CTA — strong close (replaces Newsletter) */
     .home-final-cta {
@@ -577,21 +607,58 @@
         </div>
     </section>
     <!-- ============ END FEATURED COMMUNITIES ============ -->
-    <!-- ============ SEARCH CTA: SEARCH-DARK-CTA-1 ============ -->
-    <section class="home-search-cta">
-        <div class="container home-search-cta__inner">
-            <span class="home-search-cta__eyebrow">Buying?</span>
-            <h2>Search every active listing in Corpus Christi, the Coastal Bend, and the islands.</h2>
-            <p>Filter by neighborhood, price, beds, waterfront, school zone, and the Showcase IDX search syncs to the live MLS so what you see is what is actually for sale.</p>
-            <div class="home-search-cta__actions">
-                <a href="07-featured-listings.html" class="btn btn--white">Search Homes</a>
-                <a href="03-communities.html" class="btn btn--outline-white">Browse Communities</a>
+    <!-- ============ 4-WAY ACTION GRID: ACTION-4UP-1 ============ -->
+    <section class="section home-actions">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">How can I help?</span>
+                <h2>Pick the path that fits where you are.</h2>
+                <p>Buyers, sellers, browsers, just-curious — start here, I will meet you the rest of the way.</p>
+            </div>
+            <div class="home-actions__grid">
+
+                <a href="07-featured-listings.html" class="action-card">
+                    <div class="action-card__icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <h3>Search Homes</h3>
+                    <p>Live MLS across Corpus Christi, the Coastal Bend, Padre, Port A, Rockport.</p>
+                    <span class="action-card__arrow">Open the search →</span>
+                </a>
+
+                <a href="04-buyers-guide.html" class="action-card">
+                    <div class="action-card__icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <h3>Buyer's Guide</h3>
+                    <p>First-time buyer or relocating to Texas? Walk through the seven steps.</p>
+                    <span class="action-card__arrow">Read the guide →</span>
+                </a>
+
+                <a href="05-sellers-guide.html" class="action-card">
+                    <div class="action-card__icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Seller's Guide</h3>
+                    <p>Pricing, prep, marketing, closing. The steady-hand version, eight steps.</p>
+                    <span class="action-card__arrow">Read the guide →</span>
+                </a>
+
+                <a href="#home-valuation" class="action-card">
+                    <div class="action-card__icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Get My Home Value</h3>
+                    <p>Free, no-pressure read on what your home would command today.</p>
+                    <span class="action-card__arrow">Run the valuation ↓</span>
+                </a>
+
             </div>
         </div>
     </section>
-    <!-- ============ END SEARCH CTA ============ -->
+    <!-- ============ END 4-WAY ACTION GRID ============ -->
     <!-- ============ HOME VALUATION REQUEST: VAL-SHORTCODE-1 ============ -->
-    <section class="section section--gray home-val-shortcode-section">
+    <section id="home-valuation" class="section section--gray home-val-shortcode-section">
         <div class="container">
             <div class="home-section-header">
                 <span class="home-section-header__eyebrow">Selling?</span>
