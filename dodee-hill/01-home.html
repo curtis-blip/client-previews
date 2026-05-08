@@ -11,7 +11,7 @@
 
     /* Hero - full bleed sans-only register */
     .home-hero {
-        background: linear-gradient(135deg, #1a0808 0%, #2a0c0c 60%, #5C1A1A 100%);
+        background: linear-gradient(135deg, #06262e 0%, #062a33 60%, #0E5C6E 100%);
         position: relative;
     }
     .home-hero__bg {
@@ -26,8 +26,9 @@
         background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 100%);
     }
     .home-hero .hero__content {
-        max-width: 960px;
+        max-width: 720px;
         position: relative; z-index: 2;
+        text-align: left;
     }
     .home-hero__eyebrow {
         font-family: var(--font-heading);
@@ -54,8 +55,8 @@
         font-size: clamp(15px, 1.4vw, 17px);
         line-height: 1.7;
         color: rgba(255,255,255,0.88);
-        max-width: 640px;
-        margin: 0 auto 0;
+        max-width: 520px;
+        margin: 0;
     }
     .home-hero__attribution {
         position: absolute;
@@ -144,8 +145,8 @@
 
     /* Image break - replaces hardcoded URL with hint-driven gradient fallback */
     .home-image-break {
-        background-color: #1a0808;
-        background-image: linear-gradient(135deg, rgba(13,13,13,0.85) 0%, rgba(92,26,26,0.65) 100%);
+        background-color: #06262e;
+        background-image: linear-gradient(135deg, rgba(13,13,13,0.85) 0%, rgba(14,92,110,0.65) 100%);
     }
 
     /* Featured Communities */
@@ -198,8 +199,8 @@
     .home-valuation-cta__image {
         background-size: cover;
         background-position: center;
-        background-color: #2a1414;
-        background-image: linear-gradient(135deg, rgba(92,26,26,0.5) 0%, rgba(13,13,13,0.7) 100%);
+        background-color: #0a3a45;
+        background-image: linear-gradient(135deg, rgba(14,92,110,0.5) 0%, rgba(13,13,13,0.7) 100%);
         min-height: 360px;
     }
     @media (max-width: 1024px) {
@@ -213,6 +214,44 @@
             min-height: 280px;
             order: -1;
         }
+    }
+
+    /* Home valuation shortcode placeholder block */
+    .home-val-shortcode-section .home-section-header {
+        max-width: 720px;
+        margin: 0 auto 48px;
+        text-align: center;
+    }
+    .home-val-placeholder {
+        background: var(--white);
+        border: 2px dashed var(--purple);
+        padding: 56px 32px;
+        text-align: center;
+        max-width: 880px;
+        margin: 0 auto;
+    }
+    .home-val-placeholder__label {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+    }
+    .home-val-placeholder__hint {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+    .home-val-placeholder__code {
+        display: inline-block;
+        background: var(--black);
+        color: var(--gold);
+        padding: 14px 28px;
+        font-family: monospace;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
     /* Newsletter section */
@@ -393,6 +432,7 @@
 <main>
     <!-- ============ CONTENT SLOT ============ -->
 
+
     <!-- ============ HERO: HERO-FULL-1 ============ -->
     <section class="hero home-hero" data-bg-hint="corpus-christi-coastal-gulf-horizon-padre-island" style="background-image: url('https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=2400&h=1600&q=80&fit=crop&auto=format'); background-size: cover; background-position: center;">
         <div class="home-hero__bg" data-bg-hint="corpus-christi-coastal-gulf-horizon-padre-island" style="background-image: url('https://images.unsplash.com/photo-1473625247510-8ceb1760943f?w=2400&h=1600&q=80&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
@@ -404,33 +444,6 @@
         <div class="home-hero__attribution">Dodee Hill · AARE, Andrew Arroyo Real Estate Inc</div>
     </section>
     <!-- ============ END HERO ============ -->
-
-
-    <!-- ============ 3-COL GALLERY: GALLERY-3UP-1 ============ -->
-    <section class="section" style="padding-top: 0;">
-        <div class="gallery-grid">
-            <a href="07-featured-listings.html" class="gallery-card" data-image-hint="corpus-christi-southside-home-exterior-bright">
-                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format" alt="Bright Corpus Christi Southside home exterior" data-image-hint="corpus-christi-southside-home-exterior-bright" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>Search Homes</h3>
-                </div>
-            </a>
-            <a href="03-communities.html" class="gallery-card" data-image-hint="corpus-christi-coastal-bend-bay-marina">
-                <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1600&h=900&q=75&fit=crop&auto=format" alt="Corpus Christi bay marina with sailboats" data-image-hint="corpus-christi-coastal-bend-bay-marina" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>Communities</h3>
-                </div>
-            </a>
-            <a href="06-services.html" class="gallery-card" data-image-hint="north-padre-island-waterfront-home">
-                <img src="https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1600&h=900&q=75&fit=crop&auto=format" alt="North Padre Island waterfront home on the Gulf" data-image-hint="north-padre-island-waterfront-home" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>Featured Listings</h3>
-                </div>
-            </a>
-        </div>
-    </section>
-    <!-- ============ END 3-COL GALLERY ============ -->
-
 
     <!-- ============ ABOUT PREVIEW: ABOUT-2COL-RECT-1 ============ -->
     <section class="section section--gray">
@@ -449,6 +462,41 @@
     </section>
     <!-- ============ END ABOUT PREVIEW ============ -->
 
+    <!-- ============ FEATURED COMMUNITIES: COMM-3UP-1 ============ -->
+    <section class="section featured-communities">
+        <div class="home-section-header">
+            <span class="home-section-header__eyebrow">Featured Communities</span>
+            <h2>Corpus Christi homes for sale, from the Southside to the islands</h2>
+            <p>From Kings Crossing on the Southside to Flour Bluff schools and the beach lifestyle of North Padre, these are the Coastal Bend markets where Dodee spends her days.</p>
+        </div>
+        <div class="gallery-grid">
+            <a href="03-communities.html#kings-crossing" class="gallery-card" data-image-hint="kings-crossing-corpus-christi-southside-home">
+                <img src="kings-crossing-roman-suarez.jpg" alt="Kings Crossing Southside Corpus Christi custom home with mature trees" data-image-hint="kings-crossing-corpus-christi-southside-home" style="background:#0a3a45;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Kings Crossing</h3>
+                    <p>Southside · Larger Lots · Mature Trees</p>
+                </div>
+            </a>
+            <a href="03-communities.html#flour-bluff" class="gallery-card" data-image-hint="flour-bluff-corpus-christi-suburban-home">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format" alt="Flour Bluff Corpus Christi family home near NAS-CC" data-image-hint="flour-bluff-corpus-christi-suburban-home" style="background:#0a3a45;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Flour Bluff</h3>
+                    <p>Top Schools · NAS-CC Adjacent</p>
+                </div>
+            </a>
+            <a href="03-communities.html#north-padre" class="gallery-card" data-image-hint="north-padre-island-beach-lifestyle">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format" alt="North Padre Island beach with Gulf shoreline" data-image-hint="north-padre-island-beach-lifestyle" style="background:#0a3a45;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>North Padre Island</h3>
+                    <p>Beach · Bay · Fishing Lifestyle</p>
+                </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="03-communities.html" class="btn btn--outline">All Coastal Bend Communities</a>
+        </div>
+    </section>
+    <!-- ============ END FEATURED COMMUNITIES ============ -->
 
     <!-- ============ STATS BAR: STATS-DARK-4UP-1 ============ -->
     <section class="section section--dark home-stats" style="padding: 0;">
@@ -475,16 +523,22 @@
     </section>
     <!-- ============ END STATS BAR ============ -->
 
-
-    <!-- ============ FULL-BLEED IMAGE BREAK: IMG-BREAK-1 ============ -->
-    <section class="image-break home-image-break" data-bg-hint="corpus-christi-coastal-bend-sunset-bay" style="background-image: url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
-        <div class="image-break__content">
-            <span class="image-break__eyebrow">Corpus Christi · Coastal Bend</span>
-            <p class="image-break__line">From the Southside to North Padre, Port A to Rockport, one realtor who lives the Coastal Bend.</p>
+    <!-- ============ HOME VALUATION REQUEST: VAL-SHORTCODE-1 ============ -->
+    <section class="section section--gray home-val-shortcode-section">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Selling?</span>
+                <h2>What's your Corpus Christi home worth, today?</h2>
+                <p>An honest read on your home's value, free, no pressure to list. Coastal Bend comps, Southside market context, and a real conversation when you're ready.</p>
+            </div>
+            <div class="home-val-placeholder">
+                <p class="home-val-placeholder__label">[ Home Valuation Widget shortcode injection zone ]</p>
+                <p class="home-val-placeholder__hint">Builders: drop in the valuation shortcode (RealScout / Cloud CMA / Showcase IDX HVE / Realmonkey, per client choice). Keep the section header and styling above.</p>
+                <code class="home-val-placeholder__code">[home_valuation_form]</code>
+            </div>
         </div>
     </section>
-    <!-- ============ END IMAGE BREAK ============ -->
-
+    <!-- ============ END HOME VALUATION REQUEST ============ -->
 
     <!-- ============ TESTIMONIALS CAROUSEL: TESTI-PARALLAX-1 ============ -->
     <section class="testimonials-section" data-bg-hint="corpus-christi-coastal-living-room-soft-light" style="background-image: url('https://images.unsplash.com/photo-1501594907352-04cda38ebb29?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center; padding: 120px 24px;">
@@ -514,59 +568,14 @@
     </section>
     <!-- ============ END TESTIMONIALS ============ -->
 
-
-    <!-- ============ FEATURED COMMUNITIES: COMM-3UP-1 ============ -->
-    <section class="section featured-communities">
-        <div class="home-section-header">
-            <span class="home-section-header__eyebrow">Featured Communities</span>
-            <h2>Corpus Christi homes for sale, from the Southside to the islands</h2>
-            <p>From Kings Crossing on the Southside to Flour Bluff schools and the beach lifestyle of North Padre, these are the Coastal Bend markets where Dodee spends her days.</p>
-        </div>
-        <div class="gallery-grid">
-            <a href="03-communities.html#kings-crossing" class="gallery-card" data-image-hint="kings-crossing-corpus-christi-southside-home">
-                <img src="kings-crossing-roman-suarez.jpg" alt="Kings Crossing Southside Corpus Christi custom home with mature trees" data-image-hint="kings-crossing-corpus-christi-southside-home" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>Kings Crossing</h3>
-                    <p>Southside · Larger Lots · Mature Trees</p>
-                </div>
-            </a>
-            <a href="03-communities.html#flour-bluff" class="gallery-card" data-image-hint="flour-bluff-corpus-christi-suburban-home">
-                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format" alt="Flour Bluff Corpus Christi family home near NAS-CC" data-image-hint="flour-bluff-corpus-christi-suburban-home" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>Flour Bluff</h3>
-                    <p>Top Schools · NAS-CC Adjacent</p>
-                </div>
-            </a>
-            <a href="03-communities.html#north-padre" class="gallery-card" data-image-hint="north-padre-island-beach-lifestyle">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&h=900&q=75&fit=crop&auto=format" alt="North Padre Island beach with Gulf shoreline" data-image-hint="north-padre-island-beach-lifestyle" style="background:#2a1414;width:100%;height:100%;object-fit:cover;">
-                <div class="gallery-card__overlay">
-                    <h3>North Padre Island</h3>
-                    <p>Beach · Bay · Fishing Lifestyle</p>
-                </div>
-            </a>
-        </div>
-        <div style="text-align: center; margin-top: 48px;">
-            <a href="03-communities.html" class="btn btn--outline">All Coastal Bend Communities</a>
+    <!-- ============ FULL-BLEED IMAGE BREAK: IMG-BREAK-1 ============ -->
+    <section class="image-break home-image-break" data-bg-hint="corpus-christi-coastal-bend-sunset-bay" style="background-image: url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;">
+        <div class="image-break__content">
+            <span class="image-break__eyebrow">Corpus Christi · Coastal Bend</span>
+            <p class="image-break__line">From the Southside to North Padre, Port A to Rockport, one realtor who lives the Coastal Bend.</p>
         </div>
     </section>
-    <!-- ============ END FEATURED COMMUNITIES ============ -->
-
-
-    <!-- ============ HOME VALUATION CTA: CTA-SPLIT-DARK-1 ============ -->
-    <section>
-        <div class="home-valuation-cta">
-            <div class="home-valuation-cta__text">
-                <h2>What's your Corpus Christi home worth?</h2>
-                <p>An honest read on your home's value, free, with no pressure to list. Coastal Bend comps, Southside market context, and a real conversation.</p>
-                <div>
-                    <a href="06-services.html" class="btn btn--white">Get My Home Value</a>
-                </div>
-            </div>
-            <div class="home-valuation-cta__image" data-image-hint="corpus-christi-southside-home-warm-evening" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
-        </div>
-    </section>
-    <!-- ============ END HOME VALUATION CTA ============ -->
-
+    <!-- ============ END IMAGE BREAK ============ -->
 
     <!-- ============ FAQ: FAQ-ACCORDION-1 ============ -->
     <section class="section section--gray">
@@ -654,7 +663,6 @@
         </div>
     </section>
     <!-- ============ END FAQ ============ -->
-
 
     <!-- ============ NEWSLETTER / CTA: NEWSLETTER-CENTERED-1 ============ -->
     <section class="section">
