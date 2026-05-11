@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PAGE_TITLE}} · Tonya Bredamus · KW Martinsville Havenmore</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" data-nav-style="{{NAV_STYLE}}">
+    <div class="nav__inner">
+      <a href="01-home.html" class="nav__logo">Tonya Bredamus</a>
+      <ul class="nav__menu">
+        <li><a href="01-home.html" class="nav__link">Home</a></li>
+        <li><a href="02-about.html" class="nav__link">About</a></li>
+        <li><a href="03-buy.html" class="nav__link">Buy</a></li>
+        <li><a href="04-sell.html" class="nav__link">Sell</a></li>
+        <li><a href="06-communities.html" class="nav__link">Communities</a></li>
+        <li><a href="14-mortgage.html" class="nav__link">Mortgage</a></li>
+        <li><a href="13-film.html" class="nav__link">Film</a></li>
+      </ul>
+      <a href="16-contact.html" class="nav__cta">Contact</a>
+    </div>
+  </nav>
+
+  {{PAGE_CONTENT}}
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand-name">Tonya Bredamus</div>
+        <div class="footer__brand-tag">KW Martinsville Havenmore. Real estate in Martinsville, Henry County, and across Southern Virginia.</div>
+        <div class="footer__brand-tag" style="font-size: 0.8125rem; margin-top: 0.75rem;">
+          (276) 806-9018<br>
+          tonyabredamus@kw.com<br>
+          5126 Kings Mountain Road, Collinsville, VA
+        </div>
+      </div>
+      <div class="footer__col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="02-about.html">About Tonya</a></li>
+          <li><a href="03-buy.html">Buy</a></li>
+          <li><a href="04-sell.html">Sell</a></li>
+          <li><a href="05-home-valuation.html">Home Value</a></li>
+          <li><a href="11-featured-listings.html">Featured Listings</a></li>
+          <li><a href="12-home-search.html">Home Search</a></li>
+          <li><a href="13-film.html">Beyond Real Estate</a></li>
+          <li><a href="15-testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Communities</h5>
+        <ul>
+          <li><a href="07-community-martinsville.html">Martinsville</a></li>
+          <li><a href="08-community-danville.html">Danville</a></li>
+          <li><a href="09-community-stuart.html">Stuart</a></li>
+          <li><a href="10-community-rocky-mount.html">Rocky Mount</a></li>
+          <li><a href="06-communities.html">All Communities</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="16-contact.html">Contact</a></li>
+          <li><a href="14-mortgage.html">Mortgage Info</a></li>
+          <li><a href="17-blog.html">Blog</a></li>
+          <li><a href="https://facebook.com/tonyabredamusproducer" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@TonyaBredamusProducer" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://www.zillow.com/profile/tonyabredamus" target="_blank" rel="noopener noreferrer">Zillow Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div>&copy; 2026 Tonya Bredamus. KW Martinsville Havenmore. Equal Housing Opportunity.</div>
+      <div class="footer__legal">
+        <a href="18-terms.html">Terms</a>
+        <a href="19-privacy.html">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Minimal JS for nav scroll + FAQ accordion -->
+  <script>
+    // Sticky nav transparent-to-solid on scroll
+    (function() {
+      var nav = document.querySelector('.nav[data-nav-style="transparent-to-solid"]');
+      if (!nav) return;
+      nav.classList.add('transparent-to-solid');
+      function onScroll() {
+        if (window.scrollY > 80) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item__trigger').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.closest('.faq-item');
+        var wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

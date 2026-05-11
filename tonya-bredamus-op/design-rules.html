@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonya Bredamus — Design Rules</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --color-primary: #1a1a1a;
+  --color-secondary: #2a2a2a;
+  --color-accent: #EF5ECF;
+  --color-accent-dark: #D63FB4;
+  --color-accent-light: #F587DA;
+  --color-accent-soft: #FCE4F3;
+  --color-contrast: #0a0a0a;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #5e5e5e;
+  --color-text-light: #ffffff;
+  --color-surface: #fdf9f5;
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-background-alt: #fdf9f5;
+  --color-background-dark: #1a1a1a;
+  --color-border: #ece6dd;
+
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --motion-duration-default: 400ms;
+  --motion-easing-default: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.7; color: var(--color-text-dark); background: var(--color-background); }
+.doc { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+.doc-header { border-bottom: 1px solid var(--color-border); padding-bottom: 3rem; margin-bottom: 4rem; }
+.doc-header__eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 1rem; }
+.doc-header__title { font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.01em; text-transform: none; line-height: 1.15; color: var(--color-text-dark); margin-bottom: 0.75rem; }
+.doc-header__meta { color: var(--color-text-muted); font-size: 0.9375rem; }
+section { margin-bottom: 4rem; }
+section > h2 { font-family: var(--font-heading); font-size: clamp(1.875rem, 3.5vw, 2.75rem); font-weight: 400; letter-spacing: -0.005em; text-transform: none; line-height: 1.2; color: var(--color-text-dark); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-border); }
+section > p.section-intro { color: var(--color-text-muted); margin-bottom: 2rem; max-width: 65ch; }
+.row { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--color-border); align-items: center; }
+.row__label { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); font-weight: 500; }
+.row__value { font-size: 0.9375rem; color: var(--color-text-dark); }
+.demo-h1 { font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.01em; text-transform: none; line-height: 1.15; margin-top: 0.5rem; }
+.demo-h2 { font-family: var(--font-heading); font-size: clamp(1.875rem, 3.5vw, 2.75rem); font-weight: 400; letter-spacing: -0.005em; text-transform: none; margin-top: 0.5rem; }
+.demo-h3 { font-family: var(--font-heading); font-size: clamp(1.375rem, 2.25vw, 1.75rem); font-weight: 500; margin-top: 0.5rem; }
+.demo-eyebrow { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); margin-top: 0.5rem; }
+.demo-body { font-family: var(--font-body); font-size: 1.0625rem; font-weight: 400; line-height: 1.7; margin-top: 0.5rem; max-width: 60ch; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+.swatch { border: 1px solid var(--color-border); background: var(--color-background); }
+.swatch__chip { height: 90px; border-bottom: 1px solid var(--color-border); }
+.swatch__meta { padding: 0.875rem 1rem; }
+.swatch__name { font-size: 0.8125rem; font-weight: 600; color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.06em; }
+.swatch__hex { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 0.25rem; }
+.swatch__role { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.5rem; line-height: 1.5; }
+.spacing-scale { display: flex; flex-direction: column; gap: 0.75rem; }
+.spacing-row { display: grid; grid-template-columns: 80px 100px 1fr; gap: 1rem; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid var(--color-border); }
+.spacing-row__name { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-muted); }
+.spacing-row__value { font-family: 'SF Mono', Monaco, monospace; font-size: 0.875rem; color: var(--color-text-dark); }
+.spacing-row__bar { background: var(--color-accent); height: 12px; }
+.btn-primary { display: inline-block; background: var(--color-accent); color: var(--color-white); padding: 1rem 2.5rem; font-family: var(--font-body); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.875rem; text-decoration: none; border: 1px solid var(--color-accent); transition: background var(--motion-duration-default) var(--motion-easing-default); }
+.btn-primary:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+.btn-secondary { display: inline-block; background: transparent; color: var(--color-primary); border: 1px solid var(--color-primary); padding: 1rem 2.5rem; font-family: var(--font-body); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.875rem; text-decoration: none; }
+.btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
+.callout { background: var(--color-background-alt); border-left: 4px solid var(--color-accent); padding: 1.5rem; margin: 1rem 0; }
+.callout__title { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+.callout ul { margin-left: 1.25rem; margin-top: 0.5rem; }
+.callout li { margin: 0.25rem 0; color: var(--color-text-dark); }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9375rem; }
+th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid var(--color-border); }
+th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); font-weight: 600; background: var(--color-background-alt); }
+code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.875em; background: var(--color-background-alt); padding: 0.125rem 0.375rem; border: 1px solid var(--color-border); }
+.note { background: var(--color-background-alt); padding: 1rem 1.25rem; margin-top: 1rem; border: 1px solid var(--color-border); font-size: 0.9375rem; color: var(--color-text-muted); }
+@media print { body { background: white; } section { page-break-inside: avoid; } .doc { padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header class="doc-header">
+    <div class="doc-header__eyebrow">Design Rules · Handoff Document</div>
+    <h1 class="doc-header__title">Tonya Bredamus</h1>
+    <p class="doc-header__meta">For Jeff, Kane, and any builder picking up this project · Generated 2026-05-11 · Template: lp-editorial-sparse (customized for signature-color brand)</p>
+  </header>
+
+  <section>
+    <h2>How to Read This Document</h2>
+    <p class="section-intro">Every rule below is rendered using Tonya's actual fonts, colors, and sizes. What you see on this page is what the live site should look like at the component level.</p>
+    <div class="note"><strong>If something doesn't match the mockups:</strong> the mockups are the source of truth. Mockups consumed this same design system, so a mismatch means either a mockup needs fixing or this doc needs regeneration. Either way, surface it to Curtis before building.</div>
+  </section>
+
+  <section>
+    <h2>Tonya's Signature: Hot Pink</h2>
+    <p class="section-intro">Tonya's brand is built around pink as the dominant accent. The color IS the brand. Per her own brief: <em>"Pink isn't soft on you, it's power pink. It says: I'm professional, memorable, and I do things my way."</em></p>
+    <p class="section-intro">Hot pink (#EF5ECF) appears on every primary CTA, link hover, brand moment, and accent. Never desaturate it to "feel safer." Never substitute a muted pink. The pink should hit.</p>
+
+    <div class="row">
+      <div class="row__label">Primary Accent</div>
+      <div class="row__value" style="display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 64px; height: 64px; background: #EF5ECF; border: 1px solid var(--color-border);"></div>
+        <div>
+          <code>#EF5ECF</code> · <code>rgba(239, 94, 207, 0.99)</code><br>
+          From Tonya's Content Snare brand color
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">Accent Dark (Hover)</div>
+      <div class="row__value" style="display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 64px; height: 64px; background: #D63FB4; border: 1px solid var(--color-border);"></div>
+        <div><code>#D63FB4</code> · Pink button hover state</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">Accent Soft</div>
+      <div class="row__value" style="display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 64px; height: 64px; background: #FCE4F3; border: 1px solid var(--color-border);"></div>
+        <div><code>#FCE4F3</code> · Quiet pink wash for backgrounds (Home Valuation teaser band)</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="section-intro">The brand uses <strong>DM Sans</strong> for headings and body. H1 case is <strong>Title Case</strong> (not UPPERCASE — Tonya's brand is warm and signature, not cold-luxe). Body line-height is generous (1.7) for readability.</p>
+
+    <div class="row">
+      <div class="row__label">H1 (page titles)</div>
+      <div class="row__value">
+        Font: DM Sans · Weight: 400 · Size: clamp(2.25rem, 5vw, 4rem) · Tracking: -0.01em · Case: Title Case · Line-height: 1.15
+        <div class="demo-h1">Real Estate in Martinsville, From Someone Who Made the Move Herself.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">H2 (section heads)</div>
+      <div class="row__value">
+        Font: DM Sans · Weight: 400 · Size: clamp(1.875rem, 3.5vw, 2.75rem) · Tracking: -0.005em · Case: Title Case
+        <div class="demo-h2">Three Communities Worth Knowing.</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">H3 (subsection)</div>
+      <div class="row__value">
+        Font: DM Sans · Weight: 500 · Size: clamp(1.375rem, 2.25vw, 1.75rem) · Case: sentence
+        <div class="demo-h3">Out-of-State Buyer Specialty</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">Eyebrow / Overline</div>
+      <div class="row__value">
+        Font: DM Sans · Weight: 500 · Size: 0.75rem · Tracking: 0.16em · Case: UPPERCASE
+        <div class="demo-eyebrow">For Buyers</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">Body</div>
+      <div class="row__value">
+        Font: DM Sans · Weight: 400 · Size: 1.0625rem · Line-height: 1.7
+        <div class="demo-body">This is the standard body copy style. It runs at a generous line-height because most blocks carry meaningful paragraph content. Width caps around 65 characters per line for readability.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Typography Hard Rules</div>
+      <ul>
+        <li>DM Sans is the only font family. Heading and body share it.</li>
+        <li>H1s are Title Case, not UPPERCASE. This is the alternate per the H1 capitalization rule, chosen because Tonya's brand is warm/signature, not cold-luxe.</li>
+        <li>Never introduce a third font, never use italic-serif accents inside H1s.</li>
+        <li>No em dashes anywhere in copy. Replace with comma, period, colon, or middle dot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color Palette</h2>
+    <p class="section-intro">Hot pink + black + warm off-white. That's it. Eleven tokens total, but the visible palette is essentially three colors. Pink is the brand.</p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background: #1a1a1a;"></div><div class="swatch__meta"><div class="swatch__name">Primary</div><div class="swatch__hex">#1a1a1a</div><div class="swatch__role">Heading text, secondary button border</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #EF5ECF;"></div><div class="swatch__meta"><div class="swatch__name">Accent</div><div class="swatch__hex">#EF5ECF</div><div class="swatch__role">Tonya's signature pink, all primary CTAs, link hovers</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #D63FB4;"></div><div class="swatch__meta"><div class="swatch__name">Accent Dark</div><div class="swatch__hex">#D63FB4</div><div class="swatch__role">Pink button hover state (darkens, does not invert)</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #FCE4F3;"></div><div class="swatch__meta"><div class="swatch__name">Accent Soft</div><div class="swatch__hex">#FCE4F3</div><div class="swatch__role">Quiet pink wash for select backgrounds</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #0a0a0a;"></div><div class="swatch__meta"><div class="swatch__name">Contrast</div><div class="swatch__hex">#0a0a0a</div><div class="swatch__role">Footer + dark hero overlay</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #5e5e5e;"></div><div class="swatch__meta"><div class="swatch__name">Text Muted</div><div class="swatch__hex">#5e5e5e</div><div class="swatch__role">Eyebrows, captions, supporting text</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #fdf9f5; border: 1px solid var(--color-border);"></div><div class="swatch__meta"><div class="swatch__name">Surface</div><div class="swatch__hex">#fdf9f5</div><div class="swatch__role">Alternate section background (warm off-white)</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background: #ffffff; border: 1px solid var(--color-border);"></div><div class="swatch__meta"><div class="swatch__name">White</div><div class="swatch__hex">#ffffff</div><div class="swatch__role">Default background, button text on dark</div></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Color Hard Rules</div>
+      <ul>
+        <li>Pink is the constant. Don't desaturate, don't substitute, don't tint.</li>
+        <li>Never invent additional colors. Only use the 8 canonical aliases above.</li>
+        <li>Hover states: lighten/darken by 8-12%, never shift hue.</li>
+        <li>Body text contrast on all backgrounds meets WCAG AA.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Spacing Scale</h2>
+    <p class="section-intro">Section padding-Y defaults to <strong>7rem</strong> (less austere than the default sparse template's 9rem — Tonya's brand calls for more warmth). Container max-width is <strong>1280px</strong>.</p>
+
+    <div class="spacing-scale">
+      <div class="spacing-row"><span class="spacing-row__name">xs</span><span class="spacing-row__value">0.5rem (8px)</span><div class="spacing-row__bar" style="width: 0.5rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">sm</span><span class="spacing-row__value">1rem (16px)</span><div class="spacing-row__bar" style="width: 1rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">md</span><span class="spacing-row__value">1.5rem (24px)</span><div class="spacing-row__bar" style="width: 1.5rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">lg</span><span class="spacing-row__value">2.5rem (40px)</span><div class="spacing-row__bar" style="width: 2.5rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">xl</span><span class="spacing-row__value">4rem (64px)</span><div class="spacing-row__bar" style="width: 4rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">2xl</span><span class="spacing-row__value">5.5rem (88px)</span><div class="spacing-row__bar" style="width: 5.5rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">3xl</span><span class="spacing-row__value">8rem (128px)</span><div class="spacing-row__bar" style="width: 8rem;"></div></div>
+      <div class="spacing-row"><span class="spacing-row__name">4xl</span><span class="spacing-row__value">11rem (176px)</span><div class="spacing-row__bar" style="width: 11rem;"></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Spacing Hard Rules</div>
+      <ul>
+        <li>Use scale values only. Never one-off pixel or rem values.</li>
+        <li>Section padding-Y is 7rem (≈112px). Generous but not gallery-austere.</li>
+        <li>Container padding-X is consistent across all sections (2rem).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <p class="section-intro">Primary buttons use Tonya's signature pink. Secondary buttons are black-bordered ghost buttons. NO rounded corners.</p>
+
+    <div class="row">
+      <div class="row__label">Primary</div>
+      <div class="row__value">
+        Pink solid background, white text, UPPERCASE, sharp corners. On hover, darkens to <code>#D63FB4</code>. Does NOT invert to ghost (different from default sparse template).
+        <div class="btn-row"><a href="#" class="btn-primary">Schedule a Conversation</a></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="row__label">Secondary</div>
+      <div class="row__value">
+        Black border, transparent fill, black text. Used as the second CTA when the pink primary already exists in the same block.
+        <div class="btn-row"><a href="#" class="btn-secondary">Read My Story</a></div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Button Hard Rules</div>
+      <ul>
+        <li>Border-radius: 0. Sharp geometry, no rounded buttons.</li>
+        <li>Never use 3+ buttons in a single hero. One primary, optionally one secondary.</li>
+        <li>Pink does NOT invert to ghost on hover. It darkens. Different from default sparse template.</li>
+        <li>Transition duration 400ms with cubic-bezier easing on hover.</li>
+        <li>Always preserve `:focus-visible` indicator for accessibility.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <p class="section-intro">Slow, subtle motion. LP-style. Never bouncy.</p>
+    <table>
+      <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><code>--motion-duration-fast</code></td><td>200ms</td><td>Link hovers, small UI feedback</td></tr>
+        <tr><td><code>--motion-duration-default</code></td><td>400ms</td><td>Button hover, accordion expand</td></tr>
+        <tr><td><code>--motion-duration-slow</code></td><td>800ms</td><td>Section fade-in</td></tr>
+        <tr><td><code>--motion-duration-slowest</code></td><td>1200ms</td><td>Photo zoom on hover</td></tr>
+        <tr><td><code>--motion-easing-default</code></td><td>cubic-bezier(0.2, 0.8, 0.2, 1)</td><td>All hover transitions</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <div class="callout__title">Motion Hard Rules</div>
+      <ul>
+        <li>No bounce easing, no springs.</li>
+        <li>Photo hover zoom maxes at 1.03 (3% scale).</li>
+        <li>Respect `prefers-reduced-motion` — disable photo-zoom and section fade-in when set.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Imagery</h2>
+    <p class="section-intro">Real photography only. Tonya's own pink-forward photos take priority for hero slots. No stock illustrations, no vectors, no AI-generated images.</p>
+    <table>
+      <thead><tr><th>Use</th><th>Aspect Ratio</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Hero (full-bleed)</td><td>16:9 or 21:9</td><td>30-50% darkening overlay if text contrast requires</td></tr>
+        <tr><td>Agent headshot</td><td>3:4, 4:5</td><td>~55% max column width</td></tr>
+        <tr><td>Community card</td><td>16:9 or 4:3</td><td>Real Southern Virginia neighborhood / streetscape photos</td></tr>
+        <tr><td>Lifestyle / landscape</td><td>16:9, 16:10, 21:9</td><td>Blue Ridge, lake, downtown scenes</td></tr>
+        <tr><td>Testimonial closing-day</td><td>1:1 or 4:5</td><td>Real client closing-day photos (7 supplied)</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <div class="callout__title">Imagery Hard Rules</div>
+      <ul>
+        <li>Tonya in pink takes priority for hero slots (it's the brand).</li>
+        <li>Never mix headshot and lifestyle aspect ratios for the same slot.</li>
+        <li>No gradient placeholders past first draft. Real photo or Unsplash hint only.</li>
+        <li>Every image needs descriptive `alt` text. Never blank.</li>
+        <li>Border-radius: 0 on all images. Sharp corners.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>External Links Compliance</h2>
+    <p class="section-intro">Every external link on the site must follow these rules. Resources strip above the footer is the primary placement.</p>
+    <table>
+      <thead><tr><th>Rule</th><th>HTML</th></tr></thead>
+      <tbody>
+        <tr><td>Opens in new tab</td><td><code>target="_blank"</code></td></tr>
+        <tr><td>Security</td><td><code>rel="noopener noreferrer"</code></td></tr>
+        <tr><td>Underlined</td><td>browser default (do not remove)</td></tr>
+        <tr><td>Visited state</td><td>browser default (do not disable)</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <div class="callout__title">Banned External Targets</div>
+      <ul>
+        <li>Zillow, Redfin, Trulia (competes with Tonya's lead capture)</li>
+        <li>Brokerage internal portals (public URLs only)</li>
+        <li>Paid services Tonya doesn't endorse</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Voice and Content Reminders</h2>
+    <p class="section-intro">Content writers and designers both need to remember these. Even if the writer's job, a designer should flag any AI-tell phrasing before publish.</p>
+    <div class="callout">
+      <div class="callout__title">Copy Hard Rules</div>
+      <ul>
+        <li>Never use em dashes (`—` or `--`). Replace with comma, period, colon, or middle dot.</li>
+        <li>Never use generic AI phrases: "dream home", "seamless experience", "every step of the way", "your trusted partner", "with confidence", "in today's market".</li>
+        <li>Never use generic city descriptors: "thriving", "vibrant", "nestled", "perfect blend", "world-class", "rich history".</li>
+        <li>Never use parallel triplets, hyphenated compound metaphors, or conditional buildups ("Whether you're A, B, or C...").</li>
+        <li>Every page H1 references a specific Tonya differentiator: out-of-state buyer specialty, 24-year second career, pink signature, film producer angle.</li>
+        <li>First-person where Tonya's brief supports it. Her bio is gold; quote it verbatim.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tonya-Specific Anti-Patterns</h2>
+    <div class="callout">
+      <div class="callout__title">Never Do These for Tonya's Site</div>
+      <ul>
+        <li>UPPERCASE H1s (wrong register — Title Case throughout)</li>
+        <li>Black/gold luxury-canon styling (she's signature-pink-warm, not lux-austere)</li>
+        <li>Raleway 200 / Montserrat fonts (DM Sans only)</li>
+        <li>Desaturated "muted pink" to feel safer (use #EF5ECF at full saturation)</li>
+        <li>Separating the film identity onto a hidden page (Film is in primary nav)</li>
+        <li>Italic-serif accent type, anywhere</li>
+        <li>Em dashes, anywhere in copy</li>
+        <li>Over-explaining design choices to Tonya (she wants confident judgment, not 5 options)</li>
+        <li>Carousel sliders in heroes (banned across all builds)</li>
+        <li>Split heroes anywhere (banned except clean home-page exception)</li>
+        <li>"Recently Sold Nearby" on Home Valuation page (data access gap)</li>
+        <li>4-step process blocks shipped to production (8 is the default)</li>
+        <li>FAQ "mode: faq" on About page (use "mode: expertise" — Areas of Expertise)</li>
+        <li>Home-page Communities V2 treatment on inner pages</li>
+        <li>About teaser block on /about (use full Agent Bio)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 0.875rem; text-align: center;">
+    Generated by Optimus Prime · <a href="mailto:curtis@agenticpress.com" style="color: var(--color-text-muted);">Curtis Gould, AgenticPress</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
