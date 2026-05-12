@@ -428,10 +428,50 @@ section.alt { background: var(--color-background-alt); }
   z-index: 1;
   display: block;
 }
-.img-placeholder:has(.img-placeholder__img) { border: none; }
+.img-placeholder:has(.img-placeholder__img) { border: none; position: relative; }
 .img-placeholder:has(.img-placeholder__img)::before { display: none; }
 .img-placeholder:has(.img-placeholder__img) .img-placeholder__badge,
 .img-placeholder:has(.img-placeholder__img) .img-placeholder__hint { display: none; }
+
+/* Hero overlay: ensure text readable over any hero photo */
+.hero__bg.img-placeholder:has(.img-placeholder__img)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.75) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Closing CTA overlay over injected parallax image */
+.closing-cta__bg.img-placeholder:has(.img-placeholder__img)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Modal hero overlay */
+.modal-hero .img-placeholder:has(.img-placeholder__img)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.78) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Path-cinematic (Buy/Sell paths) overlay if any */
+.path-cinematic__bg.img-placeholder:has(.img-placeholder__img)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.35) 100%);
+  z-index: 5;
+  pointer-events: none;
+}
 .img-placeholder--dark { background: var(--color-background-dark); border-color: rgba(255,255,255,0.08); }
 .img-placeholder--dark .img-placeholder__badge { background: rgba(0,0,0,0.55); color: rgba(255,255,255,0.7); }
 .img-placeholder--dark .img-placeholder__hint { color: rgba(255,255,255,0.4); }
