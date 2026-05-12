@@ -318,61 +318,98 @@ section.alt { background: var(--color-background-alt); }
 
 /* ============================================
    IMG PLACEHOLDER — Universal Conventions § 4
-   Visible labeled box (NOT raw HINT: strings)
+   Subtle corner-badge treatment (does not dominate layout).
+   Used ONLY for client-provided or brand-asset slots.
+   Sourceable slots ship with real Unsplash <img> tags from Phase 7.
    ============================================ */
 .img-placeholder {
   background: var(--color-background-alt);
   border: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  color: var(--color-text-muted);
-  text-align: center;
-  aspect-ratio: 16/9;
   position: relative;
   overflow: hidden;
+  aspect-ratio: 16/9;
+  color: var(--color-text-muted);
 }
 .img-placeholder::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(135deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04)),
-    linear-gradient(135deg, rgba(0,0,0,0.04) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.04) 75%, rgba(0,0,0,0.04));
-  background-position: 0 0, 20px 20px;
-  background-size: 40px 40px;
-  opacity: 0.6;
+    linear-gradient(135deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025)),
+    linear-gradient(135deg, rgba(0,0,0,0.025) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.025) 75%, rgba(0,0,0,0.025));
+  background-position: 0 0, 16px 16px;
+  background-size: 32px 32px;
 }
-.img-placeholder > * { position: relative; z-index: 1; }
 .img-placeholder[data-aspect="4:5"] { aspect-ratio: 4/5; }
 .img-placeholder[data-aspect="1:1"] { aspect-ratio: 1/1; }
 .img-placeholder[data-aspect="3:4"] { aspect-ratio: 3/4; }
 .img-placeholder[data-aspect="21:9"] { aspect-ratio: 21/9; }
 .img-placeholder[data-aspect="hero"] { aspect-ratio: auto; min-height: 70vh; }
-.img-placeholder__label {
-  font-size: 0.75rem;
+
+/* Subtle corner badge — bottom-right */
+.img-placeholder__badge {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.625rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   font-weight: 500;
-  color: var(--color-text-muted);
-  margin-bottom: 0.5rem;
+  color: rgba(0,0,0,0.55);
+  background: rgba(255,255,255,0.88);
+  padding: 0.25rem 0.5rem;
+  z-index: 2;
+  pointer-events: none;
 }
+/* Tiny hint text bottom-left, very low contrast — provides slug for builders without screaming */
+.img-placeholder__hint {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.625rem;
+  color: rgba(0,0,0,0.3);
+  z-index: 2;
+  pointer-events: none;
+  font-style: italic;
+  max-width: calc(100% - 8rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Legacy support — old verbose label/caption still works on any unconverted file */
+.img-placeholder__label,
 .img-placeholder__caption {
-  font-size: 0.9375rem;
-  color: var(--color-text-dark);
-  max-width: 80%;
+  position: relative;
+  z-index: 1;
+  font-size: 0.625rem;
+  display: block;
+  text-align: center;
+  margin-top: auto;
+  padding: 0.25rem;
 }
+.img-placeholder > .img-placeholder__label,
+.img-placeholder > .img-placeholder__caption { color: var(--color-text-muted); }
+
 .img-placeholder--dark {
   background: var(--color-background-dark);
-  border-color: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.08);
 }
-.img-placeholder--dark .img-placeholder__label,
-.img-placeholder--dark .img-placeholder__caption { color: rgba(255,255,255,0.85); }
+.img-placeholder--dark .img-placeholder__badge {
+  background: rgba(0,0,0,0.55);
+  color: rgba(255,255,255,0.7);
+}
+.img-placeholder--dark .img-placeholder__hint {
+  color: rgba(255,255,255,0.4);
+}
+.img-placeholder--dark::before {
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03)),
+    linear-gradient(135deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03));
+}
 
 /* Used as background placeholder for hero sections */
-.hero__bg.img-placeholder { display: flex; aspect-ratio: auto; height: 100%; width: 100%; position: absolute; inset: 0; }
+.hero__bg.img-placeholder { display: block; aspect-ratio: auto; height: 100%; width: 100%; position: absolute; inset: 0; }
 
 /* ============================================
    Hero
