@@ -408,8 +408,30 @@ section.alt { background: var(--color-background-alt); }
     linear-gradient(135deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.03) 75%, rgba(255,255,255,0.03));
 }
 
-/* Used as background placeholder for hero sections */
-.hero__bg.img-placeholder { display: block; aspect-ratio: auto; height: 100%; width: 100%; position: absolute; inset: 0; }
+/* Used as background placeholder — preserve absolute fill across hero, closing-cta, and community-card backgrounds */
+.hero__bg.img-placeholder,
+.closing-cta__bg.img-placeholder,
+.community-card__bg.img-placeholder {
+  display: block;
+  aspect-ratio: auto;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  inset: 0;
+  border: none;
+}
+/* And the community-card__bg gradient overlay still needs to apply on top of the placeholder */
+.community-card .community-card__bg.img-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+.community-card .community-card__bg.img-placeholder .img-placeholder__badge,
+.community-card .community-card__bg.img-placeholder .img-placeholder__hint {
+  z-index: 2;
+}
 
 /* ============================================
    Hero
