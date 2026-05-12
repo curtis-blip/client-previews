@@ -177,42 +177,30 @@ section{padding:96px 0}
 @media (max-width:900px){section{padding:70px 0}.hero{min-height:auto;padding:130px 0 70px}}
 
 /* ============ PAGE-SPECIFIC: COMMUNITIES ============ */
-.intro-narrow{max-width:860px;margin:0 auto;text-align:center}
-.intro-narrow h2{margin-bottom:22px}
-.intro-narrow p{font-size:17px;line-height:1.75;color:#555}
+.intro-wide{max-width:920px;margin:0 auto;text-align:center}
+.intro-wide h2{margin-bottom:24px;font-size:clamp(28px,3.4vw,40px)}
+.intro-wide p{font-size:17px;line-height:1.8;color:#555}
+.intro-wide p + p{margin-top:18px}
 
-.county-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.county-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:var(--transition);display:flex;flex-direction:column}
-.county-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
-.county-card .county-img{position:relative;height:240px;background-size:cover;background-position:center}
-.county-card .county-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,58,95,0) 40%,rgba(30,58,95,0.7) 100%)}
-.county-card .county-img .tag{position:absolute;bottom:14px;left:18px;z-index:2;color:#fff;font-family:var(--font-head);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600}
-.county-card .county-body{padding:26px 24px 28px;display:flex;flex-direction:column;flex:1}
-.county-card h3{font-size:22px;margin-bottom:10px;color:var(--primary)}
-.county-card .county-desc{font-size:14.5px;color:#555;margin-bottom:20px;line-height:1.65}
-.county-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:20px}
-.county-stats .stat{text-align:center}
-.county-stats .stat b{display:block;font-family:var(--font-head);font-size:16px;font-weight:700;color:var(--primary);letter-spacing:-0.01em}
-.county-stats .stat span{display:block;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-top:4px;font-weight:600}
-.towns-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:auto}
-.towns-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:#444}
-.towns-list li svg{width:8px;height:8px;flex-shrink:0;color:var(--accent)}
-@media (max-width:1000px){.county-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.county-grid{grid-template-columns:1fr}}
-
-.town-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.town-card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);transition:var(--transition);display:flex;flex-direction:column}
-.town-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent)}
-.town-card .town-img{height:220px;background-size:cover;background-position:center}
-.town-card .town-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
-.town-card .town-meta{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
-.town-card h3{font-size:21px;margin-bottom:12px;color:var(--primary)}
-.town-card p{font-size:14.5px;color:#555;line-height:1.65;margin-bottom:18px;flex:1}
-.town-card .town-link{font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--primary);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
-.town-card .town-link:hover{color:var(--accent)}
-.town-card .town-link svg{width:14px;height:14px;transition:transform 0.25s ease}
-.town-card .town-link:hover svg{transform:translateX(3px)}
-@media (max-width:900px){.town-grid{grid-template-columns:1fr}}
+/* COUNTY CARD GRID (3-2 centered) */
+.county-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;max-width:1180px;margin:0 auto}
+.county-card{flex:0 0 calc((100% - 60px) / 3);background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:var(--transition);cursor:pointer;display:flex;flex-direction:column;text-align:left;font-family:inherit;padding:0;color:inherit;min-width:0}
+.county-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.county-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.county-card .county-img{position:relative;height:260px;background-size:cover;background-position:center;overflow:hidden}
+.county-card .county-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,40,0) 35%,rgba(15,25,40,0.85) 100%);transition:opacity 0.3s ease}
+.county-card:hover .county-img::after{opacity:0.85}
+.county-card .county-img .name{position:absolute;bottom:18px;left:22px;right:22px;z-index:2;color:#fff;font-family:var(--font-head);font-size:24px;font-weight:700;letter-spacing:-0.01em}
+.county-card .county-body{padding:24px 24px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.county-card .county-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)}
+.county-card .county-tag svg{width:11px;height:11px;flex-shrink:0}
+.county-card .county-line{font-size:14.5px;color:#555;line-height:1.6;margin:0}
+.county-card .county-cta{font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary);display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:4px}
+.county-card .county-cta svg{width:14px;height:14px;transition:transform 0.25s ease}
+.county-card:hover .county-cta{color:var(--accent)}
+.county-card:hover .county-cta svg{transform:translateX(4px)}
+@media (max-width:1000px){.county-card{flex:0 0 calc((100% - 30px) / 2)}}
+@media (max-width:640px){.county-card{flex:0 0 100%}}
 
 .map-placeholder{background:var(--light);border:2px dashed rgba(30,58,95,0.3);border-radius:var(--radius);min-height:400px;display:grid;place-items:center;text-align:center;padding:40px}
 .map-placeholder .pin-cluster{display:flex;gap:16px;justify-content:center;margin-bottom:20px}
@@ -221,12 +209,61 @@ section{padding:96px 0}
 .map-placeholder h3{font-size:22px;color:var(--primary);margin-bottom:12px}
 .map-placeholder p{max-width:540px;margin:0 auto;color:#555}
 
-.stat-card-dark{background:#1f1f1f;padding:40px 28px;border-radius:var(--radius);text-align:center;border:1px solid rgba(255,255,255,0.06)}
-.stat-card-dark .num{font-family:var(--font-head);font-size:48px;font-weight:800;color:var(--accent);line-height:1;margin-bottom:12px;letter-spacing:-0.02em}
-.stat-card-dark .label{color:rgba(255,255,255,0.75);font-size:13.5px;line-height:1.5}
-.stat-footnote{text-align:center;margin-top:40px;color:rgba(255,255,255,0.5);font-size:12.5px;letter-spacing:0.02em}
-
 .faq-wrap{max-width:860px;margin:0 auto}
+
+/* ============ COUNTY MODAL ============ */
+.community-modal{padding:0;border:none;border-radius:8px;max-width:900px;width:calc(100% - 40px);max-height:calc(100vh - 60px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.35);background:#fff}
+.community-modal::backdrop{background:rgba(15,25,40,0.72);backdrop-filter:blur(4px)}
+.community-modal[open]{animation:modalIn 0.28s ease-out}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-scroll{max-height:calc(100vh - 60px);overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;z-index:10;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.95);border:none;color:var(--dark);cursor:pointer;display:grid;place-items:center;transition:var(--transition);box-shadow:0 2px 12px rgba(0,0,0,0.22)}
+.modal-close:hover{background:var(--accent);color:#fff;transform:rotate(90deg)}
+.modal-close svg,.modal-close svg line,.modal-close svg polyline,.modal-close svg polygon{stroke:currentColor}
+.modal-close svg{width:18px;height:18px}
+
+.modal-hero{position:relative;height:260px;background-size:cover;background-position:center}
+.modal-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,40,0.25) 0%,rgba(15,25,40,0.88) 100%)}
+.modal-hero-text{position:absolute;bottom:26px;left:36px;right:80px;z-index:2;color:#fff}
+.modal-hero-text .eyebrow{color:var(--accent-soft);margin-bottom:10px;font-size:11px;display:inline-block}
+.modal-hero-text h2{color:#fff;font-size:clamp(26px,3.4vw,36px);margin:0;letter-spacing:-0.01em;line-height:1.15}
+
+.modal-section{padding:30px 36px;border-bottom:1px solid var(--border)}
+.modal-section:nth-of-type(even){background:var(--light-2)}
+.modal-section .label{display:inline-flex;align-items:center;gap:12px;margin-bottom:14px}
+.modal-section .label .icon-badge{width:32px;height:32px;border-radius:6px;background:var(--primary);display:grid;place-items:center;flex-shrink:0}
+.modal-section .label .icon-badge svg,.modal-section .label .icon-badge svg polyline,.modal-section .label .icon-badge svg polygon,.modal-section .label .icon-badge svg line,.modal-section .label .icon-badge svg path,.modal-section .label .icon-badge svg circle,.modal-section .label .icon-badge svg rect{stroke:var(--accent)}
+.modal-section .label .icon-badge svg{width:15px;height:15px;color:var(--accent);fill:none}
+.modal-section .label .eyebrow{margin:0;font-size:11px;letter-spacing:0.14em;color:var(--accent)}
+.modal-section h3{font-size:20px;color:var(--dark);margin-bottom:12px;letter-spacing:-0.01em;font-weight:700}
+.modal-section p{font-size:15px;line-height:1.75;color:#555;margin-bottom:10px}
+.modal-section p:last-child{margin-bottom:0}
+.modal-section b{color:var(--dark);font-weight:700}
+
+.town-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.town-chips .chip{display:inline-flex;align-items:center;padding:7px 14px;font-size:13px;font-weight:500;background:#fff;border:1px solid var(--border);border-radius:30px;color:var(--primary);transition:var(--transition)}
+.town-chips .chip:hover{border-color:var(--accent);color:var(--accent)}
+
+.modal-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.modal-list li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:#444;line-height:1.65}
+.modal-list li > svg,.modal-list li > svg polyline,.modal-list li > svg polygon{stroke:var(--accent)}
+.modal-list li > svg{width:16px;height:16px;flex-shrink:0;color:var(--accent);margin-top:3px;fill:none}
+
+.modal-cta{padding:34px 36px;background:#fff;text-align:center;border-top:2px solid var(--accent)}
+.modal-cta h4{font-size:20px;color:var(--dark);margin-bottom:8px}
+.modal-cta p{font-size:14.5px;color:#555;margin-bottom:20px}
+.modal-cta .btn{margin:0 4px}
+
+@media (max-width:680px){
+  .community-modal{width:calc(100% - 20px);max-height:calc(100vh - 30px);border-radius:6px}
+  .modal-scroll{max-height:calc(100vh - 30px)}
+  .modal-hero{height:200px}
+  .modal-hero-text{left:22px;right:60px;bottom:18px}
+  .modal-section{padding:24px 22px}
+  .modal-cta{padding:26px 22px}
+}
+
+body.modal-open{overflow:hidden}
 </style>
 </head>
 <body>
@@ -293,216 +330,86 @@ section{padding:96px 0}
 <!-- ============ SECTION 2: INTRO ============ -->
 <section>
   <div class="container">
-    <div class="intro-narrow fade-up">
-      <h2>One broker, every town I list in</h2>
-      <p>Central New Jersey is not one market. Somerset County feels different from Mercer. Bernardsville is not Bridgewater. Before we write an offer or list a home, I make sure you understand the town you are buying into or selling out of. Taxes, schools, commute, character, and the real feel of a Saturday morning.</p>
+    <div class="intro-wide fade-up">
+      <span class="eyebrow">The Map I Work From</span>
+      <h2>Five counties, one realtor who actually knows them</h2>
+      <p>Central New Jersey is not one market. The taxes shift, the schools shift, the commute shifts, even the feel of a Saturday morning shifts the moment you cross a county line. Most agents pick a corner and stay there. Mary K. Van Ness works the whole map: Somerset, Middlesex, Mercer, Burlington, and Union.</p>
+      <p>That breadth matters whether you are buying your first home, moving up, downsizing, or sorting out an estate. You get one person who can compare a Hillsborough cul-de-sac to a Princeton condo to a Moorestown colonial and tell you, in plain English, where your money goes furthest and where your life fits best. Click any county below to see the towns she covers and what makes each one tick.</p>
     </div>
   </div>
 </section>
 <!-- ============ END SECTION 2 ============ -->
 
-<!-- ============ SECTION 3: COUNTY SNAPSHOT GRID ============ -->
+<!-- ============ SECTION 3: COUNTY GRID (5 cards, click to open modal) ============ -->
 <section class="section-light">
   <div class="container">
     <div class="section-head fade-up">
-      <span class="eyebrow">Five Counties</span>
-      <h2>A look at each market</h2>
+      <span class="eyebrow">Browse by County</span>
+      <h2>Click a county to explore</h2>
+      <p>Each county opens a quick read on the towns Mary covers, the lifestyle, the commute, and who tends to land there.</p>
     </div>
     <div class="county-grid">
 
-      <!-- Somerset -->
-      <div class="county-card fade-up">
-        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80')">
-          <span class="tag">Somerset County</span>
+      <button type="button" class="county-card fade-up" data-modal="modal-somerset" aria-haspopup="dialog">
+        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=900&q=80')">
+          <span class="name">Somerset County</span>
         </div>
         <div class="county-body">
-          <h3>Somerset County</h3>
-          <p class="county-desc">Strong family market with top schools and easy I-287 access.</p>
-          <div class="county-stats">
-            <div class="stat"><b>$720k</b><span>Median</span></div>
-            <div class="stat"><b>14 days</b><span>On market</span></div>
-            <div class="stat"><b>15+</b><span>Towns</span></div>
-          </div>
-          <ul class="towns-list">
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Bridgewater</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Hillsborough</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Somerset</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Basking Ridge</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Bernardsville</li>
-          </ul>
+          <span class="county-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Mary's home base · 15+ towns</span>
+          <p class="county-line">Family suburbs, top school districts, and horse country in the north. Easy I-287 and Raritan Valley line access.</p>
+          <span class="county-cta">Explore Somerset <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
-      </div>
+      </button>
 
-      <!-- Middlesex -->
-      <div class="county-card fade-up">
-        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&q=80')">
-          <span class="tag">Middlesex County</span>
+      <button type="button" class="county-card fade-up" data-modal="modal-middlesex" aria-haspopup="dialog">
+        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=900&q=80')">
+          <span class="name">Middlesex County</span>
         </div>
         <div class="county-body">
-          <h3>Middlesex County</h3>
-          <p class="county-desc">Diverse markets from NYC commuter towns to Princeton adjacency.</p>
-          <div class="county-stats">
-            <div class="stat"><b>$585k</b><span>Median</span></div>
-            <div class="stat"><b>18 days</b><span>On market</span></div>
-            <div class="stat"><b>25+</b><span>Towns</span></div>
-          </div>
-          <ul class="towns-list">
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Edison</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>New Brunswick</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>South Brunswick</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Monroe</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>East Brunswick</li>
-          </ul>
+          <span class="county-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>NYC commuter belt · 25 towns</span>
+          <p class="county-line">The most variety in Central Jersey. NYC commuter towns, Princeton-adjacent suburbs, and dense urban pockets all in one county.</p>
+          <span class="county-cta">Explore Middlesex <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
-      </div>
+      </button>
 
-      <!-- Mercer -->
-      <div class="county-card fade-up">
-        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=800&q=80')">
-          <span class="tag">Mercer County</span>
+      <button type="button" class="county-card fade-up" data-modal="modal-mercer" aria-haspopup="dialog">
+        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=900&q=80')">
+          <span class="name">Mercer County</span>
         </div>
         <div class="county-body">
-          <h3>Mercer County</h3>
-          <p class="county-desc">Home to Princeton, with strong professional buyers and stable pricing.</p>
-          <div class="county-stats">
-            <div class="stat"><b>$795k</b><span>Median</span></div>
-            <div class="stat"><b>21 days</b><span>On market</span></div>
-            <div class="stat"><b>13+</b><span>Towns</span></div>
-          </div>
-          <ul class="towns-list">
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Princeton</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>West Windsor</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Lawrence</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Hopewell</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Hamilton</li>
-          </ul>
+          <span class="county-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Princeton anchor · 12 towns</span>
+          <p class="county-line">Princeton anchors the high end, Hopewell and Pennington bring the village feel, Hamilton and Lawrence carry the workhorse market.</p>
+          <span class="county-cta">Explore Mercer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
-      </div>
+      </button>
 
-      <!-- Burlington -->
-      <div class="county-card fade-up">
-        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80')">
-          <span class="tag">Burlington County</span>
+      <button type="button" class="county-card fade-up" data-modal="modal-burlington" aria-haspopup="dialog">
+        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=900&q=80')">
+          <span class="name">Burlington County</span>
         </div>
         <div class="county-body">
-          <h3>Burlington County</h3>
-          <p class="county-desc">South Jersey value, good schools, easy commute to Philadelphia.</p>
-          <div class="county-stats">
-            <div class="stat"><b>$475k</b><span>Median</span></div>
-            <div class="stat"><b>26 days</b><span>On market</span></div>
-            <div class="stat"><b>40+</b><span>Towns</span></div>
-          </div>
-          <ul class="towns-list">
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Mount Laurel</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Moorestown</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Medford</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Marlton</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Willingboro</li>
-          </ul>
+          <span class="county-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>South Jersey value · 40 towns</span>
+          <p class="county-line">South Jersey, Philly-adjacent, more land for the money. River Line and PATCO put Center City in reach.</p>
+          <span class="county-cta">Explore Burlington <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
-      </div>
+      </button>
 
-      <!-- Union -->
-      <div class="county-card fade-up">
-        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80')">
-          <span class="tag">Union County</span>
+      <button type="button" class="county-card fade-up" data-modal="modal-union" aria-haspopup="dialog">
+        <div class="county-img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=80')">
+          <span class="name">Union County</span>
         </div>
         <div class="county-body">
-          <h3>Union County</h3>
-          <p class="county-desc">NYC commuter belt with walkable downtowns and diverse housing.</p>
-          <div class="county-stats">
-            <div class="stat"><b>$625k</b><span>Median</span></div>
-            <div class="stat"><b>16 days</b><span>On market</span></div>
-            <div class="stat"><b>21</b><span>Towns</span></div>
-          </div>
-          <ul class="towns-list">
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Westfield</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Summit</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Cranford</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>Berkeley Heights</li>
-            <li><svg viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>New Providence</li>
-          </ul>
+          <span class="county-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Walkable downtowns · 21 towns</span>
+          <p class="county-line">The NYC commuter sweet spot. Direct train towns with real downtowns: Westfield, Summit, Cranford, Berkeley Heights.</p>
+          <span class="county-cta">Explore Union <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
-      </div>
+      </button>
 
     </div>
   </div>
 </section>
 <!-- ============ END SECTION 3 ============ -->
 
-<!-- ============ SECTION 4: FEATURED TOWNS ============ -->
-<section>
-  <div class="container">
-    <div class="section-head fade-up">
-      <span class="eyebrow">Closer Look</span>
-      <h2>Six towns I know inside out</h2>
-    </div>
-    <div class="town-grid">
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Somerset County</span>
-          <h3>Bridgewater</h3>
-          <p>Established neighborhoods, top-rated schools, and easy highway access to NYC and Philadelphia.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Somerset County</span>
-          <h3>Hillsborough</h3>
-          <p>Family-friendly with newer developments, rural pockets, and a strong school district.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Somerset County</span>
-          <h3>Basking Ridge</h3>
-          <p>Historic Somerset Hills with colonial charm, rolling estates, and NYC train access.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Mercer County</span>
-          <h3>Princeton</h3>
-          <p>Walkable downtown, university town energy, and a stable high-end market.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Union County</span>
-          <h3>Westfield</h3>
-          <p>Vibrant downtown, top schools, and direct NYC commute via the Raritan Valley Line.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-      <div class="town-card fade-up">
-        <div class="town-img" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&q=80')"></div>
-        <div class="town-body">
-          <span class="town-meta">Burlington County</span>
-          <h3>Moorestown</h3>
-          <p>Historic South Jersey town with tree-lined streets and strong schools.</p>
-          <a href="#" class="town-link">View Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- ============ END SECTION 4 ============ -->
 
 <!-- ============ SECTION 5: MAP PLACEHOLDER / SERVICE AREA ============ -->
 <section class="section-light">
@@ -527,37 +434,7 @@ section{padding:96px 0}
 </section>
 <!-- ============ END SECTION 5 ============ -->
 
-<!-- ============ SECTION 6: MARKET UPDATE BAND ============ -->
-<section class="section-dark">
-  <div class="container">
-    <div class="section-head fade-up">
-      <span class="eyebrow">Current Conditions</span>
-      <h2>Central NJ market at a glance</h2>
-    </div>
-    <div class="grid-4">
-      <div class="stat-card-dark fade-up">
-        <div class="num" data-count="620" data-suffix="k">0k</div>
-        <div class="label">Central NJ median sale price (Q1 2026)</div>
-      </div>
-      <div class="stat-card-dark fade-up">
-        <div class="num" data-count="17" data-suffix=" days">0 days</div>
-        <div class="label">Average days on market</div>
-      </div>
-      <div class="stat-card-dark fade-up">
-        <div class="num" data-count="97" data-suffix="%">0%</div>
-        <div class="label">Average list-to-sale price ratio</div>
-      </div>
-      <div class="stat-card-dark fade-up">
-        <div class="num" data-count="2.4" data-suffix="">0</div>
-        <div class="label">Average offers per listing</div>
-      </div>
-    </div>
-    <p class="stat-footnote">Figures averaged across Somerset, Middlesex, Mercer, Burlington, and Union counties. Updated quarterly.</p>
-  </div>
-</section>
-<!-- ============ END SECTION 6 ============ -->
-
-<!-- ============ SECTION 7: FAQ ============ -->
+<!-- ============ SECTION 6: FAQ ============ -->
 <section>
   <div class="container">
     <div class="section-head fade-up">
@@ -616,9 +493,9 @@ section{padding:96px 0}
     </div>
   </div>
 </section>
-<!-- ============ END SECTION 7 ============ -->
+<!-- ============ END SECTION 6 ============ -->
 
-<!-- ============ SECTION 8: CTA BANNER ============ -->
+<!-- ============ SECTION 7: CTA BANNER ============ -->
 <section class="cta-banner">
   <div class="container">
     <h2>Narrowing in on a town?</h2>
@@ -626,7 +503,339 @@ section{padding:96px 0}
     <a href="09-contact.html" class="btn btn-accent">Talk Through Your Shortlist</a>
   </div>
 </section>
-<!-- ============ END SECTION 8 ============ -->
+<!-- ============ END SECTION 7 ============ -->
+
+<!-- ============ COUNTY MODALS ============ -->
+
+<!-- SOMERSET COUNTY -->
+<dialog id="modal-somerset" class="community-modal" aria-labelledby="somerset-title">
+  <div class="modal-scroll">
+    <button type="button" class="modal-close" aria-label="Close" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-hero" style="background-image:url('https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1400&q=80')">
+      <div class="modal-hero-text">
+        <span class="eyebrow">Mary's Home Base</span>
+        <h2 id="somerset-title">Somerset County</h2>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="eyebrow">At a Glance</span></div>
+      <h3>The suburban anchor of Central Jersey</h3>
+      <p>Somerset is the county Mary lives in and works in the most. Strong school districts, leafy family neighborhoods, downtown Somerville for a night out, plus the open horse country up in the Somerset Hills. The market here rewards prepared buyers and well-priced sellers.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="eyebrow">Towns Mary Covers</span></div>
+      <h3>Across the whole county</h3>
+      <div class="town-chips">
+        <span class="chip">Bridgewater</span><span class="chip">Hillsborough</span><span class="chip">Somerville</span><span class="chip">Basking Ridge</span><span class="chip">Bernardsville</span><span class="chip">Bedminster</span><span class="chip">Branchburg</span><span class="chip">Watchung</span><span class="chip">Warren</span><span class="chip">Bound Brook</span><span class="chip">Raritan</span><span class="chip">Peapack-Gladstone</span><span class="chip">Far Hills</span><span class="chip">Franklin Twp</span><span class="chip">Montgomery</span><span class="chip">North Plainfield</span><span class="chip">Manville</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="eyebrow">Lifestyle &amp; Character</span></div>
+      <h3>Family suburbs in the south, horse country in the north</h3>
+      <p>The southern half is built around family life: parks, neighborhood pools, weekend soccer, downtown Somerville for dinner. Move north and the county opens up. Duke Farms in Hillsborough, the Somerset Hills around Bernardsville and Far Hills, equestrian estates, hiking at Sourland Mountain and Schiff Nature Preserve.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></span><span class="eyebrow">Schools</span></div>
+      <h3>Several of the strongest districts in Central Jersey</h3>
+      <p>Bernards Township, Hillsborough, Watchung Hills Regional, and Montgomery anchor the county's most-requested districts. Bridgewater-Raritan, Franklin, and Branchburg are solid in their own right. Mary helps families weigh the trade-offs between district strength, commute, and house budget.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span><span class="eyebrow">Commute &amp; Connectivity</span></div>
+      <h3>Highway spine plus two train lines</h3>
+      <p>I-287, I-78, and Route 22 cover the county for drivers. NJ Transit Raritan Valley Line runs through Somerville, Bridgewater, and Bound Brook for the NYC commute. The Gladstone Branch handles the Somerset Hills. Newark Airport is about 35 minutes off-peak.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="eyebrow">Who Lands Here</span></div>
+      <h3>Who Somerset tends to fit</h3>
+      <ul class="modal-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Families trading up</b> who need more space, a yard, and a school district that holds its reputation.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>NYC professionals</b> who want suburban quiet but still need a workable train commute.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Empty nesters</b> staying close to grown kids and grandkids without moving into a condo just yet.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Estate executors</b> selling a family home that has been in the same hands for decades.</span></li>
+      </ul>
+    </div>
+
+    <div class="modal-cta">
+      <h4>Looking in Somerset?</h4>
+      <p>Mary lives here. Ask her anything: a specific town, a specific street, a specific school zone.</p>
+      <a href="09-contact.html" class="btn btn-primary">Talk to Mary</a>
+      <a href="02-home-search.html" class="btn btn-outline">Search Homes</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- MIDDLESEX COUNTY -->
+<dialog id="modal-middlesex" class="community-modal" aria-labelledby="middlesex-title">
+  <div class="modal-scroll">
+    <button type="button" class="modal-close" aria-label="Close" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-hero" style="background-image:url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1400&q=80')">
+      <div class="modal-hero-text">
+        <span class="eyebrow">NYC Commuter Belt</span>
+        <h2 id="middlesex-title">Middlesex County</h2>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="eyebrow">At a Glance</span></div>
+      <h3>The county with the most range</h3>
+      <p>Middlesex covers more ground than any of Mary's other counties, in every sense. NYC commuter towns on the Northeast Corridor in the north. Princeton-adjacent suburbs in the south. Denser, more urban pockets around New Brunswick. A long stretch of family neighborhoods in between.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="eyebrow">Towns Mary Covers</span></div>
+      <h3>Across the whole county</h3>
+      <div class="town-chips">
+        <span class="chip">Edison</span><span class="chip">Woodbridge</span><span class="chip">New Brunswick</span><span class="chip">Old Bridge</span><span class="chip">Piscataway</span><span class="chip">East Brunswick</span><span class="chip">South Brunswick</span><span class="chip">Monroe</span><span class="chip">Plainsboro</span><span class="chip">North Brunswick</span><span class="chip">Sayreville</span><span class="chip">Metuchen</span><span class="chip">South Plainfield</span><span class="chip">Highland Park</span><span class="chip">Cranbury</span><span class="chip">Spotswood</span><span class="chip">Carteret</span><span class="chip">Jamesburg</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="eyebrow">Lifestyle &amp; Character</span></div>
+      <h3>A community for every kind of buyer</h3>
+      <p>Walkable downtown Metuchen and Highland Park sit a few miles from the cul-de-sacs of Monroe and Plainsboro. New Brunswick brings restaurants, theater, and Rutgers. Edison and Iselin anchor one of the strongest international food scenes in the state. Cranbury feels like a postcard.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></span><span class="eyebrow">Schools</span></div>
+      <h3>Several strong districts, plus magnet options</h3>
+      <p>South Brunswick, East Brunswick, Edison, Monroe, and West Windsor-Plainsboro (Plainsboro side) all carry strong district reputations. Cranbury is a quiet standout. Middlesex also has good magnet and county-vocational options for families who want a different kind of fit.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span><span class="eyebrow">Commute &amp; Connectivity</span></div>
+      <h3>One of the best-connected counties in the state</h3>
+      <p>NJ Transit Northeast Corridor through Edison, Metuchen, New Brunswick, Jersey Avenue, and Princeton Junction. NJ Turnpike, Garden State Parkway, Route 1, and Route 18 all run through. Newark Airport is roughly 25 minutes off-peak. Driving to Philadelphia is realistic from the southern half.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="eyebrow">Who Lands Here</span></div>
+      <h3>Who Middlesex tends to fit</h3>
+      <ul class="modal-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>First-time buyers</b> stretching for the best school district they can afford.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Pharma, healthcare, and tech professionals</b> working along the Route 1 corridor.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Multigenerational households</b> looking for in-law suites and bigger floor plans.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Princeton-adjacent buyers</b> who want the schools without the Princeton price tag.</span></li>
+      </ul>
+    </div>
+
+    <div class="modal-cta">
+      <h4>Looking in Middlesex?</h4>
+      <p>Tell Mary your commute and your budget. She can narrow 25 towns down to the three that actually fit.</p>
+      <a href="09-contact.html" class="btn btn-primary">Talk to Mary</a>
+      <a href="02-home-search.html" class="btn btn-outline">Search Homes</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- MERCER COUNTY -->
+<dialog id="modal-mercer" class="community-modal" aria-labelledby="mercer-title">
+  <div class="modal-scroll">
+    <button type="button" class="modal-close" aria-label="Close" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-hero" style="background-image:url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=1400&q=80')">
+      <div class="modal-hero-text">
+        <span class="eyebrow">Princeton Anchor</span>
+        <h2 id="mercer-title">Mercer County</h2>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="eyebrow">At a Glance</span></div>
+      <h3>Princeton sets the tone, the rest of the county fills it in</h3>
+      <p>Princeton anchors the top of the market and pulls the cultural energy with it. Hopewell, Pennington, and the surrounding villages bring quiet historic charm. Hamilton, Lawrence, and Ewing handle the workhorse market. Robbinsville and East Windsor draw families looking for newer builds.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="eyebrow">Towns Mary Covers</span></div>
+      <h3>Across the whole county</h3>
+      <div class="town-chips">
+        <span class="chip">Princeton</span><span class="chip">West Windsor</span><span class="chip">East Windsor</span><span class="chip">Hopewell Borough</span><span class="chip">Hopewell Twp</span><span class="chip">Pennington</span><span class="chip">Lawrence</span><span class="chip">Hamilton</span><span class="chip">Ewing</span><span class="chip">Robbinsville</span><span class="chip">Hightstown</span><span class="chip">Trenton</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="eyebrow">Lifestyle &amp; Character</span></div>
+      <h3>University-town energy plus real countryside</h3>
+      <p>Walkable Nassau Street, the Princeton Battlefield, the Princeton University campus, and the D&amp;R Canal towpath all sit within a short drive. Sourland Mountain trails up in Hopewell. Farm stands and equestrian properties out toward Pennington. Then quieter family neighborhoods as you push east toward Robbinsville and East Windsor.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></span><span class="eyebrow">Schools</span></div>
+      <h3>One of the deepest school benches in the state</h3>
+      <p>West Windsor-Plainsboro Regional, Princeton Public Schools, Hopewell Valley Regional, and Robbinsville all hold strong reputations. Lawrence and Hamilton mix solid districts with respected magnet and charter options. Choices here are about fit, not whether there's a good fit.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span><span class="eyebrow">Commute &amp; Connectivity</span></div>
+      <h3>Direct train to both cities</h3>
+      <p>Princeton Junction is the Northeast Corridor stop, with direct service to New York Penn and Philadelphia 30th Street. Hamilton also has its own NEC station. Route 1 is the everyday spine. I-295 and I-95 are right there. Trenton-Mercer Airport handles short flights to Florida and the Carolinas.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="eyebrow">Who Lands Here</span></div>
+      <h3>Who Mercer tends to fit</h3>
+      <ul class="modal-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Academics, hospital staff, pharma scientists,</b> and the policy and government world.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Long-term holders</b> who want a town they will not need to leave again.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Move-up families</b> stepping into a school district they have been waiting for.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Downsizers</b> selling a large Princeton home and moving into something easier.</span></li>
+      </ul>
+    </div>
+
+    <div class="modal-cta">
+      <h4>Looking in Mercer?</h4>
+      <p>Princeton, Hopewell, Hamilton, Robbinsville. They are very different markets. Mary can talk you through which one fits.</p>
+      <a href="09-contact.html" class="btn btn-primary">Talk to Mary</a>
+      <a href="02-home-search.html" class="btn btn-outline">Search Homes</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- BURLINGTON COUNTY -->
+<dialog id="modal-burlington" class="community-modal" aria-labelledby="burlington-title">
+  <div class="modal-scroll">
+    <button type="button" class="modal-close" aria-label="Close" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-hero" style="background-image:url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80')">
+      <div class="modal-hero-text">
+        <span class="eyebrow">South Jersey Value</span>
+        <h2 id="burlington-title">Burlington County</h2>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="eyebrow">At a Glance</span></div>
+      <h3>Where your dollar goes further</h3>
+      <p>Burlington gives you South Jersey value with a Philadelphia commute. Generally lower property taxes than the northern counties, more land for the dollar, and a wide range of housing from historic colonials to newer suburban builds. The Pinelands stretch fills the eastern half.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="eyebrow">Towns Mary Covers</span></div>
+      <h3>Across the whole county</h3>
+      <div class="town-chips">
+        <span class="chip">Moorestown</span><span class="chip">Mount Laurel</span><span class="chip">Medford</span><span class="chip">Marlton</span><span class="chip">Mount Holly</span><span class="chip">Willingboro</span><span class="chip">Bordentown</span><span class="chip">Burlington City</span><span class="chip">Burlington Twp</span><span class="chip">Cinnaminson</span><span class="chip">Delran</span><span class="chip">Maple Shade</span><span class="chip">Pemberton</span><span class="chip">Tabernacle</span><span class="chip">Riverside</span><span class="chip">Westampton</span><span class="chip">Eastampton</span><span class="chip">Lumberton</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="eyebrow">Lifestyle &amp; Character</span></div>
+      <h3>Historic main streets and real backyards</h3>
+      <p>Walk historic main streets in Moorestown, Mount Holly, and Bordentown. Lakes and pine forests around Medford. Family-oriented swim clubs, soccer fields, and weekend farmers' markets across the western half. Quieter, more rural pockets the farther east you go toward the Pinelands. Plenty of room to actually own land.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></span><span class="eyebrow">Schools</span></div>
+      <h3>Several strong districts across the western half</h3>
+      <p>Moorestown and Lenape Regional (covering Medford, Mount Laurel, Marlton, and Shamong) carry the strongest reputations. Cinnaminson, Delran, Burlington Township, and Northern Burlington also reliable. Mary can match a target district to the kind of house and lot you actually want.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span><span class="eyebrow">Commute &amp; Connectivity</span></div>
+      <h3>Philadelphia is the everyday city</h3>
+      <p>NJ Transit River Line light rail runs Camden to Trenton along the river towns. PATCO via Camden gets you into Center City Philadelphia quickly. NJ Turnpike Exit 5, I-295, and Route 38 spine the county. Philadelphia International Airport is roughly 30 minutes off-peak.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="eyebrow">Who Lands Here</span></div>
+      <h3>Who Burlington tends to fit</h3>
+      <ul class="modal-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Philadelphia commuters</b> who want more house, more yard, and lower taxes than the city or close-in suburbs.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Families priced out of North Jersey</b> who still need the school-district story.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Retirees and downsizers,</b> including a strong active-adult community market.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Estate executors</b> handling family homes settled by previous generations. Mary's probate background fits this part of the county especially well.</span></li>
+      </ul>
+    </div>
+
+    <div class="modal-cta">
+      <h4>Looking in Burlington?</h4>
+      <p>South Jersey gets less attention from North Jersey realtors. Mary works it like it deserves.</p>
+      <a href="09-contact.html" class="btn btn-primary">Talk to Mary</a>
+      <a href="03-probate.html" class="btn btn-outline">Probate Services</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- UNION COUNTY -->
+<dialog id="modal-union" class="community-modal" aria-labelledby="union-title">
+  <div class="modal-scroll">
+    <button type="button" class="modal-close" aria-label="Close" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="modal-hero" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1400&q=80')">
+      <div class="modal-hero-text">
+        <span class="eyebrow">Walkable Downtowns</span>
+        <h2 id="union-title">Union County</h2>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="eyebrow">At a Glance</span></div>
+      <h3>The NYC commuter sweet spot</h3>
+      <p>Union is smaller than Mary's other counties in land area, but dense with the kind of towns buyers ask for by name. Direct-train commutes to Penn Station, real downtowns you can walk, top-ranked schools, and Saturday mornings spent on Main Street rather than in the car.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="eyebrow">Towns Mary Covers</span></div>
+      <h3>Across the whole county</h3>
+      <div class="town-chips">
+        <span class="chip">Westfield</span><span class="chip">Summit</span><span class="chip">Cranford</span><span class="chip">Berkeley Heights</span><span class="chip">New Providence</span><span class="chip">Mountainside</span><span class="chip">Scotch Plains</span><span class="chip">Fanwood</span><span class="chip">Garwood</span><span class="chip">Springfield</span><span class="chip">Kenilworth</span><span class="chip">Roselle Park</span><span class="chip">Clark</span><span class="chip">Linden</span><span class="chip">Rahway</span><span class="chip">Roselle</span><span class="chip">Hillside</span><span class="chip">Union</span><span class="chip">Elizabeth</span><span class="chip">Plainfield</span>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="eyebrow">Lifestyle &amp; Character</span></div>
+      <h3>Real downtowns and real community</h3>
+      <p>Saturday morning is downtown Westfield, downtown Cranford, downtown Summit. Coffee shops, indie bookstores, parades, real Main Streets. Family-oriented but with grown-up restaurants and live music. Older housing stock with character. Rahway has the arts scene, Plainfield has the architecture.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 6 3 6 3s6-1 6-3v-5"/></svg></span><span class="eyebrow">Schools</span></div>
+      <h3>Heavy concentration of strong districts</h3>
+      <p>Westfield, Summit, New Providence, Berkeley Heights, Mountainside, and Scotch Plains-Fanwood all hold strong reputations. Cranford and Springfield round out the list. School lines drive a real share of the buyer decision in this county, sometimes more than the house itself.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span><span class="eyebrow">Commute &amp; Connectivity</span></div>
+      <h3>Direct train to Penn Station from most towns</h3>
+      <p>NJ Transit Raritan Valley Line runs through Westfield, Cranford, Garwood, Fanwood, and Plainfield. Morris &amp; Essex Line covers Summit, New Providence, and Berkeley Heights. Northeast Corridor handles Rahway and Linden. Garden State Parkway, Route 22, and I-78 cover the rest. Newark Airport is right next door.</p>
+    </div>
+
+    <div class="modal-section">
+      <div class="label"><span class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="eyebrow">Who Lands Here</span></div>
+      <h3>Who Union tends to fit</h3>
+      <ul class="modal-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>NYC professionals</b> who want a walkable downtown and a real community, not just a commute pad.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Brooklyn, Hoboken, and Jersey City transplants</b> trading apartment life for a house and a yard.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Move-up buyers</b> chasing a top-ranked school district.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><b>Sellers in the strongest direct-train towns</b> who can run a competitive process when priced right.</span></li>
+      </ul>
+    </div>
+
+    <div class="modal-cta">
+      <h4>Looking in Union?</h4>
+      <p>These towns each have their own personality. Mary can match yours to one in 20 minutes on the phone.</p>
+      <a href="09-contact.html" class="btn btn-primary">Talk to Mary</a>
+      <a href="02-home-search.html" class="btn btn-outline">Search Homes</a>
+    </div>
+  </div>
+</dialog>
 
 <!-- ============ END CONTENT SLOT ============ -->
 
@@ -732,29 +941,53 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-// Counter animation
-const counters = document.querySelectorAll('[data-count]');
-const counterIo = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const el = e.target;
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const duration = 1600;
-      const start = performance.now();
-      const decimals = target % 1 !== 0 ? 1 : 0;
-      const step = (now) => {
-        const p = Math.min((now - start) / duration, 1);
-        const val = (target * (0.2 + 0.8 * (1 - Math.pow(1 - p, 3)))).toFixed(decimals);
-        el.textContent = val + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-      counterIo.unobserve(el);
-    }
-  });
-}, { threshold: 0.3 });
-counters.forEach(c => counterIo.observe(c));
+// County modals (native <dialog>)
+const openModal = (id) => {
+  const dlg = document.getElementById(id);
+  if (!dlg) return;
+  dlg.showModal();
+  document.body.classList.add('modal-open');
+  // Move focus inside the modal for a11y
+  const closer = dlg.querySelector('[data-close]');
+  closer?.focus({ preventScroll: true });
+};
+const closeModal = (dlg) => {
+  if (!dlg || !dlg.open) return;
+  dlg.close();
+  document.body.classList.remove('modal-open');
+};
+
+// Card click → open
+document.querySelectorAll('[data-modal]').forEach(btn => {
+  btn.addEventListener('click', () => openModal(btn.dataset.modal));
+});
+
+// Close button → close
+document.querySelectorAll('.community-modal [data-close]').forEach(btn => {
+  btn.addEventListener('click', () => closeModal(btn.closest('dialog')));
+});
+
+// Click on backdrop → close (click is on dialog itself, not inner content)
+document.querySelectorAll('.community-modal').forEach(dlg => {
+  dlg.addEventListener('click', e => { if (e.target === dlg) closeModal(dlg); });
+  // ESC handled natively, but sync body class
+  dlg.addEventListener('close', () => document.body.classList.remove('modal-open'));
+});
+
+// Hash deep-linking (e.g., #somerset opens that modal)
+const slugToId = {
+  somerset: 'modal-somerset',
+  middlesex: 'modal-middlesex',
+  mercer: 'modal-mercer',
+  burlington: 'modal-burlington',
+  union: 'modal-union'
+};
+const openFromHash = () => {
+  const slug = window.location.hash.replace('#', '').toLowerCase();
+  if (slugToId[slug]) openModal(slugToId[slug]);
+};
+window.addEventListener('hashchange', openFromHash);
+if (window.location.hash) setTimeout(openFromHash, 60);
 </script>
 </body>
 </html>
