@@ -591,20 +591,30 @@ section.alt { background: var(--color-background-alt); }
   align-items: flex-end;
   padding: var(--space-lg);
   color: var(--color-text-light);
+  overflow: hidden;
 }
-.modal-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.65)); }
-.modal-hero__content { position: relative; z-index: 1; }
+.modal-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.65)); z-index: 1; }
+.modal-hero__content { position: relative; z-index: 2; }
 .modal-hero__eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; margin-bottom: 0.5rem; color: rgba(255,255,255,0.85); }
 .modal-hero__h1 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 400; color: var(--color-text-light); max-width: 30ch; line-height: 1.25; }
+/* Override img-placeholder aspect-ratio when used as modal-hero backdrop */
+.modal-hero .img-placeholder {
+  aspect-ratio: auto !important;
+  height: 100% !important;
+  width: 100% !important;
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
 
-.modal-body { padding: var(--space-xl) var(--space-lg) var(--space-2xl); max-width: 760px; margin: 0 auto; }
+.modal-body { padding: var(--space-lg) var(--space-lg) var(--space-xl); max-width: 760px; margin: 0 auto; }
 
 .modal-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--color-border);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 .modal-stat {
   background: var(--color-background-alt);
@@ -616,15 +626,21 @@ section.alt { background: var(--color-background-alt); }
 .modal-stat__label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); font-weight: 500; }
 @media (max-width: 640px) { .modal-stats { grid-template-columns: repeat(2, 1fr); } }
 
-.modal-section { margin-bottom: var(--space-xl); }
-.modal-section h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; color: var(--color-text-muted); margin-bottom: 0.75rem; }
-.modal-section p { font-size: 1rem; line-height: 1.7; color: var(--color-text-dark); }
+/* Modal sections — overrides global section padding so blocks stack tightly inside modal */
+.community-modal .modal-section,
+.modal-section {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: var(--space-md);
+}
+.modal-section h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; color: var(--color-text-muted); margin-bottom: 0.5rem; }
+.modal-section p { font-size: 1rem; line-height: 1.65; color: var(--color-text-dark); }
 
 .modal-highlights {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem 1rem;
-  margin-bottom: var(--space-xl);
+  gap: 0.875rem 1rem;
+  margin-bottom: var(--space-lg);
 }
 .highlight { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9375rem; color: var(--color-text-dark); }
 .highlight__icon { width: 20px; height: 20px; color: var(--color-accent); flex-shrink: 0; }
@@ -635,12 +651,22 @@ section.alt { background: var(--color-background-alt); }
   background: var(--color-background-alt);
   padding: 1.5rem;
   border-left: 3px solid var(--color-accent);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
 }
 .modal-take__eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; color: var(--color-text-muted); margin-bottom: 0.5rem; }
 .modal-take__quote { font-size: 1.0625rem; line-height: 1.6; color: var(--color-text-dark); }
 
-.modal-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: var(--space-lg); }
+.modal-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: var(--space-md); }
+.community-modal__inner > section.modal-body { padding-top: 0; }
+.community-modal .modal-body > h3 {
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.16em !important;
+  font-weight: 500 !important;
+  color: var(--color-text-muted) !important;
+  margin-bottom: 0.5rem !important;
+  margin-top: 0 !important;
+}
 @media (max-width: 640px) { .modal-ctas { grid-template-columns: 1fr; } }
 
 /* ============================================
