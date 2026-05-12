@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Shellien · Design Rules</title>
+<link rel="stylesheet" href="mockups/styles.css">
+<style>
+  body { background: var(--color-background); }
+  .dr-hero { padding: var(--space-3xl) var(--container-px) var(--space-xl); background: var(--color-background-deep); color: var(--color-text-light); text-align: center; border-bottom: 4px solid var(--color-accent); }
+  .dr-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--color-text-light); letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: var(--space-md); }
+  .dr-hero .eyebrow { color: var(--color-accent); }
+  .dr-hero p { max-width: 56ch; margin: 0 auto; color: rgba(255,255,255,0.75); }
+  .dr-section { padding: var(--space-2xl) var(--container-px); border-bottom: 1px solid var(--color-border); }
+  .dr-section__inner { max-width: var(--container-width); margin: 0 auto; }
+  .dr-section h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: var(--space-md); text-transform: uppercase; letter-spacing: 0.02em; }
+  .dr-section h3 { margin-top: var(--space-xl); margin-bottom: var(--space-md); text-transform: uppercase; letter-spacing: 0.02em; }
+  .dr-grid { display: grid; gap: var(--space-md); }
+  .dr-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .dr-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .dr-grid-6 { grid-template-columns: repeat(6, 1fr); }
+  @media (max-width: 880px) { .dr-grid-4, .dr-grid-6 { grid-template-columns: repeat(2, 1fr); } .dr-grid-3 { grid-template-columns: 1fr; } }
+
+  .swatch { background: var(--color-background-alt); border: 1px solid var(--color-border); }
+  .swatch__color { height: 120px; }
+  .swatch__meta { padding: var(--space-sm); font-family: var(--font-body); }
+  .swatch__name { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 0.25rem; }
+  .swatch__hex { font-family: 'SF Mono', Menlo, monospace; font-size: 0.875rem; color: var(--color-text-muted); }
+
+  .type-row { padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); display: grid; grid-template-columns: 200px 1fr; gap: var(--space-lg); align-items: baseline; }
+  .type-row__label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); font-weight: 600; font-family: var(--font-body); }
+  .type-row__sample {}
+
+  .spacing-row { display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-sm) 0; }
+  .spacing-row__bar { background: var(--color-accent); height: 8px; }
+  .spacing-row__label { font-family: var(--font-body); font-size: 0.875rem; min-width: 120px; }
+
+  .btn-demo-row { display: flex; gap: var(--space-md); flex-wrap: wrap; padding: var(--space-md) 0; align-items: center; }
+  .btn-demo-row--dark { background: var(--color-background-deep); padding: var(--space-lg); border-radius: 0; }
+
+  .block-demo { padding: var(--space-md); border: 1px solid var(--color-border); margin-bottom: var(--space-md); }
+  .block-demo__label { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--color-accent-dark); font-weight: 600; margin-bottom: var(--space-md); }
+
+  table.tokens { width: 100%; border-collapse: collapse; font-family: var(--font-body); font-size: 0.875rem; }
+  table.tokens th, table.tokens td { padding: 0.5rem; border-bottom: 1px solid var(--color-border); text-align: left; vertical-align: top; }
+  table.tokens th { font-family: var(--font-body); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); font-weight: 600; }
+  table.tokens code { font-family: 'SF Mono', Menlo, monospace; font-size: 0.8125rem; background: var(--color-background-alt); padding: 0.125rem 0.375rem; }
+
+  .principle { background: var(--color-background-alt); padding: var(--space-lg); border-left: 4px solid var(--color-accent); margin-bottom: var(--space-md); }
+  .principle h4 { margin-bottom: var(--space-xs); text-transform: uppercase; letter-spacing: 0.04em; font-size: 1rem; }
+  .principle p { margin: 0; font-size: var(--font-size-small); }
+</style>
+</head>
+<body>
+
+<header class="dr-hero">
+  <span class="eyebrow">Team Shellien · Design System</span>
+  <h1>Design Rules</h1>
+  <p>The complete visual + typographic system for Team Shellien · Gem State Realty. Built for handoff to Jeff and Kane, the AgenticPress build team.</p>
+</header>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Brand Brief</span>
+    <h2>Sports-Team Bold, Magic Valley Roots.</h2>
+    <p style="max-width: 65ch;">Shellien Gilliland's brand is bold, energetic, and unmistakably Idaho. Per her own designer note: <em>"Think sports team with bold lettering, gold and black styling."</em> The visual system is the brand. Brand voice is direct, professional, warm, never coach-speak.</p>
+    <div class="dr-grid dr-grid-3" style="margin-top: var(--space-xl);">
+      <div class="principle">
+        <h4>1. Brand Is Palette, Not Background</h4>
+        <p>Sports-team styling means gold + black ACCENTS over a normally-paced light page. Dark backgrounds are PUNCTUATION (hero, closing CTA, footer), not the dominant treatment.</p>
+      </div>
+      <div class="principle">
+        <h4>2. Copy Voice = Professional Direct</h4>
+        <p>Match Shellien's actual bio: warm-professional, plain-spoken, specific. NEVER coach-speak (no "deliver results", "make a move", "every step", "dream home", three-beat motivational cadences).</p>
+      </div>
+      <div class="principle">
+        <h4>3. Evergreen Only</h4>
+        <p>No stats that need ongoing maintenance. Banned: median price, population, DOM, list-to-sale, "125+ reviews" growing counters. Use designations (Idaho's Best 2x), drive times, county names, founding years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Color</span>
+    <h2>One Accent, Two Neutrals.</h2>
+    <p style="max-width: 65ch;">Gold (<code>#cfb958</code>) is the single accent. Black + warm off-white carry everything else. No secondary brand color. No pastels. No gradients beyond hero overlays.</p>
+
+    <div class="dr-grid dr-grid-6" style="margin-top: var(--space-xl);">
+      <div class="swatch"><div class="swatch__color" style="background:#cfb958"></div><div class="swatch__meta"><div class="swatch__name">Accent</div><div class="swatch__hex">#cfb958</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#b39d44"></div><div class="swatch__meta"><div class="swatch__name">Accent Dark</div><div class="swatch__hex">#b39d44</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#dec97a"></div><div class="swatch__meta"><div class="swatch__name">Accent Light</div><div class="swatch__hex">#dec97a</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#f5eed0"></div><div class="swatch__meta"><div class="swatch__name">Accent Soft</div><div class="swatch__hex">#f5eed0</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#0a0a0a"></div><div class="swatch__meta"><div class="swatch__name">Primary</div><div class="swatch__hex">#0a0a0a</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#000000"></div><div class="swatch__meta"><div class="swatch__name">Deep Black</div><div class="swatch__hex">#000000</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#fafaf7;border:1px solid #e6e3da"></div><div class="swatch__meta"><div class="swatch__name">Surface</div><div class="swatch__hex">#fafaf7</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#ffffff;border:1px solid #e6e3da"></div><div class="swatch__meta"><div class="swatch__name">Background</div><div class="swatch__hex">#ffffff</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#e6e3da"></div><div class="swatch__meta"><div class="swatch__name">Border</div><div class="swatch__hex">#e6e3da</div></div></div>
+      <div class="swatch"><div class="swatch__color" style="background:#5a5a5a"></div><div class="swatch__meta"><div class="swatch__name">Text Muted</div><div class="swatch__hex">#5a5a5a</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Typography</span>
+    <h2>Anton Display + Inter Workhorse.</h2>
+    <p style="max-width: 65ch;">Anton (Google Font) handles display H1s and bold accent moments. Inter (Google Font) handles every other typographic job from H2 through body. No italic-serif accent. UPPERCASE default on H1 / H2 / eyebrows.</p>
+
+    <div class="type-row">
+      <div class="type-row__label">H1 Display · Anton</div>
+      <div class="type-row__sample"><h1 class="display" style="margin:0">Magic Valley<br/>Real Estate.</h1></div>
+    </div>
+    <div class="type-row">
+      <div class="type-row__label">H1 · Inter Light Caps</div>
+      <div class="type-row__sample"><h1 style="margin:0">Meet Team Shellien</h1></div>
+    </div>
+    <div class="type-row">
+      <div class="type-row__label">H2 · Inter Light Caps</div>
+      <div class="type-row__sample"><h2 style="margin:0">How I Sell Your Home.</h2></div>
+    </div>
+    <div class="type-row">
+      <div class="type-row__label">H3 · Inter Medium</div>
+      <div class="type-row__sample"><h3 style="margin:0">Initial Walk-Through</h3></div>
+    </div>
+    <div class="type-row">
+      <div class="type-row__label">Eyebrow · Inter Medium Caps</div>
+      <div class="type-row__sample"><span class="eyebrow" style="margin:0">For Buyers</span></div>
+    </div>
+    <div class="type-row">
+      <div class="type-row__label">Body · Inter Regular</div>
+      <div class="type-row__sample"><p style="margin:0">I'm Shellien Gilliland, a Twin Falls native leading a small Magic Valley team. Whether you're buying or selling, my job is to work so you don't have to.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Buttons · Doctrine</span>
+    <h2>Transparent + Outline Default.</h2>
+    <p style="max-width: 65ch;">Per universal-conventions § 2. Default state: transparent background, 1px gold outline, gold text, UPPERCASE, sharp corners. Hover state: gold fill, BLACK text (cleaner than white on gold). 400ms transition.</p>
+
+    <h3>On Light Background</h3>
+    <div class="btn-demo-row">
+      <button class="btn btn-primary">Primary CTA</button>
+      <button class="btn btn-secondary">Secondary CTA</button>
+    </div>
+
+    <h3>On Dark Background</h3>
+    <div class="btn-demo-row btn-demo-row--dark">
+      <button class="btn btn-on-dark">Primary On Dark</button>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Spacing</span>
+    <h2>Eight-Step Scale.</h2>
+    <p style="max-width: 65ch;">Container max-widths: 1280px (default), 1440px (wide), 780px (narrow). Section padding: 7rem (default) / 5rem (tight). Border radius: 0 (sharp geometry, no rounded corners).</p>
+    <table class="tokens" style="margin-top: var(--space-lg);">
+      <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      <tr><td><code>--space-xs</code></td><td>0.5rem (8px)</td><td>Tight icon gaps</td></tr>
+      <tr><td><code>--space-sm</code></td><td>1rem (16px)</td><td>Inline element gaps</td></tr>
+      <tr><td><code>--space-md</code></td><td>1.5rem (24px)</td><td>Default paragraph spacing</td></tr>
+      <tr><td><code>--space-lg</code></td><td>2.5rem (40px)</td><td>Grid gaps</td></tr>
+      <tr><td><code>--space-xl</code></td><td>4rem (64px)</td><td>Large block separators</td></tr>
+      <tr><td><code>--space-2xl</code></td><td>5.5rem (88px)</td><td>Section-to-section</td></tr>
+      <tr><td><code>--space-3xl</code></td><td>8rem (128px)</td><td>Hero padding</td></tr>
+      <tr><td><code>--space-4xl</code></td><td>11rem (176px)</td><td>Marquee section spacing</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Layout · Pacing</span>
+    <h2>Light Dominant, Dark Punctuates.</h2>
+    <p style="max-width: 65ch;">Pages alternate light → light → light with dark sections used only as opening (hero) and closing (CTA + footer) punctuation. Never stack 3+ dark sections in a row. The brand is the type and accent treatment, not the background fill.</p>
+
+    <div class="dr-grid dr-grid-3" style="margin-top: var(--space-xl);">
+      <div class="principle">
+        <h4>Hero · Dark</h4>
+        <p>Full-bleed photo + dark overlay + gold credentials strip. Opens the page with brand presence.</p>
+      </div>
+      <div class="principle">
+        <h4>Middle · Light</h4>
+        <p>Cream + white alternating sections. Photos breathe. Gold accents on eyebrows + CTAs only.</p>
+      </div>
+      <div class="principle">
+        <h4>Closing · Dark</h4>
+        <p>Dark band (or parallax over landscape). Gold-outlined CTAs. Footer continues the dark.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Block Library</span>
+    <h2>Variants Used On Shellien.</h2>
+    <p style="max-width: 65ch;">The 7 main Home page slots use these specific block variants. Variation budget from prior client (Tonya Bredamus): 6 of 7 different.</p>
+
+    <table class="tokens" style="margin-top: var(--space-lg);">
+      <tr><th>Slot</th><th>Variant</th><th>Notes</th></tr>
+      <tr><td>Hero</td><td>V5 Full-bleed + credentials strip</td><td>Idaho's Best 2x · Native · Roots · Team</td></tr>
+      <tr><td>About Teaser</td><td>V2 Portrait + overlapping card</td><td>4:5 headshot, gold-bordered card overlap</td></tr>
+      <tr><td>Stat Bar</td><td>V2 Light + V3 Asymmetric</td><td>Cream bg, vertical rules, evergreen-only stats</td></tr>
+      <tr><td>Signature</td><td>Magic Valley Coverage</td><td>Custom 4-card community grid, light bg</td></tr>
+      <tr><td>Buy/Sell Paths</td><td>V1 Alternating editorial rows</td><td>Light bg, photo+text alternation, gold eyebrow accents</td></tr>
+      <tr><td>Testimonials</td><td>V1 Featured + supporting</td><td>Matt Cudney featured (dark card), Deaneen + Haley supporting</td></tr>
+      <tr><td>Closing CTA</td><td>V2 Solid dark band</td><td>Pure black, gold-outlined buttons, no photo</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Communities</span>
+    <h2>Four Communities, Modal Pattern.</h2>
+    <p style="max-width: 65ch;">Twin Falls, Jerome, Kimberly, Buhl. Each card on /communities opens a native <code>&lt;dialog&gt;</code> modal with the Ramona 8-block pattern. Hash-deep-linkable (e.g. <code>/communities#twin-falls</code>) from anywhere on the site.</p>
+
+    <h3>Per-Modal Block Sequence</h3>
+    <table class="tokens" style="margin-top: var(--space-md);">
+      <tr><th>Block</th><th>Content</th></tr>
+      <tr><td>Hero</td><td>Real photo + eyebrow (County + ZIP) + UPPERCASE H1 tagline</td></tr>
+      <tr><td>4-Stat Strip</td><td>School District · Role/Drive Time · Founded · Identity (all evergreen)</td></tr>
+      <tr><td>A Day In The Life</td><td>1-paragraph rhythm narrative in direct voice</td></tr>
+      <tr><td>What You'll Find</td><td>Shellien's verbatim CS description</td></tr>
+      <tr><td>Highlights</td><td>6-item icon grid (3 cols × 2 rows)</td></tr>
+      <tr><td>Shellien's Take</td><td>Pull quote, first-person, community-specific</td></tr>
+      <tr><td>Two CTAs</td><td>Search [Community] Homes + Talk About [Community]</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="dr-section">
+  <div class="dr-section__inner">
+    <span class="eyebrow">Universal Rules</span>
+    <h2>Apply To Every Page.</h2>
+    <div class="dr-grid dr-grid-3" style="margin-top: var(--space-xl);">
+      <div class="principle">
+        <h4>Nav</h4>
+        <p>Logo links to home. "Home" never appears as a nav item. Dropdowns: Properties, Buy, Sell, Communities, About. Contact = right-side CTA button.</p>
+      </div>
+      <div class="principle">
+        <h4>Footer</h4>
+        <p>Identical 4-column dark footer on every page. EHO + REALTOR® + Idaho RE License + IMLS + AgenticPress credit + state compliance text.</p>
+      </div>
+      <div class="principle">
+        <h4>Home Page External Links</h4>
+        <p>ZERO external links on home page body. Footer state-compliance link is the only exception. Inner pages get Resources Strip.</p>
+      </div>
+      <div class="principle">
+        <h4>No Stale Stats</h4>
+        <p>Banned: median price, population, "125+ reviews," DOM, list-to-sale. Evergreen only: designations, drive times, founding years, identity nicknames.</p>
+      </div>
+      <div class="principle">
+        <h4>Em Dashes</h4>
+        <p>Banned everywhere: body copy, HTML comments, JS strings, alt text. Replace with comma, period, colon, or middle dot (·).</p>
+      </div>
+      <div class="principle">
+        <h4>Images</h4>
+        <p>Real photography only. Phase 7 curation human-in-the-loop. No auto-inject top Unsplash result. Corner-badge placeholders until real photos curated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dr-section" style="background: var(--color-background-deep); color: var(--color-text-light); border-bottom: none;">
+  <div class="dr-section__inner">
+    <span class="eyebrow" style="color: var(--color-accent);">Handoff</span>
+    <h2 style="color: var(--color-text-light);">For Jeff And Kane.</h2>
+    <p style="max-width: 65ch; color: rgba(255,255,255,0.75);">Build files: <code>mockups/01-home.html</code> through <code>mockups/13-privacy.html</code>. Design tokens: <code>mockups/styles.css</code> (CSS custom properties). Per-page SEO: <code>rank-math-brief.md</code>. Per-page content: <code>brief.md</code>. Compliance: <code>compliance-checklist.md</code>. Image curation: Phase 7 deferred, placeholder slots flagged. NEEDS_CLIENT items in <code>compliance-checklist.md</code> punch list.</p>
+  </div>
+</section>
+
+</body>
+</html>
