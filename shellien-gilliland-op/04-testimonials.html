@@ -70,31 +70,25 @@
       <h2>Buyers And Sellers, Named And Authentic.</h2>
       <p>Every review on this page is from a real, named Magic Valley client. No anonymous quotes, no composite testimonials, no marketing fluff.</p>
     </div>
-    <div class="testimonials-asym">
-      <div class="testimonial-featured">
-        <div class="testimonial-featured__stars">★★★★★</div>
-        <p class="testimonial-featured__quote">"Team Shellien was phenomenal. They helped me sell my mother's home while I live in another state. Shellien was not only informed and professional, she genuinely cared. I interviewed several agents before I selected Shellien and it was the absolute best decision. I was never worried or stressed about anything with the transaction. If you are buying or selling a home in the Magic Valley, picking Shellien would be the best thing you could do."</p>
-        <div class="testimonial-featured__attribution">
-          <div class="testimonial-featured__photo img-placeholder" data-aspect="1:1" data-slug="matt-cudney-client-photo">
-            <span class="img-placeholder__badge">photo</span>
-          </div>
-          <div>
-            <div class="testimonial-featured__name">Matt Cudney</div>
-            <div class="testimonial-featured__location">Milwaukee, Wisconsin · Out-of-State Seller</div>
+    <div class="testimonials-carousel" data-carousel data-interval="7000">
+      <div class="testimonials-carousel__track">
+        <div class="testimonial-card is-active">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">"Team Shellien was phenomenal. They helped me sell my mother's home while I live in another state. Shellien was not only informed and professional, she genuinely cared. I interviewed several agents before I selected Shellien and it was the absolute best decision. If you are buying or selling a home in the Magic Valley, picking Shellien would be the best thing you could do."</p>
+          <div class="testimonial-card__attribution">
+            <div>
+              <div class="testimonial-card__name">Matt Cudney</div>
+              <div class="testimonial-card__location">Milwaukee, Wisconsin · Out-of-State Seller</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-supporting">
         <div class="testimonial-card">
           <div class="testimonial-card__stars">★★★★★</div>
           <p class="testimonial-card__quote">"Shellien was so helpful and knowledgeable about the selling and buying process. I liken her to a whitewater rafting guide. When the ride gets scary and bumpy, she is there guiding the process with a smile and energy."</p>
           <div class="testimonial-card__attribution">
-            <div class="testimonial-card__photo img-placeholder" data-aspect="1:1" data-slug="deaneen-kuka-client-photo">
-              <span class="img-placeholder__badge">photo</span>
-            </div>
             <div>
               <div class="testimonial-card__name">Deaneen Kuka</div>
-              <div class="testimonial-card__location">Jerome, Idaho · Buyer + Seller</div>
+              <div class="testimonial-card__location">Jerome, Idaho</div>
             </div>
           </div>
         </div>
@@ -102,9 +96,6 @@
           <div class="testimonial-card__stars">★★★★★</div>
           <p class="testimonial-card__quote" style="font-style: italic; color: var(--color-text-muted);">Five-star review on file. Written testimonial coming soon.</p>
           <div class="testimonial-card__attribution">
-            <div class="testimonial-card__photo img-placeholder" data-aspect="1:1" data-slug="haley-jones-client-photo">
-              <span class="img-placeholder__badge">photo</span>
-            </div>
             <div>
               <div class="testimonial-card__name">Haley Jones</div>
               <div class="testimonial-card__location">Jerome, Idaho</div>
@@ -112,6 +103,30 @@
           </div>
         </div>
       </div>
+      <div class="testimonials-carousel__controls">
+        <button class="testimonials-carousel__dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
+        <button class="testimonials-carousel__dot" data-slide="1" aria-label="Show testimonial 2"></button>
+        <button class="testimonials-carousel__dot" data-slide="2" aria-label="Show testimonial 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ LIVE REVIEW FEED ============================================ -->
+<section class="alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Live Review Feed</span>
+      <h2>Reviews As They Come In.</h2>
+      <p>Pulled live from Team Shellien's Google Business Profile so what you see is current.</p>
+    </div>
+    <div class="live-feed">
+      <div class="live-feed__label">Google Reviews Embed Zone</div>
+      <div class="live-feed__title">Live Google Reviews Feed</div>
+      <p class="live-feed__note">A Google Business Profile reviews widget renders here, pulling Team Shellien's most recent reviews directly from Google. Updates automatically as new reviews are posted. No manual maintenance required.</p>
+    </div>
+    <div class="text-center" style="margin-top: var(--space-lg);">
+      <a href="https://share.google/zMdCx5fYWHmwkCT50" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Read All Google Reviews</a>
     </div>
   </div>
 </section>
@@ -224,6 +239,31 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   })();
+
+  // Testimonials rotating carousel
+  document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+    var cards = carousel.querySelectorAll('.testimonial-card');
+    var dots = carousel.querySelectorAll('.testimonials-carousel__dot');
+    var interval = parseInt(carousel.dataset.interval || '7000', 10);
+    var current = 0;
+    var timer = null;
+
+    function show(idx) {
+      cards.forEach(function(c, i) { c.classList.toggle('is-active', i === idx); });
+      dots.forEach(function(d, i) { d.classList.toggle('is-active', i === idx); });
+      current = idx;
+    }
+    function next() { show((current + 1) % cards.length); }
+    function start() { stop(); timer = setInterval(next, interval); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    dots.forEach(function(d, i) {
+      d.addEventListener('click', function() { show(i); start(); });
+    });
+    carousel.addEventListener('mouseenter', stop);
+    carousel.addEventListener('mouseleave', start);
+    start();
+  });
 </script>
 </body>
 </html>
