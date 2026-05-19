@@ -1173,6 +1173,24 @@ section.alt { background: var(--color-background-alt); }
 .services--dark .service h4 { color: var(--color-text-light); }
 .services--dark .service p { color: rgba(255, 255, 255, 0.7); }
 .services--dark .service__icon { color: var(--color-accent); }
+
+/* Anchor-variant of .service (clickable cards that link to detail pages) */
+a.service {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+.service__arrow {
+  display: inline-block;
+  margin-left: 0.35rem;
+  color: var(--color-accent);
+  font-weight: 400;
+  transition: transform var(--duration-fast) var(--ease-default);
+}
+a.service:hover .service__arrow { transform: translateX(3px); }
+a.service:hover h4 { color: var(--color-accent); }
+.services--dark a.service:hover h4 { color: var(--color-accent); }
 @media (max-width: 1024px) { .services { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .services { grid-template-columns: 1fr; } }
 
