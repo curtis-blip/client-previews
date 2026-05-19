@@ -1496,9 +1496,13 @@ a.service:hover h4 { color: var(--color-accent); }
 .footer__compliance-lockup {
   display: block;
   height: auto;
-  max-width: 200px;
+  max-width: 140px;
   width: 100%;
-  opacity: 0.85;
+  image-rendering: -webkit-optimize-contrast;
+  /* NOTE: source PNG is 100x49. Display capped near native to avoid
+     upscale blur. For production crispness, swap for an SVG or 2x/3x
+     raster from NAR Brand Center + HUD. Tracked in
+     _templates/compliance-logos/README.md. */
 }
 
 .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
@@ -1546,7 +1550,7 @@ a.service:hover h4 { color: var(--color-accent); }
    variation budget. Other clients should pick a
    different variant. Library: _block-library/socials.html
    ============================================ */
-.socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: nowrap; gap: 6px; }
 .socials__link {
   display: inline-flex;
   align-items: center;
@@ -1555,11 +1559,11 @@ a.service:hover h4 { color: var(--color-accent); }
   color: inherit;
   transition: background var(--duration-default), color var(--duration-default), transform var(--duration-default);
 }
-.socials__link svg { width: 18px; height: 18px; display: block; }
+.socials__link svg { width: 14px; height: 14px; display: block; }
 
 .socials--square .socials__link {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
   background: var(--color-accent);
   color: var(--color-white);
 }
