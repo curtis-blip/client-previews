@@ -263,16 +263,19 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   padding: 1.25rem var(--container-padding-x);
   gap: var(--space-lg);
 }
+/* Logo lockup (stacked wordmark) — color inherited via currentColor,
+   rule kept gold via the per-element class. */
 .site-nav__logo {
-  font-family: var(--font-family-heading);
-  font-weight: var(--font-weight-heading-regular);
-  font-size: 1.25rem;
-  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
   color: var(--color-white);
+  line-height: 0;
 }
 .site-nav.is-scrolled .site-nav__logo { color: var(--color-primary); }
-.site-nav__logo em { font-style: normal; color: var(--color-gold); }
-.site-nav.is-scrolled .site-nav__logo em { color: var(--color-gold-soft); }
+.site-nav__logo .brand-logo { width: 140px; height: auto; }
+
+.brand-logo { display: block; }
+.brand-logo__rule { stroke: var(--color-gold); }
 
 .site-nav__links {
   display: flex;
@@ -955,11 +958,11 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   padding: 0 var(--container-padding-x);
 }
 .site-footer__brand-name {
-  font-family: var(--font-family-heading);
-  font-size: 1.5rem; color: var(--color-white);
-  margin-bottom: var(--space-sm);
+  color: var(--color-white);
+  margin-bottom: var(--space-md);
+  line-height: 0;
 }
-.site-footer__brand-name em { font-style: normal; color: var(--color-accent-pale); }
+.site-footer__brand-name .brand-logo { width: 200px; height: auto; }
 .site-footer__tagline { color: var(--color-text-light); opacity: 0.8; margin-bottom: var(--space-md); max-width: 36ch; }
 .site-footer__contact { display: flex; flex-direction: column; gap: 0.375rem; font-size: var(--font-size-small); color: var(--color-text-light); opacity: 0.86; margin-bottom: var(--space-md); }
 .site-footer__contact a:hover { color: var(--color-accent-pale); }
