@@ -6,20 +6,22 @@
 
 :root {
   /* Color — canonical 8 + extras */
-  --color-primary: #0f2a26;
-  --color-secondary: #1a3a35;
-  --color-accent: #1f514c;
-  --color-accent-soft: #5e7d68;
-  --color-accent-pale: #d1e0ca;
-  --color-contrast: #0f2a26;
+  --color-primary: #1f514c;
+  --color-secondary: #1a4641;        /* hover lift on dark green surfaces */
+  --color-accent: #1f514c;            /* brand green — eyebrows, links on light bg, accent rules */
+  --color-accent-soft: #5e7d68;       /* sage mid-green */
+  --color-accent-pale: #d1e0ca;       /* pale sage on overlays */
+  --color-gold: #dac5a7;              /* live-site beige/sand accent — buttons on green, italic em accent, anchor text on dark */
+  --color-gold-soft: #c9a87a;         /* darker gold for hover */
+  --color-contrast: #1f514c;          /* canonical alias of background-dark */
   --color-text-dark: #1a1a1a;
   --color-text-muted: #5e6b66;
-  --color-text-light: #e8efe8;
+  --color-text-light: #ece7da;        /* warm cream-light, reads better on green than green-tinted text-light */
   --color-surface: #f0ede4;
   --color-white: #ffffff;
   --color-background: #f7f3ea;
   --color-background-alt: #f0ede4;
-  --color-background-dark: #0f2a26;
+  --color-background-dark: #1f514c;   /* primary brand green — footer, closing CTA, signature band (matches live site) */
   --color-border: #dad2c1;
   --color-border-strong: #1f514c;
 
@@ -185,14 +187,26 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   color: var(--color-white);
 }
 
+/* Button on green/dark surfaces: gold outline + gold text (mirrors live site) */
 .btn--inverse {
   background: transparent;
-  color: var(--color-white);
-  border: 1px solid var(--color-white);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
 }
 .btn--inverse:hover {
-  background: var(--color-white);
+  background: var(--color-gold);
   color: var(--color-primary);
+}
+
+/* Solid gold button on green/dark surfaces (the "Browse New Listings" style) */
+.btn--gold {
+  background: var(--color-gold);
+  color: var(--color-primary);
+  border: 1px solid var(--color-gold);
+}
+.btn--gold:hover {
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold-soft);
 }
 
 .btn--accent {
@@ -220,8 +234,8 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   transition: gap var(--duration-fast), color var(--duration-fast);
 }
 .link-cta:hover { gap: 1rem; color: var(--color-accent); border-bottom-color: var(--color-accent); }
-.link-cta--inverse { color: var(--color-text-light); border-bottom-color: rgba(232, 239, 232, 0.4); }
-.link-cta--inverse:hover { color: var(--color-accent-pale); border-bottom-color: var(--color-accent-pale); }
+.link-cta--inverse { color: var(--color-gold); border-bottom-color: rgba(218, 197, 167, 0.5); }
+.link-cta--inverse:hover { color: var(--color-gold-soft); border-bottom-color: var(--color-gold-soft); }
 .link-cta svg { width: 12px; height: 8px; }
 
 /* ============================================================
@@ -312,7 +326,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 /* Mobile drawer */
 .mobile-menu-backdrop {
   position: fixed; inset: 0;
-  background: rgba(15, 42, 38, 0.6);
+  background: rgba(20, 20, 20, 0.6);
   z-index: 60; opacity: 0; visibility: hidden;
   transition: all var(--duration-default);
 }
@@ -365,7 +379,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 }
 .hero::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15, 42, 38, 0.25) 0%, rgba(15, 42, 38, 0.4) 50%, rgba(15, 42, 38, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.25) 0%, rgba(20, 20, 20, 0.4) 50%, rgba(20, 20, 20, 0.75) 100%);
   z-index: 0;
 }
 .hero__inner { position: relative; z-index: 1; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding-x); width: 100%; }
@@ -498,7 +512,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 .buy-sell__card:hover .buy-sell__card-img { transform: scale(1.03); }
 .buy-sell__card::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15,42,38,0.2) 30%, rgba(15,42,38,0.78) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 20,0.2) 30%, rgba(20, 20, 20,0.78) 100%);
 }
 .buy-sell__card-content {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -583,7 +597,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 .communities-cards__card:hover .communities-cards__card-bg { transform: scale(1.04); }
 .communities-cards__card::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15,42,38,0.15) 30%, rgba(15,42,38,0.82) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 20,0.15) 30%, rgba(20, 20, 20,0.82) 100%);
 }
 .communities-cards__card-content {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -741,7 +755,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 }
 .testimonial-parallax::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15,42,38,0.7), rgba(15,42,38,0.85));
+  background: linear-gradient(180deg, rgba(20, 20, 20,0.7), rgba(20, 20, 20,0.85));
 }
 .testimonial-parallax__inner {
   position: relative; z-index: 1;
@@ -750,7 +764,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   text-align: center;
 }
 .testimonial-parallax__rating {
-  color: var(--color-accent-pale);
+  color: var(--color-gold);
   letter-spacing: 0.25em; margin-bottom: var(--space-md);
   font-size: 1.125rem;
 }
@@ -816,7 +830,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 .closing-cta::before {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15, 42, 38, 0.78) 0%, rgba(15, 42, 38, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.78) 0%, rgba(20, 20, 20, 0.88) 100%);
   z-index: 0;
 }
 .closing-cta__inner {
@@ -1305,7 +1319,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,42,38,0.1) 40%, rgba(15,42,38,0.82) 100%);
+  background: linear-gradient(180deg, rgba(20, 20, 20,0.1) 40%, rgba(20, 20, 20,0.82) 100%);
 }
 .community-card__content {
   position: absolute;
@@ -1357,10 +1371,10 @@ dialog.community-modal {
   border-radius: 0;
   color: var(--color-text-dark);
   margin: auto;
-  box-shadow: 0 30px 80px rgba(15, 42, 38, 0.4);
+  box-shadow: 0 30px 80px rgba(20, 20, 20, 0.4);
 }
 dialog.community-modal::backdrop {
-  background: rgba(15, 42, 38, 0.78);
+  background: rgba(20, 20, 20, 0.78);
 }
 .community-modal__hero {
   position: relative;
@@ -1373,7 +1387,7 @@ dialog.community-modal::backdrop {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,42,38,0.15), rgba(15,42,38,0.45));
+  background: linear-gradient(180deg, rgba(20, 20, 20,0.15), rgba(20, 20, 20,0.45));
 }
 .modal-close {
   position: absolute;
@@ -1631,7 +1645,7 @@ dialog.community-modal::backdrop {
   transform: translateY(-3px);
 }
 .testimonial-card__rating {
-  color: var(--color-accent);
+  color: var(--color-gold-soft);
   letter-spacing: 0.2em;
   font-size: 1rem;
   line-height: 1;
