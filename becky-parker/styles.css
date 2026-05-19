@@ -545,7 +545,85 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 }
 
 /* ============================================================
-   Communities V3 compact horizontal list (Home page)
+   Communities V2 photo-card grid (HOME PAGE)
+   6 cards (subset of 9) + "See All Nine" link.
+   Per Curtis: home page is prominent, always show real photo
+   cards; chip variant is for About / inner pages only.
+   ============================================================ */
+
+.communities-cards {
+  background: var(--color-background-alt);
+  padding: var(--space-2xl) 0;
+}
+.communities-cards__header {
+  max-width: var(--container-width); margin: 0 auto var(--space-xl);
+  padding: 0 var(--container-padding-x);
+}
+.communities-cards__header > h2 { max-width: 24ch; margin-top: var(--space-sm); }
+.communities-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-x);
+}
+.communities-cards__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  color: var(--color-white);
+}
+.communities-cards__card-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform var(--duration-slowest) var(--ease-default);
+}
+.communities-cards__card:hover .communities-cards__card-bg { transform: scale(1.04); }
+.communities-cards__card::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,42,38,0.15) 30%, rgba(15,42,38,0.82) 100%);
+}
+.communities-cards__card-content {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: var(--space-lg);
+  z-index: 1;
+}
+.communities-cards__card-eyebrow {
+  font-size: var(--font-size-eyebrow);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-accent-pale);
+  font-weight: var(--font-weight-body-medium);
+  margin-bottom: 0.5rem;
+}
+.communities-cards__card-title {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.01em;
+}
+.communities-cards__card-sub {
+  font-size: var(--font-size-small);
+  color: var(--color-text-light);
+  opacity: 0.86;
+}
+.communities-cards__footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  padding: 0 var(--container-padding-x);
+}
+@media (max-width: 1024px) {
+  .communities-cards__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .communities-cards__grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   Communities V3 compact horizontal list (ABOUT / inner pages)
    ============================================================ */
 
 .communities-compact {
@@ -608,7 +686,7 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 }
 
 /* ============================================================
-   Home Value teaser
+   Home Value teaser — centered (default, inner pages)
    ============================================================ */
 
 .hv-teaser {
@@ -619,6 +697,37 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 }
 .hv-teaser > h2 { max-width: 24ch; margin: var(--space-sm) auto var(--space-md); }
 .hv-teaser > p { max-width: 60ch; margin: 0 auto var(--space-lg); color: var(--color-text-muted); }
+
+/* ============================================================
+   Home Value split — text-left + image-right (Home page variant)
+   Narrow box, contained, alternating orientation from the
+   default centered .hv-teaser used on inner pages.
+   ============================================================ */
+
+.hv-split {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+.hv-split__content > .eyebrow { margin-bottom: var(--space-sm); }
+.hv-split__content > h2 { margin-bottom: var(--space-md); max-width: 22ch; }
+.hv-split__content > p { color: var(--color-text-muted); margin-bottom: var(--space-lg); max-width: 44ch; }
+.hv-split__media {
+  aspect-ratio: 4 / 5;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-background-alt);
+}
+@media (max-width: 768px) {
+  .hv-split { grid-template-columns: 1fr; padding: var(--space-lg); }
+  .hv-split__media { aspect-ratio: 16 / 10; order: -1; }
+}
 
 /* ============================================================
    Testimonials V3 single featured parallax
@@ -690,19 +799,37 @@ h4 { font-size: var(--font-size-h4); line-height: var(--line-height-h3); }
 @media (max-width: 768px) { .blog-carousel { grid-template-columns: 1fr; } }
 
 /* ============================================================
-   Closing CTA V2 solid dark band
+   Closing CTA — parallax photo background + dark overlay
    ============================================================ */
 
 .closing-cta {
-  background: var(--color-background-dark);
-  color: var(--color-text-light);
+  position: relative;
   padding: var(--space-3xl) 0;
   text-align: center;
+  color: var(--color-text-light);
+  background: var(--color-background-dark);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
 }
-.closing-cta__inner { max-width: 720px; margin: 0 auto; padding: 0 var(--container-padding-x); }
+.closing-cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15, 42, 38, 0.78) 0%, rgba(15, 42, 38, 0.88) 100%);
+  z-index: 0;
+}
+.closing-cta__inner {
+  position: relative; z-index: 1;
+  max-width: 720px; margin: 0 auto; padding: 0 var(--container-padding-x);
+}
 .closing-cta .eyebrow { color: var(--color-accent-pale); margin-bottom: var(--space-md); }
 .closing-cta__title { color: var(--color-white); margin-bottom: var(--space-md); }
 .closing-cta__sub { color: var(--color-text-light); opacity: 0.86; margin-bottom: var(--space-lg); max-width: 56ch; margin-left: auto; margin-right: auto; }
+@media (max-width: 768px) {
+  /* iOS / smaller viewports do not handle fixed bg-attachment reliably */
+  .closing-cta { background-attachment: scroll; }
+}
 
 /* ============================================================
    Resources strip
