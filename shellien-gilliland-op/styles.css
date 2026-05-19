@@ -1492,18 +1492,18 @@ a.service:hover h4 { color: var(--color-accent); }
 .footer__contact a { color: var(--color-text-dark); text-decoration: none; }
 .footer__contact a:hover { color: var(--color-accent-dark); }
 
-.footer__compliance-logos { display: flex; gap: var(--space-sm); margin-top: var(--space-md); align-items: center; }
-.footer__compliance-lockup {
+.footer__compliance-logos { display: flex; gap: var(--space-md); margin-top: var(--space-md); align-items: center; }
+.footer__logo-eho,
+.footer__logo-realtor {
   display: block;
-  height: auto;
-  max-width: 140px;
-  width: 100%;
-  image-rendering: -webkit-optimize-contrast;
-  /* NOTE: source PNG is 100x49. Display capped near native to avoid
-     upscale blur. For production crispness, swap for an SVG or 2x/3x
-     raster from NAR Brand Center + HUD. Tracked in
-     _templates/compliance-logos/README.md. */
+  height: 48px;
+  width: auto;
+  /* Both logos are black on transparent. For dark footers, swap with
+     -white variants OR use: filter: brightness(0) invert(1); on this
+     selector. See _templates/compliance-logos/README.md. */
 }
+.footer__logo-eho  { height: 44px; }   /* EHO square needs slightly less height to balance */
+.footer__logo-realtor { height: 48px; }
 
 .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
 .footer__col a { color: var(--color-text-dark); text-decoration: none; font-size: 0.9375rem; transition: color var(--duration-fast); }
