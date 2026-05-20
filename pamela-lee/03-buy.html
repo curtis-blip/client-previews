@@ -1044,6 +1044,213 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
 @media (max-width: 480px) {
   .serv-grid { grid-template-columns: 1fr; }
 }
+
+/* ============ ALTERNATING PROCESS ROWS (chunk 2D) ============ */
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 14px auto 0;
+}
+.proc-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 48px;
+}
+.proc-alt-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.proc-alt-row.proc-alt-reverse {
+  grid-template-columns: 1fr 1.05fr;
+}
+.proc-alt-row.proc-alt-reverse .proc-alt-image {
+  order: 2;
+}
+.proc-alt-image {
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 14px 40px rgba(26, 20, 22, 0.10);
+}
+.proc-alt-text {
+  padding: 8px 0;
+}
+.proc-alt-num {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 3.25rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.proc-alt-text h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.625rem;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 14px;
+}
+.proc-alt-text p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .proc-alt { gap: 56px; }
+  .proc-alt-row,
+  .proc-alt-row.proc-alt-reverse { grid-template-columns: 1fr; gap: 24px; }
+  .proc-alt-row.proc-alt-reverse .proc-alt-image { order: 0; }
+  .proc-alt-num { font-size: 2.5rem; }
+}
+
+/* ============ PARALLAX BREAK (chunk 2D) ============ */
+.parallax-break {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (hover: none) and (max-width: 900px) {
+  .parallax-break { background-attachment: scroll; }
+}
+
+/* ============ SEARCH BY PROPERTY TYPE (chunk 2D) ============ */
+.property-type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+.property-type-card {
+  position: relative;
+  display: block;
+  min-height: 420px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 18px rgba(26, 20, 22, 0.08);
+}
+.property-type-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 38px rgba(26, 20, 22, 0.16);
+}
+.property-type-card-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.property-type-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.property-type-icon svg { width: 100%; height: 100%; }
+.property-type-card h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #fff;
+  margin: 0;
+}
+.property-type-card p {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+.property-type-cta {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+.property-type-card:hover .property-type-cta { color: #fff; }
+@media (max-width: 1100px) {
+  .property-type-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .property-type-grid { grid-template-columns: 1fr; }
+  .property-type-card { min-height: 320px; }
+}
+
+/* ============ COMMUNITIES 6-CARD SQUARE GRID (chunk 2D) ============ */
+.comm-square-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.comm-square {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 18px rgba(26, 20, 22, 0.08);
+}
+.comm-square:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(26, 20, 22, 0.16);
+}
+.comm-square-label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 26px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.comm-square-name {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.625rem;
+  color: #fff;
+  line-height: 1.1;
+}
+.comm-square-meta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+@media (max-width: 900px) {
+  .comm-square-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (max-width: 560px) {
+  .comm-square-grid { grid-template-columns: 1fr; }
+}
 </style>
 
 <!-- ============ HERO-GUIDE: HERO-GUIDE-DARK ============ -->
@@ -1055,52 +1262,86 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
 </section>
 <!-- ============ END HERO-GUIDE ============ -->
 
-<!-- ============ PROCESS / STEPS: PROC-5-VERTICAL ============ -->
+<!-- ============ PROCESS / STEPS: PROC-8-ALTERNATING (chunk 2D) ============ -->
 <section class="section">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">The Buying Process</span>
-      <h2>Five steps from <em>looking to closing.</em></h2>
+      <h2>Eight steps from <em>first call to keys in hand.</em></h2>
+      <p class="section-sub">Buying a home in Dublin, GA is a sequence of decisions, not a single one. Here is what working with Pamela Lee Realty looks like, start to finish.</p>
     </div>
-    <div class="proc-steps">
 
-      <div class="proc-step">
-        <div class="proc-step-num">01</div>
-        <div class="proc-step-content">
-          <h3>Talk it through.</h3>
+    <div class="proc-alt">
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">01</div>
+          <h3>Discovery call.</h3>
           <p>We start with a conversation. Budget, timing, the parts of Laurens County that interest you, what your day-to-day life needs to look like. No pressure to act, just clarity on where to begin.</p>
         </div>
       </div>
 
-      <div class="proc-step">
-        <div class="proc-step-num">02</div>
-        <div class="proc-step-content">
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">02</div>
           <h3>Get pre-approved.</h3>
-          <p>Talking to a lender early gives you a real budget and tells sellers you're serious. I can connect you with local lenders who actually know the Dublin market and respond fast.</p>
+          <p>Talking to a lender early gives you a real budget and tells sellers you are serious. I can connect you with local lenders who know the Dublin market and respond fast. We get this done before the search heats up.</p>
         </div>
       </div>
 
-      <div class="proc-step">
-        <div class="proc-step-num">03</div>
-        <div class="proc-step-content">
-          <h3>Search the right way.</h3>
-          <p>I set up a search filtered to homes worth your time. New listings come to your inbox the moment they hit MLS. We tour together, and I tell you what's wrong with each one, not just what's right.</p>
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">03</div>
+          <h3>Set up a smart search.</h3>
+          <p>I build a filtered MLS search around the criteria that actually matter for you. New listings hit your inbox the moment they go live. No public Zillow firehose, no homes you have already eliminated.</p>
         </div>
       </div>
 
-      <div class="proc-step">
-        <div class="proc-step-num">04</div>
-        <div class="proc-step-content">
-          <h3>Make a smart offer.</h3>
-          <p>When you find the one, I help you write an offer that protects your interests and gives you the best shot at acceptance. Comps, contingencies, terms, all explained, not just executed.</p>
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">04</div>
+          <h3>Tour the right homes.</h3>
+          <p>We walk homes together. I tell you what is wrong with each one, not just what is right. Roof age, drainage, neighborhood quirks, future-resale concerns. The honest version is the only version that helps.</p>
         </div>
       </div>
 
-      <div class="proc-step">
-        <div class="proc-step-num">05</div>
-        <div class="proc-step-content">
-          <h3>Close clean.</h3>
-          <p>Inspection, appraisal, lender coordination, title work. I stay on top of the timeline so the only surprise on closing day is the keys.</p>
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">05</div>
+          <h3>Make the right offer.</h3>
+          <p>When you find the one, I prepare a comps-backed offer that protects your interests and gives you the best shot at acceptance. Contingencies that matter, terms that are clean, no boilerplate that creates risk later.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">06</div>
+          <h3>Inspection + due diligence.</h3>
+          <p>Inspection coordinated with a Dublin-area inspector I trust. We read the report together, decide what is real, what is cosmetic, and what is worth pushing back on with the seller.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">07</div>
+          <h3>Appraisal + final approval.</h3>
+          <p>Appraisal coordinated, lender on track, title work running. I keep all three lanes moving in parallel and stay on top of every deadline so nothing slips in the final 30 days.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">08</div>
+          <h3>Close + get the keys.</h3>
+          <p>Walk-through the day before closing, signing at the closing table, keys in your hand. I show up. Most clients walk out of closing as friends, and most of my future business comes from this moment.</p>
         </div>
       </div>
 
@@ -1155,54 +1396,129 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
 </section>
 <!-- ============ END SERVICES DETAIL ============ -->
 
-<!-- ============ FULL-BLEED IMAGE BREAK: IMG-BREAK-QUOTE ============ -->
-<section class="image-break" data-bg-hint="family-keys-handoff-new-home-front-door-warm" data-bg-size="1920x1080" style="background-image: linear-gradient(rgba(26,20,22,0.55), rgba(26,20,22,0.45)), url('https://images.unsplash.com/photo-1758523671893-0ba21cf4260f?w=1920&h=1080&q=75&fit=crop&auto=format');">
+<!-- ============ FULL-BLEED PARALLAX BREAK (chunk 2D) ============ -->
+<section class="image-break parallax-break" style="background-image: linear-gradient(rgba(26,20,22,0.55), rgba(26,20,22,0.45)), url('https://images.unsplash.com/photo-1758523671893-0ba21cf4260f?w=1920&h=1080&q=75&fit=crop&auto=format');">
   <div class="image-break-content">
     <span class="eyebrow">The Buying Moment</span>
     <h2><em>"The keys-in-hand moment is the goal. The work before it is what makes it possible."</em></h2>
     <p style="color: rgba(255,255,255,0.75); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 18px;">— Pamela</p>
   </div>
 </section>
-<!-- ============ END FULL-BLEED IMAGE BREAK ============ -->
+<!-- ============ END FULL-BLEED PARALLAX BREAK ============ -->
 
-<!-- ============ COMMUNITIES PREVIEW: COMM-3-MINI ============ -->
+<!-- ============ SEARCH BY PROPERTY TYPE (chunk 2D) ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Search by Property Type</span>
+      <h2>Looking for something <em>specific?</em></h2>
+      <p class="section-sub">Filter the Dublin GA MLS by the kind of property you actually want. Single family, new construction, homes with land, or raw land for sale.</p>
+    </div>
+    <div class="property-type-grid">
+
+      <a href="07-home-search.html" class="property-type-card" style="background-image: linear-gradient(rgba(26, 20, 22, 0.15), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=900&q=75&fit=crop&auto=format');">
+        <div class="property-type-card-content">
+          <span class="property-type-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </span>
+          <h3>Single Family Homes</h3>
+          <p>Established Dublin neighborhoods, in-town craftsman, and family-sized homes across Laurens County.</p>
+          <span class="property-type-cta">Browse single family &rarr;</span>
+        </div>
+      </a>
+
+      <a href="07-home-search.html" class="property-type-card" style="background-image: linear-gradient(rgba(26, 20, 22, 0.15), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=900&q=75&fit=crop&auto=format');">
+        <div class="property-type-card-content">
+          <span class="property-type-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l4-4 4 4v12"/><path d="M13 20V12l4-2 4 2v8"/><path d="M9 20v-8"/></svg>
+          </span>
+          <h3>New Construction</h3>
+          <p>Newly built homes on the edges of Dublin and in growing Laurens County subdivisions, ready or coming soon.</p>
+          <span class="property-type-cta">Browse new construction &rarr;</span>
+        </div>
+      </a>
+
+      <a href="07-home-search.html" class="property-type-card" style="background-image: linear-gradient(rgba(26, 20, 22, 0.15), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=900&q=75&fit=crop&auto=format');">
+        <div class="property-type-card-content">
+          <span class="property-type-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V13l5-4 5 4v8"/><path d="M9 14h2"/><path d="M14 11l3-2 4 2v10h-7"/></svg>
+          </span>
+          <h3>Homes with Land</h3>
+          <p>Half-acre to multi-acre properties in Dudley, Dexter, Rentz, and Cadwell. Privacy, space, and Dublin still within reach.</p>
+          <span class="property-type-cta">Browse homes with land &rarr;</span>
+        </div>
+      </a>
+
+      <a href="07-home-search.html" class="property-type-card" style="background-image: linear-gradient(rgba(26, 20, 22, 0.15), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=900&q=75&fit=crop&auto=format');">
+        <div class="property-type-card-content">
+          <span class="property-type-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 18 8 12 14 16 22 8"/><line x1="2" y1="22" x2="22" y2="22"/><circle cx="8" cy="12" r="1"/><circle cx="14" cy="16" r="1"/></svg>
+          </span>
+          <h3>Land for Sale</h3>
+          <p>Raw acreage, family-land tracts, and buildable lots across Laurens County. Bring your builder or use mine.</p>
+          <span class="property-type-cta">Browse land for sale &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- ============ END SEARCH BY PROPERTY TYPE ============ -->
+
+<!-- ============ COMMUNITIES PREVIEW: COMM-6-SQUARE (chunk 2D) ============ -->
 <section class="section">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow">Where Buyers Are Looking</span>
       <h2>Communities <em>worth exploring.</em></h2>
+      <p class="section-sub">Six places Pamela works every week. Click any to see neighborhood detail and a live homes-for-sale search.</p>
     </div>
-    <div class="comm-grid">
+    <div class="comm-square-grid">
 
-      <div class="comm-card">
-        <div class="comm-img dublin" data-image-hint="dublin-georgia-historic-downtown-southern"></div>
-        <div class="comm-body">
-          <h3>Dublin, GA</h3>
-          <p>The county hub. Established neighborhoods, new construction on the edges, walkable downtown stretches with shops and restaurants.</p>
-          <a href="05-communities.html" class="link">Explore</a>
+      <a href="05-communities.html#dublin" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1769184618850-878e95c2e423?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">Dublin, GA</span>
+          <span class="comm-square-meta">Downtown + established neighborhoods</span>
         </div>
-      </div>
+      </a>
 
-      <div class="comm-card">
-        <div class="comm-img dudley" data-image-hint="dudley-georgia-rural-quiet-georgia-home"></div>
-        <div class="comm-body">
-          <h3>Dudley, GA</h3>
-          <p>Quiet, rural-leaning, just minutes from Dublin. Land, privacy, and a slower pace without the long commute.</p>
-          <a href="05-communities.html" class="link">Explore</a>
+      <a href="05-communities.html#dudley" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">Dudley, GA</span>
+          <span class="comm-square-meta">Homes with land, quiet setting</span>
         </div>
-      </div>
+      </a>
 
-      <div class="comm-card">
-        <div class="comm-img dexter" data-image-hint="dexter-georgia-country-property-acreage"></div>
-        <div class="comm-body">
-          <h3>Dexter, GA</h3>
-          <p>Open space and acreage with the conveniences of Dublin a short drive away. A common pick for buyers wanting room to breathe.</p>
-          <a href="05-communities.html" class="link">Explore</a>
+      <a href="05-communities.html#dexter" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1505843795480-5cfb3c03f6ff?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">Dexter, GA</span>
+          <span class="comm-square-meta">Country acreage, rural pace</span>
         </div>
-      </div>
+      </a>
+
+      <a href="05-communities.html#rentz" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">Rentz, GA</span>
+          <span class="comm-square-meta">Farmhouse + acreage, south Laurens</span>
+        </div>
+      </a>
+
+      <a href="05-communities.html#cadwell" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">Cadwell, GA</span>
+          <span class="comm-square-meta">Privacy + family land</span>
+        </div>
+      </a>
+
+      <a href="05-communities.html#east-dublin" class="comm-square" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.78)), url('https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&h=800&q=75&fit=crop&auto=format');">
+        <div class="comm-square-label">
+          <span class="comm-square-name">East Dublin, GA</span>
+          <span class="comm-square-meta">River-side + commuter access</span>
+        </div>
+      </a>
 
     </div>
-    <div class="text-center">
+    <div class="text-center" style="margin-top: 48px;">
       <a href="05-communities.html" class="link">See all communities</a>
     </div>
   </div>
