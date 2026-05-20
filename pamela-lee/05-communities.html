@@ -1266,6 +1266,156 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   background: var(--dark);
   color: var(--cream);
 }
+
+/* ============ MODAL EXTRAS (Pamela's take, local context, resources) ============ */
+.comm-modal-quote {
+  margin: 28px 0;
+  padding: 22px 26px;
+  background: var(--cream-deep);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.comm-modal-quote p {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--dark);
+  margin: 0 0 10px;
+}
+.comm-modal-quote cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.comm-modal-context {
+  margin: 28px 0 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.comm-modal-context > h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 22px;
+}
+.comm-modal-context-item {
+  margin-bottom: 22px;
+}
+.comm-modal-context-item:last-child {
+  margin-bottom: 0;
+}
+.comm-modal-context-item h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--dark);
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+.comm-modal-context-item p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+.comm-modal-subareas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.comm-modal-subareas li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  padding: 6px 0;
+  border-bottom: 1px dotted rgba(26, 20, 22, 0.1);
+}
+.comm-modal-subareas li:last-child { border-bottom: none; }
+.comm-modal-subareas li strong { color: var(--dark); font-weight: 600; }
+.comm-modal-faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.comm-modal-faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 4px;
+}
+.comm-modal-faq-item summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  list-style: none;
+  padding-right: 24px;
+  position: relative;
+  outline: none;
+}
+.comm-modal-faq-item summary::-webkit-details-marker { display: none; }
+.comm-modal-faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+.comm-modal-faq-item[open] summary::after { content: '\2013'; }
+.comm-modal-faq-item summary:hover { color: var(--accent); }
+.comm-modal-faq-item p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 10px 0 0;
+}
+.comm-modal-resources {
+  margin: 24px 0 20px;
+  padding: 20px 22px;
+  background: rgba(26, 20, 22, 0.04);
+  border-radius: 4px;
+}
+.comm-modal-resources h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dark);
+  margin: 0 0 12px;
+}
+.comm-modal-resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+.comm-modal-resource-list li {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.comm-modal-resource-list a {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: color 0.3s ease;
+}
+.comm-modal-resource-list a:hover { color: var(--primary-dark); }
+
 @media (max-width: 700px) {
   .comm-modal { width: 96vw; max-height: 94vh; border-radius: 4px; }
   .comm-modal-hero { padding: 56px 24px 32px; min-height: 220px; }
@@ -1428,12 +1578,68 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>Dublin is the heart of Laurens County, the city that anchors everything else around it. Downtown carries the historic blocks, the courthouse, the local restaurants, and the small-business stretches that give the city its character. Just past downtown, established neighborhoods like the Hillcrest corridor and the streets near the country club offer the kind of mature, leafy living that the metro headlines do not cover.</p>
     <p>On the edges, new construction subdivisions are growing into the demand from buyers relocating from Atlanta, Macon, and Warner Robins. The mix means a Dublin GA home search can include a 1950s craftsman, a 2024 build with the latest finishes, or a half-acre property on the city limits, all in the same week.</p>
+        <blockquote class="comm-modal-quote">
+      <p>Dublin is my whole life. I know which streets have the right tree cover, which neighborhoods just had a generation roll over, and where the next quiet street is going to start trending. If you are buying inside Dublin proper, this is where my deepest local knowledge lives.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>Dublin City Schools serves residences inside Dublin city limits, K through 12 on a single-district campus footprint. Outside the city limits, Laurens County Schools picks up. Private options include Trinity Christian School and a small handful of parochial choices.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Downtown historic district, Theatre Dublin, Carl Vinson VA Medical Center, Laurens County Hospital, Dublin Country Club, Hillcrest Parkway shopping corridor, and Carl Vinson Memorial Park.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Hillcrest Corridor:</strong> Established neighborhoods near the country club, shopping, and main retail.</li>
+        <li><strong>Downtown Historic District:</strong> Walkable to restaurants, courthouse, and the Theatre Dublin block.</li>
+        <li><strong>New construction edges:</strong> Newer subdivisions on the city limits, popular with relocations.</li>
+        <li><strong>Near-hospital streets:</strong> Mature trees, short walks to the medical center and primary shopping.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>What's the difference between Dublin City and Laurens County schools?</summary>
+        <p>Dublin City Schools is its own district that serves residences inside city limits. Outside city limits, Laurens County Schools applies. The line matters when you are house-hunting in border subdivisions, ask before you offer.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>Is there much new construction in Dublin proper?</summary>
+        <p>Yes, more than people expect. New subdivisions are growing on the edges of the city limits and just past, driven by relocations from Atlanta, Macon, and Warner Robins.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>Which neighborhoods are walkable to downtown?</summary>
+        <p>The streets immediately north and east of the courthouse are the most walkable. A few blocks past that, you need a car, but the in-town stretches are the closest thing Laurens County has to walkable living.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Population:</strong> ~16,000 city · Laurens County ~48,000</li>
       <li><strong>Commute:</strong> Macon ~1 hr · Warner Robins ~90 min · Savannah ~2 hrs</li>
       <li><strong>What you get here:</strong> Established neighborhoods, walkable downtown, new construction on the edges, hospital + main shopping</li>
       <li><strong>Best for:</strong> Buyers who want everything in one city, in-town life, or a primary employer base nearby</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.dublincitygovga.com/" target="_blank" rel="noopener">City of Dublin official site</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.dublincityschools.us/" target="_blank" rel="noopener">Dublin City Schools</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-dublin-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dublin &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
@@ -1453,12 +1659,63 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>Dudley sits about 8 miles west of Dublin along Highway 80, in the kind of quiet small-town setting most buyers picture when they say "homes with land outside Dublin." Quarter-acre starter homes are rare here. Most Dudley GA real estate sits on a half-acre minimum, with full-acre, 5-acre, and 10 to 50-acre family tracts showing up on the MLS regularly.</p>
     <p>The trade-off is straightforward. You get land, privacy, and a slower pace, and you keep Dublin within a 10-minute drive for groceries, hospital, schools, and main shopping. The Hwy 80 corridor is the connector. Most Dudley buyers I work with have either grown up here and are coming back, or are commuting professionals who want acreage without the long drive.</p>
+        <blockquote class="comm-modal-quote">
+      <p>Dudley is the answer for buyers who say 'I want land, but I do not want a 30-minute drive to anything.' Eight miles, ten minutes, and you are in a real piece of country with the conveniences of Dublin still around the corner.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>Laurens County Schools serves Dudley residences. Most students are bused to county campuses; the geography is rural, so be ready for school-bus routes that work around farm roads.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Highway 80 corridor for direct Dublin access, family farms and pasture, easy 10-minute trip to Hillcrest Parkway shopping, the hospital, and Dublin's main amenities.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Highway 80 corridor:</strong> Main artery in and out, properties along here are commute-friendly.</li>
+        <li><strong>Inner Dudley neighborhoods:</strong> Established small-town pockets near the town center.</li>
+        <li><strong>Outer acreage tracts:</strong> Larger family-land parcels, 5+ acres, with longer driveways.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>How long is the commute to Dublin?</summary>
+        <p>Ten minutes via Highway 80 to the Hillcrest corridor. Most Dudley buyers I work with do not think of it as a real commute, they think of it as a slightly longer trip to Kroger.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>Can I find homes with land under 5 acres?</summary>
+        <p>Yes, plenty. The Dudley market runs from half-acre lots near town up to 50-acre family tracts. The 1 to 3 acre range is the sweet spot if you want privacy without the land becoming a full-time job.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Distance to Dublin:</strong> ~8 miles · ~10 minutes via Hwy 80</li>
       <li><strong>Typical lot size:</strong> 0.5 to 5 acres, with 10-50 acre family parcels regularly available</li>
       <li><strong>What you get here:</strong> Real land, established country properties, quiet roads, mature trees</li>
       <li><strong>Best for:</strong> Buyers who want acreage without a long commute, families looking for a slower pace</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.laurenscoga.org/" target="_blank" rel="noopener">Laurens County government</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.laurens.k12.ga.us/" target="_blank" rel="noopener">Laurens County School District</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-dudley-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dudley &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
@@ -1478,12 +1735,63 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>Dexter is a quiet small town in the northern half of Laurens County, surrounded by open Georgia pine and family farmland. Most of the Dexter GA real estate market is acreage properties, country homes set back from the road, and the kind of land tracts that get passed down through families rather than turning over on the MLS every few years.</p>
     <p>If you are looking for a Dublin GA home search that opens up to wider lots and a quieter daily pace, Dexter is one of the first places I will show you. Dublin is a short drive for everything you need, the schools, hospital, main shopping. Dexter is where you come home and unwind.</p>
+        <blockquote class="comm-modal-quote">
+      <p>I send a lot of buyers to Dexter who started off looking only in Dublin. Once they walk a few acres up here and hear the quiet, it is hard to go back. It is the easiest lifestyle upgrade I can make in this market.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>Laurens County Schools serves Dexter residences. Bus routes connect to the county campuses, which are a short drive south.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Pine and pasture landscape, country roads with low traffic, ~15 minutes to all of Dublin's main amenities (hospital, shopping, restaurants).</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Established town center:</strong> Smaller, older homes around the town's commercial strip.</li>
+        <li><strong>Acreage tracts:</strong> Most of the market, properties set well back from the road on 2+ acres.</li>
+        <li><strong>Family-farm holdings:</strong> Larger multi-acre parcels, sometimes including barns or outbuildings.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>What's the typical lot size in Dexter?</summary>
+        <p>Most of the market is on 2+ acres. Half-acre lots exist but are rarer here than in Dublin. Plan to drive on a road with a few neighbors, not a sidewalk.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>How far is Dexter from Dublin amenities?</summary>
+        <p>About 15 minutes north to the Hillcrest Parkway corridor, hospital, and the bulk of Dublin's services. Easy when you need them, far enough away when you do not.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Distance to Dublin:</strong> ~15 minutes</li>
       <li><strong>Typical lot size:</strong> Acreage homes standard, larger tracts available</li>
       <li><strong>What you get here:</strong> Open space, country atmosphere, family-land properties, no traffic</li>
       <li><strong>Best for:</strong> Buyers who prioritize land + privacy and want a small-town feel</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.laurenscoga.org/" target="_blank" rel="noopener">Laurens County government</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.laurens.k12.ga.us/" target="_blank" rel="noopener">Laurens County School District</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-dexter-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dexter &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
@@ -1503,12 +1811,63 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>Rentz is one of Laurens County's smaller incorporated communities, tucked into the southern half of the county along Highway 257, about 12 miles south of Dublin. The town itself is small, fewer than a few hundred residents inside the city limits, but the broader Rentz GA real estate market wraps a much wider rural ZIP that pulls in farmhouse property, family land, and steady acreage homes that buyers miss when they only search Dublin proper.</p>
     <p>What makes Rentz interesting strategically is the position. You are 12 minutes from Dublin via Hwy 257, which keeps hospital, schools, and main retail accessible. You are also a short drive from I-16, which puts Macon and Savannah on practical reach. Most Rentz buyers I see closing want more land, more privacy, and less hustle, and they would rather drive 12 minutes for groceries than pay Dublin prices for a postage-stamp lot.</p>
+        <blockquote class="comm-modal-quote">
+      <p>Rentz is one of the best-kept value secrets in Laurens County. Buyers who do their homework and look outside the obvious Dublin search end up with twice the land for the same money, and a 12-minute drive that nobody complains about once they are settled.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>Laurens County Schools serves Rentz residences. Most students bus to county campuses to the north.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Highway 257 corridor for Dublin commute, I-16 access for Macon and Savannah, surrounding farmland and pasture, Rentz Memorial Library, established small-town center.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Highway 257 corridor:</strong> Main connector to Dublin, where most of the active listings sit.</li>
+        <li><strong>Town center:</strong> Small core of older established homes around the historic stretch.</li>
+        <li><strong>Rural acreage parcels:</strong> Wider lots out toward the county line, farmhouse-and-pasture configurations.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>How does Rentz compare to Dudley for acreage?</summary>
+        <p>Both are acreage-friendly. Rentz tends to come in at a slightly better dollar-per-acre and is closer to I-16 for buyers commuting to Macon or Savannah. Dudley is closer to Dublin and has slightly more inventory turnover.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>Is I-16 access easy from Rentz?</summary>
+        <p>Yes. You can be on I-16 in a few minutes, which puts Macon at roughly 45 minutes and Savannah around 90. A lot of Rentz buyers use that interstate access as a key part of their decision.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Distance to Dublin:</strong> ~12 miles · ~12 minutes via Hwy 257</li>
       <li><strong>Highway access:</strong> I-16 within reach for Macon + Savannah commutes</li>
       <li><strong>What you get here:</strong> Farmhouse-and-pasture setups, real acreage, best value-per-acre in the area</li>
       <li><strong>Best for:</strong> Buyers who want land + a short hop to bigger markets without paying Dublin proper prices</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.laurenscoga.org/" target="_blank" rel="noopener">Laurens County government</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.laurens.k12.ga.us/" target="_blank" rel="noopener">Laurens County School District</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-rentz-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Rentz &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
@@ -1528,12 +1887,63 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>Cadwell sits in the southern stretch of Laurens County, a small incorporated community of a few hundred residents along Highway 117. The wider rural ZIP pulls in family land, pasture, and the kind of acreage homes that almost never make it onto the front page of a Zillow search. If you are searching Cadwell GA homes for sale, you have already done some homework. This is not a market for casual scrollers, it is a market for buyers who know exactly what they want.</p>
     <p>The character of Cadwell is privacy and small-community closeness. Most everyone knows most everyone. Lots are large by Dublin standards, drives are long-and-straight, and the pace is unmistakably southern-rural. Dublin is roughly 20 minutes by car, close enough to keep the city services in reach without bringing the city to your door.</p>
+        <blockquote class="comm-modal-quote">
+      <p>Cadwell is not on most buyers' first list, but it ends up being the last list for the ones who actually live there. Real privacy, real community, and the kind of land you keep in the family for three generations.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>Laurens County Schools serves Cadwell residences. Bus routes connect to county campuses; the geography is rural so plan accordingly.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Highway 117 corridor, family farmland, small-community center, ~20 minutes to all Dublin amenities.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Highway 117 corridor:</strong> Primary connector to Dublin, where most listings tie back.</li>
+        <li><strong>Town center:</strong> Small historic stretch with a few established homes nearby.</li>
+        <li><strong>Family land parcels:</strong> Wider rural tracts in the broader ZIP, often passed down rather than turning over.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>Is there new construction in Cadwell?</summary>
+        <p>Rare. Most of the Cadwell market is established homes on family land. If new construction is your priority, Dublin and East Dublin are the better targets.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>How long is the drive to Dublin?</summary>
+        <p>About 20 minutes via Highway 117. Close enough that Dublin services stay accessible, far enough that you keep the quiet.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Distance to Dublin:</strong> ~20 minutes via Hwy 117</li>
       <li><strong>What you get here:</strong> Real privacy, family land, the kind of acreage that holds value</li>
       <li><strong>What is rare:</strong> Newer construction is uncommon, most homes are established</li>
       <li><strong>Best for:</strong> Buyers who want privacy + community, often coming home or settling near family</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.laurenscoga.org/" target="_blank" rel="noopener">Laurens County government</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.laurens.k12.ga.us/" target="_blank" rel="noopener">Laurens County School District</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-cadwell-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Cadwell &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
@@ -1553,12 +1963,63 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="comm-modal-body">
     <p>East Dublin sits across the Oconee River from downtown Dublin, with its own grain of personality. The river drives a lot of the character here, river-side properties, the access to fishing and boating, and a real sense of being just-outside-of-town without being far from it. Practically speaking, you are minutes from downtown Dublin, the hospital, and the Hillcrest shopping stretch.</p>
     <p>East Dublin GA real estate ranges from established neighborhoods to riverfront properties to commuter-friendly homes that pull in workers heading to Dublin itself, Macon, or Warner Robins. It is a popular area for buyers who want river access or the slight psychological shift of being on the other side of the bridge while still keeping everything inside a 10-minute drive.</p>
+        <blockquote class="comm-modal-quote">
+      <p>East Dublin gets undersold. You are three minutes from downtown Dublin, you have river-side options nobody else has, and the neighborhoods carry a different rhythm than the Hillcrest corridor. Worth a serious look.</p>
+      <cite>&mdash; Pamela Lee</cite>
+    </blockquote>
+
+    <div class="comm-modal-context">
+      <h3>The local context</h3>
+
+      <div class="comm-modal-context-item">
+        <h4>Schools</h4>
+        <p>East Dublin residences are typically served by Laurens County Schools. The line between Dublin City and Laurens County districts runs near the river, so verify the address before you offer if school district matters to you.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>What's nearby</h4>
+        <p>Oconee River access, East Dublin Park, Heart of Georgia Technical College area, quick bridge to downtown Dublin, commuter routes for Macon and Warner Robins.</p>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Sub-areas and neighborhoods</h4>
+        <ul class="comm-modal-subareas">
+        <li><strong>Riverfront lots:</strong> Properties with direct or near-direct Oconee River access, the most distinctive product in this market.</li>
+        <li><strong>Established East Dublin neighborhoods:</strong> Older residential pockets just across the bridge.</li>
+        <li><strong>Commuter corridors:</strong> Homes positioned for quick US-441 / I-16 access toward Macon and Warner Robins.</li>
+        </ul>
+      </div>
+
+      <div class="comm-modal-context-item">
+        <h4>Quick questions</h4>
+        <div class="comm-modal-faq">
+      <details class="comm-modal-faq-item">
+        <summary>How is East Dublin different from Dublin proper?</summary>
+        <p>Geographically, you are across the Oconee River. Practically, you get a slightly different inventory mix (more riverfront, more commuter-positioned) and a quieter feel, while staying minutes from downtown.</p>
+      </details>
+      <details class="comm-modal-faq-item">
+        <summary>Are there river-access properties?</summary>
+        <p>Yes. East Dublin holds most of the Oconee-adjacent inventory in the area. Direct-frontage lots are rare but they do come up, and they are worth waiting for if river living is the priority.</p>
+      </details>
+        </div>
+      </div>
+    </div>
+
     <ul class="comm-modal-facts">
       <li><strong>Distance to Dublin:</strong> Across the bridge, ~5 minutes to downtown</li>
       <li><strong>River access:</strong> Oconee riverfront properties available</li>
       <li><strong>What you get here:</strong> Mix of established homes + riverside lots, easy commuter access</li>
       <li><strong>Best for:</strong> Buyers who want river access or quick Dublin access in a slightly different neighborhood mix</li>
     </ul>
+        <div class="comm-modal-resources">
+      <h4>Helpful local resources</h4>
+      <ul class="comm-modal-resource-list">
+        <li><a href="https://www.laurenscoga.org/" target="_blank" rel="noopener">Laurens County government</a></li>
+        <li><a href="https://www.dublin-georgia.com/" target="_blank" rel="noopener">Dublin-Laurens County Chamber of Commerce</a></li>
+        <li><a href="https://www.laurens.k12.ga.us/" target="_blank" rel="noopener">Laurens County School District</a></li>
+      </ul>
+    </div>
+
     <div class="comm-modal-cta-row">
       <a href="homes-for-sale-in-east-dublin-ga.html" class="comm-modal-cta-primary">Explore homes for sale in East Dublin &rarr;</a>
       <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
