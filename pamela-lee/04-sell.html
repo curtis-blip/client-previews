@@ -1093,6 +1093,165 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
 @media (max-width: 520px) {
   .mkt-grid { grid-template-columns: 1fr; }
 }
+
+/* ============ ALTERNATING PROCESS ROWS (chunk 2E) ============ */
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 14px auto 0;
+}
+.proc-alt {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  margin-top: 48px;
+}
+.proc-alt-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.proc-alt-row.proc-alt-reverse {
+  grid-template-columns: 1fr 1.05fr;
+}
+.proc-alt-row.proc-alt-reverse .proc-alt-image {
+  order: 2;
+}
+.proc-alt-image {
+  aspect-ratio: 4 / 3;
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 14px 40px rgba(26, 20, 22, 0.10);
+}
+.proc-alt-text { padding: 8px 0; }
+.proc-alt-num {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 3.25rem;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 14px;
+}
+.proc-alt-text h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.625rem;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 14px;
+}
+.proc-alt-text p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .proc-alt { gap: 56px; }
+  .proc-alt-row,
+  .proc-alt-row.proc-alt-reverse { grid-template-columns: 1fr; gap: 24px; }
+  .proc-alt-row.proc-alt-reverse .proc-alt-image { order: 0; }
+  .proc-alt-num { font-size: 2.5rem; }
+}
+
+/* ============ MID-PAGE STATS SECTION (chunk 2E) ============ */
+.sell-stats-section {
+  background: var(--dark);
+  color: #fff;
+  padding: clamp(64px, 9vw, 110px) 0;
+}
+.sell-stats-section .section-head h2 {
+  color: #fff;
+}
+.sell-stats-section .section-head h2 em {
+  color: var(--primary);
+}
+.sell-stats-section .section-head .eyebrow {
+  color: var(--primary);
+}
+.sell-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  margin-top: 40px;
+  text-align: center;
+}
+.sell-stat {
+  padding: 24px 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sell-stat:first-child {
+  border-left: none;
+}
+.sell-stat-num {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  color: var(--primary);
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+.sell-stat-label {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  .sell-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .sell-stat { border-left: none; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 22px; }
+  .sell-stat:first-child, .sell-stat:nth-child(2) { border-top: none; padding-top: 24px; }
+}
+@media (max-width: 520px) {
+  .sell-stats-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ HOME VALUATION CTA IMAGE-RIGHT (chunk 2E) ============ */
+.val-cta-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 16px 44px rgba(26, 20, 22, 0.12);
+}
+.val-cta-image-badge {
+  position: absolute;
+  inset: auto auto 24px 24px;
+  background: var(--dark);
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.val-cta-image-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.val-cta-image-num {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.75rem;
+  color: #fff;
+  line-height: 1;
+}
 </style>
 
 <!-- ============ HERO-GUIDE: HERO-GUIDE-DARK ============ -->
@@ -1103,70 +1262,116 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   </div>
 </section>
 
-<!-- ============ STATS BAR: STAT-SELLER-OVERLAP ============ -->
-<section class="stats-bar">
-  <div class="stats-grid">
-    <div>
-      <div class="stat-num">30+ Years</div>
-      <div class="stat-label">Local Roots</div>
+<!-- ============ PROCESS: PROC-8-ALTERNATING (chunk 2E) ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Selling Process</span>
+      <h2>Eight steps from <em>first conversation to closing.</em></h2>
+      <p class="section-sub">Selling a home in Dublin, GA is a sequence of decisions, not a single one. Here is what working with Pamela Lee Realty as your listing broker looks like.</p>
     </div>
-    <div>
-      <div class="stat-num">40+ ZIPs</div>
-      <div class="stat-label">Across Laurens County</div>
-    </div>
-    <div>
-      <div class="stat-num">Same-Day</div>
-      <div class="stat-label">Response Time</div>
-    </div>
-    <div>
-      <div class="stat-num">Top-Producing</div>
-      <div class="stat-label">Dublin GA Market</div>
+
+    <div class="proc-alt">
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">01</div>
+          <h3>Real comparative market analysis.</h3>
+          <p>Pricing is the most important decision in the listing. We run a real CMA using actual recent sales in your specific Dublin neighborhood, current inventory, and the condition of your home. Not a Zillow number, a number you can defend.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161df9d8?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">02</div>
+          <h3>Walk-through + prep plan.</h3>
+          <p>Before we list, we walk through what to fix, what to leave, and what to stage. I am honest about what matters in the Dublin market and what does not. Most homes need less work than people think.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">03</div>
+          <h3>Professional photography + staging.</h3>
+          <p>Bright, well-composed photos taken at the right time of day. Drone where it helps. Staging input where it earns the cost. Buyers swipe through Zillow on instinct, the photos either stop them or they do not.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">04</div>
+          <h3>List on MLS + write the copy.</h3>
+          <p>Listing description written for serious Dublin GA buyers. Specific, accurate, and honest about what the home is. No fluff that backfires at the showing.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1611605698335-8b1569810432?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">05</div>
+          <h3>Cross-platform marketing.</h3>
+          <p>Listed on MLS, syndicated to Zillow and Realtor.com, pushed through my Facebook, Instagram, and YouTube channels, and shared with my buyer-agent network across Laurens County and the surrounding markets. The first 14 days carry the listing.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">06</div>
+          <h3>Showings + feedback.</h3>
+          <p>I coordinate every showing, follow up with buyer's agents the same day, and report feedback to you weekly. If the feedback patterns suggest a pricing or photography adjustment, we adjust early instead of waiting.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">07</div>
+          <h3>Negotiate the offer.</h3>
+          <p>When offers come in, we evaluate them side by side. Price is one factor. Terms, contingencies, financing strength, and closing timeline matter just as much. I show you the trade-offs and recommend the path to the cleanest close at the highest net.</p>
+        </div>
+      </div>
+
+      <div class="proc-alt-row proc-alt-reverse">
+        <div class="proc-alt-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-1696413565d3?w=900&h=700&q=75&fit=crop&auto=format');"></div>
+        <div class="proc-alt-text">
+          <div class="proc-alt-num">08</div>
+          <h3>Close clean.</h3>
+          <p>Inspection responses, appraisal coordination, repair negotiations, title work, closing prep. I stay on top of every deadline so nothing slips in the final 30 days. By closing day, the only thing left is the signing.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS: PROC-5-VERTICAL ============ -->
-<section class="section proc-wrap">
+<!-- ============ STATS SECTION (mid-page, chunk 2E) ============ -->
+<section class="sell-stats-section">
   <div class="container">
-    <div class="section-head sec-head">
-      <span class="eyebrow">The Selling Process</span>
-      <h2>Five steps from <em>list to sold.</em></h2>
+    <div class="section-head">
+      <span class="eyebrow">By the Numbers</span>
+      <h2>What working with <em>Pamela Lee Realty</em> looks like.</h2>
     </div>
-    <div class="proc-list">
-      <div class="proc-step">
-        <div class="proc-num">01</div>
-        <div class="proc-content">
-          <h3>Set the right price.</h3>
-          <p>Pricing is the most important decision in the listing. We run a real comparative market analysis using actual recent sales in your specific neighborhood, not a Zillow number. The right list price brings the right buyers and protects your equity when you sell your home in Dublin GA.</p>
-        </div>
+    <div class="sell-stats-grid">
+      <div class="sell-stat">
+        <div class="sell-stat-num">Born</div>
+        <div class="sell-stat-label">and raised in Dublin, GA</div>
       </div>
-      <div class="proc-step">
-        <div class="proc-num">02</div>
-        <div class="proc-content">
-          <h3>Prep the home.</h3>
-          <p>Before we list, we walk through what to fix, what to leave, and what to stage. I'm honest about what matters in the Dublin market and what doesn't. Most homes need less work than people think.</p>
-        </div>
+      <div class="sell-stat">
+        <div class="sell-stat-num">40+</div>
+        <div class="sell-stat-label">ZIP codes across Laurens County</div>
       </div>
-      <div class="proc-step">
-        <div class="proc-num">03</div>
-        <div class="proc-content">
-          <h3>Market it well.</h3>
-          <p>Professional photography, MLS listing written to attract serious buyers, exposure across the platforms where Dublin buyers actually look (Zillow, Realtor.com, social, my own network). Open houses if the property warrants it.</p>
-        </div>
+      <div class="sell-stat">
+        <div class="sell-stat-num">Same-Day</div>
+        <div class="sell-stat-label">response on every inquiry</div>
       </div>
-      <div class="proc-step">
-        <div class="proc-num">04</div>
-        <div class="proc-content">
-          <h3>Negotiate the offer.</h3>
-          <p>When offers come in, we evaluate them together. Price is one factor. Terms, contingencies, financing strength, and timeline matter just as much. I'll show you the trade-offs and recommend the path that gets you the cleanest close.</p>
-        </div>
-      </div>
-      <div class="proc-step">
-        <div class="proc-num">05</div>
-        <div class="proc-content">
-          <h3>Close clean.</h3>
-          <p>Inspection responses, appraisal coordination, repairs, title work, closing prep. I stay on top of the timeline so you don't have to chase anyone. By closing day, all the work is already done.</p>
-        </div>
+      <div class="sell-stat">
+        <div class="sell-stat-num">Top-Producing</div>
+        <div class="sell-stat-label">in the Dublin GA market</div>
       </div>
     </div>
   </div>
@@ -1202,10 +1407,10 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
     </div>
     <div class="mkt-card">
       <div class="mkt-icon">
-        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </div>
-      <h3>Open Houses, Done Right</h3>
-      <p>Scheduled when they actually pull traffic. Promoted ahead of time. I'm there in person to answer questions and represent the home.</p>
+      <h3>Social Media Marketing</h3>
+      <p>I run every listing through my Facebook, Instagram, and YouTube channels, the same audiences that follow my Dublin GA market updates daily. Reels, walk-through videos, neighbor tags, and targeted boosts to buyers actively looking in Laurens County.</p>
     </div>
   </div>
 </section>
@@ -1228,10 +1433,11 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
       <p>Before you list, you need a number you can trust. I'll prepare a free comparative market analysis using real recent sales, current competition, and the actual condition of your home. No obligation to list, no pressure follow-up. Just a real number to work from when you decide to sell your home in Dublin GA.</p>
       <a href="06-home-valuation.html" class="btn-pink">Get your free valuation</a>
     </div>
-    <div class="val-pill">
-      <span class="val-pill-eyebrow">Turnaround</span>
-      <div class="val-pill-num">48 hrs</div>
-      <div class="val-pill-label">Most Dublin valuations delivered within 48 hours of your request.</div>
+    <div class="val-cta-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=900&q=75&fit=crop&auto=format');" aria-label="Dublin GA craftsman exterior">
+      <div class="val-cta-image-badge">
+        <span class="val-cta-image-eyebrow">Turnaround</span>
+        <span class="val-cta-image-num">48 hrs</span>
+      </div>
     </div>
   </div>
 </section>
