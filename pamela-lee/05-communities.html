@@ -1029,6 +1029,246 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   text-decoration-color: var(--accent);
 }
 
+/* ============ COMMUNITY FULL-BLEED CARD GRID (chunk 2F) ============ */
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 14px auto 0;
+}
+.comm-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 40px;
+}
+.comm-fullbleed-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 24px rgba(26, 20, 22, 0.10);
+}
+.comm-fullbleed-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px rgba(26, 20, 22, 0.18);
+}
+.comm-fullbleed-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.comm-fullbleed-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.comm-fullbleed-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.comm-fullbleed-card h3 {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.05;
+  color: #fff;
+  margin: 0;
+}
+.comm-fullbleed-card p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .comm-card-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 560px) {
+  .comm-card-grid { grid-template-columns: 1fr; }
+  .comm-fullbleed-card { aspect-ratio: 16 / 11; }
+}
+
+/* ============ COMMUNITY MODALS (chunk 2F) ============ */
+.comm-modal {
+  border: none;
+  padding: 0;
+  border-radius: 6px;
+  width: min(960px, 92vw);
+  max-height: 90vh;
+  overflow: hidden;
+  background: var(--cream);
+  color: var(--text);
+  box-shadow: 0 40px 100px rgba(26, 20, 22, 0.45);
+}
+.comm-modal::backdrop {
+  background: rgba(26, 20, 22, 0.78);
+  backdrop-filter: blur(4px);
+}
+.comm-modal[open] {
+  display: flex;
+  flex-direction: column;
+  animation: commModalIn 0.28s ease-out;
+}
+@keyframes commModalIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.comm-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(26, 20, 22, 0.55);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.comm-modal-close:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(90deg);
+}
+.comm-modal-hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 64px 40px 44px;
+  color: #fff;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+}
+.comm-modal-hero-content { max-width: 640px; }
+.comm-modal-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.comm-modal-hero h2 {
+  font-family: var(--font-head);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  color: #fff;
+  margin: 0 0 8px;
+}
+.comm-modal-hero p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 540px;
+}
+.comm-modal-body {
+  padding: 36px 40px 40px;
+  overflow-y: auto;
+  flex: 1;
+}
+.comm-modal-body p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 14px;
+}
+.comm-modal-facts {
+  list-style: none;
+  padding: 18px 22px;
+  margin: 20px 0 24px;
+  background: var(--cream-deep);
+  border-radius: 4px;
+  border-left: 3px solid var(--accent);
+}
+.comm-modal-facts li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+  padding: 4px 0;
+}
+.comm-modal-facts li strong {
+  color: var(--dark);
+  letter-spacing: 0.02em;
+  margin-right: 4px;
+}
+.comm-modal-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.comm-modal-cta-primary {
+  display: inline-block;
+  padding: 14px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+.comm-modal-cta-primary:hover { background: var(--primary-dark); }
+.comm-modal-cta-secondary {
+  display: inline-block;
+  padding: 14px 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1.5px solid var(--dark);
+  color: var(--dark);
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.comm-modal-cta-secondary:hover {
+  background: var(--dark);
+  color: var(--cream);
+}
+@media (max-width: 700px) {
+  .comm-modal { width: 96vw; max-height: 94vh; border-radius: 4px; }
+  .comm-modal-hero { padding: 56px 24px 32px; min-height: 220px; }
+  .comm-modal-body { padding: 28px 24px 32px; }
+  .comm-modal-cta-row { flex-direction: column; }
+  .comm-modal-cta-primary, .comm-modal-cta-secondary { text-align: center; }
+}
+
 </style>
 </head>
 <body>
@@ -1089,216 +1329,291 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="intro-inner">
     <span class="eyebrow">The Lay of the Land</span>
     <h2>Each community here has <em>its own pull.</em></h2>
-    <p>Dublin sits at the heart of Laurens County, with smaller communities like Dudley, Dexter, and others fanning out into pasture, pine, and farmland. Each one has its own pace and its own buyer. After 30 years here, I've learned which ones fit which lives.</p>
+    <p>Dublin sits at the heart of Laurens County, with Dudley, Dexter, Rentz, Cadwell, and East Dublin fanning out into pasture, pine, and farmland. Each one has its own pace and its own buyer. A lifetime here means I know which one fits which life.</p>
   </div>
 </section>
 <!-- ============ END INTRO PARAGRAPH ============ -->
 
-<!-- ============ NAMED COMMUNITY CARDS: COMM-3-FEATURE ============ -->
-<section class="section section-alt">
-  <div class="section-head">
-    <span class="eyebrow">Featured Communities</span>
-    <h2>The places I know <em>by heart.</em></h2>
-  </div>
-  <div class="comm-feature-grid">
-
-    <!-- Card A: Dublin -->
-    <article class="comm-feature-card">
-      <div class="comm-feature-img"
-        data-image-hint="dublin-georgia-historic-downtown-southern-architecture-storefront"
-        data-image-size="800x500"
-        style="background-image: url('https://images.unsplash.com/photo-1765049526508-98ea9e35d16a?w=800&h=500&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
-      <div class="comm-feature-body">
-        <h3>Dublin, GA</h3>
-        <p>The county hub. Vibrant, growing, in the heart of Laurens County. Southern charm meets modern convenience: established neighborhoods, new construction on the edges, walkable downtown stretches with shops, dining, and healthcare. Easy access to major highways.</p>
-        <div class="comm-pills">
-          <span class="comm-pill">Est. Neighborhoods</span>
-          <span class="comm-pill">New Construction</span>
-          <span class="comm-pill">Walkable Downtown</span>
-        </div>
-        <a href="07-home-search.html" class="link">View Dublin homes</a>
-      </div>
-    </article>
-
-    <!-- Card B: Dudley -->
-    <article class="comm-feature-card">
-      <div class="comm-feature-img"
-        data-image-hint="dudley-georgia-rural-southern-home-with-land-quiet-road"
-        data-image-size="800x500"
-        style="background-image: url('https://images.unsplash.com/photo-1586982599726-11708daaceca?w=800&h=500&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
-      <div class="comm-feature-body">
-        <h3>Dudley, GA</h3>
-        <p>Quiet small-town setting just minutes from Dublin. A mix of homes-with-land, established properties, and peaceful surroundings. A good fit for buyers wanting space and privacy without giving up easy access to Dublin's amenities.</p>
-        <div class="comm-pills">
-          <span class="comm-pill">Homes with Land</span>
-          <span class="comm-pill">Rural Setting</span>
-          <span class="comm-pill">Minutes from Dublin</span>
-        </div>
-        <a href="07-home-search.html" class="link">View Dudley homes</a>
-      </div>
-    </article>
-
-    <!-- Card C: Dexter -->
-    <article class="comm-feature-card">
-      <div class="comm-feature-img"
-        data-image-hint="dexter-georgia-country-property-acreage-georgia-pine"
-        data-image-size="800x500"
-        style="background-image: url('https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&h=500&q=75&fit=crop&auto=format'); background-size: cover; background-position: center;"></div>
-      <div class="comm-feature-body">
-        <h3>Dexter, GA</h3>
-        <p>Quiet small-town atmosphere in Laurens County, a short drive from Dublin. Open space and a relaxed pace draw buyers looking for homes with land, privacy, and a more rural setting. Convenient access to Dublin amenities keeps everyday life easy.</p>
-        <div class="comm-pills">
-          <span class="comm-pill">Acreage</span>
-          <span class="comm-pill">Privacy</span>
-          <span class="comm-pill">Rural</span>
-        </div>
-        <a href="07-home-search.html" class="link">View Dexter homes</a>
-      </div>
-    </article>
-
-  </div>
-</section>
-<!-- ============ END NAMED COMMUNITY CARDS ============ -->
-
-<!-- ============ FULL-BLEED IMAGE BREAK: IMAGE-BREAK ============ -->
-<section class="image-break"
-  data-bg-hint="south-georgia-rural-pasture-pine-trees-golden-hour"
-  data-bg-size="1920x1080"
-  style="background-image: linear-gradient(rgba(26,20,22,0.55), rgba(26,20,22,0.45)), url('https://images.unsplash.com/photo-1689400119011-edb19b92faaa?w=1920&h=1080&q=75&fit=crop&auto=format');">
-  <div class="image-break-content">
-    <span class="eyebrow">Beyond the Three</span>
-    <h2><em>"There are forty more places I'll happily show you. Just ask."</em></h2>
-    <span class="image-break-attribution">— Pamela</span>
-  </div>
-</section>
-<!-- ============ END FULL-BLEED IMAGE BREAK ============ -->
-
-<!-- ============ PLACEHOLDER COMMUNITY CARDS: COMM-PLACEHOLDER-GRID ============ -->
+<!-- ============ COMMUNITY CARDS GRID (chunk 2F) ============ -->
 <section class="section">
-  <div class="section-head">
-    <span class="eyebrow">More Communities</span>
-    <h2>Coming soon: <em>six more featured pages.</em></h2>
-  </div>
-  <p class="placeholder-subhead">Pamela serves more than 40 ZIP codes across Laurens County. Six additional featured-community pages are in preparation. Until they're live, the search page below points to the home search filtered by area.</p>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Featured Communities</span>
+      <h2>Six places <em>Pamela works every week.</em></h2>
+      <p class="section-sub">Click any card to read what makes each community its own and see live homes for sale there.</p>
+    </div>
 
-  <div class="comm-placeholder-grid">
+    <div class="comm-card-grid">
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-dublin" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1769184618850-878e95c2e423?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">Laurens County</span>
+          <h3>Dublin, GA</h3>
+          <p>Downtown, established neighborhoods, new construction. The hub.</p>
+        </div>
+      </button>
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-dudley" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">Laurens County</span>
+          <h3>Dudley, GA</h3>
+          <p>Quiet, small-town. Half-acre minimum, most lots run 1-5 acres.</p>
+        </div>
+      </button>
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-dexter" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1505843795480-5cfb3c03f6ff?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">Laurens County</span>
+          <h3>Dexter, GA</h3>
+          <p>Country acreage and rural homes, a short drive from Dublin.</p>
+        </div>
+      </button>
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-rentz" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">South Laurens</span>
+          <h3>Rentz, GA</h3>
+          <p>Farmhouse and acreage along Highway 257. Best value-per-acre.</p>
+        </div>
+      </button>
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-cadwell" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">South Laurens</span>
+          <h3>Cadwell, GA</h3>
+          <p>Family land, privacy, and the kind of acreage that rarely hits Zillow.</p>
+        </div>
+      </button>
 
-    <article class="placeholder-card">
-      <div class="placeholder-img"></div>
-      <div class="placeholder-body">
-        <span class="placeholder-tag">Placeholder</span>
-        <h3>[PLACEHOLDER: Community name TBD]</h3>
-        <p>Featured page in preparation. Pamela serves this community as part of her Laurens County coverage.</p>
-        <span class="placeholder-coming">Coming soon</span>
-      </div>
-    </article>
+      <button type="button" class="comm-fullbleed-card" data-modal="modal-east-dublin" aria-haspopup="dialog" style="background-image: linear-gradient(rgba(26, 20, 22, 0.0), rgba(26, 20, 22, 0.82)), url('https://images.unsplash.com/photo-1448630360428-65456885c650?w=1200&h=900&q=75&fit=crop&auto=format');">
+        <div class="comm-fullbleed-content">
+          <span class="comm-fullbleed-eyebrow">Oconee River</span>
+          <h3>East Dublin, GA</h3>
+          <p>River-side homes, commuter-friendly, just across the bridge.</p>
+        </div>
+      </button>
 
+    </div>
   </div>
 </section>
-<!-- ============ END PLACEHOLDER COMMUNITY CARDS ============ -->
+<!-- ============ END COMMUNITY CARDS GRID ============ -->
 
-<!-- ============ CTA BANNER: CTA-1 ============ -->
+<!-- ============ CTA BANNER (chunk 2F parallax close) ============ -->
 <section class="cta-banner">
   <div class="container">
-    <span class="eyebrow">Not Sure Where to Start</span>
-    <h2><em>Tell me what you're looking for.</em></h2>
-    <p>Whether you've already picked an area or you're still trying to figure out where in Laurens County fits you, I'll help you narrow it down.</p>
+    <span class="eyebrow">Still Deciding</span>
+    <h2><em>Not sure which community fits?</em></h2>
+    <p>The right area depends on what your day-to-day life needs to look like. Tell me a little about your timeline and where you want to land, and I will narrow it down for you, in person if you are local, on the phone if you are not.</p>
     <a href="09-contact.html" class="btn-outline">Talk to Pamela</a>
   </div>
 </section>
 <!-- ============ END CTA BANNER ============ -->
 
-<!-- ============ FAQ: FAQ-1 ============ -->
-<section class="section section-alt">
-  <div class="section-head">
-    <span class="eyebrow">Area Questions</span>
-    <h2>What people ask <em>about Laurens County.</em></h2>
+<!-- ============ COMMUNITY MODALS (chunk 2F) ============ -->
+
+<dialog class="comm-modal" id="modal-dublin">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1769184618850-878e95c2e423?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">Laurens County</span>
+      <h2>Dublin, GA</h2>
+      <p>The county hub. Downtown, established neighborhoods, new construction, walkable shops.</p>
+    </div>
   </div>
-  <div class="faq-list">
-
-    <div class="faq-item">
-      <div class="faq-q">What's the difference between Dublin proper and the surrounding communities?</div>
-      <div class="faq-a">Dublin has the larger established neighborhoods, the downtown, the bigger employers, the walkable parts. Dudley, Dexter, and the smaller communities lean rural, more land per home, quieter, but a real commute to anything other than Dublin itself. The right one depends on whether you want convenience or space.</div>
+  <div class="comm-modal-body">
+    <p>Dublin is the heart of Laurens County, the city that anchors everything else around it. Downtown carries the historic blocks, the courthouse, the local restaurants, and the small-business stretches that give the city its character. Just past downtown, established neighborhoods like the Hillcrest corridor and the streets near the country club offer the kind of mature, leafy living that the metro headlines do not cover.</p>
+    <p>On the edges, new construction subdivisions are growing into the demand from buyers relocating from Atlanta, Macon, and Warner Robins. The mix means a Dublin GA home search can include a 1950s craftsman, a 2024 build with the latest finishes, or a half-acre property on the city limits, all in the same week.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Population:</strong> ~16,000 city · Laurens County ~48,000</li>
+      <li><strong>Commute:</strong> Macon ~1 hr · Warner Robins ~90 min · Savannah ~2 hrs</li>
+      <li><strong>What you get here:</strong> Established neighborhoods, walkable downtown, new construction on the edges, hospital + main shopping</li>
+      <li><strong>Best for:</strong> Buyers who want everything in one city, in-town life, or a primary employer base nearby</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-dublin-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dublin &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
     </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Are the schools good in Dublin GA?</div>
-      <div class="faq-a">Laurens County has both public and private school options, and quality varies by district and grade level. As a former educator, I can talk through specifics for the schools your kids would attend at any address you're considering.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What does the Dublin GA real estate market look like right now?</div>
-      <div class="faq-a">It varies by neighborhood and price point. Some segments move fast, others sit longer. The best answer is a current snapshot for the specific area you're looking at, which I'm happy to put together when we talk.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Are there homes with land available in Laurens County?</div>
-      <div class="faq-a">Yes, lots of them. Dudley, Dexter, and the outlying communities are full of properties with acreage. We can filter your search to acreage minimums, single-family on lots, or specific zoning.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">I work in Macon or Warner Robins. Is Dublin commutable?</div>
-      <div class="faq-a">Dublin is roughly an hour from Macon and about 90 minutes from Warner Robins. Plenty of buyers commute one direction or the other. We can talk through which Laurens County areas put you closest to your route.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How do I see homes in a community I'm not sure about?</div>
-      <div class="faq-a">Easiest path is the home search. We can also drive a few neighborhoods together so you get the feel before you commit to making offers. After 30 years here, I can tell you what each area is actually like in daily life.</div>
-    </div>
-
   </div>
-</section>
-<!-- ============ END FAQ ============ -->
+</dialog>
+
+<dialog class="comm-modal" id="modal-dudley">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1647579350413-a6ada4e480ed?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">West Laurens</span>
+      <h2>Dudley, GA</h2>
+      <p>Quiet, small-town setting along Highway 80, ten minutes west of Dublin. Land, privacy, easy access.</p>
+    </div>
+  </div>
+  <div class="comm-modal-body">
+    <p>Dudley sits about 8 miles west of Dublin along Highway 80, in the kind of quiet small-town setting most buyers picture when they say "homes with land outside Dublin." Quarter-acre starter homes are rare here. Most Dudley GA real estate sits on a half-acre minimum, with full-acre, 5-acre, and 10 to 50-acre family tracts showing up on the MLS regularly.</p>
+    <p>The trade-off is straightforward. You get land, privacy, and a slower pace, and you keep Dublin within a 10-minute drive for groceries, hospital, schools, and main shopping. The Hwy 80 corridor is the connector. Most Dudley buyers I work with have either grown up here and are coming back, or are commuting professionals who want acreage without the long drive.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Distance to Dublin:</strong> ~8 miles · ~10 minutes via Hwy 80</li>
+      <li><strong>Typical lot size:</strong> 0.5 to 5 acres, with 10-50 acre family parcels regularly available</li>
+      <li><strong>What you get here:</strong> Real land, established country properties, quiet roads, mature trees</li>
+      <li><strong>Best for:</strong> Buyers who want acreage without a long commute, families looking for a slower pace</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-dudley-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dudley &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="comm-modal" id="modal-dexter">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1505843795480-5cfb3c03f6ff?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">North Laurens</span>
+      <h2>Dexter, GA</h2>
+      <p>Country atmosphere a short drive from Dublin. Open space, relaxed pace, real acreage homes.</p>
+    </div>
+  </div>
+  <div class="comm-modal-body">
+    <p>Dexter is a quiet small town in the northern half of Laurens County, surrounded by open Georgia pine and family farmland. Most of the Dexter GA real estate market is acreage properties, country homes set back from the road, and the kind of land tracts that get passed down through families rather than turning over on the MLS every few years.</p>
+    <p>If you are looking for a Dublin GA home search that opens up to wider lots and a quieter daily pace, Dexter is one of the first places I will show you. Dublin is a short drive for everything you need, the schools, hospital, main shopping. Dexter is where you come home and unwind.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Distance to Dublin:</strong> ~15 minutes</li>
+      <li><strong>Typical lot size:</strong> Acreage homes standard, larger tracts available</li>
+      <li><strong>What you get here:</strong> Open space, country atmosphere, family-land properties, no traffic</li>
+      <li><strong>Best for:</strong> Buyers who prioritize land + privacy and want a small-town feel</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-dexter-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Dexter &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="comm-modal" id="modal-rentz">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">South Laurens</span>
+      <h2>Rentz, GA</h2>
+      <p>Farmhouse and acreage along Highway 257. Some of the best value-per-acre in Laurens County.</p>
+    </div>
+  </div>
+  <div class="comm-modal-body">
+    <p>Rentz is one of Laurens County's smaller incorporated communities, tucked into the southern half of the county along Highway 257, about 12 miles south of Dublin. The town itself is small, fewer than a few hundred residents inside the city limits, but the broader Rentz GA real estate market wraps a much wider rural ZIP that pulls in farmhouse property, family land, and steady acreage homes that buyers miss when they only search Dublin proper.</p>
+    <p>What makes Rentz interesting strategically is the position. You are 12 minutes from Dublin via Hwy 257, which keeps hospital, schools, and main retail accessible. You are also a short drive from I-16, which puts Macon and Savannah on practical reach. Most Rentz buyers I see closing want more land, more privacy, and less hustle, and they would rather drive 12 minutes for groceries than pay Dublin prices for a postage-stamp lot.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Distance to Dublin:</strong> ~12 miles · ~12 minutes via Hwy 257</li>
+      <li><strong>Highway access:</strong> I-16 within reach for Macon + Savannah commutes</li>
+      <li><strong>What you get here:</strong> Farmhouse-and-pasture setups, real acreage, best value-per-acre in the area</li>
+      <li><strong>Best for:</strong> Buyers who want land + a short hop to bigger markets without paying Dublin proper prices</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-rentz-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Rentz &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="comm-modal" id="modal-cadwell">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">South Laurens</span>
+      <h2>Cadwell, GA</h2>
+      <p>Family land and private acreage along Highway 117 in the southern stretch of the county.</p>
+    </div>
+  </div>
+  <div class="comm-modal-body">
+    <p>Cadwell sits in the southern stretch of Laurens County, a small incorporated community of a few hundred residents along Highway 117. The wider rural ZIP pulls in family land, pasture, and the kind of acreage homes that almost never make it onto the front page of a Zillow search. If you are searching Cadwell GA homes for sale, you have already done some homework. This is not a market for casual scrollers, it is a market for buyers who know exactly what they want.</p>
+    <p>The character of Cadwell is privacy and small-community closeness. Most everyone knows most everyone. Lots are large by Dublin standards, drives are long-and-straight, and the pace is unmistakably southern-rural. Dublin is roughly 20 minutes by car, close enough to keep the city services in reach without bringing the city to your door.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Distance to Dublin:</strong> ~20 minutes via Hwy 117</li>
+      <li><strong>What you get here:</strong> Real privacy, family land, the kind of acreage that holds value</li>
+      <li><strong>What is rare:</strong> Newer construction is uncommon, most homes are established</li>
+      <li><strong>Best for:</strong> Buyers who want privacy + community, often coming home or settling near family</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-cadwell-ga.html" class="comm-modal-cta-primary">Explore homes for sale in Cadwell &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="comm-modal" id="modal-east-dublin">
+  <button type="button" class="comm-modal-close" aria-label="Close">&times;</button>
+  <div class="comm-modal-hero" style="background-image: linear-gradient(rgba(26, 20, 22, 0.2), rgba(26, 20, 22, 0.65)), url('https://images.unsplash.com/photo-1448630360428-65456885c650?w=1600&h=900&q=75&fit=crop&auto=format');">
+    <div class="comm-modal-hero-content">
+      <span class="comm-modal-eyebrow">Oconee River</span>
+      <h2>East Dublin, GA</h2>
+      <p>River-side homes and commuter-friendly neighborhoods just across the Oconee from downtown.</p>
+    </div>
+  </div>
+  <div class="comm-modal-body">
+    <p>East Dublin sits across the Oconee River from downtown Dublin, with its own grain of personality. The river drives a lot of the character here, river-side properties, the access to fishing and boating, and a real sense of being just-outside-of-town without being far from it. Practically speaking, you are minutes from downtown Dublin, the hospital, and the Hillcrest shopping stretch.</p>
+    <p>East Dublin GA real estate ranges from established neighborhoods to riverfront properties to commuter-friendly homes that pull in workers heading to Dublin itself, Macon, or Warner Robins. It is a popular area for buyers who want river access or the slight psychological shift of being on the other side of the bridge while still keeping everything inside a 10-minute drive.</p>
+    <ul class="comm-modal-facts">
+      <li><strong>Distance to Dublin:</strong> Across the bridge, ~5 minutes to downtown</li>
+      <li><strong>River access:</strong> Oconee riverfront properties available</li>
+      <li><strong>What you get here:</strong> Mix of established homes + riverside lots, easy commuter access</li>
+      <li><strong>Best for:</strong> Buyers who want river access or quick Dublin access in a slightly different neighborhood mix</li>
+    </ul>
+    <div class="comm-modal-cta-row">
+      <a href="homes-for-sale-in-east-dublin-ga.html" class="comm-modal-cta-primary">Explore homes for sale in East Dublin &rarr;</a>
+      <a href="09-contact.html" class="comm-modal-cta-secondary">Talk to Pamela</a>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ END COMMUNITY MODALS ============ -->
+
+<!-- ============ MODAL JS WIRING (chunk 2F) ============ -->
+<script>
+(function() {
+  const cards = document.querySelectorAll('.comm-fullbleed-card[data-modal]');
+  const modals = document.querySelectorAll('dialog.comm-modal');
+
+  function openModal(id) {
+    const dialog = document.getElementById(id);
+    if (!dialog) return;
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(dialog) {
+    if (typeof dialog.close === 'function') dialog.close();
+    else dialog.removeAttribute('open');
+    document.body.style.overflow = '';
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-modal');
+      openModal(id);
+      history.replaceState(null, '', '#' + id.replace('modal-', ''));
+    });
+  });
+
+  modals.forEach(dialog => {
+    const closeBtn = dialog.querySelector('.comm-modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(dialog));
+    dialog.addEventListener('click', e => {
+      if (e.target === dialog) closeModal(dialog);
+    });
+    dialog.addEventListener('cancel', e => {
+      e.preventDefault();
+      closeModal(dialog);
+    });
+  });
+
+  // Open from URL hash on load (footer link → #dublin opens Dublin modal)
+  function openFromHash() {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    openModal('modal-' + hash);
+  }
+  window.addEventListener('DOMContentLoaded', openFromHash);
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
 
 <footer class="site-footer">
   <div class="footer-grid">
