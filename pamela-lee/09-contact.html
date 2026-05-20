@@ -160,9 +160,13 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   background: var(--cream);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
-/* Inner pages: white nav text on transparent state, dark when scrolled */
-.site-header:not(.scrolled) .brand,
-.site-header:not(.scrolled) .brand span,
+/* All pages: transparent nav state = white logo+links, scrolled state = dark */
+.site-header:not(.scrolled) .brand img {
+  filter: brightness(0) invert(1); /* white logo on transparent over hero */
+}
+.site-header.scrolled .brand img {
+  filter: brightness(0); /* dark logo on cream when scrolled */
+}
 .site-header:not(.scrolled) .nav-links > li > a,
 .site-header:not(.scrolled) .nav-phone,
 .site-header:not(.scrolled) .nav-phone svg {
@@ -614,6 +618,87 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   color: var(--accent);
 }
 
+
+/* ============ LOGO IMG IN NAV (chunk 1b) ============ */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+.brand img {
+  height: 56px;
+  width: auto;
+  display: block;
+  transition: filter 0.3s ease;
+}
+@media (max-width: 600px) {
+  .brand img { height: 44px; }
+}
+
+
+/* ============ FOOTER LOGO + REAL BADGES + LEGAL ROW (chunk 1b) ============ */
+.footer-logo {
+  display: block;
+  height: 110px;
+  width: auto;
+  margin-bottom: 18px;
+  filter: brightness(0) invert(1); /* white logo on dark footer */
+}
+.footer-badges {
+  display: flex;
+  gap: 28px;
+  margin-top: 26px;
+  align-items: center;
+}
+.footer-badge-img {
+  height: 56px;
+  width: auto;
+  filter: brightness(0) invert(1); /* black assets → white on dark footer */
+  opacity: 0.78;
+  transition: opacity 0.3s ease;
+}
+.footer-badge-img:hover { opacity: 1; }
+
+.footer-legal-row {
+  max-width: var(--max, 1280px);
+  margin: 40px auto 0;
+  padding: 22px 32px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-legal {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.footer-legal li { margin: 0; }
+.footer-legal a {
+  color: #BAA7AE;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-legal a:hover { color: var(--accent); }
+.footer-legal-sep {
+  color: rgba(255,255,255,0.16);
+  font-size: 12px;
+}
+.footer-credit {
+  color: #6B5A60;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin-left: 6px;
+}
+@media (max-width: 600px) {
+  .footer-legal { gap: 10px; }
+  .footer-legal a { font-size: 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -625,8 +710,7 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
 <header class="site-header" id="siteHeader">
   <div class="nav-inner">
     <a href="01-home.html" class="brand">
-      Pamela Lee
-      <span>Dublin GA Real Estate</span>
+      <img src="mockups/assets/logos/pamela-lee-logo.png" alt="Pamela Lee Dublin GA Real Estate">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="07-home-search.html">Search Homes</a></li>
@@ -1137,7 +1221,7 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
   <div class="footer-grid">
 
     <div class="footer-brand-col">
-      <h3>Pamela Lee</h3>
+      <img src="mockups/assets/logos/pamela-lee-logo.png" alt="Pamela Lee Dublin GA Real Estate" class="footer-logo">
       <p class="footer-tagline">Dublin, GA real estate, born and raised. Serving buyers and sellers across Laurens County.</p>
       <div class="footer-contact">
         <p><strong>Pamela Lee LLC</strong><br>
@@ -1149,22 +1233,8 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
         </p>
       </div>
       <div class="footer-badges" aria-label="Compliance badges">
-        <span class="footer-badge" aria-label="REALTOR member">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <rect width="60" height="60" rx="4" fill="#0066B2"/>
-            <text x="30" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="28" fill="#fff">R</text>
-          </svg>
-          <span>REALTOR&reg;</span>
-        </span>
-        <span class="footer-badge" aria-label="Equal Housing Opportunity">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <rect width="60" height="60" rx="4" fill="none" stroke="#BAA7AE" stroke-width="1.5"/>
-            <path d="M30 12 L48 26 V46 H12 V26 Z" fill="none" stroke="#BAA7AE" stroke-width="2"/>
-            <path d="M22 46 V36 H38 V46" fill="none" stroke="#BAA7AE" stroke-width="2"/>
-            <line x1="14" y1="30" x2="46" y2="30" stroke="#BAA7AE" stroke-width="1"/>
-          </svg>
-          <span>Equal Housing<br>Opportunity</span>
-        </span>
+        <img src="mockups/assets/logos/realtor-r-black.png" alt="REALTOR&reg;" class="footer-badge-img">
+        <img src="mockups/assets/logos/equal-housing.svg" alt="Equal Housing Opportunity" class="footer-badge-img">
       </div>
       <div class="footer-socials">
         <a href="https://facebook.com/DublinGARealEstate" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.07C22 6.51 17.52 2 12 2S2 6.51 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.84c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.19 2.24.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.75 8.44-4.91 8.44-9.93z"/></svg></a>
@@ -1214,13 +1284,20 @@ em { font-family: var(--font-head); font-style: italic; font-weight: 400; }
     <p>Pamela Lee LLC is a licensed real estate broker in the State of Georgia, regulated by the <a href="https://grec.state.ga.us/" target="_blank" rel="noopener">Georgia Real Estate Commission</a>. GA Broker License <span class="placeholder-badge">[NEEDS_CLIENT]</span>. Equal Housing Opportunity. All information deemed reliable but not guaranteed. Pamela Lee is a member of the National Association of REALTORS&reg; and the Georgia Association of REALTORS&reg;.</p>
   </div>
 
-  <div class="footer-bottom">
-    <p>&copy; 2026 Pamela Lee LLC. All rights reserved.</p>
+  <div class="footer-legal-row">
     <ul class="footer-legal">
       <li><a href="17-terms.html">Terms of Use</a></li>
+      <li><span class="footer-legal-sep">&middot;</span></li>
       <li><a href="18-privacy.html">Privacy Policy</a></li>
+      <li><span class="footer-legal-sep">&middot;</span></li>
       <li><a href="09-contact.html">Contact</a></li>
+      <li><span class="footer-legal-sep">&middot;</span></li>
+      <li><a href="05-communities.html">All Communities</a></li>
     </ul>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Pamela Lee LLC. All rights reserved. <span class="footer-credit">Site by AgenticPress.</span></p>
   </div>
 </footer>
 
