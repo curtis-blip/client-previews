@@ -2,6 +2,12 @@
    Tonya Bredamus — KW Martinsville Havenmore
    styles.css v2 — universal-conventions compliant
    2026-05-11
+   EDIT 2026-05-15: Tonya client feedback applied.
+     1. Cream surfaces flipped to soft pink wash (#FCE4F3).
+     2. Primary buttons flipped to filled-pink default.
+     3. Button hover dialed up beyond color (lift + shadow + darken).
+        Note: Tonya's "key" hover concept still TBD, this is placeholder.
+     4. Border tinted toward soft pink to harmonize with new surface.
    ============================================ */
 
 :root {
@@ -16,12 +22,12 @@
   --color-text-dark: #1a1a1a;
   --color-text-muted: #5e5e5e;
   --color-text-light: #ffffff;
-  --color-surface: #fdf9f5;
+  --color-surface: #FCE4F3;          /* EDIT 2026-05-15: was #fdf9f5 cream */
   --color-white: #ffffff;
   --color-background: #ffffff;
-  --color-background-alt: #fdf9f5;
+  --color-background-alt: #FCE4F3;   /* EDIT 2026-05-15: was #fdf9f5 cream */
   --color-background-dark: #1a1a1a;
-  --color-border: #ece6dd;
+  --color-border: #F2C8E3;           /* EDIT 2026-05-15: was #ece6dd cream-border, now soft pink-tinted */
   --color-border-strong: #1a1a1a;
 
   /* Typography */
@@ -138,8 +144,12 @@ section.alt { background: var(--color-background-alt); }
 
 /* ============================================
    BUTTONS — Universal Conventions § 2
-   Default: transparent + accent outline + accent text
-   Hover: accent fill + white text
+   EDIT 2026-05-15: Tonya wants all buttons to start filled pink.
+     Primary: filled-pink default (was transparent outline).
+     Secondary: outline-pink (still differentiates from primary).
+     On-dark: filled-pink (was transparent).
+   Hover: dial up beyond color. Adds lift, shadow, accent-dark fill.
+     "Key" hover motif TBD per Tonya. Treat as placeholder.
    ============================================ */
 .btn {
   display: inline-block;
@@ -154,39 +164,47 @@ section.alt { background: var(--color-background-alt); }
   cursor: pointer;
   transition: background var(--duration-default) var(--ease-default),
               color var(--duration-default) var(--ease-default),
-              border-color var(--duration-default) var(--ease-default);
+              border-color var(--duration-default) var(--ease-default),
+              transform var(--duration-default) var(--ease-default),
+              box-shadow var(--duration-default) var(--ease-default);
 }
 .btn-primary {
-  background: transparent;
-  color: var(--color-accent);
+  background: var(--color-accent);              /* EDIT: was transparent */
+  color: var(--color-white);                    /* EDIT: was --color-accent */
   border-color: var(--color-accent);
 }
 .btn-primary:hover,
 .btn-primary:focus-visible {
-  background: var(--color-accent);
+  background: var(--color-accent-dark);         /* EDIT: was --color-accent (now darken on hover) */
   color: var(--color-white);
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-dark);
+  transform: translateY(-2px);                  /* EDIT: lift on hover */
+  box-shadow: 0 8px 24px rgba(214, 63, 180, 0.28);  /* EDIT: shadow on hover */
 }
 .btn-secondary {
   background: transparent;
-  color: var(--color-primary);
-  border-color: var(--color-primary);
+  color: var(--color-accent);                   /* EDIT: was --color-primary (was dark, now pink) */
+  border-color: var(--color-accent);            /* EDIT: was --color-primary */
 }
 .btn-secondary:hover,
 .btn-secondary:focus-visible {
-  background: var(--color-primary);
+  background: var(--color-accent);              /* EDIT: was --color-primary */
   color: var(--color-white);
+  transform: translateY(-2px);                  /* EDIT: lift on hover */
+  box-shadow: 0 8px 24px rgba(239, 94, 207, 0.22);  /* EDIT: shadow on hover */
 }
 .btn-on-dark {
-  background: transparent;
-  color: var(--color-accent-light);
-  border-color: var(--color-accent-light);
+  background: var(--color-accent);              /* EDIT: was transparent */
+  color: var(--color-white);                    /* EDIT: was --color-accent-light */
+  border-color: var(--color-accent);            /* EDIT: was --color-accent-light */
 }
 .btn-on-dark:hover,
 .btn-on-dark:focus-visible {
-  background: var(--color-accent);
-  color: var(--color-white);
-  border-color: var(--color-accent);
+  background: var(--color-accent-light);        /* EDIT: was --color-accent (now lighten on dark hover) */
+  color: var(--color-text-dark);                /* EDIT: was --color-white (contrast for light pink fill) */
+  border-color: var(--color-accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 135, 218, 0.32);
 }
 
 /* ============================================
@@ -565,9 +583,10 @@ section.alt { background: var(--color-background-alt); }
 /* ============================================
    Communities V1 (grid for /communities) + MODAL TRIGGERS
    ============================================ */
+/* EDIT 2026-05-15: Tonya requested 2 rows of 4 (was 3 columns). */
 .communities-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--color-border);
 }
@@ -591,6 +610,8 @@ section.alt { background: var(--color-background-alt); }
 .community-card__content { position: absolute; bottom: 0; left: 0; right: 0; padding: var(--space-lg); }
 .community-card__name { font-family: var(--font-heading); font-size: 1.5rem; font-weight: var(--fw-medium); color: var(--color-text-light); margin-bottom: 0.5rem; }
 .community-card__meta { font-size: var(--font-size-eyebrow); text-transform: uppercase; letter-spacing: var(--ls-eyebrow); color: rgba(255, 255, 255, 0.85); }
+/* EDIT 2026-05-15: Adjusted breakpoints for 4-column desktop grid. */
+@media (max-width: 1100px) { .communities-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 880px) { .communities-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .communities-grid { grid-template-columns: 1fr; } }
 
