@@ -3,153 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Lockett · Site Preview</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bill Lockett · Preview Cover</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         body { background: var(--bg-alt); }
-        .preview-hero { background: var(--bg-dark); color: var(--white); padding: 100px 0 80px; text-align: center; }
-        .preview-hero h1 { color: var(--white); font-size: clamp(36px, 4vw, 56px); margin: 0 0 16px; }
-        .preview-hero p { color: rgba(255,255,255,0.75); max-width: 680px; margin: 0 auto; font-size: 17px; line-height: 1.6; }
-        .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; max-width: var(--max-width); margin: 64px auto; padding: 0 var(--container-px); }
-        .preview-card { background: var(--bg); padding: 36px 32px; text-decoration: none; color: var(--text-dark); border-top: 2px solid transparent; transition: transform 280ms, border-top-color 280ms, box-shadow 280ms; display: flex; flex-direction: column; }
-        .preview-card:hover { transform: translateY(-4px); border-top-color: var(--accent); box-shadow: 0 18px 40px rgba(0,0,0,0.06); }
-        .preview-card__num { font-family: var(--font-heading); font-size: 10px; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
-        .preview-card__title { font-family: var(--font-heading); font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin: 0 0 14px; color: var(--text-dark); text-transform: none; }
-        .preview-card__desc { font-size: 14.5px; line-height: 1.6; color: var(--text-muted); margin: 0 0 20px; flex: 1; }
-        .preview-card__tag { font-family: var(--font-heading); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; align-self: flex-start; }
-        .preview-card__tag--paid { background: var(--accent-light); color: var(--accent-dark); }
-        .preview-card__tag--standard { background: var(--border); color: var(--text-muted); }
-        .preview-card__tag--legal { background: var(--bg-dark); color: var(--accent-light); }
+
+        /* Cover hero */
+        .cover-hero {
+            background: var(--bg-dark);
+            color: var(--white);
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover-hero__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--container-px);
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 80px;
+            align-items: end;
+        }
+        .cover-hero__eyebrow {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin: 0 0 24px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.18);
+            display: inline-block;
+        }
+        .cover-hero h1 {
+            color: var(--white);
+            font-family: var(--font-heading);
+            font-weight: 300;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.06;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin: 0 0 24px;
+        }
+        .cover-hero__sub {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.75);
+            margin: 0;
+            max-width: 580px;
+        }
+        .cover-hero__meta {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-top: 2px solid var(--accent);
+            padding: 32px 28px;
+        }
+        .cover-hero__meta dl { margin: 0; }
+        .cover-hero__meta dt {
+            font-family: var(--font-heading);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--accent-light);
+            margin-bottom: 4px;
+        }
+        .cover-hero__meta dd {
+            margin: 0 0 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.92);
+        }
+        .cover-hero__meta dd:last-child { margin-bottom: 0; }
+        .cover-hero__meta a { color: var(--accent-light); text-decoration: underline; word-break: break-all; }
+
+        /* Section structure */
+        .cover-section { max-width: 1200px; margin: 80px auto 0; padding: 0 var(--container-px); }
+        .cover-section__head {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 48px;
+            align-items: end;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cover-section__num {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin: 0 0 12px;
+        }
+        .cover-section__head h2 {
+            font-family: var(--font-heading);
+            font-weight: 300;
+            font-size: clamp(28px, 3vw, 40px);
+            line-height: 1.1;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin: 0;
+            max-width: 480px;
+        }
+        .cover-section__head p {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin: 0;
+            max-width: 520px;
+        }
+        .cover-section__count {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        /* Grid + cards */
+        .cover-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .cover-card {
+            background: var(--bg);
+            padding: 28px 28px 24px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-top: 2px solid transparent;
+            transition: transform 220ms ease, border-top-color 220ms ease, box-shadow 220ms ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+        .cover-card:hover {
+            transform: translateY(-3px);
+            border-top-color: var(--accent);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.06);
+        }
+        .cover-card__slug {
+            font-family: ui-monospace, "SF Mono", Menlo, monospace;
+            font-size: 11.5px;
+            color: var(--accent);
+            margin: 0 0 10px;
+            word-break: break-all;
+        }
+        .cover-card__title {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: -0.005em;
+            margin: 0 0 12px;
+            color: var(--text-dark);
+            text-transform: none;
+            line-height: 1.3;
+        }
+        .cover-card__desc {
+            font-size: 13.5px;
+            line-height: 1.55;
+            color: var(--text-muted);
+            margin: 0 0 16px;
+            flex: 1;
+        }
+        .cover-card__tag {
+            font-family: var(--font-heading);
+            font-size: 9.5px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            align-self: flex-start;
+        }
+        .tag--main { background: var(--accent-light); color: var(--accent-dark); }
+        .tag--std { background: var(--border); color: var(--text-muted); }
+        .tag--legal { background: var(--bg-dark); color: var(--accent-light); }
+        .tag--idx { background: #d9e6f0; color: #2a5570; }
+
+        /* Footer */
+        .cover-foot {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            padding: 48px var(--container-px) 64px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .cover-foot strong { color: var(--text-dark); font-weight: 600; }
+        .cover-foot code { background: var(--bg); padding: 2px 8px; border-radius: 3px; font-size: 12px; }
+
+        @media (max-width: 900px) {
+            .cover-hero__inner { grid-template-columns: 1fr; gap: 48px; }
+            .cover-section__head { grid-template-columns: 1fr; gap: 16px; }
+        }
     </style>
 </head>
 <body>
 
-<div class="preview-hero">
-    <div class="container">
-        <h1>Bill Lockett · Site Preview</h1>
-        <p>Mountain Colorado real estate preview. Coldwell Banker Collegiate Peaks Realty. Twelve pages, library-aligned. Generated 2026-05-18.</p>
+<header class="cover-hero">
+    <div class="cover-hero__inner">
+        <div>
+            <span class="cover-hero__eyebrow">Site Preview · Cover Page</span>
+            <h1>Bill Lockett</h1>
+            <p class="cover-hero__sub">Mountain Colorado real estate preview, library-aligned through the May 20 doctrine pass. Twelve main pages plus ten off-nav IDX hotsheet wrappers for SEO. Built by Optimus Prime.</p>
+        </div>
+        <aside class="cover-hero__meta">
+            <dl>
+                <dt>Client</dt>
+                <dd>Bill Lockett · Owner / Managing Broker<br>Coldwell Banker Collegiate Peaks Realty</dd>
+
+                <dt>Market</dt>
+                <dd>Buena Vista · Salida · Chaffee + Custer + Park counties</dd>
+
+                <dt>Live preview</dt>
+                <dd><a href="index.html">/index.html (Home)</a></dd>
+
+                <dt>Total pages</dt>
+                <dd>22 (12 main + 10 IDX off-nav)</dd>
+
+                <dt>Build</dt>
+                <dd>Optimus Prime + showcase-idx-setup<br>2026-05-21</dd>
+            </dl>
+        </aside>
     </div>
-</div>
-
-<div class="preview-grid">
-
-    <a class="preview-card" href="01-home.html">
-        <span class="preview-card__num">01 · Home</span>
-        <h2 class="preview-card__title">Home</h2>
-        <p class="preview-card__desc">Full-bleed hero, about teaser, V2 cinematic buy/sell, Communities V1 grid, IDX listings, home value parallax CTA, testimonials, closing CTA.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="02-about.html">
-        <span class="preview-card__num">02 · About</span>
-        <h2 class="preview-card__title">About Bill</h2>
-        <p class="preview-card__desc">Agent Bio V3 hybrid prose + sticky credentials sidebar. SWAT pull-quote, full designation list, communities list, secondary testimonials.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="03-buyers-guide.html">
-        <span class="preview-card__num">03 · Buyer's Guide</span>
-        <h2 class="preview-card__title">Buying in Chaffee County</h2>
-        <p class="preview-card__desc">BV vs Salida cinematic intro, 8-step buyer process alternating image+text, 6-question FAQ, buyer testimonials.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="04-sellers-guide.html">
-        <span class="preview-card__num">04 · Seller's Guide</span>
-        <h2 class="preview-card__title">Selling a Mountain Home</h2>
-        <p class="preview-card__desc">Why-list-with-Bill cinematic panels, 8-step seller process, home value CTA, seller-leaning testimonials.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="05-home-valuation.html">
-        <span class="preview-card__num">05 · Home Valuation</span>
-        <h2 class="preview-card__title">What's Your Home Worth</h2>
-        <p class="preview-card__desc">Showcase IDX home value widget placeholder, what-I-look-at 4-icon block, featured Crane Family testimonial.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="06-featured-listings.html">
-        <span class="preview-card__num">06 · Featured Listings</span>
-        <h2 class="preview-card__title">Currently for Sale</h2>
-        <p class="preview-card__desc">Hero + Showcase IDX shortcode placeholder + closing CTA. Minimal per feedback_idx_page_pattern.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="07-home-search.html">
-        <span class="preview-card__num">07 · Home Search</span>
-        <h2 class="preview-card__title">Mountain Homes Search</h2>
-        <p class="preview-card__desc">Hero + full Showcase IDX search injection zone. Per IDX-page pattern, no other blocks.</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="08-testimonials.html">
-        <span class="preview-card__num">08 · Testimonials</span>
-        <h2 class="preview-card__title">What Clients Say</h2>
-        <p class="preview-card__desc">Hero + featured Crane Family parallax + 6-card grid (Cortese, Gordon&amp;Holly, Anthony, Jay, Melinda, Grammi).</p>
-        <span class="preview-card__tag preview-card__tag--paid">Paid · 8 of 8</span>
-    </a>
-
-    <a class="preview-card" href="contact.html">
-        <span class="preview-card__num">Standard · Contact</span>
-        <h2 class="preview-card__title">Contact</h2>
-        <p class="preview-card__desc">Universal contact form with stable field names + office info + license.</p>
-        <span class="preview-card__tag preview-card__tag--standard">Standard</span>
-    </a>
-
-    <a class="preview-card" href="blog.html">
-        <span class="preview-card__num">Standard · Blog</span>
-        <h2 class="preview-card__title">Blog Index</h2>
-        <p class="preview-card__desc">3-card placeholder post grid. Off-nav per CS submission. Bill can publish at any time.</p>
-        <span class="preview-card__tag preview-card__tag--standard">Standard</span>
-    </a>
-
-    <a class="preview-card" href="privacy.html">
-        <span class="preview-card__num">Legal · Privacy</span>
-        <h2 class="preview-card__title">Privacy Policy</h2>
-        <p class="preview-card__desc">Generated from optimus-prime/templates/legal/privacy-policy.html. GDPR + CCPA + Colorado Privacy Act. noindex.</p>
-        <span class="preview-card__tag preview-card__tag--legal">Legal · template-merged</span>
-    </a>
-
-    <a class="preview-card" href="terms.html">
-        <span class="preview-card__num">Legal · Terms</span>
-        <h2 class="preview-card__title">Terms of Use</h2>
-        <p class="preview-card__desc">Generated from optimus-prime/templates/legal/terms-of-use.html. IDX/MLS attribution, fair housing, DMCA. noindex.</p>
-        <span class="preview-card__tag preview-card__tag--legal">Legal · template-merged</span>
-    </a>
-
-</div>
+</header>
 
 <!-- ============================================================
-     OFF-NAV IDX FOCUS-KW PAGES (Showcase IDX hotsheet wrappers)
-     Each slug = focus keyword (Rank Math hyphen-match). NOT in nav.
-     Accessed via Communities modal buttons + Buy page Saved Searches.
+     SECTION 1 · MAIN SITE PAGES (8 paid)
      ============================================================ -->
+<section class="cover-section">
+    <div class="cover-section__head">
+        <div>
+            <p class="cover-section__num">01</p>
+            <h2>Main site pages</h2>
+            <p class="cover-section__count">8 paid pages</p>
+        </div>
+        <p>The pages Bill purchased. In-nav, indexable, full editorial treatment. Hero V2 + About V1 + Buy/Sell V2 cinematic + Communities V1 grid + IDX zone + Home Value parallax CTA + Testimonials V2 + Closing CTA V1 on Home. Inner pages follow the architecture in <code>page-architecture.md</code>.</p>
+    </div>
 
-<div style="max-width: 1200px; margin: 80px auto 24px; padding: 0 32px;">
-    <h2 style="font-family: var(--font-heading); font-weight: 300; font-size: clamp(24px, 3vw, 36px); text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 8px;">Off-nav IDX pages</h2>
-    <p style="font-size: 15px; color: var(--text-muted); margin: 0 0 32px; max-width: 720px;">10 dedicated focus-keyword pages, each wrapping a Showcase IDX hotsheet. Not in nav. Accessed via Communities modal buttons + Buy page Saved Searches cards. Configured per <code>idx-config.json</code>.</p>
-</div>
+    <div class="cover-grid">
 
-<div class="preview-grid" style="margin: 0 auto 40px;">
+        <a class="cover-card" href="01-home.html">
+            <p class="cover-card__slug">/</p>
+            <h3 class="cover-card__title">Home</h3>
+            <p class="cover-card__desc">Full-bleed hero (CR327 twilight photo), about teaser, cinematic Buy/Sell panels with ghost numerals, Communities V1 photo grid, IDX placeholder, Home Value parallax CTA, testimonials, closing CTA.</p>
+            <span class="cover-card__tag tag--main">Main · 1 of 8</span>
+        </a>
 
-    <a class="preview-card" href="homes-for-sale-buena-vista.html"><span class="preview-card__num">/homes-for-sale-buena-vista</span><h3 class="preview-card__title">Homes for Sale in Buena Vista</h3><p class="preview-card__desc">Focus kw: <code>homes for sale buena vista</code> (880/mo)</p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="homes-for-sale-salida.html"><span class="preview-card__num">/homes-for-sale-salida</span><h3 class="preview-card__title">Homes for Sale in Salida</h3><p class="preview-card__desc">Focus kw: <code>homes for sale salida</code> (2,400/mo)</p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="homes-for-sale-nathrop.html"><span class="preview-card__num">/homes-for-sale-nathrop</span><h3 class="preview-card__title">Homes for Sale in Nathrop</h3><p class="preview-card__desc">Focus kw: <code>homes for sale nathrop</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="homes-for-sale-park-county.html"><span class="preview-card__num">/homes-for-sale-park-county</span><h3 class="preview-card__title">Homes for Sale in Park County</h3><p class="preview-card__desc">Focus kw: <code>homes for sale park county</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="homes-for-sale-westcliffe.html"><span class="preview-card__num">/homes-for-sale-westcliffe</span><h3 class="preview-card__title">Homes for Sale in Westcliffe</h3><p class="preview-card__desc">Focus kw: <code>homes for sale westcliffe</code> (1,300/mo)</p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="homes-for-sale-howard.html"><span class="preview-card__num">/homes-for-sale-howard</span><h3 class="preview-card__title">Homes for Sale in Howard</h3><p class="preview-card__desc">Focus kw: <code>homes for sale howard</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="single-family-homes-for-sale-chaffee-county.html"><span class="preview-card__num">/single-family-homes-for-sale-chaffee-county</span><h3 class="preview-card__title">Single-Family Homes — Chaffee County</h3><p class="preview-card__desc">Focus kw: <code>single-family homes for sale chaffee county</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="land-for-sale-collegiate-peaks.html"><span class="preview-card__num">/land-for-sale-collegiate-peaks</span><h3 class="preview-card__title">Land for Sale — Collegiate Peaks</h3><p class="preview-card__desc">Focus kw: <code>land for sale collegiate peaks</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="condos-townhomes-for-sale-chaffee-county.html"><span class="preview-card__num">/condos-townhomes-for-sale-chaffee-county</span><h3 class="preview-card__title">Condos &amp; Townhomes — Chaffee County</h3><p class="preview-card__desc">Focus kw: <code>condos and townhomes for sale chaffee county</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
-    <a class="preview-card" href="luxury-homes-for-sale-collegiate-peaks.html"><span class="preview-card__num">/luxury-homes-for-sale-collegiate-peaks</span><h3 class="preview-card__title">Luxury Homes — Collegiate Peaks $1M+</h3><p class="preview-card__desc">Focus kw: <code>luxury homes for sale collegiate peaks</code></p><span class="preview-card__tag preview-card__tag--idx">IDX · Hotsheet</span></a>
+        <a class="cover-card" href="02-about.html">
+            <p class="cover-card__slug">/about</p>
+            <h3 class="cover-card__title">About Bill</h3>
+            <p class="cover-card__desc">Agent Bio V3 hybrid: prose narrative + sticky credentials sidebar. SWAT trust pull-quote. 5 designations + license + standing. Compact communities list. Buyer testimonials. Resources Strip.</p>
+            <span class="cover-card__tag tag--main">Main · 2 of 8</span>
+        </a>
 
-</div>
+        <a class="cover-card" href="03-buyers-guide.html">
+            <p class="cover-card__slug">/buyers-guide</p>
+            <h3 class="cover-card__title">Buying in Chaffee County</h3>
+            <p class="cover-card__desc">Editorial intro, 8-step buyer process (alternating image+text), full Communities V1 grid, 4 Saved-Search cards by property type, 6-question FAQ, buyer testimonials, Resources Strip.</p>
+            <span class="cover-card__tag tag--main">Main · 3 of 8</span>
+        </a>
 
-<div style="text-align: center; padding: 60px 0 100px; color: var(--text-muted); font-size: 13px; letter-spacing: 0.08em;">
-    <p>Optimus Prime · Bill Lockett build · 12 main pages + 10 IDX off-nav pages · idx-config.json source of truth</p>
+        <a class="cover-card" href="04-sellers-guide.html">
+            <p class="cover-card__slug">/sellers-guide</p>
+            <h3 class="cover-card__title">Selling a Mountain Home</h3>
+            <p class="cover-card__desc">Editorial intro, 8-step seller process, 2-column split Home Value block (photo + checklist + CTA), seller testimonials, Resources Strip with HUD / IRS / Colorado DRE.</p>
+            <span class="cover-card__tag tag--main">Main · 4 of 8</span>
+        </a>
+
+        <a class="cover-card" href="05-home-valuation.html">
+            <p class="cover-card__slug">/home-valuation</p>
+            <h3 class="cover-card__title">Chaffee County Home Value</h3>
+            <p class="cover-card__desc">Two-step UX framing: instant on-screen estimate + Bill's walk-the-comps CMA within 24 hours. Showcase IDX HV widget placeholder. 4-icon "what Bill looks at" block. Featured testimonial parallax.</p>
+            <span class="cover-card__tag tag--main">Main · 5 of 8</span>
+        </a>
+
+        <a class="cover-card" href="06-featured-listings.html">
+            <p class="cover-card__slug">/featured-listings</p>
+            <h3 class="cover-card__title">Currently for Sale</h3>
+            <p class="cover-card__desc">Hero + Showcase IDX agent-filtered hotsheet (grid + map) + closing CTA. Minimal IDX page pattern per <code>feedback_idx_page_pattern</code>.</p>
+            <span class="cover-card__tag tag--main">Main · 6 of 8</span>
+        </a>
+
+        <a class="cover-card" href="07-home-search.html">
+            <p class="cover-card__slug">/home-search</p>
+            <h3 class="cover-card__title">Mountain Homes Search</h3>
+            <p class="cover-card__desc">Hero + Showcase IDX dynamic search wrapper (injected via Showcase WP UI, not shortcode). Map view, saved searches, listing alerts. No additional blocks.</p>
+            <span class="cover-card__tag tag--main">Main · 7 of 8</span>
+        </a>
+
+        <a class="cover-card" href="08-testimonials.html">
+            <p class="cover-card__slug">/testimonials</p>
+            <h3 class="cover-card__title">What Clients Say</h3>
+            <p class="cover-card__desc">Featured Crane Family parallax (20+ year repeat clients) + 6-card grid: Cortese, Gordon &amp; Holly, Anthony O, Jay L, Melinda F, Grammi S. Uniform attribution alignment.</p>
+            <span class="cover-card__tag tag--main">Main · 8 of 8</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 · STANDARD PAGES (2)
+     ============================================================ -->
+<section class="cover-section">
+    <div class="cover-section__head">
+        <div>
+            <p class="cover-section__num">02</p>
+            <h2>Standard pages</h2>
+            <p class="cover-section__count">2 standard pages</p>
+        </div>
+        <p>Included on every AgenticPress build. Blog is off-nav per Bill's Content Snare submission; Contact is in-nav with the universal contact form schema (stable field names + GHL routing per <code>reference_universal_contact_form.md</code>).</p>
+    </div>
+
+    <div class="cover-grid">
+
+        <a class="cover-card" href="contact.html">
+            <p class="cover-card__slug">/contact</p>
+            <h3 class="cover-card__title">Contact</h3>
+            <p class="cover-card__desc">Universal contact form (name, email, phone, interest dropdown, areas, notes), Buena Vista + Salida office addresses, license, social handles.</p>
+            <span class="cover-card__tag tag--std">Standard</span>
+        </a>
+
+        <a class="cover-card" href="blog.html">
+            <p class="cover-card__slug">/blog</p>
+            <h3 class="cover-card__title">Blog Index</h3>
+            <p class="cover-card__desc">3-card placeholder posts: Relocating to Buena Vista · Salida vs BV · Westcliffe Custer County. Off-nav per CS submission. Bill can publish anytime.</p>
+            <span class="cover-card__tag tag--std">Standard</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 · LEGAL PAGES (2)
+     ============================================================ -->
+<section class="cover-section">
+    <div class="cover-section__head">
+        <div>
+            <p class="cover-section__num">03</p>
+            <h2>Legal pages</h2>
+            <p class="cover-section__count">2 template-merged pages</p>
+        </div>
+        <p>Auto-generated from <code>optimus-prime/templates/legal/</code> with Bill's merge fields. Footer-linked, noindex, no SEO target. Covers GDPR + CCPA + Colorado Privacy Act + IDX/MLS attribution + DMCA + Fair Housing.</p>
+    </div>
+
+    <div class="cover-grid">
+
+        <a class="cover-card" href="privacy.html">
+            <p class="cover-card__slug">/privacy</p>
+            <h3 class="cover-card__title">Privacy Policy</h3>
+            <p class="cover-card__desc">GDPR + CCPA + Colorado Privacy Act + state-aware. References Showcase IDX cookies, GHL routing. Template at <code>optimus-prime/templates/legal/privacy-policy.html</code>.</p>
+            <span class="cover-card__tag tag--legal">Legal</span>
+        </a>
+
+        <a class="cover-card" href="terms.html">
+            <p class="cover-card__slug">/terms</p>
+            <h3 class="cover-card__title">Terms of Use</h3>
+            <p class="cover-card__desc">IDX/MLS attribution clause, Fair Housing notice, DMCA process, governing law (Colorado), DDoS / scraping prohibition. Template at <code>optimus-prime/templates/legal/terms-of-use.html</code>.</p>
+            <span class="cover-card__tag tag--legal">Legal</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 · OFF-NAV IDX PAGES (10)
+     ============================================================ -->
+<section class="cover-section">
+    <div class="cover-section__head">
+        <div>
+            <p class="cover-section__num">04</p>
+            <h2>Off-nav IDX pages</h2>
+            <p class="cover-section__count">10 focus-keyword pages</p>
+        </div>
+        <p>Each slug = a focus keyword (Rank Math hyphen-match). Pages are <strong>not</strong> in the nav. Accessed via Communities V1 modal buttons + Buy page Saved-Search cards. Each is a small hero with H1 + 1-line intro + Showcase IDX hotsheet placeholder. Source of truth: <code>idx-config.json</code> (rendered preview at <code>idx-setup-preview.html</code>).</p>
+    </div>
+
+    <div class="cover-grid">
+
+        <a class="cover-card" href="homes-for-sale-buena-vista.html">
+            <p class="cover-card__slug">/homes-for-sale-buena-vista</p>
+            <h3 class="cover-card__title">Homes for Sale in Buena Vista</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale buena vista</code> · 880 searches/mo · low competition. Backing hotsheet: "Homes for Sale in Buena Vista" saved search.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="homes-for-sale-salida.html">
+            <p class="cover-card__slug">/homes-for-sale-salida</p>
+            <h3 class="cover-card__title">Homes for Sale in Salida</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale salida</code> · 2,400 searches/mo · the highest-volume single-community kw in Bill's market.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="homes-for-sale-nathrop.html">
+            <p class="cover-card__slug">/homes-for-sale-nathrop</p>
+            <h3 class="cover-card__title">Homes for Sale in Nathrop</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale nathrop</code>. Between Buena Vista and Salida. Mount Princeton Hot Springs corridor, large parcels.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="homes-for-sale-park-county.html">
+            <p class="cover-card__slug">/homes-for-sale-park-county</p>
+            <h3 class="cover-card__title">Homes for Sale in Park County</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale park county</code>. High mountain meadows north of the Collegiates. Hartsel, Fairplay, South Platte headwaters.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="homes-for-sale-westcliffe.html">
+            <p class="cover-card__slug">/homes-for-sale-westcliffe</p>
+            <h3 class="cover-card__title">Homes for Sale in Westcliffe</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale westcliffe</code> · 1,300 searches/mo · second-largest in Bill's market. Wet Mountain Valley, International Dark Sky.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="homes-for-sale-howard.html">
+            <p class="cover-card__slug">/homes-for-sale-howard</p>
+            <h3 class="cover-card__title">Homes for Sale in Howard</h3>
+            <p class="cover-card__desc">Focus kw: <code>homes for sale howard</code>. East of Salida along the Arkansas. Rural acreage, river frontage, fewer rules.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="single-family-homes-for-sale-chaffee-county.html">
+            <p class="cover-card__slug">/single-family-homes-for-sale-chaffee-county</p>
+            <h3 class="cover-card__title">Single-Family Homes · Chaffee County</h3>
+            <p class="cover-card__desc">Focus kw: <code>single-family homes for sale chaffee county</code>. Cross-community filter for the most-active residential segment.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="land-for-sale-collegiate-peaks.html">
+            <p class="cover-card__slug">/land-for-sale-collegiate-peaks</p>
+            <h3 class="cover-card__title">Land for Sale · Collegiate Peaks</h3>
+            <p class="cover-card__desc">Focus kw: <code>land for sale collegiate peaks</code>. Vacant lots, ranches, acreage across Chaffee + Park counties. Water rights + zoning vetted.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="condos-townhomes-for-sale-chaffee-county.html">
+            <p class="cover-card__slug">/condos-townhomes-for-sale-chaffee-county</p>
+            <h3 class="cover-card__title">Condos &amp; Townhomes · Chaffee County</h3>
+            <p class="cover-card__desc">Focus kw: <code>condos and townhomes for sale chaffee county</code>. Downtown Buena Vista + Salida historic district + select developments.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+        <a class="cover-card" href="luxury-homes-for-sale-collegiate-peaks.html">
+            <p class="cover-card__slug">/luxury-homes-for-sale-collegiate-peaks</p>
+            <h3 class="cover-card__title">Luxury Homes · Collegiate Peaks $1M+</h3>
+            <p class="cover-card__desc">Focus kw: <code>luxury homes for sale collegiate peaks</code>. Estate ranches, river frontage, custom architecture in the top tier of Bill's market.</p>
+            <span class="cover-card__tag tag--idx">IDX · Hotsheet</span>
+        </a>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<div class="cover-foot">
+    <p><strong>Build context</strong></p>
+    <p>Optimus Prime full pipeline · showcase-idx-setup plugin · library-aligned through 2026-05-20 doctrine pass · accessibility AA baseline · Rank Math meta pre-validated (all titles ≤60ch, descriptions ≤155ch)</p>
+    <p style="margin-top: 24px;">Source files in <code>~/Documents/Claude/projects/Bill Lockett/</code> · Live URL pattern: <code>raw.githack.com/curtis-blip/client-previews/main/bill-lockett/{slug}.html</code></p>
 </div>
 
 </body>
