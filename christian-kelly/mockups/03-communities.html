@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Central Colorado Mountain Communities · High Rocky Living</title>
+  <meta name="description" content="Seven Central Colorado mountain towns Christian Kelly knows by name. Buena Vista, Salida, Leadville, Fairplay, Twin Lakes, Ranch of the Rockies, Nathrop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* page-specific modal styling */
+    .modal__head {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem;
+      padding-bottom: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .modal__head .eyebrow { margin: 0 0 0.65rem; display: block; }
+    .modal__head h2 { margin: 0; font-size: clamp(1.6rem, 3vw, 2.4rem); }
+    .modal__hero { aspect-ratio: 16/9; overflow: hidden; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+    .modal__hero img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95) brightness(0.98); }
+    .modal__lede { font-weight: 300; font-size: clamp(1.05rem, 1.3vw, 1.2rem); line-height: 1.6; color: var(--text-primary); margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); max-width: 70ch; }
+    .modal__body p { color: var(--text-subtle); margin: 0 0 1.25rem; max-width: 70ch; }
+    .modal__body p:last-of-type { margin-bottom: 0; }
+
+    .modal__features {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+      margin: clamp(2rem, 4vw, 3rem) 0;
+      padding: clamp(1.5rem, 3vw, 2rem) 0;
+      border-block: 1px solid var(--border-hairline);
+    }
+    .modal__feature { display: flex; gap: 0.85rem; align-items: flex-start; }
+    .modal__feature-icon { width: 22px; height: 22px; color: var(--accent-sage); flex-shrink: 0; margin-top: 0.15rem; }
+    .modal__feature h4 { margin: 0 0 0.2rem; font-size: 0.95rem; font-weight: 500; letter-spacing: 0.01em; color: var(--text-primary); }
+    .modal__feature p { margin: 0; font-size: 0.85rem; color: var(--text-subtle); line-height: 1.5; }
+
+    .modal__perspective {
+      background: var(--bg-taupe);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      margin: clamp(2rem, 3vw, 2.5rem) 0;
+      border-left: 2px solid var(--accent-sage);
+    }
+    .modal__perspective .eyebrow { margin-bottom: 0.85rem; }
+    .modal__perspective p { color: var(--text-primary); margin: 0; font-weight: 300; font-size: clamp(1rem, 1.15vw, 1.1rem); line-height: 1.65; max-width: 60ch; }
+
+    .modal__ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: clamp(2rem, 3vw, 2.5rem); padding-top: clamp(2rem, 3vw, 2.5rem); border-top: 1px solid var(--border-hairline); }
+    .modal__ctas .btn { font-size: 0.74rem; }
+
+    /* prevent body scroll when modal open */
+    body.modal-open { overflow: hidden; }
+
+    /* page intro under hero */
+    .communities-intro { background: var(--bg-warm-white); padding-block: clamp(4rem, 8vw, 7rem); text-align: center; }
+    .communities-intro__inner { max-width: 720px; margin-inline: auto; }
+    .communities-intro .eyebrow { display: block; margin-bottom: 1.25rem; }
+    .communities-intro h2 { margin: 0 0 1.5rem; }
+    .communities-intro p { color: var(--text-subtle); font-weight: 300; font-size: clamp(1.05rem, 1.3vw, 1.2rem); line-height: 1.6; margin: 0; }
+
+    @media (max-width: 640px) {
+      .modal__features { grid-template-columns: 1fr; }
+      .modal__head { flex-direction: column; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV V2 (solid, inner page) ========== -->
+  <nav class="nav nav--solid" id="nav" aria-label="Primary">
+    <div class="container nav__row">
+      <a class="nav__logo" href="01-home.html" aria-label="High Rocky Living home">
+        <img src="../assets/logo-white.png" alt="High Rocky Living" class="nav__logo-img nav__logo-img--light" />
+        <img src="../assets/logo.png" alt="" class="nav__logo-img nav__logo-img--dark" aria-hidden="true" />
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-controls="nav-menu" aria-expanded="false" id="nav-toggle">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="02-about.html">About</a></li>
+        <li><a class="nav__link" href="03-communities.html">Communities</a></li>
+        <li><a class="nav__link" href="04-buyers-guide.html">Buy</a></li>
+        <li><a class="nav__link" href="05-sellers-guide.html">Sell</a></li>
+        <li><a class="nav__link" href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a class="nav__link" href="08-featured-listings.html">Listings</a></li>
+        <li><a class="nav__link nav__cta btn" href="07-testimonials.html">Testimonials</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO (full-bleed photo, inner-page scale) ========== -->
+  <header class="hero hero--inner">
+    <div class="hero__bg" style="background-image:url('../assets/community-fairplay.jpg')" role="img" aria-label="South Park mountain landscape near Fairplay, Colorado"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <span class="eyebrow" style="color: var(--text-inverse); opacity: 0.85;">Where I Work</span>
+      <h1>Central Colorado Mountain Communities</h1>
+      <p class="hero__sub">Seven towns across Chaffee, Park, and Lake counties. Each one has its own pace, its own price ceiling, and its own quirks. Pick a card to read what I have learned working in it.</p>
+    </div>
+  </header>
+
+  <!-- ========== INTRO BAND ========== -->
+  <section class="communities-intro">
+    <div class="container">
+      <div class="communities-intro__inner">
+        <span class="eyebrow">Seven Towns, One Region</span>
+        <h2>From the Arkansas River to the Continental Divide</h2>
+        <p>The communities below are not a tourism list. I have written offers, walked properties, attended inspections, and closed deals in every one of them. If you have visited the <a href="https://buenavistacolorado.org" rel="noopener noreferrer" target="_blank">Buena Vista Chamber of Commerce</a> page and want the real-estate version, this is it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMMUNITY GRID V1 (3-col hover-reveal overlay) ========== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="community-grid">
+        <button type="button" class="community-card" data-modal="modal-buena-vista" aria-label="View Buena Vista community details">
+          <img src="../assets/community-buena-vista.webp" alt="Downtown Buena Vista with Collegiate Peaks" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Buena Vista</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-salida" aria-label="View Salida community details">
+          <img src="../assets/community-salida.webp" alt="Downtown Salida along the Arkansas River" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Salida</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-leadville" aria-label="View Leadville community details">
+          <img src="../assets/community-leadville.jpg" alt="Historic Leadville at 10,000 feet" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Leadville</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-fairplay" aria-label="View Fairplay community details">
+          <img src="../assets/community-fairplay.jpg" alt="Fairplay in South Park valley" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Fairplay</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-twin-lakes" aria-label="View Twin Lakes community details">
+          <img src="../assets/community-twin-lakes.jpg" alt="Twin Lakes beneath Mount Elbert" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Twin Lakes</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-ranch-of-the-rockies" aria-label="View Ranch of the Rockies community details">
+          <img src="../assets/community-ranch-of-rockies.jpeg" alt="Ranch of the Rockies acreage" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Ranch of the Rockies</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+
+        <button type="button" class="community-card" data-modal="modal-nathrop" aria-label="View Nathrop community details">
+          <img src="../assets/community-nathrop-hotsprings.jpg" alt="Nathrop hot springs and Collegiate Peaks" class="community-card__img" loading="lazy" />
+          <div class="community-card__overlay" aria-hidden="true"></div>
+          <div class="community-card__label">
+            <h3>Nathrop</h3>
+            <span class="community-card__view">View Community</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MODAL: BUENA VISTA ========== -->
+  <div class="modal" id="modal-buena-vista" role="dialog" aria-modal="true" aria-labelledby="title-buena-vista">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Buena Vista, Colorado</span>
+          <h2 id="title-buena-vista">Town of Buena Vista</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-buena-vista.webp" alt="Downtown Buena Vista with Collegiate Peaks behind" />
+      </div>
+      <p class="modal__lede">Nestled in the heart of the Rockies, Buena Vista offers a laid-back mountain lifestyle with stunning views of the Collegiate Peaks and easy access to the Arkansas River. Welcoming community, vibrant downtown, year-round outdoor recreation. Adventure and small-town charm in the same square mile.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18 L9 8 L14 14 L18 6 L21 18 Z"/></svg>
+          <div>
+            <h4>Collegiate Peaks Backdrop</h4>
+            <p>Five 14ers visible from East Main Street.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 14 C5 12 9 12 12 14 C15 16 19 16 22 14"/><path d="M2 18 C5 16 9 16 12 18 C15 20 19 20 22 18"/></svg>
+          <div>
+            <h4>Arkansas River Recreation</h4>
+            <p>Rafting, fly fishing, and the Whitewater Park downtown.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 21 L4 9 L12 4 L20 9 L20 21 Z"/><path d="M9 21 L9 14 L15 14 L15 21"/></svg>
+          <div>
+            <h4>South Main Neighborhood</h4>
+            <p>Walkable, river-adjacent, the most distinct submarket in town.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 21 L21 21"/><path d="M5 21 L5 10 L12 5 L19 10 L19 21"/><path d="M9 21 L9 17 L15 17 L15 21"/></svg>
+          <div>
+            <h4>Buena Vista School District</h4>
+            <p>R-31 District, K-12, well-regarded family draw.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>This is home base. I drive these roads every week, know which subdivisions actually have buildable lots versus marketed lots, and have walked the South Main, Trout Creek, and Cottonwood Lake neighborhoods so often I can tell you which streets have water-rights complications. If you want to be five minutes from the Arkansas River and seventy minutes from a major airport, Buena Vista is the answer.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>The buyer mix here is roughly thirds: relocating families, second-home owners from the Front Range, and out-of-state buyers chasing the Collegiate Peaks lifestyle. Inventory turns fastest in spring and late summer. Land buyers focus on the bench above Cottonwood Lake and the Trout Creek corridor. South Main is the only walkable in-town option and trades at a premium.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="09-buena-vista-homes-for-sale.html">View Homes for Sale in Buena Vista</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: SALIDA ========== -->
+  <div class="modal" id="modal-salida" role="dialog" aria-modal="true" aria-labelledby="title-salida">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Salida, Colorado</span>
+          <h2 id="title-salida">Downtown Salida</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-salida.webp" alt="Downtown Salida along the Arkansas River" />
+      </div>
+      <p class="modal__lede">Set along the Arkansas River, Downtown Salida is full of character, creativity, and small-town charm. Vibrant arts scene, historic architecture, walkable streets. A lively mix of galleries, local shops, restaurants, and year-round events, framed by big mountain views.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><path d="M3 8 L21 8"/><path d="M8 4 L8 8"/><path d="M16 4 L16 8"/></svg>
+          <div>
+            <h4>Largest Historic District in CO</h4>
+            <p>National Register, Victorian brick, walkable F Street.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+          <div>
+            <h4>Arts and Galleries Scene</h4>
+            <p>First Friday art walks, Salida Steam Plant, working studios.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7 L9 13 L21 5"/><path d="M3 17 L9 11 L21 19"/></svg>
+          <div>
+            <h4>Monarch Mountain Access</h4>
+            <p>Twenty minutes to ski lifts, no resort markup on homes.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 14 C5 12 9 12 12 14 C15 16 19 16 22 14"/><path d="M2 18 C5 16 9 16 12 18 C15 20 19 20 22 18"/></svg>
+          <div>
+            <h4>Riverside Living</h4>
+            <p>FIBArk every June, river-walk access from downtown blocks.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Salida is the closest thing this region has to a real town, with a downtown grid you can actually live in and walk out of for coffee, dinner, and music. It pulls a different buyer than Buena Vista, more arts and culture, more retirees and remote workers, more compact in-town inventory. The Mesa, Holman, and East Sackett submarkets each have their own price profile, and I help buyers translate the address-to-character math before they fall in love with a listing photo.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>Downtown Salida proper trades at the highest price-per-square-foot in Chaffee County. Move a few blocks east or south and the math changes quickly. Newer construction concentrates on the south side near Holman Avenue; older bungalows fill the historic core. Vacation-rental regulations have tightened over the last few years, which matters if your purchase math includes short-term-rental income.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="10-salida-homes-for-sale.html">View Homes for Sale in Salida</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: LEADVILLE ========== -->
+  <div class="modal" id="modal-leadville" role="dialog" aria-modal="true" aria-labelledby="title-leadville">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Leadville, Colorado</span>
+          <h2 id="title-leadville">Downtown Leadville</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-leadville.jpg" alt="Historic Leadville Victorian buildings" />
+      </div>
+      <p class="modal__lede">Rich in history and surrounded by Colorado's highest peaks, Downtown Leadville offers a blend of Old West character and mountain-town grit. Preserved Victorian buildings, local shops, a laid-back vibe. Authentic, no-frills, easy access to year-round outdoor adventure.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2 L12 22"/><path d="M5 9 L19 9"/><path d="M3 22 L21 22"/></svg>
+          <div>
+            <h4>10,152 Feet Elevation</h4>
+            <p>Highest incorporated city in North America.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 21 L8 11 L13 17 L18 7 L21 21 Z"/></svg>
+          <div>
+            <h4>Mount Elbert and Mount Massive</h4>
+            <p>Colorado's two tallest 14ers, both at your doorstep.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="14"/><path d="M3 6 L12 2 L21 6"/><path d="M9 20 L9 14 L15 14 L15 20"/></svg>
+          <div>
+            <h4>Preserved Victorian Core</h4>
+            <p>Harrison Avenue NRHP district, mining-era architecture intact.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7 L7 3 L17 3 L21 7 L21 17 L17 21 L7 21 L3 17 Z"/><path d="M9 12 L11 14 L15 10"/></svg>
+          <div>
+            <h4>Year-Round Snowsports</h4>
+            <p>Ski Cooper minutes away, Nordic and snowmobile trails dense.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Leadville is the bargain of the region for buyers who can handle altitude and weather. You get a real historic town for the price of a starter home in Salida, and the recreation footprint is unmatched. The trade-offs are real (deep winters, longer commutes to anything other than a trailhead) and I am honest about them with buyers. Melissa Earley bought her first home here, and the playbook for first-timers in Leadville is different than anywhere else I work.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>Inventory clusters in the historic-district bungalows and a few newer pocket developments. Many older homes have boilers and steam heat, which is its own inspection conversation. East-side and West Park submarkets have different sun exposure and snow-load profiles. Short-term-rental rules are looser than Salida, which keeps Leadville on the radar for income-property buyers.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="11-leadville-homes-for-sale.html">View Homes for Sale in Leadville</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: FAIRPLAY ========== -->
+  <div class="modal" id="modal-fairplay" role="dialog" aria-modal="true" aria-labelledby="title-fairplay">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Fairplay, Colorado</span>
+          <h2 id="title-fairplay">Town of Fairplay</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-fairplay.jpg" alt="Fairplay tucked into South Park valley" />
+      </div>
+      <p class="modal__lede">Tucked into South Park with wide-open views of the Rockies, Fairplay offers a quiet, laid-back mountain lifestyle rooted in history and small-town charm. Historic district, local shops, easy access to hiking, fishing, and nearby skiing. A peaceful base for year-round adventure.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 20 L21 20"/><path d="M5 20 L5 12 L8 12 L8 20"/><path d="M11 20 L11 8 L14 8 L14 20"/><path d="M17 20 L17 10 L20 10 L20 20"/></svg>
+          <div>
+            <h4>Park County Seat</h4>
+            <p>Government services, courthouse, civic anchor of South Park.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12 L8 6 L14 12 L20 4 L22 6"/><path d="M2 18 L22 18"/></svg>
+          <div>
+            <h4>South Park Valley Floor</h4>
+            <p>9,953 feet, wide-open meadows, big-sky country.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 12 L16 12"/><path d="M3 12 L4 12"/><path d="M20 12 L21 12"/></svg>
+          <div>
+            <h4>South Park City Museum</h4>
+            <p>Restored 1880s mining-town living-history site.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2 L14 8 L20 9 L15 13 L17 20 L12 16 L7 20 L9 13 L4 9 L10 8 Z"/></svg>
+          <div>
+            <h4>Breck and Hoosier Pass</h4>
+            <p>Twenty-five minutes to Breckenridge over Hoosier Pass.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Fairplay punches above its weight for buyers who want quiet, space, and access to both Buena Vista and Breckenridge. The drive over Hoosier Pass to Summit County is twenty-five minutes when the weather cooperates, which puts ski-resort jobs and amenities in reach without resort-town prices. I work the Indian Mountain, Valley of the Sun, and Park Estates subdivisions most often, and each has its own road maintenance, well, and HOA story.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>Most of the Fairplay buyer activity is on the surrounding subdivisions rather than in the town proper. Land buyers favor the higher-elevation lots with Mosquito Range views; finished-home buyers tend toward Indian Mountain. County road maintenance, snowplow priority, and propane delivery routes are real considerations here that nobody mentions on Zillow. We walk through them before you write an offer.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="12-fairplay-homes-for-sale.html">View Homes for Sale in Fairplay</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: TWIN LAKES ========== -->
+  <div class="modal" id="modal-twin-lakes" role="dialog" aria-modal="true" aria-labelledby="title-twin-lakes">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Twin Lakes, Colorado</span>
+          <h2 id="title-twin-lakes">Twin Lakes</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-twin-lakes.jpg" alt="Twin Lakes beneath Mount Elbert and Mount Massive" />
+      </div>
+      <p class="modal__lede">Set beneath Colorado's tallest peaks, Twin Lakes is a serene mountain community known for its expansive alpine lakes, quiet atmosphere, and breathtaking views of Mount Elbert and Mount Massive. Easy access to hiking, kayaking, and scenic drives. A peaceful escape surrounded by nature.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12 L21 12"/><path d="M12 3 C16 8 16 16 12 21 C8 16 8 8 12 3"/></svg>
+          <div>
+            <h4>Alpine Lake Recreation</h4>
+            <p>Two reservoirs, sailing, kayaking, paddleboarding, fishing.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 21 L9 9 L13 15 L17 7 L21 21 Z"/></svg>
+          <div>
+            <h4>Mount Elbert Trailhead</h4>
+            <p>Colorado's highest 14er starts six miles up the road.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12 L21 12"/><path d="M12 3 L12 21"/><circle cx="12" cy="12" r="9"/></svg>
+          <div>
+            <h4>Continental Divide Loop</h4>
+            <p>Independence Pass to Aspen, sixty miles of scenic byway.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="9" width="18" height="11"/><path d="M3 9 L12 3 L21 9"/></svg>
+          <div>
+            <h4>Tiny Historic Village</h4>
+            <p>Twin Lakes village proper is roughly two blocks, by design.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Twin Lakes is the quietest place I sell. Inventory is thin, turnover is slow, and most properties trade through word-of-mouth and pocket listings before they hit the public MLS. Rudy and Mandy trusted me with their sale here and we got it done with minimal market exposure, which is the point in a community this small. If you want a Twin Lakes property, the work happens before the listing exists.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>Lake-frontage parcels are vanishingly rare; most homes are on the slope above with a view. Snow load is real here, and the road in from Highway 82 closes seasonally above the village. Many homes are seasonal-use second homes; the year-round residency rate is one of the lowest in the region. That changes how you think about HOA governance, vendor availability, and resale timing.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="13-twin-lakes-homes-for-sale.html">View Homes for Sale in Twin Lakes</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: RANCH OF THE ROCKIES ========== -->
+  <div class="modal" id="modal-ranch-of-the-rockies" role="dialog" aria-modal="true" aria-labelledby="title-ranch-of-the-rockies">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Ranch of the Rockies, Colorado</span>
+          <h2 id="title-ranch-of-the-rockies">Ranch of the Rockies</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-ranch-of-rockies.jpeg" alt="Ranch of the Rockies acreage with Collegiate Peaks" />
+      </div>
+      <p class="modal__lede">Ranch of the Rockies offers wide-open mountain living with expansive acreage, panoramic views of the Collegiate Peaks, and a quiet, rural feel just outside Buena Vista. Sense of space, community amenities, easy access to outdoor recreation. Ideal for buyers who want privacy without giving up convenience.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><path d="M3 12 L21 12"/><path d="M12 3 L12 21"/></svg>
+          <div>
+            <h4>2-Acre to 10-Acre Lots</h4>
+            <p>Buildable acreage, room to breathe, no shared fence lines.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18 L9 8 L14 14 L18 6 L21 18 Z"/></svg>
+          <div>
+            <h4>Collegiate Peaks Vistas</h4>
+            <p>Mount Princeton, Mount Antero, Mount Yale, all in the panorama.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12 L21 12"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><path d="M8 12 L16 12"/></svg>
+          <div>
+            <h4>HOA Amenities</h4>
+            <p>Clubhouse, equestrian center, fishing ponds, ATV trails.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 L21 21 L3 21 Z"/><path d="M12 9 L12 17"/></svg>
+          <div>
+            <h4>Twenty Minutes to BV</h4>
+            <p>Country quiet, but a short drive to groceries and services.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Ranch of the Rockies is the answer for buyers who say they want acreage but still want a paved road, a clubhouse, and a neighbor close enough to feed the dog when they travel. The HOA structure is more involved than most local subdivisions, and the build covenants are specific enough that I always pull the current declarations before a buyer writes an offer. Lot premium varies dramatically based on slope, view, and whether you have well-friendly bedrock.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>The community sits east of Buena Vista off County Road 371, in the foothills above the Arkansas River valley. Lots range from a couple of acres to ten or more; some have mature trees, some are open meadow. Roads are gravel and maintained by the HOA. Water is by individual well; septic by individual system. I have closed enough deals here to know which filings have the best buildability and which to skip.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="14-ranch-of-the-rockies-homes-for-sale.html">View Homes for Sale in Ranch of the Rockies</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL: NATHROP ========== -->
+  <div class="modal" id="modal-nathrop" role="dialog" aria-modal="true" aria-labelledby="title-nathrop">
+    <div class="modal__inner">
+      <button type="button" class="modal__close" aria-label="Close">&times;</button>
+      <div class="modal__head">
+        <div>
+          <span class="eyebrow">Nathrop, Colorado</span>
+          <h2 id="title-nathrop">Nathrop</h2>
+        </div>
+      </div>
+      <div class="modal__hero">
+        <img src="../assets/community-nathrop-hotsprings.jpg" alt="Nathrop hot springs and Collegiate Peaks" />
+      </div>
+      <p class="modal__lede">Nestled between Buena Vista and Salida, Nathrop offers a peaceful mountain setting with sweeping views of the Collegiate Peaks and easy access to the Arkansas River. Open space, natural hot springs, a relaxed rural vibe. A quiet retreat with year-round outdoor adventure right outside your door.</p>
+
+      <div class="modal__features">
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 14 C6 11 8 9 12 9 C16 9 18 11 18 14"/><path d="M4 18 L20 18"/><path d="M9 6 C9 4 10 3 12 3 C14 3 15 4 15 6"/></svg>
+          <div>
+            <h4>Natural Hot Springs</h4>
+            <p>Mount Princeton Hot Springs Resort, three miles away.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 18 L9 8 L14 14 L18 6 L21 18 Z"/></svg>
+          <div>
+            <h4>Mount Princeton at the Door</h4>
+            <p>Trailhead access for one of the most accessible 14ers.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 14 C5 12 9 12 12 14 C15 16 19 16 22 14"/><path d="M2 18 C5 16 9 16 12 18 C15 20 19 20 22 18"/></svg>
+          <div>
+            <h4>Arkansas River Frontage</h4>
+            <p>Some parcels back the river; fly-fishing access is uncommon.</p>
+          </div>
+        </div>
+        <div class="modal__feature">
+          <svg class="modal__feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3 L12 21"/><path d="M3 12 L21 12"/></svg>
+          <div>
+            <h4>Midpoint Location</h4>
+            <p>Twelve minutes south of Buena Vista, fifteen north of Salida.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal__perspective">
+        <span class="eyebrow">My Take</span>
+        <p>Nathrop is the unofficial third town between Buena Vista and Salida, and it draws buyers who want the country setting of Ranch of the Rockies without driving back up to the bench. The hot-springs corridor along Chalk Creek is its own micro-market, with shorter-term-rental dynamics worth understanding before you buy. Buyers who land here usually want river or creek frontage, large lots, and the option to keep horses or a few head of livestock.</p>
+      </div>
+
+      <div class="modal__body">
+        <p>Nathrop is unincorporated Chaffee County, which means county-level zoning and no town government layer to navigate. Water is mostly well; septic mostly individual. Inventory is thin and trades on word-of-mouth as often as MLS, especially for river-frontage parcels. The Chalk Creek and Hot Springs corridor parcels are the highest-demand pocket and are worth checking on a regular basis if you are serious.</p>
+      </div>
+
+      <div class="modal__ctas">
+        <a class="btn" href="15-nathrop-homes-for-sale.html">View Homes for Sale in Nathrop</a>
+        <a class="btn" href="07-testimonials.html#contact">Schedule a Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CLOSING CTA V1 (parallax) · Leadville secondary photo ========== -->
+  <section class="closing-cta" style="background-image:url('../assets/community-leadville-2.jpg')">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--bg-taupe);">Not Sure Which Town Fits?</span>
+      <h2>Let's Talk About What Fits You</h2>
+      <p>Pick three towns from above, tell me what you actually want from a mountain life, and I will narrow it down with you over coffee or a video call.</p>
+      <a class="btn btn--ghost-on-dark" href="07-testimonials.html#contact">Start the Conversation</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER V2 ========== -->
+  <footer class="footer">
+    <div class="footer__trust">
+      <div class="container">
+        <div class="footer__trust-row">
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L22 7 L22 12 C22 17 17 21 12 22 C7 21 2 17 2 12 L2 7 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 L11 15 L16 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            REALTOR®
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 L12 4 L21 11 L21 20 L3 20 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20 L10 14 L14 14 L14 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            Equal Housing Opportunity
+          </span>
+          <span>Worth Clark Realty</span>
+          <span>Colorado License # [NEEDS_CLIENT]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <img src="../assets/logo-white.png" alt="High Rocky Living" />
+          <p>Elevated mountain real estate across Buena Vista and Central Colorado.</p>
+          <p class="brokerage">powered by Worth Clark Realty</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Communities</h4>
+          <ul>
+            <li><a href="09-buena-vista-homes-for-sale.html">Buena Vista</a></li>
+            <li><a href="10-salida-homes-for-sale.html">Salida</a></li>
+            <li><a href="11-leadville-homes-for-sale.html">Leadville</a></li>
+            <li><a href="12-fairplay-homes-for-sale.html">Fairplay</a></li>
+            <li><a href="13-twin-lakes-homes-for-sale.html">Twin Lakes</a></li>
+            <li><a href="14-ranch-of-the-rockies-homes-for-sale.html">Ranch of the Rockies</a></li>
+            <li><a href="15-nathrop-homes-for-sale.html">Nathrop</a></li>
+            <li><a href="03-communities.html"><strong>All Communities</strong></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="02-about.html">About</a></li>
+            <li><a href="04-buyers-guide.html">Buyer's Guide</a></li>
+            <li><a href="05-sellers-guide.html">Seller's Guide</a></li>
+            <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            <li><a href="08-featured-listings.html">Featured Listings</a></li>
+            <li><a href="07-testimonials.html">Testimonials</a></li>
+            <li><a href="16-blog.html">Journal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <address class="footer__contact">
+            429 E Main Street<br />
+            Buena Vista, Colorado 81211<br /><br />
+            <a href="tel:+17199669013">719.966.9013</a><br />
+            <a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a>
+          </address>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/highrockyliving/" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 9 L14 7 C14 6 14.5 5.5 15.5 5.5 L17 5.5 L17 2 L14 2 C11.5 2 10 3.5 10 6 L10 9 L7 9 L7 12.5 L10 12.5 L10 22 L14 22 L14 12.5 L16.5 12.5 L17 9 Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/highrockyliving/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/christiankellywcr/" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="12"/><rect x="3" y="3" width="4" height="4"/><path d="M10 9 L14 9 L14 11 C15 9.5 16.5 9 18 9 C20.5 9 22 11 22 13.5 L22 21 L18 21 L18 14 C18 13 17.5 12.5 16.5 12.5 C15 12.5 14 13.5 14 15 L14 21 L10 21 Z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@highrockylivingrealestate" aria-label="YouTube" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M22 8 C22 6 20.5 5 19 5 L5 5 C3.5 5 2 6 2 8 L2 16 C2 18 3.5 19 5 19 L19 19 C20.5 19 22 18 22 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="10,9 16,12 10,15"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 High Rocky Living · All rights reserved</span>
+        <span>
+          <a href="17-terms.html">Terms of Use</a> ·
+          <a href="18-privacy.html">Privacy Policy</a> ·
+          Site by AgenticPress
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Nav mobile toggle
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          var open = menu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open);
+        });
+      }
+
+      // Modal open/close + scroll lock + Escape
+      var body = document.body;
+      var openModal = null;
+
+      function open(modal) {
+        if (!modal) return;
+        modal.classList.add('is-open');
+        body.classList.add('modal-open');
+        openModal = modal;
+        var closeBtn = modal.querySelector('.modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+      function close() {
+        if (!openModal) return;
+        openModal.classList.remove('is-open');
+        body.classList.remove('modal-open');
+        openModal = null;
+      }
+
+      // open via community-card data-modal
+      document.querySelectorAll('.community-card[data-modal]').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var id = card.getAttribute('data-modal');
+          var modal = document.getElementById(id);
+          open(modal);
+        });
+      });
+
+      // close via close button or backdrop click
+      document.querySelectorAll('.modal').forEach(function (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) close();
+          if (e.target.closest('.modal__close')) close();
+        });
+      });
+
+      // Escape closes
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && openModal) close();
+      });
+    })();
+  </script>
+</body>
+</html>

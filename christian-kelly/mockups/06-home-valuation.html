@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Is My Home Worth? Buena Vista Valuation, Done Right · High Rocky Living</title>
+  <meta name="description" content="A two-step Buena Vista home valuation. Get an instant on-screen estimate and a walk-the-comps CMA from Christian Kelly within 24 hours." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* page-scoped styles for placeholder widget zone, drivers list, split form, video embed */
+
+    /* widget zone (V2 bracketed placeholder) */
+    .widget-zone { background: var(--bg-warm-white); padding-block: var(--section-pad-compact); }
+    .widget-zone__intro { text-align: center; max-width: 56ch; margin: 0 auto clamp(2.5rem, 5vw, 4rem); }
+    .widget-zone__intro p { color: var(--text-subtle); margin: 0; }
+    .widget-shell {
+      max-width: 940px; margin: 0 auto;
+      border: 1.5px dashed var(--accent-sage);
+      background: var(--bg-warm-white);
+      padding: clamp(2rem, 4vw, 3.25rem);
+      position: relative;
+    }
+    .widget-shell::before {
+      content: 'SHOWCASE IDX WIDGET ZONE · RENDERS LIVE IN PRODUCTION';
+      position: absolute; top: -0.7rem; left: 1.5rem;
+      background: var(--bg-warm-white);
+      padding: 0 0.85rem;
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent-sage); font-weight: 500;
+    }
+    .widget-shell__head { text-align: center; margin-bottom: clamp(2rem, 3.5vw, 2.75rem); }
+    .widget-shell__head h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 300; margin: 0 0 0.85rem; }
+    .widget-shell__head p { color: var(--text-subtle); margin: 0; max-width: 56ch; margin-inline: auto; font-size: 0.95rem; }
+    .widget-form { display: grid; grid-template-columns: 1fr; gap: 0.85rem; max-width: 560px; margin: 0 auto; }
+    .widget-form__row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.85rem; }
+    .widget-form input,
+    .widget-form button {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.95rem 1.1rem;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-warm-white);
+      color: var(--text-primary);
+      border-radius: 0;
+      width: 100%;
+    }
+    .widget-form input[disabled] { color: var(--text-subtle); cursor: not-allowed; background: rgba(214,207,196,0.18); }
+    .widget-form__btn {
+      background: var(--accent-sage); color: var(--text-inverse);
+      font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+      border: 0; padding: 1.1rem 1.5rem; cursor: not-allowed; opacity: 0.85;
+    }
+    @media (max-width: 600px) {
+      .widget-form__row { grid-template-columns: 1fr; }
+    }
+
+    /* educational image+text */
+    .edu { background: var(--bg-warm-white); }
+    .edu__grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .edu__media { aspect-ratio: 4 / 5; }
+    .edu__media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95) brightness(0.98); }
+    .edu__content h2 { margin: 0 0 1.5rem; }
+    .edu__content p { color: var(--text-subtle); margin: 0 0 1.25rem; max-width: 56ch; }
+    .edu__content p:last-child { margin-bottom: 0; }
+    @media (max-width: 880px) { .edu__grid { grid-template-columns: 1fr; } }
+
+    /* video embed (responsive iframe) */
+    .video-embed { position: relative; aspect-ratio: 16 / 9; max-width: 940px; margin: 0 auto; background: var(--bg-deep); }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-row { padding-block: var(--section-pad-compact); background: var(--bg-warm-white); }
+    .video-row__intro { text-align: center; max-width: 56ch; margin: 0 auto clamp(2rem, 4vw, 3rem); }
+    .video-row__intro h2 { margin: 0 0 1rem; }
+    .video-row__intro p { color: var(--text-subtle); margin: 0; }
+
+    /* value drivers list (icon-bullets, 5-6 factors) */
+    .drivers { background: var(--bg-warm-white); }
+    .drivers__intro { max-width: 42ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .drivers__intro p { color: var(--text-subtle); margin: 1rem 0 0; }
+    .drivers__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border-hairline);
+    }
+    .drivers__item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.25rem;
+      padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+      border-bottom: 1px solid var(--border-hairline);
+      align-items: start;
+    }
+    .drivers__item:nth-child(odd) { border-right: 1px solid var(--border-hairline); }
+    .drivers__icon { width: 36px; height: 36px; color: var(--accent-sage); }
+    .drivers__icon svg { width: 100%; height: 100%; }
+    .drivers__item h3 { margin: 0 0 0.4rem; font-size: clamp(1.05rem, 1.3vw, 1.2rem); font-weight: 500; }
+    .drivers__item p { color: var(--text-subtle); margin: 0; font-size: 0.95rem; line-height: 1.55; }
+    @media (max-width: 760px) {
+      .drivers__list { grid-template-columns: 1fr; }
+      .drivers__item:nth-child(odd) { border-right: 0; }
+    }
+
+    /* secondary form section (Closing CTA V3 split-with-form) */
+    .cma-split { background: var(--bg-taupe); }
+    .cma-split__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .cma-split__copy h2 { margin: 0 0 1.25rem; }
+    .cma-split__copy p { color: var(--text-subtle); margin: 0 0 1.25rem; max-width: 48ch; }
+    .cma-split__copy ul { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-direction: column; gap: 0.65rem; }
+    .cma-split__copy ul li { padding: 0.5rem 0 0.5rem 1.5rem; position: relative; font-size: 0.95rem; color: var(--text-primary); }
+    .cma-split__copy ul li::before { content: ''; position: absolute; left: 0; top: 1.05rem; width: 0.8rem; height: 1px; background: var(--accent-sage); }
+
+    .cma-form-shell {
+      background: var(--bg-warm-white);
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      border: 1.5px dashed var(--accent-sage);
+      position: relative;
+    }
+    .cma-form-shell::before {
+      content: 'CMA REQUEST FORM · INTEGRATES WITH GRAVITY FORMS / SHOWCASE IDX';
+      position: absolute; top: -0.7rem; left: 1.25rem;
+      background: var(--bg-taupe);
+      padding: 0 0.85rem;
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent-sage); font-weight: 500;
+    }
+    .cma-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .cma-form .cma-form__full { grid-column: 1 / -1; }
+    .cma-form label {
+      display: block;
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--text-subtle); margin: 0 0 0.45rem; font-weight: 500;
+    }
+    .cma-form input,
+    .cma-form select,
+    .cma-form textarea,
+    .cma-form button {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-warm-white);
+      color: var(--text-primary);
+      border-radius: 0;
+    }
+    .cma-form input[disabled],
+    .cma-form select[disabled],
+    .cma-form textarea[disabled] { color: var(--text-subtle); cursor: not-allowed; background: rgba(214,207,196,0.14); }
+    .cma-form textarea { resize: vertical; min-height: 100px; }
+    .cma-form__submit {
+      background: var(--accent-sage); color: var(--text-inverse);
+      font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em;
+      border: 0; padding: 1.1rem 1.5rem; cursor: not-allowed; opacity: 0.85; margin-top: 0.5rem;
+    }
+    @media (max-width: 880px) {
+      .cma-split__grid { grid-template-columns: 1fr; }
+      .cma-form { grid-template-columns: 1fr; }
+    }
+
+    /* DORA license verify utility (below FAQ) */
+    .dora-verify { text-align: center; margin-top: clamp(2.5rem, 5vw, 4rem); }
+    .dora-verify p { color: var(--text-subtle); margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV V2 (solid, inner page) ========== -->
+  <nav class="nav nav--solid" id="nav" aria-label="Primary">
+    <div class="container nav__row">
+      <a class="nav__logo" href="01-home.html" aria-label="High Rocky Living home">
+        <img src="../assets/logo-white.png" alt="High Rocky Living" class="nav__logo-img nav__logo-img--light" />
+        <img src="../assets/logo.png" alt="" class="nav__logo-img nav__logo-img--dark" aria-hidden="true" />
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-controls="nav-menu" aria-expanded="false" id="nav-toggle">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="02-about.html">About</a></li>
+        <li><a class="nav__link" href="03-communities.html">Communities</a></li>
+        <li><a class="nav__link" href="04-buyers-guide.html">Buy</a></li>
+        <li><a class="nav__link" href="05-sellers-guide.html">Sell</a></li>
+        <li><a class="nav__link" href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a class="nav__link" href="08-featured-listings.html">Listings</a></li>
+        <li><a class="nav__link nav__cta btn" href="07-testimonials.html">Testimonials</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO (full-bleed photo, inner-page) ========== -->
+  <header class="hero hero--inner">
+    <div class="hero__bg" style="background-image:url('../assets/community-ranch-of-rockies.jpeg')" role="img" aria-label="Mountain residential land in Central Colorado"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <span class="eyebrow" style="color: var(--text-inverse); opacity: 0.85;">Home Valuation</span>
+      <h1>What Is My Home Worth? Buena Vista Valuation, Done Right</h1>
+      <p class="hero__sub">Two steps, one form. Start with an instant on-screen estimate, then receive a walk-the-comps CMA from Christian within 24 hours. No guesswork, no obligation.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--ghost-on-dark" href="#widget">Get Your Estimate</a>
+        <a class="btn btn--ghost-on-dark" href="#cma-request">Schedule a CMA</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== WIDGET ZONE V2 (bracketed placeholder) ========== -->
+  <section class="widget-zone" id="widget" aria-labelledby="widget-heading">
+    <div class="container">
+      <div class="widget-zone__intro">
+        <span class="eyebrow">MLS-Powered Valuation Tool</span>
+        <h2 id="widget-heading">Instant Home Value Estimate</h2>
+        <p>Showcase IDX home valuation widget renders here. Visitor fills out address and contact info, receives an instant on-screen estimate, and Christian receives a walk-the-comps CMA request to follow up on within 24 hours.</p>
+      </div>
+
+      <form class="widget-shell" aria-label="Home valuation widget placeholder (not a working form)">
+        <div class="widget-shell__head">
+          <h3>Tell Us About Your Property</h3>
+          <p>Demonstration only. The live Showcase IDX widget replaces this placeholder in production.</p>
+        </div>
+        <div class="widget-form">
+          <input type="text" placeholder="Property Address" disabled aria-label="Property address (placeholder)" />
+          <div class="widget-form__row">
+            <input type="number" placeholder="Bedrooms" disabled aria-label="Bedrooms (placeholder)" />
+            <input type="number" placeholder="Bathrooms" disabled aria-label="Bathrooms (placeholder)" />
+            <input type="number" placeholder="Square Feet" disabled aria-label="Square feet (placeholder)" />
+          </div>
+          <input type="email" placeholder="Email (so we can send your detailed CMA)" disabled aria-label="Email (placeholder)" />
+          <button type="button" class="widget-form__btn" disabled>Get My Estimate</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== EDUCATIONAL SECTION (image + text) ========== -->
+  <section class="edu section">
+    <div class="container">
+      <div class="edu__grid">
+        <div class="edu__media">
+          <img src="../assets/community-buena-vista.webp" alt="A Buena Vista neighborhood with mountain views" loading="lazy" />
+        </div>
+        <div class="edu__content">
+          <span class="eyebrow">Behind the Number</span>
+          <h2>So, What Actually Counts as a Real Valuation?</h2>
+          <p>Plenty of websites will spit out a number for your address in three seconds. That number is a useful starting point, an orientation, a rough north star. It is built from public records, recent sales in your zip code, and an algorithm doing its best with limited information.</p>
+          <p>A real valuation layers human judgment on top. It pulls comparable sales street by street, adjusts for finishes, views, acreage, and the dozen things county data does not see, and reads the current pace of buyer interest in your specific micro-market. The result is a price range you can actually plan around.</p>
+          <p>The valuation here gives you both. The widget above is the instant on-screen orientation. The personal CMA Christian sends back within 24 hours is the layer of real local judgment on top. Same form, both outputs, no extra step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEO (CS-supplied) ========== -->
+  <section class="video-row" aria-labelledby="video-heading">
+    <div class="container">
+      <div class="video-row__intro">
+        <span class="eyebrow">Watch First</span>
+        <h2 id="video-heading">Christian Walks Through Her Valuation Approach</h2>
+        <p>A short overview of how the two-step valuation works and why it is built for the Central Colorado market, not a generic national algorithm.</p>
+      </div>
+      <div class="video-embed">
+        <iframe
+          src="https://www.youtube.com/embed/5D8maWkNmbU"
+          title="High Rocky Living home valuation overview"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== METHODOLOGY (process steps, 4-step compact) ========== -->
+  <section class="process section section--taupe">
+    <div class="container">
+      <span class="eyebrow">The Methodology</span>
+      <h2 class="process__intro">How Christian Determines Value</h2>
+
+      <div class="process__step">
+        <div class="process__media"><img src="../assets/community-salida.webp" alt="Salida Colorado neighborhood" loading="lazy" /></div>
+        <div class="process__content">
+          <div class="process__num">01</div>
+          <span class="process__step-label">Step One</span>
+          <h3>Pull Comparable Sales</h3>
+          <p>I start by pulling every closed sale in your immediate area over the last six to nine months that genuinely compares to your home. Same square footage band, same lot type, same neighborhood feel. Not just whatever the algorithm chose because the zip code matched. The comp set is the foundation of every number that follows, and getting it right is half the work.</p>
+        </div>
+      </div>
+
+      <div class="process__step process__step--reverse">
+        <div class="process__media"><img src="../assets/community-fairplay.jpg" alt="Mountain home with land" loading="lazy" /></div>
+        <div class="process__content">
+          <div class="process__num">02</div>
+          <span class="process__step-label">Step Two</span>
+          <h3>Adjust for Property Specifics</h3>
+          <p>Then I adjust each comp to match your home line by line. A finished basement, a remodeled kitchen, a deeper lot, a south-facing view, a new roof, a detached shop. Every meaningful difference between your property and the comp gets a dollar-value adjustment, up or down. This is the part the automated tools cannot do, because it requires walking the property and reading the listing photos with a trained eye.</p>
+        </div>
+      </div>
+
+      <div class="process__step">
+        <div class="process__media"><img src="../assets/community-leadville.jpg" alt="Leadville mountain neighborhood" loading="lazy" /></div>
+        <div class="process__content">
+          <div class="process__num">03</div>
+          <span class="process__step-label">Step Three</span>
+          <h3>Layer in Active Competition and Days on Market</h3>
+          <p>Sold comps tell you what buyers paid yesterday. Active comps tell you what they have to choose from tomorrow. I overlay the homes currently listed against you, read the days-on-market for similar properties, and adjust the recommended price range to reflect real-time demand. A clean sold-comp number priced into a soft active-market gets you no showings; one priced into a hot active-market leaves money on the table.</p>
+        </div>
+      </div>
+
+      <div class="process__step process__step--reverse">
+        <div class="process__media"><img src="../assets/community-twin-lakes.jpg" alt="Walking property in person" loading="lazy" /></div>
+        <div class="process__content">
+          <div class="process__num">04</div>
+          <span class="process__step-label">Step Four</span>
+          <h3>Walk the Comps in Person</h3>
+          <p>For any serious valuation I drive the comps myself. Photos hide a lot. A comp that looks identical online might back to a busy road, sit on a sloped lot you cannot terrace, or have a view your home does not. Walking the comps is how the final number gets tightened from a probable range into a specific recommended listing price you can defend to a buyer's appraiser six weeks later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT DRIVES VALUE (icon-bullet list, 6 factors) ========== -->
+  <section class="drivers section">
+    <div class="container">
+      <div class="drivers__intro">
+        <span class="eyebrow">Local Value Drivers</span>
+        <h2>What Drives Value Around Buena Vista</h2>
+        <p>Central Colorado homes are not Front Range homes. The factors that move the price up or down in a mountain market are different, and weighting them right is the difference between a strong list price and a stale one.</p>
+      </div>
+
+      <div class="drivers__list">
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 26 L11 14 L17 22 L22 16 L29 26 Z"/><circle cx="22" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3>Views and Acreage</h3>
+            <p>An unobstructed Collegiate Peaks view or a deeper buildable lot can shift a list price by a meaningful margin. View easements and adjacent open space matter too.</p>
+          </div>
+        </div>
+
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4 C20 11 24 14 24 19 C24 23.5 20.5 27 16 27 C11.5 27 8 23.5 8 19 C8 14 12 11 16 4 Z"/></svg>
+          </div>
+          <div>
+            <h3>Water Rights and Well</h3>
+            <p>Permit type, well yield, water-quality test history, and whether the property has senior or junior water rights all factor into the value, especially on land or rural parcels.</p>
+          </div>
+        </div>
+
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14 L16 5 L28 14 L28 26 L4 26 Z"/><path d="M12 26 L12 18 L20 18 L20 26"/></svg>
+          </div>
+          <div>
+            <h3>Build Quality and Finishes</h3>
+            <p>Mountain construction has its own checklist. Roof material, insulation, heat source, window quality, and finish level all read differently up here than on the Front Range.</p>
+          </div>
+        </div>
+
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="13" r="5"/><path d="M6 28 C8 22 12 19 16 19 C20 19 24 22 26 28"/></svg>
+          </div>
+          <div>
+            <h3>Proximity to Downtown and Schools</h3>
+            <p>Walkability to Main Street Buena Vista, drive time to schools, and access to the river corridor are real value levers. Premium narrows the further you sit from town.</p>
+          </div>
+        </div>
+
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 22 L12 12 L18 18 L22 14 L28 22"/><path d="M4 26 L28 26"/></svg>
+          </div>
+          <div>
+            <h3>Outdoor Recreation Access</h3>
+            <p>Trailhead proximity, river access, ski drive time to Monarch, and BLM-adjacent parcels carry a premium with the lifestyle-driven buyer pool we have here.</p>
+          </div>
+        </div>
+
+        <div class="drivers__item">
+          <div class="drivers__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="16" r="11"/><path d="M16 6 L16 16 L22 19"/></svg>
+          </div>
+          <div>
+            <h3>Year-Round Drive-Time Accessibility</h3>
+            <p>Pavement-to-the-door versus seasonal road, snowplow priority, and Highway 285 or 24 corridor access all factor into how buyers value daily livability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECONDARY CMA FORM (Closing CTA V3 split-with-form) ========== -->
+  <section class="cma-split section" id="cma-request">
+    <div class="container">
+      <div class="cma-split__grid">
+        <div class="cma-split__copy">
+          <span class="eyebrow">Personal CMA Request</span>
+          <h2>Ready for a Personalized CMA?</h2>
+          <p>If you would rather skip the instant estimate and go straight to the walk-the-comps version, this form sends your details directly to Christian. She will review your property, pull the live comp set, and follow up within one business day to walk you through the numbers.</p>
+          <p>No obligation to list. Plenty of people request a CMA twelve to eighteen months before they actually sell, so the timeline can be a real plan rather than a guess.</p>
+          <ul>
+            <li>A specific recommended price range, not a generic estimate</li>
+            <li>A short list of any pre-list improvements that pay back at sale</li>
+            <li>A timing read on current Central Colorado buyer demand</li>
+          </ul>
+        </div>
+
+        <form class="cma-form-shell" aria-label="CMA request form placeholder (not a working form)">
+          <div class="cma-form">
+            <div>
+              <label for="cma-name">Name</label>
+              <input id="cma-name" type="text" placeholder="First and last" disabled />
+            </div>
+            <div>
+              <label for="cma-email">Email</label>
+              <input id="cma-email" type="email" placeholder="you@example.com" disabled />
+            </div>
+            <div>
+              <label for="cma-phone">Phone</label>
+              <input id="cma-phone" type="tel" placeholder="(719) 555 0100" disabled />
+            </div>
+            <div>
+              <label for="cma-timeline">Timeline</label>
+              <select id="cma-timeline" disabled>
+                <option>Just curious</option>
+                <option>3 to 6 months</option>
+                <option>6 to 12 months</option>
+                <option>Ready now</option>
+              </select>
+            </div>
+            <div class="cma-form__full">
+              <label for="cma-address">Property Address</label>
+              <input id="cma-address" type="text" placeholder="Street, City, ZIP" disabled />
+            </div>
+            <div class="cma-form__full">
+              <label for="cma-notes">Anything Specific?</label>
+              <textarea id="cma-notes" placeholder="Recent upgrades, unique features, questions about the process." disabled></textarea>
+            </div>
+            <div class="cma-form__full">
+              <button type="button" class="cma-form__submit" disabled>Request My CMA</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ V1 (mode=faq, 6 valuation questions) ========== -->
+  <section class="faq section">
+    <div class="container">
+      <span class="eyebrow">FAQ</span>
+      <h2 style="margin-bottom: clamp(2.5rem, 5vw, 4rem);">Valuation Questions, Answered Honestly</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">How accurate is the instant estimate?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">It is a strong starting point. The instant estimate runs against MLS records, recent sales in your area, and your property specifics, and it lands within a reasonable range most of the time. What it does not see are the things that move price the most in a mountain market: view quality, finish level, lot character, and active competition. The personal CMA Christian sends back layers those in, and the two together give you a number you can plan around.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">What is the difference between an estimate, an appraisal, and a CMA?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">An estimate is the instant on-screen number, fast and free. A CMA (Comparative Market Analysis) is what Christian prepares, a hands-on review of comparable sales, active listings, and your specific property, used to set a real list price strategy. An appraisal is a formal valuation done by a licensed appraiser, usually ordered by a lender during a sale or refinance, and it carries legal weight for the loan. Different tools for different jobs.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Do I need to commit to selling to request a valuation?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Not at all. A meaningful share of CMA requests come from people exploring options twelve to eighteen months before they actually list. Some never list. Others use the number to plan a remodel, a refinance, or a future move. There is no pressure and no follow-up sales pitch. You ask, Christian delivers, you decide what to do with it.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">How quickly do I get the personal CMA back?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Within 24 hours on most weekdays, and within one business day at the latest. If the property is unusual (large acreage, mixed use, a build site rather than a finished home), it may take an extra day to pull a thoughtful comp set and walk the relevant comparables. Christian will let you know if so.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">What information should I have ready?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">The basics: address, bedroom and bathroom count, approximate square footage. Helpful additions: any recent renovations or upgrades, unique features (views, acreage, well, septic, outbuildings), and a rough timeline if you have one. None of it is required to start the process; Christian will pull public records and fill in the gaps.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Why is a Central Colorado valuation different from a Front Range one?<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Front Range valuations work off dense comp sets, predictable buyer pools, and short days-on-market. Central Colorado is the opposite. Comp sets are sparser, buyers come from out of state as often as in, properties are non-conforming more often than not, and the value drivers (views, water, acreage, recreation access) carry far more weight than they do in a suburban Denver subdivision. A national algorithm trained on Front Range data routinely misses up here by 10 to 20 percent in either direction. Local valuation is not optional.</div></div>
+        </div>
+      </div>
+
+      <div class="dora-verify">
+        <p>Want to verify any Colorado real estate license, including Christian's?</p>
+        <a href="https://apps2.colorado.gov/dre/licensing/Lookup/LicenseLookup.aspx" rel="noopener noreferrer" target="_blank">Colorado DORA License Lookup</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOSING CTA V1 (parallax) ========== -->
+  <section class="closing-cta" style="background-image:url('../assets/community-salida.webp')">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--bg-taupe);">Two-Step Valuation</span>
+      <h2>One Form, Two Honest Answers</h2>
+      <p>Start with the instant estimate, then meet Christian for the walk-the-comps version. No obligation. No pressure. Just a number you can plan around.</p>
+      <a class="btn btn--ghost-on-dark" href="#widget">Start My Valuation</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER V2 ========== -->
+  <footer class="footer">
+    <div class="footer__trust">
+      <div class="container">
+        <div class="footer__trust-row">
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L22 7 L22 12 C22 17 17 21 12 22 C7 21 2 17 2 12 L2 7 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 L11 15 L16 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            REALTOR®
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 L12 4 L21 11 L21 20 L3 20 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20 L10 14 L14 14 L14 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            Equal Housing Opportunity
+          </span>
+          <span>Worth Clark Realty</span>
+          <span>Colorado License # [NEEDS_CLIENT]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <img src="../assets/logo-white.png" alt="High Rocky Living" />
+          <p>Elevated mountain real estate across Buena Vista and Central Colorado.</p>
+          <p class="brokerage">powered by Worth Clark Realty</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Communities</h4>
+          <ul>
+            <li><a href="09-buena-vista-homes-for-sale.html">Buena Vista</a></li>
+            <li><a href="10-salida-homes-for-sale.html">Salida</a></li>
+            <li><a href="11-leadville-homes-for-sale.html">Leadville</a></li>
+            <li><a href="12-fairplay-homes-for-sale.html">Fairplay</a></li>
+            <li><a href="13-twin-lakes-homes-for-sale.html">Twin Lakes</a></li>
+            <li><a href="14-ranch-of-the-rockies-homes-for-sale.html">Ranch of the Rockies</a></li>
+            <li><a href="15-nathrop-homes-for-sale.html">Nathrop</a></li>
+            <li><a href="03-communities.html"><strong>All Communities</strong></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="02-about.html">About</a></li>
+            <li><a href="04-buyers-guide.html">Buyer's Guide</a></li>
+            <li><a href="05-sellers-guide.html">Seller's Guide</a></li>
+            <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            <li><a href="08-featured-listings.html">Featured Listings</a></li>
+            <li><a href="07-testimonials.html">Testimonials</a></li>
+            <li><a href="16-blog.html">Journal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <address class="footer__contact">
+            429 E Main Street<br />
+            Buena Vista, Colorado 81211<br /><br />
+            <a href="tel:+17199669013">719.966.9013</a><br />
+            <a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a>
+          </address>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/highrockyliving/" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 9 L14 7 C14 6 14.5 5.5 15.5 5.5 L17 5.5 L17 2 L14 2 C11.5 2 10 3.5 10 6 L10 9 L7 9 L7 12.5 L10 12.5 L10 22 L14 22 L14 12.5 L16.5 12.5 L17 9 Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/highrockyliving/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/christiankellywcr/" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="12"/><rect x="3" y="3" width="4" height="4"/><path d="M10 9 L14 9 L14 11 C15 9.5 16.5 9 18 9 C20.5 9 22 11 22 13.5 L22 21 L18 21 L18 14 C18 13 17.5 12.5 16.5 12.5 C15 12.5 14 13.5 14 15 L14 21 L10 21 Z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@highrockylivingrealestate" aria-label="YouTube" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M22 8 C22 6 20.5 5 19 5 L5 5 C3.5 5 2 6 2 8 L2 16 C2 18 3.5 19 5 19 L19 19 C20.5 19 22 18 22 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="10,9 16,12 10,15"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 High Rocky Living · All rights reserved</span>
+        <span>
+          <a href="17-terms.html">Terms of Use</a> ·
+          <a href="18-privacy.html">Privacy Policy</a> ·
+          Site by AgenticPress
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+      // FAQ accordion (single-open)
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__btn');
+        btn.addEventListener('click', function () {
+          var open = item.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq__item').forEach(function (i) { i.setAttribute('aria-expanded', 'false'); i.querySelector('.faq__btn').setAttribute('aria-expanded', 'false'); });
+          if (!open) { item.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-expanded', 'true'); }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

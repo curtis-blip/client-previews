@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meet Christian Kelly, Buena Vista Realtor · High Rocky Living</title>
+  <meta name="description" content="Christian Kelly is a Buena Vista realtor with Worth Clark Realty serving Central Colorado mountain communities. 166 transactions, $45M in sales, 6+ years walking these streets." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== About page scoped patterns ===== */
+
+    /* Bio V3 hybrid: prose + sticky sidebar */
+    .bio { background: var(--bg-warm-white); }
+    .bio__grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: clamp(2.5rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .bio__prose { max-width: 62ch; }
+    .bio__prose .eyebrow { margin-bottom: 1rem; }
+    .bio__prose h2 { margin-bottom: 2rem; }
+    .bio__prose p {
+      color: var(--text-primary);
+      font-weight: 300;
+      font-size: clamp(1.05rem, 1.25vw, 1.18rem);
+      line-height: 1.75;
+      margin: 0 0 1.5rem;
+    }
+    .bio__prose p:last-of-type { margin-bottom: 0; }
+    .bio__pullquote {
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--accent-sage);
+      padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 2vw, 1.75rem);
+      border-left: 1px solid var(--accent-sage);
+      margin: clamp(2rem, 4vw, 3rem) 0;
+      max-width: 32ch;
+    }
+    .bio__sidebar { position: sticky; top: clamp(6rem, 10vw, 7.5rem); }
+    .bio__sidebar-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      filter: saturate(0.95) brightness(0.98);
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+    .bio__credentials {
+      background: var(--bg-taupe);
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      border: 1px solid var(--border-hairline);
+    }
+    .bio__credentials .eyebrow { margin-bottom: 1.25rem; }
+    .bio__credentials-list {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column;
+    }
+    .bio__credentials-list li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(31,28,24,0.08);
+      display: flex; flex-direction: column; gap: 0.25rem;
+    }
+    .bio__credentials-list li:last-child { border-bottom: 0; }
+    .bio__credentials-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
+    .bio__credentials-value {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .bio__credentials-value--num {
+      font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 980px) {
+      .bio__grid { grid-template-columns: 1fr; gap: clamp(2.5rem, 5vw, 4rem); }
+      .bio__sidebar { position: static; max-width: 480px; }
+    }
+
+    /* Worth Clark Realty positioning block */
+    .positioning { padding-block: var(--section-pad-compact); }
+    .positioning__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .positioning__content .eyebrow { margin-bottom: 1rem; }
+    .positioning__content h2 { margin-bottom: 1.5rem; max-width: 18ch; }
+    .positioning__content p {
+      color: var(--text-subtle);
+      font-weight: 300;
+      font-size: clamp(1.05rem, 1.25vw, 1.15rem);
+      line-height: 1.7;
+      margin: 0 0 1.25rem;
+      max-width: 56ch;
+    }
+    .positioning__content p:last-of-type { margin-bottom: 2rem; }
+    .positioning__logo {
+      aspect-ratio: 4 / 3;
+      background: var(--bg-warm-white);
+      border: 1px solid var(--border-hairline);
+      display: grid;
+      place-items: center;
+      padding: clamp(2rem, 4vw, 3rem);
+      position: relative;
+    }
+    .positioning__logo-placeholder {
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      color: var(--text-subtle);
+      text-align: center;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+    }
+    .positioning__logo-placeholder small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+      opacity: 0.7;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 860px) {
+      .positioning__grid { grid-template-columns: 1fr; }
+    }
+
+    /* Communities V3 compact horizontal list */
+    .communities-list { background: var(--bg-warm-white); padding-block: var(--section-pad-compact); }
+    .communities-list__intro {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: end;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+    .communities-list__intro h2 { max-width: 16ch; }
+    .communities-list__intro p { color: var(--text-subtle); margin: 0; max-width: 50ch; }
+    .communities-list__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0;
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      padding-block: clamp(2rem, 4vw, 3rem);
+    }
+    .communities-list__item {
+      flex: 1 1 auto;
+      padding: 0.5rem clamp(1rem, 2.5vw, 2rem);
+      font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      color: var(--text-primary);
+      position: relative;
+      text-align: center;
+      white-space: nowrap;
+      transition: color var(--dur-medium) var(--ease-out);
+    }
+    .communities-list__item + .communities-list__item {
+      border-left: 1px solid var(--border-hairline);
+    }
+    .communities-list__item:hover { color: var(--accent-sage); }
+    @media (max-width: 860px) {
+      .communities-list__intro { grid-template-columns: 1fr; }
+      .communities-list__row { flex-direction: column; align-items: stretch; padding-block: 0.5rem; }
+      .communities-list__item { padding: 1.1rem 0; text-align: left; }
+      .communities-list__item + .communities-list__item { border-left: 0; border-top: 1px solid var(--border-hairline); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV V2 (solid, inner page) ========== -->
+  <nav class="nav nav--solid" id="nav" aria-label="Primary">
+    <div class="container nav__row">
+      <a class="nav__logo" href="01-home.html" aria-label="High Rocky Living home">
+        <img src="../assets/logo-white.png" alt="High Rocky Living" class="nav__logo-img nav__logo-img--light" />
+        <img src="../assets/logo.png" alt="" class="nav__logo-img nav__logo-img--dark" aria-hidden="true" />
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-controls="nav-menu" aria-expanded="false" id="nav-toggle">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="02-about.html">About</a></li>
+        <li><a class="nav__link" href="03-communities.html">Communities</a></li>
+        <li><a class="nav__link" href="04-buyers-guide.html">Buy</a></li>
+        <li><a class="nav__link" href="05-sellers-guide.html">Sell</a></li>
+        <li><a class="nav__link" href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a class="nav__link" href="08-featured-listings.html">Listings</a></li>
+        <li><a class="nav__link nav__cta btn" href="07-testimonials.html">Testimonials</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO (full-bleed photo, inner-page scale) ========== -->
+  <header class="hero hero--inner">
+    <div class="hero__bg" style="background-image:url('../assets/about-portrait.jpg')" role="img" aria-label="Christian Kelly, Buena Vista realtor, on location in Central Colorado"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <span class="eyebrow" style="color: var(--text-inverse); opacity: 0.85;">About</span>
+      <h1>Meet Christian Kelly, Buena Vista Realtor</h1>
+      <p class="hero__sub">Real estate is not a transaction to me. It is how people land in the mountains, build a life here, and decide to stay.</p>
+    </div>
+  </header>
+
+  <!-- ========== AGENT BIO V3 (hybrid prose + sticky sidebar with credentials) ========== -->
+  <section class="bio section">
+    <div class="container">
+      <div class="bio__grid">
+
+        <div class="bio__prose">
+          <span class="eyebrow">My Story</span>
+          <h2>Six Years, Seven Communities, One Reason</h2>
+
+          <p>I am a full-time real estate professional based in Buena Vista, Colorado, working across the seven Central Colorado mountain communities I know best: Buena Vista, Salida, Leadville, Fairplay, Twin Lakes, Ranch of the Rockies, and Nathrop. The work is residential homes, land, and select investment property. The clients are first-time buyers, long-distance relocators, second-home owners, and seasoned investors. The common thread is that they want to live here, or own a piece of here, and they want a real person walking the math with them.</p>
+
+          <p>I came into real estate through the same door most of my clients do: I fell hard for mountain living and wanted to help other people figure out how to make it work. That sounds like a tagline. It is not. It is the actual reason. Buying out here is more complicated than buying on a Front Range cul-de-sac. Water rights, well permits, septic feasibility, snow plowing, propane delivery, the difference between a 30-minute drive in July and a 90-minute drive in January. I learned all of that the hard way, on foot, and now I use it on every transaction.</p>
+
+          <p>My practice is built on a balance most local agents do not offer: residential, land, and investment under one roof. If you are weighing a finished home against a piece of acreage to build on, you do not need two agents to compare the math. If you are an investor running the numbers on a short-term rental, I can pull the comparables on both the income side and the resale side. The three categories inform each other, and clients who work with me on one often come back to work on another.</p>
+
+          <p>I run High Rocky Living as my brand, powered by <a href="https://worthclark.com" rel="noopener noreferrer" target="_blank">Worth Clark Realty</a>. That pairing matters. The boutique-and-local part is the day-to-day: the personal phone number, the hand-curated MLS feed, the inspection I attend in person. The Worth Clark part is the back-end infrastructure: the legal, the marketing technology, the national referral network, the agent training. Boutique service, real brokerage backing. Neither alone would serve you as well.</p>
+
+          <p>What clients tell me, in their own words, is that I communicate clearly and follow through on what I say I will do. The Burns family put it bluntly: "She does what she says and says what she will do." That is the only standard worth holding. Outside of real estate you will find me on the trails, on the Arkansas River, or with my family making memories in the mountains we get to call home.</p>
+
+          <blockquote class="bio__pullquote">"Christian was a fundamental part of our being able to find the right fit in Buena Vista."</blockquote>
+        </div>
+
+        <aside class="bio__sidebar">
+          <img class="bio__sidebar-photo" src="../assets/headshot-christian.jpg" alt="Christian Kelly, real estate advisor with Worth Clark Realty" />
+          <div class="bio__credentials">
+            <span class="eyebrow">Credentials</span>
+            <ul class="bio__credentials-list">
+              <li>
+                <span class="bio__credentials-label">Transactions Closed</span>
+                <span class="bio__credentials-value bio__credentials-value--num">166</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">Total Sales Volume</span>
+                <span class="bio__credentials-value bio__credentials-value--num">$45M+</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">Years in Practice</span>
+                <span class="bio__credentials-value bio__credentials-value--num">6+</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">Brokerage</span>
+                <span class="bio__credentials-value">Worth Clark Realty</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">License</span>
+                <span class="bio__credentials-value">Colorado License # [NEEDS_CLIENT]</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">Professional Memberships</span>
+                <span class="bio__credentials-value">National Association of REALTORS®<br />Colorado Association of REALTORS®</span>
+              </li>
+              <li>
+                <span class="bio__credentials-label">Markets Served</span>
+                <span class="bio__credentials-value">Chaffee, Lake &amp; Park counties: Buena Vista, Salida, Leadville, Fairplay, Twin Lakes, Ranch of the Rockies, Nathrop</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WORTH CLARK REALTY POSITIONING (instead of awards block) ========== -->
+  <section class="positioning section--taupe">
+    <div class="container">
+      <div class="positioning__grid">
+        <div class="positioning__content">
+          <span class="eyebrow">The Brokerage Behind the Brand</span>
+          <h2>Boutique Service, National Backing</h2>
+          <p>High Rocky Living is the front door. Worth Clark Realty is the structural support behind it. The brokerage operates in more than 20 states with a few hundred agents nationwide, but the model is deliberately built so each agent runs a focused, local practice rather than getting absorbed into a brand-first machine. That means you get the personal cell number, the hands-on attention, and the deep local knowledge of a boutique relationship. You also get the legal infrastructure, the marketing technology, the agent training, and the national referral pipeline of a real brokerage.</p>
+          <p>The agreement Worth Clark and I have is simple: they invest in the back-end so I can spend my time on the front-end, which is you. The result is a refined, results-driven experience where every property is positioned with intention, every contract is reviewed by a team with real depth, and every transaction lands the way it is supposed to.</p>
+          <a class="btn" href="04-buyers-guide.html">See How I Work With Buyers</a>
+        </div>
+        <div class="positioning__logo">
+          <span class="placeholder-badge">NEEDS_CLIENT: WCR Logo</span>
+          <div class="positioning__logo-placeholder">
+            Worth Clark Realty
+            <small>Brokerage Wordmark</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMMUNITIES V3 (compact horizontal list, all 7) ========== -->
+  <section class="communities-list">
+    <div class="container">
+      <div class="communities-list__intro">
+        <div>
+          <span class="eyebrow">Where I Work</span>
+          <h2>Communities I Serve</h2>
+        </div>
+        <p>Seven Central Colorado mountain towns, each with its own pace, character, and price point. Tap a name to see what is currently for sale.</p>
+      </div>
+      <div class="communities-list__row">
+        <a class="communities-list__item" href="09-buena-vista-homes-for-sale.html">Buena Vista</a>
+        <a class="communities-list__item" href="10-salida-homes-for-sale.html">Salida</a>
+        <a class="communities-list__item" href="11-leadville-homes-for-sale.html">Leadville</a>
+        <a class="communities-list__item" href="12-fairplay-homes-for-sale.html">Fairplay</a>
+        <a class="communities-list__item" href="13-twin-lakes-homes-for-sale.html">Twin Lakes</a>
+        <a class="communities-list__item" href="14-ranch-of-the-rockies-homes-for-sale.html">Ranch of the Rockies</a>
+        <a class="communities-list__item" href="15-nathrop-homes-for-sale.html">Nathrop</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ V1 mode=expertise (5 areas of expertise) ========== -->
+  <section class="faq section">
+    <div class="container">
+      <span class="eyebrow">Areas of Expertise</span>
+      <h2 style="margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 22ch;">Where My Practice Goes Deep</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Residential Homes<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Single-family homes, townhomes, cabins, and mountain estates across the seven Central Colorado communities I serve. Most of my volume sits here, and most of the relationships start here.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Mountain Land<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Buildable acreage, build sites, and long-hold land in Chaffee, Lake, and Park counties. I walk every parcel with the buildability checklist in hand: water rights, septic feasibility, road access, setbacks, slope, county zoning.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Investment Property<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Short-term rentals, long-hold appreciation plays, and select commercial. The income math, the regulatory landscape, and the resale comparables all matter, and I pull all three before you write an offer.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">First-Time Buyers<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">A real share of my practice. I take the time to explain the process in plain language, connect you with a local lender who can structure the right loan, and stay in the deal through inspection and underwriting without rushing you.</div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__btn" aria-expanded="false">Long-Distance Buyers<span aria-hidden="true"></span></button>
+          <div class="faq__panel"><div class="faq__panel-inner">Roughly a third of my buyers are out of state. Video walk-throughs, FaceTime from the well house, photo passes that catch the things the listing photos hide, and a written follow-up after every showing. The Herzog family bought sight-mostly-unseen and called the process incredible. That is the bar.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS V1 (featured + supporting, different testimonials from Home) ========== -->
+  <section class="testimonials section">
+    <div class="container">
+      <span class="eyebrow">In Their Words</span>
+      <h2 style="max-width: 22ch; margin-bottom: clamp(2.5rem, 5vw, 4rem);">Stories from Past Clients</h2>
+
+      <div class="testimonials__grid">
+        <article class="testimonial testimonial--featured">
+          <div class="testimonial__stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+          </div>
+          <blockquote class="testimonial__quote">"Our hero. After having our home listed for a couple years, it was time to find a new route, that's when we found Christian. She made the process so insanely easy, she was available at all times for any questions we had but truth be told we didn't have many because she was on top of everything. After only having the listing back on the market what feels like less than a month, we had an offer that we accepted. Words can't express how much I appreciate her. We will definitely be utilizing her services again down the road when needed. 12/10."</blockquote>
+          <div class="testimonial__attr">
+            <span class="testimonial__name">Jodie Pias</span>
+            <span class="testimonial__loc">Florissant, Colorado · Relisting After 2-Year Failure</span>
+          </div>
+        </article>
+
+        <div class="testimonials__supporting">
+          <article class="testimonial">
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            </div>
+            <blockquote class="testimonial__quote">"Christian was great to work with. She quickly understood my priorities in my new home and helped me find the right fit. She let me take all the time I needed in my search, and only suggested homes to see that fit my priorities. This was my first home purchase and she guided me through the whole process. I am so grateful to her and love my new home."</blockquote>
+            <div class="testimonial__attr">
+              <span class="testimonial__name">Melissa Earley</span>
+              <span class="testimonial__loc">Leadville, Colorado · First-Time Buyer</span>
+            </div>
+          </article>
+
+          <article class="testimonial">
+            <div class="testimonial__stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+              <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><polygon points="10,2 12.5,7.5 18.5,8 14,12 15.5,18 10,15 4.5,18 6,12 1.5,8 7.5,7.5" fill="currentColor"/></svg>
+            </div>
+            <blockquote class="testimonial__quote">"We buy and sell properties quite often. And I have to say dealing with Christian was the easiest process we have ever gone through. She communicates extremely well, does what she says and says what she will do. You will never regret using her."</blockquote>
+            <div class="testimonial__attr">
+              <span class="testimonial__name">The Burns</span>
+              <span class="testimonial__loc">Buena Vista, Colorado · Repeat Investor Clients</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div style="margin-top: clamp(2.5rem, 4vw, 3.5rem);">
+        <a href="07-testimonials.html" class="btn">Read All Seven Testimonials</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOSING CTA V1 (parallax, different photo than Home/Buy/Sell) ========== -->
+  <section class="closing-cta" style="background-image:url('../assets/community-nathrop-hotsprings.jpg')">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--bg-taupe);">Let's Meet</span>
+      <h2>Find Out If We're a Fit</h2>
+      <p>The best relationships start with a conversation, not a contract. Twenty minutes on the phone or a coffee in Buena Vista is the easiest way to find out if we should work together.</p>
+      <a class="btn btn--ghost-on-dark" href="07-testimonials.html#contact">Reach Out to Christian</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER V2 ========== -->
+  <footer class="footer">
+    <div class="footer__trust">
+      <div class="container">
+        <div class="footer__trust-row">
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L22 7 L22 12 C22 17 17 21 12 22 C7 21 2 17 2 12 L2 7 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 L11 15 L16 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            REALTOR®
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 L12 4 L21 11 L21 20 L3 20 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20 L10 14 L14 14 L14 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            Equal Housing Opportunity
+          </span>
+          <span>Worth Clark Realty</span>
+          <span>Colorado License # [NEEDS_CLIENT]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <img src="../assets/logo-white.png" alt="High Rocky Living" />
+          <p>Elevated mountain real estate across Buena Vista and Central Colorado.</p>
+          <p class="brokerage">powered by Worth Clark Realty</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Communities</h4>
+          <ul>
+            <li><a href="09-buena-vista-homes-for-sale.html">Buena Vista</a></li>
+            <li><a href="10-salida-homes-for-sale.html">Salida</a></li>
+            <li><a href="11-leadville-homes-for-sale.html">Leadville</a></li>
+            <li><a href="12-fairplay-homes-for-sale.html">Fairplay</a></li>
+            <li><a href="13-twin-lakes-homes-for-sale.html">Twin Lakes</a></li>
+            <li><a href="14-ranch-of-the-rockies-homes-for-sale.html">Ranch of the Rockies</a></li>
+            <li><a href="15-nathrop-homes-for-sale.html">Nathrop</a></li>
+            <li><a href="03-communities.html"><strong>All Communities</strong></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="02-about.html">About</a></li>
+            <li><a href="04-buyers-guide.html">Buyer's Guide</a></li>
+            <li><a href="05-sellers-guide.html">Seller's Guide</a></li>
+            <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            <li><a href="08-featured-listings.html">Featured Listings</a></li>
+            <li><a href="07-testimonials.html">Testimonials</a></li>
+            <li><a href="16-blog.html">Journal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <address class="footer__contact">
+            429 E Main Street<br />
+            Buena Vista, Colorado 81211<br /><br />
+            <a href="tel:+17199669013">719.966.9013</a><br />
+            <a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a>
+          </address>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/highrockyliving/" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 9 L14 7 C14 6 14.5 5.5 15.5 5.5 L17 5.5 L17 2 L14 2 C11.5 2 10 3.5 10 6 L10 9 L7 9 L7 12.5 L10 12.5 L10 22 L14 22 L14 12.5 L16.5 12.5 L17 9 Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/highrockyliving/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" ry="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/christiankellywcr/" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="12"/><rect x="3" y="3" width="4" height="4"/><path d="M10 9 L14 9 L14 11 C15 9.5 16.5 9 18 9 C20.5 9 22 11 22 13.5 L22 21 L18 21 L18 14 C18 13 17.5 12.5 16.5 12.5 C15 12.5 14 13.5 14 15 L14 21 L10 21 Z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@highrockylivingrealestate" aria-label="YouTube" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M22 8 C22 6 20.5 5 19 5 L5 5 C3.5 5 2 6 2 8 L2 16 C2 18 3.5 19 5 19 L19 19 C20.5 19 22 18 22 16 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><polygon points="10,9 16,12 10,15"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 High Rocky Living · All rights reserved</span>
+        <span>
+          <a href="17-terms.html">Terms of Use</a> ·
+          <a href="18-privacy.html">Privacy Policy</a> ·
+          Site by AgenticPress
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+      // FAQ accordion (single-open)
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__btn');
+        btn.addEventListener('click', function () {
+          var open = item.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq__item').forEach(function (i) { i.setAttribute('aria-expanded', 'false'); i.querySelector('.faq__btn').setAttribute('aria-expanded', 'false'); });
+          if (!open) { item.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-expanded', 'true'); }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

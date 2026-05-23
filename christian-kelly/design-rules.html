@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design Rules · Christian Kelly · High Rocky Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-warm-white: #fbf9f5;
+      --bg-taupe: #e5ded5;
+      --bg-deep: #1f1c18;
+      --text-primary: #1f1c18;
+      --text-subtle: #5a544a;
+      --text-inverse: #fbf9f5;
+      --accent-sage: #6e7d5e;
+      --accent-sage-hover: #5a6a4e;
+      --border-hairline: #d6cfc4;
+      --font-body: 'Inter', sans-serif;
+      --font-accent: 'Cormorant Garamond', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-body); color: var(--text-primary); background: var(--bg-warm-white); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+    .doc-header { border-bottom: 1px solid var(--border-hairline); padding-bottom: 2rem; margin-bottom: 3rem; }
+    .doc-header .eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-sage); font-weight: 500; margin-bottom: 0.5rem; }
+    .doc-header h1 { font-weight: 300; font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 0.5rem; line-height: 1.1; }
+    .doc-header p { color: var(--text-subtle); margin: 0.5rem 0; }
+    .section { margin-bottom: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-hairline); }
+    .section:first-of-type { border-top: 0; padding-top: 0; }
+    .section h2 { font-weight: 300; font-size: 1.75rem; margin: 0 0 0.5rem; }
+    .section .sub { color: var(--text-subtle); margin: 0 0 2rem; max-width: 60ch; }
+
+    /* palette */
+    .palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .swatch { padding: 1.5rem; border: 1px solid var(--border-hairline); }
+    .swatch__chip { height: 80px; margin-bottom: 1rem; border: 1px solid var(--border-hairline); }
+    .swatch__name { font-weight: 500; font-size: 0.85rem; }
+    .swatch__hex { color: var(--text-subtle); font-family: monospace; font-size: 0.78rem; }
+    .swatch__role { color: var(--text-subtle); font-size: 0.78rem; margin-top: 0.4rem; }
+
+    /* type */
+    .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: baseline; padding: 1.5rem 0; border-bottom: 1px solid var(--border-hairline); }
+    .type-meta { font-family: monospace; font-size: 0.75rem; color: var(--text-subtle); line-height: 1.6; }
+    .type-sample { font-family: var(--font-body); }
+    .ts-h1 { font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.08; letter-spacing: 0.01em; }
+    .ts-h2 { font-weight: 300; font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1.15; letter-spacing: 0.01em; }
+    .ts-h3 { font-weight: 400; font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.3; }
+    .ts-eyebrow { font-weight: 500; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-sage); }
+    .ts-lede { font-weight: 300; font-size: clamp(1.1rem, 1.4vw, 1.25rem); line-height: 1.6; color: var(--text-subtle); }
+    .ts-body { font-weight: 400; font-size: 1.05rem; line-height: 1.65; }
+    .ts-accent { font-family: var(--font-accent); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.2rem); line-height: 1.15; }
+
+    /* buttons */
+    .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .btn { display: inline-block; background: transparent; border: 1px solid var(--accent-sage); color: var(--accent-sage); font-family: var(--font-body); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; padding: 1.05rem 2.4rem; border-radius: 0; transition: all 800ms cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; text-decoration: none; }
+    .btn:hover { background: var(--accent-sage); color: var(--text-inverse); }
+    .btn-dark-bg { background: var(--bg-deep); padding: 2rem; }
+    .btn-dark-bg .btn { border-color: var(--text-inverse); color: var(--text-inverse); }
+    .btn-dark-bg .btn:hover { background: var(--text-inverse); color: var(--bg-deep); }
+
+    /* doctrine */
+    .doctrine { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .doctrine__col { padding: 1.5rem; border: 1px solid var(--border-hairline); background: var(--bg-warm-white); }
+    .doctrine__col h3 { margin: 0 0 1rem; font-size: 1rem; font-weight: 500; }
+    .doctrine__col h3.bad { color: #b85048; }
+    .doctrine__col h3.good { color: var(--accent-sage); }
+    .doctrine__col ul { margin: 0; padding-left: 1.25rem; color: var(--text-subtle); }
+    .doctrine__col li { margin-bottom: 0.4rem; line-height: 1.5; font-size: 0.9rem; }
+
+    /* page links */
+    .pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .page-card { padding: 1rem 1.25rem; border: 1px solid var(--border-hairline); }
+    .page-card__num { font-family: monospace; font-size: 0.72rem; color: var(--accent-sage); }
+    .page-card a { color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: 0.95rem; display: block; margin: 0.25rem 0; }
+    .page-card a:hover { color: var(--accent-sage); }
+    .page-card__desc { color: var(--text-subtle); font-size: 0.78rem; }
+
+    /* spacing scale */
+    .spacing { display: flex; align-items: flex-end; gap: 1rem; padding: 1rem 0; }
+    .spacing__rule { background: var(--accent-sage); width: 24px; }
+    .spacing__rule-label { font-family: monospace; font-size: 0.72rem; color: var(--text-subtle); text-align: center; margin-top: 0.5rem; }
+
+    @media (max-width: 760px) { .doctrine { grid-template-columns: 1fr; } .type-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="doc-header">
+    <div class="eyebrow">Optimus Prime · Design Rules</div>
+    <h1>Christian Kelly · High Rocky Living</h1>
+    <p>Warm Editorial register · Generated 2026-05-22</p>
+    <p style="color: var(--text-subtle); max-width: 60ch;">This document is the visual reference for the builders (Jeff and Kane). It renders the actual design tokens (palette, typography, components) in their final state. When in doubt, this file overrides the mockups. Open it in a browser, do not print.</p>
+  </header>
+
+  <section class="section">
+    <h2>Palette</h2>
+    <p class="sub">Eight tokens. One accent. The accent is the only saturated color in the system. Everything else is a warm neutral.</p>
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #fbf9f5;"></div>
+        <div class="swatch__name">Warm White</div>
+        <div class="swatch__hex">#fbf9f5</div>
+        <div class="swatch__role">Default body bg, light sections</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #e5ded5;"></div>
+        <div class="swatch__name">Taupe</div>
+        <div class="swatch__hex">#e5ded5</div>
+        <div class="swatch__role">Alt section bg (CS-supplied)</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #1f1c18;"></div>
+        <div class="swatch__name">Deep Warm Black</div>
+        <div class="swatch__hex">#1f1c18</div>
+        <div class="swatch__role">Body text, dark sections, overlays</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #5a544a;"></div>
+        <div class="swatch__name">Subtle</div>
+        <div class="swatch__hex">#5a544a</div>
+        <div class="swatch__role">Body subtitles, meta, captions</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #6e7d5e;"></div>
+        <div class="swatch__name">Sage (Accent)</div>
+        <div class="swatch__hex">#6e7d5e</div>
+        <div class="swatch__role">Links, button outlines, eyebrows</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #5a6a4e;"></div>
+        <div class="swatch__name">Sage Hover</div>
+        <div class="swatch__hex">#5a6a4e</div>
+        <div class="swatch__role">Button + link hover states</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #fbf9f5; color: #1f1c18;">Aa Aa</div>
+        <div class="swatch__name">Inverse</div>
+        <div class="swatch__hex">#fbf9f5</div>
+        <div class="swatch__role">Text on deep bg</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #d6cfc4;"></div>
+        <div class="swatch__name">Hairline</div>
+        <div class="swatch__hex">#d6cfc4</div>
+        <div class="swatch__role">1px borders, dividers</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Typography</h2>
+    <p class="sub">Inter for body and display. Cormorant Garamond reserved for editorial accent moments (max 1 instance per page). H1 default = Title Case, not UPPERCASE (softer formality per Christian's relationship-driven brand voice).</p>
+
+    <div class="type-row">
+      <div class="type-meta">H1 · Inter 300 · Title<br>clamp(2.4rem, 5vw, 4.5rem)<br>tracking +0.01em<br>leading 1.08</div>
+      <div class="type-sample ts-h1">Buena Vista Colorado Real Estate</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">H2 · Inter 300 · Title<br>clamp(1.8rem, 3.4vw, 3rem)<br>tracking +0.01em<br>leading 1.15</div>
+      <div class="type-sample ts-h2">A Local Advisor for Mountain Living</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">H3 · Inter 400 · Title<br>clamp(1.25rem, 1.8vw, 1.5rem)<br>leading 1.3</div>
+      <div class="type-sample ts-h3">Consultation and Strategy</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Eyebrow · Inter 500 · UPPER<br>0.72rem · tracking +0.18em<br>accent color</div>
+      <div class="type-sample ts-eyebrow">For Buyers</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Lede · Inter 300<br>clamp(1.1rem, 1.4vw, 1.25rem)<br>leading 1.6 · text-subtle</div>
+      <div class="type-sample ts-lede">Christian Kelly is a trusted Buena Vista real estate advisor with Worth Clark Realty.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Body · Inter 400<br>1.05rem · leading 1.65</div>
+      <div class="type-sample ts-body">She specializes in residential, land, and commercial sales across Central Colorado's mountain communities.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Display accent · Cormorant Garamond 400 · Title<br>clamp(2rem, 3.6vw, 3.2rem)<br>RARE — 1 instance per page max<br>Never body, never italic</div>
+      <div class="type-sample ts-accent">A trusted advisor.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Buttons</h2>
+    <p class="sub">Transparent + accent outline default. Accent fill + white text on hover. Sharp corners (border-radius: 0). UPPERCASE label, tracking +0.14em. Same button on light and dark bg with `--ghost-on-dark` modifier.</p>
+    <div class="btn-row">
+      <a class="btn" href="#">Request Your Home Value</a>
+      <a class="btn" href="#">Open the Buyer's Guide</a>
+      <a class="btn" href="#">Browse Salida Listings</a>
+    </div>
+    <div class="btn-dark-bg" style="margin-top: 2rem;">
+      <div class="btn-row">
+        <a class="btn" href="#">Schedule a Consultation</a>
+        <a class="btn" href="#">Get Your Home Valuation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Spacing rhythm</h2>
+    <p class="sub">Container max 1280px. Generous section padding: clamp(7.5rem, 16vw, 12.5rem). Asymmetric grids preferred over 50/50.</p>
+    <div class="spacing">
+      <div><div class="spacing__rule" style="height: 4px;"></div><div class="spacing__rule-label">4</div></div>
+      <div><div class="spacing__rule" style="height: 8px;"></div><div class="spacing__rule-label">8</div></div>
+      <div><div class="spacing__rule" style="height: 16px;"></div><div class="spacing__rule-label">16</div></div>
+      <div><div class="spacing__rule" style="height: 24px;"></div><div class="spacing__rule-label">24</div></div>
+      <div><div class="spacing__rule" style="height: 32px;"></div><div class="spacing__rule-label">32</div></div>
+      <div><div class="spacing__rule" style="height: 48px;"></div><div class="spacing__rule-label">48</div></div>
+      <div><div class="spacing__rule" style="height: 64px;"></div><div class="spacing__rule-label">64</div></div>
+      <div><div class="spacing__rule" style="height: 96px;"></div><div class="spacing__rule-label">96</div></div>
+      <div><div class="spacing__rule" style="height: 144px;"></div><div class="spacing__rule-label">144</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Photography doctrine</h2>
+    <p class="sub">Real photography only. Mountain, landscape, interior, lifestyle. Client-supplied photos take precedence; Unsplash fallback only for slots the client did not supply.</p>
+    <div class="doctrine">
+      <div class="doctrine__col">
+        <h3 class="good">Always</h3>
+        <ul>
+          <li>Real photography (mountain · landscape · interior · lifestyle)</li>
+          <li>Client-supplied photos first (from assets/)</li>
+          <li>Full-bleed in hero blocks (16:9 minimum)</li>
+          <li>Portrait aspect for headshots (3:4, 4:5, 5:6)</li>
+          <li>Gradient overlay over hero photos for text legibility</li>
+          <li>Subtle treatment filter: saturate(0.95) brightness(0.98)</li>
+          <li>Lazy load all below-the-fold images</li>
+        </ul>
+      </div>
+      <div class="doctrine__col">
+        <h3 class="bad">Never</h3>
+        <ul>
+          <li>Stock illustrations, vectors, or 3D renders</li>
+          <li>Auto-inject Unsplash top search result per slug</li>
+          <li>Food, restaurant, farmers-market imagery</li>
+          <li>Landscape aspect on headshot blocks</li>
+          <li>Pure black/white (use warm-black #1f1c18 and warm-white #fbf9f5)</li>
+          <li>Photos requiring updates (avoid time-sensitive shots)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Copy doctrine (anti-AI-slop)</h2>
+    <p class="sub">Christian's voice is approachable, conversational, confident, relationship-driven. Avoid the patterns that read AI-generated.</p>
+    <div class="doctrine">
+      <div class="doctrine__col">
+        <h3 class="good">Voice anchors</h3>
+        <ul>
+          <li>"Elevate Your Lifestyle" tagline (CS verbatim)</li>
+          <li>"Mountain living dreams" (CS live snippet)</li>
+          <li>"Strategic, detail-oriented approach paired with clear, consistent communication"</li>
+          <li>"Boutique-level service with modern tools"</li>
+          <li>First-person, specific, geographic ("Buena Vista," "Chaffee County," "Central Colorado")</li>
+          <li>Lived-in details (water rights, well permits, build sites, drive times)</li>
+        </ul>
+      </div>
+      <div class="doctrine__col">
+        <h3 class="bad">Banned patterns</h3>
+        <ul>
+          <li>Em dashes anywhere (HARD ban — use comma, period, colon, middle dot ·)</li>
+          <li>"Dream home" / "seamless experience" / "trusted partner" / "elevate your dreams"</li>
+          <li>Parallel triplets ("integrity, communication, results")</li>
+          <li>Stat-led hero subtitles ("Over X transactions in Y years")</li>
+          <li>State-level scope on community/listing pages ("Colorado Homes for Sale" — use "Buena Vista" or "Central Colorado" instead)</li>
+          <li>Fabricated testimonials, names, awards, or stats</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Block library</h2>
+    <p class="sub">Each block reference lives in the mockup pages. Open them side by side with this document.</p>
+    <div class="pages">
+      <div class="page-card"><div class="page-card__num">01</div><a href="mockups/01-home.html">Home</a><div class="page-card__desc">Hero V2 · Stat bar V2 · About teaser V2 · Buy/Sell paths V1a · Home Value CTA · Communities V2 · Testimonials V1 · Closing CTA V1 · Footer V2</div></div>
+      <div class="page-card"><div class="page-card__num">02</div><a href="mockups/02-about.html">About</a><div class="page-card__desc">Hero · Agent bio V3 hybrid (long-form + sticky sidebar) · Communities V3 compact · FAQ V1 expertise · Testimonials · Closing CTA · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">03</div><a href="mockups/03-communities.html">Communities</a><div class="page-card__desc">Hero · Card grid V1 + 7 modals (Ramona 8-block pattern) · Closing CTA · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">04</div><a href="mockups/04-buyers-guide.html">Buyer's Guide</a><div class="page-card__desc">Hero · Service grid V3 · Process steps V1 (8 steps) · Why-work-with-me V2 · Cross-funnel V1 · FAQ V1 · Closing CTA · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">05</div><a href="mockups/05-sellers-guide.html">Seller's Guide</a><div class="page-card__desc">Hero · Service grid V3 · Marketing plan V1 · Process steps V1 (8 steps) · Comparison V3 (3 cards, featured highlighted) · Stat bar V2 · Cross-funnel V1 · FAQ V1 · Closing CTA · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">06</div><a href="mockups/06-home-valuation.html">Home Valuation</a><div class="page-card__desc">Hero + widget V2 (bracketed) · Educational sections · How I find value · What drives value · Secondary form CTA · FAQ V1 · Closing CTA · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">07</div><a href="mockups/07-testimonials.html">Testimonials</a><div class="page-card__desc">Hero · 3-card grid V2 (7 testimonials) · Closing CTA with #contact anchor · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">08</div><a href="mockups/08-featured-listings.html">Featured Listings</a><div class="page-card__desc">Hero · Showcase IDX shortcode placeholder (NO designed listing UI) · Footer</div></div>
+      <div class="page-card"><div class="page-card__num">09-15</div><a href="mockups/09-buena-vista-homes-for-sale.html">IDX Landings (7)</a><div class="page-card__desc">Thin hero (focus-kw H1) + Showcase IDX shortcode placeholder + Footer. NOT in nav. Buena Vista, Salida, Leadville, Fairplay, Twin Lakes, Ranch of the Rockies, Nathrop.</div></div>
+      <div class="page-card"><div class="page-card__num">16</div><a href="mockups/16-blog.html">Journal (Blog)</a><div class="page-card__desc">Hero · Placeholder section · Email signup form · Footer. Real posts ship post-launch.</div></div>
+      <div class="page-card"><div class="page-card__num">17</div><a href="mockups/17-terms.html">Terms of Use</a><div class="page-card__desc">Flat hero · 13-section CO RE template · Footer. noindex.</div></div>
+      <div class="page-card"><div class="page-card__num">18</div><a href="mockups/18-privacy.html">Privacy Policy</a><div class="page-card__desc">Flat hero · 12-section template + CCPA/GDPR notes · Footer. noindex.</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Build doctrine for Jeff and Kane</h2>
+    <p class="sub">When implementing in WordPress (Astra + UAGB), follow these conventions to avoid the regression patterns from prior builds.</p>
+    <div class="doctrine">
+      <div class="doctrine__col">
+        <h3 class="good">Astra setup</h3>
+        <ul>
+          <li>Theme: Astra (free)</li>
+          <li>Layout: full-width-container</li>
+          <li>Body bg: #fbf9f5</li>
+          <li>7-key page meta lock (see feedback_astra_width_regression_after_page_post)</li>
+          <li>Constrain `.uagb-container-inner-blocks-wrap` to 1280px + `.ast-container` to 100% (per feedback_astra_full_bleed_with_constrained_inner)</li>
+        </ul>
+      </div>
+      <div class="doctrine__col">
+        <h3 class="good">IDX (Showcase IDX)</h3>
+        <ul>
+          <li>Featured Listings page: hero + Showcase IDX search-results shortcode placeholder zone</li>
+          <li>7 community IDX landing pages: hero + shortcode (community-filtered)</li>
+          <li>NO designed listing-card UI — Showcase renders the listings via widget</li>
+          <li>Custom skin via #sidx-main-container scope, banned layout props (aspect-ratio, position, display, padding)</li>
+        </ul>
+      </div>
+      <div class="doctrine__col">
+        <h3 class="good">Forms (Gravity Forms)</h3>
+        <ul>
+          <li>Universal contact form schema (per reference_universal_contact_form)</li>
+          <li>Home Value form: visitor address + contact → instant on-screen estimate + agent CMA follow-up</li>
+          <li>Notification: highrockyliving@gmail.com</li>
+          <li>Zapier → GHL CRM (existing AgenticPress integration)</li>
+        </ul>
+      </div>
+      <div class="doctrine__col">
+        <h3 class="good">SEO (Rank Math)</h3>
+        <ul>
+          <li>Per-page focus KW from Christian-Kelly-Rank-Math-Snippets.docx</li>
+          <li>Focus KW MUST appear in H1 + at least one H2</li>
+          <li>No "Exact" match redirects (per feedback_rank_math_redirect_loops — infinite loops)</li>
+          <li>Run validate_redirects.py before deploy + smoke_test.py after</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Open items (NEEDS_CLIENT)</h2>
+    <p class="sub">Resolve before the site goes live.</p>
+    <ul style="color: var(--text-subtle); max-width: 70ch;">
+      <li><strong>Colorado real estate license #</strong> — lookup at apps2.colorado.gov/dre/licensing/Lookup/LicenseLookup.aspx (search "Christian Kelly" + "Buena Vista" or by Worth Clark agent ID 164288)</li>
+      <li><strong>Worth Clark Realty Colorado office license</strong> — broker-of-record license number for footer disclosure</li>
+      <li><strong>Worth Clark Realty logo</strong> — Christian offered to send the official mark</li>
+      <li><strong>Designations</strong> — confirm any beyond REALTOR® (ABR, GRI, SRES, etc.)</li>
+      <li><strong>Testimonial client headshots</strong> — optional; testimonial blocks work text-only too</li>
+      <li><strong>Privacy data-retention period</strong> — confirm with Christian / AgenticPress legal review (Privacy Policy section)</li>
+    </ul>
+  </section>
+
+  <footer style="margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border-hairline); color: var(--text-subtle); font-size: 0.85rem;">
+    <p>Christian Kelly · High Rocky Living · Generated by Optimus Prime v0.5.0 · 2026-05-22</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
