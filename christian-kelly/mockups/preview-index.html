@@ -34,8 +34,12 @@
     }
     .preview-index__list li:last-child { border-bottom: 0; }
     .preview-index__num { font-size: 0.78rem; letter-spacing: 0.14em; color: var(--accent-sage); font-weight: 500; }
-    .preview-index__entry a { color: var(--text-primary); text-decoration: none; font-weight: 500; font-size: 1rem; border-bottom: 1px solid transparent; transition: border-color 200ms; }
-    .preview-index__entry a:hover { border-bottom-color: var(--accent-sage); }
+    .preview-index__entry a { color: var(--accent-sage); text-decoration: none; font-weight: 500; font-size: 1.05rem; border-bottom: 1px solid var(--accent-sage); padding-bottom: 1px; transition: all 200ms; display: inline-flex; align-items: center; gap: 0.5rem; }
+    .preview-index__entry a::after { content: '→'; font-size: 0.95rem; transition: transform 200ms; }
+    .preview-index__entry a:hover { color: var(--accent-sage-hover); border-bottom-color: var(--accent-sage-hover); }
+    .preview-index__entry a:hover::after { transform: translateX(4px); }
+    .preview-index__list li { background: var(--bg-warm-white); transition: background 200ms; }
+    .preview-index__list li:hover { background: var(--bg-taupe); padding-left: 0.5rem; }
     .preview-index__file { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--text-subtle); margin-left: 0.75rem; }
     .preview-index__desc { display: block; margin-top: 0.35rem; font-size: 0.85rem; color: var(--text-subtle); font-weight: 300; line-height: 1.55; }
     .preview-index__foot { margin-top: clamp(3rem, 5vw, 4rem); padding-top: 1.5rem; border-top: 1px solid var(--border-hairline); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-subtle); text-align: center; }
@@ -71,7 +75,7 @@
         </div>
         <div class="preview-index__meta-block">
           <dt>Preview URL</dt>
-          <dd>[GitHub raw.githack URL on publish]</dd>
+          <dd><a href="https://curtis-blip.github.io/client-previews/christian-kelly/" style="color: var(--accent-sage); text-decoration: underline;">curtis-blip.github.io/client-previews/christian-kelly/</a></dd>
         </div>
       </dl>
     </header>
