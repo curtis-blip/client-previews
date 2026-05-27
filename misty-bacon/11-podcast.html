@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bay Area Houston Real Estate Podcast | Misty Bacon | Bacon Realty Group</title>
+<meta name="description" content="Bay Area Houston market intel, NASA corridor stories, and buyer/seller tactics from Misty Bacon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #674891;
+  --primary-dark: #4e3570;
+  --accent: #921bd8;
+  --secondary: #9c79c7;
+  --dark: #1a1530;
+  --mid: #555;
+  --light: #f4f1ec;
+  --neutral: #ffffff;
+  --font-head: 'Raleway', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --max: 1200px;
+  --radius: 4px;
+  --shadow: 0 4px 20px rgba(103,72,145,0.10);
+  --shadow-hover: 0 12px 32px rgba(103,72,145,0.18);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--dark);
+  background: var(--neutral);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--dark);
+}
+h1 { font-size: clamp(36px, 5.5vw, 60px); }
+h2 { font-size: clamp(26px, 3.5vw, 42px); }
+h3 { font-size: 22px; }
+h4 { font-size: 18px; }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.eyebrow-center {
+  justify-content: center;
+}
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+.section-light { padding: 96px 0; background: var(--neutral); }
+.section-alt   { padding: 96px 0; background: var(--light); }
+.section-dark  { padding: 96px 0; background: var(--dark); color: #fff; }
+.section-dark h2, .section-dark h3 { color: #fff; }
+.section-dark .eyebrow { color: var(--secondary); }
+.section-dark .eyebrow::before { background: var(--secondary); }
+.section-dark p { color: rgba(255,255,255,0.8); }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── HERO ── */
+.podcast-hero {
+  min-height: 56vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at top right, rgba(146,27,216,0.30) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(103,72,145,0.40) 0%, transparent 55%),
+    linear-gradient(135deg, #1a1530 0%, #2a1f47 100%);
+  padding: 140px 0 100px;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.hero-inner .eyebrow {
+  color: var(--secondary);
+  justify-content: center;
+}
+.hero-inner .eyebrow::before { background: var(--secondary); }
+.hero-inner h1 {
+  color: #fff;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── LATEST EPISODE ── */
+.latest-episode {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-hover);
+  background: #000;
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.episode-meta {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.episode-meta span { display: flex; align-items: center; gap: 6px; }
+.episode-meta span:not(:first-child)::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.latest-episode h2 { margin-bottom: 18px; line-height: 1.1; }
+.latest-episode p {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.7;
+}
+
+/* ── ABOUT THE SHOW ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.about-text h2 { margin-bottom: 24px; }
+.about-text p {
+  font-size: 16px;
+  color: var(--mid);
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+.about-image {
+  aspect-ratio: 4 / 5;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(146,27,216,0.18) 0%, transparent 55%),
+    linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 8px;
+  box-shadow: var(--shadow-hover);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-image::after {
+  content: 'Image Placeholder';
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── CTA ── */
+.guest-cta {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.guest-cta h2 { color: #fff; margin-bottom: 18px; line-height: 1.05; }
+.guest-cta p { color: rgba(255,255,255,0.78); font-size: 17px; margin-bottom: 32px; }
+
+/* ── FOOTER NOTE ── */
+.footer-note {
+  background: var(--dark);
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.footer-note p {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--secondary);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .latest-episode, .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .about-image { max-width: 480px; margin: 0 auto; aspect-ratio: 4 / 3; }
+}
+@media (max-width: 640px) {
+  .section-light, .section-alt, .section-dark { padding: 64px 0; }
+  .container { padding: 0 24px; }
+  .podcast-hero { padding: 110px 0 70px; min-height: auto; }
+  .hero-inner { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────────── HERO ─────────────── -->
+<section class="podcast-hero">
+  <div class="hero-inner">
+    <div class="eyebrow">The Bay Area Houston Real Estate Podcast</div>
+    <h1>Conversations About Home, On The Bay</h1>
+    <p class="hero-tagline">Market intel, NASA corridor stories, and unfiltered buyer & seller insights. Hosted by Misty Bacon, Broker / Owner of Bacon Realty Group.</p>
+  </div>
+</section>
+
+<!-- ─────────────── LATEST EPISODE ─────────────── -->
+<section class="section-light" id="latest">
+  <div class="container">
+    <div class="latest-episode">
+      <div class="video-frame">
+        <!-- Replace VIDEO_ID with the actual YouTube video ID -->
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Latest Episode"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+      <div>
+        <div class="eyebrow">Latest Episode</div>
+        <div class="episode-meta">
+          <span>Episode 001</span>
+          <span>Bay Area Houston</span>
+        </div>
+        <h2>Episode Title Goes Here</h2>
+        <p>Short description of what this first episode covers. A few sentences on what the listener will learn, who it's for, and why it matters for Bay Area Houston buyers and sellers right now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── ABOUT THE SHOW ─────────────── -->
+<section class="section-alt">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="eyebrow">About The Show</div>
+        <h2>Real Talk About Real Estate On The Bay</h2>
+        <p>Every Tuesday morning my inbox fills up with the same questions: Is now a good time to buy in Clear Lake? Will my Pasadena home appreciate? What's actually happening in Baytown right now?</p>
+        <p>Instead of answering one at a time, I'm answering them on the show — with the data and the stories behind the data. Buyers, sellers, NASA contractors, first-time owners, retirees: this is for you.</p>
+      </div>
+      <div class="about-image">
+        <!-- Drop in Misty's headshot or a podcast studio photo here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── GUEST CTA ─────────────── -->
+<section class="section-dark">
+  <div class="container">
+    <div class="guest-cta">
+      <div class="eyebrow eyebrow-center">Want To Be On The Show?</div>
+      <h2>If You've Got A Bay Area Story, Let's Talk</h2>
+      <p>Buyers, sellers, builders, mortgage brokers, NASA contractors, recent transplants — if you've lived through a Bay Area Houston real estate experience worth sharing, I'd love to have you on.</p>
+      <a href="/contact-bay-area-houston-realtor/" class="btn-primary" style="background:#fff;color:var(--primary)">Pitch An Episode</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── FOOTER NOTE ─────────────── -->
+<div class="footer-note">
+  <p>Remember, Everybody Loves Bacon</p>
+</div>
+
+</body>
+</html>
