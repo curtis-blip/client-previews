@@ -356,21 +356,67 @@
 
   <script>
     (function () {
-      // nav scroll state
       var nav = document.getElementById('nav');
-      var setNavState = function () {
-        if (window.scrollY > 60) { nav.classList.remove('nav--transparent'); nav.classList.add('nav--solid'); }
-        else { nav.classList.add('nav--transparent'); nav.classList.remove('nav--solid'); }
-      };
-      setNavState();
-      window.addEventListener('scroll', setNavState, { passive: true });
+      if (nav) {
+        var hero = document.querySelector('.hero');
+        var threshold = hero ? Math.max(hero.offsetHeight - 80, 60) : 60;
+        var setNavState = function () {
+          if (window.scrollY > threshold) {
+            nav.classList.remove('nav--transparent');
+            nav.classList.add('nav--solid');
+          } else {
+            nav.classList.add('nav--transparent');
+            nav.classList.remove('nav--solid');
+          }
+        };
+        setNavState();
+        window.addEventListener('scroll', setNavState, { passive: true });
+      }
 
-      // mobile menu toggle
       var toggle = document.getElementById('nav-toggle');
       var menu = document.getElementById('nav-menu');
-      toggle.addEventListener('click', function () {
-        var open = menu.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', open);
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          var open = menu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open);
+        });
+      }
+
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = item.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq__item').forEach(function (i) {
+            i.setAttribute('aria-expanded', 'false');
+            var b = i.querySelector('.faq__btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+          if (!open) {
+            item.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Communities modal open/close (no-op if no modals on this page)
+      document.querySelectorAll('[data-modal-open]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var id = el.getAttribute('data-modal-open');
+          var m = document.getElementById(id);
+          if (m) { m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+        });
+      });
+      document.querySelectorAll('[data-modal-close]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var m = el.closest('.modal');
+          if (m) { m.classList.remove('is-open'); document.body.style.overflow = ''; }
+        });
+      });
+      document.querySelectorAll('.modal').forEach(function (m) {
+        m.addEventListener('click', function (e) {
+          if (e.target === m) { m.classList.remove('is-open'); document.body.style.overflow = ''; }
+        });
       });
     })();
   </script>

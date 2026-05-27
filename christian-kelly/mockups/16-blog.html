@@ -75,7 +75,7 @@
 <body>
 
   <!-- ========== NAV V2 (solid, inner page) ========== -->
-  <nav class="nav nav--solid" id="nav" aria-label="Primary">
+  <nav class="nav nav--transparent" id="nav" aria-label="Primary">
     <div class="container nav__row">
       <a class="nav__logo" href="01-home.html" aria-label="High Rocky Living home">
         <img src="../assets/logo-white.png" alt="High Rocky Living" class="nav__logo-img nav__logo-img--light" />
@@ -221,11 +221,67 @@
 
   <script>
     (function () {
+      var nav = document.getElementById('nav');
+      if (nav) {
+        var hero = document.querySelector('.hero');
+        var threshold = hero ? Math.max(hero.offsetHeight - 80, 60) : 60;
+        var setNavState = function () {
+          if (window.scrollY > threshold) {
+            nav.classList.remove('nav--transparent');
+            nav.classList.add('nav--solid');
+          } else {
+            nav.classList.add('nav--transparent');
+            nav.classList.remove('nav--solid');
+          }
+        };
+        setNavState();
+        window.addEventListener('scroll', setNavState, { passive: true });
+      }
+
       var toggle = document.getElementById('nav-toggle');
       var menu = document.getElementById('nav-menu');
-      toggle.addEventListener('click', function () {
-        var open = menu.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', open);
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          var open = menu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open);
+        });
+      }
+
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = item.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq__item').forEach(function (i) {
+            i.setAttribute('aria-expanded', 'false');
+            var b = i.querySelector('.faq__btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+          if (!open) {
+            item.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Communities modal open/close (no-op if no modals on this page)
+      document.querySelectorAll('[data-modal-open]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var id = el.getAttribute('data-modal-open');
+          var m = document.getElementById(id);
+          if (m) { m.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+        });
+      });
+      document.querySelectorAll('[data-modal-close]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var m = el.closest('.modal');
+          if (m) { m.classList.remove('is-open'); document.body.style.overflow = ''; }
+        });
+      });
+      document.querySelectorAll('.modal').forEach(function (m) {
+        m.addEventListener('click', function (e) {
+          if (e.target === m) { m.classList.remove('is-open'); document.body.style.overflow = ''; }
+        });
       });
     })();
   </script>
