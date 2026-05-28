@@ -84,6 +84,36 @@ h4 { font-size: 18px; }
 .section-dark .eyebrow::before { background: var(--secondary); }
 .section-dark p { color: rgba(255,255,255,0.8); }
 
+.section-parallax {
+  position: relative;
+  padding: 120px 0;
+  color: #fff;
+  background-color: #1a1530;
+  background-image: url('https://mistybaconstg.wpenginepowered.com/wp-content/uploads/2026/04/photo-wp-3-1.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+.section-parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 21, 48, 0.78);
+  z-index: 0;
+  pointer-events: none;
+}
+.section-parallax > * { position: relative; z-index: 1; }
+.section-parallax h2, .section-parallax h3 { color: #fff; }
+.section-parallax .eyebrow { color: var(--secondary); }
+.section-parallax .eyebrow::before { background: var(--secondary); }
+.section-parallax p { color: rgba(255,255,255,0.85); }
+
+@media (max-width: 1024px), (hover: none) {
+  .section-parallax { background-attachment: scroll; }
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -347,25 +377,15 @@ h4 { font-size: 18px; }
 }
 .about-image {
   aspect-ratio: 4 / 5;
-  background:
-    radial-gradient(circle at 30% 25%, rgba(146,27,216,0.18) 0%, transparent 55%),
-    linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-radius: 8px;
   box-shadow: var(--shadow-hover);
-  position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.about-image::after {
-  content: 'Image Placeholder';
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.5);
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ── GUEST CTA ── */
@@ -597,22 +617,21 @@ h4 { font-size: 18px; }
         <p>Instead of answering one at a time, I'm answering them on camera — with the data and the stories behind the data. Buyers, sellers, NASA contractors, first-time owners, retirees: this is for you.</p>
       </div>
       <div class="about-image">
-        <!-- Drop in Misty's headshot or a studio photo here -->
+        <img src="https://mistybaconstg.wpenginepowered.com/wp-content/uploads/2026/02/mistylg2.jpg" alt="Misty Bacon, Broker / Owner of Bacon Realty Group">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ─────────────── GUEST CTA ─────────────── -->
-<section class="section-dark">
+<section class="section-parallax">
   <div class="container">
     <div class="guest-cta">
-      <div class="eyebrow eyebrow-center">Want To Be On The Show?</div>
-      <h2>If You've Got A Bay Area Story, Let's Talk</h2>
-      <p>Buyers, sellers, builders, mortgage brokers, NASA contractors, recent transplants — if you've lived through a Bay Area Houston real estate experience worth sharing, I'd love to have you on.</p>
+      <div class="eyebrow eyebrow-center">Stay In The Loop</div>
+      <h2>New Episodes, Straight From The Bay</h2>
+      <p>Market intel, listing tours, and unfiltered conversations about buying and selling in Bay Area Houston. Subscribe and never miss an episode.</p>
       <div class="btn-cta-row">
-        <a href="/contact-bay-area-houston-realtor/" class="btn-primary" style="background:#fff;color:var(--primary)">Pitch An Episode</a>
-        <a href="https://www.youtube.com/@MistyBacon?sub_confirmation=1" target="_blank" rel="noopener" class="btn-white">
+        <a href="https://www.youtube.com/@MistyBacon?sub_confirmation=1" target="_blank" rel="noopener" class="btn-primary" style="background:#fff;color:var(--primary)">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
           Subscribe On YouTube
         </a>
