@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bay Area Houston Real Estate Podcast | Misty Bacon | Bacon Realty Group</title>
-<meta name="description" content="Bay Area Houston market intel, NASA corridor stories, and buyer/seller tactics from Misty Bacon.">
+<title>Watch & Listen | Misty Bacon | Bacon Realty Group</title>
+<meta name="description" content="Video episodes, listing tours, and real estate conversations from Misty Bacon, Broker / Owner of Bacon Realty Group.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -72,9 +72,7 @@ h4 { font-size: 18px; }
   background: var(--accent);
   flex-shrink: 0;
 }
-.eyebrow-center {
-  justify-content: center;
-}
+.eyebrow-center { justify-content: center; }
 
 .container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
 
@@ -87,7 +85,9 @@ h4 { font-size: 18px; }
 .section-dark p { color: rgba(255,255,255,0.8); }
 
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background: var(--primary);
   color: #fff;
   font-family: var(--font-head);
@@ -106,6 +106,48 @@ h4 { font-size: 18px; }
   transform: translateY(-2px) scale(1.02);
   box-shadow: var(--shadow-hover);
 }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px) scale(1.02);
+}
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-white:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+.btn-primary svg, .btn-secondary svg, .btn-white svg { width: 16px; height: 16px; }
 
 /* ── HERO ── */
 .podcast-hero {
@@ -149,10 +191,10 @@ h4 { font-size: 18px; }
   margin: 0 auto;
 }
 
-/* ── LATEST EPISODE ── */
-.latest-episode {
+/* ── FEATURED VIDEO ── */
+.featured-video {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
+  grid-template-columns: 1.4fr 1fr;
   gap: 64px;
   align-items: center;
 }
@@ -172,7 +214,7 @@ h4 { font-size: 18px; }
   border: 0;
 }
 
-.episode-meta {
+.video-meta {
   display: flex;
   gap: 18px;
   margin-bottom: 16px;
@@ -183,22 +225,149 @@ h4 { font-size: 18px; }
   letter-spacing: 0.1em;
   color: var(--accent);
 }
-.episode-meta span { display: flex; align-items: center; gap: 6px; }
-.episode-meta span:not(:first-child)::before {
+.video-meta span { display: flex; align-items: center; gap: 6px; }
+.video-meta span:not(:first-child)::before {
   content: '';
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background: var(--accent);
 }
-.latest-episode h2 { margin-bottom: 18px; line-height: 1.1; }
-.latest-episode p {
+.featured-video h2 { margin-bottom: 18px; line-height: 1.1; }
+.featured-video > div > p {
   font-size: 16px;
   color: var(--mid);
   line-height: 1.7;
+  margin-bottom: 24px;
+}
+.featured-video .btn-secondary { margin-top: 6px; }
+
+/* ── VIDEO LIBRARY ── */
+.library-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+.library-head .eyebrow { justify-content: center; }
+.library-head h2 { margin-bottom: 14px; }
+.library-head p { color: var(--mid); font-size: 16px; }
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.video-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.video-card-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--dark);
+}
+.video-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.video-card:hover .video-card-thumb img { transform: scale(1.05); }
+.video-card-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%);
+}
+.video-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 2;
+}
+.video-card:hover .video-card-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+.video-card-play svg { width: 22px; height: 22px; fill: var(--primary); margin-left: 4px; }
+.video-card-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+.video-card-meta {
+  display: flex;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.video-card-meta span { display: flex; align-items: center; gap: 6px; }
+.video-card-meta span:not(:first-child)::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.video-card h3 {
+  font-size: 17px;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.video-card p {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  flex: 1;
+}
+.video-card-link {
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.video-card-link::after { content: '→'; transition: transform 0.2s; }
+.video-card:hover .video-card-link::after { transform: translateX(4px); }
+
+.library-more {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 56px;
+  flex-wrap: wrap;
 }
 
-/* ── ABOUT THE SHOW ── */
+/* ── ABOUT ── */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -235,7 +404,7 @@ h4 { font-size: 18px; }
   color: rgba(255,255,255,0.5);
 }
 
-/* ── CTA ── */
+/* ── GUEST CTA ── */
 .guest-cta {
   max-width: 720px;
   margin: 0 auto;
@@ -243,6 +412,12 @@ h4 { font-size: 18px; }
 }
 .guest-cta h2 { color: #fff; margin-bottom: 18px; line-height: 1.05; }
 .guest-cta p { color: rgba(255,255,255,0.78); font-size: 17px; margin-bottom: 32px; }
+.guest-cta .btn-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 /* ── FOOTER NOTE ── */
 .footer-note {
@@ -262,14 +437,16 @@ h4 { font-size: 18px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .latest-episode, .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .featured-video, .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-image { max-width: 480px; margin: 0 auto; aspect-ratio: 4 / 3; }
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
   .section-light, .section-alt, .section-dark { padding: 64px 0; }
   .container { padding: 0 24px; }
   .podcast-hero { padding: 110px 0 70px; min-height: auto; }
   .hero-inner { padding: 0 24px; }
+  .video-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -278,50 +455,175 @@ h4 { font-size: 18px; }
 <!-- ─────────────── HERO ─────────────── -->
 <section class="podcast-hero">
   <div class="hero-inner">
-    <div class="eyebrow">The Bay Area Houston Real Estate Podcast</div>
+    <div class="eyebrow">Watch &amp; Listen</div>
     <h1>Conversations About Home, On The Bay</h1>
-    <p class="hero-tagline">Market intel, NASA corridor stories, and unfiltered buyer & seller insights. Hosted by Misty Bacon, Broker / Owner of Bacon Realty Group.</p>
+    <p class="hero-tagline">Video episodes, listing tours, and real estate intel from Misty Bacon, Broker / Owner of Bacon Realty Group. Catch every episode on YouTube or Spotify.</p>
   </div>
 </section>
 
-<!-- ─────────────── LATEST EPISODE ─────────────── -->
+<!-- ─────────────── FEATURED VIDEO ─────────────── -->
 <section class="section-light" id="latest">
   <div class="container">
-    <div class="latest-episode">
+    <div class="featured-video">
       <div class="video-frame">
-        <!-- Replace VIDEO_ID with the actual YouTube video ID -->
         <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID"
-          title="Latest Episode"
+          src="https://www.youtube.com/embed/sxh3sAx09PA"
+          title="Bay Area Realtor Breakfast - April 2020"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
       </div>
       <div>
-        <div class="eyebrow">Latest Episode</div>
-        <div class="episode-meta">
-          <span>Episode 001</span>
-          <span>Bay Area Houston</span>
+        <div class="eyebrow">Featured Episode</div>
+        <div class="video-meta">
+          <span>April 2020</span>
+          <span>Bay Area Realtor Breakfast</span>
         </div>
-        <h2>Episode Title Goes Here</h2>
-        <p>Short description of what this first episode covers. A few sentences on what the listener will learn, who it's for, and why it matters for Bay Area Houston buyers and sellers right now.</p>
+        <h2>Bay Area Realtor Breakfast — April 2020</h2>
+        <p>A look inside the Bay Area realtor community as the spring market opened. Conversations from the floor, market notes, and a candid look at what Bay Area Houston agents were navigating that month.</p>
+        <a href="https://www.youtube.com/watch?v=sxh3sAx09PA" target="_blank" rel="noopener" class="btn-secondary">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          Watch On YouTube
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─────────────── ABOUT THE SHOW ─────────────── -->
+<!-- ─────────────── VIDEO LIBRARY ─────────────── -->
 <section class="section-alt">
+  <div class="container">
+    <div class="library-head">
+      <div class="eyebrow eyebrow-center">The Full Library</div>
+      <h2>Every Episode &amp; Video</h2>
+      <p>Browse the full archive of Bacon Realty Group conversations, market updates, and on-the-ground real estate stories.</p>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- Video 1: Bay Area Realtor Breakfast -->
+      <a class="video-card" href="https://www.youtube.com/watch?v=sxh3sAx09PA" target="_blank" rel="noopener">
+        <div class="video-card-thumb">
+          <img src="https://img.youtube.com/vi/sxh3sAx09PA/hqdefault.jpg" alt="Bay Area Realtor Breakfast - April 2020">
+          <div class="video-card-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-meta">
+            <span>Apr 2020</span>
+            <span>Community</span>
+          </div>
+          <h3>Bay Area Realtor Breakfast — April 2020</h3>
+          <p>A look inside the Bay Area realtor community as the spring market opened.</p>
+          <span class="video-card-link">Watch On YouTube</span>
+        </div>
+      </a>
+
+      <!-- Video 2: Realty Bites Episode 3 -->
+      <a class="video-card" href="https://www.youtube.com/watch?v=Xo_JkB0_JPQ" target="_blank" rel="noopener">
+        <div class="video-card-thumb">
+          <img src="https://img.youtube.com/vi/Xo_JkB0_JPQ/hqdefault.jpg" alt="Realty Bites Episode 3">
+          <div class="video-card-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-meta">
+            <span>May 2019</span>
+            <span>Realty Bites</span>
+          </div>
+          <h3>Realty Bites — Episode 3</h3>
+          <p>Misty and mortgage specialist Laura Worrell walk through buying with Misty, featuring real buyer Becky.</p>
+          <span class="video-card-link">Watch On YouTube</span>
+        </div>
+      </a>
+
+      <!-- Video 3: Realty Bites Episode 1 -->
+      <a class="video-card" href="https://www.youtube.com/watch?v=DV61rnvDkl4" target="_blank" rel="noopener">
+        <div class="video-card-thumb">
+          <img src="https://img.youtube.com/vi/DV61rnvDkl4/hqdefault.jpg" alt="Realty Bites Episode 1">
+          <div class="video-card-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-meta">
+            <span>May 2019</span>
+            <span>Realty Bites</span>
+          </div>
+          <h3>Realty Bites — Episode 1</h3>
+          <p>Misty and Laura introduce themselves, the show, and invite viewers to bring questions and topics for future episodes.</p>
+          <span class="video-card-link">Watch On YouTube</span>
+        </div>
+      </a>
+
+      <!-- Video 4: Agent Video Misty -->
+      <a class="video-card" href="https://www.youtube.com/watch?v=yWuGqG-2n0w" target="_blank" rel="noopener">
+        <div class="video-card-thumb">
+          <img src="https://img.youtube.com/vi/yWuGqG-2n0w/hqdefault.jpg" alt="Agent Video Misty">
+          <div class="video-card-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-meta">
+            <span>Mar 2016</span>
+            <span>About Misty</span>
+          </div>
+          <h3>Meet Misty — Broker Associate</h3>
+          <p>Misty's introductory agent video covering her approach, her market, and why Bay Area Houston buyers and sellers choose Bacon Realty Group.</p>
+          <span class="video-card-link">Watch On YouTube</span>
+        </div>
+      </a>
+
+      <!-- Video 5: 3413 Ave K Video Tour -->
+      <a class="video-card" href="https://www.youtube.com/watch?v=PRvnUOAFBOY" target="_blank" rel="noopener">
+        <div class="video-card-thumb">
+          <img src="https://img.youtube.com/vi/PRvnUOAFBOY/hqdefault.jpg" alt="3413 Ave K Video Tour">
+          <div class="video-card-play">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-card-body">
+          <div class="video-card-meta">
+            <span>May 2014</span>
+            <span>Listing Tour</span>
+          </div>
+          <h3>3413 Ave K — Video Tour</h3>
+          <p>Three-bedroom on 3/4 acre with mature pecan, fig, and orange trees. Extended driveway, RV parking, oversized detached garage.</p>
+          <span class="video-card-link">Watch On YouTube</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="library-more">
+      <a href="https://www.youtube.com/@MistyBacon" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        More On YouTube
+      </a>
+      <!-- TODO: swap SPOTIFY_SHOW_URL for the actual Spotify show URL -->
+      <a href="SPOTIFY_SHOW_URL" target="_blank" rel="noopener" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.41c-.18.29-.55.39-.84.21-2.31-1.41-5.21-1.73-8.62-.95-.34.08-.67-.13-.75-.46-.08-.33.13-.66.46-.74 3.74-.85 6.96-.48 9.55 1.1.29.18.39.55.2.84zm1.22-2.74c-.23.36-.71.48-1.07.25-2.64-1.62-6.66-2.1-9.78-1.15-.41.13-.84-.11-.96-.51-.13-.41.11-.84.51-.96 3.56-1.08 8.01-.55 11.03 1.31.36.22.48.71.27 1.06zm.11-2.86c-3.17-1.88-8.4-2.06-11.43-1.13-.49.15-1.01-.13-1.16-.62-.15-.49.13-1.01.62-1.16 3.47-1.05 9.24-.85 12.89 1.31.45.27.6.85.34 1.3-.27.46-.85.61-1.26.3z"/></svg>
+        Listen On Spotify
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── ABOUT THE SHOW ─────────────── -->
+<section class="section-light">
   <div class="container">
     <div class="about-grid">
       <div class="about-text">
         <div class="eyebrow">About The Show</div>
         <h2>Real Talk About Real Estate On The Bay</h2>
         <p>Every Tuesday morning my inbox fills up with the same questions: Is now a good time to buy in Clear Lake? Will my Pasadena home appreciate? What's actually happening in Baytown right now?</p>
-        <p>Instead of answering one at a time, I'm answering them on the show — with the data and the stories behind the data. Buyers, sellers, NASA contractors, first-time owners, retirees: this is for you.</p>
+        <p>Instead of answering one at a time, I'm answering them on camera — with the data and the stories behind the data. Buyers, sellers, NASA contractors, first-time owners, retirees: this is for you.</p>
       </div>
       <div class="about-image">
-        <!-- Drop in Misty's headshot or a podcast studio photo here -->
+        <!-- Drop in Misty's headshot or a studio photo here -->
       </div>
     </div>
   </div>
@@ -334,7 +636,13 @@ h4 { font-size: 18px; }
       <div class="eyebrow eyebrow-center">Want To Be On The Show?</div>
       <h2>If You've Got A Bay Area Story, Let's Talk</h2>
       <p>Buyers, sellers, builders, mortgage brokers, NASA contractors, recent transplants — if you've lived through a Bay Area Houston real estate experience worth sharing, I'd love to have you on.</p>
-      <a href="/contact-bay-area-houston-realtor/" class="btn-primary" style="background:#fff;color:var(--primary)">Pitch An Episode</a>
+      <div class="btn-cta-row">
+        <a href="/contact-bay-area-houston-realtor/" class="btn-primary" style="background:#fff;color:var(--primary)">Pitch An Episode</a>
+        <a href="https://www.youtube.com/@MistyBacon?sub_confirmation=1" target="_blank" rel="noopener" class="btn-white">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1-1.8-2-2.1C19.7 3.5 12 3.5 12 3.5s-7.7 0-9.5.6c-1 .3-1.7 1.1-2 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1 1.8 2 2.1 1.8.6 9.5.6 9.5.6s7.7 0 9.5-.6c1-.3 1.7-1.1 2-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          Subscribe On YouTube
+        </a>
+      </div>
     </div>
   </div>
 </section>
