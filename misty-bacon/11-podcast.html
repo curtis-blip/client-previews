@@ -262,55 +262,22 @@ h4 { font-size: 18px; }
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.25s, box-shadow 0.25s;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
 }
-.video-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
-}
-.video-card-thumb {
+.video-card-embed {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: var(--dark);
+  background: #000;
 }
-.video-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s;
-}
-.video-card:hover .video-card-thumb img { transform: scale(1.05); }
-.video-card-thumb::after {
-  content: '';
+.video-card-embed iframe {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4) 100%);
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
-.video-card-play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.25s, transform 0.25s;
-  z-index: 2;
-}
-.video-card:hover .video-card-play {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.05);
-}
-.video-card-play svg { width: 22px; height: 22px; fill: var(--primary); margin-left: 4px; }
 .video-card-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
 .video-card-meta {
   display: flex;
@@ -345,20 +312,6 @@ h4 { font-size: 18px; }
   margin-bottom: 18px;
   flex: 1;
 }
-.video-card-link {
-  font-family: var(--font-head);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.video-card-link::after { content: '→'; transition: transform 0.2s; }
-.video-card:hover .video-card-link::after { transform: translateX(4px); }
-
 .library-more {
   display: flex;
   justify-content: center;
@@ -502,12 +455,15 @@ h4 { font-size: 18px; }
     <div class="video-grid">
 
       <!-- Video 1: Bay Area Realtor Breakfast -->
-      <a class="video-card" href="https://www.youtube.com/watch?v=sxh3sAx09PA" target="_blank" rel="noopener">
-        <div class="video-card-thumb">
-          <img src="https://img.youtube.com/vi/sxh3sAx09PA/hqdefault.jpg" alt="Bay Area Realtor Breakfast - April 2020">
-          <div class="video-card-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card">
+        <div class="video-card-embed">
+          <iframe
+            src="https://www.youtube.com/embed/sxh3sAx09PA"
+            title="Bay Area Realtor Breakfast - April 2020"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
         <div class="video-card-body">
           <div class="video-card-meta">
@@ -516,17 +472,19 @@ h4 { font-size: 18px; }
           </div>
           <h3>Bay Area Realtor Breakfast — April 2020</h3>
           <p>A look inside the Bay Area realtor community as the spring market opened.</p>
-          <span class="video-card-link">Watch On YouTube</span>
         </div>
-      </a>
+      </div>
 
       <!-- Video 2: Realty Bites Episode 3 -->
-      <a class="video-card" href="https://www.youtube.com/watch?v=Xo_JkB0_JPQ" target="_blank" rel="noopener">
-        <div class="video-card-thumb">
-          <img src="https://img.youtube.com/vi/Xo_JkB0_JPQ/hqdefault.jpg" alt="Realty Bites Episode 3">
-          <div class="video-card-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card">
+        <div class="video-card-embed">
+          <iframe
+            src="https://www.youtube.com/embed/Xo_JkB0_JPQ"
+            title="Realty Bites Episode 3"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
         <div class="video-card-body">
           <div class="video-card-meta">
@@ -535,17 +493,19 @@ h4 { font-size: 18px; }
           </div>
           <h3>Realty Bites — Episode 3</h3>
           <p>Misty and mortgage specialist Laura Worrell walk through buying with Misty, featuring real buyer Becky.</p>
-          <span class="video-card-link">Watch On YouTube</span>
         </div>
-      </a>
+      </div>
 
       <!-- Video 3: Realty Bites Episode 1 -->
-      <a class="video-card" href="https://www.youtube.com/watch?v=DV61rnvDkl4" target="_blank" rel="noopener">
-        <div class="video-card-thumb">
-          <img src="https://img.youtube.com/vi/DV61rnvDkl4/hqdefault.jpg" alt="Realty Bites Episode 1">
-          <div class="video-card-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card">
+        <div class="video-card-embed">
+          <iframe
+            src="https://www.youtube.com/embed/DV61rnvDkl4"
+            title="Realty Bites Episode 1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
         <div class="video-card-body">
           <div class="video-card-meta">
@@ -554,17 +514,19 @@ h4 { font-size: 18px; }
           </div>
           <h3>Realty Bites — Episode 1</h3>
           <p>Misty and Laura introduce themselves, the show, and invite viewers to bring questions and topics for future episodes.</p>
-          <span class="video-card-link">Watch On YouTube</span>
         </div>
-      </a>
+      </div>
 
       <!-- Video 4: Agent Video Misty -->
-      <a class="video-card" href="https://www.youtube.com/watch?v=yWuGqG-2n0w" target="_blank" rel="noopener">
-        <div class="video-card-thumb">
-          <img src="https://img.youtube.com/vi/yWuGqG-2n0w/hqdefault.jpg" alt="Agent Video Misty">
-          <div class="video-card-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card">
+        <div class="video-card-embed">
+          <iframe
+            src="https://www.youtube.com/embed/yWuGqG-2n0w"
+            title="Meet Misty - Broker Associate"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
         <div class="video-card-body">
           <div class="video-card-meta">
@@ -573,17 +535,19 @@ h4 { font-size: 18px; }
           </div>
           <h3>Meet Misty — Broker Associate</h3>
           <p>Misty's introductory agent video covering her approach, her market, and why Bay Area Houston buyers and sellers choose Bacon Realty Group.</p>
-          <span class="video-card-link">Watch On YouTube</span>
         </div>
-      </a>
+      </div>
 
       <!-- Video 5: 3413 Ave K Video Tour -->
-      <a class="video-card" href="https://www.youtube.com/watch?v=PRvnUOAFBOY" target="_blank" rel="noopener">
-        <div class="video-card-thumb">
-          <img src="https://img.youtube.com/vi/PRvnUOAFBOY/hqdefault.jpg" alt="3413 Ave K Video Tour">
-          <div class="video-card-play">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
+      <div class="video-card">
+        <div class="video-card-embed">
+          <iframe
+            src="https://www.youtube.com/embed/PRvnUOAFBOY"
+            title="3413 Ave K Video Tour"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
         </div>
         <div class="video-card-body">
           <div class="video-card-meta">
@@ -592,9 +556,8 @@ h4 { font-size: 18px; }
           </div>
           <h3>3413 Ave K — Video Tour</h3>
           <p>Three-bedroom on 3/4 acre with mature pecan, fig, and orange trees. Extended driveway, RV parking, oversized detached garage.</p>
-          <span class="video-card-link">Watch On YouTube</span>
         </div>
-      </a>
+      </div>
 
     </div>
 
