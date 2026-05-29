@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Christian Kelly · Buena Vista Colorado Real Estate · High Rocky Living</title>
+  <meta name="description" content="Talk to Christian Kelly about buying or selling in Buena Vista and Central Colorado. Phone, email, office, or schedule a consultation, whatever works for your timeline." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ========== Contact page scoped styles ========== */
+    .contact-methods { background: var(--bg-warm-white); }
+    .contact-methods__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: clamp(3rem, 6vw, 5rem);
+    }
+    .contact-method {
+      background: var(--bg-taupe);
+      padding: clamp(2rem, 4vw, 3rem);
+      text-align: center;
+      transition: transform var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
+    }
+    .contact-method:hover { transform: translateY(-4px); background: #ddd5c8; }
+    .contact-method__icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1.5rem;
+      color: var(--accent-sage);
+    }
+    .contact-method__icon svg { width: 100%; height: 100%; stroke-width: 1.5; fill: none; stroke: currentColor; }
+    .contact-method__label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-subtle);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .contact-method__value {
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .contact-method__value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--border-hairline); }
+    .contact-method__value a:hover { border-bottom-color: var(--accent-sage); }
+    .contact-method__hint { font-size: 0.875rem; color: var(--text-subtle); }
+
+    /* Form section */
+    .contact-form-section { background: var(--bg-taupe); }
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .contact-form-intro h2 { margin: 1rem 0 1.5rem; }
+    .contact-form-intro p { color: var(--text-subtle); margin-bottom: 1.25rem; line-height: 1.7; }
+    .contact-form-intro .lifestyle-photo {
+      margin-top: 2.5rem;
+      aspect-ratio: 4/5;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .contact-form {
+      background: var(--bg-warm-white);
+      padding: clamp(2.5rem, 5vw, 4rem);
+    }
+    .form-placeholder-note {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-sage);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .contact-form h3 {
+      margin: 0 0 1.5rem;
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    }
+    .contact-form__field { margin-bottom: 1.25rem; }
+    .contact-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-form__field label {
+      display: block;
+      font-size: 0.8125rem;
+      letter-spacing: 0.04em;
+      color: var(--text-subtle);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .contact-form__field input,
+    .contact-form__field textarea,
+    .contact-form__field select {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-warm-white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-primary);
+      transition: border-color var(--dur-fast) var(--ease-out);
+    }
+    .contact-form__field input:focus,
+    .contact-form__field textarea:focus,
+    .contact-form__field select:focus {
+      outline: none;
+      border-color: var(--accent-sage);
+    }
+    .contact-form__field textarea { resize: vertical; min-height: 140px; }
+    .contact-form__radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .contact-form__radio {
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--border-hairline);
+      background: var(--bg-warm-white);
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.9375rem;
+      transition: border-color var(--dur-fast), background-color var(--dur-fast);
+    }
+    .contact-form__radio:hover { border-color: var(--accent-sage); }
+    .contact-form__submit-row {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .contact-form__privacy {
+      font-size: 0.8125rem;
+      color: var(--text-subtle);
+      max-width: 32ch;
+    }
+    .contact-form__privacy a { color: var(--text-subtle); border-bottom: 1px solid var(--border-hairline); text-decoration: none; }
+
+    /* Office / hours */
+    .office-info { background: var(--bg-warm-white); }
+    .office-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .office-info__map {
+      aspect-ratio: 16/11;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .office-info__pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      background: var(--bg-warm-white);
+      padding: 0.625rem 1.125rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      color: var(--accent-sage);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .office-info__details h3 {
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      margin: 0 0 1.5rem;
+    }
+    .office-info__line {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-hairline);
+      align-items: flex-start;
+    }
+    .office-info__line:last-child { border-bottom: none; }
+    .office-info__line-icon {
+      width: 24px; height: 24px; flex-shrink: 0;
+      color: var(--accent-sage);
+    }
+    .office-info__line-icon svg { width: 100%; height: 100%; stroke-width: 1.5; fill: none; stroke: currentColor; }
+    .office-info__line-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-subtle);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .office-info__line-value { color: var(--text-primary); line-height: 1.6; }
+    .office-info__line-value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--border-hairline); }
+    .office-info__line-value a:hover { border-bottom-color: var(--accent-sage); }
+
+    @media (max-width: 880px) {
+      .contact-methods__grid { grid-template-columns: 1fr; }
+      .contact-form-grid { grid-template-columns: 1fr; }
+      .contact-form__row { grid-template-columns: 1fr; }
+      .office-grid { grid-template-columns: 1fr; }
+      .contact-form-intro .lifestyle-photo { margin-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav class="nav nav--transparent" id="nav" aria-label="Primary">
+    <div class="container nav__row">
+      <a class="nav__logo" href="01-home.html" aria-label="High Rocky Living home">
+        <img src="../assets/logo-white.png" alt="High Rocky Living" class="nav__logo-img nav__logo-img--light" />
+        <img src="../assets/logo.png" alt="" class="nav__logo-img nav__logo-img--dark" aria-hidden="true" />
+      </a>
+      <button class="nav__toggle" aria-label="Open menu" aria-controls="nav-menu" aria-expanded="false" id="nav-toggle">
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+        <span class="nav__toggle-line"></span>
+      </button>
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="02-about.html">About</a></li>
+        <li><a class="nav__link" href="03-communities.html">Communities</a></li>
+        <li><a class="nav__link" href="04-buyers-guide.html">Buy</a></li>
+        <li><a class="nav__link" href="05-sellers-guide.html">Sell</a></li>
+        <li><a class="nav__link" href="06-home-valuation.html">Home Valuation</a></li>
+        <li><a class="nav__link" href="08-featured-listings.html">Listings</a></li>
+        <li><a class="nav__link nav__cta btn" href="19-contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero hero--inner">
+    <div class="hero__bg" style="background-image:url('../assets/community-buena-vista.webp')" role="img" aria-label="Mountain town under wide Colorado sky"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <span class="eyebrow" style="color: var(--text-inverse); opacity: 0.85;">Get in Touch</span>
+      <h1>Let's Talk About Your Mountain Move</h1>
+      <p class="hero__sub">First call, first showing, or just a question about a Buena Vista listing you saw last weekend. Reach out the way that suits you, and we will go from there.</p>
+    </div>
+  </header>
+
+  <!-- ========== CONTACT METHODS ========== -->
+  <section class="contact-methods section">
+    <div class="container">
+      <span class="eyebrow">Three Ways In</span>
+      <h2 class="svc-stack__intro">Pick the One That Fits Your Day</h2>
+      <div class="contact-methods__grid">
+        <div class="contact-method">
+          <div class="contact-method__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M7 4 L11 4 L13 10 L10 12 C11 16 14 19 18 20 L20 17 L26 19 L26 23 C26 25 24 27 22 27 C12 26 4 18 4 8 C4 6 5 4 7 4 Z"/></svg>
+          </div>
+          <span class="contact-method__label">Call</span>
+          <span class="contact-method__value"><a href="tel:+17199669013">719.966.9013</a></span>
+          <span class="contact-method__hint">Best for time-sensitive questions or scheduling a showing this week.</span>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect x="4" y="7" width="24" height="18"/><path d="M4 8 L16 18 L28 8"/></svg>
+          </div>
+          <span class="contact-method__label">Email</span>
+          <span class="contact-method__value"><a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a></span>
+          <span class="contact-method__hint">Drop a note any time. Most messages get a personal reply within a few hours during the day.</span>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method__icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 3 C10 3 6 7 6 13 C6 21 16 29 16 29 C16 29 26 21 26 13 C26 7 22 3 16 3 Z"/><circle cx="16" cy="13" r="4"/></svg>
+          </div>
+          <span class="contact-method__label">Office</span>
+          <span class="contact-method__value">Buena Vista, Colorado</span>
+          <span class="contact-method__hint">28350 CR 317, Unit 1. By appointment, so I can give you my full attention.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORM SECTION ========== -->
+  <section class="contact-form-section section">
+    <div class="container">
+      <div class="contact-form-grid">
+        <div class="contact-form-intro">
+          <span class="eyebrow">Send a Message</span>
+          <h2>Tell Me What You Are Working On</h2>
+          <p>The more context you give, the better I can prepare. Are you a buyer, a seller, or both? Are you local, relocating, or shopping a second home? Is there a timeline pressure point I should know about?</p>
+          <p>I read every message personally. You will hear back from me, not an autoresponder, usually the same day.</p>
+          <div class="lifestyle-photo" style="background-image:url('../assets/about-portrait.jpg')" role="img" aria-label="Christian Kelly, Buena Vista realtor"></div>
+        </div>
+
+        <div class="contact-form">
+          <span class="form-placeholder-note">Form Placeholder · Wires to GoHighLevel</span>
+          <h3>Start a Conversation</h3>
+          <form aria-label="Contact Christian Kelly" onsubmit="event.preventDefault(); alert('Form will wire to GHL at build time.');">
+
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label for="cf-first">First Name</label>
+                <input type="text" id="cf-first" name="first_name" required />
+              </div>
+              <div class="contact-form__field">
+                <label for="cf-last">Last Name</label>
+                <input type="text" id="cf-last" name="last_name" required />
+              </div>
+            </div>
+
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" name="email" required />
+              </div>
+              <div class="contact-form__field">
+                <label for="cf-phone">Phone</label>
+                <input type="tel" id="cf-phone" name="phone" />
+              </div>
+            </div>
+
+            <div class="contact-form__field">
+              <label>I am a...</label>
+              <div class="contact-form__radio-group">
+                <label class="contact-form__radio"><input type="radio" name="buyer_or_seller" value="buyer" style="margin-right:0.5rem;" /> Buyer</label>
+                <label class="contact-form__radio"><input type="radio" name="buyer_or_seller" value="seller" style="margin-right:0.5rem;" /> Seller</label>
+                <label class="contact-form__radio"><input type="radio" name="buyer_or_seller" value="both" style="margin-right:0.5rem;" /> Both</label>
+                <label class="contact-form__radio"><input type="radio" name="buyer_or_seller" value="just_exploring" style="margin-right:0.5rem;" /> Just Exploring</label>
+              </div>
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-area">Areas of Interest</label>
+              <input type="text" id="cf-area" name="area" placeholder="Buena Vista, Salida, Leadville, or just curious about Central Colorado" />
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-timeline">Timeline</label>
+              <select id="cf-timeline" name="timeline">
+                <option value="">Choose one</option>
+                <option value="this_month">This month</option>
+                <option value="next_3_months">Next 3 months</option>
+                <option value="3_to_6_months">3 to 6 months</option>
+                <option value="6_to_12_months">6 to 12 months</option>
+                <option value="just_researching">Just researching</option>
+              </select>
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-message">What You Are Working On</label>
+              <textarea id="cf-message" name="message" placeholder="Tell me about the property, the move, the situation. The more I know, the more useful the first call is."></textarea>
+            </div>
+
+            <div class="contact-form__field">
+              <label for="cf-source">How Did You Hear About Me?</label>
+              <input type="text" id="cf-source" name="how_did_you_hear" placeholder="Referral, Google, Zillow, Instagram, or other" />
+            </div>
+
+            <div class="contact-form__submit-row">
+              <button type="submit" class="btn btn--primary">Send Message</button>
+              <span class="contact-form__privacy">
+                Your information stays private. See the <a href="18-privacy.html">Privacy Policy</a>.
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OFFICE INFO ========== -->
+  <section class="office-info section">
+    <div class="container">
+      <div class="office-grid">
+        <div class="office-info__map" style="background-image:url('../assets/community-buena-vista.webp')" role="img" aria-label="Buena Vista, Colorado office location">
+          <span class="office-info__pin">Buena Vista · CO</span>
+        </div>
+
+        <div class="office-info__details">
+          <span class="eyebrow">Office &amp; Hours</span>
+          <h3>The Practical Details</h3>
+
+          <div class="office-info__line">
+            <div class="office-info__line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2 C8 2 5 5 5 9 C5 15 12 22 12 22 C12 22 19 15 19 9 C19 5 16 2 12 2 Z"/><circle cx="12" cy="9" r="3"/></svg>
+            </div>
+            <div>
+              <div class="office-info__line-label">Office</div>
+              <div class="office-info__line-value">
+                28350 CR 317, Unit 1<br />
+                Buena Vista, Colorado 81211
+              </div>
+            </div>
+          </div>
+
+          <div class="office-info__line">
+            <div class="office-info__line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6 L12 12 L16 14"/></svg>
+            </div>
+            <div>
+              <div class="office-info__line-label">Hours</div>
+              <div class="office-info__line-value">
+                Monday to Saturday, by appointment.<br />
+                Evenings and Sundays available for serious buyers and sellers.
+              </div>
+            </div>
+          </div>
+
+          <div class="office-info__line">
+            <div class="office-info__line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 4 L7 4 L9 9 L7 11 C8 14 10 16 13 17 L15 15 L20 17 L20 19 C20 21 18 22 17 22 C9 22 2 15 2 7 C2 6 3 4 5 4 Z"/></svg>
+            </div>
+            <div>
+              <div class="office-info__line-label">Direct Line</div>
+              <div class="office-info__line-value">
+                <a href="tel:+17199669013">719.966.9013</a><br />
+                Texts welcome, especially after hours.
+              </div>
+            </div>
+          </div>
+
+          <div class="office-info__line">
+            <div class="office-info__line-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="M3 6 L12 13 L21 6"/></svg>
+            </div>
+            <div>
+              <div class="office-info__line-label">Email</div>
+              <div class="office-info__line-value">
+                <a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq section">
+    <div class="container">
+      <span class="eyebrow">Before You Reach Out</span>
+      <h2 style="margin-bottom: clamp(2.5rem, 5vw, 4rem);">Common First Questions</h2>
+
+      <div class="faq__list">
+        <div class="faq__item" aria-expanded="false">
+          <button class="faq__btn" aria-expanded="false">
+            <span>What happens on the first call?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__panel">
+            <p>A real conversation, no script. Usually 20 to 45 minutes. We talk through what you are working on, what your timeline looks like, and what you actually need next. By the end you have clarity on the next step, whether that is a showing, a valuation, a financing introduction, or just more research.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" aria-expanded="false">
+          <button class="faq__btn" aria-expanded="false">
+            <span>Do you work with first-time buyers and out-of-state relocators?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__panel">
+            <p>Both, regularly. First-time buyers get a thorough walk-through of the process, including the parts of mountain financing that are not obvious. Out-of-state buyers get video tours, detailed photo passes, and written follow-ups so they can decide with real information instead of guesses.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" aria-expanded="false">
+          <button class="faq__btn" aria-expanded="false">
+            <span>What areas do you cover?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__panel">
+            <p>Buena Vista is home base. Salida, Leadville, Fairplay, Twin Lakes, Ranch of the Rockies, and Nathrop are the rest of the regular rotation. If your search runs further afield, I can either help directly or connect you with someone in my vetted network who knows that specific corner of the state.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" aria-expanded="false">
+          <button class="faq__btn" aria-expanded="false">
+            <span>I am not ready to buy or sell. Can I still reach out?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__panel">
+            <p>Yes, and most of my best clients started exactly there. A few months of educated research beats a rushed weekend search. Tell me what you are thinking through and I will share what I know without any pressure to move faster than your situation deserves.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" aria-expanded="false">
+          <button class="faq__btn" aria-expanded="false">
+            <span>How fast will I hear back?</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq__panel">
+            <p>Same day during business hours, often within an hour or two. Evening and weekend messages get a reply the next morning unless you flag the message as urgent, in which case I will get back to you that day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CLOSING CTA ========== -->
+  <section class="closing-cta" style="background-image:url('../assets/community-salida-2.webp')">
+    <div class="container">
+      <span class="eyebrow" style="color: var(--bg-taupe);">Ready When You Are</span>
+      <h2>Pick a Method, Send a Message</h2>
+      <p>Call, text, email, or fill out the form above. Whichever feels easiest, that is the right one.</p>
+      <a class="btn btn--ghost-on-dark" href="tel:+17199669013">Call 719.966.9013</a>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__trust">
+      <div class="container">
+        <div class="footer__trust-row">
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L22 7 L22 12 C22 17 17 21 12 22 C7 21 2 17 2 12 L2 7 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 L11 15 L16 9" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            REALTOR®
+          </span>
+          <span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 L12 4 L21 11 L21 20 L3 20 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 20 L10 14 L14 14 L14 20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            Equal Housing Opportunity
+          </span>
+          <span>Worth Clark Realty</span>
+          <span>Colorado License # [NEEDS_CLIENT]</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="footer__main">
+        <div class="footer__brand">
+          <img src="../assets/logo-white.png" alt="High Rocky Living" />
+          <p>Elevated mountain real estate across Buena Vista and Central Colorado.</p>
+          <p class="brokerage">powered by Worth Clark Realty</p>
+        </div>
+
+        <div class="footer__col">
+          <h4>Communities</h4>
+          <ul>
+            <li><a href="09-buena-vista-homes-for-sale.html">Buena Vista</a></li>
+            <li><a href="10-salida-homes-for-sale.html">Salida</a></li>
+            <li><a href="11-leadville-homes-for-sale.html">Leadville</a></li>
+            <li><a href="12-fairplay-homes-for-sale.html">Fairplay</a></li>
+            <li><a href="13-twin-lakes-homes-for-sale.html">Twin Lakes</a></li>
+            <li><a href="14-ranch-of-the-rockies-homes-for-sale.html">Ranch of the Rockies</a></li>
+            <li><a href="15-nathrop-homes-for-sale.html">Nathrop</a></li>
+            <li><a href="03-communities.html"><strong>All Communities</strong></a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="02-about.html">About</a></li>
+            <li><a href="04-buyers-guide.html">Buyer's Guide</a></li>
+            <li><a href="05-sellers-guide.html">Seller's Guide</a></li>
+            <li><a href="06-home-valuation.html">Home Valuation</a></li>
+            <li><a href="08-featured-listings.html">Featured Listings</a></li>
+            <li><a href="07-testimonials.html">Testimonials</a></li>
+            <li><a href="19-contact.html">Contact</a></li>
+            <li><a href="16-blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <address class="footer__contact">
+            28350 CR 317, Unit 1<br />
+            Buena Vista, Colorado 81211<br /><br />
+            <a href="tel:+17199669013">719.966.9013</a><br />
+            <a href="mailto:highrockyliving@gmail.com">highrockyliving@gmail.com</a>
+          </address>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/highrockyliving/" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M14 9 L14 7 C14 6 14.5 5.5 15.5 5.5 L17 5.5 L17 2 L14 2 C11.5 2 10 3.5 10 6 L10 9 L7 9 L7 12.5 L10 12.5 L10 22 L14 22 L14 12.5 L16.5 12.5 L17 9 Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/highrockyliving/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@highrockylivingrealestate" aria-label="YouTube" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M22 7 C22 5 20 4 20 4 C18 3.5 12 3.5 12 3.5 C12 3.5 6 3.5 4 4 C4 4 2 5 2 7 C2 9 2 12 2 12 C2 12 2 15 2 17 C2 19 4 20 4 20 C6 20.5 12 20.5 12 20.5 C12 20.5 18 20.5 20 20 C20 20 22 19 22 17 C22 15 22 12 22 12 C22 12 22 9 22 7 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 15 L10 9 L15 12 Z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.zillow.com/profile/HighRockyLiving" aria-label="Zillow" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24"><path d="M12 3 L3 10 L3 21 L9 21 L9 14 L15 14 L15 21 L21 21 L21 10 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 High Rocky Living · All rights reserved</span>
+        <span>
+          <a href="17-terms.html">Terms of Use</a> ·
+          <a href="18-privacy.html">Privacy Policy</a> ·
+          Site by AgenticPress
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      if (nav) {
+        var hero = document.querySelector('.hero');
+        var threshold = hero ? Math.max(hero.offsetHeight - 80, 60) : 60;
+        var setNavState = function () {
+          if (window.scrollY > threshold) {
+            nav.classList.remove('nav--transparent');
+            nav.classList.add('nav--solid');
+          } else {
+            nav.classList.add('nav--transparent');
+            nav.classList.remove('nav--solid');
+          }
+        };
+        setNavState();
+        window.addEventListener('scroll', setNavState, { passive: true });
+      }
+
+      var toggle = document.getElementById('nav-toggle');
+      var menu = document.getElementById('nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          var open = menu.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', open);
+        });
+      }
+
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = item.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq__item').forEach(function (i) {
+            i.setAttribute('aria-expanded', 'false');
+            var b = i.querySelector('.faq__btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+          if (!open) {
+            item.setAttribute('aria-expanded', 'true');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

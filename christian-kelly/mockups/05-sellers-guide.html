@@ -9,6 +9,63 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+<style>
+    /* Pull-quote band: editorial visual break between text-heavy sections */
+    .pq-band {
+      position: relative;
+      min-height: 56vh;
+      padding: clamp(6rem, 12vw, 10rem) 0;
+      display: flex;
+      align-items: center;
+      color: var(--text-inverse);
+      overflow: hidden;
+    }
+    .pq-band__bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transform: scale(1.04);
+    }
+    .pq-band__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(31,28,24,0.78) 0%, rgba(31,28,24,0.52) 100%);
+    }
+    .pq-band__inner {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      text-align: center;
+    }
+    .pq-band__eyebrow {
+      display: inline-block;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: rgba(229, 222, 213, 0.85);
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+    }
+    .pq-band__quote {
+      font-family: var(--font-display-accent);
+      font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+      line-height: 1.35;
+      color: var(--text-inverse);
+      margin: 0 0 2rem;
+      font-style: italic;
+    }
+    .pq-band__quote::before { content: "\201C"; opacity: 0.55; margin-right: 0.15em; }
+    .pq-band__quote::after { content: "\201D"; opacity: 0.55; margin-left: 0.15em; }
+    .pq-band__attr {
+      font-size: 0.875rem;
+      letter-spacing: 0.04em;
+      color: rgba(229, 222, 213, 0.85);
+    }
+    .pq-band__attr strong { color: var(--text-inverse); font-weight: 500; }
+    .pq-band__divider {
+      width: 32px; height: 1px; background: rgba(229, 222, 213, 0.55);
+      margin: 1.25rem auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -31,7 +88,8 @@
         <li><a class="nav__link" href="05-sellers-guide.html">Sell</a></li>
         <li><a class="nav__link" href="06-home-valuation.html">Home Valuation</a></li>
         <li><a class="nav__link" href="08-featured-listings.html">Listings</a></li>
-        <li><a class="nav__link nav__cta btn" href="07-testimonials.html">Testimonials</a></li>
+        <li><a class="nav__link" href="07-testimonials.html">Testimonials</a></li>
+        <li><a class="nav__link nav__cta btn" href="19-contact.html">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -120,6 +178,18 @@
           <p>Direct outreach to my buyer pipeline, cooperating agents working with active mountain-market buyers, and the specific networks (Denver, Front Range, second-home buyers) that close on properties like yours.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== PULL-QUOTE BAND ========== -->
+  <section class="pq-band">
+    <div class="pq-band__bg" style="background-image:url('../assets/community-salida.webp')"></div>
+    <div class="pq-band__overlay" aria-hidden="true"></div>
+    <div class="pq-band__inner">
+      <span class="pq-band__eyebrow">In Their Words · Repeat Seller</span>
+      <blockquote class="pq-band__quote">We buy and sell properties quite often. And I have to say dealing with Christian was the easiest process we have ever gone through. She communicates extremely well, does what she says and says what she will do. You will never regret using her.</blockquote>
+      <div class="pq-band__divider"></div>
+      <div class="pq-band__attr"><strong>The Pias</strong> · Repeat Buyer-Sellers</div>
     </div>
   </section>
 
@@ -390,7 +460,8 @@
             <li><a href="06-home-valuation.html">Home Valuation</a></li>
             <li><a href="08-featured-listings.html">Featured Listings</a></li>
             <li><a href="07-testimonials.html">Testimonials</a></li>
-            <li><a href="16-blog.html">Journal</a></li>
+            <li><a href="19-contact.html">Contact</a></li>
+            <li><a href="16-blog.html">Blog</a></li>
           </ul>
         </div>
 
