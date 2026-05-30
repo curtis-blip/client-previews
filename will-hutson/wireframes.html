@@ -88,6 +88,27 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1
 .wfnav .navitems{display:flex;gap:18px;flex-wrap:wrap;flex:1;justify-content:center}
 .wfnav .navitems span{font-size:12.5px;color:#cfccc4}
 .wfnav .navcta{background:#bcb6aa;color:#23262b;border-radius:3px;padding:7px 16px;font-size:12px;font-weight:600}
+/* --- variety block kinds --- */
+.tl{position:relative;padding-left:24px;border-left:2px solid var(--accent)}
+.tl .tlrow{position:relative;padding:0 0 15px}.tl .tlrow:last-child{padding-bottom:0}
+.tl .tlrow::before{content:"";position:absolute;left:-31px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.tl .b1{height:11px;width:42%;background:#cfcabf;border-radius:3px;margin-bottom:6px}.tl .b2{height:7px;width:82%;background:#e3e0da;border-radius:2px}
+.trk{display:flex;align-items:flex-start;justify-content:space-between;position:relative;margin-top:10px;padding:0 4%}
+.trk::before{content:"";position:absolute;top:18px;left:16%;right:16%;height:2px;background:var(--line)}
+.trk .tstep{position:relative;text-align:center;flex:1}
+.trk .tdot{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;margin:0 auto 10px;font-family:var(--mono);font-size:12px}
+.trk .tlab{height:7px;width:64%;background:#dedbd5;border-radius:2px;margin:0 auto}
+.nl{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}
+.nl .nlitem{display:flex;gap:12px}.nl .nlnum{font-family:var(--mono);font-size:24px;color:var(--accent);font-weight:600;line-height:1;flex-shrink:0}
+.nl .b1{height:10px;width:55%;background:#cfcabf;border-radius:3px;margin-bottom:6px}.nl .b2{height:7px;width:92%;background:#e3e0da;border-radius:2px}
+.dv .dvrow{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid #ece9e4}.dv .dvrow:first-child{border-top:none}
+.dv .dvic{width:26px;height:26px;background:var(--accent);opacity:.55;border-radius:5px;flex-shrink:0}
+.dv .b1{height:10px;width:32%;background:#cfcabf;border-radius:3px;margin-bottom:6px}.dv .b2{height:7px;width:88%;background:#e3e0da;border-radius:2px}
+.ck{display:flex;gap:20px}.ck .ckcol{flex:1}
+.ck .ckrow{display:flex;gap:10px;align-items:center;padding:8px 0}
+.ck .ckmark{width:18px;height:18px;border-radius:50%;background:var(--accent);flex-shrink:0}.ck .ckb{height:8px;flex:1;background:#e3e0da;border-radius:2px}
+.bgs{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bgs .bgb{flex:1;min-width:90px;height:52px;border:1px solid var(--line);border-radius:4px;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:#938e84;background:#fff;text-align:center;padding:4px}
 /* composer modal */
 .ov{position:fixed;inset:0;background:rgba(20,22,25,.55);z-index:50;display:none;place-items:center;padding:24px}
 .ov.open{display:grid}
@@ -167,7 +188,7 @@ var PAGES=[
  blk('cards','04 · FEATURED LISTINGS','On the market','IDX hotsheet.','<b>[showcaseidx_hotsheet]</b> &rarr; Home Search.',{n:3}),
  blk('bands','05 · BUY / SELL','Your next move','Full-bleed stacked bands.','Buy top, Sell bottom, alternating. <b>APPROVED, built.</b>'),
  blk('split','06 · INTRO','Meet Will Hutson','2-col, headshot + bio.','&rarr; About / Meet the Team. Motto: clients first equals clients for life.'),
- blk('cards','07 · WHY THG','Marketing that moves homes','Icon cards.','Zillow Showcase, LiveEasy, C21 reach, in-house marketing.',{n:4}),
+ blk('divided','07 · WHY THG','Marketing that moves homes','Divided feature list (varied from cards).','Zillow Showcase, LiveEasy, C21 reach, in-house marketing.',{n:4}),
  blk('quote','08 · TESTIMONIALS','What clients say','Auto-rotating reviews.','Live Google feed + guide quotes.'),
  blk('grid','09 · TEAM TEASER','Seventeen agents','Headshot row.','&rarr; Meet the Team. Placeholders where no photo.',{n:6}),
  blk('cards','10 · PROGRAMS','More ways we help','4 program cards.','Cash Offer, Financing, Probate, Marketing Day.',{n:4}),
@@ -178,7 +199,7 @@ var PAGES=[
 {key:'about',label:'About Us',grp:'Core',focus:'about the hutson group',blocks:[
  blk('hero','01 · HERO','About The Hutson Group','Image + overlay.','Focus keyword in H1.'),
  blk('split','02 · STORY','Clients first equals clients for life','Will + founding story.','Licensed 2017, 750+ deals, $200M+. Evergreen.'),
- blk('cards','03 · VALUES','How we work','3-4 value cards.','Specific, not generic platitudes.',{n:3}),
+ blk('divided','03 · VALUES','How we work','Divided feature list (varied from cards).','Specific, not generic platitudes.',{n:3}),
  blk('split','04 · WHY CENTURY 21','National reach, local team','C21 brand strength.','<b>Detail from guide:</b> 84 countries, 14,250 offices, 135,000 agents, 18 languages; 2024 Kantar #1 brand awareness (80%), most recognized (49%); C21 Results #1 in the SE US. 1 authority link OK on inner page.',{alt:true}),
  blk('grid','05 · TEAM TEASER','Meet the team','Headshot row.','&rarr; Meet the Team.',{n:6}),
  blk('split','06 · COMMUNITIES','Where we work','Compact county list.','<b>Compact</b> treatment on About (not the home map).',{alt:true}),
@@ -211,12 +232,12 @@ var PAGES=[
  blk('widget','02 · HOME VALUATION','What\'s your home worth?','Instant estimate + agent CMA in 24h.','<b>Locked:</b> home "What\'s My Home Worth" routes here. [home_value_widget] placeholder.'),
  blk('split','03 · WHY SELL','Results-driven team','Positioning + proof.','Stats from Content Snare (#2 C21 GA, labeled 2025). Top 1%, 750+ deals.'),
  blk('steps','04 · SELLING PROCESS','How we sell your home','Alternating rows.','<b>8 steps</b>, each with detail, from the 2025 guide.',{steps:['Get It Ready','Set the Price','Stage It','Take Photos','Create Materials','Show It','Review Offers','Closing Day']}),
- blk('cards','05 · MARKETING','Seen by more buyers','Marketing channels.','Ads (all platforms), Open House, Visuals, Events.',{n:4}),
- blk('cards','06 · ZILLOW SHOWCASE','An elevated listing','Stat cards.','<b>NEW.</b> 81% more views, 80% more saves, 90% more shares, sells ~$9k more, 10% likelier to pend in 14 days. C21 Results x Zillow.',{n:4}),
+ blk('badges','05 · MARKETING','Seen by more buyers','Badge / channel strip (varied from cards).','Ads, Open House, Visuals, Events, Zillow Showcase.',{labels:['Online Ads','Open House','Pro Visuals','Events','Zillow Showcase']}),
+ blk('statbar','06 · ZILLOW SHOWCASE','An elevated listing','Stat band (varied from cards).','<b>NEW.</b> 81% more views, 80% more saves, 90% more shares, sells ~$9k more. C21 Results x Zillow.',{stats:['81% views','80% saves','90% shares','$9k more']}),
  blk('packages','07 · MARKETING PACKAGES','Silver, Gold, Platinum','3-tier comparison.','<b>NEW.</b> Full feature lists from the guide. Platinum adds drone/video, retargeting, landing pages, copywriter, county-wide blasts.'),
  blk('split','08 · PRICING & STAGING','Price right, present better','Market conditions + before/after.','Buyer / seller / balanced market + 4 pricing factors. Staging adds 1-5%. No maintenance stats.',{alt:true}),
- blk('cards','09 · THE OFFER EXPLAINED','Understanding an offer','Elements grid.','<b>NEW.</b> The 7 elements: price, deposit, terms, conditions, inclusions, irrevocable, closing. Educational.',{n:4}),
- blk('cards','10 · WHERE YOUR INVESTMENT GOES','Real value','3 cards.','<b>NEW.</b> Marketing / admin / agent fee. <b>Value framing only, NO commission rates</b> (compliance).',{n:3}),
+ blk('numlist','09 · THE OFFER EXPLAINED','Understanding an offer','Numbered list (varied from cards).','<b>NEW.</b> The 7 elements of an offer.',{steps:['Price','Deposit','Terms','Conditions','Inclusions','Irrevocable','Closing']}),
+ blk('divided','10 · WHERE YOUR INVESTMENT GOES','Real value','Divided list (varied from cards).','<b>NEW.</b> Marketing / admin / agent fee. <b>Value framing only, NO commission rates</b> (compliance).',{n:3}),
  blk('faq','11 · SELLER\'S CHECKLIST','Get show-ready','Accordion + download.','<b>NEW.</b> Maintenance, curb appeal, cleaning, prep. Strong downloadable lead magnet.'),
  blk('split','12 · LIVEEASY CONCIERGE','A concierge for life','Service list.','<b>NEW.</b> Utilities, moving, vendors, smart home, discounts, home-value tracking. Lifelong.'),
  blk('quote','13 · TESTIMONIALS','What sellers say','Reviews.','9 real named reviews from the guide + live feed.'),
@@ -247,7 +268,7 @@ var PAGES=[
 {key:'financing',label:'Financing',grp:'Programs',focus:'home financing north georgia',blocks:[
  blk('hero','01 · HERO','Financing Your Home','Image + overlay.','Modeled on thgc21.com/financing.'),
  blk('split','02 · INTRO','Get pre-approved with confidence','Why it matters.','1 external authority link (CFPB).'),
- blk('steps','03 · PROCESS','How pre-approval works','Steps.','Clear, simple steps.',{steps:['Apply','Review','Pre-Approval Letter','Shop with Confidence']}),
+ blk('numlist','03 · PROCESS','How pre-approval works','Numbered editorial list (varied from step rows).','Clear, simple steps.',{steps:['Apply','Review','Pre-Approval Letter','Shop with Confidence']}),
  blk('cards','04 · LENDER PARTNERS','Trusted lenders','Partner cards.','Reputable lender partners.',{n:3}),
  blk('widget','05 · CALCULATOR','Mortgage calculator','Widget.','Shortcode placeholder (Will opted in via Snare).'),
  blk('faq','06 · FAQ','Financing questions','Accordion.','<b>6 FAQs.</b>'),
@@ -257,14 +278,14 @@ var PAGES=[
 {key:'marketing-day',label:'Marketing Day',grp:'Programs',focus:'preparing your home for sale',blocks:[
  blk('hero','01 · HERO','Preparing for Marketing Day','Image + overlay.','Content straight from the seller\'s guide.'),
  blk('split','02 · THE GOAL','Emotionally connect','Declutter, depersonalize.','The 3 goals from the guide.'),
- blk('steps','04 · ROOM-BY-ROOM PREP','Get every room ready','Alternating rows.','Front, living, kitchen, bedrooms, bathrooms, back (from guide).',{steps:['Front of the Home','Living Areas','Kitchen & Pantry','Bedrooms & Office','Bathrooms','Back of the Home']}),
+ blk('accordion','04 · ROOM-BY-ROOM PREP','Get every room ready','Accordion checklist (varied from step rows).','Front, living, kitchen, bedrooms, bathrooms, back (from guide).',{steps:['Front of the Home','Living Areas','Kitchen & Pantry','Bedrooms & Office','Bathrooms','Back of the Home']}),
  blk('cards','05 · PACKAGES','Marketing packages','3 tiers.','Silver / Gold / Platinum (from guide).',{n:3}),
  blk('cta','06 · CTA','List with us','Parallax.','&rarr; Seller\'s Guide / Contact.'),
  blk('footer','FOOTER','Site footer','','Shared footer.')
 ]},
 {key:'cash-offer',label:'Cash Offer',grp:'Programs',focus:'cash offer for your home north georgia',blocks:[
  blk('hero','01 · HERO','Get a Cash Offer','Image + overlay.','Modeled on thgc21.com/cash-offer.'),
- blk('steps','02 · HOW IT WORKS','Three simple steps','Steps.','Submit &rarr; Offer &rarr; Close on your timeline.',{steps:['Tell Us About Your Home','Receive Your Offer','Close On Your Timeline']}),
+ blk('tracker','02 · HOW IT WORKS','Three simple steps','Horizontal step tracker (varied from step rows).','Submit, offer, close on your timeline.',{steps:['Tell Us About Your Home','Receive Your Offer','Close On Your Timeline']}),
  blk('cards','03 · BENEFITS','Why a cash offer','Cards.','No showings, fast, certain.',{n:3}),
  blk('form','04 · GET YOUR OFFER','Request a cash offer','Form.','Lead form &rarr; CRM.'),
  blk('faq','05 · FAQ','Cash offer questions','Accordion.','<b>6 FAQs.</b>'),
@@ -274,7 +295,7 @@ var PAGES=[
 {key:'probate',label:'Probate Program',grp:'Programs',focus:'probate real estate north georgia',blocks:[
  blk('hero','01 · HERO','Probate & Estate Sales','Image + overlay.','Modeled on thgc21.com/probate-program. Compassionate tone.'),
  blk('split','02 · INTRO','Support when you need it','Inherited / estate property.','Empathetic, experienced.'),
- blk('steps','03 · HOW WE HELP','A guided process','Steps.','Clear probate-sale process.',{steps:['Consultation','Property Assessment','Prepare & Market','Sell & Settle']}),
+ blk('timeline','03 · HOW WE HELP','A guided process','Vertical timeline (varied from step rows).','Clear probate-sale process.',{steps:['Consultation','Property Assessment','Prepare & Market','Sell & Settle']}),
  blk('cards','04 · WHY US','Experience & discretion','Cards.','Experience, discretion, network.',{n:3}),
  blk('faq','05 · FAQ','Probate questions','Accordion.','<b>6 FAQs.</b>'),
  blk('cta','06 · CTA','Talk to a specialist','Parallax.','&rarr; Contact.'),
@@ -313,6 +334,19 @@ var PAGES=[
  blk('hero','01 · PAGE TITLE','Terms of Use','Simple title band.','Standard page. <b>noindex</b>, footer-linked.'),
  blk('legal','02 · CONTENT','Terms of use','Legal copy.','Standard AgenticPress terms template.'),
  blk('footer','FOOTER','Site footer','','Shared footer.')
+]},
+{key:'_blocks',label:'Block Library',grp:'Reference',focus:'block variety menu (reference, not a live page)',blocks:[
+ blk('timeline','PROCESS · TIMELINE','Vertical connected timeline','Spine + milestone markers.','Now on: Probate.',{steps:['a','b','c','d']}),
+ blk('tracker','PROCESS · STEP TRACKER','Horizontal step tracker','3-4 connected circles.','Now on: Cash Offer.',{steps:['a','b','c']}),
+ blk('numlist','PROCESS · NUMBERED LIST','Numbered editorial list','Big numerals, no images.','Now on: Financing, Sell (the offer).',{steps:['a','b','c','d']}),
+ blk('accordion','PROCESS · ACCORDION','Accordion checklist','Expandable categories.','Now on: Marketing Day room prep.',{steps:['Front of home','Living areas','Kitchen','Bedrooms','Bathrooms']}),
+ blk('steps','PROCESS · ALT ROWS (reserved)','Alternating image + text rows','The flagship process pattern.','Reserved for Buy + Sell only.',{steps:['Step one','Step two','Step three']}),
+ blk('divided','FEATURES · DIVIDED LIST','Horizontal divided list','Icon + text rows, hairline dividers, no boxes.','Now on: Home (why), Buy (why), About, Sell (investment).',{n:4}),
+ blk('checklist','FEATURES · CHECKLIST + IMG','Two-column checklist + image','What-is-included feel.','Available for include/feature sections.'),
+ blk('statbar','FEATURES · STAT BAND','Big-number stat band','Metrics, not cards.','Now on: Home, Sell (Zillow Showcase).',{stats:['81% views','80% saves','90% shares','$9k more']}),
+ blk('packages','FEATURES · COMPARISON','Tiered comparison columns','3-column table.','Now on: Sell (Silver/Gold/Platinum).'),
+ blk('badges','FEATURES · BADGE STRIP','Logo / badge strip','Trust marks.','Now on: Sell (marketing channels).',{labels:['Zillow Showcase','Century 21','LiveEasy','In-House Marketing']}),
+ blk('cards','FEATURES · ICON CARDS (sparingly)','Icon card grid','The original. Cap at 1-2 per site.','Kept for: Programs, Blog, Featured listings.',{n:4})
 ]}
 ];
 
@@ -324,7 +358,14 @@ function sketch(b){
  var s='<div class="sk">';
  switch(b.k){
   case 'hero': s+='<div class="bar h1"></div><div class="bar sub"></div><div class="pills"><span class="pill"></span><span class="pill ghost"></span></div>';break;
-  case 'statbar': s+='<div class="statbar"><div class="stat">$200M+</div><div class="stat">750+</div><div class="stat">Top 1%</div><div class="stat">1,200+</div></div>';break;
+  case 'statbar': {var sv=b.stats||['$200M+','750+','Top 1%','1,200+'];s+='<div class="statbar">'+sv.map(function(x){return '<div class="stat">'+x+'</div>';}).join('')+'</div>';}break;
+  case 'timeline': {var st=b.steps||['','','',''];s+='<div class="tl">'+st.map(function(){return '<div class="tlrow"><div class="b1"></div><div class="b2"></div></div>';}).join('')+'</div>';}break;
+  case 'tracker': {var st=b.steps||['','',''];s+='<div class="trk">'+st.map(function(x,i){return '<div class="tstep"><div class="tdot">'+String(i+1).padStart(2,'0')+'</div><div class="tlab"></div></div>';}).join('')+'</div>';}break;
+  case 'numlist': {var st=b.steps||['','','',''];s+='<div class="nl">'+st.map(function(x,i){return '<div class="nlitem"><div class="nlnum">'+String(i+1).padStart(2,'0')+'</div><div style="flex:1"><div class="b1"></div><div class="b2"></div></div></div>';}).join('')+'</div>';}break;
+  case 'accordion': {var st=b.steps||['Category one','Category two','Category three'];s+=st.map(function(r){return '<div class="faqline">'+r+' <span>+</span></div>';}).join('');}break;
+  case 'divided': {var n=b.n||3;var h='<div class="dv">';for(var i=0;i<n;i++)h+='<div class="dvrow"><div class="dvic"></div><div style="flex:1"><div class="b1"></div><div class="b2"></div></div></div>';s+=h+'</div>';}break;
+  case 'checklist': {var h='<div class="ck"><div class="ckcol">';for(var i=0;i<4;i++)h+='<div class="ckrow"><div class="ckmark"></div><div class="ckb"></div></div>';h+='</div><div class="img imgbox" style="width:42%">IMG</div></div>';s+=h;}break;
+  case 'badges': {var labs=b.labels||['Badge','Badge','Badge'];s+='<div class="bgs">'+labs.map(function(l){return '<div class="bgb">'+l+'</div>';}).join('')+'</div>';}break;
   case 'map': s+='<div class="split"><div class="img imgbox bigbox" style="width:58%">COUNTY MAP</div><div class="col"><div class="bar h1" style="width:80%;height:18px"></div><div class="bar line"></div><div class="bar line s"></div></div></div>';break;
   case 'bands': s+='<div class="img" style="min-height:54px;margin-bottom:8px">BUY (content left)</div><div class="img" style="min-height:54px">SELL (content right)</div>';break;
   case 'split': s+='<div class="split '+(b.alt?'alt':'')+'"><div class="col"><div class="bar h1" style="height:18px"></div><div class="bar line"></div><div class="bar line"></div><div class="bar line s"></div></div><div class="img imgbox">IMG</div></div>';break;
@@ -375,7 +416,7 @@ function render(key){
 
 /* nav */
 (function buildNav(){
- var groups=['Core','Programs','Utility'];var nav=document.getElementById('nav');var h='';
+ var groups=['Core','Programs','Utility','Reference'];var nav=document.getElementById('nav');var h='';
  groups.forEach(function(g){
   h+='<div class="grp">'+g+'</div>';
   PAGES.filter(function(p){return p.grp===g;}).forEach(function(p){
