@@ -216,6 +216,12 @@
   /* Share strip */
   .share-strip{padding:120px 0;background:var(--cream)}
   .share-strip .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .dinner-offer{display:flex;gap:22px;align-items:center;background:var(--ink);color:var(--cream);border-left:4px solid var(--gold);border-radius:6px;padding:28px 34px;margin-bottom:40px}
+  .dinner-offer__icon{flex-shrink:0;width:44px;height:44px;color:var(--gold)}
+  .dinner-offer__icon svg{width:100%;height:100%}
+  .dinner-offer__text strong{font-family:var(--serif);font-size:21px;color:var(--gold-soft);display:block;margin-bottom:6px;font-weight:500}
+  .dinner-offer__text p{font-size:15px;line-height:1.6;color:rgba(248,243,235,.82);margin:0}
+  @media(max-width:640px){.dinner-offer{flex-direction:column;align-items:flex-start;gap:14px;text-align:left}}
   .share-card{background:var(--paper);padding:44px 36px;border-radius:6px;border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;transition:transform .3s,box-shadow .3s,border-color .3s;text-decoration:none}
   .share-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--gold)}
   .share-card .icon{width:44px;height:44px;color:var(--burgundy);margin-bottom:6px}
@@ -273,6 +279,14 @@
     .testimonials,footer .grid{grid-template-columns:1fr}
     .util .stack:first-child{display:none}
   }
+
+  .featured__track{position:relative}
+  .featured__slide{display:none;animation:fadeReview .7s ease}
+  .featured__slide.is-active{display:block}
+  @keyframes fadeReview{from{opacity:0}to{opacity:1}}
+  .featured__dots{display:flex;gap:10px;justify-content:center;margin-top:34px}
+  .featured__dot{width:9px;height:9px;border-radius:50%;border:0;background:rgba(201,163,82,.3);cursor:pointer;padding:0;transition:background .3s,transform .3s}
+  .featured__dot.is-active{background:var(--gold);transform:scale(1.25)}
 </style>
 </head>
 <body>
@@ -307,16 +321,17 @@
 <!-- Nav -->
 <nav class="nav">
   <div class="wrap row">
-    <a class="logo" href="01-home.html"><img src="assets/logo.png" alt="Jonathan Sweat & The Legacy Team — Integrity Home Mortgage"></a>
+    <a class="logo" href="01-home.html"><img src="../assets/logo.png" alt="Jonathan Sweat & The Legacy Team — Integrity Home Mortgage"></a>
     <ul>
-      <li><a href="01-home.html">Home</a></li>
       <li><a href="02-about.html">About</a></li>
       <li><a href="03-loan-programs.html">Loan Programs</a></li>
       <li><a href="04-pre-approval-difference.html">Pre-Approval</a></li>
       <li><a href="05-apply.html">Apply</a></li>
       <li><a class="active" href="06-testimonials.html">Reviews</a></li>
       <li><a href="07-for-realtors.html">For Realtors</a></li>
+      <li><a href="09-blog.html">Blog</a></li>
       <li><a href="08-faq-contact.html">FAQ &amp; Contact</a></li>
+      <li><a href="09-blog.html">PinMarkers Blog</a></li>
     </ul>
     <div class="cta-wrap">
       <a class="btn btn-primary btn-sm" href="05-apply.html">
@@ -328,7 +343,7 @@
 </nav>
 
 <!-- HERO -->
-<header class="hero" style="background-image:url('assets/heroes/hero-06-testimonials.webp');">
+<header class="hero" style="background-image:url('../assets/heroes/hero-06-testimonials.webp');">
   <div class="wrap">
     <div class="inner">
       <span class="eyebrow">Reviews</span>
@@ -370,27 +385,55 @@
 </div>
 
 <!-- FEATURED TESTIMONIAL PULL-OUT -->
-<section class="featured">
+<section class="featured" data-review-rotator>
   <div class="wrap">
-    <span class="label">Featured review</span>
+    <span class="label">Featured reviews</span>
     <div class="quote-mark">"</div>
-    <div class="stars">
+    <div class="featured__track">
+      <div class="featured__slide is-active">
+        <div class="stars">
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    </div>
-    <p class="review">From the very beginning, our lender team made this whole process feel so much less overwhelming. Buying a home is stressful enough, but they were always quick to respond, patient with all of our questions, and incredibly thorough in explaining everything step by step. There was never a moment where we felt left in the dark. Even when things got time-sensitive, they stayed calm and on top of it, which helped us stay calm too. That meant a lot. What really stood out to me was how human they were. Not just transactional, not just numbers, they truly cared about helping us get into our home and made us feel supported the entire time. We're so grateful for their hard work and would absolutely recommend them to anyone going through the home buying process.</p>
-    <div class="author">
-      <div class="who">
-        <span class="name">J. O'Neill</span>
-        <span class="loc">Roanoke, VA</span>
+        </div>
+        <p class="review">From the very beginning, our lender team made this whole process feel so much less overwhelming. Buying a home is stressful enough, but they were always quick to respond, patient with all of our questions, and incredibly thorough in explaining everything step by step. There was never a moment where we felt left in the dark. Even when things got time-sensitive, they stayed calm and on top of it, which helped us stay calm too. That meant a lot. What really stood out to me was how human they were. Not just transactional, not just numbers, they truly cared about helping us get into our home and made us feel supported the entire time. We're so grateful for their hard work and would absolutely recommend them to anyone going through the home buying process.</p>
+        <div class="author">
+          <div class="who">
+            <span class="name">J. O'Neill</span>
+            <span class="loc">Roanoke, VA</span>
+          </div>
+          <a href="https://www.zillow.com/lender-profile/Jonathan%20Sweat/" target="_blank" rel="noopener">
+            Read on Zillow
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
       </div>
-      <a href="https://www.zillow.com/lender-profile/Jonathan%20Sweat/" target="_blank" rel="noopener">
-        Read on Zillow
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+      <div class="featured__slide">
+        <div class="stars">
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review">I can't express how much this team does to make this generally stressful time so smooth. Even the small hiccups and 'silly' questions were answered with respect and care. I didn't feel like another client, I felt like a friend. If I could double this score I would.</p>
+        <div class="author">
+          <div class="who">
+            <span class="name">Alana Best</span>
+            <span class="loc">Roanoke, VA</span>
+          </div>
+          <a href="https://www.zillow.com/lender-profile/Jonathan%20Sweat/" target="_blank" rel="noopener">
+            Read on Zillow
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="featured__dots">
+      <button class="featured__dot is-active" data-slide="0" aria-label="Show review 1"></button>
+      <button class="featured__dot" data-slide="1" aria-label="Show review 2"></button>
     </div>
   </div>
 </section>
@@ -556,6 +599,15 @@
         <p>If The Legacy Team helped you close a home, your review is the single best way to help the next family find us. Two minutes is all it takes.</p>
       </div>
     </div>
+    <div class="dinner-offer">
+      <div class="dinner-offer__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v7a3 3 0 0 0 3 3v8M6 3v7M9 3v7M18 3c-1.5 0-3 1.5-3 5s1.5 5 3 5v6"/></svg>
+      </div>
+      <div class="dinner-offer__text">
+        <strong>Closed your loan with us? Dinner is on Jonathan.</strong>
+        <p>Leave an honest review after your loan closes, and Jonathan treats you to dinner. A real thank you for trusting The Legacy Team with one of the biggest decisions you will make.</p>
+      </div>
+    </div>
     <div class="grid">
 
       <a class="share-card" href="https://www.zillow.com/lender-profile/Jonathan%20Sweat/" target="_blank" rel="noopener">
@@ -598,7 +650,7 @@
   <div class="wrap">
     <div class="grid">
       <div class="brand">
-        <img src="assets/logo.png" alt="Jonathan Sweat & The Legacy Team">
+        <img src="../assets/logo.png" alt="Jonathan Sweat & The Legacy Team">
         <p>Mortgages built for your legacy. Serving homebuyers and homeowners across Virginia and Florida since 2003.</p>
         <div class="socials">
           <a href="https://www.facebook.com/TheLegacyTeamOfIntegrityHomeMortgageCorporation/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9V14.9H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v6.9A10 10 0 0022 12z"/></svg></a>
@@ -658,5 +710,24 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  document.querySelectorAll('[data-review-rotator]').forEach(function(r){
+    var slides=r.querySelectorAll('.featured__slide');
+    var dots=r.querySelectorAll('.featured__dot');
+    if(slides.length<2)return;
+    var i=0,timer=null;
+    function show(n){slides.forEach(function(s,k){s.classList.toggle('is-active',k===n);});dots.forEach(function(d,k){d.classList.toggle('is-active',k===n);});i=n;}
+    function next(){show((i+1)%slides.length);}
+    function start(){stop();timer=setInterval(next,7000);}
+    function stop(){if(timer){clearInterval(timer);timer=null;}}
+    dots.forEach(function(d,k){d.addEventListener('click',function(){show(k);start();});});
+    r.addEventListener('mouseenter',stop);
+    r.addEventListener('mouseleave',start);
+    start();
+  });
+})();
+</script>
 </body>
 </html>
