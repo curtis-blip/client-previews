@@ -46,6 +46,10 @@
   .cmt{border:1px solid var(--line);border-radius:8px;padding:12px 12px 12px 40px;margin-bottom:10px;position:relative;background:#fff;transition:border-color .15s,box-shadow .15s}
   .cmt:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(10,37,64,.06)}
   .cmt__num{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;background:var(--burgundy);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .cmt--page{padding-left:12px;border-left:3px solid var(--gold);background:#fffdf7}
+  .cmt--page .cmt__badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:3px 8px;border-radius:4px;margin-bottom:6px}
+  .addnote{margin-top:10px;font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);background:#fff;border:1px dashed var(--gold);border-radius:7px;padding:9px 12px;width:100%;cursor:pointer;transition:background .15s}
+  .addnote:hover{background:#fffaf0}
   .cmt__ctx{font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;word-break:break-word}
   .cmt textarea{width:100%;font:inherit;font-size:13.5px;line-height:1.5;border:0;resize:vertical;min-height:42px;color:var(--ink);outline:none;background:transparent}
   .cmt__actions{display:flex;gap:10px;margin-top:8px}
@@ -90,7 +94,8 @@
 <aside class="side">
   <div class="side__head">
     <h2 id="sideTitle">Comments</h2>
-    <p id="sideSub">Toggle Comment Mode, then click on the page to leave feedback. Comments save in this browser automatically.</p>
+    <p id="sideSub">Toggle Comment Mode, then click on the page to leave feedback. Or add a note about the whole page below. Comments save in this browser automatically.</p>
+    <button class="addnote" id="addNoteBtn">+ Add a note about this whole page</button>
   </div>
   <div class="list" id="list"></div>
   <div class="side__foot">
@@ -213,9 +218,12 @@
 
   function renderPins(doc){
     doc.querySelectorAll('.__fbpin').forEach(function(p){ p.remove(); });
-    pageComments(current).forEach(function(c, i){
+    var n = 0;
+    pageComments(current).forEach(function(c){
+      if(c.pageLevel) return; // page notes have no pin
+      n++;
       var pin = doc.createElement('div');
-      pin.className = '__fbpin'; pin.textContent = (i+1);
+      pin.className = '__fbpin'; pin.textContent = n;
       pin.style.left = c.x + 'px'; pin.style.top = c.y + 'px';
       pin.setAttribute('data-id', c.id);
       pin.addEventListener('click', function(ev){
@@ -232,17 +240,27 @@
     listEl.innerHTML = '';
     if(!arr.length){
       var e = document.createElement('div'); e.className='empty';
-      e.innerHTML = 'No comments on this page yet.<br>Turn on Comment Mode and click the page to add one.';
+      e.innerHTML = 'No comments on this page yet.<br>Turn on Comment Mode and click the page to pin one, or add a whole-page note above.';
       listEl.appendChild(e);
       return;
     }
-    arr.forEach(function(c, i){
-      var row = document.createElement('div'); row.className='cmt'; row.setAttribute('data-id', c.id);
+    // assign pin numbers in array order (pinned only), but show page notes first
+    var pn = 0, notes = [], pins = [];
+    arr.forEach(function(c){
+      if(c.pageLevel){ notes.push({c:c}); }
+      else { pn++; pins.push({c:c, n:pn}); }
+    });
+    notes.concat(pins).forEach(function(item){
+      var c = item.c, isPage = !!c.pageLevel;
+      var row = document.createElement('div');
+      row.className = 'cmt' + (isPage ? ' cmt--page' : '');
+      row.setAttribute('data-id', c.id);
       row.innerHTML =
-        '<div class="cmt__num">'+(i+1)+'</div>'+
+        (isPage ? '<div class="cmt__badge">Whole page</div>'
+                : '<div class="cmt__num">'+item.n+'</div>')+
         (c.ctx ? '<div class="cmt__ctx">'+escapeHtml(c.ctx)+'</div>' : '')+
-        '<textarea placeholder="Type your feedback...">'+escapeHtml(c.text)+'</textarea>'+
-        '<div class="cmt__actions"><button class="jump">Jump to pin</button><button class="del">Delete</button></div>';
+        '<textarea placeholder="'+(isPage?'Feedback about this whole page...':'Type your feedback...')+'">'+escapeHtml(c.text)+'</textarea>'+
+        '<div class="cmt__actions">'+(isPage?'':'<button class="jump">Jump to pin</button>')+'<button class="del">Delete</button></div>';
       var ta = row.querySelector('textarea');
       ta.addEventListener('input', function(){ c.text = ta.value; save(); });
       row.querySelector('.del').addEventListener('click', function(){
@@ -250,7 +268,8 @@
         var doc = frame.contentDocument; if(doc) renderPins(doc);
         renderList(); refreshCount();
       });
-      row.querySelector('.jump').addEventListener('click', function(){
+      var jb = row.querySelector('.jump');
+      if(jb) jb.addEventListener('click', function(){
         var doc = frame.contentDocument; if(!doc) return;
         var pin = doc.querySelector('.__fbpin[data-id="'+c.id+'"]');
         if(pin) pin.scrollIntoView({behavior:'smooth',block:'center'});
@@ -273,6 +292,11 @@
     stage.classList.toggle('commenting', commenting);
   });
   pageSel.addEventListener('change', function(){ loadPage(pageSel.value); });
+  document.getElementById('addNoteBtn').addEventListener('click', function(){
+    var c = { id: uid(), pageLevel: true, ctx: '', text: '' };
+    pageComments(current).push(c);
+    save(); renderList(true, c.id); refreshCount();
+  });
   document.getElementById('clearBtn').addEventListener('click', function(){
     if(!pageComments(current).length) return;
     if(confirm('Delete all comments on '+label(current)+'?')){
@@ -291,11 +315,21 @@
       if(!arr.length) return;
       any = true;
       out += '## ' + pg[1] + '  (' + arr.length + ')\n\n';
-      arr.forEach(function(c, i){
-        var loc = c.ctx ? ' _(near: ' + c.ctx + ')_' : '';
-        out += (i+1) + '. ' + (c.text.trim() || '[no text]') + loc + '\n';
-      });
-      out += '\n';
+      var notes = arr.filter(function(c){ return c.pageLevel; });
+      var pins = arr.filter(function(c){ return !c.pageLevel; });
+      if(notes.length){
+        out += '**Whole-page notes:**\n';
+        notes.forEach(function(c){ out += '- ' + (c.text.trim() || '[no text]') + '\n'; });
+        out += '\n';
+      }
+      if(pins.length){
+        out += '**Pinned comments:**\n';
+        pins.forEach(function(c, i){
+          var loc = c.ctx ? ' _(near: ' + c.ctx + ')_' : '';
+          out += (i+1) + '. ' + (c.text.trim() || '[no text]') + loc + '\n';
+        });
+        out += '\n';
+      }
     });
     if(!any) out += '_No comments yet._\n';
     return out;
