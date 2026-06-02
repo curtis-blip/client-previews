@@ -1,18 +1,19 @@
 /* =========================================================================
    Bill Lockett, library-aligned styles
    Generated 2026-05-18 from ~/Documents/Claude/_block-library/ canon
-   Per-client swaps: rust accent #B85C38, warm off-white bg #FAF7F2.
-   All other tokens follow library defaults verbatim.
+   Per-client swaps: rust accent #B85C38 on a black & white base.
+   2026-06-02 revision: cream/beige neutrals retired for white + light-gray
+   (client review), heading sizes brought down, kept UPPERCASE per doctrine.
    ========================================================================= */
 
 :root {
-    --bg:           #FAF7F2;
-    --bg-alt:       #F0EBE3;
+    --bg:           #FFFFFF;
+    --bg-alt:       #F4F4F4;
     --bg-dark:      #0A0A0A;
     --text-dark:    #1A1A1A;
     --text-muted:   #5A5A5A;
     --text-light:   #8A8A8A;
-    --border:       #E0D9CD;
+    --border:       #E3E3E3;
     --accent:       #B85C38;
     --accent-dark:  #8A4327;
     --accent-light: #E8D5C8;
@@ -49,14 +50,14 @@ h1, h2, h3, h4 {
    This is the consistency rail. */
 h1 {
     font-weight: 300;
-    font-size: clamp(38px, 5.2vw, 64px);
+    font-size: clamp(30px, 4vw, 46px);
     line-height: 1.12;
     letter-spacing: 0.02em;
     text-transform: uppercase;
 }
 h2 {
     font-weight: 300;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(25px, 3vw, 38px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -268,7 +269,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero-v2 h1 {
     color: var(--white);
     font-weight: 300;
-    font-size: clamp(38px, 5.2vw, 64px);
+    font-size: clamp(30px, 4vw, 46px);
     line-height: 1.12;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -318,7 +319,7 @@ button { font-family: inherit; cursor: pointer; }
 .a1__copy h2 {
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(25px, 3vw, 38px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -438,8 +439,8 @@ button { font-family: inherit; cursor: pointer; }
        from the global h2 rule above. Only override size + line-height for V2 cinematic scale. */
     color: var(--white);
     font-family: var(--font-heading);
-    font-size: clamp(36px, 5vw, 64px);
-    line-height: 1.06;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.08;
     margin: 0 0 24px;
 }
 .bsp__lead {
@@ -473,7 +474,7 @@ button { font-family: inherit; cursor: pointer; }
 .communities__head h2 {
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(25px, 3vw, 38px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -581,7 +582,7 @@ button { font-family: inherit; cursor: pointer; }
 .idx-section__head h2 {
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(25px, 3vw, 38px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -724,7 +725,7 @@ button { font-family: inherit; cursor: pointer; }
 .testimonials__head h2 {
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(25px, 3vw, 38px);
     line-height: 1.1;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -848,8 +849,8 @@ button { font-family: inherit; cursor: pointer; }
     color: var(--white);
     font-family: var(--font-heading);
     font-weight: 300;
-    font-size: clamp(38px, 5vw, 64px);
-    line-height: 1.08;
+    font-size: clamp(28px, 3.4vw, 42px);
+    line-height: 1.12;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     margin: 0 0 28px;
@@ -944,7 +945,7 @@ button { font-family: inherit; cursor: pointer; }
     margin: 0 0 24px;
 }
 .bio-v3__main h1 {
-    font-size: clamp(34px, 4.4vw, 56px);
+    font-size: clamp(27px, 3.4vw, 42px);
     margin-bottom: 32px;
 }
 .bio-v3__main p {
@@ -1942,4 +1943,176 @@ details.faq__item summary::-webkit-details-marker { display: none; }
 }
 @media (max-width: 640px) {
     .footer__grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================================
+   COMMUNITIES PAGE — card grid (button variant) + single-layer modal system
+   Approved pattern: community card → modal (one layer, no accordion).
+   Sharp corners, rust accent, Inter. Tokens follow the B&W base.
+   ========================================================================= */
+
+/* Page section wrappers */
+.community-section { padding: 120px 0 40px; background: var(--bg); }
+.community-section--type { padding: 40px 0 140px; background: var(--bg); }
+.community-section__head {
+    max-width: var(--max-width);
+    margin: 0 auto 48px;
+    padding: 0 var(--container-px);
+}
+.community-section__head .eyebrow { margin-bottom: 18px; }
+.community-section__head h2 { margin: 0; max-width: 640px; }
+.community-section__head p {
+    margin: 16px 0 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 560px;
+}
+.community-section__grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+@media (max-width: 1024px) { .community-section__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .community-section__grid { grid-template-columns: 1fr; } }
+
+/* Card as button (reuses the .community-card visual from the home grid) */
+button.community-card {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+.community-card__view {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    transition: gap 220ms ease, color 220ms ease;
+}
+.community-card__view::after { content: '\2192'; font-size: 13px; }
+.community-card:hover .community-card__view { gap: 15px; color: var(--white); }
+
+/* Modal */
+body.modal-open { overflow: hidden; }
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5vh 20px;
+    background: rgba(10,10,10,0.66);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.modal.is-open { display: flex; }
+.modal__inner {
+    position: relative;
+    background: var(--bg);
+    max-width: 760px;
+    width: 100%;
+    margin: auto;
+    padding: clamp(28px, 5vw, 64px);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.35);
+}
+.modal__close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 44px; height: 44px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+    font-size: 22px;
+    line-height: 1;
+    border-radius: 0;
+    transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+.modal__close:hover, .modal__close:focus-visible { background: var(--bg-dark); color: var(--white); border-color: var(--bg-dark); }
+.modal__head { margin-bottom: 26px; padding-right: 48px; }
+.modal__head .eyebrow { margin-bottom: 12px; }
+.modal__head h2 {
+    margin: 0;
+    font-size: clamp(23px, 3vw, 34px);
+    line-height: 1.12;
+}
+.modal__hero {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background: var(--bg-alt);
+}
+.modal__hero img { width: 100%; height: 100%; object-fit: cover; }
+.modal__lede {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text-dark);
+    font-weight: 400;
+    margin: 0 0 26px;
+    max-width: 62ch;
+}
+.modal__features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 28px;
+    margin: 30px 0;
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+.modal__feature { display: flex; gap: 14px; align-items: flex-start; }
+.modal__feature-icon { width: 26px; height: 26px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+.modal__feature-icon svg { width: 100%; height: 100%; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.modal__feature h4 {
+    margin: 0 0 4px;
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text-dark);
+}
+.modal__feature p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--text-muted); }
+.modal__perspective {
+    background: var(--bg-alt);
+    border-left: 3px solid var(--accent);
+    padding: 26px 32px;
+    margin: 30px 0;
+}
+.modal__perspective .eyebrow { margin-bottom: 12px; border-bottom: 0; padding-bottom: 0; }
+.modal__perspective p {
+    margin: 0;
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    max-width: 60ch;
+}
+.modal__body p { color: var(--text-muted); font-size: 16px; line-height: 1.75; margin: 0 0 18px; max-width: 64ch; }
+.modal__body p:last-child { margin-bottom: 0; }
+.modal__ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+@media (max-width: 600px) {
+    .modal__features { grid-template-columns: 1fr; }
+    .modal__ctas .btn { width: 100%; text-align: center; }
 }
