@@ -183,6 +183,9 @@
   .preapproval{background:var(--ink);color:#fff;padding:130px 0;position:relative;overflow:hidden}
   .preapproval::before{content:'';position:absolute;right:-10%;top:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,163,82,.18),transparent 60%);pointer-events:none}
   .preapproval .grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+  .preapproval__img{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .preapproval__img img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:860px){.preapproval__img{aspect-ratio:16/10}}
   .preapproval .quote-block{position:relative}
   .preapproval .quote-mark{font-family:var(--serif);font-size:180px;line-height:1;color:var(--gold);position:absolute;top:-30px;left:-12px;opacity:.45;font-weight:500}
   .preapproval h2{color:#fff;font-size:clamp(34px,3.6vw,52px);font-weight:400;line-height:1.1;position:relative}
@@ -247,7 +250,9 @@
   .equity .visual .bar:nth-child(8){height:100%;opacity:1}
 
   /* Coaching */
-  .coaching{background:var(--ink-2);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+  .coaching{background:linear-gradient(rgba(10,37,64,.84),rgba(20,46,79,.80)),url('../assets/heroes/hero-07-for-realtors.webp');background-size:cover;background-position:center;background-attachment:fixed;color:#fff;padding:140px 0;position:relative;overflow:hidden}
+  @supports not (background-attachment:fixed){.coaching{background-attachment:scroll}}
+  @media (hover:none){.coaching{background-attachment:scroll}}
   .coaching .compass-art{position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:480px;height:480px;border:1px solid rgba(201,163,82,.18);border-radius:50%;pointer-events:none}
   .coaching .compass-art::before, .coaching .compass-art::after{content:'';position:absolute;inset:60px;border:1px solid rgba(201,163,82,.12);border-radius:50%}
   .coaching .compass-art::after{inset:120px}
@@ -371,8 +376,7 @@
       <li><a href="06-testimonials.html">Reviews</a></li>
       <li><a href="07-for-realtors.html">For Realtors</a></li>
       <li><a href="09-blog.html">Blog</a></li>
-      <li><a href="08-faq-contact.html">FAQ &amp; Contact</a></li>
-      <li><a href="09-blog.html">PinMarkers Blog</a></li>
+      <li><a href="08-faq-contact.html">Contact</a></li>
     </ul>
     <div class="cta-wrap">
       <a class="btn btn-primary btn-sm" href="05-apply.html">
@@ -417,7 +421,7 @@
         <div class="lbl">Originator in Market</div>
       </a>
       <a class="cell" href="02-about.html">
-        <div class="num">21<small>yrs</small></div>
+        <div class="num">30+<small>yrs</small></div>
         <div class="lbl">Years Experience</div>
       </a>
       <a class="cell" href="06-testimonials.html">
@@ -505,13 +509,13 @@
 <!-- PRE-APPROVAL DIFFERENCE -->
 <section class="preapproval" id="preapproval">
   <div class="wrap grid">
-    <div class="quote-block">
-      <div class="quote-mark">"</div>
-      <span class="eyebrow">The Pre-Approval Difference</span>
-      <h2 style="margin-top:18px;">We only do pre-approvals.<br><em>Not pre-qualifications.</em></h2>
+    <div class="preapproval__img">
+      <img src="../assets/heroes/hero-04-pre-approval.webp" alt="Jonathan Sweat reviewing a fully underwritten pre-approval file" loading="lazy">
     </div>
     <div>
-      <div class="body">
+      <span class="eyebrow">The Pre-Approval Difference</span>
+      <h2 style="margin-top:14px;">We only do pre-approvals.<br><em>Not pre-qualifications.</em></h2>
+      <div class="body" style="margin-top:24px;">
         <p>Most lenders run a soft credit pull, ask three questions, and call it a pre-qual. It looks the same on paper. It plays out very differently when you're competing for a house.</p>
         <p>Our team underwrites your full file before you ever make an offer. Income, assets, credit, the whole picture. So when a Realtor sees Jonathan's name on a pre-approval letter, they know one thing for certain: the deal will close.</p>
       </div>
@@ -692,7 +696,6 @@
 
 <!-- FOR REALTORS CROSS-SELL -->
 <section class="coaching" id="realtors">
-  <div class="compass-art"></div>
   <div class="wrap grid">
     <div>
       <span class="eyebrow">For Realtors</span>
@@ -811,7 +814,7 @@
           <li><a href="06-testimonials.html">Reviews</a></li>
           <li><a href="02-about.html#areas">Areas We Serve</a></li>
           <li><a href="07-for-realtors.html">For Realtors</a></li>
-          <li><a href="08-faq-contact.html">FAQ &amp; Contact</a></li>
+          <li><a href="08-faq-contact.html">Contact</a></li>
           <li style="margin-top:10px;font-size:13px;opacity:.65;"><a href="https://compasssalescoaching.com" target="_blank" rel="noopener">Founder of Compass Sales Coaching →</a></li>
         </ul>
       </div>
