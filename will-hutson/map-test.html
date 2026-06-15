@@ -1,27 +1,26 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hutson Group — County Map (rebuild test)</title>
+<title>Hutson Group — County Map (C21-style rebuild)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0d0e0e;--pewter:#bcb6aa;--pewter-dark:#8d877a;--paper:#f6f5f2;--display:'Montserrat',sans-serif;--body:'Inter',sans-serif}
+:root{--ink:#0d0e0e;--pewter:#bcb6aa;--pewter-dark:#8d877a;--paper:#f6f5f2;--display:'Montserrat',sans-serif;--body:'Inter',sans-serif;
+ --county:#2f2f2f;--county-line:#c9c9c9;--hot:#c4b282;--hot-ink:#1a1a1a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6}
 .wf{position:fixed;top:14px;left:14px;background:var(--ink);color:var(--pewter);font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;z-index:50}
-.sec{max-width:860px;margin:0 auto;padding:90px 24px 80px;text-align:center}
+.sec{max-width:880px;margin:0 auto;padding:84px 24px 70px;text-align:center}
 .eyebrow{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--pewter-dark);margin-bottom:14px}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.5vw,38px);margin-bottom:14px}
-.lede{font-size:16px;color:#54565a;max-width:560px;margin:0 auto 8px}
-.map-stage{max-width:760px;margin:34px auto 0;padding:30px 10px}
+.lede{font-size:16px;color:#54565a;max-width:560px;margin:0 auto}
+.map-stage{max-width:780px;margin:30px auto 0;padding:34px 16px}
 #countyMap{width:100%;height:auto;display:block;overflow:visible}
-/* base */
-.county{fill:var(--ink);stroke:var(--paper);stroke-width:2.5;cursor:pointer;
- transition:transform .26s cubic-bezier(.2,.8,.2,1),fill .2s ease,filter .26s ease;
- transform-box:fill-box;transform-origin:center}
-/* HOVER STATE — driven by .hot class (stable through bring-to-front), guaranteed reset */
-.county.hot{fill:var(--pewter);transform:translateY(-16px) scale(1.07);filter:drop-shadow(0 22px 28px rgba(0,0,0,.5))}
-.county-label{font-family:var(--display);font-weight:700;font-size:17px;fill:#fff;text-anchor:middle;pointer-events:none;
- transition:transform .26s cubic-bezier(.2,.8,.2,1),fill .2s ease}
-.county-label.up{transform:translateY(-16px);fill:var(--ink)}
+/* ===== C21-style zoom-pop + color change, JS-class driven (robust reset) ===== */
+.county{transform-box:fill-box;transform-origin:center;transition:transform .2s ease;cursor:pointer}
+.county .shape{fill:var(--county);stroke:var(--county-line);stroke-width:2.5;transition:fill .2s ease}
+.county .lbl{font-family:var(--display);font-weight:700;font-size:17px;fill:#fff;text-anchor:middle;pointer-events:none;transition:fill .2s ease}
+.county.hot{transform:scale(1.38);filter:drop-shadow(0 16px 26px rgba(0,0,0,.55))}
+.county.hot .shape{fill:var(--hot)}
+.county.hot .lbl{fill:var(--hot-ink)}
 /* modal */
 .modal-ov{position:fixed;inset:0;background:rgba(13,14,14,.6);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
 .modal-ov.open{display:flex}
@@ -38,45 +37,31 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.5vw,38px);m
 .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:var(--pewter-dark)}
 .btn-outline{border:1px solid var(--ink);color:var(--ink)}.btn-outline:hover{background:var(--ink);color:#fff}
 .note{font-size:12px;color:#8a8a8a;margin-top:18px}
-.toggle{margin-top:20px;font-size:13px;color:#54565a}
-.toggle b{font-family:var(--display)}
+.toggle{margin-top:22px;font-size:13px;color:#54565a}.toggle b{font-family:var(--display)}
 </style></head><body>
-<div class="wf">Map rebuild — interaction test</div>
+<div class="wf">Map rebuild v2 — C21-style</div>
 <section class="sec">
  <p class="eyebrow">North Georgia</p>
  <h1>Communities We Serve</h1>
- <p class="lede">Hover any county to see it light up and lift off the map. Click to open its overview.</p>
+ <p class="lede">Hover a county to zoom it forward and light it up. Click to open its overview.</p>
  <div class="map-stage">
   <svg id="countyMap" viewBox="0 0 1000 941" role="img" aria-label="Map of twelve North Georgia counties">
 <g class="counties">
-<path class="county" data-c="Bartow" d="M53.5 204.6 148.3 201.2 287.4 188.4 283.4 456.3 108.6 452.7 26.3 441.6 Z"/>
-<path class="county" data-c="Cherokee" d="M549.6 250.4 549.1 369.9 503.0 369.8 442.9 460.1 283.4 456.3 287.4 188.4 334.3 213.3 549.9 213.7 549.7 220.4 Z"/>
-<path class="county" data-c="Cobb" d="M240.2 613.4 231.3 455.2 442.9 460.1 466.7 547.8 427.1 597.6 402.2 665.1 337.2 724.2 309.5 674.9 240.4 674.0 239.8 663.0 Z"/>
-<path class="county" data-c="Dawson" d="M549.6 250.4 550.4 144.6 508.7 144.2 491.5 68.2 551.5 63.7 590.2 24.0 595.7 36.2 594.0 87.1 653.1 146.8 733.6 183.8 749.2 251.3 Z"/>
-<path class="county" data-c="DeKalb" d="M552.2 801.4 488.4 800.7 490.0 568.4 540.4 554.1 544.1 560.8 540.2 563.0 550.9 587.4 566.7 597.3 585.8 620.5 601.7 627.4 705.0 716.7 683.2 737.7 651.5 810.3 572.2 801.8 572.0 814.6 557.9 814.5 Z"/>
-<path class="county" data-c="Douglas" d="M210.0 691.2 239.5 688.1 240.4 674.0 309.5 674.9 337.2 724.2 331.5 735.7 321.6 739.5 317.4 748.7 301.4 758.8 302.8 764.5 221.4 814.9 214.5 827.7 186.3 850.0 184.1 859.9 119.9 860.4 122.6 694.4 137.5 699.2 195.4 694.0 Z"/>
-<path class="county" data-c="Forsyth" d="M549.6 250.4 749.2 251.3 769.0 295.1 728.0 362.1 671.3 387.7 657.9 413.3 652.7 435.7 647.9 440.0 642.6 466.5 656.0 478.2 549.0 431.1 549.1 369.9 Z"/>
-<path class="county" data-c="Fulton" d="M221.4 814.9 302.8 764.5 301.4 758.8 317.4 748.7 321.6 739.5 331.5 735.7 337.2 724.2 402.2 665.1 427.1 597.6 466.7 547.8 442.9 460.1 503.0 369.8 549.1 369.9 549.0 431.1 656.0 478.2 537.1 552.7 490.0 568.4 488.4 800.7 417.1 800.0 416.5 878.4 316.4 917.2 156.4 910.0 186.3 850.0 214.5 827.7 Z"/>
-<path class="county" data-c="Gwinnett" d="M647.9 440.0 652.7 435.7 657.9 413.3 671.3 387.7 679.1 384.4 808.3 440.1 841.7 416.7 807.6 515.4 854.0 575.0 705.0 716.7 601.7 627.4 585.8 620.5 566.7 597.3 550.9 587.4 540.2 563.0 544.1 560.8 537.1 552.7 656.0 478.2 642.6 466.5 Z"/>
-<path class="county" data-c="Hall" d="M679.1 384.4 728.0 362.1 769.0 295.1 749.2 251.3 733.6 183.8 824.6 114.0 942.1 115.5 976.0 173.1 940.0 225.2 972.8 282.4 841.7 416.7 808.3 440.1 Z"/>
-<path class="county" data-c="Paulding" d="M24.0 595.3 71.5 557.7 108.6 452.7 231.3 455.2 240.2 613.4 239.5 688.1 137.5 699.2 32.2 669.4 33.0 595.4 Z"/>
-<path class="county" data-c="Pickens" d="M286.7 79.2 491.5 68.2 508.7 144.2 550.4 144.6 549.9 213.7 334.3 213.3 287.4 188.4 Z"/>
-</g><g class="labels">
-<text class="county-label" data-label="Bartow" x="161.5" y="332.0">Bartow</text>
-<text class="county-label" data-label="Cherokee" x="397.6" y="324.3">Cherokee</text>
-<text class="county-label" data-label="Cobb" x="336.4" y="556.1">Cobb</text>
-<text class="county-label" data-label="Dawson" x="611.2" y="190.4">Dawson</text>
-<text class="county-label" data-label="DeKalb" x="573.5" y="716.9">DeKalb</text>
-<text class="county-label" data-label="Douglas" x="185.9" y="760.6">Douglas</text>
-<text class="county-label" data-label="Forsyth" x="623.6" y="327.7">Forsyth</text>
-<text class="county-label" data-label="Fulton" x="343.7" y="829.2">Fulton</text>
-<text class="county-label" data-label="Gwinnett" x="701.2" y="574.3">Gwinnett</text>
-<text class="county-label" data-label="Hall" x="843.4" y="224.7">Hall</text>
-<text class="county-label" data-label="Paulding" x="147.5" y="606.8">Paulding</text>
-<text class="county-label" data-label="Pickens" x="432.6" y="143.6">Pickens</text>
+<g class="county" data-c="Bartow"><path class="shape" d="M53.5 204.6 148.3 201.2 287.4 188.4 283.4 456.3 108.6 452.7 26.3 441.6 Z"/><text class="lbl" x="161.5" y="332.0">Bartow</text></g>
+<g class="county" data-c="Cherokee"><path class="shape" d="M549.6 250.4 549.1 369.9 503.0 369.8 442.9 460.1 283.4 456.3 287.4 188.4 334.3 213.3 549.9 213.7 549.7 220.4 Z"/><text class="lbl" x="397.6" y="324.3">Cherokee</text></g>
+<g class="county" data-c="Cobb"><path class="shape" d="M240.2 613.4 231.3 455.2 442.9 460.1 466.7 547.8 427.1 597.6 402.2 665.1 337.2 724.2 309.5 674.9 240.4 674.0 239.8 663.0 Z"/><text class="lbl" x="336.4" y="556.1">Cobb</text></g>
+<g class="county" data-c="Dawson"><path class="shape" d="M549.6 250.4 550.4 144.6 508.7 144.2 491.5 68.2 551.5 63.7 590.2 24.0 595.7 36.2 594.0 87.1 653.1 146.8 733.6 183.8 749.2 251.3 Z"/><text class="lbl" x="611.2" y="190.4">Dawson</text></g>
+<g class="county" data-c="DeKalb"><path class="shape" d="M552.2 801.4 488.4 800.7 490.0 568.4 540.4 554.1 544.1 560.8 540.2 563.0 550.9 587.4 566.7 597.3 585.8 620.5 601.7 627.4 705.0 716.7 683.2 737.7 651.5 810.3 572.2 801.8 572.0 814.6 557.9 814.5 Z"/><text class="lbl" x="573.5" y="716.9">DeKalb</text></g>
+<g class="county" data-c="Douglas"><path class="shape" d="M210.0 691.2 239.5 688.1 240.4 674.0 309.5 674.9 337.2 724.2 331.5 735.7 321.6 739.5 317.4 748.7 301.4 758.8 302.8 764.5 221.4 814.9 214.5 827.7 186.3 850.0 184.1 859.9 119.9 860.4 122.6 694.4 137.5 699.2 195.4 694.0 Z"/><text class="lbl" x="185.9" y="760.6">Douglas</text></g>
+<g class="county" data-c="Forsyth"><path class="shape" d="M549.6 250.4 749.2 251.3 769.0 295.1 728.0 362.1 671.3 387.7 657.9 413.3 652.7 435.7 647.9 440.0 642.6 466.5 656.0 478.2 549.0 431.1 549.1 369.9 Z"/><text class="lbl" x="623.6" y="327.7">Forsyth</text></g>
+<g class="county" data-c="Fulton"><path class="shape" d="M221.4 814.9 302.8 764.5 301.4 758.8 317.4 748.7 321.6 739.5 331.5 735.7 337.2 724.2 402.2 665.1 427.1 597.6 466.7 547.8 442.9 460.1 503.0 369.8 549.1 369.9 549.0 431.1 656.0 478.2 537.1 552.7 490.0 568.4 488.4 800.7 417.1 800.0 416.5 878.4 316.4 917.2 156.4 910.0 186.3 850.0 214.5 827.7 Z"/><text class="lbl" x="343.7" y="829.2">Fulton</text></g>
+<g class="county" data-c="Gwinnett"><path class="shape" d="M647.9 440.0 652.7 435.7 657.9 413.3 671.3 387.7 679.1 384.4 808.3 440.1 841.7 416.7 807.6 515.4 854.0 575.0 705.0 716.7 601.7 627.4 585.8 620.5 566.7 597.3 550.9 587.4 540.2 563.0 544.1 560.8 537.1 552.7 656.0 478.2 642.6 466.5 Z"/><text class="lbl" x="701.2" y="574.3">Gwinnett</text></g>
+<g class="county" data-c="Hall"><path class="shape" d="M679.1 384.4 728.0 362.1 769.0 295.1 749.2 251.3 733.6 183.8 824.6 114.0 942.1 115.5 976.0 173.1 940.0 225.2 972.8 282.4 841.7 416.7 808.3 440.1 Z"/><text class="lbl" x="843.4" y="224.7">Hall</text></g>
+<g class="county" data-c="Paulding"><path class="shape" d="M24.0 595.3 71.5 557.7 108.6 452.7 231.3 455.2 240.2 613.4 239.5 688.1 137.5 699.2 32.2 669.4 33.0 595.4 Z"/><text class="lbl" x="147.5" y="606.8">Paulding</text></g>
+<g class="county" data-c="Pickens"><path class="shape" d="M286.7 79.2 491.5 68.2 508.7 144.2 550.4 144.6 549.9 213.7 334.3 213.3 287.4 188.4 Z"/><text class="lbl" x="432.6" y="143.6">Pickens</text></g>
 </g></svg>
  </div>
- <p class="toggle">Click mode: <b id="modeName">Communities (opens modal here)</b> &nbsp;·&nbsp; <a href="#" id="modeToggle">switch to Home mode (would jump to Communities page)</a></p>
+ <p class="toggle">Click mode: <b id="modeName">Communities (opens modal here)</b> &nbsp;·&nbsp; <a href="#" id="modeToggle">switch to Home mode (jumps to Communities page)</a></p>
 </section>
 
 <div class="modal-ov" id="countyModal">
@@ -97,28 +82,23 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.5vw,38px);m
 
 <script>
 var DATA={"Pickens": {"cities": ["Jasper", "Talking Rock"], "blurb": "Mountain views and small-town charm at the gateway to the North Georgia foothills."}, "Dawson": {"cities": ["Dawsonville"], "blurb": "Outlet shopping, lake access, and easy reach to the mountains north of Atlanta."}, "Bartow": {"cities": ["Cartersville"], "blurb": "History, value, and space, an affordable foothold west of the metro core."}, "Cherokee": {"cities": ["Woodstock", "Canton", "Ball Ground", "Holly Springs", "Waleska"], "blurb": "One of the fastest-growing counties in Georgia, anchored by downtown Woodstock."}, "Forsyth": {"cities": ["Cumming"], "blurb": "Top-rated schools and Lake Lanier living, consistently among Georgia's most sought-after counties."}, "Hall": {"cities": ["Gainesville", "Flowery Branch"], "blurb": "Lake Lanier's northern shore, blending lakefront lifestyle with a growing economy."}, "Paulding": {"cities": ["Dallas", "Hiram"], "blurb": "Newer construction and room to grow, a value-driven choice on the metro's west side."}, "Cobb": {"cities": ["Marietta", "Kennesaw", "Acworth", "Smyrna"], "blurb": "Established neighborhoods, top schools, and The Battery, the heart of Northwest Atlanta."}, "Gwinnett": {"cities": ["Lawrenceville", "Duluth", "Suwanee"], "blurb": "Diverse, dynamic, and full of choices, one of metro Atlanta's largest and most varied markets."}, "Douglas": {"cities": ["Douglasville"], "blurb": "Quick access to the city with suburban value, just west of Fulton."}, "Fulton": {"cities": ["Roswell", "Alpharetta"], "blurb": "From walkable Roswell to upscale Alpharetta, North Fulton sets the standard for North Atlanta living."}, "DeKalb": {"cities": ["Dunwoody", "Brookhaven"], "blurb": "In-town convenience with leafy, established communities northeast of the city."}};
-var MODE='local'; // 'local' = open modal here (Communities); 'home' = jump to Communities page
+var MODE='local';
 function slug(s){return s.toLowerCase().replace(/[^a-z]+/g,'-');}
 (function(){
  var cm=document.getElementById('countyMap'); if(!cm) return;
- var cg=cm.querySelector('g.counties');
- var byName={}; cm.querySelectorAll('.county-label').forEach(function(t){byName[t.getAttribute('data-label')]=t;});
+ var root=cm.querySelector('g.counties')||cm;
  var counties=cm.querySelectorAll('.county');
- function reset(){counties.forEach(function(p){p.classList.remove('hot');});cm.querySelectorAll('.county-label').forEach(function(t){t.classList.remove('up');});}
- function activate(p){reset();if(cg)cg.appendChild(p);p.classList.add('hot');var l=byName[p.getAttribute('data-c')];if(l)l.classList.add('up');}
- function deactivate(p){p.classList.remove('hot');var l=byName[p.getAttribute('data-c')];if(l)l.classList.remove('up');}
- counties.forEach(function(p){
-  p.addEventListener('mouseenter',function(){activate(p);});
-  p.addEventListener('mouseleave',function(){deactivate(p);});
-  p.addEventListener('click',function(){onCounty(p.getAttribute('data-c'));});
+ function reset(){counties.forEach(function(c){c.classList.remove('hot');});}
+ function activate(c){reset();root.appendChild(c);c.classList.add('hot');}
+ counties.forEach(function(c){
+  c.addEventListener('mouseenter',function(){activate(c);});
+  c.addEventListener('mouseleave',function(){c.classList.remove('hot');});
+  c.addEventListener('click',function(){onCounty(c.getAttribute('data-c'));});
  });
  cm.addEventListener('mouseleave',reset);
 })();
 var mov=document.getElementById('countyModal');
-function onCounty(name){
- if(MODE==='home'){location.href='06-communities.html#'+slug(name);return;}
- openCounty(name);
-}
+function onCounty(name){ if(MODE==='home'){location.href='06-communities.html#'+slug(name);return;} openCounty(name); }
 function openCounty(name){
  var c=DATA[name]; if(!c) return;
  document.getElementById('mCounty').textContent=name+' County';
@@ -135,13 +115,11 @@ function closeCounty(){mov.classList.remove('open');if(history.replaceState)hist
 document.getElementById('modalClose').addEventListener('click',closeCounty);
 mov.addEventListener('click',function(e){if(e.target===mov)closeCounty();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeCounty();});
-document.getElementById('modeToggle').addEventListener('click',function(e){
- e.preventDefault();
+document.getElementById('modeToggle').addEventListener('click',function(e){e.preventDefault();
  MODE=(MODE==='local')?'home':'local';
  document.getElementById('modeName').textContent=(MODE==='local')?'Communities (opens modal here)':'Home (jumps to Communities page)';
- this.textContent=(MODE==='local')?'switch to Home mode (would jump to Communities page)':'switch to Communities mode (opens modal here)';
+ this.textContent=(MODE==='local')?'switch to Home mode (jumps to Communities page)':'switch to Communities mode (opens modal here)';
 });
-// deep-link on load
 window.addEventListener('load',function(){var h=location.hash.replace('#','');if(h&&DATA){for(var n in DATA){if(slug(n)===h){openCounty(n);break;}}}});
 </script>
 </body></html>
