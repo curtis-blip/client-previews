@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME, Enhanced Modal, Cobb County | The Hutson Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0e0e;
+  --ink-2:#15171a;
+  --ink-3:#1d2024;
+  --pewter:#bcb6aa;
+  --pewter-bright:#ded8cc;
+  --pewter-dark:#8d877a;
+  --line:rgba(188,182,170,.22);
+  --line-strong:rgba(188,182,170,.42);
+  --paper:#f6f5f2;
+  --paper-2:#eceae4;
+  --ink-on-paper:#181a1c;
+  --muted-on-paper:#6c6c66;
+  --on-dark:#ece9e2;
+  --on-dark-muted:#9c988e;
+  --r:3px;
+  --display:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink-on-paper);background:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;letter-spacing:.005em}
+
+/* ===== SIMULATED COMMUNITIES PAGE BEHIND (dimmed/blurred) ===== */
+.page-behind{position:fixed;inset:0;background:
+  radial-gradient(1200px 600px at 70% -10%, rgba(188,182,170,.06), transparent 60%),
+  radial-gradient(900px 500px at 0% 110%, rgba(188,182,170,.05), transparent 55%),
+  var(--ink);
+  filter:blur(2px);z-index:0}
+.page-behind::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 138px,rgba(255,255,255,.02) 138px 139px)}
+/* faint suggestion of a county map grid behind, so the modal reads as "opened from the communities page" */
+.behind-map{position:fixed;inset:0;z-index:0;display:grid;place-items:center;opacity:.16;filter:blur(1px)}
+.behind-map svg{width:min(70vw,720px);height:auto;color:var(--pewter)}
+
+/* ===== WIREFRAME LABEL (fixed top-left) ===== */
+.wf-tag{position:fixed;top:14px;left:14px;z-index:600;font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--pewter);padding:7px 12px;border-radius:var(--r);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+
+/* ===== MODAL OVERLAY ===== */
+.modal-ov{position:fixed;inset:0;background:rgba(8,9,9,.82);backdrop-filter:blur(7px);z-index:400;display:grid;place-items:center;padding:24px}
+.modal{background:var(--paper);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;overflow-x:hidden;position:relative;border:1px solid var(--line-strong);box-shadow:0 40px 100px rgba(0,0,0,.62);display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:var(--pewter-dark) var(--paper-2)}
+.modal::-webkit-scrollbar{width:9px}
+.modal::-webkit-scrollbar-track{background:var(--paper-2)}
+.modal::-webkit-scrollbar-thumb{background:var(--pewter-dark);border-radius:20px}
+
+/* close */
+.modal-close{position:fixed;top:calc(5vh + 12px);right:max(28px,calc(50vw - 320px + 12px));width:42px;height:42px;border-radius:50%;background:rgba(13,14,14,.55);border:1px solid var(--line-strong);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.22s;z-index:500;backdrop-filter:blur(6px)}
+.modal-close:hover{background:var(--pewter);color:var(--ink);border-color:var(--pewter)}
+.modal-close svg{width:18px;height:18px}
+
+/* ===== HERO IMAGE BANNER ===== */
+.m-hero{position:relative;min-height:300px;display:flex;align-items:flex-end;padding:34px 40px 30px;color:#fff;overflow:hidden}
+.m-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform:scale(1.02)}
+.m-hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(13,14,14,.22) 0%,rgba(13,14,14,.42) 48%,rgba(13,14,14,.86) 86%,rgba(13,14,14,.95) 100%),
+  linear-gradient(95deg,rgba(13,14,14,.55) 0%,rgba(13,14,14,.12) 52%,transparent 78%);
+  z-index:1}
+.m-hero-in{position:relative;z-index:2;width:100%}
+.m-hero .eyebrow{font-family:var(--display);font-weight:600;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--pewter-bright);display:inline-flex;align-items:center;gap:11px;margin-bottom:14px}
+.m-hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--pewter);display:inline-block}
+.m-hero h2{color:#fff;font-size:clamp(32px,6.4vw,46px);text-transform:uppercase;letter-spacing:.01em;line-height:1.0;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+.m-hero .tagline{color:#eae6dd;font-size:15.5px;margin-top:11px;max-width:36ch;line-height:1.55}
+
+/* small context chip top-LEFT of hero (clears the top-right close button): where the county sits */
+.m-hero-chip{position:absolute;top:22px;left:22px;z-index:3;display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(13,14,14,.42);border:1px solid rgba(222,216,204,.34);backdrop-filter:blur(5px);padding:7px 12px;border-radius:40px}
+.m-hero-chip svg{width:13px;height:13px;color:var(--pewter-bright)}
+
+/* ===== LOCATOR STRIP (subtle map inset) ===== */
+.m-locator{display:flex;align-items:center;gap:16px;padding:16px 40px;background:var(--ink);border-bottom:1px solid var(--line-strong)}
+.m-locator .map{flex-shrink:0;width:88px;height:64px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--ink-2);display:grid;place-items:center;overflow:hidden}
+.m-locator .map svg{width:74px;height:auto}
+.m-locator .map .ga{fill:none;stroke:var(--pewter-dark);stroke-width:1.1}
+.m-locator .map .here{fill:var(--pewter);stroke:var(--pewter-bright);stroke-width:1}
+.m-locator .loc-txt{min-width:0}
+.m-locator .loc-name{font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--pewter-bright);display:flex;align-items:center;gap:8px}
+.m-locator .loc-name .dot{width:9px;height:9px;border-radius:50%;background:var(--pewter);box-shadow:0 0 0 3px rgba(188,182,170,.22);flex-shrink:0}
+.m-locator .loc-sub{font-size:12.5px;color:var(--on-dark-muted);margin-top:3px;line-height:1.45}
+
+/* ===== STACKED SECTIONS ===== */
+.m-sections{padding:10px 40px 0}
+.m-sec{padding:30px 0;border-bottom:1px solid var(--line-strong)}
+.m-sec:last-of-type{border-bottom:none}
+.m-label{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pewter-dark);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.m-label::before{content:"";width:20px;height:1px;background:var(--pewter-dark);display:inline-block}
+.m-sec>p{color:var(--muted-on-paper);font-size:15.5px;line-height:1.74}
+
+/* Why Cobb, 2x2 icon highlight cards */
+.m-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.m-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:19px 18px 18px;transition:.25s ease;display:flex;flex-direction:column;gap:11px}
+.m-card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:0 14px 30px rgba(13,14,14,.12)}
+.m-card .ic{width:40px;height:40px;border:1px solid var(--pewter-dark);border-radius:var(--r);display:grid;place-items:center;color:var(--ink-on-paper);transition:.25s ease;flex-shrink:0}
+.m-card:hover .ic{background:var(--ink);color:var(--pewter);border-color:var(--ink)}
+.m-card .ic svg{width:20px;height:20px}
+.m-card h4{font-family:var(--display);font-weight:600;font-size:14.5px;letter-spacing:.005em;color:var(--ink-on-paper);line-height:1.25}
+.m-card .sub{font-size:12.5px;color:var(--muted-on-paper);line-height:1.5}
+
+/* Good to know, lifestyle row (qualitative, no fabricated stats) */
+.m-gtk{display:flex;flex-wrap:wrap;gap:10px}
+.m-gtk .pill{display:inline-flex;align-items:center;gap:9px;padding:11px 15px 11px 13px;background:#fff;border:1px solid var(--line-strong);border-radius:40px;font-family:var(--body);font-weight:500;font-size:13px;color:var(--ink-on-paper);line-height:1.2;transition:.22s}
+.m-gtk .pill:hover{border-color:var(--pewter-dark);box-shadow:0 8px 20px rgba(13,14,14,.08)}
+.m-gtk .pill svg{width:17px;height:17px;color:var(--pewter-dark);flex-shrink:0}
+
+/* Cities chips */
+.m-chips{display:flex;flex-wrap:wrap;gap:9px}
+.m-chips span{font-family:var(--display);font-weight:500;font-size:12.5px;letter-spacing:.03em;padding:9px 15px;background:var(--paper-2);border:1px solid var(--line-strong);border-radius:40px;color:var(--ink-on-paper);transition:.22s;cursor:default}
+.m-chips span:hover{background:var(--ink);color:#fff;border-color:var(--ink);transform:translateY(-2px)}
+
+/* Local resources, external link rows */
+.m-res{display:flex;flex-direction:column;gap:10px}
+.m-res a{display:flex;align-items:center;gap:15px;padding:15px 17px;background:#fff;border:1px solid var(--line-strong);border-radius:var(--r);transition:.24s ease}
+.m-res a:hover{border-color:var(--pewter-dark);transform:translateX(4px);box-shadow:0 10px 24px rgba(13,14,14,.1)}
+.m-res .r-ic{width:42px;height:42px;border-radius:var(--r);background:var(--paper-2);display:grid;place-items:center;color:var(--ink-on-paper);flex-shrink:0;transition:.24s ease}
+.m-res a:hover .r-ic{background:var(--ink);color:var(--pewter)}
+.m-res .r-ic svg{width:20px;height:20px}
+.m-res .r-txt{flex:1;min-width:0}
+.m-res .r-name{font-family:var(--display);font-weight:600;font-size:14px;color:var(--ink-on-paper);display:flex;align-items:center;gap:8px;line-height:1.3}
+.m-res .r-name .ext{width:13px;height:13px;color:var(--pewter-dark);flex-shrink:0;transition:.24s}
+.m-res a:hover .r-name .ext{color:var(--ink-on-paper);transform:translate(2px,-2px)}
+.m-res .r-desc{font-size:12.5px;color:var(--muted-on-paper);margin-top:2px;line-height:1.45}
+
+/* ===== STICKY CTA BAR ===== */
+.m-cta{position:sticky;bottom:0;background:var(--ink);padding:18px 40px;display:flex;gap:12px;flex-wrap:wrap;z-index:5;box-shadow:0 -12px 32px rgba(13,14,14,.32);border-top:1px solid var(--line-strong)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:15px 22px;border-radius:var(--r);transition:.26s ease;cursor:pointer;border:1px solid transparent;flex:1 1 auto}
+.btn svg{width:15px;height:15px;flex-shrink:0}
+.btn-primary{background:var(--pewter);color:var(--ink)}
+.btn-primary:hover{background:var(--pewter-bright);transform:translateY(-2px);box-shadow:0 10px 26px rgba(188,182,170,.25)}
+.btn-outline-light{background:transparent;border-color:var(--line-strong);color:#fff}
+.btn-outline-light:hover{border-color:var(--pewter);background:rgba(188,182,170,.12)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:560px){
+  .modal-ov{padding:0}
+  .modal{max-height:100vh;border:none}
+  .m-hero{padding:28px 22px 24px;min-height:260px}
+  .m-hero-chip{top:16px;left:16px}
+  .m-locator{padding:14px 22px}
+  .m-sections{padding:8px 22px 0}
+  .m-cta{padding:16px 22px}
+  .m-highlights{grid-template-columns:1fr}
+  .modal-close{top:14px;right:14px}
+  .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+
+<!-- Simulated dimmed/blurred communities page behind the modal -->
+<div class="page-behind" aria-hidden="true"></div>
+<div class="behind-map" aria-hidden="true">
+  <!-- faint North Georgia county map suggestion, communities page underneath -->
+  <svg viewBox="0 0 320 220" fill="none" stroke="currentColor" stroke-width="1.4">
+    <path d="M40 70 L95 55 L150 62 L150 110 L100 120 L48 112 Z"/>
+    <path d="M150 62 L205 50 L255 70 L250 118 L200 122 L150 110 Z"/>
+    <path d="M48 112 L100 120 L105 165 L60 175 L40 140 Z"/>
+    <path d="M100 120 L150 110 L160 158 L120 172 L105 165 Z"/>
+    <path d="M150 110 L200 122 L205 168 L162 178 L160 158 Z"/>
+    <path d="M200 122 L250 118 L262 160 L218 172 L205 168 Z"/>
+    <path d="M205 50 L258 44 L278 78 L255 70 Z"/>
+  </svg>
+</div>
+
+<!-- Fixed wireframe label -->
+<div class="wf-tag">WIREFRAME, Enhanced modal, Cobb County</div>
+
+<!-- ===== MODAL (rendered open) ===== -->
+<div class="modal-ov" role="dialog" aria-modal="true" aria-labelledby="m-title">
+
+  <button class="modal-close" aria-label="Close Cobb County overview">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+
+  <div class="modal">
+
+    <!-- ===== HERO IMAGE BANNER ===== -->
+    <div class="m-hero">
+      <img src="images/cta-oak-street.webp" alt="Tree-lined residential street under an arching oak canopy beside established single-family homes in Cobb County, Northwest Atlanta, North Georgia">
+      <span class="m-hero-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        12 North Georgia counties
+      </span>
+      <div class="m-hero-in">
+        <span class="eyebrow">North Georgia Communities</span>
+        <h2 id="m-title">Cobb County</h2>
+        <p class="tagline">Northwest Atlanta, established and connected.</p>
+      </div>
+    </div>
+
+    <!-- ===== LOCATOR STRIP (subtle map inset) ===== -->
+    <div class="m-locator">
+      <span class="map" aria-hidden="true">
+        <svg viewBox="0 0 100 74">
+          <!-- stylized North Georgia outline with Cobb highlighted -->
+          <path class="ga" d="M14 20 L40 14 L66 18 L78 30 L74 52 L84 58 L80 66 L52 64 L24 60 L12 44 Z"/>
+          <!-- Cobb, northwest-of-Atlanta position, highlighted -->
+          <circle class="here" cx="40" cy="40" r="8"/>
+        </svg>
+      </span>
+      <span class="loc-txt">
+        <span class="loc-name"><span class="dot"></span>Cobb within North Georgia</span>
+        <span class="loc-sub">Northwest of Atlanta, inside our 12-county service area</span>
+      </span>
+    </div>
+
+    <!-- ===== SECTIONS ===== -->
+    <div class="m-sections">
+
+      <!-- Overview -->
+      <section class="m-sec">
+        <span class="m-label">Overview</span>
+        <p>Cobb anchors Northwest Atlanta with established neighborhoods, a top-rated school district, and The Battery Atlanta around Truist Park. Marietta Square, Kennesaw Mountain, and quick access to I-75 and I-285 put downtown about half an hour away.</p>
+      </section>
+
+      <!-- Why Cobb -->
+      <section class="m-sec">
+        <span class="m-label">Why Cobb</span>
+        <div class="m-highlights">
+
+          <div class="m-card">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+            </span>
+            <h4>Top-rated schools</h4>
+            <span class="sub">Cobb County School District</span>
+          </div>
+
+          <div class="m-card">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9.5 21v-4.5h5V21"/><path d="M9 11h.01M15 11h.01"/></svg>
+            </span>
+            <h4>The Battery + Truist Park</h4>
+            <span class="sub">Dining, music, and Braves baseball</span>
+          </div>
+
+          <div class="m-card">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 19 5.5-9 4 5.5L16 10l5 9Z"/><circle cx="17" cy="6" r="2"/></svg>
+            </span>
+            <h4>Kennesaw Mountain + Marietta Square</h4>
+            <span class="sub">History and walkable downtowns</span>
+          </div>
+
+          <div class="m-card">
+            <span class="ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </span>
+            <h4>Quick commute</h4>
+            <span class="sub">About 30 minutes to downtown via I-75</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Good to Know, lifestyle row (qualitative, no fabricated stats) -->
+      <section class="m-sec">
+        <span class="m-label">Good to Know</span>
+        <div class="m-gtk">
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01M9 17h6"/></svg>
+            Mix of established and newer neighborhoods
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M9 14a5 5 0 1 0 6 0c0-2-3-4-3-8 0 4-3 6-3 8Z"/></svg>
+            Parks, trails, and the Chattahoochee nearby
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            Easy reach to Midtown and the airport corridor
+          </span>
+          <span class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg>
+            Walkable squares and suburban living side by side
+          </span>
+        </div>
+      </section>
+
+      <!-- Cities & Communities -->
+      <section class="m-sec">
+        <span class="m-label">Cities &amp; Communities</span>
+        <div class="m-chips">
+          <span>Marietta</span>
+          <span>Kennesaw</span>
+          <span>Acworth</span>
+          <span>Smyrna</span>
+          <span>Vinings</span>
+          <span>Mableton</span>
+          <span>Powder Springs</span>
+        </div>
+      </section>
+
+      <!-- Local Resources -->
+      <section class="m-sec">
+        <span class="m-label">Local Resources</span>
+        <div class="m-res">
+
+          <a href="https://www.cobbk12.org/" target="_blank" rel="noopener">
+            <span class="r-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+            </span>
+            <span class="r-txt">
+              <span class="r-name">Cobb County School District
+                <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </span>
+              <span class="r-desc">Schools and attendance zones</span>
+            </span>
+          </a>
+
+          <a href="https://www.greatschools.org/georgia/marietta/" target="_blank" rel="noopener">
+            <span class="r-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8L6.6 19.8l1-6L3.3 9.4l6-.9Z"/></svg>
+            </span>
+            <span class="r-txt">
+              <span class="r-name">GreatSchools, Cobb &amp; Marietta
+                <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </span>
+              <span class="r-desc">Ratings and reviews</span>
+            </span>
+          </a>
+
+          <a href="https://www.cobbcounty.gov/tax-assessors-office" target="_blank" rel="noopener">
+            <span class="r-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4"/><path d="M9 3v4h6V3"/><path d="M8 12h8M8 16h5"/></svg>
+            </span>
+            <span class="r-txt">
+              <span class="r-name">Cobb County Tax Assessor
+                <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </span>
+              <span class="r-desc">Property records and values</span>
+            </span>
+          </a>
+
+          <a href="https://www.cobbcounty.gov/" target="_blank" rel="noopener">
+            <span class="r-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/><path d="M3 10h18"/></svg>
+            </span>
+            <span class="r-txt">
+              <span class="r-name">Cobb County Government &amp; Parks
+                <svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+              </span>
+              <span class="r-desc">Services, parks, and recreation</span>
+            </span>
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ===== STICKY CTA BAR ===== -->
+    <div class="m-cta">
+      <a href="homes-for-sale-cobb-county.html" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M9 21v-6h6v6"/></svg>
+        Browse Homes for Sale in Cobb
+      </a>
+      <a href="14-contact.html" class="btn btn-outline-light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
+        Talk to Will
+      </a>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

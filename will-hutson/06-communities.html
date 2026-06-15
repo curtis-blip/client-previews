@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Hutson Group | North Georgia Real Estate, Century 21 Results</title>
-<meta name="description" content="The Hutson Group at Century 21 Results, a top 1% North Georgia real estate team serving Woodstock, Canton, Marietta and twelve counties across North Atlanta.">
+<title>Best Places to Live in North Georgia | The Hutson Group</title>
+<meta name="description" content="Compare the best places to live in North Georgia across twelve counties. Explore Cherokee, Cobb, Forsyth and more, then see homes for sale county by county with The Hutson Group.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -86,7 +86,8 @@ header.scrolled{background:var(--ink);box-shadow:0 1px 0 var(--line);padding:12p
 .menu{display:flex;align-items:center;gap:6px}
 .menu>li{position:relative;list-style:none}
 .menu>li>a{display:flex;align-items:center;gap:6px;padding:12px 15px;font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark);transition:.2s}
-.menu>li>a:hover{color:#fff}
+.menu>li>a:hover,.menu>li>a.cur{color:#fff}
+.menu>li>a.cur{border-bottom:1px solid var(--pewter)}
 .menu>li>a svg{width:11px;height:11px;opacity:.6}
 .dropdown{position:absolute;top:100%;left:0;min-width:215px;background:var(--ink-2);border:1px solid var(--line);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;box-shadow:0 24px 50px rgba(0,0,0,.5)}
 .menu>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
@@ -97,32 +98,18 @@ header.scrolled{background:var(--ink);box-shadow:0 1px 0 var(--line);padding:12p
 .nav-phone svg{width:15px;height:15px;color:var(--pewter)}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{width:24px;height:2px;background:#fff;transition:.3s}
-/* ===== HERO ===== */
-.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,14,.55) 0%,rgba(13,14,14,.35) 45%,rgba(13,14,14,.92) 100%)}
-.hero-inner{padding-bottom:clamp(90px,12vh,150px);padding-top:160px;max-width:1180px}
-.hero h1{margin:24px 0 0;color:#fff;line-height:1.07}
-.hero .sub{font-size:clamp(17px,1.5vw,20px);font-weight:300;color:rgba(255,255,255,.85);max-width:600px;margin-top:26px;line-height:1.7}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
-.play{display:inline-flex;align-items:center;gap:13px;cursor:pointer;color:#fff;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
-.play .circ{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:.3s}
-.play:hover .circ{background:var(--pewter);border-color:var(--pewter)}
-.play .circ svg{width:16px;height:16px;color:#fff;margin-left:2px}
-.play:hover .circ svg{color:var(--ink)}
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);writing-mode:vertical-rl;font-family:var(--display);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:14px}
-.scroll-hint::after{content:"";width:1px;height:44px;background:linear-gradient(rgba(255,255,255,.5),transparent)}
-/* ===== STATS ===== */
-.stats{background:var(--ink-2);border-top:1px solid var(--line);position:relative;z-index:5}
-.stats .grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:46px 26px;text-align:center;border-right:1px solid var(--line)}
-.stat:last-child{border-right:none}
-.stat .num{font-family:var(--display);font-weight:700;font-size:clamp(34px,4vw,52px);color:#fff;line-height:1}
-.stat .num span{color:var(--pewter)}
-.stat .lbl{font-family:var(--display);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-muted);margin-top:14px}
+/* ===== TITLE BAND ===== */
+.tband{background:var(--ink);color:#fff;padding:160px 0 clamp(64px,8vw,96px);position:relative;overflow:hidden}
+.tband .crumb{font-family:var(--display);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-muted);margin-bottom:20px}
+.tband .crumb a:hover{color:var(--pewter)}.tband .crumb span{color:var(--pewter-dark);margin:0 8px}
+.tband h1{color:#fff;margin:16px 0 0;max-width:14ch}
+.tband .sub{color:var(--on-dark-muted);font-size:clamp(16px,1.4vw,19px);max-width:640px;margin-top:22px;line-height:1.7}
+.tband .tb-stats{display:flex;flex-wrap:wrap;gap:38px;margin-top:40px}
+.tband .tb-stat .n{font-family:var(--display);font-weight:700;font-size:30px;color:#fff;line-height:1}
+.tband .tb-stat .n span{color:var(--pewter)}
+.tband .tb-stat .l{font-family:var(--display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-muted);margin-top:9px}
 /* ===== MAP ===== */
-.map-head{text-align:center;max-width:680px;margin:0 auto 50px}
+.map-head{text-align:center;max-width:720px;margin:0 auto 50px}
 .map-head h2{margin:18px 0 18px}
 .map-head .lede{margin:0 auto}
 .map-stage{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
@@ -154,46 +141,21 @@ header.scrolled{background:var(--ink);box-shadow:0 1px 0 var(--line);padding:12p
 .modal-close:hover{background:var(--pewter);color:var(--ink)}
 .modal-close svg{width:16px;height:16px}
 .idx-note{font-size:11.5px;color:var(--muted-on-paper);margin-top:16px;padding:10px 13px;background:var(--paper-2);border-left:2px solid var(--pewter-dark)}
-/* ===== LISTINGS ===== */
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px;flex-wrap:wrap}
-.sec-head h2{margin-top:16px}
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.lcard{background:#fff;border:1px solid var(--line-strong);overflow:hidden;transition:.3s}
-.lcard:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(0,0,0,.1)}
-.lcard .ph{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--paper-2)}
-.lcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.lcard:hover .ph img{transform:scale(1.05)}
-.lcard .tag{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;font-family:var(--display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px}
-.lcard .body{padding:22px 24px 26px}
-.lcard .price{font-family:var(--display);font-weight:700;font-size:23px;color:var(--ink)}
-.lcard .addr{font-size:14px;color:var(--muted-on-paper);margin:6px 0 16px}
-.lcard .specs{display:flex;gap:18px;border-top:1px solid var(--line-strong);padding-top:15px;font-size:13px;color:var(--ink-on-paper)}
-.lcard .specs b{font-family:var(--display);font-weight:600}
-.idx-banner{margin-top:34px;text-align:center;font-size:12.5px;color:var(--muted-on-paper);background:var(--paper-2);padding:14px;border:1px dashed var(--line-strong)}
-/* ===== BUY/SELL FULL-BLEED STACKED ===== */
-.bs-band{position:relative;min-height:clamp(440px,64vh,660px);display:flex;align-items:center;color:#fff;overflow:hidden;padding:clamp(48px,8vw,110px) var(--pad)}
-.bs-band .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s ease}
-.bs-band:hover .bg{transform:scale(1.05)}
-.bs-band::after{content:"";position:absolute;inset:0;z-index:-1}
-.bs-band.buy::after{background:linear-gradient(90deg,rgba(13,14,14,.92) 0%,rgba(13,14,14,.55) 48%,rgba(13,14,14,.12) 100%)}
-.bs-band.sell::after{background:linear-gradient(270deg,rgba(13,14,14,.92) 0%,rgba(13,14,14,.55) 48%,rgba(13,14,14,.12) 100%)}
-.bs-band-inner{max-width:540px;width:100%}
-.bs-band.sell{justify-content:flex-end}
-.bs-band h2{color:#fff;font-size:clamp(30px,4.2vw,54px);text-transform:uppercase;letter-spacing:.01em;margin:16px 0 16px;line-height:1.05}
-.bs-band p{color:rgba(255,255,255,.85);font-size:16px;max-width:450px;margin-bottom:28px}
-.bs-band .vlink{display:inline-block;margin-left:20px;color:var(--pewter);font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--pewter-dark);padding-bottom:3px}
-@media(max-width:760px){.bs-band.sell{justify-content:flex-start}.bs-band.buy::after,.bs-band.sell::after{background:linear-gradient(90deg,rgba(13,14,14,.93),rgba(13,14,14,.6))}.bs-band .vlink{display:block;margin:18px 0 0}}
-/* ===== INTRO ===== */
-.intro-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,72px);align-items:center}
-.intro-photo{position:relative}
-.intro-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.intro-photo .frame{position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--pewter-dark);z-index:-1}
-.intro-copy h2{margin:18px 0 22px}
-.intro-copy p{margin-bottom:18px;color:var(--muted-on-paper)}
-.sig{font-family:var(--display);font-weight:600;letter-spacing:.04em;color:var(--ink);margin-top:8px}
-.sig small{display:block;font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pewter-dark);margin-top:4px}
-.intro-copy .btn{margin-top:30px}
-/* ===== WHY ===== */
+/* ===== COUNTY GRID ===== */
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.ccard{background:#fff;border:1px solid var(--line-strong);padding:28px 26px 26px;transition:.3s;display:flex;flex-direction:column;min-height:100%}
+.ccard:hover{border-color:var(--ink);transform:translateY(-5px);box-shadow:0 22px 44px rgba(0,0,0,.09)}
+.ccard .ch{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:6px}
+.ccard h3{font-size:20px}
+.ccard .ico{width:30px;height:30px;color:var(--pewter-dark);flex-shrink:0}
+.ccard .ico svg{width:100%;height:100%;stroke-width:1.4}
+.ccard .cnote{font-size:13.5px;color:var(--muted-on-paper);margin-bottom:16px}
+.ccard .ccities{font-family:var(--display);font-weight:500;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pewter-dark);margin-bottom:18px;line-height:1.6}
+.ccard .clink{margin-top:auto;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:.25s}
+.ccard .clink svg{width:15px;height:15px;transition:.25s}
+.ccard:hover .clink{color:var(--pewter-dark)}
+.ccard:hover .clink svg{transform:translateX(4px)}
+/* ===== WHY NORTH GA ===== */
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:54px}
 .why-card{background:var(--ink);padding:40px 30px;transition:.3s}
 .why-card:hover{background:var(--ink-3)}
@@ -201,45 +163,18 @@ header.scrolled{background:var(--ink);box-shadow:0 1px 0 var(--line);padding:12p
 .why-ico svg{width:100%;height:100%;stroke-width:1.2}
 .why-card h3{color:#fff;font-size:18px;margin-bottom:11px}
 .why-card p{font-size:14px;color:var(--on-dark-muted)}
-/* ===== TESTIMONIALS ===== */
-.tst{text-align:center;max-width:860px;margin:0 auto}
-.tst .stars{color:var(--pewter-dark);display:flex;gap:5px;justify-content:center;margin-bottom:28px}
-.tst .stars svg{width:20px;height:20px}
-.tst-track{position:relative;min-height:230px}
-.tst-item{position:absolute;inset:0;opacity:0;transition:.6s;pointer-events:none}
-.tst-item.on{opacity:1;position:relative;pointer-events:auto}
-.tst-quote{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.4vw,28px);line-height:1.5;color:var(--ink);letter-spacing:.005em}
-.tst-by{margin-top:26px;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--pewter-dark)}
-.tst-dots{display:flex;gap:10px;justify-content:center;margin-top:40px}
-.tst-dots button{width:9px;height:9px;border-radius:50%;background:var(--line-strong);border:none;cursor:pointer;transition:.25s;padding:0}
-.tst-dots button.on{background:var(--ink);width:26px;border-radius:5px}
-.tst-src{text-align:center;margin-top:30px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-paper);font-family:var(--display)}
-/* ===== TEAM ===== */
-.team-flex{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.team-av{display:flex;flex-wrap:wrap;gap:14px;max-width:600px}
-.av{width:74px;height:74px;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:var(--ink-3);display:grid;place-items:center;position:relative}
-.av img{width:100%;height:100%;object-fit:cover}
-.av span{font-family:var(--display);font-weight:600;font-size:18px;color:var(--pewter)}
-.av.more{background:var(--pewter);color:var(--ink)}
-.av.more span{color:var(--ink);font-size:13px;letter-spacing:.04em}
-/* ===== PROGRAMS ===== */
-.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:50px}
-.prog{padding:34px 28px;border:1px solid var(--line-strong);background:#fff;transition:.3s;display:block}
-.prog:hover{border-color:var(--ink);transform:translateY(-5px)}
-.prog-ico{width:40px;height:40px;color:var(--ink);margin-bottom:22px}
-.prog-ico svg{width:100%;height:100%;stroke-width:1.3}
-.prog h3{font-size:17px;margin-bottom:9px}
-.prog p{font-size:13.5px;color:var(--muted-on-paper);margin-bottom:18px}
-/* ===== BLOG ===== */
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.bcard{background:#fff;border:1px solid var(--line-strong);overflow:hidden;transition:.3s}
-.bcard:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.09)}
-.bcard .ph{aspect-ratio:16/10;overflow:hidden;background:var(--paper-2)}
-.bcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.bcard:hover .ph img{transform:scale(1.05)}
-.bcard .body{padding:24px 26px 28px}
-.bcard .meta{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pewter-dark);margin-bottom:12px}
-.bcard h3{font-size:18px;line-height:1.35;margin-bottom:12px}
+/* ===== FAQ ===== */
+.faq{max-width:840px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid var(--line-strong)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:24px 0;font-family:var(--display);font-weight:600;font-size:18px;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--ink-on-paper)}
+.faq-q .qi{width:22px;height:22px;flex-shrink:0;position:relative;transition:.3s}
+.faq-q .qi::before,.faq-q .qi::after{content:"";position:absolute;background:var(--pewter-dark);transition:.3s}
+.faq-q .qi::before{top:10px;left:0;width:22px;height:2px}
+.faq-q .qi::after{top:0;left:10px;width:2px;height:22px}
+.faq-item.open .qi::after{transform:rotate(90deg);opacity:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 40px 26px 0;color:var(--muted-on-paper)}
+.faq-item.open .faq-a{max-height:420px}
 /* ===== CLOSING CTA ===== */
 .cta{position:relative;color:#fff;text-align:center;overflow:hidden}
 .cta-bg{position:absolute;inset:0;z-index:-2;background-attachment:fixed;background-size:cover;background-position:center}
@@ -276,12 +211,6 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
 .f-links{display:inline-flex;flex-wrap:wrap;gap:6px 14px}
 .f-legal a{color:var(--pewter-dark);text-decoration:underline;text-underline-offset:2px}
 .f-legal a:hover{color:var(--pewter)}
-/* video lightbox */
-.vbox{position:fixed;inset:0;background:rgba(5,5,5,.92);z-index:500;display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;transition:.3s}
-.vbox.open{opacity:1;visibility:visible}
-.vbox .frame{width:min(960px,100%);aspect-ratio:16/9;position:relative}
-.vbox iframe{width:100%;height:100%;border:0}
-.vbox .x{position:absolute;top:-46px;right:0;color:#fff;background:none;border:none;cursor:pointer;font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
 /* reveal (scoped under .reveal-on so content stays visible if JS is off) */
 .reveal-on .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.16,1,.3,1)}
 .reveal-on .reveal.in{opacity:1;transform:none}
@@ -290,18 +219,14 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
  .menu,.nav-phone{display:none}
  .burger{display:flex}
  .why-grid{grid-template-columns:repeat(2,1fr)}
- .prog-grid{grid-template-columns:repeat(2,1fr)}
+ .cgrid{grid-template-columns:repeat(2,1fr)}
  .map-stage{grid-template-columns:1fr;gap:36px}
- .stats .grid{grid-template-columns:repeat(2,1fr)}
- .stat:nth-child(2){border-right:none}
- .stat{border-bottom:1px solid var(--line)}
 }
 @media(max-width:760px){
- .cards3,.blog-grid,.bs-grid,.intro-grid{grid-template-columns:1fr}
- .intro-photo{max-width:380px;margin:0 auto}
+ .cgrid,.intro-grid{grid-template-columns:1fr}
  .cta-bg{background-attachment:scroll}
- .sec-head{flex-direction:column;align-items:flex-start}
- .hero-inner{padding-top:130px}
+ .tband{padding-top:130px}
+ .tband .tb-stats{gap:26px}
  .mobile-menu .menu{display:flex}
 }
 /* mobile menu panel */
@@ -319,13 +244,13 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
 <!-- HEADER -->
 <header id="hdr">
  <div class="wrap nav">
-  <a href="index.html" class="brand" aria-label="The Hutson Group home">
+  <a href="01-home.html" class="brand" aria-label="The Hutson Group home">
    <span class="brand-mark">THG</span>
    <span class="brand-txt"><b>The Hutson Group</b><span>Century 21 Results</span></span>
   </a>
   <ul class="menu">
    <li><a href="07-search.html">Search Homes</a></li>
-   <li><a href="06-communities.html">Communities</a></li>
+   <li><a href="06-communities.html" class="cur">Communities</a></li>
    <li><a href="02-buy.html">Buy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
      <div class="dropdown"><a href="02-buy.html">Buyer's Guide</a><a href="09-financing.html">Financing</a></div></li>
    <li><a href="03-sell.html">Sell <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
@@ -348,7 +273,7 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
  <button class="mclose" id="mclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
  <ul class="menu">
   <li><a href="07-search.html">Search Homes</a></li>
-  <li><a href="06-communities.html">Communities</a></li>
+  <li><a href="06-communities.html" class="cur">Communities</a></li>
   <li><a href="02-buy.html">Buy</a><div class="dropdown"><a href="02-buy.html">Buyer's Guide</a><a href="09-financing.html">Financing</a></div></li>
   <li><a href="03-sell.html">Sell</a><div class="dropdown"><a href="03-sell.html">Seller's Guide</a><a href="03-sell.html#valuation">What's My Home Worth</a><a href="10-marketing-day.html">Marketing Day</a></div></li>
   <li><a href="11-cash-offer.html">Programs</a><div class="dropdown"><a href="11-cash-offer.html">Cash Offer</a><a href="12-probate.html">Probate Program</a></div></li>
@@ -356,45 +281,31 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
  </ul>
 </div>
 
-<!-- HERO -->
-<section class="hero">
- <div class="hero-bg"><img src="images/hero-brick-traditional.webp" alt="Brick traditional home in North Georgia"></div>
- <div class="wrap hero-inner">
-  <span class="eyebrow on-dark">The Hutson Group &middot; Century 21 Results</span>
-  <h1>North Georgia Real Estate,<br>From First Tour to Final Keys</h1>
-  <p class="sub">A top 1% team, 750+ transactions across Woodstock, Canton, Marietta and nine more North Atlanta counties. Clients first equals clients for life.</p>
-  <div class="hero-actions">
-   <a href="#featured" class="btn btn-ghost accent">Search Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="#sell" class="btn btn-ghost">What's My Home Worth</a>
-   <div class="play" id="playBtn">
-     <span class="circ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-     Watch Our Story
-   </div>
+<!-- 1. TITLE BAND -->
+<section class="tband">
+ <div class="wrap reveal">
+  <div class="crumb"><a href="01-home.html">Home</a><span>/</span>Communities</div>
+  <span class="eyebrow on-dark">Twelve Counties Across North Atlanta</span>
+  <h1>Best Places to Live in North Georgia</h1>
+  <p class="sub">The best places to live in North Georgia are not one list, they are twelve counties with twelve personalities. We work all of them, from the lake at Hall to the foothills of Pickens, and we sell roughly 75 homes a year across the map. Start with the county that fits how you want to live, then see what is actually for sale.</p>
+  <div class="tb-stats">
+   <div class="tb-stat"><div class="n">12</div><div class="l">Counties Served</div></div>
+   <div class="tb-stat"><div class="n">750<span>+</span></div><div class="l">Local Closings</div></div>
+   <div class="tb-stat"><div class="n">Top 1<span>%</span></div><div class="l">North Georgia Teams</div></div>
   </div>
  </div>
- <div class="scroll-hint">Scroll</div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
- <div class="wrap"><div class="grid">
-  <div class="stat"><div class="num">$200<span>M+</span></div><div class="lbl">Career Sales</div></div>
-  <div class="stat"><div class="num">750<span>+</span></div><div class="lbl">Homes Sold</div></div>
-  <div class="stat"><div class="num">Top 1<span>%</span></div><div class="lbl">North Georgia Teams</div></div>
-  <div class="stat"><div class="num">1,200<span>+</span></div><div class="lbl">Five-Star Reviews</div></div>
- </div></div>
-</section>
-
-<!-- MAP -->
+<!-- 2. INTERACTIVE MAP + MODALS -->
 <section class="sec" id="map">
  <div class="wrap">
   <div class="map-head reveal">
    <span class="eyebrow center">Explore the Map</span>
-   <h2>Find Your Place in North Georgia</h2>
-   <p class="lede">Click a county to explore its cities, lifestyle, and active listings. From the lake at Hall to the mountains of Pickens, we cover twelve counties across North Atlanta.</p>
+   <h2>Click a County, See the Homes</h2>
+   <p class="lede">Every county here has its own personality, school zones, and price range. Tap one to read a quick rundown of its cities, then jump straight to current homes for sale in that county. Cherokee County GA real estate looks different from Cobb County real estate or Forsyth County real estate, and the map is the fastest way to feel the difference.</p>
   </div>
   <div class="map-stage reveal">
-   <div><svg id="countyMap" viewBox="0 0 1008 948" role="img" aria-label="Clickable map of twelve North Georgia counties">
+   <div><svg id="countyMap" viewBox="0 0 1008 948" role="img" aria-label="Clickable map of twelve North Georgia counties for browsing homes for sale">
 <g class="counties">
 <path class="county" data-c="Pickens" d="M288.9 79.6 L495.5 68.5 L512.8 145.0 L554.8 145.5 L554.3 215.1 L336.9 214.7 L289.6 189.6 L288.9 79.6 Z"/>
 <path class="county" data-c="Dawson" d="M554.0 252.1 L554.2 221.9 L554.3 219.9 L554.3 215.1 L554.8 145.5 L512.8 145.0 L495.5 68.5 L556.0 64.0 L595.0 24.0 L600.2 31.9 L600.5 36.3 L598.8 87.5 L658.4 147.7 L739.6 185.0 L755.3 253.0 L554.0 252.1 Z"/>
@@ -422,158 +333,185 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
 <text class="county-label" x="414.0" y="693.5">Fulton</text>
 <text class="county-label" x="576.6" y="708.4">DeKalb</text>
 </g></svg>
-     <p class="map-cap">Click any county to explore its cities and listings. On the live site the home map deep-links into the Communities page modals.</p>
+     <p class="map-cap">Tap any county to open its profile and view active listings. Came here from the home page map? Your county is already open.</p>
    </div>
    <div class="map-aside">
     <h3>Twelve counties, one local team.</h3>
-    <p class="lede">From the lake at Hall to the foothills of Pickens, we know every market across North Atlanta. Click your county to explore its cities and active listings.</p>
+    <p class="lede">Cherokee for downtown Woodstock and fast growth. Forsyth for Lake Lanier and the school ratings. Cobb for The Battery and established neighborhoods. North Fulton for Roswell and Alpharetta. Click a county to read the short version and see homes for sale.</p>
+    <div class="map-legend">
+     <span class="chip" data-c="Cherokee">Cherokee</span>
+     <span class="chip" data-c="Cobb">Cobb</span>
+     <span class="chip" data-c="Forsyth">Forsyth</span>
+     <span class="chip" data-c="Fulton">Fulton</span>
+     <span class="chip" data-c="Hall">Hall</span>
+     <span class="chip" data-c="Gwinnett">Gwinnett</span>
+    </div>
    </div>
   </div>
  </div>
 </section>
 
-<!-- FEATURED LISTINGS -->
-<section class="sec alt" id="featured">
+<!-- 3. COUNTY GRID (all 12, alphabetical) -->
+<section class="sec alt" id="counties">
  <div class="wrap">
-  <div class="sec-head reveal">
-   <div><span class="eyebrow">On the Market</span><h2>Featured Listings</h2></div>
-   <a href="07-search.html" class="link-arrow">View All Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div class="map-head reveal" style="max-width:660px">
+   <span class="eyebrow center">Browse by County</span>
+   <h2>All Twelve, A to Z</h2>
+   <p class="lede" style="margin:0 auto">Prefer a list to a map? Same twelve counties, alphabetical. Each one opens its own page of homes for sale, fed live from the MLS.</p>
   </div>
-  <div class="cards3 reveal">
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$525,000</div><div class="addr">Woodstock, Cherokee County</div><div class="specs"><span><b>4</b> Beds</span><span><b>3</b> Baths</span><span><b>2,640</b> Sq Ft</span></div></div></a>
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$689,900</div><div class="addr">Marietta, Cobb County</div><div class="specs"><span><b>5</b> Beds</span><span><b>4</b> Baths</span><span><b>3,180</b> Sq Ft</span></div></div></a>
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$447,500</div><div class="addr">Canton, Cherokee County</div><div class="specs"><span><b>3</b> Beds</span><span><b>2</b> Baths</span><span><b>1,975</b> Sq Ft</span></div></div></a>
+  <div class="cgrid reveal">
+
+   <a class="ccard" href="homes-for-sale-bartow-county.html">
+    <div class="ch"><h3>Bartow County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">History and elbow room west of the metro core, with Cartersville pricing well under the North Atlanta average.</p>
+    <div class="ccities">Cartersville &middot; Adairsville &middot; Emerson</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-cherokee-county.html">
+    <div class="ch"><h3>Cherokee County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">One of the fastest-growing counties in Georgia, anchored by a downtown Woodstock that draws buyers from across the metro.</p>
+    <div class="ccities">Woodstock &middot; Canton &middot; Ball Ground &middot; Holly Springs &middot; Waleska</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-cobb-county.html">
+    <div class="ch"><h3>Cobb County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">Established neighborhoods, strong public schools, and The Battery at Truist Park. The center of gravity for Northwest Atlanta.</p>
+    <div class="ccities">Marietta &middot; Kennesaw &middot; Acworth &middot; Smyrna</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-dawson-county.html">
+    <div class="ch"><h3>Dawson County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg></span></div>
+    <p class="cnote">Outlet shopping at North Georgia Premium Outlets, lake access, and the quickest doorway to the mountains north of Atlanta.</p>
+    <div class="ccities">Dawsonville &middot; Big Canoe (south)</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-dekalb-county.html">
+    <div class="ch"><h3>DeKalb County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">In-town convenience with leafy, established streets northeast of the city. Dunwoody and Brookhaven anchor the north end.</p>
+    <div class="ccities">Dunwoody &middot; Brookhaven &middot; Chamblee</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-douglas-county.html">
+    <div class="ch"><h3>Douglas County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">Suburban value with a short I-20 run into the city, just west of Fulton. Newer subdivisions sit beside older Douglasville streets.</p>
+    <div class="ccities">Douglasville &middot; Lithia Springs &middot; Winston</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-forsyth-county.html">
+    <div class="ch"><h3>Forsyth County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 13c3 2 5 2 8 0s5-2 8 0 5 2 8 0"/><path d="M2 18c3 2 5 2 8 0s5-2 8 0"/><path d="M12 3v6"/></svg></span></div>
+    <p class="cnote">Lake Lanier living and some of the highest-rated public schools in the state. Cumming keeps landing on Georgia's most-wanted lists.</p>
+    <div class="ccities">Cumming &middot; South Forsyth &middot; Lake Lanier</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-fulton-county.html">
+    <div class="ch"><h3>Fulton County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">North Fulton sets the bar for North Atlanta living, from walkable Roswell to upscale Alpharetta and the Avalon district.</p>
+    <div class="ccities">Roswell &middot; Alpharetta &middot; Milton &middot; Johns Creek</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-gwinnett-county.html">
+    <div class="ch"><h3>Gwinnett County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">One of the largest and most varied markets in metro Atlanta, with price points and housing styles for nearly every budget.</p>
+    <div class="ccities">Lawrenceville &middot; Duluth &middot; Suwanee &middot; Buford</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-hall-county.html">
+    <div class="ch"><h3>Hall County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 13c3 2 5 2 8 0s5-2 8 0 5 2 8 0"/><path d="M2 18c3 2 5 2 8 0s5-2 8 0"/><path d="M12 3v6"/></svg></span></div>
+    <p class="cnote">The northern shore of Lake Lanier, where lakefront living meets a real local economy around Gainesville and Flowery Branch.</p>
+    <div class="ccities">Gainesville &middot; Flowery Branch &middot; Oakwood</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-paulding-county.html">
+    <div class="ch"><h3>Paulding County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></span></div>
+    <p class="cnote">Newer construction and room to grow on the metro's west side, with prices that still leave money for the move itself.</p>
+    <div class="ccities">Dallas &middot; Hiram &middot; New Hope</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
+   <a class="ccard" href="homes-for-sale-pickens-county.html">
+    <div class="ch"><h3>Pickens County</h3><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 3l4 8 5-5 5 15H2L8 3z"/></svg></span></div>
+    <p class="cnote">Mountain views and small-town pace at the gateway to the North Georgia foothills, with Jasper as the county seat.</p>
+    <div class="ccities">Jasper &middot; Talking Rock &middot; Nelson</div>
+    <span class="clink">Homes for Sale <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+   </a>
+
   </div>
-  <div class="idx-banner reveal">Live listings feed, Showcase IDX. Placeholder cards shown for preview: <code>[showcaseidx_hotsheet name="Featured Listings"]</code></div>
  </div>
 </section>
 
-<!-- BUY / SELL FULL-BLEED STACKED -->
-<section id="sell">
- <div class="bs-band buy">
-  <img class="bg" src="images/buy-living-room.webp" alt="Buying a home in North Georgia">
-  <div class="bs-band-inner reveal">
-   <span class="eyebrow on-dark">For Buyers</span>
-   <h2>Buy in Six Clear Steps</h2>
-   <p>From your first tour to closing day, you always know what is happening and what comes next.</p>
-   <a href="02-buy.html" class="btn btn-primary">Buyer's Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
- </div>
- <div class="bs-band sell">
-  <img class="bg" src="images/sell-exterior.webp" alt="Selling a home in North Georgia">
-  <div class="bs-band-inner reveal">
-   <span class="eyebrow on-dark">For Sellers</span>
-   <h2>Sell For More</h2>
-   <p>Strategic pricing, professional marketing, and Zillow Showcase get your home seen by the right buyers and sold.</p>
-   <a href="03-sell.html" class="btn btn-primary">Seller's Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="03-sell.html" class="vlink">What's my home worth?</a>
-  </div>
- </div>
-</section>
-
-<!-- INTRO -->
-<section class="sec" id="about">
- <div class="wrap intro-grid">
-  <div class="intro-photo reveal"><span class="frame"></span><img src="content-snare-export/will-hutson-headshot.jpg" alt="Will Hutson, founder of The Hutson Group"></div>
-  <div class="intro-copy reveal">
-   <span class="eyebrow">Meet the Founder</span>
-   <h2>Will Hutson</h2>
-   <p>Will founded The Hutson Group at Century 21 Results on a simple belief: clients first equals clients for life. Licensed since 2017, he has guided more than 750 transactions and over $200 million in sales across North Georgia.</p>
-   <p>Today that standard carries across a full team serving Woodstock, Canton, Marietta and the counties surrounding North Atlanta, from first-time buyers to seasoned sellers.</p>
-   <div class="sig">Will Hutson<small>Founder, The Hutson Group</small></div>
-   <a href="04-about.html" class="btn btn-outline">About the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
- </div>
-</section>
-
-<!-- WHY -->
-<section class="sec dark2">
+<!-- 4. WHY NORTH GEORGIA -->
+<section class="sec dark2" id="why">
  <div class="wrap">
-  <div class="map-head reveal" style="text-align:left;margin:0 0 0;max-width:560px">
-   <span class="eyebrow on-dark">The Hutson Difference</span>
-   <h2>Marketing That Moves Homes</h2>
-   <p class="lede">A national brand, a local team, and tools most agents cannot offer.</p>
+  <div class="map-head reveal" style="text-align:left;margin:0 0 0;max-width:600px">
+   <span class="eyebrow on-dark">Why North Georgia</span>
+   <h2>What Makes the Best Places to Live in North Georgia?</h2>
+   <p class="lede">Not slogans. The specific things that pull families north of Atlanta and keep them here.</p>
   </div>
   <div class="why-grid reveal">
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><h3>Zillow Showcase</h3><p>Premium placement that earns up to 80% more views and sells faster than standard listings.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>LiveEasy Concierge</h3><p>A complimentary move concierge for every client, from utility setup to trusted vendors, for life.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div><h3>Century 21 Reach</h3><p>The most recognized name in real estate, with global exposure that brings buyers to your door.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9M3 20h2M5 20V8a2 2 0 0 1 2-2h2M9 20V4h6v16"/></svg></div><h3>In-House Marketing</h3><p>A dedicated marketing team producing pro photos, video, and campaigns for every home we list.</p></div>
-  </div>
- </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="sec">
- <div class="wrap">
-  <div class="tst reveal">
-   <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
-   <div class="tst-track" id="tstTrack">
-    <div class="tst-item on"><p class="tst-quote">"The entire Century 21 Results team was awesome. Will was extremely patient and responsive and helped us find the perfect home. He made a stressful experience very pleasant."</p><div class="tst-by">Tracy Evans</div></div>
-    <div class="tst-item"><p class="tst-quote">"We weren't even sure we wanted to sell, but the team made it clear this was the best time. Our home sold in less than a week for way more than it was listed for."</p><div class="tst-by">Shannon Santiago</div></div>
-    <div class="tst-item"><p class="tst-quote">"The Hutson Group was great helping me sell my existing home and purchase my new property. They know this market, and I recommend the entire team highly."</p><div class="tst-by">Todd Kaska</div></div>
-    <div class="tst-item"><p class="tst-quote">"I felt 100% confident choosing this team. They explained every detail and managed the negotiation brilliantly. I never felt more taken care of and appreciated."</p><div class="tst-by">Lyn Wilgenbusch</div></div>
+   <div class="why-card">
+    <div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 13c3 2 5 2 8 0s5-2 8 0 5 2 8 0"/><path d="M2 18c3 2 5 2 8 0s5-2 8 0"/><path d="M12 3v6"/></svg></div>
+    <h3>Lake Lanier Days</h3>
+    <p>A 38,000-acre lake straddling Forsyth and Hall, with boat ramps, marinas, and waterfront neighborhoods a short drive from Cumming and Gainesville.</p>
    </div>
-   <div class="tst-dots" id="tstDots"></div>
-   <p class="tst-src">Live reviews from Google &middot; auto-rotating feed</p>
+   <div class="why-card">
+    <div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 22V8l8-4 8 4v14"/><path d="M9 22v-5h6v5"/><circle cx="12" cy="11" r="1.5"/></svg></div>
+    <h3>The Battery, Game Nights</h3>
+    <p>Truist Park and The Battery Atlanta in Cobb put Braves baseball, concerts, and dinner inside one walkable block, fifteen minutes from Marietta.</p>
+   </div>
+   <div class="why-card">
+    <div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+    <h3>School Districts That Hold Value</h3>
+    <p>Forsyth County and Cherokee County schools rank among Georgia's strongest, and a good attendance zone tends to hold its value at resale. District sites like <a href="https://www.forsyth.k12.ga.us/" target="_blank" rel="noopener">Forsyth County Schools</a> publish their zones and report cards.</p>
+   </div>
+   <div class="why-card">
+    <div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 12h2v9H9zM13 12h2v9h-2z"/></svg></div>
+    <h3>Walkable Downtowns</h3>
+    <p>Downtown Woodstock and downtown Roswell run on the same idea: a real main street with restaurants, shops, and a green you can walk to from the neighborhood.</p>
+   </div>
   </div>
+  <p class="reveal" style="margin-top:34px;max-width:760px;font-size:15px;color:var(--on-dark-muted)">North Fulton tells the same story from the luxury end: Alpharetta's Avalon, Milton's horse country, and Roswell's historic district sit inside one of the strongest job markets in the Southeast. Whichever county you land in, the commute math, the schools, and the resale story are worth running before you fall for a floor plan.</p>
  </div>
 </section>
 
-<!-- TEAM TEASER -->
-<section class="sec dark">
- <div class="wrap team-flex">
-  <div class="reveal" style="max-width:420px">
-   <span class="eyebrow on-dark">The Team</span>
-   <h2 style="margin:18px 0 16px">Seventeen Agents,<br>One Standard</h2>
-   <p class="lede">Behind every transaction is a full team of North Georgia specialists, marketers, and client advocates.</p>
-   <a href="05-team.html" class="btn btn-primary" style="margin-top:28px">Meet the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
-  <div class="team-av reveal">
-   <div class="av"><img src="content-snare-export/will-hutson-headshot.jpg" alt="Will Hutson"></div>
-   <div class="av"><span>JS</span></div><div class="av"><span>MS</span></div><div class="av"><span>MH</span></div>
-   <div class="av"><span>LA</span></div><div class="av"><span>JC</span></div><div class="av"><span>NA</span></div>
-   <div class="av"><span>CD</span></div><div class="av"><span>ES</span></div><div class="av"><span>GB</span></div>
-   <div class="av"><span>PB</span></div><div class="av more"><span>+6</span></div>
-  </div>
- </div>
-</section>
-
-<!-- PROGRAMS -->
-<section class="sec">
+<!-- 5. FAQ -->
+<section class="sec" id="faq">
  <div class="wrap">
-  <div class="map-head reveal" style="max-width:620px"><span class="eyebrow center">Specialized Programs</span><h2>More Ways We Help</h2><p class="lede" style="margin:0 auto">Beyond buying and selling, we offer programs for every situation.</p></div>
-  <div class="prog-grid reveal">
-   <a href="11-cash-offer.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Cash Offer</h3><p>A fast, certain sale with a competitive cash offer, no showings required.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="09-financing.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Financing</h3><p>Trusted local lenders ready to get you pre-approved fast.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="12-probate.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>Probate Program</h3><p>Compassionate, experienced support for selling an inherited or estate property.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="10-marketing-day.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Marketing Day</h3><p>A proven prep playbook that gets your home photo-ready and selling for top dollar.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+  <div class="map-head reveal" style="max-width:620px">
+   <span class="eyebrow center">Common Questions</span>
+   <h2>Picking a County, Answered</h2>
+   <p class="lede" style="margin:0 auto">The questions people actually ask before they choose where to live in North Georgia.</p>
+  </div>
+  <div class="faq reveal">
+   <div class="faq-item"><button class="faq-q">Which North Georgia county has the best schools?<span class="qi"></span></button><div class="faq-a"><p>Forsyth County and Cherokee County both post strong public-school ratings, and Cobb has several highly regarded clusters around East Cobb. Ratings move year to year and vary by attendance zone, so the honest answer is to pick the home, then check that exact zone. You can look up any school on <a href="https://www.greatschools.org/" target="_blank" rel="noopener">GreatSchools</a> before you write an offer, and we are glad to pull the zoned elementary, middle, and high school for any address.</p></div></div>
+   <div class="faq-item"><button class="faq-q">Where's the easiest commute into Atlanta?<span class="qi"></span></button><div class="faq-a"><p>It depends where you work. Cobb and North Fulton sit closest to the major job centers and have the most options, including express lanes on I-75 and Ga-400. DeKalb's Dunwoody and Brookhaven are near MARTA rail. Cherokee, Forsyth, and Paulding trade a longer drive for more house and newer construction. Tell us your office and your tolerance for traffic and we will narrow the county list fast.</p></div></div>
+   <div class="faq-item"><button class="faq-q">Which counties have homes on Lake Lanier?<span class="qi"></span></button><div class="faq-a"><p>Lake Lanier touches Forsyth and Hall counties most directly, with Dawson reaching the northern end. Forsyth tends to draw buyers who want lake access plus top schools and a South Forsyth address, while Hall offers more genuine lakefront around Gainesville and Flowery Branch, often at a friendlier price per foot. We can set you a saved search filtered to lake-access and waterfront listings in either county.</p></div></div>
+   <div class="faq-item"><button class="faq-q">Which county fits a first-home budget?<span class="qi"></span></button><div class="faq-a"><p>Bartow, Paulding, and Douglas generally carry the lowest entry prices on our map, and Cherokee's Canton and Holly Springs are reasonable for a first purchase near a growing job base. Fulton and Forsyth sit at the higher end. Rather than guess, open the county page you are curious about and sort active listings by price, then we will talk through what your pre-approval actually reaches. Property tax also varies by county, so it is worth checking the local assessment, for example the <a href="https://www.cherokeega.com/Tax-Assessors-Office/" target="_blank" rel="noopener">Cherokee County Board of Tax Assessors</a>, when you compare monthly costs.</p></div></div>
+   <div class="faq-item"><button class="faq-q">Cherokee or Cobb, how do I choose?<span class="qi"></span></button><div class="faq-a"><p>Cobb is the more established of the two: older neighborhoods, mature trees, The Battery, and a shorter trip into the city. Cherokee is younger and faster-growing, with downtown Woodstock as the magnet and more new construction for the money. Families wanting a turnkey location near work often lean Cobb; those chasing newer homes and a small-town feel lean Cherokee. Walk both downtowns on a Saturday before you decide.</p></div></div>
+   <div class="faq-item"><button class="faq-q">Do you cover all twelve counties yourself?<span class="qi"></span></button><div class="faq-a"><p>Yes. The Hutson Group works the full North Atlanta footprint, from Pickens in the foothills to DeKalb in town, and we close roughly 75 homes a year across it. If you are weighing two or three counties, that range is the point: we can compare them side by side instead of pushing you toward the one neighborhood we happen to know. Start a search on any county page or <a href="14-contact.html">talk to Will</a> and we will map your shortlist.</p></div></div>
   </div>
  </div>
 </section>
 
-<!-- BLOG -->
-<section class="sec alt">
- <div class="wrap">
-  <div class="sec-head reveal"><div><span class="eyebrow">From the Blog</span><h2>North Georgia Insights</h2></div><a href="15-blog.html" class="link-arrow">All Articles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-  <div class="blog-grid reveal">
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Buying &middot; Draft</div><h3>What First-Time Buyers Should Know About North Atlanta</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Selling &middot; Draft</div><h3>Preparing Your Home for Marketing Day, Room by Room</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Communities &middot; Draft</div><h3>Cherokee vs Cobb: Choosing Your North Georgia County</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-  </div>
- </div>
-</section>
-
-<!-- CLOSING CTA -->
+<!-- 6. CLOSING CTA (parallax) -->
 <section class="sec cta" id="contact">
  <div class="cta-bg" style="background-image:url('images/cta-oak-street.webp')"></div>
  <div class="wrap reveal">
-  <span class="eyebrow on-dark center">Let's Talk</span>
-  <h2>What Are You Trying to Do This Year?</h2>
-  <p>Send a message or call. We'll give you a straight answer on timing, what your home is worth, and which county fits your budget.</p>
+  <span class="eyebrow on-dark center">Still Deciding</span>
+  <h2>Tell Us How You Want to Live</h2>
+  <p>Lake mornings in Forsyth, a walk to dinner in Woodstock, or fifteen minutes to a Braves game from Cobb. Tell us the life and the budget, and we will hand you the two or three counties worth a Saturday drive.</p>
   <div class="cta-actions">
-   <a href="14-contact.html" class="btn btn-primary">Start a Conversation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="13-careers.html" class="btn btn-ghost">Join Our Team</a>
+   <a href="14-contact.html" class="btn btn-primary">Talk to Will <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+   <a href="07-search.html" class="btn btn-ghost">Search Every Listing</a>
   </div>
  </div>
 </section>
@@ -583,7 +521,7 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
  <div class="wrap">
   <div class="f-grid">
    <div class="f-brand">
-    <a href="index.html" class="brand"><span class="brand-mark">THG</span><span class="brand-txt"><b>The Hutson Group</b><span>Century 21 Results</span></span></a>
+    <a href="01-home.html" class="brand"><span class="brand-mark">THG</span><span class="brand-txt"><b>The Hutson Group</b><span>Century 21 Results</span></span></a>
     <p class="f-tag">Clients first equals clients for life. Real estate done right across North Georgia.</p>
     <div class="f-social">
      <a href="https://www.facebook.com/thehutsongroup" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -629,54 +567,61 @@ footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
    <div class="modal-cities" id="mCities"></div>
    <div class="modal-actions">
     <a href="07-search.html" class="btn btn-dark" id="mSearch">View Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="06-communities.html" class="btn btn-outline">Explore County</a>
+    <a href="14-contact.html" class="btn btn-outline">Talk to Will</a>
    </div>
-   <p class="idx-note">Each county links to a live Showcase IDX saved search. On the live site this modal lives on the Communities page; the home map deep-links straight to it.</p>
+   <p class="idx-note">Each county opens its own page of homes for sale, fed live from the MLS through Showcase IDX. Pick a county to see what is on the market right now.</p>
   </div>
  </div>
 </div>
 
-<!-- VIDEO LIGHTBOX -->
-<div class="vbox" id="vbox">
- <div class="frame"><button class="x" id="vclose">Close <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M18 6L6 18M6 6l12 12"/></svg></button><div id="vframe"></div></div>
-</div>
-
 <script>
-// ---- county data (12) with approximate geographic centers ----
+// ---- county data (12) with cities + blurbs ----
 var COUNTIES=[
- {n:"Pickens",cx:240,cy:62,cities:["Jasper","Talking Rock"],blurb:"Mountain views and small-town charm at the gateway to the North Georgia foothills."},
- {n:"Dawson",cx:330,cy:62,cities:["Dawsonville"],blurb:"Outlet shopping, lake access, and easy reach to the mountains north of Atlanta."},
- {n:"Bartow",cx:160,cy:140,cities:["Cartersville"],blurb:"History, value, and space, an affordable foothold west of the metro core."},
- {n:"Cherokee",cx:243,cy:140,cities:["Woodstock","Canton","Ball Ground","Holly Springs","Waleska"],blurb:"One of the fastest-growing counties in Georgia, anchored by downtown Woodstock."},
- {n:"Forsyth",cx:330,cy:140,cities:["Cumming"],blurb:"Top-rated schools and Lake Lanier living, consistently among Georgia's most sought-after counties."},
- {n:"Hall",cx:417,cy:140,cities:["Gainesville","Flowery Branch"],blurb:"Lake Lanier's northern shore, blending lakefront lifestyle with a growing economy."},
- {n:"Paulding",cx:200,cy:212,cities:["Dallas","Hiram"],blurb:"Newer construction and room to grow, a value-driven choice on the metro's west side."},
- {n:"Cobb",cx:283,cy:212,cities:["Marietta","Kennesaw","Acworth","Smyrna"],blurb:"Established neighborhoods, top schools, and The Battery, the heart of Northwest Atlanta."},
- {n:"Gwinnett",cx:366,cy:212,cities:["Lawrenceville","Duluth","Suwanee"],blurb:"Diverse, dynamic, and full of choices, one of metro Atlanta's largest and most varied markets."},
- {n:"Douglas",cx:243,cy:284,cities:["Douglasville"],blurb:"Quick access to the city with suburban value, just west of Fulton."},
- {n:"Fulton",cx:330,cy:284,cities:["Roswell","Alpharetta"],blurb:"From walkable Roswell to upscale Alpharetta, North Fulton sets the standard for North Atlanta living."},
- {n:"DeKalb",cx:417,cy:284,cities:["Dunwoody","Brookhaven"],blurb:"In-town convenience with leafy, established communities northeast of the city."}
+ {n:"Pickens",cities:["Jasper","Talking Rock"],blurb:"Mountain views and small-town charm at the gateway to the North Georgia foothills."},
+ {n:"Dawson",cities:["Dawsonville"],blurb:"Outlet shopping, lake access, and easy reach to the mountains north of Atlanta."},
+ {n:"Bartow",cities:["Cartersville"],blurb:"History, value, and space, an affordable foothold west of the metro core."},
+ {n:"Cherokee",cities:["Woodstock","Canton","Ball Ground","Holly Springs","Waleska"],blurb:"One of the fastest-growing counties in Georgia, anchored by downtown Woodstock."},
+ {n:"Forsyth",cities:["Cumming"],blurb:"Top-rated schools and Lake Lanier living, consistently among Georgia's most sought-after counties."},
+ {n:"Hall",cities:["Gainesville","Flowery Branch"],blurb:"Lake Lanier's northern shore, blending lakefront lifestyle with a growing economy."},
+ {n:"Paulding",cities:["Dallas","Hiram"],blurb:"Newer construction and room to grow, a value-driven choice on the metro's west side."},
+ {n:"Cobb",cities:["Marietta","Kennesaw","Acworth","Smyrna"],blurb:"Established neighborhoods, top schools, and The Battery, the heart of Northwest Atlanta."},
+ {n:"Gwinnett",cities:["Lawrenceville","Duluth","Suwanee"],blurb:"Diverse, dynamic, and full of choices, one of metro Atlanta's largest and most varied markets."},
+ {n:"Douglas",cities:["Douglasville"],blurb:"Quick access to the city with suburban value, just west of Fulton."},
+ {n:"Fulton",cities:["Roswell","Alpharetta"],blurb:"From walkable Roswell to upscale Alpharetta, North Fulton sets the standard for North Atlanta living."},
+ {n:"DeKalb",cities:["Dunwoody","Brookhaven"],blurb:"In-town convenience with leafy, established communities northeast of the city."}
 ];
 function slug(s){return s.toLowerCase().replace(/[^a-z]+/g,'-');}
 var CMAP={};COUNTIES.forEach(function(c){CMAP[c.n]=c;});
 document.querySelectorAll('#countyMap .county').forEach(function(p){
  p.addEventListener('click',function(){openCounty(CMAP[p.getAttribute('data-c')]);});
 });
+document.querySelectorAll('.chip[data-c]').forEach(function(ch){
+ ch.addEventListener('click',function(){openCounty(CMAP[ch.getAttribute('data-c')]);});
+});
 var mov=document.getElementById('countyModal');
 function openCounty(c){
+ if(!c)return;
  document.getElementById('mCounty').textContent=c.n+' County';
  document.getElementById('mBlurb').textContent=c.blurb;
- document.getElementById('mSearch').innerHTML='View '+c.n+' Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
- document.getElementById('mSearch').href='homes-for-sale-'+slug(c.n)+'-county.html';
+ var href='homes-for-sale-'+slug(c.n)+'-county.html';
+ var btn=document.getElementById('mSearch');
+ btn.setAttribute('href',href);
+ btn.innerHTML='Homes for Sale in '+c.n+' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
  var ct=document.getElementById('mCities');ct.innerHTML='';
  c.cities.forEach(function(city){var s=document.createElement('span');s.textContent=city;ct.appendChild(s);});
+ // highlight the active county on the map
+ document.querySelectorAll('#countyMap .county').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-c')===c.n);});
  if(history.replaceState)history.replaceState(null,'','#'+slug(c.n));
  mov.classList.add('open');document.body.style.overflow='hidden';
 }
-function closeCounty(){mov.classList.remove('open');document.body.style.overflow='';if(history.replaceState)history.replaceState(null,'',' ');}
+function closeCounty(){
+ mov.classList.remove('open');document.body.style.overflow='';
+ document.querySelectorAll('#countyMap .county.active').forEach(function(p){p.classList.remove('active');});
+ if(history.replaceState)history.replaceState(null,'',' ');
+}
 document.getElementById('modalClose').addEventListener('click',closeCounty);
 mov.addEventListener('click',function(e){if(e.target===mov)closeCounty();});
-// open from hash on load (demonstrates deep-link)
+// open from hash on load (home map deep-links here, e.g. 06-communities.html#cobb)
 window.addEventListener('load',function(){var h=location.hash.replace('#','');if(h){var f=COUNTIES.filter(function(c){return slug(c.n)===h;});if(f.length)openCounty(f[0]);}});
 
 // ---- header scroll ----
@@ -687,19 +632,10 @@ var mm=document.getElementById('mobileMenu');
 document.getElementById('burger').addEventListener('click',function(){mm.classList.add('open');document.body.style.overflow='hidden';});
 document.getElementById('mclose').addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});
 mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});});
-// ---- testimonials ----
-(function(){var items=document.querySelectorAll('.tst-item');var dots=document.getElementById('tstDots');var i=0;
- items.forEach(function(_,idx){var b=document.createElement('button');if(idx===0)b.className='on';b.addEventListener('click',function(){go(idx);});dots.appendChild(b);});
- function go(n){items[i].classList.remove('on');dots.children[i].classList.remove('on');i=n;items[i].classList.add('on');dots.children[i].classList.add('on');}
- setInterval(function(){go((i+1)%items.length);},6000);
-})();
-// ---- video lightbox ----
-var vbox=document.getElementById('vbox');var vframe=document.getElementById('vframe');
-document.getElementById('playBtn').addEventListener('click',function(){vframe.innerHTML='<iframe src="https://www.youtube.com/embed/4b2NbjL5qec?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';vbox.classList.add('open');document.body.style.overflow='hidden';});
-function vclose(){vbox.classList.remove('open');vframe.innerHTML='';document.body.style.overflow='';}
-document.getElementById('vclose').addEventListener('click',vclose);
-vbox.addEventListener('click',function(e){if(e.target===vbox)vclose();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCounty();vclose();}});
+// ---- FAQ accordion ----
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
+// ---- escape closes modal ----
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCounty();}});
 // ---- reveal (fail-safe: only hide if IntersectionObserver is available) ----
 if('IntersectionObserver' in window){
  document.documentElement.classList.add('reveal-on');
