@@ -226,6 +226,20 @@ nav.solid .nav-cta,nav.scrolled .nav-cta{border-color:var(--blue);color:var(--bl
 .play svg{width:24px;height:24px;color:#fff;margin-left:4px;transition:color .5s}
 .play:hover svg{color:var(--blue)}
 
+/* in-copy local links */
+.ll{color:var(--blue);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;transition:color .3s}
+.ll:hover{color:var(--blue-dk)}
+
+/* youtube facade embed (his still -> click to play) */
+.ytembed{position:relative;max-width:940px;margin:0 auto;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);background:#000;cursor:pointer}
+.ytembed-still{position:absolute;inset:0;background:#000 center/cover no-repeat;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.ytembed:hover .ytembed-still{transform:scale(1.04)}
+.ytembed-still::after{content:'';position:absolute;inset:0;background:rgba(8,14,20,.16)}
+.ytembed-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:none;background:rgba(4,91,135,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .4s}
+.ytembed:hover .ytembed-play{background:var(--blue);transform:translate(-50%,-50%) scale(1.06)}
+.ytembed-play svg{width:30px;height:30px;color:#fff;margin-left:5px}
+.ytembed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+
 /* blog grid */
 .blog .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .post{background:var(--warm);border:1px solid var(--line);transition:transform .5s,box-shadow .5s}
