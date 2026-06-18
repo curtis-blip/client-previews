@@ -2116,3 +2116,157 @@ body.modal-open { overflow: hidden; }
     .modal__features { grid-template-columns: 1fr; }
     .modal__ctas .btn { width: 100%; text-align: center; }
 }
+
+/* =========================================================================
+   2026-06-17 CLIENT REVIEW REVISIONS
+   Brand logo in menu · nav dropdowns · property-type 4-up grid · footer polish
+   ========================================================================= */
+
+/* --- Co-brand lockup: agent name + Coldwell Banker logo --- */
+.nav__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+.nav__brand-name {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--white);
+    white-space: nowrap;
+}
+.nav__brand-rule {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.38);
+    flex: 0 0 auto;
+}
+.nav__brand-logo {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+/* dark-on-light variant for the legal pages (privacy / terms) */
+.nav__brand--dark .nav__brand-name { color: var(--text-dark); }
+.nav__brand--dark .nav__brand-rule { background: var(--border); }
+
+@media (max-width: 560px) {
+    .nav__brand { gap: 11px; }
+    .nav__brand-name { font-size: 16px; }
+    .nav__brand-logo,
+    .nav__brand-rule { height: 24px; }
+}
+
+/* --- Dropdown submenus --- */
+.nav__links > li { position: relative; }
+.nav__item--has-sub > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.nav__item--has-sub > a::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    opacity: 0.85;
+    transition: transform 200ms ease;
+}
+/* invisible hover bridge across the gap to the panel */
+.nav__item--has-sub::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    right: -10px;
+    height: 18px;
+}
+.nav__sub {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 210px;
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: 0 22px 48px -14px rgba(0,0,0,0.38);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease, transform 200ms ease, visibility 200ms;
+    z-index: 40;
+}
+.nav__item--has-sub:hover .nav__sub,
+.nav__item--has-sub:focus-within .nav__sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(2px);
+}
+.nav__item--has-sub:hover > a::after,
+.nav__item--has-sub:focus-within > a::after {
+    transform: rotate(225deg) translateY(2px);
+}
+.nav__sub li { position: static; }
+.nav__sub a {
+    display: block;
+    padding: 9px 24px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text-dark);
+    white-space: nowrap;
+    transition: background 160ms ease, color 160ms ease;
+}
+.nav__sub a:hover,
+.nav__sub a:focus-visible { background: var(--bg-alt); color: var(--accent); }
+
+/* --- Communities: "Browse by Property Type" → one row of 4 --- */
+.community-section--type .community-section__grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 1024px) {
+    .community-section--type .community-section__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+    .community-section--type .community-section__grid { grid-template-columns: 1fr; }
+}
+
+/* --- Footer styling polish --- */
+.footer { border-top: 3px solid var(--accent); }
+.footer__brand-logo {
+    height: 30px;
+    width: auto;
+    margin: 0 0 18px;
+    opacity: 0.95;
+}
+.footer h4 {
+    border-bottom: none;
+    position: relative;
+    padding-bottom: 14px;
+}
+.footer h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--accent);
+}
+.footer__badges img {
+    height: 30px;
+    opacity: 0.9;
+    filter: none;
+}
+.footer__social a:hover {
+    background: rgba(184,92,56,0.14);
+    border-color: var(--accent);
+}
+.footer__bottom { align-items: center; }
