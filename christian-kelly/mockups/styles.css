@@ -166,7 +166,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-body); font-weight: 300; margin
 /* hero */
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,7 +194,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-body); font-weight: 300; margin
   bottom: 2.5rem; left: 50%; transform: translateX(-50%);
   color: var(--text-inverse); opacity: 0.7; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
 }
-.hero--inner { min-height: 55vh; }
+.hero--inner { min-height: 70vh; }
+.hero--inner .hero__inner { padding-top: clamp(6rem, 10vw, 8rem); padding-bottom: clamp(3rem, 6vw, 4rem); }
 .hero--inner-quiet {
   min-height: auto;
   padding: clamp(10rem, 16vw, 14rem) 0 clamp(5rem, 8vw, 7rem);
@@ -623,6 +625,35 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-body); font-weight: 300; margin
   .compare__grid { grid-template-columns: 1fr; gap: 1rem; }
   .compare__card--featured { transform: none; }
 }
+
+/* photo break (slim parallax breather band, reuses closing-cta idiom) */
+.photo-break {
+  position: relative;
+  min-height: clamp(20rem, 36vw, 28rem);
+  display: flex; align-items: center; justify-content: center;
+  background-size: cover; background-position: center; background-attachment: fixed;
+  color: var(--text-inverse); text-align: center; isolation: isolate;
+}
+@supports not (background-attachment: fixed) { .photo-break { background-attachment: scroll; } }
+@media (hover: none) { .photo-break { background-attachment: scroll; } }
+.photo-break::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(31,28,24,0.40) 0%, rgba(31,28,24,0.55) 100%);
+}
+.photo-break__line {
+  font-family: var(--font-display-accent);
+  font-weight: 400; font-style: normal;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1.25; letter-spacing: 0.01em;
+  color: var(--text-inverse);
+  max-width: 24ch; margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* compare card tier icons (Sell page) */
+.compare__icon { width: 38px; height: 38px; color: var(--accent-sage); margin-bottom: 0.25rem; }
+.compare__icon svg { width: 100%; height: 100%; }
+.compare__card--featured .compare__icon { color: var(--bg-taupe); }
 
 /* preview-index helper (not used in real pages) */
 .preview-index { padding: 4rem var(--gutter); max-width: 920px; margin: 0 auto; }

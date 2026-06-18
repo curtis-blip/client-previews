@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIREFRAME, Community cards with image + text overlay, The Hutson Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0e0e;
+  --ink-2:#15171a;
+  --pewter:#bcb6aa;
+  --pewter-bright:#ded8cc;
+  --pewter-dark:#8d877a;
+  --paper:#f6f5f2;
+  --paper-2:#eceae4;
+  --ink-on-paper:#181a1c;
+  --on-dark-muted:#9c988e;
+  --line:rgba(188,182,170,.22);
+  --line-strong:rgba(188,182,170,.42);
+  --display:'Montserrat',sans-serif;
+  --body:'Inter',sans-serif;
+  --r:4px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--ink);
+  color:var(--pewter);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Fixed wireframe label */
+.wf-label{
+  position:fixed;top:14px;left:14px;z-index:100;
+  font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--pewter);color:var(--ink);
+  padding:8px 13px;border-radius:var(--r);
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.6);
+}
+
+/* Placeholder note */
+.ph-note{
+  max-width:1280px;margin:0 auto;padding:0 40px;
+}
+.ph-note-inner{
+  font-family:var(--body);font-size:12px;letter-spacing:.02em;
+  color:var(--on-dark-muted);
+  border:1px dashed var(--line-strong);border-radius:var(--r);
+  padding:12px 16px;margin-bottom:46px;
+  display:flex;align-items:center;gap:10px;
+}
+.ph-note-inner svg{width:16px;height:16px;flex:0 0 auto;color:var(--pewter)}
+
+/* Section wrapper */
+.communities{
+  padding:96px 0 110px;
+}
+.wrap{
+  max-width:1280px;margin:0 auto;padding:0 40px;
+}
+
+/* Section header */
+.sec-head{
+  max-width:680px;margin-bottom:54px;
+}
+.eyebrow{
+  font-family:var(--display);font-weight:600;font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--pewter);
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.eyebrow::before{
+  content:"";width:34px;height:1px;background:var(--pewter-dark);display:inline-block;
+}
+.sec-head h2{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(28px,4vw,38px);line-height:1.1;
+  color:var(--pewter-bright);letter-spacing:-.01em;
+}
+.sec-head p{
+  margin-top:16px;font-size:16px;color:var(--on-dark-muted);max-width:560px;
+}
+
+/* Card grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+/* County card */
+.card{
+  position:relative;
+  display:block;
+  border-radius:6px;
+  overflow:hidden;
+  text-decoration:none;
+  aspect-ratio:4/5;
+  background:var(--ink-2);
+  border:1px solid var(--line);
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.7);
+  transition:transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease;
+  isolation:isolate;
+}
+
+/* The photo layer */
+.card-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:1;
+  transition:transform .7s cubic-bezier(.2,.7,.2,1);
+  will-change:transform;
+}
+
+/* Gradient scrim: transparent at top, near-black at bottom */
+.card-scrim{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(
+    to top,
+    rgba(8,9,9,.92) 0%,
+    rgba(8,9,9,.78) 22%,
+    rgba(8,9,9,.34) 52%,
+    rgba(8,9,9,.06) 78%,
+    rgba(8,9,9,0) 100%
+  );
+  transition:opacity .45s ease;
+}
+/* Soft top vignette so an eyebrow could sit up top later if needed */
+.card-scrim-top{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(to bottom, rgba(8,9,9,.42) 0%, rgba(8,9,9,0) 26%);
+  opacity:.7;
+}
+
+/* Card content sits on top of everything */
+.card-body{
+  position:absolute;inset:0;z-index:3;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:26px 26px 24px;
+}
+.card-county{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(22px,2.3vw,27px);line-height:1.08;
+  color:#fff;letter-spacing:-.01em;
+  text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.card-county .suffix{
+  font-weight:500;color:var(--pewter-bright);
+}
+.card-cities{
+  margin-top:11px;
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.chip{
+  font-family:var(--body);font-size:11.5px;font-weight:500;
+  letter-spacing:.02em;line-height:1;
+  color:var(--pewter-bright);
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
+  padding:6px 10px;border-radius:100px;
+  backdrop-filter:blur(2px);
+  text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+
+/* Explore affordance */
+.card-explore{
+  margin-top:18px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--display);font-weight:600;font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--pewter);
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+  transition:gap .35s ease,color .35s ease;
+}
+.card-explore svg{
+  width:15px;height:15px;
+  transition:transform .35s ease;
+}
+
+/* Hover state */
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px -28px rgba(0,0,0,.85);
+  border-color:var(--line-strong);
+}
+.card:hover .card-img{
+  transform:scale(1.05);
+}
+.card:hover .card-scrim{
+  opacity:1;
+  background:linear-gradient(
+    to top,
+    rgba(6,7,7,.96) 0%,
+    rgba(6,7,7,.86) 24%,
+    rgba(6,7,7,.46) 56%,
+    rgba(6,7,7,.12) 80%,
+    rgba(6,7,7,0) 100%
+  );
+}
+.card:hover .card-explore{
+  gap:13px;color:var(--pewter-bright);
+}
+.card:hover .card-explore svg{
+  transform:translateX(4px);
+}
+.card:focus-visible{
+  outline:2px solid var(--pewter-bright);
+  outline-offset:3px;
+}
+
+/* Tablet: 2 across */
+@media(max-width:980px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .wrap,.ph-note{padding:0 30px}
+  .communities{padding:80px 0 90px}
+}
+
+/* Mobile: 1 across */
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr;gap:18px}
+  .wrap,.ph-note{padding:0 22px}
+  .card{aspect-ratio:16/11}
+  .card-body{padding:22px 22px 20px}
+  .sec-head{margin-bottom:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- Fixed wireframe annotation -->
+<div class="wf-label">Wireframe, Community cards with image + text overlay</div>
+
+<section class="communities">
+  <div class="wrap">
+
+    <!-- Section header -->
+    <div class="sec-head">
+      <div class="eyebrow">North Georgia</div>
+      <h2>Explore the Counties</h2>
+      <p>Twelve counties across metro Atlanta and the North Georgia foothills, from Cobb and Cherokee to Hall and Pickens. Pick a county to see what is for sale right now.</p>
+    </div>
+
+    <!-- Placeholder note -->
+    <div class="ph-note">
+      <div class="ph-note-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Placeholder photos from the AgenticPress library. These get swapped for Will's real county photos and video stills once filmed.</span>
+      </div>
+    </div>
+
+    <!-- Card grid: 12 counties, alphabetical -->
+    <div class="grid">
+
+      <!-- Bartow -->
+      <a class="card" href="homes-for-sale-bartow-county.html">
+        <img class="card-img" src="images/hero-brick-traditional.webp" alt="Brick traditional home in Cartersville, Bartow County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Bartow <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Cartersville</span>
+          </div>
+          <span class="card-explore">Explore Bartow
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Cherokee -->
+      <a class="card" href="homes-for-sale-cherokee-county.html">
+        <img class="card-img" src="images/ga-cottage.webp" alt="Cottage-style home in Woodstock, Cherokee County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Cherokee <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Woodstock</span>
+            <span class="chip">Canton</span>
+            <span class="chip">Holly Springs</span>
+          </div>
+          <span class="card-explore">Explore Cherokee
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Cobb -->
+      <a class="card" href="homes-for-sale-cobb-county.html">
+        <img class="card-img" src="images/ga-antebellum.webp" alt="Historic Marietta home in Cobb County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Cobb <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Marietta</span>
+            <span class="chip">Kennesaw</span>
+            <span class="chip">Acworth</span>
+            <span class="chip">Smyrna</span>
+          </div>
+          <span class="card-explore">Explore Cobb
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Dawson -->
+      <a class="card" href="homes-for-sale-dawson-county.html">
+        <img class="card-img" src="images/buy-hero.webp" alt="Foothills home in Dawsonville, Dawson County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Dawson <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Dawsonville</span>
+          </div>
+          <span class="card-explore">Explore Dawson
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- DeKalb -->
+      <a class="card" href="homes-for-sale-dekalb-county.html">
+        <img class="card-img" src="images/cta-oak-street.webp" alt="Tree-lined street in Dunwoody, DeKalb County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">DeKalb <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Dunwoody</span>
+            <span class="chip">Brookhaven</span>
+          </div>
+          <span class="card-explore">Explore DeKalb
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Douglas -->
+      <a class="card" href="homes-for-sale-douglas-county.html">
+        <img class="card-img" src="images/ga-brick-2.webp" alt="Brick home in Douglasville, Douglas County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Douglas <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Douglasville</span>
+          </div>
+          <span class="card-explore">Explore Douglas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Forsyth -->
+      <a class="card" href="homes-for-sale-forsyth-county.html">
+        <img class="card-img" src="images/sell-exterior.webp" alt="Suburban home in Cumming, Forsyth County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Forsyth <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Cumming</span>
+          </div>
+          <span class="card-explore">Explore Forsyth
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Fulton -->
+      <a class="card" href="homes-for-sale-fulton-county.html">
+        <img class="card-img" src="images/buy-living-room.webp" alt="Open living space in a Roswell home, Fulton County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Fulton <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Roswell</span>
+            <span class="chip">Alpharetta</span>
+          </div>
+          <span class="card-explore">Explore Fulton
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Gwinnett -->
+      <a class="card" href="homes-for-sale-gwinnett-county.html">
+        <img class="card-img" src="images/hero-brick-traditional.webp" alt="Brick traditional home in Suwanee, Gwinnett County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Gwinnett <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Lawrenceville</span>
+            <span class="chip">Duluth</span>
+            <span class="chip">Suwanee</span>
+          </div>
+          <span class="card-explore">Explore Gwinnett
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Hall -->
+      <a class="card" href="homes-for-sale-hall-county.html">
+        <img class="card-img" src="images/ga-cottage.webp" alt="Lakeside cottage near Gainesville, Hall County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Hall <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Gainesville</span>
+            <span class="chip">Flowery Branch</span>
+          </div>
+          <span class="card-explore">Explore Hall
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Paulding -->
+      <a class="card" href="homes-for-sale-paulding-county.html">
+        <img class="card-img" src="images/ga-brick-2.webp" alt="Family home in Dallas, Paulding County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Paulding <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Dallas</span>
+            <span class="chip">Hiram</span>
+          </div>
+          <span class="card-explore">Explore Paulding
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Pickens -->
+      <a class="card" href="homes-for-sale-pickens-county.html">
+        <img class="card-img" src="images/ga-antebellum.webp" alt="Mountain-view home in Jasper, Pickens County, North Georgia" loading="lazy">
+        <div class="card-scrim"></div>
+        <div class="card-scrim-top"></div>
+        <div class="card-body">
+          <div class="card-county">Pickens <span class="suffix">County</span></div>
+          <div class="card-cities">
+            <span class="chip">Jasper</span>
+          </div>
+          <span class="card-explore">Explore Pickens
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div><!-- /grid -->
+
+  </div><!-- /wrap -->
+</section>
+
+</body>
+</html>
