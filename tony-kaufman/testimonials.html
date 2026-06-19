@@ -255,15 +255,36 @@ html.skin-bold-modern .eyebrow,html.skin-bold-modern [class*="eyebrow"]{
   .maptag span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);background:rgba(255,255,255,.9);padding:9px 15px;font-weight:600}
   @media(max-width:880px){.edu .grid,.meth .grid,.tgrid,.ct .grid,.cform .row2{grid-template-columns:1fr}}
 </style>
+<style id="navdrop">
+  .nav-links .nav-item{position:relative;display:flex;align-items:center}
+  .nav-top.has-children::after{content:"";display:inline-block;width:5px;height:5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);margin-left:8px;opacity:.65;transition:transform .3s}
+  .nav-item:hover .nav-top.has-children::after,.nav-item:focus-within .nav-top.has-children::after{transform:rotate(225deg) translateY(-2px)}
+  .nav-links .dropdown{position:absolute;top:100%;left:-14px;min-width:216px;background:#fff;border:1px solid var(--line);box-shadow:0 22px 50px -20px rgba(10,12,16,.45);padding:9px 0;opacity:0;visibility:hidden;transform:translateY(9px);transition:opacity .26s,transform .26s,visibility .26s;z-index:60}
+  .nav-item:hover .dropdown,.nav-item:focus-within .dropdown{opacity:1;visibility:visible;transform:none}
+  .nav-links .dropdown a{display:block;padding:10px 22px;color:var(--ink)!important;font-family:var(--font-body);font-weight:500;font-size:12.5px;letter-spacing:.04em;text-transform:none;white-space:nowrap;opacity:1;line-height:1.4}
+  .nav-links .dropdown a:hover{background:var(--base-alt);color:var(--accent)!important}
+  .nav-links a.active{color:#8DA2FF}
+  nav.scrolled .nav-links a.active,nav.scrolled .nav-links .nav-top.active{color:var(--accent)}
+  .nav-links .dropdown a.active{color:var(--accent)!important}
+</style>
 </head>
 <body>
-<nav id="nav"><div class="wrap nav-in"><a href="index.html" class="brand" aria-label="Southwest Colorado Homes and Land, home"><span class="bn">Southwest Colorado</span><span class="bt">Homes &amp; Land</span></a><div class="nav-links">
-      <a href="properties.html">Properties</a>
-      <a href="buy.html">Buy</a>
-      <a href="sell.html">Sell</a>
-      <a href="communities.html">Communities</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="btn nav-cta">Contact</a></div></div></nav>
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand" aria-label="Southwest Colorado Homes and Land, home">
+      <span class="bn">Southwest Colorado</span>
+      <span class="bt">Homes &amp; Land</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item"><a href="properties.html" class="nav-top has-children">Properties</a><div class="dropdown"><a href="properties.html">All Listings</a><a href="ranches-land.html">Ranches & Land</a><a href="farms.html">Farms</a><a href="hunting.html">Hunting</a><a href="fly-fishing.html">Fly Fishing</a></div></div>
+      <a href="buy.html"class="">Buy</a>
+      <div class="nav-item"><a href="sell.html" class="nav-top has-children">Sell</a><div class="dropdown"><a href="sell.html">Seller's Guide</a><a href="home-valuation.html">Home Value Request</a></div></div>
+      <a href="communities.html"class="">Communities</a>
+      <div class="nav-item"><a href="about.html" class="nav-top has-children active">About</a><div class="dropdown"><a href="about.html">About the Agent</a><a href="testimonials.html">Testimonials</a></div></div>
+      <a href="contact.html" class="btn nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
 <header class="hero" style="height:52vh;min-height:400px">
   <div class="hero-bg" style="background-image:linear-gradient(180deg,var(--overlay-dark-1) 0%,rgba(12,18,22,.2) 44%,var(--overlay-dark-3) 100%),url('https://images.unsplash.com/photo-1647291937569-26507d105455?w=2100&q=80')"></div>
   <div class="wrap hero-in"><span class="eyebrow">Client Stories</span><h1>What It's Like to Work With Us</h1><p>Buyers and sellers, locals and out-of-state families, on what it was like to find their place in Southwest Colorado with Tony and Christine.</p></div>
