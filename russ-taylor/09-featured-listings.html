@@ -18,12 +18,27 @@
       <span class="bn">The Russ Taylor Team</span>
       <span class="bt">Taylor Realty Associates</span>
     </a>
+    <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="09-featured-listings.html">Properties</a>
       <a href="03-buyers-guide.html">Buyers</a>
-      <a href="04-sellers-guide.html">Sellers</a>
+      <div class="nav-group">
+        <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">Sellers<svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="nav-drop">
+          <a href="04-sellers-guide.html">Seller's Guide</a>
+          <a href="05-home-valuation.html">Home Value Request</a>
+        </div>
+      </div>
       <a href="06-communities.html">Communities</a>
-      <a href="08-about.html">About</a>
+      <div class="nav-group">
+        <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">About<svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l4 4 4-4"/></svg></button>
+        <div class="nav-drop">
+          <a href="08-about.html">About the Agent</a>
+          <a href="02-meet-the-team.html">Meet the Team</a>
+          <a href="11-blog.html">Blog</a>
+          <a href="07-testimonials.html">Testimonials</a>
+        </div>
+      </div>
       <a href="10-contact.html" class="nav-cta">Contact</a>
     </div>
   </div>
@@ -127,6 +142,13 @@
     <span><a href="12-privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="13-terms.html">Terms of Use</a> &nbsp;·&nbsp; Site by AgenticPress</span>
   </div></div>
 </footer>
-<script>const nav=document.getElementById('nav');const o=()=>{nav.classList.toggle('scrolled',window.scrollY>60)};o();window.addEventListener('scroll',o,{passive:true});</script>
+<script>
+(function(){var nav=document.getElementById('nav');
+var s=function(){nav.classList.toggle('scrolled',window.scrollY>60)};s();window.addEventListener('scroll',s,{passive:true});
+var b=nav.querySelector('.nav-burger');if(b)b.addEventListener('click',function(){var o=nav.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+nav.querySelectorAll('.nav-group>.nav-top').forEach(function(t){t.addEventListener('click',function(e){if(window.innerWidth<=880){e.preventDefault();var g=t.parentElement;var o=g.classList.toggle('open');t.setAttribute('aria-expanded',o)}})});
+})();
+</script>
+
 </body>
 </html>

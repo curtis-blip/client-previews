@@ -267,3 +267,31 @@ footer p{line-height:1.9;color:#9a9ca2}
   .cm-stats{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){.comms .grid,.team .grid,.blog .grid,.services .grid{grid-template-columns:1fr}}
+
+/* ---- dropdown nav (Curtis nav doctrine: group all core pages) ---- */
+.nav-group{position:relative;display:flex;align-items:center}
+.nav-top{font-family:var(--font-body);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:color .25s}
+.nav-top svg{width:10px;height:6px;transition:transform .25s}
+nav.scrolled .nav-top{color:var(--ink)}
+.nav-top:hover{color:#cdd8e6}
+nav.scrolled .nav-top:hover{color:var(--accent)}
+.nav-drop{position:absolute;top:100%;left:0;min-width:212px;background:#fff;box-shadow:0 18px 44px -18px rgba(0,0,0,.35);border-top:3px solid var(--accent);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+.nav-group:hover .nav-drop,.nav-group:focus-within .nav-drop,.nav-group.open .nav-drop{opacity:1;visibility:visible;transform:none}
+.nav-group:hover .nav-top svg{transform:rotate(180deg)}
+.nav-drop a{display:block;padding:11px 22px;font-family:var(--font-body);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)!important;white-space:nowrap}
+.nav-drop a:hover{background:var(--base-alt);color:var(--accent)!important}
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.nav-burger span{width:24px;height:2px;background:#fff;transition:background .25s}
+nav.scrolled .nav-burger span{background:var(--ink)}
+@media(max-width:880px){
+  .nav-burger{display:flex}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 18px;box-shadow:0 18px 40px -18px rgba(0,0,0,.3)}
+  nav.open .nav-links{display:flex}
+  .nav-links>a,.nav-top{color:var(--ink)!important;width:100%;padding:13px 36px;justify-content:space-between}
+  .nav-group{display:block}
+  .nav-drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border-top:0;padding:0;display:none;min-width:0}
+  .nav-group.open .nav-drop{display:block}
+  .nav-group.open .nav-top svg{transform:rotate(180deg)}
+  .nav-drop a{padding:10px 52px}
+  .nav-cta{margin:14px 36px 0;text-align:center}
+}
