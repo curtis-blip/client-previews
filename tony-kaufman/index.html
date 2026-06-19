@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-bold-modern">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Southwest Colorado Homes &amp; Land | Pagosa Springs Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Archivo:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== Optimus Prime skin contract + bold-modern skin (inlined, locked) ===== */
+:root{
+  --base:#FFFFFF; --base-alt:#F5F5F5; --base-dark:#0A0A0A; --base-black:#000000;
+  --ink:#1A1A1A; --ink-soft:#5A5A5A; --ink-faint:#8A8A8A;
+  --line:#E5E5E5; --line-strong:#1A1A1A;
+  --accent:#1A3A5C; --accent-2:#1A3A5C; --accent-3:#1A3A5C; --on-dark:#FFFFFF;
+  --overlay-dark-1:rgba(10,12,16,.30); --overlay-dark-2:rgba(10,12,16,.55); --overlay-dark-3:rgba(10,12,16,.80);
+  --font-display:'Inter',sans-serif; --font-body:'Inter',sans-serif;
+  --weight-display:300; --weight-heading:400; --weight-eyebrow:500; --weight-button:500;
+  --case-display:uppercase; --case-eyebrow:uppercase;
+  --track-display:0.02em; --track-eyebrow:0.22em; --track-button:0.16em;
+  --eyebrow-pad:0; --eyebrow-bg:transparent;
+  --radius:0px; --img-filter:none;
+}
+html.skin-bold-modern{
+  --base:#FFFFFF; --base-alt:#F2F2F0; --base-dark:#0B0B0C; --base-black:#0B0B0C;
+  --ink:#0B0B0C; --ink-soft:#46474B; --ink-faint:#8A8B90;
+  --line:#E2E2E0; --line-strong:#0B0B0C;
+  --accent:#1E4DFF; --accent-2:#1E4DFF; --accent-3:#0B0B0C; --on-dark:#FFFFFF;
+  --overlay-dark-1:rgba(11,11,12,.34); --overlay-dark-2:rgba(11,11,12,.55); --overlay-dark-3:rgba(11,11,12,.78);
+  --font-display:'Archivo',sans-serif; --font-body:'Inter',sans-serif;
+  --weight-display:800; --weight-heading:700; --weight-eyebrow:700; --weight-button:700;
+  --case-display:uppercase; --case-eyebrow:uppercase;
+  --track-display:-0.02em; --track-eyebrow:0.14em; --track-button:0.10em;
+  --eyebrow-pad:6px 12px; --eyebrow-bg:var(--accent);
+  --radius:0px; --img-filter:contrast(1.04) saturate(1.06); --dur:200ms;
+}
+/* bold-modern signature: eyebrows become solid accent chips */
+html.skin-bold-modern .eyebrow,html.skin-bold-modern [class*="eyebrow"]{
+  background:var(--eyebrow-bg);color:var(--on-dark)!important;padding:var(--eyebrow-pad);
+  border:none!important;display:inline-block}
+</style>
+<style>
+  /* page-local treatments with no contract token (constant across skins) */
+  :root{--ever-dk:#163CCB; --ever-tint:#EEF2FF; --line-lt:rgba(255,255,255,.16);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--base);line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--weight-heading);line-height:1.08;letter-spacing:var(--track-display);text-transform:var(--case-display)}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
+  .eyebrow{font-family:var(--font-body);font-weight:var(--weight-eyebrow);text-transform:var(--case-eyebrow);letter-spacing:var(--track-eyebrow);font-size:11px;color:var(--accent)}
+  .eyebrow.lt{color:#a7c6bb}
+  section{padding:clamp(76px,10.5vw,142px) 0}
+  .btn{display:inline-block;font-family:var(--font-body);font-weight:var(--weight-button);text-transform:var(--case-eyebrow);letter-spacing:var(--track-button);font-size:12px;padding:15px 30px;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:var(--radius);transition:all .5s cubic-bezier(.2,.7,.2,1);cursor:pointer}
+  .btn:hover{background:var(--accent);color:#fff}
+  .btn.solid{background:var(--accent);color:#fff}
+  .btn.solid:hover{background:var(--ever-dk);border-color:var(--ever-dk)}
+  .btn.ghost{border-color:rgba(255,255,255,.65);color:#fff}
+  .btn.ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+  .lnk{font-family:var(--font-body);font-weight:var(--weight-button);text-transform:var(--case-eyebrow);letter-spacing:var(--track-button);font-size:12px;color:var(--accent);display:inline-flex;align-items:center;gap:9px}
+  .lnk svg{width:18px;height:10px;transition:transform .4s}
+  .lnk:hover svg{transform:translateX(6px)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .5s ease;padding:22px 0}
+  nav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 1px 0 var(--line);padding:12px 0}
+  .nav-in{display:flex;align-items:center;justify-content:space-between}
+  .brand .bn{font-family:var(--font-display);font-weight:var(--weight-heading);font-size:25px;color:#fff;letter-spacing:var(--track-display);line-height:1;transition:color .4s}
+  .brand .bt{display:block;font-family:var(--font-body);font-weight:var(--weight-eyebrow);font-size:9px;text-transform:var(--case-eyebrow);letter-spacing:.34em;color:rgba(255,255,255,.78);margin-top:3px;transition:color .4s}
+  nav.scrolled .brand .bn{color:var(--ink)}
+  nav.scrolled .brand .bt{color:var(--accent)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-family:var(--font-body);font-weight:400;font-size:12.5px;letter-spacing:.13em;text-transform:var(--case-eyebrow);color:#fff;opacity:.94;transition:color .4s}
+  nav.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:#8DA2FF}
+  nav.scrolled .nav-links a:hover{color:var(--accent)}
+  .nav-cta{border:1px solid rgba(255,255,255,.6);padding:10px 22px !important;color:#fff}
+  nav.scrolled .nav-cta{border-color:var(--accent);color:var(--accent)}
+  .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff !important}
+
+  /* HERO */
+  .hero{height:100vh;min-height:680px;position:relative;display:flex;align-items:flex-end;color:#fff}
+  .hero-bg{position:absolute;inset:0;background:#222 center/cover no-repeat;background-image:linear-gradient(180deg,var(--overlay-dark-1) 0%,rgba(12,18,22,.20) 42%,var(--overlay-dark-3) 100%),url('https://images.unsplash.com/photo-1524429656589-6633a470097c?w=2100&q=80');filter:var(--img-filter)}
+  .hero-in{position:relative;padding-bottom:clamp(66px,8vw,116px)}
+  .hero h1{font-size:clamp(46px,6.6vw,88px);max-width:15ch;margin:16px 0 24px;font-weight:var(--weight-display)}
+  .hero p{font-weight:300;font-size:clamp(15px,1.5vw,18.5px);max-width:56ch;color:rgba(255,255,255,.92);line-height:1.85}
+  .hero-actions{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+
+  /* LIVE HUNT FISH FARM STRIP */
+  .pillars{background:var(--base-dark);color:#fff;padding:0}
+  .pillars .grid{display:grid;grid-template-columns:repeat(4,1fr)}
+  .pillar{padding:48px 28px;border-right:1px solid var(--line-lt);text-align:center}
+  .pillar:last-child{border-right:none}
+  .pillar svg{width:30px;height:30px;color:var(--accent);margin:0 auto 16px;display:block}
+  .pillar .n{font-family:var(--font-display);font-weight:var(--weight-display);font-size:27px;letter-spacing:var(--track-display);text-transform:var(--case-display)}
+  .pillar .k{font-size:11.5px;letter-spacing:.14em;text-transform:var(--case-eyebrow);color:rgba(255,255,255,.5);margin-top:7px;font-weight:400}
+
+  /* ABOUT */
+  .about .grid{display:grid;grid-template-columns:.82fr 1fr;gap:clamp(40px,6vw,92px);align-items:center}
+  .portrait{position:relative}
+  .portrait .frame{position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--accent);z-index:0}
+  .portrait img{position:relative;z-index:1;width:100%;background:var(--base-alt);filter:var(--img-filter)}
+  .about h2{font-size:clamp(33px,4vw,52px);margin:14px 0 22px;font-weight:var(--weight-display)}
+  .about p{color:#43474c;margin-bottom:18px;max-width:54ch;font-weight:400}
+  .sig{font-family:var(--font-display);font-weight:500;font-style:italic;color:var(--accent);font-size:25px;line-height:1.4;margin:26px 0 30px;max-width:46ch}
+
+  /* SECTION HEAD */
+  .shead{max-width:700px;margin-bottom:52px}
+  .shead.ctr{margin:0 auto 56px;text-align:center}
+  .shead h2{font-size:clamp(33px,4.2vw,54px);margin-top:14px;font-weight:var(--weight-display)}
+  .shead p{color:var(--ink-soft);margin-top:16px;font-size:15.5px;font-weight:400}
+
+  /* PATHS */
+  .paths{background:var(--base-alt)}
+  .paths .grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .path{background:var(--base);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(34px,4vw,56px);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+  .path:hover{transform:translateY(-6px);box-shadow:0 26px 50px -28px rgba(20,40,40,.4)}
+  .path .ic{width:42px;height:42px;color:var(--accent);margin-bottom:22px}
+  .path h3{font-size:30px;margin-bottom:13px;font-weight:var(--weight-heading)}
+  .path p{color:#50555a;font-size:15px;margin-bottom:24px;font-weight:400}
+
+  /* IDX PLACEHOLDER ZONE */
+  .idx{background:var(--base)}
+  .idx .zone{border:1.5px dashed rgba(30,77,255,.5);background:var(--ever-tint);padding:clamp(40px,6vw,72px) 32px;text-align:center}
+  .idx .tag{font-family:var(--font-body);font-weight:var(--weight-eyebrow);text-transform:var(--case-eyebrow);letter-spacing:.2em;font-size:10.5px;color:var(--accent);background:#fff;border:1px solid rgba(30,77,255,.3);border-radius:var(--radius);padding:6px 14px;display:inline-block;margin-bottom:20px}
+  .idx h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:14px;font-weight:var(--weight-display)}
+  .idx p{color:var(--ink-soft);max-width:60ch;margin:0 auto 28px;font-weight:400}
+
+  /* COMMUNITIES */
+  .comms .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .comm{position:relative;height:360px;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+  .comm .ph{position:absolute;inset:0;background:#333 center/cover no-repeat;filter:var(--img-filter);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .comm:hover .ph{transform:scale(1.06)}
+  .comm::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,16,0) 32%,var(--overlay-dark-3) 100%)}
+  .comm .c{position:relative;z-index:2;padding:28px}
+  .comm h3{font-size:28px;letter-spacing:var(--track-display);font-weight:var(--weight-heading)}
+  .comm .meta{font-size:10.5px;letter-spacing:.22em;text-transform:var(--case-eyebrow);color:rgba(255,255,255,.62);font-weight:500;margin-bottom:7px}
+  .comm .ex{margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:var(--case-eyebrow);color:#fff;display:inline-flex;gap:8px;align-items:center;opacity:0;transform:translateY(8px);transition:all .5s}
+  .comm:hover .ex{opacity:1;transform:none}
+  .comm .ex svg{width:16px;height:9px}
+
+  /* TESTIMONIALS */
+  .tms{background:var(--base-alt)}
+  .tms .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px}
+  .tm{background:var(--base);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(34px,4vw,52px);display:flex;flex-direction:column;justify-content:space-between}
+  .tm.feat{background:var(--base-dark);color:#fff;border-color:var(--base-dark)}
+  .stars{display:flex;gap:5px;margin-bottom:20px;color:var(--accent)}
+  .tm.feat .stars{color:#8DA2FF}
+  .stars svg{width:17px;height:17px}
+  .tm q{font-family:var(--font-display);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1.5;quotes:none;display:block}
+  .tm .who{margin-top:24px;font-family:var(--font-body)}
+  .tm .who b{font-weight:600;font-size:14px;letter-spacing:.02em}
+  .tm .who span{display:block;font-size:11px;letter-spacing:.16em;text-transform:var(--case-eyebrow);color:var(--ink-soft);margin-top:5px}
+  .tm.feat .who span{color:rgba(255,255,255,.55)}
+  .tm .who .pic{display:flex;align-items:center;gap:14px}
+  .tm .who .pic img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+
+  /* HOME VALUE CTA */
+  .hv{background:var(--accent);color:#fff}
+  .hv .in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .hv h2{font-size:clamp(28px,3.2vw,42px);font-weight:var(--weight-display);max-width:20ch}
+  .hv p{color:rgba(255,255,255,.85);margin-top:10px;max-width:46ch;font-weight:300}
+
+  /* CLOSING CTA */
+  .cta{position:relative;color:#fff;text-align:center;padding:clamp(110px,15vw,196px) 0}
+  .cta-bg{position:absolute;inset:0;background:#222 center/cover no-repeat;background-image:linear-gradient(var(--overlay-dark-2),var(--overlay-dark-3)),url('https://images.unsplash.com/photo-1639153049337-d78302ac1d35?w=2000&q=80');filter:var(--img-filter)}
+  .cta .in{position:relative;z-index:2}
+  .cta h2{font-size:clamp(34px,4.8vw,64px);margin:16px 0 22px;font-weight:var(--weight-display)}
+  .cta p{max-width:52ch;margin:0 auto 36px;color:rgba(255,255,255,.92);font-weight:300}
+
+  /* FOOTER */
+  footer{background:var(--base-dark);color:#cfd6d4;font-size:13.5px}
+  .f-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding:82px 0 50px;border-bottom:1px solid var(--line-lt)}
+  .f-brand .bn{font-family:var(--font-display);font-weight:var(--weight-heading);font-size:26px;color:#fff;line-height:1}
+  .f-brand .bt{display:block;font-family:var(--font-body);font-weight:var(--weight-eyebrow);font-size:9px;text-transform:var(--case-eyebrow);letter-spacing:.32em;color:#8DA2FF;margin-top:4px;margin-bottom:18px}
+  footer h4{font-family:var(--font-body);font-weight:var(--weight-eyebrow);text-transform:var(--case-eyebrow);letter-spacing:.18em;font-size:11px;color:#fff;margin-bottom:18px}
+  footer a{color:#aab4b1;transition:color .3s;line-height:2.05}
+  footer a:hover{color:#fff}
+  footer p{line-height:1.9;color:#98a3a0;font-weight:400}
+  .socials{display:flex;gap:13px;margin-top:18px}
+  .socials a{width:38px;height:38px;border:1px solid var(--line-lt);display:flex;align-items:center;justify-content:center;transition:all .4s}
+  .socials a:hover{background:var(--accent);border-color:var(--accent)}
+  .socials svg{width:17px;height:17px}
+  .compliance{background:var(--accent-3);color:rgba(255,255,255,.92)}
+  .compliance .in{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 0}
+  .compliance .eho{width:30px;height:30px;flex:none}
+  .compliance .jcp{height:34px;width:auto;background:#fff;padding:0}
+  .compliance span{font-size:12px;letter-spacing:.01em;line-height:1.6;flex:1 1 320px;min-width:0}
+  .f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0;color:#7e8a87;font-size:12px}
+  .f-bot a{color:#7e8a87}
+
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .pillars .grid{grid-template-columns:1fr 1fr}
+    .pillar:nth-child(2){border-right:none}
+    .pillar{border-bottom:1px solid var(--line-lt)}
+    .about .grid,.paths .grid,.comms .grid,.tms .grid,.f-top,.hv .in{grid-template-columns:1fr;display:grid}
+    .hv .in{text-align:left}
+    .portrait{max-width:430px;margin:0 auto 38px}
+    .comm{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand" aria-label="Southwest Colorado Homes and Land, home">
+      <span class="bn">Southwest Colorado</span>
+      <span class="bt">Homes &amp; Land</span>
+    </a>
+    <div class="nav-links">
+      <a href="properties.html">Properties</a>
+      <a href="buy.html">Buy</a>
+      <a href="sell.html">Sell</a>
+      <a href="communities.html">Communities</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="btn nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <span class="eyebrow lt">Pagosa Springs · Bayfield · Durango · South Fork · Arboles · Ignacio</span>
+    <h1>Pagosa Springs, From People Who Call It Home</h1>
+    <p>Tony and Christine Kaufman have made the San Juan Mountains their home for years. They help buyers and sellers find mountain homes, ranches, land, and fly-fishing retreats across Southwest Colorado, with the kind of local knowledge that only comes from living here.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn solid">Start a Conversation</a>
+      <a href="properties.html" class="btn ghost">Browse Pagosa Listings</a>
+    </div>
+  </div>
+</header>
+
+<section class="pillars">
+  <div class="wrap">
+    <div class="grid">
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 11l9-7 9 7M5 10v9h14v-9M10 19v-5h4v5"/></svg>
+        <div class="n">Live</div><div class="k">Homes &amp; Retreats</div>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 20l7-7M11 13l3-9 6 6-9 3M14 4l2 2"/></svg>
+        <div class="n">Hunt</div><div class="k">Acreage &amp; Land</div>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 13c4-5 11-5 16 0-5 5-12 5-16 0zM19 13l2-2M16 12h.01"/></svg>
+        <div class="n">Fish</div><div class="k">Fly-Fishing Properties</div>
+      </div>
+      <div class="pillar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 20V9l9-5 9 5v11M3 20h18M9 20v-6h6v6"/></svg>
+        <div class="n">Farm</div><div class="k">Ranches &amp; Farms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="portrait">
+        <div class="frame"></div>
+        <img src="assets/tony-christine.jpg" alt="Tony and Christine Kaufman beside a San Juan Mountains river in Pagosa Springs">
+      </div>
+      <div>
+        <span class="eyebrow">Meet Tony &amp; Christine</span>
+        <h2>A Summer Vacation That Never Ended</h2>
+        <p>Our story began with a summer vacation, when we first fell in love with Pagosa Springs and the scenery that surrounds it. What started as a getaway grew into a lasting connection, and a desire to help others find their own place in this mountain town.</p>
+        <p>Christine, originally from Illinois, loves the snowy winters alongside our three dogs. Tony, an Arizona native, embraced the change that mountain living brings. Our family's roots keep growing here, with children and grandchildren now calling the San Juans home.</p>
+        <p class="sig">"The awe-inspiring San Juan Mountains never lose their ability to amaze, and we know they will leave a lasting impression on you as well."</p>
+        <a href="#" class="lnk">More About Us <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paths">
+  <div class="wrap">
+    <div class="grid">
+      <div class="path">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 11l9-7 9 7M5 10v9h14v-9M10 19v-5h4v5"/></svg>
+        <h3>Buying in the San Juans</h3>
+        <p>From a first mountain home to a working ranch or a fly-fishing retreat, we guide you through every step. Many of our buyers come from out of state, so we are used to handling showings, questions, and closings for people who love this place from a thousand miles away.</p>
+        <a href="#" class="lnk">Buyer's Guide <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></a>
+      </div>
+      <div class="path">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6M3 9h18"/></svg>
+        <h3>Selling Your Property</h3>
+        <p>We market mountain homes, land, and ranches the way they deserve, with strong photography, local reach, and the wider audience that comes from knowing this market well. You stay informed at every stage, from list price to closing day.</p>
+        <a href="#" class="lnk">Why Sell With Us <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="idx">
+  <div class="wrap">
+    <div class="zone">
+      <span class="tag">Showcase IDX · Live Listings Zone</span>
+      <h2>Featured Listings Across Southwest Colorado</h2>
+      <p>A live Showcase IDX feed renders here in the build, showing current homes, ranches, land, and fly-fishing properties straight from the MLS. This zone is a placeholder, the real listings populate on the WordPress site.</p>
+      <a href="properties.html" class="btn solid">Search All Listings</a>
+    </div>
+  </div>
+</section>
+
+<section class="comms">
+  <div class="wrap">
+    <div class="shead ctr">
+      <span class="eyebrow">The Communities We Serve</span>
+      <h2>From Pagosa Springs to the Edges of the San Juans</h2>
+      <p>We live and work across Southwest Colorado, from the hot springs of Pagosa to the lakes, rivers, and ranch country that surround it.</p>
+    </div>
+    <div class="grid">
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1733871207272-1a969b9de82c?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">Featured · Home Base</div><h3>Pagosa Springs</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1697044399245-2ba932fca8ef?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">La Plata County</div><h3>Bayfield</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1635798049996-d111bb8d90c0?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">La Plata County</div><h3>Durango</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1610997186335-12de8a2dc7fd?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">Wolf Creek Gateway</div><h3>South Fork</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1570060362230-62bc5605eca2?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">Navajo Lake</div><h3>Arboles</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+      <a href="#" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1647291937569-26507d105455?w=1000&q=80')"></div>
+        <div class="c"><div class="meta">La Plata County</div><h3>Ignacio</h3><span class="ex">Explore <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 5h16M13 1l4 4-4 4"/></svg></span></div>
+      </a>
+    </div>
+    <p style="text-align:center;margin-top:30px;color:var(--ink-faint);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500">Community photography is directional. Phase 7 sources real imagery for each town.</p>
+  </div>
+</section>
+
+<section class="tms">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Client Stories</span>
+      <h2>What It's Like to Work With Us</h2>
+    </div>
+    <div class="grid">
+      <div class="tm feat">
+        <div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg></div>
+          <q>We had been looking in Pagosa Springs for a long time. When the time came, Tony and Chris were excellent at guiding us through the process and connecting us with the right people. Living out of state we were very nervous, but everything went flawlessly. They even went to the house to check on it after the first snow.</q>
+        </div>
+        <div class="who"><div class="pic"><img src="assets/rich.jpg" alt="Rich Reiter"><div><b>Rich Reiter</b><span>Georgetown, TX</span></div></div></div>
+      </div>
+      <div class="tm">
+        <div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg></div>
+          <q>Tony and Christine were extremely helpful, and above all they were non-pressure agents. They promoted the local benefits and the area so well that it aided my decision to choose Pagosa Springs.</q>
+        </div>
+        <div class="who"><div class="pic"><img src="assets/terry.jpg" alt="Terry Madtson"><div><b>Terry Madtson</b><span>Phoenix, AZ</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hv">
+  <div class="wrap in">
+    <div>
+      <h2>What Is Your Pagosa Property Worth?</h2>
+      <p>Get a clear, no-pressure estimate based on what is really happening in the Southwest Colorado market.</p>
+    </div>
+    <a href="#" class="btn ghost">Request a Home Valuation</a>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap in">
+    <span class="eyebrow lt">Let's Talk</span>
+    <h2>Ready When You Are</h2>
+    <p>Whether you are buying your first mountain home or selling a property you have loved for years, it starts with a conversation. We would be honored to show you around.</p>
+    <a href="#" class="btn ghost">Get in Touch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <div><span class="bn">Southwest Colorado</span><span class="bt">Homes &amp; Land</span></div>
+        <p>Helping buyers and sellers find homes, ranches, land, and fly-fishing retreats across the San Juan Mountains of Southwest Colorado.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/southwestcoloradohomesandranches/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+          <a href="https://www.instagram.com/southwestrealtyandoutdoors/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@DiscoverPagosa" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12s0-3-.4-4.4a2.6 2.6 0 00-1.8-1.8C18.4 5.4 12 5.4 12 5.4s-6.4 0-7.8.4A2.6 2.6 0 002.4 7.6C2 9 2 12 2 12s0 3 .4 4.4a2.6 2.6 0 001.8 1.8c1.4.4 7.8.4 7.8.4s6.4 0 7.8-.4a2.6 2.6 0 001.8-1.8C22 15 22 12 22 12zM10 15V9l5 3z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="properties.html">Properties</a><br><a href="buy.html">Buyer's Guide</a><br><a href="sell.html">Seller's Guide</a><br><a href="home-valuation.html">Home Valuation</a><br><a href="communities.html">Communities</a><br><a href="about.html">About Us</a><br><a href="testimonials.html">Testimonials</a>
+      </div>
+      <div>
+        <h4>Communities</h4>
+        <a href="pagosa-springs.html">Pagosa Springs</a><br><a href="bayfield.html">Bayfield</a><br><a href="durango.html">Durango</a><br><a href="south-fork.html">South Fork</a><br><a href="arboles.html">Arboles</a><br><a href="ignacio.html">Ignacio</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>2261 Eagle Drive<br>Pagosa Springs, CO<br><br><a href="tel:+19702380105">(970) 238-0105</a><br><a href="mailto:contact@southwestcoloradohomesandranches.com">contact@southwestcoloradohomesandranches.com</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="compliance">
+    <div class="wrap in">
+      <img class="jcp" src="assets/jcp-logo.jpg" alt="Jann C Pitcher Real Estate">
+      <svg class="eho" viewBox="0 0 48 48" fill="none" stroke="rgba(255,255,255,.92)" stroke-width="2"><path d="M24 7l16 12v3H8v-3L24 7z"/><path d="M12 24v14h24V24"/><path d="M20 38v-7h8v7"/><path d="M22 16h4M21 19h6"/></svg>
+      <span>Equal Housing Opportunity · REALTOR® · Tony Kaufman, Broker Associate · Jann C Pitcher Real Estate · Colorado License # [NEEDS_CLIENT]</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="f-bot">
+      <span>&copy; 2026 Southwest Colorado Homes &amp; Land. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a> &nbsp;·&nbsp; Site by AgenticPress</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>60)};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+</script>
+</body>
+</html>
