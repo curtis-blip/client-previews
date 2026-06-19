@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-bold-modern">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Russ Taylor Team · Champaign County Real Estate</title>
+<meta name="description" content="The Russ Taylor Team at Taylor Realty Associates has sold Champaign County real estate since 1972. 50+ years helping families buy and sell across the 217.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Source+Serif+4:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./skins.css">
+<style>
+  /* ---- Russ Taylor bold-modern overrides (his navy leads) ---- */
+  html.skin-bold-modern{--accent:#01366b;--accent-2:#01366b}
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--base);line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--weight-display);line-height:1.02;letter-spacing:var(--track-display);text-transform:var(--case-display)}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 36px}
+  .eyebrow{font-family:var(--font-body);font-weight:var(--weight-eyebrow);text-transform:var(--case-eyebrow);letter-spacing:var(--track-eyebrow);font-size:11px;color:var(--on-dark);background:var(--accent);padding:6px 12px;display:inline-block}
+  section{padding:clamp(78px,10vw,140px) 0}
+  .btn{display:inline-block;font-family:var(--font-body);font-weight:var(--weight-button);text-transform:var(--case-eyebrow);letter-spacing:var(--track-button);font-size:12.5px;padding:16px 32px;border:2px solid var(--accent);color:var(--on-dark);background:var(--accent);border-radius:0;transition:all .2s ease;cursor:pointer}
+  .btn:hover{background:#02223f;border-color:#02223f}
+  .btn.outline{background:transparent;color:var(--accent)}
+  .btn.outline:hover{background:var(--accent);color:var(--on-dark)}
+  .btn.ghost{background:transparent;border-color:#fff;color:#fff}
+  .btn.ghost:hover{background:#fff;color:var(--ink)}
+  .lnk{font-family:var(--font-body);font-weight:700;text-transform:var(--case-eyebrow);letter-spacing:var(--track-button);font-size:12px;color:var(--accent);display:inline-flex;align-items:center;gap:9px}
+  .lnk.lt{color:#fff}
+  .lnk svg{width:20px;height:11px;transition:transform .25s}
+  .lnk:hover svg{transform:translateX(6px)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .25s ease;padding:22px 0}
+  nav.scrolled{background:#fff;box-shadow:0 1px 0 var(--line);padding:13px 0}
+  .nav-in{display:flex;align-items:center;justify-content:space-between}
+  .brand .bn{font-family:var(--font-display);font-weight:900;font-size:21px;color:#fff;letter-spacing:-.01em;line-height:1;text-transform:uppercase;transition:color .25s}
+  .brand .bt{display:block;font-family:var(--font-body);font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:.26em;color:rgba(255,255,255,.8);margin-top:5px;transition:color .25s}
+  nav.scrolled .brand .bn{color:var(--ink)}
+  nav.scrolled .brand .bt{color:var(--accent)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-family:var(--font-body);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;transition:color .25s}
+  nav.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:#cdd8e6}
+  nav.scrolled .nav-links a:hover{color:var(--accent)}
+  .nav-cta{background:var(--accent);padding:11px 24px !important;color:#fff}
+  .nav-cta:hover{background:#02223f}
+
+  /* HERO V8 · minimal, lower-third left title card, thin accent rule, no eyebrow/sub/cta */
+  .hero{height:100vh;min-height:660px;position:relative;display:flex;align-items:flex-end;color:#fff}
+  .hero-bg{position:absolute;inset:0;background:#222 center/cover no-repeat;background-image:linear-gradient(180deg,var(--overlay-dark-1) 0%,rgba(11,11,12,.12) 45%,var(--overlay-dark-3) 100%),url('https://images.unsplash.com/photo-1662770120554-43a199b1788f?w=2100&q=80&auto=format&fit=crop');filter:var(--img-filter)}
+  .hero-in{position:relative;padding-bottom:18vh;max-width:1280px;margin:0 auto;width:100%}
+  .hero .rule{display:block;width:72px;height:4px;background:var(--accent);margin-bottom:30px}
+  .hero h1{font-size:clamp(44px,7vw,98px);max-width:17ch;font-weight:900;line-height:.98;letter-spacing:-.02em}
+
+  /* STAT BAR (bold, near-black, marquee + supporting) */
+  .stats{background:var(--base-dark);color:#fff;padding:0}
+  .stats .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr}
+  .stat{padding:52px 32px;border-right:1px solid rgba(255,255,255,.12)}
+  .stat:last-child{border-right:none}
+  .stat.marquee{background:var(--accent)}
+  .stat .v{font-family:var(--font-display);font-weight:900;font-size:clamp(38px,4.4vw,60px);letter-spacing:-.03em;line-height:.9}
+  .stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:14px;font-weight:600;line-height:1.5}
+  .stat.marquee .k{color:rgba(255,255,255,.85)}
+
+  /* ABOUT / AGENT SPOTLIGHT */
+  .about .grid{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .portrait{position:relative}
+  .portrait .frame{position:absolute;inset:20px -20px -20px 20px;border:3px solid var(--accent);z-index:0}
+  .portrait img{position:relative;z-index:1;width:100%;background:var(--base-alt);filter:var(--img-filter)}
+  .about h2{font-size:clamp(34px,4.4vw,58px);margin:18px 0 24px;line-height:1}
+  .about p{color:var(--ink-soft);margin-bottom:18px;max-width:56ch;font-size:16px}
+  .pull{border-left:4px solid var(--accent);padding:6px 0 6px 22px;margin:26px 0 30px;font-family:var(--font-display);font-weight:700;font-size:21px;line-height:1.3;text-transform:none;letter-spacing:0;color:var(--ink);max-width:46ch}
+
+  /* SECTION HEAD */
+  .shead{max-width:760px;margin-bottom:54px}
+  .shead.ctr{margin:0 auto 56px;text-align:center}
+  .shead h2{font-size:clamp(34px,4.6vw,60px);margin-top:18px;line-height:1}
+  .shead p{color:var(--ink-soft);margin-top:18px;font-size:16.5px;max-width:62ch}
+  .shead.ctr p{margin-left:auto;margin-right:auto}
+
+  /* BUY / SELL · bold cinematic photo panels */
+  .paths{background:var(--base-alt)}
+  .paths .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{position:relative;min-height:520px;overflow:hidden;display:flex;align-items:flex-end;color:#fff}
+  .panel .ph{position:absolute;inset:0;background:#222 center/cover no-repeat;filter:var(--img-filter);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .panel:hover .ph{transform:scale(1.05)}
+  .panel::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.15) 0%,rgba(11,11,12,.45) 55%,rgba(11,11,12,.9) 100%)}
+  .panel .c{position:relative;z-index:2;padding:clamp(34px,4vw,52px)}
+  .panel h3{font-size:clamp(28px,3vw,40px);margin:16px 0 12px;line-height:1}
+  .panel p{color:rgba(255,255,255,.86);font-size:15.5px;max-width:42ch;margin-bottom:22px}
+
+  /* HOME VALUE · parallax band */
+  .hv{position:relative;color:#fff;text-align:center;padding:clamp(96px,13vw,168px) 0;background:#1a1a1a}
+  .hv-bg{position:absolute;inset:0;background:linear-gradient(rgba(2,18,38,.78),rgba(2,18,38,.86)),url('https://images.unsplash.com/photo-1759575476136-a35edb6893bf?w=2100&q=80&auto=format&fit=crop') center/cover fixed;}
+  .hv .in{position:relative;z-index:2}
+  .hv h2{font-size:clamp(32px,4.4vw,58px);margin:18px auto 16px;max-width:20ch;line-height:1}
+  .hv p{color:rgba(255,255,255,.86);max-width:54ch;margin:0 auto 32px;font-size:16.5px}
+
+  /* FEATURED LISTINGS / IDX */
+  .idx{background:var(--base)}
+  .idx .zone{border:2px solid var(--line-strong);padding:clamp(40px,6vw,72px) 32px;text-align:center;background:var(--base-alt)}
+  .idx .tag{font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:#fff;background:var(--accent);padding:7px 14px;display:inline-block;margin-bottom:20px}
+  .idx .zt{font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(22px,2.6vw,30px);margin-bottom:12px}
+  .idx .zone p{color:var(--ink-soft);max-width:60ch;margin:0 auto 26px;font-size:15.5px}
+
+  /* COMMUNITIES · all six, bold coverage grid */
+  .comms .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .comm{position:relative;height:300px;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+  .comm .ph{position:absolute;inset:0;background:#333 center/cover no-repeat;filter:var(--img-filter);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .comm:hover .ph{transform:scale(1.07)}
+  .comm::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,0) 38%,rgba(11,11,12,.86) 100%)}
+  .comm .c{position:relative;z-index:2;padding:24px}
+  .comm h3{font-size:23px;letter-spacing:-.01em;line-height:1}
+  .comm .meta{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--accent);padding:4px 9px;display:inline-block;font-weight:700;margin-bottom:11px}
+  .comms-foot{text-align:center;margin-top:40px}
+
+  /* TESTIMONIALS */
+  .tms .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+  .tm{background:var(--base-alt);padding:clamp(34px,4vw,52px);display:flex;flex-direction:column;justify-content:space-between;border-top:4px solid var(--accent)}
+  .tm.feat{background:var(--base-dark);color:#fff}
+  .stars{display:flex;gap:5px;margin-bottom:22px;color:var(--accent)}
+  .tm.feat .stars{color:#5b8fc7}
+  .stars svg{width:18px;height:18px}
+  .tm q{font-family:var(--font-display);font-weight:700;font-size:clamp(19px,1.9vw,24px);line-height:1.4;quotes:none;display:block;text-transform:none;letter-spacing:0}
+  .tm .who{margin-top:26px;font-family:var(--font-body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+  .tms-foot{margin-top:40px}
+
+  /* CLOSING CTA · parallax */
+  .cta{position:relative;color:#fff;text-align:center;padding:clamp(110px,15vw,190px) 0;background:#1a1a1a}
+  .cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(11,11,12,.5),rgba(11,11,12,.8)),url('https://images.unsplash.com/photo-1763326922008-c1fd0766e156?w=2100&q=80&auto=format&fit=crop') center/cover fixed;filter:var(--img-filter)}
+  .cta .in{position:relative;z-index:2}
+  .cta h2{font-size:clamp(36px,5.2vw,72px);margin:18px 0 20px;line-height:.98}
+  .cta p{max-width:54ch;margin:0 auto 34px;color:rgba(255,255,255,.9);font-size:16.5px}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* FOOTER */
+  footer{background:var(--base-dark);color:#c7c8cc;font-size:13.5px}
+  .f-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px;padding:84px 0 52px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .f-brand .bn{font-family:var(--font-display);font-weight:900;font-size:23px;color:#fff;line-height:1;text-transform:uppercase}
+  .f-brand .bt{display:block;font-family:var(--font-body);font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:.26em;color:#5b8fc7;margin-top:6px;margin-bottom:18px}
+  footer h4{font-family:var(--font-body);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:#fff;margin-bottom:18px}
+  footer a{color:#aeb0b6;transition:color .25s;line-height:2.1}
+  footer a:hover{color:#fff}
+  footer p{line-height:1.9;color:#9a9ca2}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{width:40px;height:40px;border:1px solid rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;transition:all .25s}
+  .socials a:hover{background:var(--accent);border-color:var(--accent)}
+  .socials svg{width:17px;height:17px}
+  .compliance{background:var(--accent);color:rgba(255,255,255,.92)}
+  .compliance .in{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:22px 0}
+  .compliance .eho{width:30px;height:30px;flex:none}
+  .compliance span{font-size:12px;letter-spacing:.01em;line-height:1.6;flex:1 1 320px;min-width:0}
+  .f-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0;color:#7d7f86;font-size:12px}
+  .f-bot a{color:#7d7f86}
+  .f-bot a:hover{color:#fff}
+
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .stats .grid{grid-template-columns:1fr 1fr}
+    .stat:nth-child(2){border-right:none}
+    .stat{border-bottom:1px solid rgba(255,255,255,.12)}
+    .about .grid,.paths .grid,.tms .grid,.f-top{grid-template-columns:1fr}
+    .comms .grid{grid-template-columns:1fr 1fr}
+    .portrait{max-width:420px;margin:0 auto 38px}
+    .hv-bg,.cta-bg{background-attachment:scroll}
+  }
+  @media(max-width:560px){.comms .grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="01-home.html" class="brand" aria-label="The Russ Taylor Team, home">
+      <span class="bn">The Russ Taylor Team</span>
+      <span class="bt">Taylor Realty Associates</span>
+    </a>
+    <div class="nav-links">
+      <a href="09-featured-listings.html">Properties</a>
+      <a href="03-buyers-guide.html">Buyers</a>
+      <a href="04-sellers-guide.html">Sellers</a>
+      <a href="06-communities.html">Communities</a>
+      <a href="08-about.html">About</a>
+      <a href="10-contact.html" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <span class="rule"></span>
+    <h1>Champaign County Real Estate, Done Right Since 1972</h1>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat marquee">
+        <div class="v">50+ Years</div>
+        <div class="k">Helping Champaign County Families Buy and Sell</div>
+      </div>
+      <div class="stat">
+        <div class="v">1972</div>
+        <div class="k">Family Firm Founded</div>
+      </div>
+      <div class="stat">
+        <div class="v">5</div>
+        <div class="k">REALTOR Designations</div>
+      </div>
+      <div class="stat">
+        <div class="v">2009</div>
+        <div class="k">CCAR Realtor of the Year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="portrait">
+        <div class="frame"></div>
+        <img src="assets/russ.jpg" alt="Russ Taylor, Managing Broker and Owner of The Russ Taylor Team at Taylor Realty Associates">
+      </div>
+      <div>
+        <span class="eyebrow">Meet Russ Taylor</span>
+        <h2>Fifty Years. One Community.</h2>
+        <p>For more than five decades, Russ Taylor has helped families across Champaign County buy and sell their homes. He grew up on a farm, learned the value of hard work and honesty early, and has lived in Mahomet his whole life. A graduate of Mahomet-Seymour High School, Taylor University, and the University of Illinois, Russ built his career on a simple belief: real estate is about people first, not transactions.</p>
+        <p>Russ began with Taylor Realty in 1972. Over the years he and his brother Nick owned and operated several brokerages, and in 2023 they brought it full circle, reestablishing Taylor Realty Associates as an independently owned firm serving the 217 area.</p>
+        <p class="pull">A commitment to relationships that has earned the trust of families who return across multiple generations.</p>
+        <a href="08-about.html" class="btn">More About Russ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paths">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Two Paths</span>
+      <h2>Buying or Selling in the 217?</h2>
+      <p>Whichever side of the table you are on, the work is the same: a clear strategy, hands-on guidance, and real communication from the first call to closing day.</p>
+    </div>
+    <div class="grid">
+      <div class="panel">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1758523671285-9ff3f4e0ff38?w=1300&q=80&auto=format&fit=crop')"></div>
+        <div class="c">
+          <span class="eyebrow">For Buyers</span>
+          <h3>Buying in Champaign County</h3>
+          <p>First home or next home, we guide you from search to closing with five decades of local market knowledge behind you.</p>
+          <a href="03-buyers-guide.html" class="lnk lt">Buyer's Guide <svg viewBox="0 0 20 11" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5.5h17M14 1l4 4.5-4 4.5"/></svg></a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1760387420084-4dfcdaffddf2?w=1300&q=80&auto=format&fit=crop')"></div>
+        <div class="c">
+          <span class="eyebrow">For Sellers</span>
+          <h3>Selling Your Home</h3>
+          <p>We price, prepare, and market your home to reach the right buyers, and keep you informed at every stage, from list to close.</p>
+          <a href="04-sellers-guide.html" class="lnk lt">Seller's Guide <svg viewBox="0 0 20 11" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5.5h17M14 1l4 4.5-4 4.5"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hv">
+  <div class="hv-bg"></div>
+  <div class="wrap in">
+    <span class="eyebrow">Home Value</span>
+    <h2>What Is Your Champaign County Home Worth?</h2>
+    <p>Get a clear, no pressure estimate based on what is really happening in the local market, from someone who has watched it for 50 years.</p>
+    <a href="05-home-valuation.html" class="btn">Request a Home Valuation</a>
+  </div>
+</section>
+
+<section class="idx">
+  <div class="wrap">
+    <div class="shead ctr">
+      <span class="eyebrow">Active Listings</span>
+      <h2>Champaign County Homes For Sale</h2>
+      <p>A live MLS feed from across Mahomet, Champaign, Urbana, and the surrounding 217 area. Save favorites, get instant alerts, and find your home.</p>
+    </div>
+    <div class="zone">
+      <span class="tag">Showcase IDX</span>
+      <div class="zt">Live Listings Render Here</div>
+      <p>The Showcase IDX feed populates current homes for sale straight from the MLS on the published site.</p>
+      <a href="09-featured-listings.html" class="btn">Search All Listings</a>
+    </div>
+  </div>
+</section>
+
+<section class="comms">
+  <div class="wrap">
+    <div class="shead ctr">
+      <span class="eyebrow">Communities We Serve</span>
+      <h2>The 217. All of It.</h2>
+      <p>We live and work across Champaign County, from Lake of the Woods in Mahomet to the campus energy of Champaign-Urbana and the farm towns that surround them.</p>
+    </div>
+    <div class="grid">
+      <a href="22-mahomet.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1766025066607-529c54c1a2b1?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">Lake of the Woods</span><h3>Mahomet</h3></div>
+      </a>
+      <a href="20-champaign.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1636928281807-f5d20fed8dc3?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">University of Illinois</span><h3>Champaign</h3></div>
+      </a>
+      <a href="24-savoy.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1605146769289-440113cc3d00?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">Quiet New Development</span><h3>Savoy</h3></div>
+      </a>
+      <a href="25-urbana.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1742692562645-f682d9d64c43?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">Artsy and Creative</span><h3>Urbana</h3></div>
+      </a>
+      <a href="23-monticello.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1761055494636-737aa5a1a30e?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">Allerton Park</span><h3>Monticello</h3></div>
+      </a>
+      <a href="21-fisher.html" class="comm">
+        <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1780417853318-8c0cdd28fe5d?w=1000&q=80&auto=format&fit=crop')"></div>
+        <div class="c"><span class="meta">Up and Coming</span><h3>Fisher</h3></div>
+      </a>
+    </div>
+    <div class="comms-foot">
+      <a href="06-communities.html" class="btn outline">Explore All Communities</a>
+    </div>
+  </div>
+</section>
+
+<section class="tms">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Client Stories</span>
+      <h2>Trusted Across Generations</h2>
+    </div>
+    <div class="grid">
+      <div class="tm feat">
+        <div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg></div>
+          <q>Russ has been our family's realtor of choice for decades. He and his team are the best the C-U area has to offer. They treat you as a priority and ensure that every part of the home buying and selling process goes as smoothly as it can. I highly recommend him.</q>
+        </div>
+        <div class="who">Bryan James</div>
+      </div>
+      <div class="tm">
+        <div>
+          <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.5 7 .9-5 4.8 1.3 7L12 18l-6.6 3.2L6.7 14l-5-4.8 7-.9z"/></svg></div>
+          <q>Russ is amazing. He is extremely knowledgeable, resourceful, and helpful. No question is a dumb question with Russ. When I decided to sell my house, he was the first and only realtor that I called.</q>
+        </div>
+        <div class="who">Michelle Mayol</div>
+      </div>
+    </div>
+    <div class="tms-foot">
+      <a href="07-testimonials.html" class="lnk">Read All Reviews <svg viewBox="0 0 20 11" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 5.5h17M14 1l4 4.5-4 4.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-bg"></div>
+  <div class="wrap in">
+    <span class="eyebrow">Let's Talk</span>
+    <h2>Real Estate, Done Right.</h2>
+    <p>Whether you are buying your first home or selling one you have loved for years, it starts with a conversation. We would be honored to help.</p>
+    <div class="cta-row">
+      <a href="10-contact.html" class="btn ghost">Start a Conversation</a>
+      <a href="tel:+12173550700" class="btn ghost">Call (217) 355-0700</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <div><span class="bn">The Russ Taylor Team</span><span class="bt">Taylor Realty Associates</span></div>
+        <p>Helping families buy and sell across Champaign County and the 217 area for more than 50 years. Independent, local, and built on relationships.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/TaylorRealtyAssociates" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg></a>
+          <a href="https://www.zillow.com/profile/Russ-Taylor-Team" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 2 9.4v12.6h5.6v-7.5h8.8V22H22V9.4L12 2z"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Explore</h4><a href="03-buyers-guide.html">Buyer's Guide</a><br><a href="04-sellers-guide.html">Seller's Guide</a><br><a href="06-communities.html">Communities</a><br><a href="02-meet-the-team.html">Meet the Team</a><br><a href="08-about.html">About Us</a><br><a href="07-testimonials.html">Testimonials</a><br><a href="05-home-valuation.html">Home Valuation</a></div>
+      <div><h4>Communities</h4><a href="22-mahomet.html">Mahomet</a><br><a href="20-champaign.html">Champaign</a><br><a href="24-savoy.html">Savoy</a><br><a href="25-urbana.html">Urbana</a><br><a href="23-monticello.html">Monticello</a><br><a href="21-fisher.html">Fisher</a></div>
+      <div><h4>Contact</h4><p>116 S Lombard St<br>Mahomet, IL 61853<br><br><a href="tel:+12173550700">(217) 355-0700</a><br><a href="mailto:russ@russtaylor.com">russ@russtaylor.com</a></p></div>
+    </div>
+  </div>
+  <div class="compliance"><div class="wrap in">
+    <svg class="eho" viewBox="0 0 48 48" fill="none" stroke="rgba(255,255,255,.92)" stroke-width="2"><path d="M24 7l16 12v3H8v-3L24 7z"/><path d="M12 24v14h24V24"/><path d="M20 38v-7h8v7"/><path d="M22 16h4M21 19h6"/></svg>
+    <span>Equal Housing Opportunity · REALTOR&reg; · Russ Taylor, Managing Broker / Owner · Taylor Realty Associates · Champaign County, Illinois</span>
+  </div></div>
+  <div class="wrap"><div class="f-bot">
+    <span>&copy; 2026 The Russ Taylor Team. All rights reserved.</span>
+    <span><a href="12-privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="13-terms.html">Terms of Use</a> &nbsp;·&nbsp; Site by AgenticPress</span>
+  </div></div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>60)};
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+</script>
+</body>
+</html>

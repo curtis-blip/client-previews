@@ -1,0 +1,116 @@
+/* ============================================================
+   Optimus Prime — SKINS
+   One token contract, three skins. A skin = override the tokens
+   (+ a few compositional rules that are not pure tokens).
+   Generated from design-templates/<skin>/global-design.json.
+   Blocks consume ONLY these tokens for skin-defining properties.
+   ============================================================ */
+
+/* ---------- ROLE-TOKEN CONTRACT (editorial-quiet defaults = today's look) ---------- */
+:root{
+  /* color roles */
+  --base:#FFFFFF; --base-alt:#F5F5F5; --base-dark:#0A0A0A; --base-black:#000000;
+  --ink:#1A1A1A; --ink-soft:#5A5A5A; --ink-faint:#8A8A8A;
+  --line:#E5E5E5; --line-strong:#1A1A1A;
+  --accent:#1A3A5C; --accent-2:#1A3A5C; --accent-3:#1A3A5C;
+  --on-dark:#FFFFFF;
+  --overlay-dark-1:rgba(10,12,16,.30); --overlay-dark-2:rgba(10,12,16,.55); --overlay-dark-3:rgba(10,12,16,.80);
+  --overlay-light-1:rgba(255,255,255,.06); --overlay-light-2:rgba(255,255,255,.30); --overlay-light-3:rgba(255,255,255,.72);
+
+  /* type roles */
+  --font-display:'Inter',sans-serif; --font-body:'Inter',sans-serif;
+  --weight-display:300; --weight-heading:400; --weight-eyebrow:500; --weight-button:500;
+  --case-display:uppercase; --case-eyebrow:uppercase;
+  --track-display:0.02em; --track-eyebrow:0.22em; --track-button:0.16em; --track-body:0;
+  --eyebrow-pad:0; --eyebrow-bg:transparent;
+
+  /* geometry + treatment */
+  --radius:0px; --img-filter:none; --img-hover-scale:1.03;
+
+  /* motion */
+  --ease:cubic-bezier(.2,.8,.2,1); --dur:400ms; --dur-slow:1200ms;
+
+  /* spacing */
+  --space-xs:8px; --space-sm:16px; --space-md:24px; --space-lg:40px;
+  --space-xl:64px; --space-2xl:96px; --space-3xl:144px;
+  --section-pad:clamp(80px,11vw,150px);
+
+  /* layout (existing) */
+  --max-width:1320px; --container-px:36px;
+
+  /* LEGACY ALIASES — keep existing block CSS working unchanged */
+  --bg:var(--base); --bg-alt:var(--base-alt); --bg-dark:var(--base-dark);
+  --text-dark:var(--ink); --text-muted:var(--ink-soft); --text-light:var(--ink-faint);
+  --border:var(--line); --white:var(--on-dark); --black:var(--base-black);
+  --font-heading:var(--font-display);
+}
+
+/* ============================================================
+   SKIN: heritage  (warm, traditional, serif)
+   ============================================================ */
+html.skin-heritage{
+  --base:#f4eee2; --base-alt:#ebe1d0; --base-dark:#241d18; --base-black:#241d18;
+  --ink:#272018; --ink-soft:#6d6353; --ink-faint:#9a8f7d;
+  --line:#dccfb9; --line-strong:#7a1f2b;
+  --accent:#203a52; --accent-2:#7a1f2b; --accent-3:#c79a4e;
+  --on-dark:#f4eee2;
+  --overlay-dark-1:rgba(33,20,14,.40); --overlay-dark-2:rgba(33,20,14,.62); --overlay-dark-3:rgba(25,14,10,.84);
+  --font-display:'Playfair Display',Georgia,serif; --font-body:'Source Serif 4',Georgia,serif;
+  --weight-display:600; --weight-heading:600; --weight-eyebrow:600;
+  --case-display:none; --case-eyebrow:uppercase;
+  --track-display:0; --track-eyebrow:0.18em;
+  --radius:5px; --img-filter:sepia(.18) saturate(.9) contrast(.97);
+}
+/* heritage compositional signatures (not pure tokens) */
+html.skin-heritage .eyebrow,html.skin-heritage [class*="eyebrow"]{color:var(--accent-2)}
+html.skin-heritage .nav__brand{position:relative;padding-left:54px}
+html.skin-heritage .nav__brand::before{content:"HP";position:absolute;left:0;top:50%;transform:translateY(-50%);width:42px;height:42px;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:15px}
+
+/* ============================================================
+   SKIN: bold-modern  (high-contrast, heavy, electric)
+   ============================================================ */
+html.skin-bold-modern{
+  --base:#FFFFFF; --base-alt:#F2F2F0; --base-dark:#0B0B0C; --base-black:#0B0B0C;
+  --ink:#0B0B0C; --ink-soft:#46474B; --ink-faint:#8A8B90;
+  --line:#E2E2E0; --line-strong:#0B0B0C;
+  --accent:#1E4DFF; --accent-2:#1E4DFF; --accent-3:#0B0B0C;
+  --on-dark:#FFFFFF;
+  --overlay-dark-1:rgba(11,11,12,.34); --overlay-dark-2:rgba(11,11,12,.55); --overlay-dark-3:rgba(11,11,12,.78);
+  --font-display:'Archivo',sans-serif; --font-body:'Inter',sans-serif;
+  --weight-display:800; --weight-heading:700; --weight-eyebrow:700; --weight-button:700;
+  --case-display:uppercase; --case-eyebrow:uppercase;
+  --track-display:-0.02em; --track-eyebrow:0.14em; --track-button:0.10em;
+  --eyebrow-pad:6px 12px; --eyebrow-bg:var(--accent);
+  --radius:0px; --img-filter:contrast(1.04) saturate(1.06); --dur:200ms;
+}
+/* bold-modern compositional signatures: eyebrows become solid accent chips */
+html.skin-bold-modern .eyebrow,html.skin-bold-modern [class*="eyebrow"]{
+  background:var(--eyebrow-bg);color:var(--on-dark)!important;padding:var(--eyebrow-pad);
+  border:none!important;display:inline-block}
+
+/* ============================================================
+   SKIN: tony  (client experiment — Southwest Colorado outdoor editorial)
+   warm off-white base, slate-navy darks, evergreen accent, burgundy compliance,
+   Cormorant Garamond Title-Case display over Inter body.
+   ============================================================ */
+html.skin-tony{
+  --base:#f7f4ef; --base-alt:#efe8dd; --base-dark:#2e3a47; --base-black:#243039;
+  --ink:#1c2329; --ink-soft:#5a6168; --ink-faint:#8b9298; --line:#e2dccf; --line-strong:#2e3a47;
+  --accent:#2f5d50; --accent-2:#2f5d50; --accent-3:#7a1f2b; --on-dark:#f7f4ef;
+  --overlay-dark-1:rgba(16,22,24,.34); --overlay-dark-2:rgba(16,22,24,.55); --overlay-dark-3:rgba(16,22,24,.82);
+  --font-display:'Cormorant Garamond',Georgia,serif; --font-body:'Inter',sans-serif;
+  --weight-display:600; --weight-heading:600; --weight-eyebrow:500; --weight-button:500;
+  --case-display:none; --case-eyebrow:uppercase;
+  --track-display:0.005em; --track-eyebrow:0.24em;
+  --radius:0px; --img-filter:none;
+}
+
+/* ============================================================
+   SKIN SWITCHER (demo chrome)
+   ============================================================ */
+#skin-switch{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:2147483600;display:flex;align-items:center;gap:4px;background:#11161c;color:#cdd6df;padding:6px;border-radius:999px;box-shadow:0 14px 40px -14px rgba(0,0,0,.6);font-family:'Inter',sans-serif}
+#skin-switch span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7e8a96;padding:0 10px 0 14px}
+#skin-switch button{border:none;background:none;color:#cdd6df;font:600 12px/1 'Inter',sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;letter-spacing:.02em;white-space:nowrap}
+#skin-switch button.active{background:#fff;color:#11161c}
+.lab-tag{position:fixed;top:0;left:0;right:0;z-index:2147483500;background:#11161c;color:#cdd6df;font:500 11px/1 'Inter',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px}
+.lab-tag + *{padding-top:0}
