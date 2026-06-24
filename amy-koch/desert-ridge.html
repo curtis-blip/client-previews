@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desert Ridge Homes for Sale and Community Guide | Amy Koch, The Brokery</title>
+<meta name="description" content="A local guide to Desert Ridge, north Phoenix's premier master-planned community. Explore neighborhoods, lifestyle, schools, and live MLS listings with Amy Koch of The Brokery.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   AMY KOCH - BASE TEMPLATE
+   Design vibe: The Brokery luxury aesthetic
+   Teal accent (--gold = teal), dark/moody, generous whitespace
+   ============================================ */
+
+/* --- CSS RESET & VARIABLES --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* Brand Colors */
+  --gold: #4bb9d4;
+  --gold-dark: #3a9ab8;
+  --gold-light: #7dd3e8;
+  --warm-accent: #d4a04b;
+  --warm-accent-dark: #b8882f;
+  --teal: #4bb9d4;
+  --teal-dark: #3a9ab8;
+  --navy: #0f1f2e;
+  --navy-light: #162536;
+  --charcoal: #1a1a1a;
+  --dark: #111111;
+  --white: #ffffff;
+  --off-white: #f7fafb;
+  --warm-gray: #eef5f7;
+  --text-primary: #1a2a35;
+  --text-secondary: #6b6b6b;
+  --text-light: #999999;
+  --border-light: #e8e6e1;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(80px, 10vw, 120px);
+  --container-width: 1200px;
+  --container-narrow: 800px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+.container { width: 90%; max-width: var(--container-width); margin: 0 auto; }
+.container-narrow { width: 90%; max-width: var(--container-narrow); margin: 0 auto; }
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.2; color: var(--charcoal); }
+h1 { font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.02em; }
+h2 { font-size: clamp(28px, 3.5vw, 46px); letter-spacing: -0.01em; }
+h3 { font-size: clamp(22px, 2.5vw, 30px); }
+h4 { font-size: clamp(18px, 1.5vw, 22px); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrow-center {
+  justify-content: center;
+}
+.eyebrow-center::before {
+  display: none;
+}
+.eyebrow-center::after {
+  display: none;
+}
+
+.section-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+/* Light section headings */
+.light-section h2 { color: var(--charcoal); }
+.light-section .eyebrow { color: var(--gold); }
+.light-section .eyebrow::before { background: var(--gold); }
+
+/* Dark section headings */
+.dark-section { background: var(--navy); }
+.dark-section h2, .dark-section h3, .dark-section h4 { color: var(--white); }
+.dark-section p { color: rgba(255,255,255,0.75); }
+.dark-section .eyebrow { color: var(--gold); }
+.dark-section .eyebrow::before { background: var(--gold); }
+
+/* Alt section */
+.alt-section { background: var(--off-white); }
+
+/* Warm tinted section */
+.warm-section { background: #faf8f3; }
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: all 0.4s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: var(--gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(75, 185, 212, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-white {
+  background: var(--white);
+  color: var(--charcoal);
+}
+.btn-white:hover {
+  background: var(--off-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.btn-dark {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-dark:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+}
+
+/* Glass-effect outline button (hero on dark imagery) */
+.btn-glass {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(8px);
+}
+.btn-glass:hover {
+  background: var(--white);
+  color: var(--charcoal);
+  transform: translateY(-2px);
+}
+
+/* --- HEADER (Transparent + Sticky) --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-out);
+}
+.site-header.scrolled {
+  background: rgba(12, 26, 42, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-mark {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.logo-divider {
+  width: 1px;
+  height: 34px;
+  background: rgba(255,255,255,0.25);
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.logo-brokery {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.main-nav { display: flex; align-items: center; gap: 32px; }
+.main-nav a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+  position: relative;
+}
+.main-nav a:hover { color: var(--gold); }
+.main-nav a.active { color: var(--gold); }
+.nav-cta {
+  padding: 12px 28px;
+  background: var(--gold);
+  color: var(--white) !important;
+  border-radius: 2px;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover {
+  background: var(--gold-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile Nav */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.mobile-toggle span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+.mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+.mobile-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+/* --- SCROLL PROGRESS BAR --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  z-index: 1001;
+  transition: width 0.1s linear;
+}
+
+/* --- HERO --- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(12,26,42,0.85) 0%, rgba(12,26,42,0.5) 50%, rgba(12,26,42,0.3) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 0 100px;
+}
+.hero h1 { color: var(--white); margin-bottom: 20px; }
+.hero p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 560px; margin-bottom: 36px; }
+.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow::before { background: var(--gold); }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* --- STATS BAR (overlapping hero) --- */
+.stats-bar {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px;
+  margin-bottom: 0;
+}
+.stats-bar-inner {
+  background: var(--navy);
+  border-radius: 4px;
+  padding: 48px 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 52px);
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
+/* --- CARDS --- */
+.card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.card-img {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+.card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.card-body { padding: 32px; }
+.card-body h3 { margin-bottom: 12px; font-size: 22px; }
+.card-body p { color: var(--text-secondary); font-size: 15px; }
+
+/* Dark card variant */
+.card-dark {
+  background: var(--navy-light);
+}
+.card-dark h3, .card-dark h4 { color: var(--white); }
+.card-dark p { color: rgba(255,255,255,0.7); }
+
+/* --- SERVICE GRID --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.service-card {
+  padding: 40px 32px;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  transition: all 0.5s var(--ease-out);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--border-light);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 24px;
+  color: var(--gold);
+}
+.service-icon svg { width: 100%; height: 100%; }
+.service-card h4 { margin-bottom: 12px; }
+.service-card p { font-size: 14px; color: var(--text-secondary); }
+
+/* --- TESTIMONIALS --- */
+.testimonial-card {
+  background: var(--white);
+  padding: 48px;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+}
+.testimonial-quote-icon {
+  font-family: var(--font-display);
+  font-size: 80px;
+  color: var(--warm-accent);
+  opacity: 0.25;
+  line-height: 1;
+  position: absolute;
+  top: 20px;
+  left: 32px;
+}
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  color: var(--warm-accent);
+}
+.testimonial-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: 24px;
+  position: relative;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--gold);
+}
+.testimonial-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--charcoal);
+}
+.testimonial-role {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* --- CTA BANNER --- */
+.cta-banner {
+  background: linear-gradient(rgba(12,26,42,0.85), rgba(12,26,42,0.85)), url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1600&h=600&fit=crop&q=75') center/cover no-repeat;
+  padding: var(--section-padding) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(75,185,212,0.08) 0%, transparent 70%);
+}
+.cta-banner h2 { color: var(--white); margin-bottom: 16px; }
+.cta-banner p { color: rgba(255,255,255,0.7); margin-bottom: 36px; font-size: 18px; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+/* --- FOOTER --- */
+.site-footer {
+  background: var(--dark);
+  padding: 80px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .footer-logo-img { width: 220px; max-width: 100%; margin-bottom: 22px; }
+.footer-brand p { color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.7; max-width: 300px; }
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+}
+.footer-contact-item svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+.footer-bottom {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  text-align: center;
+}
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+}
+.footer-disclaimer {
+  font-size: 12px;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.7;
+  max-width: 900px;
+}
+.footer-social { display: flex; gap: 16px; justify-content: center; }
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-social svg { width: 14px; height: 14px; }
+
+/* --- SCROLL ANIMATIONS --- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- COUNTER ANIMATION --- */
+.counter { display: inline-block; }
+
+/* --- SECTION PADDING UTILITY --- */
+section { padding: var(--section-padding) 0; }
+
+.section-head { max-width: 720px; margin-bottom: 56px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head.center .eyebrow { justify-content: center; }
+.section-head.center .eyebrow::before { display: none; }
+.section-head h2 { margin-bottom: 20px; }
+
+/* =============================================
+   COMMUNITIES PAGE - SHARED STYLES
+   ============================================= */
+
+/* Hero - shorter for interior page */
+.hero-interior {
+  min-height: 78vh;
+}
+.hero-interior .hero-content {
+  padding: 180px 0 90px;
+}
+
+/* --- NEIGHBORHOOD CARD GRID (opens modals) --- */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.community-card {
+  position: relative;
+  height: 340px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.community-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.community-card:hover .community-card-bg {
+  transform: scale(1.08);
+}
+
+.community-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.05) 100%);
+  transition: background 0.4s ease;
+}
+
+.community-card:hover .community-card-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.02) 100%);
+}
+
+.community-card-tag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(75, 185, 212, 0.9);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 6px 13px;
+  border-radius: 2px;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+}
+
+.community-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px;
+  z-index: 2;
+}
+
+.community-card-name {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2vw, 26px);
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.community-card:hover .community-card-name {
+  color: var(--gold-light);
+}
+
+.community-card-teaser {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 4px;
+}
+
+.community-card-explore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-out);
+  margin-top: 10px;
+}
+
+.community-card:hover .community-card-explore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.community-card-explore svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.3s ease;
+}
+
+.community-card:hover .community-card-explore svg {
+  transform: translateX(4px);
+}
+
+/* --- MODAL SYSTEM --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  pointer-events: none;
+  transition: background 0.4s ease, visibility 0s 0.4s;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 40px 20px;
+}
+
+.modal-overlay.active {
+  background: rgba(0, 0, 0, 0.85);
+  visibility: visible;
+  pointer-events: all;
+  transition: background 0.4s ease, visibility 0s 0s;
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 900px;
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out);
+  margin: auto;
+}
+
+.modal-overlay.active .modal-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: var(--gold);
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+  color: var(--white);
+}
+
+.modal-hero {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+}
+
+.modal-body {
+  padding: 48px;
+}
+
+.modal-body h2 {
+  font-size: clamp(28px, 3vw, 38px);
+  margin-bottom: 8px;
+}
+
+.modal-builder {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+/* Modal Description */
+.modal-description p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.modal-description p:last-child {
+  margin-bottom: 0;
+}
+
+/* Fact chips */
+.modal-chips {
+  margin-top: 32px;
+}
+
+.modal-chips-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 14px;
+}
+
+.modal-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-tag {
+  padding: 8px 18px;
+  background: var(--off-white);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Modal CTA */
+.modal-cta {
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.modal-cta .btn {
+  font-size: 12px;
+}
+
+/* --- AREA OVERVIEW --- */
+.area-overview-body {
+  max-width: 760px;
+}
+
+.area-overview-body p {
+  font-size: 17px;
+  line-height: 1.85;
+  margin-bottom: 16px;
+}
+
+.area-overview-body p:last-of-type {
+  margin-bottom: 28px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.fact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: var(--warm-gray);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+.fact-chip svg { width: 15px; height: 15px; color: var(--gold); }
+.dark-section .fact-chip {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+}
+
+/* =============================================
+   LISTING CARDS (representative IDX grid)
+   ============================================= */
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.listing-card {
+  background: var(--white);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  transition: all 0.5s var(--ease-out);
+}
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+}
+.listing-img {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.listing-ribbon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: var(--gold);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 2px;
+}
+.listing-fav {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.listing-fav svg { width: 16px; height: 16px; color: var(--text-secondary); }
+.listing-body { padding: 24px 26px 28px; }
+.listing-price {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 12px;
+}
+.listing-specs {
+  display: flex;
+  gap: 18px;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-light);
+}
+.listing-spec {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.listing-spec svg { width: 16px; height: 16px; color: var(--gold); }
+.listing-address {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.listing-sub {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.idx-caption {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-light);
+  max-width: 760px;
+}
+
+/* =============================================
+   LIFESTYLE ALTERNATING ROWS
+   ============================================= */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 64px;
+  margin-bottom: 96px;
+}
+.feature-row:last-child { margin-bottom: 0; }
+.feature-row.reverse .feature-media { order: 2; }
+.feature-media {
+  height: 420px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+}
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.feature-icon svg { width: 100%; height: 100%; }
+.feature-text h3 { margin-bottom: 18px; }
+.feature-text p { color: var(--text-secondary); font-size: 16px; line-height: 1.8; }
+
+/* =============================================
+   SCHOOLS
+   ============================================= */
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.school-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 30px 22px;
+  text-align: center;
+  transition: all 0.4s var(--ease-out);
+}
+.school-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+  border-color: var(--gold);
+}
+.school-icon {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 16px;
+  color: var(--gold);
+}
+.school-icon svg { width: 100%; height: 100%; }
+.school-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--charcoal);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.school-level {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.school-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  background: var(--off-white);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 760px;
+}
+.school-note svg { width: 22px; height: 22px; color: var(--warm-accent); flex-shrink: 0; }
+
+/* =============================================
+   BIO (Meet Amy) - offset frame
+   ============================================= */
+.bio-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 72px;
+  align-items: center;
+}
+.bio-photo-wrap {
+  position: relative;
+  max-width: 420px;
+}
+.bio-photo-wrap::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  z-index: 0;
+}
+.bio-photo-wrap img {
+  position: relative;
+  z-index: 1;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+.bio-text h2 { margin-bottom: 24px; }
+.bio-text p { color: var(--text-secondary); font-size: 16px; line-height: 1.85; margin-bottom: 28px; }
+.bio-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.bio-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+.bio-meta-item svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; }
+.bio-meta-item .bio-license {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* =============================================
+   DUAL CTA (closing)
+   ============================================= */
+.dual-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.dual-cta-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 52px 44px;
+  text-align: center;
+}
+.dual-cta-card h3 { color: var(--white); margin-bottom: 14px; }
+.dual-cta-card p { color: rgba(255,255,255,0.7); font-size: 15px; margin-bottom: 28px; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .community-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 36px 40px; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .listing-grid { grid-template-columns: repeat(2, 1fr); }
+  .schools-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .feature-row { gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .main-nav { display: none; }
+  .mobile-toggle { display: flex; }
+
+  .main-nav.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--navy);
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    z-index: 999;
+  }
+  .main-nav.mobile-open a {
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .hero { min-height: 90vh; }
+  .hero-content { padding: 130px 0 70px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+  .hero-interior { min-height: 70vh; }
+
+  .stats-bar { margin-top: -40px; }
+  .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 32px 24px; gap: 24px; }
+  .stat-number { font-size: 36px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+  .listing-grid { grid-template-columns: 1fr; }
+  .schools-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .community-grid { grid-template-columns: 1fr; }
+  .community-card { height: 300px; }
+
+  .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 28px; margin-bottom: 56px; }
+  .feature-row.reverse .feature-media { order: 0; }
+  .feature-media { height: 280px; }
+
+  .bio-layout { grid-template-columns: 1fr; gap: 48px; }
+  .bio-photo-wrap { max-width: 340px; margin: 0 auto; }
+
+  .dual-cta { grid-template-columns: 1fr; }
+
+  .modal-overlay { padding: 20px 12px; }
+  .modal-body { padding: 32px 24px; }
+  .modal-cta { flex-direction: column; align-items: stretch; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 480px) {
+  .schools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="https://amykoch.com/" class="logo">
+      <div class="logo-mark"><img src="amy kock AK Transparent.png" alt="Amy Koch"></div>
+      <div class="logo-text">
+        <span class="logo-name">Amy Koch</span>
+        <span class="logo-brokery">Real Estate</span>
+      </div>
+      <div class="logo-divider"></div>
+      <div class="logo-text">
+        <span class="logo-name" style="font-size:15px;">The Brokery</span>
+        <span class="logo-brokery">Local Real Estate Brokers</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="https://amykoch.com/search/">Search</a>
+      <a href="https://amykoch.com/buy/">Buy</a>
+      <a href="https://amykoch.com/sell/">Sell</a>
+      <a href="https://amykoch.com/home-value/">Home Value</a>
+      <a href="https://amykoch.com/communities/">Communities</a>
+      <a href="https://amykoch.com/about/">About</a>
+      <a href="https://amykoch.com/contact/" class="nav-cta">Get Started</a>
+    </nav>
+    <div class="mobile-toggle" id="mobileToggle" onclick="document.getElementById('mainNav').classList.toggle('mobile-open'); this.classList.toggle('active');">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================================================== -->
+<!-- SECTION 1: HERO (parallax Desert Ridge) -->
+<!-- ===================================================== -->
+<section class="hero hero-interior">
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=1600&h=1000&fit=crop&q=75');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow fade-up">Desert Ridge, Phoenix</div>
+    <h1 class="fade-up">Desert Ridge Homes for Sale and Community Guide</h1>
+    <p class="fade-up">A local guide to north Phoenix's premier master-planned community, its neighborhoods, lifestyle, and live listings, from Amy Koch of The Brokery.</p>
+    <div class="hero-actions fade-up">
+      <a href="#listings" class="btn btn-primary">Search Desert Ridge Homes</a>
+      <a href="https://amykoch.com/home-value/" class="btn btn-glass">What's My Home Worth</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 3: STATS BAR (overlapping hero) -->
+<!-- ===================================================== -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-bar-inner">
+      <div class="stat-item">
+        <div class="stat-number"><span class="counter" data-target="5700">0</span></div>
+        <div class="stat-label">Acres</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number"><span class="counter" data-target="50000" data-suffix="+">0</span></div>
+        <div class="stat-label">Residents</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number"><span class="counter" data-target="8">0</span></div>
+        <div class="stat-label">Neighborhoods</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" style="font-size:clamp(20px,2.2vw,26px); line-height:1.25;">Paradise Valley<br>Unified</div>
+        <div class="stat-label">School District</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- SECTION 4: ABOUT DESERT RIDGE -->
+<!-- ===================================================== -->
+<section class="light-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow fade-up">About the Community</div>
+      <h2 class="fade-up">North Phoenix Living, Master-Planned</h2>
+    </div>
+    <div class="area-overview-body fade-up">
+      <p>Desert Ridge is a 5,700-acre master-planned community in north Phoenix, just off the Loop 101 and Tatum Boulevard. Home to more than 50,000 residents, it blends resort living, regional shopping and dining, championship golf, and major employment campuses in one of the Valley's most sought-after locations. National homebuilders including Taylor Morrison, Toll Brothers, and Pulte have shaped its neighborhoods, from gated single-family enclaves to lock-and-leave condominiums. Desert Ridge sits within the highly rated Paradise Valley Unified School District.</p>
+      <div class="chip-row">
+        <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>5,700 acres</span>
+        <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>50,000+ residents</span>
+        <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 19l4-9 4 4 4-8 4 6"/></svg>Loop 101 and Tatum</span>
+        <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg>Paradise Valley Unified School District</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 5: HOMES FOR SALE (live IDX slot / representative grid) -->
+<!-- ===================================================== -->
+<section class="alt-section" id="listings">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow fade-up">Homes for Sale</div>
+      <h2 class="fade-up">Live Listings in Desert Ridge</h2>
+      <p class="section-intro fade-up" style="margin:0 auto;">Real-time MLS listings across Desert Ridge, ZIP 85050 and 85054, updated direct from the Arizona Regional MLS.</p>
+    </div>
+
+    <!-- LIVE: [showcaseidx_hotsheet name="Card - Desert Ridge AZ"] -->
+    <!-- The grid below is a static, representative preview of Amy's IDX listing skin.
+         In production this block is replaced by the Showcase IDX hotsheet shortcode above. -->
+    <div class="listing-grid">
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-ribbon">New Listing</span>
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$729,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>4 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>3 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>2,640 sqft</span>
+          </div>
+          <div class="listing-address">21420 N 39th Place</div>
+          <div class="listing-sub">Aviano at Desert Ridge</div>
+        </div>
+      </div>
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$1,150,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>5 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>4.5 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>4,180 sqft</span>
+          </div>
+          <div class="listing-address">3852 E Robin Lane</div>
+          <div class="listing-sub">Fireside at Desert Ridge</div>
+        </div>
+      </div>
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-ribbon">Open House</span>
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$565,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>3 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>2 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>1,980 sqft</span>
+          </div>
+          <div class="listing-address">5450 E High Street, Unit 4007</div>
+          <div class="listing-sub">Toscana at Desert Ridge</div>
+        </div>
+      </div>
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1576941089067-2de3c901e126?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$895,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>4 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>3 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>3,210 sqft</span>
+          </div>
+          <div class="listing-address">22014 N 36th Street</div>
+          <div class="listing-sub">Sanctuary at Desert Ridge</div>
+        </div>
+      </div>
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$639,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>3 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>2.5 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>2,310 sqft</span>
+          </div>
+          <div class="listing-address">4521 E Jojoba Road</div>
+          <div class="listing-sub">Stonecrest at Desert Ridge</div>
+        </div>
+      </div>
+
+      <div class="listing-card fade-up">
+        <div class="listing-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop&q=75');">
+          <span class="listing-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg></span>
+        </div>
+        <div class="listing-body">
+          <div class="listing-price">$1,425,000</div>
+          <div class="listing-specs">
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h8a2 2 0 012 2v2"/></svg>5 bd</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12V5a2 2 0 012-2 2 2 0 012 2M4 12h16a1 1 0 011 1v3a4 4 0 01-4 4H7a4 4 0 01-4-4v-3a1 1 0 011-1zM6 20v2M18 20v2"/></svg>4 ba</span>
+            <span class="listing-spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>4,560 sqft</span>
+          </div>
+          <div class="listing-address">12780 E Cibola Road</div>
+          <div class="listing-sub">Wildfire at Desert Ridge</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="idx-caption fade-up">These are representative listings shown for design preview only. On the live page this section is a Showcase IDX feed that updates in real time from the Arizona Regional MLS.</p>
+
+    <div style="text-align:center; margin-top:44px;">
+      <a href="https://amykochstg.wpenginepowered.com/home-search/shared_search/b352f0991d" class="btn btn-primary fade-up">View All Desert Ridge Listings</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 6: NEIGHBORHOODS (8 cards, each opens a modal) -->
+<!-- ===================================================== -->
+<section class="light-section">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow fade-up">Neighborhoods</div>
+      <h2 class="fade-up">Eight Communities Within Desert Ridge</h2>
+      <p class="section-intro fade-up" style="margin:0 auto;">From gated single-family enclaves to lock-and-leave luxury condominiums. Select any neighborhood to explore its builder, layout, and amenities.</p>
+    </div>
+    <div class="community-grid">
+
+      <!-- Aviano -->
+      <div class="community-card fade-up" data-community="aviano">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Toll Brothers</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Aviano</div>
+          <div class="community-card-teaser">Luxury townhomes and gated single-family homes.</div>
+          <div class="community-card-explore">Explore Aviano
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fireside -->
+      <div class="community-card fade-up" data-community="fireside">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Pulte / Del Webb</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Fireside</div>
+          <div class="community-card-teaser">Guard-gated, family-focused, with a private community center.</div>
+          <div class="community-card-explore">Explore Fireside
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sanctuary -->
+      <div class="community-card fade-up" data-community="sanctuary">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Taylor Morrison</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Sanctuary</div>
+          <div class="community-card-teaser">Gated homes backing to protected Sonoran desert.</div>
+          <div class="community-card-explore">Explore Sanctuary
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toscana -->
+      <div class="community-card fade-up" data-community="toscana">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Luxury Condos</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Toscana</div>
+          <div class="community-card-teaser">Resort-style condominiums, the lock-and-leave flagship.</div>
+          <div class="community-card-explore">Explore Toscana
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bella Monte -->
+      <div class="community-card fade-up" data-community="bella-monte">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1512699355324-f07e3106dae5?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Condominiums</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Bella Monte</div>
+          <div class="community-card-teaser">Gated, low-maintenance, move-in-ready luxury condos.</div>
+          <div class="community-card-explore">Explore Bella Monte
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wildfire -->
+      <div class="community-card fade-up" data-community="wildfire">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Golf</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Wildfire</div>
+          <div class="community-card-teaser">Golf-course homes at the JW Marriott resort.</div>
+          <div class="community-card-explore">Explore Wildfire
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stonecrest -->
+      <div class="community-card fade-up" data-community="stonecrest">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Established</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Stonecrest</div>
+          <div class="community-card-teaser">Central, established homes, a short walk to the Marketplace.</div>
+          <div class="community-card-explore">Explore Stonecrest
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sierra Pass -->
+      <div class="community-card fade-up" data-community="sierra-pass">
+        <div class="community-card-bg" style="background-image: url('https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&h=600&fit=crop&q=75');"></div>
+        <div class="community-card-overlay"></div>
+        <div class="community-card-tag">Single-Family</div>
+        <div class="community-card-content">
+          <div class="community-card-name">Sierra Pass</div>
+          <div class="community-card-teaser">An intimate enclave in the heart of Desert Ridge.</div>
+          <div class="community-card-explore">Explore Sierra Pass
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MODAL OVERLAY (single container, content swapped via JS) -->
+<div class="modal-overlay" id="communityModal">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-hero" id="modalHero"></div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-builder" id="modalBuilder"></div>
+      <div class="modal-description" id="modalDesc"></div>
+      <div class="modal-chips">
+        <div class="modal-chips-label">Key Facts</div>
+        <div class="modal-tags" id="modalTags"></div>
+      </div>
+      <!-- TBD: per-subdivision Showcase saved search; using Desert Ridge area search as interim -->
+      <div class="modal-cta">
+        <a href="#" class="btn btn-primary" id="modalCtaBtn">View Homes for Sale</a>
+        <a href="https://amykoch.com/contact/" class="btn btn-outline" id="modalContactBtn">Contact Amy</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================== -->
+<!-- SECTION 7: LIFESTYLE & AMENITIES (alternating rows) -->
+<!-- ===================================================== -->
+<section class="alt-section">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow fade-up">Lifestyle &amp; Amenities</div>
+      <h2 class="fade-up">Resort Living at Your Doorstep</h2>
+    </div>
+
+    <!-- Desert Ridge Marketplace -->
+    <div class="feature-row">
+      <div class="feature-media fade-left" style="background-image:url('https://images.unsplash.com/photo-1481437156560-3205f6a55735?w=900&h=700&fit=crop&q=75');"></div>
+      <div class="feature-text fade-right">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg></div>
+        <h3>Desert Ridge Marketplace</h3>
+        <p>An open-air, super-regional shopping and dining center with national anchors, more than 25 restaurants and eateries, an AMC theater, Dave and Buster's, and seasonal splash pads. It is the social heart of the community, just minutes from every neighborhood.</p>
+      </div>
+    </div>
+
+    <!-- JW Marriott Resort & Wildfire Golf -->
+    <div class="feature-row reverse">
+      <div class="feature-media fade-right" style="background-image:url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=900&h=700&fit=crop&q=75');"></div>
+      <div class="feature-text fade-left">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 18V5l7-2v6M12 9l7-2"/><circle cx="9" cy="18" r="3"/></svg></div>
+        <h3>JW Marriott Resort and Wildfire Golf</h3>
+        <p>A AAA Four Diamond resort with more than 950 rooms across 316 acres, home to the Wildfire Golf Club and its two 18-hole championship courses designed by Arnold Palmer and Nick Faldo. Dining, spa, and fitness are open to residents and guests alike.</p>
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="feature-row">
+      <div class="feature-media fade-left" style="background-image:url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=900&h=700&fit=crop&q=75');"></div>
+      <div class="feature-text fade-right">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Location</h3>
+        <p>Direct access to the Loop 101, regional employment campuses, and minutes to Scottsdale and Paradise Valley. Desert Ridge puts work, recreation, and the wider Valley all within easy reach, which is a large part of why it stays in such high demand.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 8: SCHOOLS -->
+<!-- ===================================================== -->
+<section class="light-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow fade-up">Schools</div>
+      <h2 class="fade-up">Paradise Valley Unified School District</h2>
+      <p class="section-intro fade-up">Desert Ridge students are served by the highly rated Paradise Valley Unified School District, with several campuses inside or adjacent to the community.</p>
+    </div>
+
+    <div class="schools-grid">
+      <div class="school-card fade-up">
+        <div class="school-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg></div>
+        <div class="school-name">Desert Trails Elementary</div>
+        <div class="school-level">Elementary</div>
+      </div>
+      <div class="school-card fade-up">
+        <div class="school-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg></div>
+        <div class="school-name">Wildfire Elementary</div>
+        <div class="school-level">Elementary</div>
+      </div>
+      <div class="school-card fade-up">
+        <div class="school-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg></div>
+        <div class="school-name">Fireside Elementary</div>
+        <div class="school-level">Elementary</div>
+      </div>
+      <div class="school-card fade-up">
+        <div class="school-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
+        <div class="school-name">Explorer Middle School</div>
+        <div class="school-level">Middle School</div>
+      </div>
+      <div class="school-card fade-up">
+        <div class="school-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div>
+        <div class="school-name">Pinnacle High School</div>
+        <div class="school-level">High School</div>
+      </div>
+    </div>
+
+    <div class="school-note fade-up">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+      <span>Pinnacle High School is named one of Newsweek's 250 Best Public High Schools in America.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 9: TESTIMONIALS (placeholder) -->
+<!-- ===================================================== -->
+<!-- PLACEHOLDER testimonials: swap for Amy's real reviews -->
+<section class="dark-section">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow fade-up" style="color:var(--warm-accent);">Client Reviews</div>
+      <h2 class="fade-up">What Clients Say</h2>
+    </div>
+    <div class="service-grid">
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote-icon">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="testimonial-text">Amy knew Desert Ridge street by street and matched us with the right neighborhood on the first weekend. The whole process felt calm and well handled.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JM</div>
+          <div>
+            <div class="testimonial-name">Placeholder Client</div>
+            <div class="testimonial-role">Desert Ridge Buyer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote-icon">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="testimonial-text">We were relocating from out of state and Amy made selling our Toscana condo effortless. Clear communication, sharp pricing, and a smooth close.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RK</div>
+          <div>
+            <div class="testimonial-name">Placeholder Client</div>
+            <div class="testimonial-role">Desert Ridge Seller</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <div class="testimonial-quote-icon">&ldquo;</div>
+        <div class="testimonial-stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>
+        </div>
+        <p class="testimonial-text">As Canadians buying a winter home near the JW Marriott, we needed someone who understood cross-border details. Amy guided every step with patience.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SL</div>
+          <div>
+            <div class="testimonial-name">Placeholder Client</div>
+            <div class="testimonial-role">Wildfire Buyer</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 10: MEET AMY KOCH -->
+<!-- ===================================================== -->
+<section class="light-section">
+  <div class="container">
+    <div class="bio-layout">
+      <div class="bio-photo-wrap fade-left">
+        <img src="amy-headshot.jpg" alt="Amy Koch, REALTOR with The Brokery">
+      </div>
+      <div class="bio-text fade-right">
+        <div class="eyebrow">Meet Your Agent</div>
+        <h2>Amy Koch</h2>
+        <p>Amy Koch is a Phoenix and Scottsdale REALTOR with The Brokery and more than 15 years of local experience. Born in Ontario and raised in Vancouver, she moved to Arizona in 2006 and has spent her career helping buyers and sellers across Desert Ridge and north Phoenix. She knows the area street by street, from new-build enclaves to golf-course homes and lock-and-leave condos, and brings a data-driven, white-glove approach to every client.</p>
+        <div class="bio-meta">
+          <div class="bio-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:6023867343">602.386.7343</a>
+          </div>
+          <div class="bio-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:amy@amykoch.com">amy@amykoch.com</a>
+          </div>
+          <div class="bio-meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="bio-license">ADRE License #SA586118000</span>
+          </div>
+        </div>
+        <a href="https://amykoch.com/contact/" class="btn btn-primary">Work With Amy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 11: CLOSING DUAL CTA -->
+<!-- ===================================================== -->
+<section class="dark-section">
+  <div class="container">
+    <div class="dual-cta">
+      <div class="dual-cta-card fade-up">
+        <h3>Thinking of Selling in Desert Ridge?</h3>
+        <p>Get a clear, data-driven look at what your home could sell for in today's market.</p>
+        <a href="https://amykoch.com/home-value/" class="btn btn-primary">Get Your Home's Value</a>
+      </div>
+      <div class="dual-cta-card fade-up">
+        <h3>Have Questions?</h3>
+        <p>Whether you are buying, selling, or just exploring the area, Amy is happy to help.</p>
+        <a href="https://amykoch.com/contact/" class="btn btn-outline">Contact Amy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="amy-koch-logo transparent.png" alt="Amy Koch, The Brokery" class="footer-logo-img">
+        <p>Relentlessly local. Serving Desert Ridge, north Phoenix, and the wider Valley with white-glove real estate service for over 15 years.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Explore</h4>
+        <ul class="footer-links">
+          <li><a href="https://amykoch.com/search/">Search Homes</a></li>
+          <li><a href="https://amykoch.com/buy/">Buy</a></li>
+          <li><a href="https://amykoch.com/sell/">Sell</a></li>
+          <li><a href="https://amykoch.com/home-value/">Home Value</a></li>
+          <li><a href="https://amykoch.com/communities/">Communities</a></li>
+          <li><a href="https://amykoch.com/about/">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Desert Ridge</h4>
+        <ul class="footer-links">
+          <li><a href="#aviano">Aviano</a></li>
+          <li><a href="#fireside">Fireside</a></li>
+          <li><a href="#sanctuary">Sanctuary</a></li>
+          <li><a href="#toscana">Toscana</a></li>
+          <li><a href="#wildfire">Wildfire</a></li>
+          <li><a href="#listings">Homes for Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <a href="tel:6023867343" style="color:rgba(255,255,255,0.5);">602.386.7343</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:amy@amykoch.com" style="color:rgba(255,255,255,0.5);">amy@amykoch.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Phoenix &amp; Scottsdale, AZ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/therealamykoch" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://www.linkedin.com/in/thereal-amy-koch" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+      <p>&copy; 2026 Amy Koch, The Brokery. ADRE License #SA586118000. Equal Housing Opportunity.</p>
+      <p class="footer-disclaimer">Listings are provided through Showcase IDX and sourced from the Arizona Regional Multiple Listing Service (ARMLS). All information is deemed reliable but not guaranteed and should be independently verified. Real estate listings held by brokerage firms other than The Brokery are marked with the appropriate broker attribution as required by ARMLS. Equal Housing Opportunity.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================================================== -->
+<!-- SHARED JS -->
+<!-- ===================================================== -->
+<script>
+// Sticky header
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll progress bar
+const progressBar = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Scroll animations (fade-up, fade-left, fade-right)
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      entry.target.style.transitionDelay = (index * 0.05) + 's';
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const prefix = counter.getAttribute('data-prefix') || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      counter.textContent = prefix + current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsBar = document.querySelector('.stats-bar');
+if (statsBar) counterObserver.observe(statsBar);
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+
+// =============================================
+// NEIGHBORHOOD MODAL SYSTEM (reused from 05-communities.html)
+// =============================================
+
+const communityData = {
+  'aviano': {
+    name: 'Aviano',
+    builder: 'Builder: Toll Brothers',
+    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=900&h=500&fit=crop&q=75',
+    description: [
+      'A Toll Brothers community combining luxury townhomes in the Villages at Aviano with gated single-family homes. Townhomes run roughly 1,300 to 2,400 square feet, while single-family homes range from about 2,600 to over 5,000 square feet.',
+      'Wildfire Elementary sits inside the community, and Pinnacle High School, named one of Newsweek\'s 250 Best Public High Schools in America, is nearby.'
+    ],
+    chips: ['Toll Brothers', 'Townhomes and single-family', 'Gated', '1,300 to 5,000+ sq ft']
+  },
+  'fireside': {
+    name: 'Fireside',
+    builder: 'Builder: Pulte / Del Webb',
+    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&h=500&fit=crop&q=75',
+    description: [
+      'A guard-gated, family-focused community anchored by the private Fireside community center, with a resort-style pool, fitness center, sport courts, and cafe.',
+      'Fireside Elementary is located within the neighborhood. The community offers a mix of single-family floor plans from Pulte and other quality builders.'
+    ],
+    chips: ['Pulte / Del Webb', 'Guard-gated', 'Private community center', 'Single-family']
+  },
+  'sanctuary': {
+    name: 'Sanctuary',
+    builder: 'Builder: Taylor Morrison',
+    image: 'https://images.unsplash.com/photo-1494526585095-c41746248156?w=900&h=500&fit=crop&q=75',
+    description: [
+      'A private, gated community in the Sonoran foothills of north Desert Ridge, off Tatum Boulevard and Pinnacle Peak Road. It is designed around open space, so many homes back to protected natural desert.',
+      'Residents enjoy a clubhouse, community pool, and concierge service. Homes range from about 1,982 to 3,811 square feet with two and three car garages.'
+    ],
+    chips: ['Taylor Morrison', 'Gated', 'Backs to open space', '1,982 to 3,811 sq ft']
+  },
+  'toscana': {
+    name: 'Toscana',
+    builder: 'Luxury Condominiums',
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&h=500&fit=crop&q=75',
+    description: [
+      'Desert Ridge\'s premier resort-style condominium community, set around landscaped grounds, pools, and a private clubhouse.',
+      'It offers a lock-and-leave lifestyle for buyers who want something special without the upkeep of a single-family home.'
+    ],
+    chips: ['Luxury condos', 'Resort-style', 'Gated', 'Clubhouse and pools']
+  },
+  'bella-monte': {
+    name: 'Bella Monte',
+    builder: 'Condominiums',
+    image: 'https://images.unsplash.com/photo-1512699355324-f07e3106dae5?w=900&h=500&fit=crop&q=75',
+    description: [
+      'A gated condominium community for buyers who want move-in-ready, low-maintenance luxury.',
+      'An easy lock-and-leave option close to everything Desert Ridge offers, it is ideal for second-home buyers, professionals, and downsizers.'
+    ],
+    chips: ['Condos', 'Gated', 'Low-maintenance', 'Lock-and-leave']
+  },
+  'wildfire': {
+    name: 'Wildfire',
+    builder: 'Golf-Course Living',
+    image: 'https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=900&h=500&fit=crop&q=75',
+    description: [
+      'Anchored by the JW Marriott Desert Ridge Resort and Spa, a 316-acre resort with dining, golf, and fitness. Many homes back onto the Wildfire Golf Club and its two 18-hole championship courses, with views toward the McDowell Mountains.',
+      'A favorite for retirees and second-home buyers, the neighborhood is served by Paradise Valley Unified.'
+    ],
+    chips: ['Golf-course homes', 'JW Marriott resort', 'Mountain views', 'Single-family']
+  },
+  'stonecrest': {
+    name: 'Stonecrest',
+    builder: 'Established Community',
+    image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&h=500&fit=crop&q=75',
+    description: [
+      'An established community first developed in the mid-1990s by Diamond Key Homes and Engle Homes. It sits in the heart of Desert Ridge, adjacent to the Wildfire Golf Course and Taylor Morrison\'s Sanctuary.',
+      'It is within a short walk of the Desert Ridge Marketplace and its shopping, dining, and entertainment.'
+    ],
+    chips: ['Established', 'Central location', 'Walk to Marketplace', 'Single-family']
+  },
+  'sierra-pass': {
+    name: 'Sierra Pass',
+    builder: 'Single-Family Enclave',
+    image: 'https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=900&h=500&fit=crop&q=75',
+    description: [
+      'An intimate enclave of single-family homes in the heart of Desert Ridge, within easy reach of the Desert Ridge Marketplace, the JW Marriott resort, and the Loop 101.',
+      'It is a quieter pocket of the community for buyers who want established Desert Ridge living close to everything.'
+    ],
+    chips: ['Single-family', 'Intimate enclave', 'Central location']
+  }
+};
+
+const modal = document.getElementById('communityModal');
+const modalPanel = modal.querySelector('.modal-panel');
+const modalClose = document.getElementById('modalClose');
+const modalHero = document.getElementById('modalHero');
+const modalTitle = document.getElementById('modalTitle');
+const modalBuilder = document.getElementById('modalBuilder');
+const modalDesc = document.getElementById('modalDesc');
+const modalTags = document.getElementById('modalTags');
+const modalCtaBtn = document.getElementById('modalCtaBtn');
+const modalContactBtn = document.getElementById('modalContactBtn');
+
+// Interim: every neighborhood routes to the Desert Ridge area search.
+// TBD: replace with per-subdivision Showcase saved searches when built.
+const desertRidgeSearchUrl = 'https://amykochstg.wpenginepowered.com/home-search/shared_search/b352f0991d';
+
+function openModal(communityKey) {
+  const data = communityData[communityKey];
+  if (!data) return;
+
+  // Populate hero
+  modalHero.style.backgroundImage = 'url(' + data.image + ')';
+  modalHero.innerHTML = '<div class="modal-hero-overlay"></div>';
+
+  // Title + builder
+  modalTitle.textContent = data.name;
+  modalBuilder.textContent = data.builder;
+
+  // Description
+  modalDesc.innerHTML = data.description.map(p => '<p>' + p + '</p>').join('');
+
+  // Fact chips
+  modalTags.innerHTML = data.chips.map(tag =>
+    '<span class="modal-tag">' + tag + '</span>'
+  ).join('');
+
+  // CTA buttons
+  modalCtaBtn.href = desertRidgeSearchUrl;
+  modalCtaBtn.textContent = 'View Homes for Sale in ' + data.name;
+  modalContactBtn.href = 'https://amykoch.com/contact/';
+  modalContactBtn.textContent = 'Contact Amy About ' + data.name;
+
+  // Show modal
+  modal.classList.add('active');
+  document.body.classList.add('modal-open');
+
+  // Scroll modal overlay to top
+  modal.scrollTop = 0;
+}
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.classList.remove('modal-open');
+}
+
+// Click on neighborhood cards
+document.querySelectorAll('.community-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.getAttribute('data-community');
+    openModal(key);
+  });
+});
+
+// Close button
+modalClose.addEventListener('click', (e) => {
+  e.stopPropagation();
+  closeModal();
+});
+
+// Click outside modal panel to close
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
+// ESC key to close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && modal.classList.contains('active')) {
+    closeModal();
+  }
+});
+
+// Auto-open modal from URL hash
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.substring(1);
+  if (hash && document.querySelector('[data-community="' + hash + '"]')) {
+    openModal(hash);
+  }
+});
+</script>
+
+</body>
+</html>
