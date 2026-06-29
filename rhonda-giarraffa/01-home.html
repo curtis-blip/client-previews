@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Giarraffa Real Estate · Lake & Luxury Homes on Lake Lanier</title>
+    <meta name="description" content="Lakefront, lake-access, and luxury homes on Lake Lanier and across North Georgia, sold with local expertise and data-backed strategy from Louis and Rhonda Giarraffa. Live Life Loud.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ HOME PAGE-SPECIFIC STYLING (Michael register) ============ */
+
+    /* Hero - full bleed centered */
+    .home-hero {
+        background: linear-gradient(135deg, #062f4c 0%, #064a7d 60%, #065a97 100%);
+        position: relative;
+    }
+    .home-hero__bg {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.62;
+    }
+    .home-hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .home-hero .hero__content {
+        max-width: 960px;
+        position: relative; z-index: 2;
+    }
+    .home-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 32px;
+        display: block;
+    }
+    .home-hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(34px, 5.6vw, 60px);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1.2;
+        color: var(--white);
+        margin-bottom: 28px;
+    }
+    .home-hero__subhead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.7;
+        color: rgba(255,255,255,0.88);
+        max-width: 660px;
+        margin: 0 auto 0;
+    }
+    .home-hero__attribution {
+        position: absolute;
+        bottom: 32px;
+        left: 0; right: 0;
+        text-align: center;
+        font-family: var(--font-heading);
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        z-index: 3;
+    }
+
+    /* About preview - rectangular photo variant */
+    .about-preview {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 80px;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .about-preview__photo {
+        max-width: 420px;
+        width: 100%;
+        height: 540px;
+        overflow: hidden;
+    }
+    .about-preview__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .about-preview__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 20px;
+        display: block;
+    }
+    .about-preview h2 {
+        font-size: clamp(26px, 3vw, 36px);
+        margin-bottom: 24px;
+        line-height: 1.25;
+    }
+    .about-preview p {
+        font-size: 16px;
+        line-height: 1.85;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+    }
+    .about-preview p a {
+        color: var(--purple);
+        border-bottom: 1px solid rgba(6,90,151,0.35);
+    }
+    .about-preview p a:hover {
+        border-bottom-color: var(--purple);
+    }
+    .about-preview .btn {
+        margin-top: 16px;
+    }
+    @media (max-width: 1024px) {
+        .about-preview {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+        .about-preview__photo {
+            margin: 0 auto;
+            height: 480px;
+        }
+    }
+
+    /* Full-bleed video band */
+    .home-video-band {
+        position: relative;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        background-size: cover;
+        background-position: center;
+    }
+    .home-video-band::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: rgba(0,0,0,0.55);
+    }
+    .home-video-band__content {
+        position: relative; z-index: 2;
+        max-width: 720px;
+        padding: 96px 24px;
+    }
+    .home-video-band__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .home-video-band h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: 32px;
+        line-height: 1.25;
+    }
+    .home-video-band__play {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.08);
+        color: var(--white);
+        transition: all var(--transition);
+        margin-bottom: 32px;
+    }
+    .home-video-band__play svg {
+        width: 30px;
+        height: 30px;
+        margin-left: 4px;
+    }
+    .home-video-band__play:hover {
+        background: var(--white);
+        color: var(--black);
+        transform: scale(1.06);
+    }
+    .home-video-band__caption {
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.8;
+        color: rgba(255,255,255,0.85);
+        max-width: 560px;
+        margin: 0 auto;
+    }
+
+    /* Featured Communities */
+    .featured-communities .gallery-card {
+        height: 380px;
+    }
+    .featured-communities .gallery-card__overlay h3 {
+        font-size: 24px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+    }
+    .featured-communities .gallery-card__overlay p {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.85;
+    }
+
+    /* Home value CTA - centered band */
+    .home-value-band {
+        background: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 96px 24px;
+    }
+    .home-value-band__inner {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    .home-value-band__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .home-value-band h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+    .home-value-band p {
+        color: rgba(255,255,255,0.78);
+        font-size: 16px;
+        line-height: 1.85;
+        margin: 0 auto 36px;
+        max-width: 580px;
+    }
+
+    /* Section header (centered home variant) */
+    .home-section-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 56px;
+    }
+    .home-section-header__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .home-section-header h2 {
+        font-size: clamp(28px, 3.5vw, 38px);
+        margin-bottom: 16px;
+        line-height: 1.25;
+    }
+    .home-section-header p {
+        color: var(--text-muted);
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    /* FAQ section padding */
+    .home-faq {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .home-faq .faq-answer__inner a {
+        color: var(--purple);
+        border-bottom: 1px solid rgba(6,90,151,0.35);
+    }
+    .home-faq .faq-answer__inner a:hover {
+        border-bottom-color: var(--purple);
+    }
+    </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent",
+ "name": "Team Giarraffa Real Estate",
+ "image": "https://teamgiarraffa.com/wp-content/uploads/logo.png",
+ "telephone": "+1-770-519-9160",
+ "email": "rhonda@teamgiarraffa.com",
+ "priceRange": "$$$",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "2920 Ronald Reagan Blvd, Ste 113",
+  "addressLocality": "Cumming",
+  "addressRegion": "GA",
+  "postalCode": "30041",
+  "addressCountry": "US"
+ },
+ "areaServed": [
+  "Lake Lanier",
+  "Forsyth County, GA",
+  "Hall County, GA",
+  "Dawson County, GA",
+  "Gwinnett County, GA",
+  "Lumpkin County, GA"
+ ],
+ "memberOf": {
+  "@type": "Organization",
+  "name": "Century 21 Results"
+ },
+ "url": "https://teamgiarraffa.com/",
+ "slogan": "Live Life Loud",
+ "founder": [
+  {
+   "@type": "Person",
+   "name": "Rhonda Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  },
+  {
+   "@type": "Person",
+   "name": "Louis Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  }
+ ],
+ "sameAs": [
+  "https://www.facebook.com/yourforsythcountyrealtor/",
+  "https://www.instagram.com/rhondagiarraffa_teamgiarraffa",
+  "https://www.zillow.com/profile/Rhondagiarraffa",
+  "https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/"
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo" aria-label="Team Giarraffa Real Estate, home">
+        <img src="assets/logo-white.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-light" style="max-width:158px;">
+        <img src="assets/logo-transparent.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-dark" style="max-width:158px;">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="06-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="04-featured-listings.html">Search Homes</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="07-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="09-home-value.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Team Giarraffa</a></li>
+                <li><a href="05-testimonials.html">Testimonials</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7705199160" class="nav__phone">(770) 519-9160</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="09-home-value.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+        <li><a href="02-about.html">About Team Giarraffa</a></li>
+        <li><a href="05-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7705199160">(770) 519-9160</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO ============ -->
+    <section class="hero home-hero" style="background-image: url('assets/hero-lake.jpg'); background-size: cover; background-position: center;">
+        <div class="home-hero__bg" style="background-image: url('assets/hero-lake.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="hero__content">
+            <span class="home-hero__eyebrow">Lake Lanier · North Georgia</span>
+            <h1 class="home-hero__title">Live Life Loud on Lanier</h1>
+            <p class="home-hero__subhead">Lakefront, lake-access, and luxury homes on Lake Lanier and across North Georgia, guided by deep local expertise and data-backed strategy from Louis and Rhonda Giarraffa.</p>
+        </div>
+        <div class="home-hero__attribution">Team Giarraffa · Brokered by Century 21 Results</div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ 3-COL GALLERY ============ -->
+    <section class="section" style="padding-top: 0;">
+        <div class="gallery-grid">
+            <a href="04-featured-listings.html" class="gallery-card">
+                <img src="assets/community-marinabay.jpg" alt="Luxury lakefront home with a private boat dock on Lake Lanier" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Search Homes</h3>
+                    <p>Live MLS listings on Lanier</p>
+                </div>
+            </a>
+            <a href="03-communities.html" class="gallery-card">
+                <img src="assets/community-forsyth.jpg" alt="Forsyth County Lake Lanier waterfront near Cumming City Center" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Communities</h3>
+                    <p>Lake Lanier, county by county</p>
+                </div>
+            </a>
+            <a href="04-featured-listings.html" class="gallery-card">
+                <img src="assets/comm-harbour-point.jpg" alt="Gated lakefront luxury home in a Lake Lanier community with private dock" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Lakefront &amp; Luxury</h3>
+                    <p>Deep water, docks, and estates</p>
+                </div>
+            </a>
+        </div>
+    </section>
+    <!-- ============ END 3-COL GALLERY ============ -->
+
+
+    <!-- ============ MEET TEAM GIARRAFFA ============ -->
+    <section class="section section--gray">
+        <div class="about-preview">
+            <div class="about-preview__photo">
+                <img src="assets/about-bio.jpg" alt="Louis and Rhonda Giarraffa, lake and luxury real estate advisors on Lake Lanier">
+            </div>
+            <div class="about-preview__text">
+                <span class="about-preview__eyebrow">Meet Team Giarraffa</span>
+                <h2>Lake and luxury experts who live the lifestyle</h2>
+                <p>Team Giarraffa specializes in Lake Lanier and North Georgia luxury real estate, serving buyers and sellers who want more than a transaction. They want trusted guidance, strong strategy, and a clear picture of the lifestyle they are buying or selling. Louis and Rhonda are a husband-and-wife team, and the lake life they sell is the one they live.</p>
+                <p>Lake and luxury homes demand a deeper level of expertise. From dock permits, water depth, and protected coves to pricing strategy and elevated marketing, we understand the details that move value. Rhonda's certification in Data Science in Real Estate from MIT brings clarity and confidence to every decision, whether you are reading the <a href="06-buyers-guide.html">buyer's guide</a> or the <a href="07-sellers-guide.html">seller's guide</a> for your next move.</p>
+                <a href="02-about.html" class="btn btn--outline">Our Story</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END MEET TEAM GIARRAFFA ============ -->
+
+
+    <!-- ============ VIDEO BAND ============ -->
+    <section class="home-video-band" style="background-image: url('assets/video-poster.jpg'); background-size: cover; background-position: center;">
+        <div class="home-video-band__content">
+            <span class="home-video-band__eyebrow">Life on Lanier</span>
+            <h2>See the lifestyle in motion</h2>
+            <a class="home-video-band__play" href="https://youtu.be/Sv2XV6cdwsM" target="_blank" rel="noopener noreferrer" aria-label="Play the Team Giarraffa story video">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </a>
+            <p class="home-video-band__caption">A short look at lake living done loud: the docks, the sunsets, and the homes that make it yours.</p>
+        </div>
+    </section>
+    <!-- ============ END VIDEO BAND ============ -->
+
+
+    <!-- ============ TESTIMONIALS CAROUSEL ============ -->
+    <section class="testimonials-section" style="background-image: url('assets/cta-lake.jpg'); background-size: cover; background-position: center; padding: 120px 24px;">
+        <div class="hero__overlay"></div>
+        <div class="testimonial-slider" style="position: relative; z-index: 2;">
+            <div class="testimonial-slide active">
+                <blockquote>"If you are looking to buy or sell property on Lake Lanier or in the Cumming area, Louis and Rhonda are the best. They know the ins and outs of the lake properties and I couldn't be happier with their professionalism and knowledge. Love these two."</blockquote>
+                <cite>Chris Newborn · Cumming, GA</cite>
+            </div>
+            <div class="testimonial-slide">
+                <blockquote>"She got to know me and knew exactly what kind of home I was looking for. Rhonda, you are the best."</blockquote>
+                <cite>Deanna Closson · Dawsonville, GA</cite>
+            </div>
+            <div class="testimonial-nav">
+                <button class="testimonial-nav__prev" aria-label="Previous testimonial">&larr;</button>
+                <button class="testimonial-nav__next" aria-label="Next testimonial">&rarr;</button>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END TESTIMONIALS ============ -->
+
+
+    <!-- ============ FEATURED COMMUNITIES ============ -->
+    <section class="section featured-communities">
+        <div class="home-section-header">
+            <span class="home-section-header__eyebrow">Where We Specialize</span>
+            <h2>Lake Lanier, county by county</h2>
+            <p>From the deep-water coves of the south end to the wide-open shoreline up north, here are the markets where Louis and Rhonda spend their days. Explore the <a href="05-testimonials.html">client stories</a> behind the moves we have guided.</p>
+        </div>
+        <div class="gallery-grid">
+            <a href="03-communities.html" class="gallery-card">
+                <img src="assets/community-forsyth.jpg" alt="Forsyth County Lake Lanier waterfront near Cumming City Center" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Forsyth County</h3>
+                    <p>Deep water · GA-400 · Cumming</p>
+                </div>
+            </a>
+            <a href="03-communities.html" class="gallery-card">
+                <img src="assets/community-hall.jpg" alt="Hall County Lake Lanier shoreline with wide-open water near Gainesville" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Hall County</h3>
+                    <p>North-end shoreline · Gainesville</p>
+                </div>
+            </a>
+            <a href="03-communities.html" class="gallery-card">
+                <img src="assets/community-dawson.jpg" alt="Dawson County Lake Lanier home with private boat slip and mountain backdrop" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                <div class="gallery-card__overlay">
+                    <h3>Dawson County</h3>
+                    <p>Quiet coves · Mountain views</p>
+                </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 48px;">
+            <a href="03-communities.html" class="btn btn--outline">All Communities</a>
+        </div>
+    </section>
+    <!-- ============ END FEATURED COMMUNITIES ============ -->
+
+
+    <!-- ============ HOME VALUE CTA (centered band, CTA-link only) ============ -->
+    <section class="home-value-band">
+        <div class="home-value-band__inner">
+            <span class="home-value-band__eyebrow">What's It Worth?</span>
+            <h2>What's your Lanier home worth?</h2>
+            <p>Lake and luxury homes do not price themselves off a Zestimate. Get a strategic, data-backed valuation grounded in real local sales and Rhonda's MIT-trained market analysis, built to help your home sell, not sit.</p>
+            <a href="09-home-value.html" class="btn btn--white">Get My Home Value</a>
+        </div>
+    </section>
+    <!-- ============ END HOME VALUE CTA ============ -->
+
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section--gray">
+        <div class="home-section-header">
+            <span class="home-section-header__eyebrow">Frequently Asked</span>
+            <h2>Buying and selling lake homes on Lanier</h2>
+            <p>Practical questions, honest answers. If you have one that is not here, the contact page reaches Louis and Rhonda directly.</p>
+        </div>
+        <div class="home-faq">
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What's the difference between lakefront and lake-access homes on Lanier?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Lakefront homes sit directly on the water, often with a permitted dock or the right to apply for one. Lake-access homes are set back from the shoreline but include shared or deeded access, such as a community dock, ramp, or park. The price gap between the two can be significant, so it pays to know exactly what you are buying. Our <a href="06-buyers-guide.html">buyer's guide</a> walks through both, and you can browse current options on the <a href="04-featured-listings.html">search homes</a> page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do docks and dock permits work on Lake Lanier?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Lake Lanier is a U.S. Army Corps of Engineers lake, so docks are permitted through the Corps, not simply built at will. Permits are tied to the property, have specific shoreline and size rules, and do not transfer automatically in every situation. Before you fall in love with a home, we confirm the dock status, the permit, and whether the slip size fits your boat. It is one of the first things we check on any waterfront listing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Why does water depth matter so much when buying on the lake?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Water depth at the dock determines whether you can keep a boat in the water year-round or end up sitting on mud when lake levels drop. Deep-water coves hold their value because they stay usable through seasonal fluctuations. Two homes that look identical from the street can be very different at the shoreline, so we evaluate depth, cove protection, and exposure as part of every lakefront showing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do you price a lake or luxury home?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Carefully, and with data. Lake and luxury homes do not have a tidy stack of identical comps the way a subdivision does, so pricing is part analysis and part judgment. Rhonda holds a Data Science in Real Estate certification from MIT, which means your price comes from real local sales, dock and water-depth adjustments, and current market context, not a guess. You can start with the <a href="07-sellers-guide.html">seller's guide</a> or request a full read on the <a href="09-home-value.html">home value</a> page.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What areas around Lake Lanier do you serve?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>We work the lake all the way around, including Forsyth County on the south end near Cumming, Hall County and Gainesville up north, and the quieter coves of Dawson County, plus Gwinnett and Lumpkin. Each county has its own feel, water character, and price profile. The <a href="03-communities.html">communities</a> page breaks it down county by county so you can find the shore that fits how you want to live.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Do you work with buyers, sellers, or both?</span>
+                        <span class="faq-question__icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer__inner">
+                            <p>Both, and as a husband-and-wife team that means you get two advisors, not one. Louis and Rhonda bring local lake knowledge and data-backed strategy to every side of the table, from finding off-market waterfront homes for buyers to positioning a luxury estate to sell for sellers. Learn more <a href="02-about.html">about Team Giarraffa</a>, or reach out through the contact page to start a conversation.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END FAQ ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+<!-- ============ FOOTER (4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Team Giarraffa</h4>
+                <p class="footer__tagline">Lake &amp; luxury home sales on Lake Lanier and across North Georgia. Live Life Loud.</p>
+                <p class="footer__brokerage">Brokered by Century 21 Results<br>2920 Ronald Reagan Blvd, Ste 113, Cumming, GA 30041</p>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/yourforsythcountyrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/rhondagiarraffa_teamgiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/Rhondagiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Team Giarraffa</a></li>
+                    <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                    <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                    <li><a href="04-featured-listings.html">Search Homes</a></li>
+                    <li><a href="09-home-value.html">What's My Home Worth</a></li>
+                    <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+                    <li><a href="05-testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="forsyth-county-lake-lanier.html">Forsyth County</a></li>
+                    <li><a href="hall-county-lake-lanier.html">Hall County</a></li>
+                    <li><a href="dawson-county-lake-lanier.html">Dawson County</a></li>
+                    <li><a href="gwinnett-county-lake-lanier.html">Gwinnett County</a></li>
+                    <li><a href="lumpkin-county-lake-lanier.html">Lumpkin County</a></li>
+                    <li><a href="03-communities.html">All Communities</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7705199160">(770) 519-9160</a></li>
+                    <li><a href="mailto:rhonda@teamgiarraffa.com">rhonda@teamgiarraffa.com</a></li>
+                    <li>2920 Ronald Reagan Blvd, Ste 113<br>Cumming, GA 30041</li>
+                </ul>
+                <a href="contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Team Giarraffa Real Estate · Brokered by Century 21 Results · Licensed REALTOR®, Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each office is independently owned and operated. Listing data via Showcase IDX and the applicable MLS. <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+<style>
+.footer{background:var(--black);color:var(--white);padding:80px 0 32px}
+.footer__container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.footer__brand{font-family:var(--font-heading);font-size:24px;font-weight:200;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:360px}
+.footer__brokerage{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.footer__heading{font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:24px}
+.footer__col ul{list-style:none;padding:0}
+.footer__col ul li{margin-bottom:12px;font-size:14px;line-height:1.5}
+.footer__col a{color:rgba(255,255,255,0.7);transition:color var(--transition)}
+.footer__col a:hover{color:var(--white)}
+.footer__social{display:flex !important;gap:16px;list-style:none;margin-top:8px !important;padding:0}
+.footer__social li{margin:0 !important}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);transition:all var(--transition)}
+.footer__social a:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.9}
+.footer__bottom a{color:rgba(255,255,255,0.55)}.footer__bottom a:hover{color:var(--gold)}
+.footer__disclaimer{margin-top:4px}
+@media (max-width:768px){.footer__grid{grid-template-columns:1fr;gap:40px}}
+</style>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!isActive)item.classList.add('active');});});
+document.querySelectorAll('[data-modal-open]').forEach(trigger=>{trigger.addEventListener('click',e=>{e.preventDefault();const id=trigger.getAttribute('data-modal-open');const modal=document.getElementById('modal-'+id);if(modal){modal.classList.add('active');document.body.style.overflow='hidden';}});});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el||el.classList.contains('modal-close')){const overlay=el.classList.contains('modal-overlay')?el:el.closest('.modal-overlay');if(overlay){overlay.classList.remove('active');document.body.style.overflow='';}}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));document.body.style.overflow='';}});
+const slides=document.querySelectorAll('.testimonial-slide');let currentSlide=0;function showSlide(i){slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));}
+function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+const nextBtn=document.querySelector('.testimonial-nav__next'),prevBtn=document.querySelector('.testimonial-nav__prev');if(nextBtn)nextBtn.addEventListener('click',nextSlide);if(prevBtn)prevBtn.addEventListener('click',prevSlide);if(slides.length)setInterval(nextSlide,6000);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const statObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const target=parseInt(el.getAttribute('data-target')||'0',10);const dur=1500;const start=performance.now();(function tick(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());statObserver.unobserve(el);}});},{threshold:0.5});document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+</script>
+
+</body>
+</html>

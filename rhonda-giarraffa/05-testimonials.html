@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials &middot; Team Giarraffa Real Estate</title>
+    <meta name="description" content="Read what Lake Lanier buyers and sellers say about working with Team Giarraffa, with five-star reviews from Louis and Rhonda Giarraffa's clients across North Georgia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ TESTIMONIALS PAGE-SPECIFIC STYLING (Michael register, lake-blue) ============ */
+
+    /* Hero - medium centered, no CTA */
+    .ts-hero {
+        position: relative;
+        height: 60vh;
+        min-height: 460px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        overflow: hidden;
+    }
+    .ts-hero__bg {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+    }
+    .ts-hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(6,47,76,0.62) 0%, rgba(6,90,151,0.55) 100%);
+    }
+    .ts-hero__inner {
+        position: relative; z-index: 2;
+        max-width: 900px;
+        padding: 0 24px;
+    }
+    .ts-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 22px;
+        display: block;
+    }
+    .ts-hero h1 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(34px, 5.2vw, 56px);
+        line-height: 1.15;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--white);
+        margin: 0;
+    }
+
+    /* Intro */
+    .ts-intro {
+        padding: 96px 24px 56px;
+        background: var(--white);
+        text-align: center;
+    }
+    .ts-intro__inner {
+        max-width: 820px;
+        margin: 0 auto;
+    }
+    .ts-intro__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .ts-intro h2 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(26px, 3vw, 38px);
+        line-height: 1.25;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+        margin: 0 0 24px;
+    }
+    .ts-intro p {
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.85;
+        color: var(--text-muted);
+        margin: 0;
+    }
+    .ts-intro p a {
+        color: var(--purple);
+        border-bottom: 1px solid rgba(6,90,151,0.35);
+    }
+    .ts-intro p a:hover {
+        border-bottom-color: var(--purple);
+    }
+
+    /* Featured pair */
+    .ts-featured {
+        padding: 0 24px 24px;
+        background: var(--white);
+    }
+    .ts-featured__grid {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 32px;
+        align-items: stretch;
+    }
+    @media (max-width: 900px) {
+        .ts-featured__grid { grid-template-columns: 1fr; }
+    }
+    .ts-feature-card {
+        position: relative;
+        background: var(--gray-bg);
+        border: 1px solid var(--border-light);
+        padding: 56px 40px 40px;
+        display: flex;
+        flex-direction: column;
+    }
+    .ts-feature-card--accent {
+        background: var(--black);
+        color: var(--white);
+        border-color: var(--black);
+    }
+    .ts-feature-card__mark {
+        position: absolute;
+        top: 12px;
+        left: 28px;
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: 72px;
+        line-height: 1;
+        color: var(--purple);
+        opacity: 0.32;
+        user-select: none;
+    }
+    .ts-feature-card--accent .ts-feature-card__mark {
+        color: var(--gold);
+        opacity: 0.5;
+    }
+    .ts-stars {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+        color: var(--gold);
+    }
+    .ts-stars svg { width: 19px; height: 19px; display: block; }
+    .ts-feature-card blockquote {
+        font-family: var(--font-body);
+        font-style: italic;
+        font-size: clamp(17px, 1.6vw, 19px);
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin: 0 0 28px;
+        padding: 0;
+        border: none;
+        flex: 1;
+    }
+    .ts-feature-card--accent blockquote { color: var(--white); }
+    .ts-feature-card blockquote em { font-style: italic; color: var(--purple); }
+    .ts-feature-card--accent blockquote em { color: var(--gold); }
+    .ts-who {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border-top: 1px solid var(--border-light);
+        padding-top: 20px;
+    }
+    .ts-feature-card--accent .ts-who { border-top-color: rgba(255,255,255,0.18); }
+    .ts-who__avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--purple);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-heading);
+        font-size: 16px;
+        letter-spacing: 1px;
+        flex-shrink: 0;
+    }
+    .ts-feature-card--accent .ts-who__avatar { background: var(--gold); color: var(--black); }
+    .ts-who__name {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+    }
+    .ts-feature-card--accent .ts-who__name { color: var(--white); }
+    .ts-who__loc {
+        font-family: var(--font-body);
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .ts-feature-card--accent .ts-who__loc { color: rgba(255,255,255,0.6); }
+
+    /* Card grid */
+    .ts-grid-section {
+        padding: 56px 24px 96px;
+        background: var(--white);
+    }
+    .ts-grid {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    @media (max-width: 1024px) { .ts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .ts-grid { grid-template-columns: 1fr; } }
+    .ts-card {
+        position: relative;
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+        padding: 52px 32px 32px;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .ts-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 44px rgba(0,0,0,0.10);
+    }
+    .ts-card__mark {
+        position: absolute;
+        top: 8px;
+        left: 24px;
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: 60px;
+        line-height: 1;
+        color: var(--purple);
+        opacity: 0.28;
+        user-select: none;
+    }
+    .ts-card blockquote {
+        font-family: var(--font-body);
+        font-style: italic;
+        font-size: 15.5px;
+        line-height: 1.8;
+        color: var(--text-dark);
+        margin: 0 0 24px;
+        padding: 0;
+        border: none;
+        flex: 1;
+    }
+    .ts-card cite {
+        display: block;
+        font-family: var(--font-heading);
+        font-style: normal;
+        font-size: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--purple);
+        font-weight: 500;
+        border-top: 1px solid var(--border-light);
+        padding-top: 16px;
+    }
+    .ts-card cite span {
+        display: block;
+        font-family: var(--font-body);
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        text-transform: none;
+        color: var(--text-muted);
+        margin-top: 4px;
+    }
+
+    /* Import-placeholder cards (clearly marked, no fabricated quotes) */
+    .ts-card--import {
+        background: var(--gray-bg);
+        border-style: dashed;
+        border-color: var(--border-light);
+        box-shadow: none;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        padding: 48px 32px;
+    }
+    .ts-card--import:hover { transform: none; box-shadow: none; }
+    .ts-card--import .ts-card__source-icon {
+        width: 44px;
+        height: 44px;
+        color: var(--purple);
+        margin: 0 auto 18px;
+    }
+    .ts-card--import .ts-card__source-icon svg { width: 100%; height: 100%; display: block; }
+    .ts-card--import h3 {
+        font-family: var(--font-heading);
+        font-size: 15px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-dark);
+        margin: 0 0 10px;
+    }
+    .ts-card--import p {
+        font-family: var(--font-body);
+        font-size: 13.5px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        margin: 0 0 22px;
+    }
+    .ts-card--import .ts-import-link {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--purple);
+        border-bottom: 1px solid rgba(6,90,151,0.4);
+        padding-bottom: 3px;
+        transition: color var(--transition);
+    }
+    .ts-card--import .ts-import-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* Sources band (dark) */
+    .ts-sources {
+        background: var(--black);
+        color: var(--white);
+        padding: 110px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .ts-sources::before {
+        content: '\201C';
+        position: absolute;
+        top: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: 150px;
+        line-height: 1;
+        color: var(--purple);
+        opacity: 0.4;
+        user-select: none;
+    }
+    .ts-sources__inner {
+        max-width: 760px;
+        margin: 0 auto;
+        position: relative; z-index: 2;
+    }
+    .ts-sources__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .ts-sources h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3.4vw, 40px);
+        font-weight: 200;
+        line-height: 1.25;
+        margin: 0 0 20px;
+    }
+    .ts-sources p {
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.85;
+        color: rgba(255,255,255,0.78);
+        margin: 0 auto 36px;
+        max-width: 580px;
+    }
+    .ts-sources__buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* CTA */
+    .ts-cta {
+        background: var(--white);
+        padding: 120px 24px;
+        text-align: center;
+    }
+    .ts-cta__inner { max-width: 760px; margin: 0 auto; }
+    .ts-cta__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 18px;
+        display: block;
+    }
+    .ts-cta h2 {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(28px, 3.4vw, 42px);
+        line-height: 1.25;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+        margin: 0 0 22px;
+    }
+    .ts-cta p {
+        font-family: var(--font-body);
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--text-muted);
+        margin: 0 0 36px;
+    }
+    .ts-cta__buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent",
+ "name": "Team Giarraffa Real Estate",
+ "image": "https://teamgiarraffa.com/wp-content/uploads/logo.png",
+ "telephone": "+1-770-519-9160",
+ "email": "rhonda@teamgiarraffa.com",
+ "priceRange": "$$$",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "2920 Ronald Reagan Blvd, Ste 113",
+  "addressLocality": "Cumming",
+  "addressRegion": "GA",
+  "postalCode": "30041",
+  "addressCountry": "US"
+ },
+ "areaServed": [
+  "Lake Lanier",
+  "Forsyth County, GA",
+  "Hall County, GA",
+  "Dawson County, GA",
+  "Gwinnett County, GA",
+  "Lumpkin County, GA"
+ ],
+ "memberOf": {
+  "@type": "Organization",
+  "name": "Century 21 Results"
+ },
+ "url": "https://teamgiarraffa.com/",
+ "slogan": "Live Life Loud",
+ "founder": [
+  {
+   "@type": "Person",
+   "name": "Rhonda Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  },
+  {
+   "@type": "Person",
+   "name": "Louis Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  }
+ ],
+ "sameAs": [
+  "https://www.facebook.com/yourforsythcountyrealtor/",
+  "https://www.instagram.com/rhondagiarraffa_teamgiarraffa",
+  "https://www.zillow.com/profile/Rhondagiarraffa",
+  "https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/"
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo" aria-label="Team Giarraffa Real Estate, home">
+        <img src="assets/logo-white.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-light" style="max-width:158px;">
+        <img src="assets/logo-transparent.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-dark" style="max-width:158px;">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="06-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="04-featured-listings.html">Search Homes</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="07-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="09-home-value.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Team Giarraffa</a></li>
+                <li><a href="05-testimonials.html">Testimonials</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7705199160" class="nav__phone">(770) 519-9160</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="09-home-value.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+        <li><a href="02-about.html">About Team Giarraffa</a></li>
+        <li><a href="05-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7705199160">(770) 519-9160</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO: medium, centered, no CTA ============ -->
+    <section class="ts-hero">
+        <div class="ts-hero__bg" style="background-image: url('assets/page-hero-lake.jpg');"></div>
+        <div class="ts-hero__inner">
+            <span class="ts-hero__eyebrow">Real Stories &middot; Real Clients</span>
+            <h1>Loved by the People We Move</h1>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ INTRO ============ -->
+    <section class="ts-intro">
+        <div class="ts-intro__inner">
+            <span class="ts-intro__eyebrow">In Their Words</span>
+            <h2>Trusted on the water, start to close</h2>
+            <p>Reputation on Lake Lanier is not built on slogans. It is built on knowing the coves, reading the market, and following through long after the keys change hands. Below are reviews from buyers and sellers who trusted Louis and Rhonda with their move, in their own words. When you are ready, <a href="02-about.html">meet Team Giarraffa</a> and see how the same care guides every transaction.</p>
+        </div>
+    </section>
+    <!-- ============ END INTRO ============ -->
+
+
+    <!-- ============ FEATURED PAIR (two real reviews) ============ -->
+    <section class="ts-featured">
+        <div class="ts-featured__grid">
+
+            <!-- Featured: Chris Newborn (REAL) -->
+            <article class="ts-feature-card">
+                <span class="ts-feature-card__mark" aria-hidden="true">&ldquo;</span>
+                <div class="ts-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>If you are looking to buy or sell property on Lake Lanier or in the Cumming area, Louis and Rhonda are the best. They know the ins and outs of the lake properties and I couldn't be happier with their professionalism and knowledge. <em>Love these two.</em></blockquote>
+                <div class="ts-who">
+                    <span class="ts-who__avatar" aria-hidden="true">CN</span>
+                    <div>
+                        <div class="ts-who__name">Chris Newborn</div>
+                        <div class="ts-who__loc">Cumming, GA</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Featured: Deanna Closson (REAL) -->
+            <article class="ts-feature-card ts-feature-card--accent">
+                <span class="ts-feature-card__mark" aria-hidden="true">&ldquo;</span>
+                <div class="ts-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>She got to know me and knew exactly what kind of home I was looking for. Rhonda, you are the best.</blockquote>
+                <div class="ts-who">
+                    <span class="ts-who__avatar" aria-hidden="true">DC</span>
+                    <div>
+                        <div class="ts-who__name">Deanna Closson</div>
+                        <div class="ts-who__loc">Dawsonville, GA</div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+    <!-- ============ END FEATURED PAIR ============ -->
+
+
+    <!-- ============ REVIEW GRID (2 real restated + clearly-marked import placeholders) ============ -->
+    <section class="ts-grid-section">
+        <div class="ts-grid">
+
+            <!-- Card 1 - REAL: Chris Newborn -->
+            <article class="ts-card">
+                <span class="ts-card__mark" aria-hidden="true">&ldquo;</span>
+                <div class="ts-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>If you are looking to buy or sell property on Lake Lanier or in the Cumming area, Louis and Rhonda are the best. They know the ins and outs of the lake properties and I couldn't be happier with their professionalism and knowledge. Love these two.</blockquote>
+                <cite>Chris Newborn<span>Cumming, GA</span></cite>
+            </article>
+
+            <!-- Card 2 - REAL: Deanna Closson -->
+            <article class="ts-card">
+                <span class="ts-card__mark" aria-hidden="true">&ldquo;</span>
+                <div class="ts-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <blockquote>She got to know me and knew exactly what kind of home I was looking for. Rhonda, you are the best.</blockquote>
+                <cite>Deanna Closson<span>Dawsonville, GA</span></cite>
+            </article>
+
+            <!-- Card 3 - IMPORT PLACEHOLDER: Zillow -->
+            <article class="ts-card ts-card--import">
+                <div class="ts-card__source-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg>
+                </div>
+                <h3>More Reviews on Zillow</h3>
+                <p>Read the full, verified set of five-star reviews from Rhonda's clients on her Zillow profile.</p>
+                <a href="https://www.zillow.com/profile/Rhondagiarraffa" class="ts-import-link" target="_blank" rel="noopener noreferrer">Read on Zillow</a>
+            </article>
+
+            <!-- Card 4 - IMPORT PLACEHOLDER: Google -->
+            <article class="ts-card ts-card--import">
+                <div class="ts-card__source-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h3>More Reviews on Google</h3>
+                <p>See additional client reviews for Team Giarraffa on our Google Business profile.</p>
+                <a href="https://www.google.com/search?q=Team+Giarraffa+Real+Estate+Cumming+GA" class="ts-import-link" target="_blank" rel="noopener noreferrer">Read on Google</a>
+            </article>
+
+            <!-- Card 5 - IMPORT PLACEHOLDER: Zillow & Google (to be imported) -->
+            <article class="ts-card ts-card--import">
+                <div class="ts-card__source-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>More Reviews from Google &amp; Zillow</h3>
+                <p>Additional verified reviews will be imported here from Google and Zillow as they are published.</p>
+                <a href="https://www.zillow.com/profile/Rhondagiarraffa" class="ts-import-link" target="_blank" rel="noopener noreferrer">View all reviews</a>
+            </article>
+
+            <!-- Card 6 - IMPORT PLACEHOLDER: leave a review -->
+            <article class="ts-card ts-card--import">
+                <div class="ts-card__source-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>
+                </div>
+                <h3>Worked With Us? Leave a Review</h3>
+                <p>If Louis and Rhonda helped you buy or sell on Lanier, share your experience on Google or Zillow.</p>
+                <a href="https://www.google.com/search?q=Team+Giarraffa+Real+Estate+Cumming+GA" class="ts-import-link" target="_blank" rel="noopener noreferrer">Leave a review</a>
+            </article>
+
+        </div>
+    </section>
+    <!-- ============ END REVIEW GRID ============ -->
+
+
+    <!-- ============ SOURCES BAND (dark) ============ -->
+    <section class="ts-sources">
+        <div class="ts-sources__inner">
+            <span class="ts-sources__eyebrow">See Every Review</span>
+            <h2>Read them at the source</h2>
+            <p>Every review on this page is public. Read the full set, verify each one, and leave your own directly on Google and Zillow.</p>
+            <div class="ts-sources__buttons">
+                <a href="https://www.google.com/search?q=Team+Giarraffa+Real+Estate+Cumming+GA" class="btn btn--white" target="_blank" rel="noopener noreferrer">Reviews on Google</a>
+                <a href="https://www.zillow.com/profile/Rhondagiarraffa" class="btn btn--outline" target="_blank" rel="noopener noreferrer" style="color:var(--white);border-color:var(--white);">Reviews on Zillow</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END SOURCES BAND ============ -->
+
+
+    <!-- ============ CLOSING CTA ============ -->
+    <section class="ts-cta">
+        <div class="ts-cta__inner">
+            <span class="ts-cta__eyebrow">Ready to be the next one?</span>
+            <h2>Let's get you moving on Lanier</h2>
+            <p>Whether you are buying your first lake home or selling a luxury waterfront estate, Louis and Rhonda are ready to guide your next move. Browse <a href="04-featured-listings.html" style="color:var(--purple);border-bottom:1px solid rgba(6,90,151,0.35);">homes for sale on Lake Lanier</a> or start a conversation today.</p>
+            <div class="ts-cta__buttons">
+                <a href="contact.html" class="btn btn--primary">Start a Conversation</a>
+                <a href="04-featured-listings.html" class="btn btn--outline">Browse Lake Homes</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CLOSING CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+<!-- ============ FOOTER (4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Team Giarraffa</h4>
+                <p class="footer__tagline">Lake &amp; luxury home sales on Lake Lanier and across North Georgia. Live Life Loud.</p>
+                <p class="footer__brokerage">Brokered by Century 21 Results<br>2920 Ronald Reagan Blvd, Ste 113, Cumming, GA 30041</p>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/yourforsythcountyrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/rhondagiarraffa_teamgiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/Rhondagiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Team Giarraffa</a></li>
+                    <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                    <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                    <li><a href="04-featured-listings.html">Search Homes</a></li>
+                    <li><a href="09-home-value.html">What's My Home Worth</a></li>
+                    <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+                    <li><a href="05-testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="forsyth-county-lake-lanier.html">Forsyth County</a></li>
+                    <li><a href="hall-county-lake-lanier.html">Hall County</a></li>
+                    <li><a href="dawson-county-lake-lanier.html">Dawson County</a></li>
+                    <li><a href="gwinnett-county-lake-lanier.html">Gwinnett County</a></li>
+                    <li><a href="lumpkin-county-lake-lanier.html">Lumpkin County</a></li>
+                    <li><a href="03-communities.html">All Communities</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7705199160">(770) 519-9160</a></li>
+                    <li><a href="mailto:rhonda@teamgiarraffa.com">rhonda@teamgiarraffa.com</a></li>
+                    <li>2920 Ronald Reagan Blvd, Ste 113<br>Cumming, GA 30041</li>
+                </ul>
+                <a href="contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Team Giarraffa Real Estate · Brokered by Century 21 Results · Licensed REALTOR®, Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each office is independently owned and operated. Listing data via Showcase IDX and the applicable MLS. <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+<style>
+.footer{background:var(--black);color:var(--white);padding:80px 0 32px}
+.footer__container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.footer__brand{font-family:var(--font-heading);font-size:24px;font-weight:200;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:360px}
+.footer__brokerage{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.footer__heading{font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:24px}
+.footer__col ul{list-style:none;padding:0}
+.footer__col ul li{margin-bottom:12px;font-size:14px;line-height:1.5}
+.footer__col a{color:rgba(255,255,255,0.7);transition:color var(--transition)}
+.footer__col a:hover{color:var(--white)}
+.footer__social{display:flex !important;gap:16px;list-style:none;margin-top:8px !important;padding:0}
+.footer__social li{margin:0 !important}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);transition:all var(--transition)}
+.footer__social a:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.9}
+.footer__bottom a{color:rgba(255,255,255,0.55)}.footer__bottom a:hover{color:var(--gold)}
+.footer__disclaimer{margin-top:4px}
+@media (max-width:768px){.footer__grid{grid-template-columns:1fr;gap:40px}}
+</style>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!isActive)item.classList.add('active');});});
+document.querySelectorAll('[data-modal-open]').forEach(trigger=>{trigger.addEventListener('click',e=>{e.preventDefault();const id=trigger.getAttribute('data-modal-open');const modal=document.getElementById('modal-'+id);if(modal){modal.classList.add('active');document.body.style.overflow='hidden';}});});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el||el.classList.contains('modal-close')){const overlay=el.classList.contains('modal-overlay')?el:el.closest('.modal-overlay');if(overlay){overlay.classList.remove('active');document.body.style.overflow='';}}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));document.body.style.overflow='';}});
+const slides=document.querySelectorAll('.testimonial-slide');let currentSlide=0;function showSlide(i){slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));}
+function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+const nextBtn=document.querySelector('.testimonial-nav__next'),prevBtn=document.querySelector('.testimonial-nav__prev');if(nextBtn)nextBtn.addEventListener('click',nextSlide);if(prevBtn)prevBtn.addEventListener('click',prevSlide);if(slides.length)setInterval(nextSlide,6000);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const statObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const target=parseInt(el.getAttribute('data-target')||'0',10);const dur=1500;const start=performance.now();(function tick(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());statObserver.unobserve(el);}});},{threshold:0.5});document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+</script>
+
+</body>
+</html>

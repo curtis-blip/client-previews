@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's My Lanier Home Worth? · Home Value · Team Giarraffa</title>
+    <meta name="description" content="Find out what your Lake Lanier home is worth with a strategic, data-backed valuation from Team Giarraffa, grounded in real local sales and Rhonda's MIT-trained market analysis. Free and no obligation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ HOME VALUE PAGE-SPECIFIC STYLING (Michael register, lake-blue) ============ */
+
+    /* Hero - medium, centered, no CTA */
+    .hv-hero {
+        background: linear-gradient(135deg, #062f4c 0%, #064a7d 60%, #065a97 100%);
+        position: relative;
+    }
+    .hv-hero__bg {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.55;
+    }
+    .hv-hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .hv-hero .hero__content {
+        max-width: 820px;
+        position: relative; z-index: 2;
+    }
+    .hv-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        display: block;
+    }
+    .hv-hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(32px, 5vw, 54px);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1.2;
+        color: var(--white);
+        margin-bottom: 20px;
+    }
+    .hv-hero__subhead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.7;
+        color: rgba(255,255,255,0.88);
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    /* Shared section header */
+    .hv-section-header {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 56px;
+    }
+    .hv-section-header__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .hv-section-header h2 {
+        font-size: clamp(28px, 3.5vw, 38px);
+        margin-bottom: 16px;
+        line-height: 1.25;
+    }
+    .hv-section-header p {
+        color: var(--text-muted);
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    /* ============ VALUATION WIDGET ZONE (labeled Showcase IDX) ============ */
+    .hv-widget-zone {
+        max-width: 760px;
+        margin: 56px auto 0;
+        background: var(--white);
+        border: 2px dashed var(--border-light);
+        padding: 48px 40px;
+        text-align: center;
+    }
+    .hv-widget-zone__label {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .hv-widget-zone__title {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+    .hv-widget-zone p {
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.75;
+        max-width: 540px;
+        margin: 0 auto;
+    }
+    .hv-widget-fields {
+        list-style: none;
+        padding: 0;
+        max-width: 460px;
+        margin: 28px auto 0;
+        text-align: left;
+    }
+    .hv-widget-fields li {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-light);
+        background: var(--gray-bg);
+        font-family: var(--font-heading);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-muted);
+    }
+    .hv-widget-fields li svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        color: var(--purple);
+    }
+    .hv-widget-zone__shortcode {
+        display: inline-block;
+        background: var(--gray-bg);
+        padding: 12px 24px;
+        margin-top: 16px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        color: var(--text-muted);
+        border: 1px solid var(--border-light);
+    }
+    .hv-widget-zone__note {
+        margin-top: 20px;
+        font-size: 13px;
+        color: var(--text-muted);
+        font-style: italic;
+    }
+
+    /* ============ WHAT IS A HOME VALUE (image + text) ============ */
+    .hv-explain {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 72px;
+        align-items: center;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .hv-explain__media {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: var(--gray-bg);
+    }
+    .hv-explain__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    .hv-explain__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--purple);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .hv-explain h2 {
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 1.25;
+        margin-bottom: 24px;
+    }
+    .hv-explain p {
+        color: var(--text-muted);
+        line-height: 1.85;
+        margin-bottom: 18px;
+    }
+    .hv-explain p:last-child {
+        margin-bottom: 0;
+    }
+    @media (max-width: 1024px) {
+        .hv-explain {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .hv-explain__media {
+            order: -1;
+            aspect-ratio: 16 / 10;
+        }
+    }
+
+    /* ============ METHODOLOGY (data-backed, MIT) ============ */
+    .hv-method-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .hv-method-card {
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        padding: 40px 36px;
+        transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .hv-method-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+    }
+    .hv-method-card__icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 24px;
+        color: var(--purple);
+    }
+    .hv-method-card__icon svg {
+        width: 100%;
+        height: 100%;
+    }
+    .hv-method-card h3 {
+        font-size: 19px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 14px;
+    }
+    .hv-method-card p {
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.8;
+    }
+    @media (max-width: 768px) {
+        .hv-method-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        .hv-method-card {
+            padding: 32px 24px;
+        }
+    }
+
+    /* ============ SECONDARY REQUEST FORM (form allowed on this page) ============ */
+    .hv-request {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 72px;
+        align-items: start;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .hv-request__intro-eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .hv-request__intro h2 {
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 1.25;
+        margin-bottom: 24px;
+        color: var(--white);
+    }
+    .hv-request__intro p {
+        color: rgba(255,255,255,0.82);
+        line-height: 1.85;
+        margin-bottom: 24px;
+    }
+    .hv-request__list {
+        list-style: none;
+        padding: 0;
+        margin: 28px 0 0;
+    }
+    .hv-request__list li {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+        font-size: 15px;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
+    }
+    .hv-request__list li:last-child {
+        border-bottom: none;
+    }
+    .hv-request__check {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        margin-top: 2px;
+        color: var(--gold);
+    }
+    .hv-form {
+        background: var(--white);
+        padding: 40px;
+    }
+    .hv-form__row {
+        margin-bottom: 20px;
+    }
+    .hv-form__row--2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .hv-form label {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        display: block;
+    }
+    .hv-form input,
+    .hv-form textarea {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid var(--border-light);
+        background: var(--white);
+        font-family: var(--font-body);
+        font-size: 15px;
+        color: var(--text-dark);
+        outline: none;
+        transition: border-color var(--transition);
+    }
+    .hv-form input:focus,
+    .hv-form textarea:focus {
+        border-color: var(--purple);
+    }
+    .hv-form textarea {
+        resize: vertical;
+        min-height: 96px;
+    }
+    .hv-form__submit {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .hv-form__note {
+        margin-top: 16px;
+        font-size: 13px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        text-align: center;
+    }
+    @media (max-width: 1024px) {
+        .hv-request {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+    }
+    @media (max-width: 768px) {
+        .hv-form {
+            padding: 28px 20px;
+        }
+        .hv-form__row--2col {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ============ RESOURCES STRIP ============ */
+    .hv-resources {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .hv-resources__grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 56px;
+        align-items: center;
+    }
+    .hv-resources__grid h3 {
+        font-size: clamp(22px, 2.5vw, 30px);
+        line-height: 1.3;
+    }
+    .hv-resources__links {
+        display: grid;
+        gap: 16px;
+    }
+    .hv-resource-link {
+        display: block;
+        padding: 24px 28px;
+        border: 1px solid var(--border-light);
+        background: var(--white);
+        transition: all var(--transition);
+    }
+    .hv-resource-link:hover {
+        border-color: var(--purple);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .hv-resource-link__title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--font-heading);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+    }
+    .hv-resource-link__title svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: var(--purple);
+    }
+    .hv-resource-link__desc {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.65;
+    }
+    @media (max-width: 1024px) {
+        .hv-resources__grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+
+    /* ============ FINAL CTA ============ */
+    .hv-final-cta {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .hv-final-cta__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .hv-final-cta h2 {
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: 20px;
+        line-height: 1.25;
+        color: var(--white);
+    }
+    .hv-final-cta p {
+        color: rgba(255,255,255,0.82);
+        font-size: 17px;
+        line-height: 1.8;
+        max-width: 560px;
+        margin: 0 auto 32px;
+    }
+    .hv-final-cta__btns {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    </style>
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "RealEstateAgent",
+     "name": "Team Giarraffa Real Estate",
+     "image": "https://teamgiarraffa.com/wp-content/uploads/logo.png",
+     "telephone": "+1-770-519-9160",
+     "email": "rhonda@teamgiarraffa.com",
+     "priceRange": "$$$",
+     "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2920 Ronald Reagan Blvd, Ste 113",
+      "addressLocality": "Cumming",
+      "addressRegion": "GA",
+      "postalCode": "30041",
+      "addressCountry": "US"
+     },
+     "areaServed": [
+      "Lake Lanier",
+      "Forsyth County, GA",
+      "Hall County, GA",
+      "Dawson County, GA",
+      "Gwinnett County, GA",
+      "Lumpkin County, GA"
+     ],
+     "memberOf": {
+      "@type": "Organization",
+      "name": "Century 21 Results"
+     },
+     "url": "https://teamgiarraffa.com/",
+     "slogan": "Live Life Loud"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "FAQPage",
+     "mainEntity": [
+      {
+       "@type": "Question",
+       "name": "How accurate is an online home estimate?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Online estimates are a starting point, not a selling price. They run on public data and broad assumptions, so they can miss the mark badly on lakefront and luxury homes, where dock rights, water depth, frontage, and finish quality drive real value. A local, agent-reviewed valuation accounts for the things an algorithm never sees, which is why our number tends to look very different from an instant estimate."
+       }
+      },
+      {
+       "@type": "Question",
+       "name": "What affects a lakefront home's value the most?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On Lake Lanier, the water matters as much as the house. Dock type and permit status, water depth at the dock, slip access, the amount and quality of frontage, the view, and the protection of the cove all carry real weight. Location within the county, schools, and proximity to GA-400 or the marinas factor in too. We weigh each of these against recent comparable sales to land on a defensible market value."
+       }
+      },
+      {
+       "@type": "Question",
+       "name": "How soon can I get my valuation?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quickly. Once you send the property address and your contact details, we review recent Lanier sales and the home's lake-specific factors and follow up with a strategic value, usually within a day or two. If you're weighing a sale, we're glad to walk you through how we arrived at the number and what it means for your timeline."
+       }
+      },
+      {
+       "@type": "Question",
+       "name": "Is the valuation free?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your home valuation is free and comes with no obligation. Whether you're ready to list this month or just want a clear, honest picture of where your equity stands, we're happy to help. There's no pressure and no commitment to sell."
+       }
+      },
+      {
+       "@type": "Question",
+       "name": "What information do you need to value my home?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The property address, a few basics on the home, and how to reach you is enough to start. For lakefront homes, anything you can share about the dock, water depth, and frontage helps us refine the number faster. If the public record looks off, we follow up before we guess."
+       }
+      },
+      {
+       "@type": "Question",
+       "name": "Do you value luxury and golf-community homes?",
+       "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The luxury and lake-access price bands are where local knowledge matters most. Communities around Lake Lanier each carry their own comp pool and buyer pool, and a national algorithm cannot tell a deep-water lot from a sit-on-the-bank lot. A local, data-backed read can, and does."
+       }
+      }
+     ]
+    }
+    </script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo" aria-label="Team Giarraffa Real Estate, home">
+        <img src="assets/logo-white.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-light" style="max-width:158px;">
+        <img src="assets/logo-transparent.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-dark" style="max-width:158px;">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="06-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="04-featured-listings.html">Search Homes</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="07-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="09-home-value.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Team Giarraffa</a></li>
+                <li><a href="05-testimonials.html">Testimonials</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7705199160" class="nav__phone">(770) 519-9160</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="09-home-value.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+        <li><a href="02-about.html">About Team Giarraffa</a></li>
+        <li><a href="05-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7705199160">(770) 519-9160</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO (medium, centered, no CTA) + WIDGET ZONE ============ -->
+    <section class="hero hero--medium hv-hero" data-bg-hint="lakefront-home-private-dock-lake-lanier">
+        <div class="hv-hero__bg" style="background-image: url('assets/page-hero-lake.jpg');"></div>
+        <div class="hero__content">
+            <span class="hv-hero__eyebrow">What's It Worth?</span>
+            <h1 class="hv-hero__title">What's Your Lanier Home Worth?</h1>
+            <p class="hv-hero__subhead">Lake and luxury homes don't price themselves off a Zestimate. Get a strategic, data-backed valuation grounded in real Lanier sales and Rhonda's MIT-trained market analysis.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+    <!-- ============ VALUATION WIDGET ZONE (labeled Showcase IDX) ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="hv-section-header">
+                <span class="hv-section-header__eyebrow">Start Here</span>
+                <h2>Request your strategic valuation</h2>
+                <p>Tell us where the home is and how to reach you. We return an agent-reviewed value for your Lake Lanier or North Georgia property, not an automated guess.</p>
+            </div>
+
+            <!-- Showcase IDX home valuation: labeled placeholder zone (not a functional calculator). The live valuation tool renders here via the Showcase IDX shortcode at build time. -->
+            <div class="hv-widget-zone">
+                <span class="hv-widget-zone__label">Showcase IDX Home Valuation</span>
+                <h3 class="hv-widget-zone__title">Get My Home Value</h3>
+                <p>Enter your address below and the Showcase IDX valuation tool will pull a starting estimate. We then review it by hand against real Lanier comps and the home's lake-specific factors before sending you a number you can actually use.</p>
+                <ul class="hv-widget-fields">
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Property Address
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+                        Email Address
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        Phone Number
+                    </li>
+                </ul>
+                <span class="hv-widget-zone__shortcode">[showcase_home_valuation]</span>
+                <p class="hv-widget-zone__note">Live Showcase IDX valuation widget renders in this zone at build time.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END VALUATION WIDGET ZONE ============ -->
+
+    <!-- ============ WHAT A HOME VALUE REALLY IS (image + text) ============ -->
+    <section class="section section--gray">
+        <div class="hv-explain">
+            <div class="hv-explain__media">
+                <img src="assets/community-marinabay.jpg" alt="Luxury waterfront home with a private boat dock on Lake Lanier near Marina Bay">
+            </div>
+            <div>
+                <span class="hv-explain__eyebrow">Know the Number That Matters</span>
+                <h2>What a home value really is, and why it matters</h2>
+                <p>There are three numbers people throw around, and they rarely agree. The assessed value is what the county uses to calculate property taxes, and it often trails the real market by years. An online estimate, like a Zestimate, is an algorithm guessing from public data it has never seen in person. Neither one knows your dock, your water depth, or the view from your back porch.</p>
+                <p>Market value is the only number that counts when it's time to sell. It's what a real, qualified buyer will actually pay for your home in today's market, on today's lake. For lakefront and luxury homes, that number swings hard on details a national algorithm can't see, which is exactly why a strategic, local valuation is worth more than any instant estimate.</p>
+                <p>Get it right and your home sells with momentum. Get it wrong and it sits, collects price cuts, and trains buyers to wonder what's wrong with it. We help you start at the right number, backed by data, so your home is positioned to sell. When you're ready, the <a href="07-sellers-guide.html">seller's guide</a> walks through what comes next.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END WHAT A HOME VALUE REALLY IS ============ -->
+
+    <!-- ============ HOW WE FIND YOUR VALUE (data-backed, MIT) ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="hv-section-header">
+                <span class="hv-section-header__eyebrow">Our Method</span>
+                <h2>How we find your value</h2>
+                <p>A defensible number comes from real sales and real analysis, not an algorithm reading tax records from a server. Here is what goes into yours.</p>
+            </div>
+            <div class="hv-method-grid">
+                <div class="hv-method-card">
+                    <div class="hv-method-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+                    <h3>Real Lanier Comps</h3>
+                    <p>We price against homes that actually sold on the lake, not a national average. Recent waterfront and luxury sales in your cove and county set the baseline, so the number reflects this market, today. See what's moving now in <a href="04-featured-listings.html">featured listings</a>.</p>
+                </div>
+                <div class="hv-method-card">
+                    <div class="hv-method-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M2 19c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M12 3l4 5H8l4-5z"/><path d="M12 8v3"/></svg></div>
+                    <h3>Lake-Specific Factors</h3>
+                    <p>Dock type and permit, water depth, slip access, frontage, and the quality of the view can move a lakefront home's value by a wide margin. We weigh the details an automated estimate simply cannot see, and that vary by <a href="03-communities.html">community</a>.</p>
+                </div>
+                <div class="hv-method-card">
+                    <div class="hv-method-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
+                    <h3>MIT-Trained Analysis</h3>
+                    <p>Rhonda's certification in Data Science in Real Estate from MIT brings real analytical rigor to the number. We read the trends behind the comps, not just the headline price, so your valuation holds up to scrutiny when an offer comes in.</p>
+                </div>
+                <div class="hv-method-card">
+                    <div class="hv-method-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+                    <h3>Priced to Sell, Not Sit</h3>
+                    <p>The goal is a number that attracts qualified buyers and protects your equity. We position your home to sell with momentum from day one, not to languish through round after round of price cuts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END HOW WE FIND YOUR VALUE ============ -->
+
+    <!-- ============ SECONDARY REQUEST FORM (form allowed on this page) ============ -->
+    <section class="section section--dark">
+        <div class="hv-request">
+            <div class="hv-request__intro">
+                <span class="hv-request__intro-eyebrow">No Guesswork</span>
+                <h2>Prefer to send the details yourself?</h2>
+                <p>Skip the instant estimate. Share a little about your home and we'll prepare a strategic, agent-reviewed valuation for your Lake Lanier property, free and with no obligation.</p>
+                <ul class="hv-request__list">
+                    <li>
+                        <svg class="hv-request__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Real comps from recent Lake Lanier and North Georgia sales</span>
+                    </li>
+                    <li>
+                        <svg class="hv-request__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>Lake-specific factors weighed by hand, not by an algorithm</span>
+                    </li>
+                    <li>
+                        <svg class="hv-request__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>A strategic value, usually back within a day or two</span>
+                    </li>
+                    <li>
+                        <svg class="hv-request__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span>No pressure and no commitment to sell, ever</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Connects to GHL in production -->
+            <form class="hv-form" id="valuation-form" action="#" onsubmit="return false;">
+                <div class="hv-form__row">
+                    <label for="hv-address">Property Address</label>
+                    <input type="text" id="hv-address" name="address" placeholder="123 Lakeshore Drive" autocomplete="street-address">
+                </div>
+                <div class="hv-form__row">
+                    <label for="hv-city">City</label>
+                    <input type="text" id="hv-city" name="city" placeholder="Cumming" autocomplete="address-level2">
+                </div>
+                <div class="hv-form__row hv-form__row--2col">
+                    <div>
+                        <label for="hv-beds">Bedrooms</label>
+                        <input type="text" id="hv-beds" name="bedrooms" placeholder="4">
+                    </div>
+                    <div>
+                        <label for="hv-baths">Bathrooms</label>
+                        <input type="text" id="hv-baths" name="bathrooms" placeholder="3">
+                    </div>
+                </div>
+                <div class="hv-form__row">
+                    <label for="hv-dock">Dock &amp; Lake Details</label>
+                    <textarea id="hv-dock" name="dock" rows="3" placeholder="Single-slip dock, deep water year-round, wide cove view..."></textarea>
+                </div>
+                <div class="hv-form__row">
+                    <label for="hv-name">Your Name</label>
+                    <input type="text" id="hv-name" name="name" autocomplete="name">
+                </div>
+                <div class="hv-form__row">
+                    <label for="hv-email">Email</label>
+                    <input type="email" id="hv-email" name="email" autocomplete="email">
+                </div>
+                <div class="hv-form__row">
+                    <label for="hv-phone">Phone</label>
+                    <input type="tel" id="hv-phone" name="phone" autocomplete="tel">
+                </div>
+                <button type="submit" class="btn btn--purple hv-form__submit">Request My Valuation</button>
+                <!-- Connects to GHL in production -->
+                <p class="hv-form__note">Your details go straight to Team Giarraffa. No email blasts, no robot follow-ups.</p>
+            </form>
+        </div>
+    </section>
+    <!-- ============ END SECONDARY REQUEST FORM ============ -->
+
+    <!-- ============ RESOURCES STRIP ============ -->
+    <section class="section section--gray">
+        <div class="hv-resources">
+            <div class="hv-resources__grid">
+                <h3>Verify the public record yourself.</h3>
+                <div class="hv-resources__links">
+                    <a class="hv-resource-link" href="https://qpublic.schneidercorp.com/Application.aspx?AppID=936&LayerID=18253&PageTypeID=2&PageID=8108" target="_blank" rel="noopener noreferrer">
+                        <span class="hv-resource-link__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg> County Tax Assessor</span>
+                        <span class="hv-resource-link__desc">Look up assessed values and property records for Forsyth, Hall, and Dawson counties.</span>
+                    </a>
+                    <a class="hv-resource-link" href="https://www.sas.usace.army.mil/Lanier/" target="_blank" rel="noopener noreferrer">
+                        <span class="hv-resource-link__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 14c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M2 19c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0"/><path d="M12 3l4 5H8l4-5z"/></svg> USACE Lake Lanier</span>
+                        <span class="hv-resource-link__desc">Army Corps shoreline rules, dock permits, and lake-level data that affect waterfront value.</span>
+                    </a>
+                    <a class="hv-resource-link" href="08-resource-guide.html">
+                        <span class="hv-resource-link__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> Lake Lanier Resource Guide</span>
+                        <span class="hv-resource-link__desc">Marinas, dock permitting, and the local context behind where lake home prices are trending.</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END RESOURCES STRIP ============ -->
+
+    <!-- ============ FAQ ============ -->
+    <section class="section">
+        <div class="hv-section-header">
+            <span class="hv-section-header__eyebrow">Common Questions</span>
+            <h2>Home value, answered</h2>
+            <p>Honest answers to the questions that come up most often before someone requests a valuation.</p>
+        </div>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How accurate is an online home estimate?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Online estimates are a starting point, not a selling price. They run on public data and broad assumptions, so they can miss the mark badly on lakefront and luxury homes, where dock rights, water depth, frontage, and finish quality drive real value. A local, agent-reviewed valuation accounts for the things an algorithm never sees, which is why our number tends to look very different from an instant estimate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What affects a lakefront home's value the most?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>On Lake Lanier, the water matters as much as the house. Dock type and permit status, water depth at the dock, slip access, the amount and quality of frontage, the view, and the protection of the cove all carry real weight. Location within the county, schools, and proximity to GA-400 or the marinas factor in too. We weigh each of these against recent comparable sales to land on a defensible market value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>How soon can I get my valuation?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Quickly. Once you send the property address and your contact details, we review recent Lanier sales and the home's lake-specific factors and follow up with a strategic value, usually within a day or two. If you're weighing a sale, we're glad to walk you through how we arrived at the number and what it means for your timeline.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>What information do you need to value my home?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>The property address, a few basics on the home, and how to reach you is enough to start. For lakefront homes, anything you can share about the dock, water depth, and frontage helps us refine the number faster. If the public record looks off, we follow up before we guess. The <a href="06-buyers-guide.html">buyer's guide</a> covers what to expect from the other side of a transaction, too.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Do you value luxury and golf-community homes?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Yes. The luxury and lake-access price bands are where local knowledge matters most. Communities around Lake Lanier each carry their own comp pool and buyer pool, and a national algorithm cannot tell a deep-water lot from a sit-on-the-bank lot. A local, data-backed read can, and does.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    <span>Is the valuation really free?</span>
+                    <span class="faq-question__icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer__inner">
+                        <p>Yes. Your home valuation is free and comes with no obligation. Whether you're ready to list this month or just want a clear, honest picture of where your equity stands, we're happy to help. There's no pressure and no commitment to sell.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ============ END FAQ ============ -->
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section section--purple">
+        <div class="hv-final-cta">
+            <span class="hv-final-cta__eyebrow">Let's Get You Moving</span>
+            <h2>Thinking of selling on Lanier?</h2>
+            <p>Start with a real number. Louis and Rhonda will give you a strategic, data-backed valuation and a clear picture of what your lake home can do in today's market.</p>
+            <div class="hv-final-cta__btns">
+                <a href="#valuation-form" class="btn btn--white">Get My Home Value</a>
+                <a href="contact.html" class="btn btn--outline" style="color:var(--white);border-color:var(--white);">Talk With Team Giarraffa</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END FINAL CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+<!-- ============ FOOTER (4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Team Giarraffa</h4>
+                <p class="footer__tagline">Lake &amp; luxury home sales on Lake Lanier and across North Georgia. Live Life Loud.</p>
+                <p class="footer__brokerage">Brokered by Century 21 Results<br>2920 Ronald Reagan Blvd, Ste 113, Cumming, GA 30041</p>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/yourforsythcountyrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/rhondagiarraffa_teamgiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/Rhondagiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Team Giarraffa</a></li>
+                    <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                    <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                    <li><a href="04-featured-listings.html">Search Homes</a></li>
+                    <li><a href="09-home-value.html">What's My Home Worth</a></li>
+                    <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+                    <li><a href="05-testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="forsyth-county-lake-lanier.html">Forsyth County</a></li>
+                    <li><a href="hall-county-lake-lanier.html">Hall County</a></li>
+                    <li><a href="dawson-county-lake-lanier.html">Dawson County</a></li>
+                    <li><a href="gwinnett-county-lake-lanier.html">Gwinnett County</a></li>
+                    <li><a href="lumpkin-county-lake-lanier.html">Lumpkin County</a></li>
+                    <li><a href="03-communities.html">All Communities</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7705199160">(770) 519-9160</a></li>
+                    <li><a href="mailto:rhonda@teamgiarraffa.com">rhonda@teamgiarraffa.com</a></li>
+                    <li>2920 Ronald Reagan Blvd, Ste 113<br>Cumming, GA 30041</li>
+                </ul>
+                <a href="contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Team Giarraffa Real Estate · Brokered by Century 21 Results · Licensed REALTOR®, Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each office is independently owned and operated. Listing data via Showcase IDX and the applicable MLS. <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+<style>
+.footer{background:var(--black);color:var(--white);padding:80px 0 32px}
+.footer__container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.footer__brand{font-family:var(--font-heading);font-size:24px;font-weight:200;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:360px}
+.footer__brokerage{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.footer__heading{font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:24px}
+.footer__col ul{list-style:none;padding:0}
+.footer__col ul li{margin-bottom:12px;font-size:14px;line-height:1.5}
+.footer__col a{color:rgba(255,255,255,0.7);transition:color var(--transition)}
+.footer__col a:hover{color:var(--white)}
+.footer__social{display:flex !important;gap:16px;list-style:none;margin-top:8px !important;padding:0}
+.footer__social li{margin:0 !important}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);transition:all var(--transition)}
+.footer__social a:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.9}
+.footer__bottom a{color:rgba(255,255,255,0.55)}.footer__bottom a:hover{color:var(--gold)}
+.footer__disclaimer{margin-top:4px}
+@media (max-width:768px){.footer__grid{grid-template-columns:1fr;gap:40px}}
+</style>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!isActive)item.classList.add('active');});});
+document.querySelectorAll('[data-modal-open]').forEach(trigger=>{trigger.addEventListener('click',e=>{e.preventDefault();const id=trigger.getAttribute('data-modal-open');const modal=document.getElementById('modal-'+id);if(modal){modal.classList.add('active');document.body.style.overflow='hidden';}});});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el||el.classList.contains('modal-close')){const overlay=el.classList.contains('modal-overlay')?el:el.closest('.modal-overlay');if(overlay){overlay.classList.remove('active');document.body.style.overflow='';}}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));document.body.style.overflow='';}});
+const slides=document.querySelectorAll('.testimonial-slide');let currentSlide=0;function showSlide(i){slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));}
+function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+const nextBtn=document.querySelector('.testimonial-nav__next'),prevBtn=document.querySelector('.testimonial-nav__prev');if(nextBtn)nextBtn.addEventListener('click',nextSlide);if(prevBtn)prevBtn.addEventListener('click',prevSlide);if(slides.length)setInterval(nextSlide,6000);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const statObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const target=parseInt(el.getAttribute('data-target')||'0',10);const dur=1500;const start=performance.now();(function tick(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());statObserver.unobserve(el);}});},{threshold:0.5});document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+</script>
+
+</body>
+</html>

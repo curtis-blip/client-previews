@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lake Lanier Resource Guide · Marinas, Restaurants &amp; Parks · Team Giarraffa</title>
+    <meta name="description" content="The Lake Lanier Resource Guide from Team Giarraffa: waterfront restaurants, marinas, parks, boat ramps, and campgrounds across North Georgia, with addresses, phones, and websites for living loud on Lanier.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ RESOURCE GUIDE PAGE-SPECIFIC STYLING (Michael register) ============ */
+
+    /* Inner hero - centered, medium, no CTA */
+    .page-hero {
+        position: relative;
+        min-height: 62vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        overflow: hidden;
+    }
+    .page-hero__bg {
+        position: absolute; inset: 0;
+        background-size: cover;
+        background-position: center;
+    }
+    .page-hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .page-hero__content {
+        position: relative; z-index: 2;
+        max-width: 880px;
+        padding: 140px 24px 96px;
+    }
+    .page-hero__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 24px;
+        display: block;
+    }
+    .page-hero__title {
+        font-family: var(--font-heading);
+        font-weight: 200;
+        font-size: clamp(34px, 5.2vw, 56px);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        line-height: 1.2;
+        color: var(--white);
+        margin-bottom: 24px;
+    }
+    .page-hero__subhead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.75;
+        color: rgba(255,255,255,0.9);
+        max-width: 680px;
+        margin: 0 auto 0;
+    }
+
+    /* Jump-link chips under the hero */
+    .jumps {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 34px;
+    }
+    .jumps a {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--white);
+        border: 1px solid rgba(255,255,255,0.45);
+        padding: 11px 22px;
+        transition: all var(--transition);
+    }
+    .jumps a:hover {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: var(--black);
+    }
+
+    /* Intro band */
+    .guide-intro {
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .guide-intro p {
+        font-size: 18px;
+        line-height: 1.85;
+        color: var(--text-muted);
+    }
+
+    /* Anchor offset so the fixed nav does not cover headings */
+    .dir-anchor { scroll-margin-top: 96px; }
+
+    /* Directory card grid (built on Michael tokens) */
+    .dir-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    .dir-card {
+        background: var(--white);
+        border: 1px solid var(--border-light);
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .section--gray .dir-card {
+        background: var(--white);
+    }
+    .dir-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+        border-color: var(--purple);
+    }
+    .dir-card h4 {
+        font-family: var(--font-heading);
+        font-size: 19px;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        margin-bottom: 14px;
+        color: var(--text-dark);
+    }
+    .dir-card__meta {
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+        flex-grow: 1;
+    }
+    .dir-card__meta strong {
+        display: block;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    .dir-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--purple);
+        align-self: flex-start;
+    }
+    .dir-card__link svg {
+        width: 16px;
+        height: 16px;
+        transition: transform var(--transition);
+    }
+    .dir-card__link:hover {
+        color: var(--black);
+    }
+    .dir-card__link:hover svg {
+        transform: translateX(4px);
+    }
+
+    /* Internal-link band (dark, centered) */
+    .link-band {
+        background: var(--black);
+        color: var(--white);
+        text-align: center;
+        padding: 96px 24px;
+    }
+    .link-band__inner {
+        max-width: 760px;
+        margin: 0 auto;
+    }
+    .link-band__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .link-band h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3.5vw, 40px);
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+    .link-band p {
+        color: rgba(255,255,255,0.78);
+        font-size: 16px;
+        line-height: 1.85;
+        margin: 0 auto 36px;
+        max-width: 600px;
+    }
+    .link-band__btns {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* County hotsheet cards (image-driven, gallery family) */
+    .county-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+    }
+    .county-grid .gallery-card {
+        height: 280px;
+    }
+    .county-grid .gallery-card__overlay h3 {
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 6px;
+    }
+    .county-grid .gallery-card__overlay p {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        opacity: 0.85;
+    }
+
+    /* Official resources strip */
+    .official-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    .official-card {
+        border: 1px solid var(--border-light);
+        padding: 28px;
+        transition: border-color var(--transition), transform var(--transition);
+    }
+    .official-card:hover {
+        border-color: var(--purple);
+        transform: translateY(-4px);
+    }
+    .official-card__title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: var(--font-heading);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+    }
+    .official-card__title svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        color: var(--purple);
+    }
+    .official-card__desc {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-muted);
+    }
+
+    /* Closing CTA (full-bleed image) */
+    .close-cta {
+        position: relative;
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        background-size: cover;
+        background-position: center;
+    }
+    .close-cta::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: rgba(0,0,0,0.55);
+    }
+    .close-cta__content {
+        position: relative; z-index: 2;
+        max-width: 720px;
+        padding: 96px 24px;
+    }
+    .close-cta__eyebrow {
+        font-family: var(--font-heading);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: block;
+    }
+    .close-cta h2 {
+        color: var(--white);
+        font-size: clamp(28px, 3.5vw, 42px);
+        margin-bottom: 20px;
+        line-height: 1.25;
+    }
+    .close-cta p {
+        color: rgba(255,255,255,0.85);
+        font-size: 16px;
+        line-height: 1.85;
+        margin: 0 auto 36px;
+        max-width: 600px;
+    }
+    .close-cta__btns {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+        .dir-grid,
+        .official-grid,
+        .county-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media (max-width: 768px) {
+        .dir-grid,
+        .official-grid,
+        .county-grid {
+            grid-template-columns: 1fr;
+        }
+        .page-hero__content {
+            padding: 120px 24px 72px;
+        }
+    }
+    </style>
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org",
+     "@type": "RealEstateAgent",
+     "name": "Team Giarraffa Real Estate",
+     "image": "https://teamgiarraffa.com/wp-content/uploads/logo.png",
+     "telephone": "+1-770-519-9160",
+     "email": "rhonda@teamgiarraffa.com",
+     "priceRange": "$$$",
+     "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2920 Ronald Reagan Blvd, Ste 113",
+      "addressLocality": "Cumming",
+      "addressRegion": "GA",
+      "postalCode": "30041",
+      "addressCountry": "US"
+     },
+     "areaServed": [
+      "Lake Lanier",
+      "Forsyth County, GA",
+      "Hall County, GA",
+      "Dawson County, GA",
+      "Gwinnett County, GA",
+      "Lumpkin County, GA"
+     ],
+     "memberOf": {
+      "@type": "Organization",
+      "name": "Century 21 Results"
+     },
+     "url": "https://teamgiarraffa.com/",
+     "slogan": "Live Life Loud"
+    }
+    </script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo" aria-label="Team Giarraffa Real Estate, home">
+        <img src="assets/logo-white.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-light" style="max-width:158px;">
+        <img src="assets/logo-transparent.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-dark" style="max-width:158px;">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="06-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="04-featured-listings.html">Search Homes</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="07-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="09-home-value.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Team Giarraffa</a></li>
+                <li><a href="05-testimonials.html">Testimonials</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7705199160" class="nav__phone">(770) 519-9160</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="09-home-value.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+        <li><a href="02-about.html">About Team Giarraffa</a></li>
+        <li><a href="05-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7705199160">(770) 519-9160</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+<main>
+    <!-- ============ CONTENT SLOT ============ -->
+
+    <!-- ============ HERO (medium, centered, no CTA) ============ -->
+    <header class="page-hero">
+        <div class="page-hero__bg" style="background-image: url('assets/lifestyle-dining.jpg');"></div>
+        <div class="page-hero__content">
+            <span class="page-hero__eyebrow">Life on Lanier</span>
+            <h1 class="page-hero__title">The Lake Lanier Resource Guide</h1>
+            <p class="page-hero__subhead">Your local map to the best of Lake Lanier: the waterfront restaurants, marinas, parks, boat ramps, and campgrounds that make this lake worth living on every single day.</p>
+            <nav class="jumps" aria-label="Jump to a section">
+                <a href="#restaurants">Waterfront Restaurants</a>
+                <a href="#marinas">Marinas</a>
+                <a href="#parks">Parks &amp; Boat Ramps</a>
+                <a href="#campgrounds">Campgrounds &amp; RV</a>
+            </nav>
+        </div>
+    </header>
+    <!-- ============ END HERO ============ -->
+
+
+    <!-- ============ INTRO ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="guide-intro">
+                <p>Living on Lanier is not just about the home, it is about everything around it: the dock you tie up to, the deck where you watch the sun drop, and the cove you call your own. We put this guide together from years of lake days so you can spend less time searching and more time on the water. When you are ready to make it your daily address, the <a href="03-communities.html" style="color:var(--purple);border-bottom:1px solid rgba(6,90,151,0.35);">communities</a> and active <a href="04-featured-listings.html" style="color:var(--purple);border-bottom:1px solid rgba(6,90,151,0.35);">lake listings</a> are a click away.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END INTRO ============ -->
+
+
+    <!-- ============ WATERFRONT RESTAURANTS ============ -->
+    <section id="restaurants" class="section section--gray dir-anchor">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Where Lanier Eats</span>
+                <h2>Waterfront Restaurants</h2>
+                <p>Pull the boat up, grab a table on the water, and settle in. These are the docks-and-decks spots locals point friends toward, from casual lakeside grilles to island favorites.</p>
+            </div>
+            <div class="dir-grid">
+
+                <article class="dir-card">
+                    <h4>Fish Tales Lakeside Grille</h4>
+                    <p class="dir-card__meta"><strong>6330 Mitchell St, Flowery Branch, GA 30542</strong>(770) 967-3775</p>
+                    <a class="dir-card__link" href="https://www.fishtaleslakelanier.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Pelican Pete's</h4>
+                    <p class="dir-card__meta"><strong>8800 Port Royale Dr, Gainesville, GA 30506</strong>(678) 450-1570</p>
+                    <a class="dir-card__link" href="https://www.pelicanpetes.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Pig Tales</h4>
+                    <p class="dir-card__meta"><strong>6800 Lights Ferry Rd, Flowery Branch, GA 30542</strong>(678) 828-8317</p>
+                    <a class="dir-card__link" href="https://www.pigtaleslakelanier.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Twisted Oar</h4>
+                    <p class="dir-card__meta"><strong>6900 Lanier Islands Pkwy, Buford, GA 30518</strong>(678) 714-7570</p>
+                    <a class="dir-card__link" href="https://www.twistedoar.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>LandShark Bar &amp; Grill</h4>
+                    <p class="dir-card__meta"><strong>7650 Lanier Islands Pkwy, Buford, GA 30518</strong>(470) 323-3440</p>
+                    <a class="dir-card__link" href="https://www.lanierislands.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Bullfrogs Bar &amp; Grille</h4>
+                    <p class="dir-card__meta"><strong>7000 Lanier Islands Pkwy, Buford, GA 30518</strong>(770) 945-8787</p>
+                    <a class="dir-card__link" href="https://www.lanierislands.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Sidney's Restaurant</h4>
+                    <p class="dir-card__meta"><strong>7000 Lanier Islands Pkwy, Buford, GA 30518</strong>(770) 945-8787</p>
+                    <a class="dir-card__link" href="https://www.lanierislands.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END WATERFRONT RESTAURANTS ============ -->
+
+
+    <!-- ============ MARINAS ============ -->
+    <section id="marinas" class="section dir-anchor">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Slips, Fuel &amp; Service</span>
+                <h2>Lake Lanier Marinas</h2>
+                <p>From full-service slips to fuel, rentals, and storage, these are the marinas that keep Lanier running. Many of the lake's best communities sit minutes from one.</p>
+            </div>
+            <div class="dir-grid">
+
+                <article class="dir-card">
+                    <h4>Holiday Marina</h4>
+                    <p class="dir-card__meta"><strong>6900 Lanier Islands Pkwy, Buford, GA 30518</strong>(770) 945-7201</p>
+                    <a class="dir-card__link" href="https://www.holidaylakelanier.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Port Royale Marina</h4>
+                    <p class="dir-card__meta"><strong>8800 Port Royale Dr, Gainesville, GA 30506</strong>(770) 534-6052</p>
+                    <a class="dir-card__link" href="https://www.portroyale.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Lazy Days Marina</h4>
+                    <p class="dir-card__meta"><strong>6700 Lanier Islands Pkwy, Buford, GA 30518</strong>(770) 614-6655</p>
+                    <a class="dir-card__link" href="https://www.lazydays.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Bald Ridge Marina</h4>
+                    <p class="dir-card__meta"><strong>1850 Bald Ridge Marina Rd, Cumming, GA 30041</strong>(770) 887-5309</p>
+                    <a class="dir-card__link" href="https://www.baldridgemarina.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Aqualand Marina</h4>
+                    <p class="dir-card__meta"><strong>6800 Lights Ferry Rd, Flowery Branch, GA 30542</strong>(770) 967-6811</p>
+                    <a class="dir-card__link" href="https://www.aqualandmarina.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Hideaway Bay Marina</h4>
+                    <p class="dir-card__meta"><strong>6250 Mitchell St, Flowery Branch, GA 30542</strong>(770) 967-5500</p>
+                    <a class="dir-card__link" href="https://www.hideawaybaymarina.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END MARINAS ============ -->
+
+
+    <!-- ============ PARKS & BOAT RAMPS ============ -->
+    <section id="parks" class="section section--gray dir-anchor">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Day on the Water</span>
+                <h2>Parks &amp; Boat Ramps</h2>
+                <p>Public beaches, picnic grounds, and launch ramps ring the lake across Forsyth, Hall, and Dawson counties. Here is where to put in, lay out a towel, and let the day go long.</p>
+            </div>
+            <div class="dir-grid">
+
+                <article class="dir-card">
+                    <h4>Mary Alice Park</h4>
+                    <p class="dir-card__meta"><strong>1820 Mary Alice Park Rd, Cumming, GA 30041</strong>(770) 781-2215</p>
+                    <a class="dir-card__link" href="https://parks.forsythco.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Tidwell Park</h4>
+                    <p class="dir-card__meta"><strong>4898 Pilgrim Mill Rd, Cumming, GA 30041</strong>(770) 781-2215</p>
+                    <a class="dir-card__link" href="https://parks.forsythco.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Charleston Park</h4>
+                    <p class="dir-card__meta"><strong>5850 Charleston Park Rd, Cumming, GA 30041</strong>(770) 781-2215</p>
+                    <a class="dir-card__link" href="https://parks.forsythco.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Young Deer Creek Park</h4>
+                    <p class="dir-card__meta"><strong>7300 Heard Rd, Cumming, GA 30041</strong>(770) 781-2215</p>
+                    <a class="dir-card__link" href="https://parks.forsythco.com" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Laurel Park</h4>
+                    <p class="dir-card__meta"><strong>3100 Old Cleveland Hwy, Gainesville, GA 30506</strong>(770) 531-2680</p>
+                    <a class="dir-card__link" href="https://www.hallcounty.org" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>War Hill Park</h4>
+                    <p class="dir-card__meta"><strong>4900 War Hill Park Rd, Dawsonville, GA 30534</strong>(770) 531-2675</p>
+                    <a class="dir-card__link" href="https://www.recreation.gov" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Toto Creek Park</h4>
+                    <p class="dir-card__meta"><strong>4100 Toto Creek Park Rd, Dawsonville, GA 30534</strong>(770) 531-2675</p>
+                    <a class="dir-card__link" href="https://www.recreation.gov" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END PARKS & BOAT RAMPS ============ -->
+
+
+    <!-- ============ CAMPGROUNDS & RV PARKS ============ -->
+    <section id="campgrounds" class="section dir-anchor">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Stay the Weekend</span>
+                <h2>Campgrounds &amp; RV Parks</h2>
+                <p>Lakeside campsites and RV hookups let you trade the commute for a shoreline view. These are the spots for long weekends and first tastes of the Lanier lifestyle.</p>
+            </div>
+            <div class="dir-grid">
+
+                <article class="dir-card">
+                    <h4>Don Carter State Park</h4>
+                    <p class="dir-card__meta"><strong>5000 N Browning Bridge Rd, Gainesville, GA 30506</strong>(678) 450-7726</p>
+                    <a class="dir-card__link" href="https://gastateparks.org/DonCarter" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Duckett Mill Campground</h4>
+                    <p class="dir-card__meta"><strong>3720 Duckett Mill Rd, Gainesville, GA 30506</strong>(770) 536-8829</p>
+                    <a class="dir-card__link" href="https://www.recreation.gov" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>Bolding Mill Campground</h4>
+                    <p class="dir-card__meta"><strong>4055 Chestatee Rd, Gainesville, GA 30506</strong>(770) 887-0675</p>
+                    <a class="dir-card__link" href="https://www.recreation.gov" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+                <article class="dir-card">
+                    <h4>River Forks Park</h4>
+                    <p class="dir-card__meta"><strong>3500 Keith Bridge Rd, Gainesville, GA 30504</strong>(770) 531-3952</p>
+                    <a class="dir-card__link" href="https://www.hallcounty.org" target="_blank" rel="noopener noreferrer">Visit Website
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CAMPGROUNDS & RV PARKS ============ -->
+
+
+    <!-- ============ INTERNAL-LINK BAND ============ -->
+    <section class="link-band">
+        <div class="link-band__inner">
+            <span class="link-band__eyebrow">Now Find the Home</span>
+            <h2>Live near all of it</h2>
+            <p>The best part of this guide is what it does not list: the home that puts you minutes from every dock, deck, and ramp on the water. Explore the communities and active listings that make Lanier a daily address, not a weekend trip.</p>
+            <div class="link-band__btns">
+                <a href="03-communities.html" class="btn btn--white">Explore Communities</a>
+                <a href="04-featured-listings.html" class="btn btn--outline" style="color:var(--white);border-color:rgba(255,255,255,0.6);">Browse Lake Homes</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END INTERNAL-LINK BAND ============ -->
+
+
+    <!-- ============ PLAN YOUR MOVE (internal links) ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Plan Your Move</span>
+                <h2>From the lake to the closing table</h2>
+                <p>Once the lifestyle has you, the next steps are simple. Whether you are buying your first cove or pricing the home you are ready to leave, Team Giarraffa has a guide for it.</p>
+            </div>
+            <div class="official-grid">
+                <a href="06-buyers-guide.html" class="official-card">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+                        Buyer's Guide
+                    </span>
+                    <span class="official-card__desc">How buying on Lake Lanier really works, from dock permits and water depth to coves, slips, and the offer. Read the step-by-step buyer's guide.</span>
+                </a>
+                <a href="09-home-value.html" class="official-card">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+                        What's My Home Worth
+                    </span>
+                    <span class="official-card__desc">Get a strategic, data-backed read on your lake or luxury home, grounded in real local sales and Rhonda's MIT-trained market analysis.</span>
+                </a>
+                <a href="04-featured-listings.html" class="official-card">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                        Search Homes
+                    </span>
+                    <span class="official-card__desc">Browse current lakefront, lake-access, and luxury listings on Lanier, updated live from the MLS. Find the home behind the lifestyle.</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END PLAN YOUR MOVE ============ -->
+
+
+    <!-- ============ COUNTY HOTSHEETS ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Search by County</span>
+                <h2>Homes for sale, county by county</h2>
+                <p>Every county on Lanier has its own water character, price profile, and feel. Jump straight to live listings for the shore you have your eye on.</p>
+            </div>
+            <div class="county-grid">
+                <a href="forsyth-county-lake-lanier.html" class="gallery-card">
+                    <img src="assets/county-forsyth.jpg" alt="Forsyth County Lake Lanier waterfront near Cumming" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>Forsyth County</h3>
+                        <p>Deep water · Cumming · GA-400</p>
+                    </div>
+                </a>
+                <a href="hall-county-lake-lanier.html" class="gallery-card">
+                    <img src="assets/county-hall.jpg" alt="Hall County Lake Lanier shoreline near Gainesville" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>Hall County</h3>
+                        <p>North-end shoreline · Gainesville</p>
+                    </div>
+                </a>
+                <a href="dawson-county-lake-lanier.html" class="gallery-card">
+                    <img src="assets/county-dawson.jpg" alt="Dawson County Lake Lanier cove with mountain backdrop" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>Dawson County</h3>
+                        <p>Quiet coves · Mountain views</p>
+                    </div>
+                </a>
+                <a href="gwinnett-county-lake-lanier.html" class="gallery-card">
+                    <img src="assets/county-gwinnett.jpg" alt="Gwinnett County Lake Lanier waterfront near Buford and Lanier Islands" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>Gwinnett County</h3>
+                        <p>South end · Buford · Islands</p>
+                    </div>
+                </a>
+                <a href="lumpkin-county-lake-lanier.html" class="gallery-card">
+                    <img src="assets/county-dawson.jpg" alt="Lumpkin County and North Georgia mountains near the headwaters of Lake Lanier" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>Lumpkin County</h3>
+                        <p>Headwaters · Dahlonega · Mountains</p>
+                    </div>
+                </a>
+                <a href="03-communities.html" class="gallery-card">
+                    <img src="assets/community-marinabay.jpg" alt="Lake Lanier community with private docks across North Georgia" style="background:#0d2137;width:100%;height:100%;object-fit:cover;">
+                    <div class="gallery-card__overlay">
+                        <h3>All Communities</h3>
+                        <p>Every shore on Lanier</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END COUNTY HOTSHEETS ============ -->
+
+
+    <!-- ============ OFFICIAL LANIER RESOURCES ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="home-section-header">
+                <span class="home-section-header__eyebrow">Good to Know</span>
+                <h2>Official Lanier resources</h2>
+                <p>For lake levels, permits, and the lake's marquee attractions, these are the official sources worth bookmarking before your next day on the water.</p>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://www.sam.usace.army.mil/Lake-Lanier/" target="_blank" rel="noopener noreferrer">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+                        USACE Lake Lanier
+                    </span>
+                    <span class="official-card__desc">U.S. Army Corps of Engineers lake levels, dock permits, shoreline rules, and recreation updates.</span>
+                </a>
+                <a class="official-card" href="https://www.lanierislands.com" target="_blank" rel="noopener noreferrer">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+                        Lake Lanier Islands
+                    </span>
+                    <span class="official-card__desc">Resort, beach, waterpark, and the lake's marquee attractions on the south end near Buford.</span>
+                </a>
+                <a class="official-card" href="https://parks.forsythco.com" target="_blank" rel="noopener noreferrer">
+                    <span class="official-card__title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+                        Forsyth County Parks
+                    </span>
+                    <span class="official-card__desc">Park hours, beach passes, and boat-ramp access across the south end of the lake.</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END OFFICIAL LANIER RESOURCES ============ -->
+
+
+    <!-- ============ CLOSING CTA ============ -->
+    <section class="close-cta" style="background-image: url('assets/cta-lake.jpg');">
+        <div class="close-cta__content">
+            <span class="close-cta__eyebrow">Let's Get You Moving</span>
+            <h2>Ready to live life loud on Lanier?</h2>
+            <p>You know the restaurants, the marinas, and the ramps. Now let Louis and Rhonda help you find the home that puts all of it in your backyard.</p>
+            <div class="close-cta__btns">
+                <a href="contact.html" class="btn btn--white">Start a Conversation</a>
+                <a href="04-featured-listings.html" class="btn btn--outline" style="color:var(--white);border-color:rgba(255,255,255,0.6);">Browse Lake Homes</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CLOSING CTA ============ -->
+
+    <!-- ============ END CONTENT SLOT ============ -->
+</main>
+
+<!-- ============ FOOTER (4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Team Giarraffa</h4>
+                <p class="footer__tagline">Lake &amp; luxury home sales on Lake Lanier and across North Georgia. Live Life Loud.</p>
+                <p class="footer__brokerage">Brokered by Century 21 Results<br>2920 Ronald Reagan Blvd, Ste 113, Cumming, GA 30041</p>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/yourforsythcountyrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/rhondagiarraffa_teamgiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/Rhondagiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Team Giarraffa</a></li>
+                    <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                    <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                    <li><a href="04-featured-listings.html">Search Homes</a></li>
+                    <li><a href="09-home-value.html">What's My Home Worth</a></li>
+                    <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+                    <li><a href="05-testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="forsyth-county-lake-lanier.html">Forsyth County</a></li>
+                    <li><a href="hall-county-lake-lanier.html">Hall County</a></li>
+                    <li><a href="dawson-county-lake-lanier.html">Dawson County</a></li>
+                    <li><a href="gwinnett-county-lake-lanier.html">Gwinnett County</a></li>
+                    <li><a href="lumpkin-county-lake-lanier.html">Lumpkin County</a></li>
+                    <li><a href="03-communities.html">All Communities</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7705199160">(770) 519-9160</a></li>
+                    <li><a href="mailto:rhonda@teamgiarraffa.com">rhonda@teamgiarraffa.com</a></li>
+                    <li>2920 Ronald Reagan Blvd, Ste 113<br>Cumming, GA 30041</li>
+                </ul>
+                <a href="contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Team Giarraffa Real Estate · Brokered by Century 21 Results · Licensed REALTOR®, Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each office is independently owned and operated. Listing data via Showcase IDX and the applicable MLS. <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+<style>
+.footer{background:var(--black);color:var(--white);padding:80px 0 32px}
+.footer__container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.footer__brand{font-family:var(--font-heading);font-size:24px;font-weight:200;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:360px}
+.footer__brokerage{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.footer__heading{font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:24px}
+.footer__col ul{list-style:none;padding:0}
+.footer__col ul li{margin-bottom:12px;font-size:14px;line-height:1.5}
+.footer__col a{color:rgba(255,255,255,0.7);transition:color var(--transition)}
+.footer__col a:hover{color:var(--white)}
+.footer__social{display:flex !important;gap:16px;list-style:none;margin-top:8px !important;padding:0}
+.footer__social li{margin:0 !important}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);transition:all var(--transition)}
+.footer__social a:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.9}
+.footer__bottom a{color:rgba(255,255,255,0.55)}.footer__bottom a:hover{color:var(--gold)}
+.footer__disclaimer{margin-top:4px}
+@media (max-width:768px){.footer__grid{grid-template-columns:1fr;gap:40px}}
+</style>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!isActive)item.classList.add('active');});});
+document.querySelectorAll('[data-modal-open]').forEach(trigger=>{trigger.addEventListener('click',e=>{e.preventDefault();const id=trigger.getAttribute('data-modal-open');const modal=document.getElementById('modal-'+id);if(modal){modal.classList.add('active');document.body.style.overflow='hidden';}});});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el||el.classList.contains('modal-close')){const overlay=el.classList.contains('modal-overlay')?el:el.closest('.modal-overlay');if(overlay){overlay.classList.remove('active');document.body.style.overflow='';}}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));document.body.style.overflow='';}});
+const slides=document.querySelectorAll('.testimonial-slide');let currentSlide=0;function showSlide(i){slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));}
+function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+const nextBtn=document.querySelector('.testimonial-nav__next'),prevBtn=document.querySelector('.testimonial-nav__prev');if(nextBtn)nextBtn.addEventListener('click',nextSlide);if(prevBtn)prevBtn.addEventListener('click',prevSlide);if(slides.length)setInterval(nextSlide,6000);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const statObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const target=parseInt(el.getAttribute('data-target')||'0',10);const dur=1500;const start=performance.now();(function tick(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());statObserver.unobserve(el);}});},{threshold:0.5});document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+</script>
+
+</body>
+</html>

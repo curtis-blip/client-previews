@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake Lanier Communities | Team Giarraffa Real Estate</title>
+    <meta name="description" content="Explore Lake Lanier neighborhoods county by county with Team Giarraffa: Dawson Pointe, Long Hollow Landing, Marina Bay, Hickory Lakeside, Chestatee, and Harbour Point, plus homes for sale across Forsyth, Hall, Dawson, Gwinnett, and Lumpkin counties.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ============ COMMUNITIES PAGE-SPECIFIC ============ */
+    .hero__eyebrow{font-family:var(--font-heading);font-size:12px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block}
+    .comm-intro{max-width:820px;margin:0 auto;text-align:center}
+    .comm-intro .eyebrow{font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:16px;display:block}
+    .comm-intro h2{margin-bottom:24px}
+    .comm-intro p{font-size:17px;line-height:1.85;color:var(--text-muted)}
+
+    /* Neighborhood grid (reuses .community-card / .community-card__overlay tokens) */
+    .neighborhood-card .tag{display:inline-block;font-family:var(--font-heading);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+    .neighborhood-card__overlay p{font-size:13px;line-height:1.6;color:rgba(255,255,255,0.82);margin:6px 0 0;max-width:340px}
+    .neighborhood-card .learn-more{margin-top:14px}
+    .neighborhood-card .learn-more svg{width:16px;height:16px;vertical-align:middle;margin-left:4px}
+
+    /* Modal extras (page scope) */
+    .modal-hero .tag{position:relative;z-index:2;display:block;font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:10px}
+    .modal-hero__head{position:relative;z-index:2;text-align:center}
+    .modal-body__intro{font-size:18px;line-height:1.8;color:var(--text-muted);margin-bottom:8px;max-width:820px}
+    .modal-body__intro:last-of-type{margin-bottom:0}
+    .modal-body__intro strong{color:var(--text-dark);font-weight:600}
+    .modal-block{margin-top:32px}
+
+    /* County grid */
+    .county-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .county-tile{position:relative;height:260px;overflow:hidden;display:flex;align-items:flex-end;color:var(--white)}
+    .county-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;z-index:0}
+    .county-tile:hover img{transform:scale(1.08)}
+    .county-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,0.78));z-index:1}
+    .county-tile__label{position:relative;z-index:2;padding:28px 28px;width:100%}
+    .county-tile__label .name{font-family:var(--font-heading);font-size:22px;font-weight:200;text-transform:uppercase;letter-spacing:2px;display:block}
+    .county-tile__label .sub{font-family:var(--font-heading);font-size:11px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.8);display:block;margin-top:4px}
+    .county-tile__label .go{font-family:var(--font-heading);font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);opacity:0;transform:translateY(8px);transition:all var(--transition);display:block;margin-top:12px}
+    .county-tile:hover .county-tile__label .go{opacity:1;transform:translateY(0)}
+    .county-tile--placeholder{background:repeating-linear-gradient(135deg,#e7ecf1 0 14px,#dfe6ec 14px 28px)}
+    .county-tile--placeholder .county-tile__placeholder{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#5a6b7a;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:18px}
+    .county-tile--placeholder::after{background:linear-gradient(transparent 35%,rgba(40,55,70,0.55))}
+
+    /* Links band */
+    .links-band{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .links-band__card{display:block;background:var(--white);padding:36px 28px;border:1px solid var(--border-light);transition:transform var(--transition),box-shadow var(--transition);text-align:left}
+    .links-band__card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.1)}
+    .links-band__card svg{width:28px;height:28px;stroke:var(--purple);margin-bottom:16px}
+    .links-band__card h3{font-family:var(--font-heading);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dark);margin-bottom:8px}
+    .links-band__card p{font-size:13px;line-height:1.6;color:var(--text-muted);margin:0}
+
+    /* Closing CTA */
+    .comm-close{position:relative;background-size:cover;background-position:center;color:var(--white);text-align:center;padding:120px 24px}
+    .comm-close::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.55)}
+    .comm-close__inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+    .comm-close .eyebrow{font-family:var(--font-heading);font-size:12px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:block}
+    .comm-close h2{color:var(--white);margin-bottom:20px}
+    .comm-close p{font-size:17px;line-height:1.8;color:rgba(255,255,255,0.88);margin-bottom:32px}
+    .comm-close__btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+    @media (max-width:1024px){
+        .county-grid{grid-template-columns:repeat(2,1fr)}
+        .links-band{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:768px){
+        .county-grid{grid-template-columns:1fr}
+        .links-band{grid-template-columns:1fr}
+        .comm-close{padding:80px 24px}
+    }
+    </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent",
+ "name": "Team Giarraffa Real Estate",
+ "image": "https://teamgiarraffa.com/wp-content/uploads/logo.png",
+ "telephone": "+1-770-519-9160",
+ "email": "rhonda@teamgiarraffa.com",
+ "priceRange": "$$$",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "2920 Ronald Reagan Blvd, Ste 113",
+  "addressLocality": "Cumming",
+  "addressRegion": "GA",
+  "postalCode": "30041",
+  "addressCountry": "US"
+ },
+ "areaServed": [
+  "Lake Lanier",
+  "Forsyth County, GA",
+  "Hall County, GA",
+  "Dawson County, GA",
+  "Gwinnett County, GA",
+  "Lumpkin County, GA"
+ ],
+ "memberOf": {
+  "@type": "Organization",
+  "name": "Century 21 Results"
+ },
+ "url": "https://teamgiarraffa.com/",
+ "slogan": "Live Life Loud",
+ "founder": [
+  {
+   "@type": "Person",
+   "name": "Rhonda Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  },
+  {
+   "@type": "Person",
+   "name": "Louis Giarraffa",
+   "jobTitle": "Lake & Luxury Real Estate Advisor"
+  }
+ ],
+ "sameAs": [
+  "https://www.facebook.com/yourforsythcountyrealtor/",
+  "https://www.instagram.com/rhondagiarraffa_teamgiarraffa",
+  "https://www.zillow.com/profile/Rhondagiarraffa",
+  "https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/"
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="nav__logo" aria-label="Team Giarraffa Real Estate, home">
+        <img src="assets/logo-white.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-light" style="max-width:158px;">
+        <img src="assets/logo-transparent.png" alt="Team Giarraffa Real Estate" class="nav__logo-img logo-dark" style="max-width:158px;">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li class="nav__dropdown">
+            <a href="06-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="04-featured-listings.html">Search Homes</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="07-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="09-home-value.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Team Giarraffa</a></li>
+                <li><a href="05-testimonials.html">Testimonials</a></li>
+                <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:7705199160" class="nav__phone">(770) 519-9160</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="01-home.html">Home</a></li>
+        <li><a href="04-featured-listings.html">Search Homes</a></li>
+        <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="09-home-value.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+        <li><a href="02-about.html">About Team Giarraffa</a></li>
+        <li><a href="05-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:7705199160">(770) 519-9160</a>
+    </p>
+</aside>
+<!-- ============ END NAVIGATION ============ -->
+
+<main>
+
+    <!-- ============ HERO: medium, centered, NO CTA ============ -->
+    <section class="hero hero--medium">
+        <div class="hero__bg" style="background-image:url('assets/page-hero-lake.jpg');"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <span class="hero__eyebrow">Communities</span>
+            <h1 class="hero__title">Lake Lanier, County by County</h1>
+            <p class="hero__text">From deep-water coves on the south end to the quiet shoreline up north, we know Lanier neighborhood by neighborhood, and we will help you find the part of the lake that fits how you want to live.</p>
+        </div>
+    </section>
+    <!-- ============ END HERO ============ -->
+
+    <!-- ============ INTRO ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="comm-intro fade-up">
+                <span class="eyebrow">Where We Specialize</span>
+                <h2>One Lake, Many Front Porches</h2>
+                <p>Team Giarraffa lives and works on Lake Lanier, so we know each community by its docks, its water depth, its amenities, and its everyday feel. Explore the neighborhoods below, then jump into live homes for sale by county.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END INTRO ============ -->
+
+    <!-- ============ NEIGHBORHOOD CARD GRID (6) ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="section__header">
+                <span class="eyebrow" style="font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:16px;display:block;">Featured Neighborhoods</span>
+                <h2>Lake Communities We Know By Heart</h2>
+            </div>
+            <div class="community-grid">
+
+                <!-- Dawson Pointe -->
+                <div class="community-card neighborhood-card" data-modal-open="dawson-pointe">
+                    <img src="assets/comm-dawson-pointe.jpg" alt="Community dock with boat slips on the north end of Lake Lanier at Dawson Pointe">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Dawson County</span>
+                        <h3>Dawson Pointe</h3>
+                        <p>Gated, private, and minutes from GA-400, with a 48-slip community dock and deep water on the quieter north end.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+                <!-- Long Hollow Landing -->
+                <div class="community-card neighborhood-card" data-modal-open="long-hollow-landing">
+                    <img src="assets/comm-long-hollow.jpg" alt="Family-friendly lake-access community streetscape at Long Hollow Landing in Forsyth County">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Forsyth County</span>
+                        <h3>Long Hollow Landing</h3>
+                        <p>The sweet spot of lake access without full waterfront pricing, with strong schools and easy GA-400 convenience.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+                <!-- Marina Bay -->
+                <div class="community-card neighborhood-card" data-modal-open="marina-bay">
+                    <img src="assets/community-marinabay.jpg" alt="Luxury lakefront home with private dock at Marina Bay on the north end of Lake Lanier">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Hall County</span>
+                        <h3>Marina Bay</h3>
+                        <p>Luxury meets privacy, with resort-style amenities and community boat slips in a sought-after north-lake setting.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+                <!-- Hickory Lakeside -->
+                <div class="community-card neighborhood-card" data-modal-open="hickory-lakeside">
+                    <img src="assets/comm-hickory.jpg" alt="Newer custom lake-access home with large porches at Hickory Lakeside in Forsyth County">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Forsyth County</span>
+                        <h3>Hickory Lakeside</h3>
+                        <p>A boutique, gated lake community built around the water, with community slips, modern craftsman homes, and full amenities.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+                <!-- Chestatee -->
+                <div class="community-card neighborhood-card" data-modal-open="chestatee">
+                    <img src="assets/comm-chestatee.jpg" alt="Championship golf course overlooking Lake Lanier at Chestatee in Dawsonville">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Dawson County</span>
+                        <h3>Chestatee</h3>
+                        <p>Golf, a private marina, and mountain views in one neighborhood, often described as a North Georgia lake resort people get to live in.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+                <!-- Harbour Point -->
+                <div class="community-card neighborhood-card" data-modal-open="harbour-point">
+                    <img src="assets/comm-harbour-point.jpg" alt="Gated entrance monument at Harbour Point Yacht Club community in Gainesville on Lake Lanier">
+                    <div class="community-card__overlay neighborhood-card__overlay">
+                        <span class="tag">Hall County</span>
+                        <h3>Harbour Point</h3>
+                        <p>A gated yacht-club community built for people who truly use their boat, with a large private marina and a resort-scale clubhouse.</p>
+                        <span class="learn-more">View Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END NEIGHBORHOOD CARD GRID ============ -->
+
+    <!-- ============ SEARCH BY COUNTY GRID (5) ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <span class="eyebrow" style="font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:16px;display:block;">Browse the Whole Lake</span>
+                <h2>Search Lanier By County</h2>
+                <p>Lake Lanier spans five counties, each with its own shoreline, pace, and price points. Pick a county to see active homes for sale.</p>
+            </div>
+            <div class="county-grid">
+
+                <a href="forsyth-county-lake-lanier.html" class="county-tile">
+                    <img src="assets/county-forsyth.jpg" alt="Forsyth County Lake Lanier waterfront near Cumming City Center">
+                    <span class="county-tile__label">
+                        <span class="name">Forsyth County</span>
+                        <span class="sub">Lake Lanier Homes</span>
+                        <span class="go">View Homes &rarr;</span>
+                    </span>
+                </a>
+
+                <a href="hall-county-lake-lanier.html" class="county-tile">
+                    <img src="assets/county-hall.jpg" alt="Hall County Lake Lanier shoreline with wide-open water near Gainesville">
+                    <span class="county-tile__label">
+                        <span class="name">Hall County</span>
+                        <span class="sub">Lake Lanier Homes</span>
+                        <span class="go">View Homes &rarr;</span>
+                    </span>
+                </a>
+
+                <a href="dawson-county-lake-lanier.html" class="county-tile">
+                    <img src="assets/county-dawson.jpg" alt="Dawson County Lake Lanier setting with rolling hills and mountain backdrop">
+                    <span class="county-tile__label">
+                        <span class="name">Dawson County</span>
+                        <span class="sub">Lake Lanier Homes</span>
+                        <span class="go">View Homes &rarr;</span>
+                    </span>
+                </a>
+
+                <a href="gwinnett-county-lake-lanier.html" class="county-tile">
+                    <img src="assets/county-gwinnett.jpg" alt="Gwinnett County south-end approach to Lake Lanier near Sugar Hill">
+                    <span class="county-tile__label">
+                        <span class="name">Gwinnett County</span>
+                        <span class="sub">Lake Lanier Homes</span>
+                        <span class="go">View Homes &rarr;</span>
+                    </span>
+                </a>
+
+                <a href="lumpkin-county-lake-lanier.html" class="county-tile county-tile--placeholder">
+                    <span class="county-tile__placeholder">Lumpkin County photo pending</span>
+                    <span class="county-tile__label">
+                        <span class="name">Lumpkin County</span>
+                        <span class="sub">Lake Lanier Homes</span>
+                        <span class="go">View Homes &rarr;</span>
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END SEARCH BY COUNTY GRID ============ -->
+
+    <!-- ============ LINKS BAND ============ -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="section__header">
+                <span class="eyebrow" style="font-family:var(--font-heading);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--purple);margin-bottom:16px;display:block;">Keep Exploring</span>
+                <h2>Plan Your Next Move on Lanier</h2>
+            </div>
+            <div class="links-band">
+
+                <a href="04-featured-listings.html" class="links-band__card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                    <h3>Search Lake Homes</h3>
+                    <p>Browse every active waterfront and lake-access listing across the five Lanier counties.</p>
+                </a>
+
+                <a href="09-home-value.html" class="links-band__card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 12l9-9 9 9"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg>
+                    <h3>What's My Home Worth</h3>
+                    <p>Get a data-backed estimate of your lake home's current market value.</p>
+                </a>
+
+                <a href="08-resource-guide.html" class="links-band__card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    <h3>Lake Lanier Resource Guide</h3>
+                    <p>Marinas, waterfront dining, parks, and boat ramps, mapped for life on the lake.</p>
+                </a>
+
+                <a href="06-buyers-guide.html" class="links-band__card">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+                    <h3>Buyer's Guide</h3>
+                    <p>Understand docks, water depth, coves, and slips before you tour your first lake home.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============ END LINKS BAND ============ -->
+
+    <!-- ============ CLOSING CTA ============ -->
+    <section class="comm-close" style="background-image:url('assets/cta-lake.jpg');">
+        <div class="comm-close__inner">
+            <span class="eyebrow">Find Your Part of the Lake</span>
+            <h2>Not Sure Which Community Fits You?</h2>
+            <p>Tell us how you want to live on Lanier, the boating, the schools, the amenities, the budget, and Louis and Rhonda will point you to the right shoreline.</p>
+            <div class="comm-close__btns">
+                <a href="contact.html" class="btn btn--white">Talk With Team Giarraffa</a>
+                <a href="04-featured-listings.html" class="btn btn--outline" style="color:var(--white);border-color:var(--white);">Browse Lake Homes</a>
+            </div>
+        </div>
+    </section>
+    <!-- ============ END CLOSING CTA ============ -->
+
+</main>
+
+<!-- ============ MODAL: DAWSON POINTE ============ -->
+<div class="modal-overlay" id="modal-dawson-pointe">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/comm-dawson-pointe.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Dawson County</span>
+                <h2>Dawson Pointe</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> Mornings are unhurried here. You walk a few minutes to the 48-slip community dock, drop the boat in deep water, and have the quiet north end of Lanier mostly to yourself. By afternoon it is swim, tennis, or pickleball at the clubhouse, then a five-minute hop to GA-400 for dinner or the North Georgia outlets.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> A gated neighborhood of spacious homesites and mature trees, with a laid-back vibe and real room to breathe. Amenities include swim, tennis, pickleball, and a community clubhouse, all wrapped around easy deep-water access.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Community Dock</div>
+                    <div class="modal-stat__label">48 Slips, Deep Water</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Resort Style</div>
+                    <div class="modal-stat__label">Swim · Tennis · Pickleball</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">5 Min</div>
+                    <div class="modal-stat__label">Drive to GA-400</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Dawson Pointe is the answer for buyers who want true deep-water boating, gated privacy, and a quieter stretch of Lanier without giving up GA-400 convenience. It tends to draw second-home owners and full-timers who value the unhurried north-end pace.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="dawson-pointe.html" class="btn btn--primary">Search Homes in Dawson Pointe</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Dawson Pointe</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: DAWSON POINTE ============ -->
+
+<!-- ============ MODAL: LONG HOLLOW LANDING ============ -->
+<div class="modal-overlay" id="modal-long-hollow-landing">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/comm-long-hollow.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Forsyth County</span>
+                <h2>Long Hollow Landing</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> This is lake living that fits real life. Sidewalks and a family-friendly layout make for easy evenings, weekends mix swim and tennis at the clubhouse with time on the water, and shopping and GA-400 are right around the corner.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> One of the better lifestyle-and-value communities on Lanier, where you get lake access without full waterfront pricing. Highlights include community dock access with some deeded slips, swim and tennis, a clubhouse, and strong Forsyth schools.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Community Dock</div>
+                    <div class="modal-stat__label">Some Deeded Slips</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Swim &amp; Tennis</div>
+                    <div class="modal-stat__label">Clubhouse · Sidewalks</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Minutes</div>
+                    <div class="modal-stat__label">To GA-400 &amp; Shopping</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Long Hollow Landing is the sweet spot for families who want strong Forsyth schools, real lake access, and a walkable, sidewalk-lined neighborhood, all without stretching to full waterfront pricing. It is one of the most practical lifestyle buys on the lake.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="long-hollow-landing.html" class="btn btn--primary">Search Homes in Long Hollow Landing</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Long Hollow Landing</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: LONG HOLLOW LANDING ============ -->
+
+<!-- ============ MODAL: MARINA BAY ============ -->
+<div class="modal-overlay" id="modal-marina-bay">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/community-marinabay.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Hall County</span>
+                <h2>Marina Bay</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> Marina Bay is built for easy, elevated lake days. Step out to resort-style amenities, take a community boat slip out onto the wide north end of Lanier, and come home to a private, polished neighborhood that still feels like a getaway.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> Luxury and privacy in a sought-after north-lake location, with world-class resort-style amenities and community boat slips available. It is a refined setting for buyers who want the lake lifestyle without giving up comfort.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Community Slips</div>
+                    <div class="modal-stat__label">Boat Slips Available</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Resort Style</div>
+                    <div class="modal-stat__label">World-Class Amenities</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">North Lake</div>
+                    <div class="modal-stat__label">Wide-Open Water</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Marina Bay appeals to buyers who want a polished, amenity-rich community on the wide-open north lake, with the privacy and resort feel of a getaway that happens to be home year-round.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="marina-bay.html" class="btn btn--primary">Search Homes in Marina Bay</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Marina Bay</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: MARINA BAY ============ -->
+
+<!-- ============ MODAL: HICKORY LAKESIDE ============ -->
+<div class="modal-overlay" id="modal-hickory-lakeside">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/comm-hickory.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Forsyth County</span>
+                <h2>Hickory Lakeside</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> Hickory Lakeside was designed around lake living, not just near it. Take the golf cart down to the community docks, spend the day on the water, then gather at the lakeside firepit as the sun drops. Big porches and outdoor entertaining spaces make home feel like part of the lifestyle.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> A gated, boutique-luxury lake community of newer custom and semi-custom homes in a modern farmhouse and craftsman style. Much of the neighborhood is built around community boat slips, with some assigned deep-water slips, plus a clubhouse, pool, tennis, pickleball, and cart paths to the docks, all in a top Forsyth school district.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Community Slips</div>
+                    <div class="modal-stat__label">Some Deep-Water</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Resort Style</div>
+                    <div class="modal-stat__label">Pool · Tennis · Pickleball</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Minutes</div>
+                    <div class="modal-stat__label">To GA-400 &amp; Cumming</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Hickory Lakeside is the pick for buyers who want newer construction, a true boutique-luxury feel, and a neighborhood designed around the docks and the water, all inside a top Forsyth school district minutes from Cumming.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="hickory-lakeside.html" class="btn btn--primary">Search Homes in Hickory Lakeside</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Hickory Lakeside</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: HICKORY LAKESIDE ============ -->
+
+<!-- ============ MODAL: CHESTATEE ============ -->
+<div class="modal-overlay" id="modal-chestatee">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/comm-chestatee.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Dawson County</span>
+                <h2>Chestatee</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> Chestatee blends golf, lake, and mountains into one neighborhood. Play a round on the dramatic Denis Griffiths course, take the boat out from the private marina, then walk the trails or meet neighbors at the lakeside pavilion. Many buyers describe it as a North Georgia lake resort that people happen to live in.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> A long-established lifestyle community on the north end, anchored by championship golf and a large private marina with covered and uncovered slips, some deeded or leased by section. Amenities run deep: a Junior Olympic pool, tennis, pickleball, trails, and a craftsman, mountain-lake feel in nearby Dawsonville.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Private Marina</div>
+                    <div class="modal-stat__label">Covered &amp; Open Slips</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Golf &amp; Resort</div>
+                    <div class="modal-stat__label">Pool · Tennis · Trails</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Quick Access</div>
+                    <div class="modal-stat__label">To GA-400</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Chestatee is for buyers who want it all in one address: championship golf, a private marina, mountain views, and a deep amenity package, with the craftsman, mountain-lake character of Dawsonville and quick GA-400 access.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="chestatee.html" class="btn btn--primary">Search Homes in Chestatee</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Chestatee</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: CHESTATEE ============ -->
+
+<!-- ============ MODAL: HARBOUR POINT ============ -->
+<div class="modal-overlay" id="modal-harbour-point">
+    <div class="modal-panel">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <div class="modal-hero" style="background-image:url('assets/comm-harbour-point.jpg');">
+            <div class="modal-hero__head">
+                <span class="tag">Hall County</span>
+                <h2>Harbour Point</h2>
+            </div>
+        </div>
+        <div class="modal-body">
+            <p class="modal-body__intro"><strong>A Day in the Life.</strong> Harbour Point is a true yacht-club community. The marina and clubhouse are the heart of it, so days center on the water, with a full-time harbormaster, golf-cart access to the slips, and a clubhouse that functions more like a private resort than an HOA. It is built for people who want a vacation-every-day feel.</p>
+            <p class="modal-body__intro"><strong>What You'll Find.</strong> A fully gated luxury community in Gainesville with estate-style homes, long-range lake and mountain views, and one of the largest private residential marinas on Lanier, with more than 250 covered slips. The 8,000-plus square foot clubhouse adds a Junior Olympic pool, tennis, pickleball, a fitness center, and trails, near Port Royale and easy open-water access.</p>
+
+            <div class="modal-stats">
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Private Marina</div>
+                    <div class="modal-stat__label">250+ Covered Slips</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Yacht Club</div>
+                    <div class="modal-stat__label">8,000+ Sq Ft Clubhouse</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat__value">Gated</div>
+                    <div class="modal-stat__label">Estate-Style Homes</div>
+                </div>
+            </div>
+
+            <div class="modal-section modal-block">
+                <h3>Why Buyers Love It</h3>
+                <p>Harbour Point is the address for serious boaters who want a true yacht-club lifestyle, estate-scale homes, long-range views, and one of the largest private marinas on Lanier, all behind a full gate in Gainesville.</p>
+            </div>
+
+            <div class="modal-cta">
+                <a href="harbour-point.html" class="btn btn--primary">Search Homes in Harbour Point</a>
+                <a href="contact.html" class="btn btn--outline">Ask About Harbour Point</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============ END MODAL: HARBOUR POINT ============ -->
+
+<!-- ============ FOOTER (4-column dark, gold-tinted headings) ============ -->
+<footer class="footer">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <div class="footer__col footer__col--brand">
+                <h4 class="footer__brand">Team Giarraffa</h4>
+                <p class="footer__tagline">Lake &amp; luxury home sales on Lake Lanier and across North Georgia. Live Life Loud.</p>
+                <p class="footer__brokerage">Brokered by Century 21 Results<br>2920 Ronald Reagan Blvd, Ste 113, Cumming, GA 30041</p>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/yourforsythcountyrealtor/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/rhondagiarraffa_teamgiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/Rhondagiarraffa" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/rhondagiarraffalakelanierandluxuryhomes/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Explore</h5>
+                <ul>
+                    <li><a href="01-home.html">Home</a></li>
+                    <li><a href="02-about.html">About Team Giarraffa</a></li>
+                    <li><a href="06-buyers-guide.html">Buyer's Guide</a></li>
+                    <li><a href="07-sellers-guide.html">Seller's Guide</a></li>
+                    <li><a href="04-featured-listings.html">Search Homes</a></li>
+                    <li><a href="09-home-value.html">What's My Home Worth</a></li>
+                    <li><a href="08-resource-guide.html">Lake Lanier Resource Guide</a></li>
+                    <li><a href="05-testimonials.html">Testimonials</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Communities</h5>
+                <ul>
+                    <li><a href="forsyth-county-lake-lanier.html">Forsyth County</a></li>
+                    <li><a href="hall-county-lake-lanier.html">Hall County</a></li>
+                    <li><a href="dawson-county-lake-lanier.html">Dawson County</a></li>
+                    <li><a href="gwinnett-county-lake-lanier.html">Gwinnett County</a></li>
+                    <li><a href="lumpkin-county-lake-lanier.html">Lumpkin County</a></li>
+                    <li><a href="03-communities.html">All Communities</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h5 class="footer__heading">Contact</h5>
+                <ul>
+                    <li><a href="tel:7705199160">(770) 519-9160</a></li>
+                    <li><a href="mailto:rhonda@teamgiarraffa.com">rhonda@teamgiarraffa.com</a></li>
+                    <li>2920 Ronald Reagan Blvd, Ste 113<br>Cumming, GA 30041</li>
+                </ul>
+                <a href="contact.html" class="btn btn--white" style="margin-top:24px;">Schedule a Call</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; 2026 Team Giarraffa Real Estate · Brokered by Century 21 Results · Licensed REALTOR®, Georgia</p>
+            <p class="footer__disclaimer">Equal Housing Opportunity. Each office is independently owned and operated. Listing data via Showcase IDX and the applicable MLS. <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+<!-- ============ END FOOTER ============ -->
+
+<style>
+.footer{background:var(--black);color:var(--white);padding:80px 0 32px}
+.footer__container{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:64px}
+.footer__brand{font-family:var(--font-heading);font-size:24px;font-weight:200;text-transform:uppercase;letter-spacing:3px;margin-bottom:16px}
+.footer__tagline{font-family:var(--font-body);font-style:italic;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin-bottom:16px;max-width:360px}
+.footer__brokerage{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.5);margin-bottom:24px}
+.footer__heading{font-family:var(--font-heading);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:24px}
+.footer__col ul{list-style:none;padding:0}
+.footer__col ul li{margin-bottom:12px;font-size:14px;line-height:1.5}
+.footer__col a{color:rgba(255,255,255,0.7);transition:color var(--transition)}
+.footer__col a:hover{color:var(--white)}
+.footer__social{display:flex !important;gap:16px;list-style:none;margin-top:8px !important;padding:0}
+.footer__social li{margin:0 !important}
+.footer__social a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);transition:all var(--transition)}
+.footer__social a:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.footer__bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.9}
+.footer__bottom a{color:rgba(255,255,255,0.55)}.footer__bottom a:hover{color:var(--gold)}
+.footer__disclaimer{margin-top:4px}
+@media (max-width:768px){.footer__grid{grid-template-columns:1fr;gap:40px}}
+</style>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+document.querySelectorAll('.faq-question').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');const isActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!isActive)item.classList.add('active');});});
+document.querySelectorAll('[data-modal-open]').forEach(trigger=>{trigger.addEventListener('click',e=>{e.preventDefault();const id=trigger.getAttribute('data-modal-open');const modal=document.getElementById('modal-'+id);if(modal){modal.classList.add('active');document.body.style.overflow='hidden';}});});
+document.querySelectorAll('.modal-close, .modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el||el.classList.contains('modal-close')){const overlay=el.classList.contains('modal-overlay')?el:el.closest('.modal-overlay');if(overlay){overlay.classList.remove('active');document.body.style.overflow='';}}});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));document.body.style.overflow='';}});
+const slides=document.querySelectorAll('.testimonial-slide');let currentSlide=0;function showSlide(i){slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));}
+function nextSlide(){currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}function prevSlide(){currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+const nextBtn=document.querySelector('.testimonial-nav__next'),prevBtn=document.querySelector('.testimonial-nav__prev');if(nextBtn)nextBtn.addEventListener('click',nextSlide);if(prevBtn)prevBtn.addEventListener('click',prevSlide);if(slides.length)setInterval(nextSlide,6000);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+const statObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){const el=entry.target;const target=parseInt(el.getAttribute('data-target')||'0',10);const dur=1500;const start=performance.now();(function tick(now){const p=Math.min((now-start)/dur,1);el.textContent=Math.floor(p*target).toLocaleString();if(p<1)requestAnimationFrame(tick);})(performance.now());statObserver.unobserve(el);}});},{threshold:0.5});document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+</script>
+
+</body>
+</html>
