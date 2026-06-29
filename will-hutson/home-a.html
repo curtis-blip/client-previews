@@ -113,7 +113,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
 
 /* CTA */
 .cta{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1500&q=80) center/cover fixed}
+.cta-bg{position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1500&q=80) center/cover}
 .cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(12,13,15,.62),rgba(12,13,15,.7))}
 .cta-inner{position:relative;z-index:2;padding:0 24px;max-width:720px}
 .cta-inner h2{font-size:clamp(32px,4.4vw,56px);margin-bottom:34px}
@@ -155,6 +155,32 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
  .hero-btns{flex-direction:column;align-items:center}
  .hero-btns .btn{width:100%;max-width:300px;justify-content:center}
 }
+
+/* ===== CAROUSEL (Work With Us) ===== */
+.carousel{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:clamp(80px,9vw,130px) 44px}
+.car-head{text-align:center;margin-bottom:clamp(40px,5vw,62px)}
+.car-head h2{color:#fff;font-size:clamp(30px,3.4vw,46px);margin-top:6px}
+.cstage{position:relative;min-height:clamp(420px,44vw,540px)}
+.cslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s ease;display:grid;grid-template-columns:1.5fr 1fr;align-items:center}
+.cslide.on{opacity:1;visibility:visible}
+.cphoto{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden}
+.cphoto img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.cslide.on .cphoto img{transform:scale(1.06)}
+.ccard{position:relative;z-index:2;background:#fff;color:var(--ink);padding:clamp(30px,3vw,44px);margin-left:clamp(-90px,-6vw,-40px);box-shadow:0 40px 90px rgba(0,0,0,.45);border-bottom:2px solid var(--gold)}
+.ccard .cnum{font-family:var(--serif);font-size:50px;color:var(--gold);line-height:.8;opacity:.5;margin-bottom:14px}
+.ccard .ceye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.ccard h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);color:var(--ink);margin:8px 0 14px}
+.ccard p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:26px}
+.cnav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:clamp(34px,4vw,52px)}
+.carrow{width:48px;height:48px;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;font-size:20px;line-height:1;transition:.3s;user-select:none}
+.carrow:hover{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
+.cindex{font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,.6);min-width:80px;text-align:center}
+@media(max-width:900px){.cstage{min-height:0}.cslide{position:relative;display:none;grid-template-columns:1fr}.cslide.on{display:block;opacity:1;visibility:visible}.ccard{margin:-46px 18px 0}}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+html.ranim .reveal{opacity:0;transform:translateY(36px)}
+html.ranim .reveal.in{opacity:1;transform:none}
 </style>
 <style id="mapcss">#countyMap{width:100%;height:auto;display:block;overflow:visible}.county{transform-box:fill-box;transform-origin:center;transition:transform .22s ease;cursor:pointer}.county .shape{fill:#2c2e31;stroke:#8d9097;stroke-width:2.4;transition:fill .2s}.county .lbl{font-family:var(--serif,Georgia);font-weight:700;font-size:15px;fill:#f3f1ec;text-anchor:middle;pointer-events:none;transition:fill .2s}.county.hot{transform:scale(1.4);filter:drop-shadow(0 16px 28px rgba(0,0,0,.6))}.county.hot .shape{fill:var(--gold,#BEAF87)}.county.hot .lbl{fill:#1a1a1a}.cities{opacity:0;transition:opacity .18s ease .04s;pointer-events:none}.county.hot .cities{opacity:1}.cdot{fill:#1a1a1a}.ctext{font-family:var(--sans,sans-serif);font-weight:600;font-size:9px;fill:#1a1a1a;text-anchor:middle;paint-order:stroke;stroke:#e9dfc4;stroke-width:2.4px;stroke-linejoin:round}.atl-ring{fill:#fff;stroke:#1a1a1a;stroke-width:2}.atl-core{fill:#1a1a1a}.atl-lbl{font-family:var(--serif,Georgia);font-weight:700;font-size:13px;fill:#fff;text-anchor:middle;paint-order:stroke;stroke:#1a1a1a;stroke-width:3px;stroke-linejoin:round}.cmov{position:fixed;inset:0;background:rgba(12,13,14,.66);display:none;align-items:center;justify-content:center;z-index:90;padding:24px}.cmov.open{display:flex}.cmod{background:#fff;max-width:430px;width:100%;padding:34px 32px;position:relative;font-family:var(--sans,sans-serif)}.cmod h3{font-family:var(--serif,Georgia);font-size:26px;margin-bottom:4px}.cmod p{color:#444;margin:12px 0 18px;font-size:14px;line-height:1.6}.cmclose{position:absolute;top:14px;right:16px;cursor:pointer;font-size:22px;color:#999}.cmch{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}.cmch span{background:#f6f4ef;border:1px solid #e7e4dd;font-size:12px;padding:5px 11px}.cmacts{display:flex;gap:10px;flex-wrap:wrap}.cmbtn{font-family:var(--sans,sans-serif);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;text-decoration:none;cursor:pointer}.cmbtn.g{background:var(--gold,#BEAF87);color:#1a1a1a}.cmbtn.d{border:1px solid #1a1a1a;color:#1a1a1a}</style>
 </head>
@@ -206,6 +232,44 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
   </div>
   <div class="ed-media">
    <div class="portrait"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1500&q=80" alt="Light-filled North Georgia home interior with warm natural finishes"></div>
+  </div>
+ </div>
+</section>
+
+<!-- ===== CAROUSEL / WORK WITH US ===== -->
+<section class="section dark" id="guides">
+ <span class="wm wm-dark" style="font-size:30vw;top:50%;left:50%;transform:translate(-50%,-50%)">BEGIN</span>
+ <div class="carousel">
+  <div class="car-head reveal">
+   <span class="eyebrow">How We Help</span>
+   <h2>Wherever you are, start here.</h2>
+  </div>
+  <div class="cstage" id="cStage">
+   <article class="cslide on">
+    <div class="cphoto"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1500&q=80" alt="A buyer's new North Georgia home at dusk"></div>
+    <div class="ccard"><div class="cnum">01</div><span class="ceye">For Buyers</span><h3>Your Guide to Buying</h3><p>From first showing to closing day, a calm, expert hand through every step across all twelve counties.</p><a href="#" class="btn btn-ghost-dark">Buyer's Guide</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cphoto"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1500&q=80" alt="A home prepared for sale"></div>
+    <div class="ccard"><div class="cnum">02</div><span class="ceye">For Sellers</span><h3>What's Your Home Worth?</h3><p>Strategic pricing, standout marketing, and Zillow Showcase exposure that sells for more.</p><a href="#" class="btn btn-ghost-dark">Seller's Guide</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cphoto"><img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1500&q=80" alt="A lender consultation"></div>
+    <div class="ccard"><div class="cnum">03</div><span class="ceye">Financing</span><h3>Get Pre-Approved</h3><p>Trusted local lenders ready to get you pre-approved fast, so you can move with confidence.</p><a href="#" class="btn btn-ghost-dark">Explore Financing</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cphoto"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1500&q=80" alt="A home eligible for a cash offer"></div>
+    <div class="ccard"><div class="cnum">04</div><span class="ceye">Cash Offer</span><h3>A Fast, Certain Sale</h3><p>A competitive cash offer with no showings and no repairs, closing on the timeline you choose.</p><a href="#" class="btn btn-ghost-dark">Request a Cash Offer</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cphoto"><img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=1500&q=80" alt="A staged living space"></div>
+    <div class="ccard"><div class="cnum">05</div><span class="ceye">Marketing Day</span><h3>Prep That Sells</h3><p>A proven playbook that gets your home photo-ready and on the market for top dollar.</p><a href="#" class="btn btn-ghost-dark">See the Process</a></div>
+   </article>
+  </div>
+  <div class="cnav">
+   <div class="carrow" id="cPrev" role="button" aria-label="Previous">&#8249;</div>
+   <div class="cindex" id="cIndex">01 / 05</div>
+   <div class="carrow" id="cNext" role="button" aria-label="Next">&#8250;</div>
   </div>
  </div>
 </section>
@@ -320,6 +384,19 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
 <script>
 addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>40));
 (function(){var fs=document.getElementById('fsmenu');document.getElementById('menuOpen').onclick=()=>{fs.classList.add('open');document.body.style.overflow='hidden';};document.getElementById('fsClose').onclick=()=>{fs.classList.remove('open');document.body.style.overflow='';};addEventListener('keydown',e=>{if(e.key==='Escape'){fs.classList.remove('open');document.body.style.overflow='';}});})();
+/* carousel */
+(function(){var s=[].slice.call(document.querySelectorAll('.cslide'));if(!s.length)return;var i=0,n=s.length,t;var ix=document.getElementById('cIndex');var pad=function(k){return ('0'+k).slice(-2);};
+function show(k){s[i].classList.remove('on');i=(k+n)%n;s[i].classList.add('on');if(ix)ix.textContent=pad(i+1)+' / '+pad(n);}
+function go(){clearInterval(t);t=setInterval(function(){show(i+1);},6000);}
+var nx=document.getElementById('cNext'),pv=document.getElementById('cPrev');
+if(nx)nx.onclick=function(){show(i+1);go();};if(pv)pv.onclick=function(){show(i-1);go();};
+var st=document.getElementById('cStage');if(st){st.addEventListener('mouseenter',function(){clearInterval(t);});st.addEventListener('mouseleave',go);}
+show(0);go();})();
+/* scroll reveal */
+(function(){if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('ranim');
+document.querySelectorAll('.ed-text,.ed-media,.clients,.car-head,.cta-inner,.foot-cols').forEach(function(e){e.classList.add('reveal');});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();
 </script>
 <div class="cmov" id="cmov"><div class="cmod"><span class="cmclose" id="cmclose">&times;</span><div style="font:600 12px/1 var(--sans,sans-serif);letter-spacing:.22em;text-transform:uppercase;color:var(--gold,#BEAF87);margin-bottom:8px">North Georgia</div><h3 id="cmC">County</h3><p id="cmB"></p><div class="cmch" id="cmCh"></div><div class="cmacts"><a class="cmbtn g" id="cmS" href="#">Homes for Sale</a><a class="cmbtn d" href="#">Talk to Will</a></div></div></div>
 <script>(function(){var DATA={"Bartow": {"cities": ["Cartersville"], "blurb": "History, value, and space west of the metro core."}, "Cherokee": {"cities": ["Woodstock", "Canton", "Ball Ground", "Holly Springs", "Waleska"], "blurb": "One of Georgia's fastest-growing counties, anchored by downtown Woodstock."}, "Cobb": {"cities": ["Marietta", "Kennesaw", "Acworth", "Smyrna"], "blurb": "Established neighborhoods, top schools, and The Battery."}, "Dawson": {"cities": ["Dawsonville"], "blurb": "Outlet shopping, lake access, and an easy reach to the mountains."}, "DeKalb": {"cities": ["Dunwoody", "Brookhaven"], "blurb": "In-town convenience with leafy, established communities."}, "Douglas": {"cities": ["Douglasville"], "blurb": "Quick access to the city with suburban value."}, "Forsyth": {"cities": ["Cumming"], "blurb": "Top-rated schools and Lake Lanier living."}, "Fulton": {"cities": ["Roswell", "Alpharetta"], "blurb": "From walkable Roswell to upscale Alpharetta in North Fulton."}, "Gwinnett": {"cities": ["Lawrenceville", "Duluth", "Suwanee"], "blurb": "One of metro Atlanta's largest and most varied markets."}, "Hall": {"cities": ["Gainesville", "Flowery Branch"], "blurb": "Lake Lanier's northern shore and a growing economy."}, "Paulding": {"cities": ["Dallas", "Hiram"], "blurb": "Newer construction and room to grow on the west side."}, "Pickens": {"cities": ["Jasper", "Talking Rock"], "blurb": "Mountain views and small-town charm at the gateway to the foothills."}};function slug(s){return s.toLowerCase().replace(/[^a-z]+/g,"-");}var cm=document.getElementById("countyMap");if(!cm)return;var root=cm.querySelector("g.counties");var C=cm.querySelectorAll(".county");function reset(){C.forEach(function(c){c.classList.remove("hot");});}C.forEach(function(c){c.addEventListener("mouseenter",function(){reset();root.appendChild(c);c.classList.add("hot");});c.addEventListener("mouseleave",function(){c.classList.remove("hot");});c.addEventListener("click",function(){var n=c.getAttribute("data-c"),d=DATA[n];if(!d)return;document.getElementById("cmC").textContent=n+" County";document.getElementById("cmB").textContent=d.blurb;var s=document.getElementById("cmS");s.href="homes-for-sale-"+slug(n)+"-county.html";s.textContent="Homes for Sale in "+n;var ch=document.getElementById("cmCh");ch.innerHTML="";d.cities.forEach(function(x){var e=document.createElement("span");e.textContent=x;ch.appendChild(e);});document.getElementById("cmov").classList.add("open");});});cm.addEventListener("mouseleave",reset);var mv=document.getElementById("cmov");document.getElementById("cmclose").onclick=function(){mv.classList.remove("open");};mv.addEventListener("click",function(e){if(e.target===mv)mv.classList.remove("open");});})();</script>
