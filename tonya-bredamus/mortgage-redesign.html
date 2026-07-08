@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Information for Virginia Buyers | Tonya Bredamus</title>
+<meta name="description" content="Plain-English mortgage guidance for buyers across Martinsville and Southside Virginia — including out-of-state relocating buyers. Get pre-approved, understand loan types, and estimate your monthly payment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Fonts (live site) */
+  --font-heading:'DM Sans', sans-serif;
+  --font-body:'DM Sans', sans-serif;
+  --font-eyebrow:'Inter', sans-serif;
+
+  /* Astra global palette (live) */
+  --color-0:#5e5e5e;          /* link rest */
+  --color-1:#ef5ecf;          /* brand pink / link hover */
+  --color-ink:#1a1a1a;        /* near-black, headings/buttons text/dark bg */
+  --color-text:#4a4a4a;       /* body text */
+  --color-pink-soft:#fde5f3;  /* soft pink section bg / default button */
+  --color-white:#fefffe;      /* near-white section bg */
+  --color-pure:#ffffff;
+
+  /* Accent pinks (live) */
+  --pink-cta:#f763b0;         /* Kadence primary CTA fill/border */
+  --pink-btn:#f587da;         /* advanced-button outline */
+  --pink-deep:#d14aad;        /* deep hover border accent */
+  --pink-nav:#e986cc;         /* nav hover */
+
+  /* Layout (live) */
+  --container:1240px;
+  --radius-card:20px;
+  --radius-sm:2px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:17px;
+  font-weight:300;
+  line-height:1.8;
+  color:var(--color-text);
+  background:var(--color-white);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--font-heading);
+  font-weight:400;
+  color:var(--color-ink);
+  margin:0 0 .4em;
+}
+h1{font-size:64px;line-height:1.08;}
+h2{font-size:44px;line-height:1.3;}
+h3{font-size:24px;line-height:1.3;}
+h4{font-size:20px;line-height:1.2;}
+h5{font-size:18px;line-height:1.2;}
+h6{font-size:15px;line-height:1.25;}
+p{margin:0 0 1.2em;}
+a{color:var(--color-0);text-decoration:none;transition:color .2s ease;}
+a:hover,a:focus{color:var(--color-1);}
+em{font-style:normal;color:var(--color-1);}
+
+.container{max-width:var(--container);margin:0 auto;padding-inline:clamp(20px,5vw,30px);}
+
+/* Eyebrow + labels (Inter, uppercase) */
+.eyebrow{
+  font-family:var(--font-eyebrow);
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:var(--color-1);
+  margin:0 0 14px;
+  display:block;
+}
+.label-sm{
+  font-family:var(--font-eyebrow);
+  font-size:10px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.2em;
+  color:#939393;
+}
+
+/* Buttons — live site: square, uppercase 14px Inter/500, 16px 40px */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--font-eyebrow);
+  font-size:14px;
+  font-weight:500;
+  text-transform:uppercase;
+  padding:16px 40px;
+  border-radius:0;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:all .22s ease;
+  line-height:1;
+}
+.btn svg{width:14px;height:9px;fill:none;stroke:currentColor;stroke-width:1.6;}
+/* Primary pink CTA (Kadence single-button) */
+.btn--pink{
+  background:var(--pink-cta);
+  color:#fff;
+  border-color:var(--pink-cta);
+}
+.btn--pink:hover{
+  background:transparent;
+  color:var(--pink-cta);
+  border-color:var(--pink-cta);
+}
+/* Outline button (advanced-button) */
+.btn--outline{
+  background:transparent;
+  color:var(--color-ink);
+  border-color:var(--color-ink);
+}
+.btn--outline:hover{
+  color:var(--pink-deep);
+  border-color:var(--pink-deep);
+}
+/* Soft default (Astra default) */
+.btn--soft{
+  background:var(--color-pink-soft);
+  color:var(--color-ink);
+  border-color:var(--color-pink-soft);
+  border-radius:50px;
+}
+.btn--soft:hover{background:#f9d2ec;border-color:#f9d2ec;color:var(--color-ink);}
+/* On dark sections */
+.btn--outline-light{
+  background:transparent;
+  color:#fff;
+  border-color:rgba(255,255,255,.6);
+}
+.btn--outline-light:hover{color:var(--pink-btn);border-color:var(--pink-btn);}
+
+/* Preview banner */
+.preview-banner{
+  background:var(--color-ink);
+  color:#fff;
+  font-family:var(--font-eyebrow);
+  font-size:11px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  text-align:center;
+  padding:8px 16px;
+}
+
+/* ===== Header / Nav ===== */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(254,255,254,.96);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid rgba(26,26,26,.07);
+}
+.site-header__inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:18px clamp(20px,5vw,30px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.wordmark{
+  font-family:var(--font-heading);
+  font-size:22px;
+  font-weight:400;
+  color:var(--color-ink);
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.wordmark span{color:var(--color-1);}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:34px;
+  list-style:none;
+  margin:0;padding:0;
+}
+.nav-links a{
+  font-family:var(--font-eyebrow);
+  font-size:13px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--color-ink);
+}
+.nav-links a:hover{color:var(--pink-nav);}
+.nav-right{display:flex;align-items:center;gap:28px;}
+
+/* ===== Hero ===== */
+.hero{
+  background:var(--color-pink-soft);
+  padding:112px 0 100px;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:64px;
+  align-items:center;
+}
+.hero h1{margin-bottom:.25em;}
+.hero__sub{
+  font-size:19px;
+  max-width:34em;
+  margin-bottom:36px;
+}
+.hero__cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
+.hero__note{
+  font-family:var(--font-eyebrow);
+  font-size:12px;
+  font-weight:400;
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+  color:#8a7a85;
+  margin:0;
+}
+.hero__media{
+  height:460px;
+  border-radius:var(--radius-card);
+  background:
+    linear-gradient(135deg, rgba(239,94,207,.18), rgba(26,26,26,.04)),
+    linear-gradient(160deg,#f9d6ed 0%, #fbe9f5 45%, #efc8e3 100%);
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 24px 60px -28px rgba(209,74,173,.45);
+}
+.hero__media::after{
+  content:"Tonya Bredamus · Southside Virginia";
+  position:absolute;left:24px;bottom:22px;
+  font-family:var(--font-eyebrow);
+  font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.18em;
+  color:rgba(26,26,26,.55);
+}
+.hero__media-badge{
+  position:absolute;top:22px;left:24px;
+  background:#fff;color:var(--color-ink);
+  font-family:var(--font-eyebrow);font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.12em;
+  padding:8px 14px;border-radius:50px;
+  box-shadow:0 4px 10px -2px rgba(0,0,0,.1);
+}
+
+/* ===== Section base ===== */
+.section{padding:80px 0;}
+.section--white{background:var(--color-white);}
+.section--soft{background:var(--color-pink-soft);}
+.section--dark{background:var(--color-ink);color:rgba(255,255,255,.82);}
+.section--dark h2,.section--dark h3{color:#fff;}
+.section--dark .eyebrow{color:var(--pink-btn);}
+.section__header{max-width:680px;margin:0 0 52px;}
+.section__header--center{margin-left:auto;margin-right:auto;text-align:center;}
+.section__sub{font-size:18px;margin:0;}
+
+/* ===== Process steps ===== */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:24px;
+  counter-reset:step;
+}
+.step{
+  background:var(--color-white);
+  border:1px solid rgba(26,26,26,.08);
+  border-radius:var(--radius-card);
+  padding:32px 24px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 40px -20px rgba(209,74,173,.4);}
+.step__num{
+  font-family:var(--font-heading);
+  font-size:40px;
+  font-weight:300;
+  color:var(--color-1);
+  line-height:1;
+  margin-bottom:18px;
+  display:block;
+}
+.step h3{font-size:20px;margin-bottom:.3em;}
+.step p{font-size:15px;line-height:1.65;margin:0;}
+
+/* ===== Calculator ===== */
+.calc{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:0;
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  box-shadow:0 30px 70px -40px rgba(26,26,26,.4);
+  background:#fff;
+}
+.calc__controls{padding:48px;background:#fff;}
+.calc__field{margin-bottom:30px;}
+.calc__field:last-child{margin-bottom:0;}
+.calc__field-top{
+  display:flex;justify-content:space-between;align-items:baseline;
+  margin-bottom:12px;
+}
+.calc__field label{
+  font-family:var(--font-eyebrow);
+  font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--color-ink);
+}
+.calc__val{
+  font-family:var(--font-heading);
+  font-size:20px;font-weight:400;color:var(--color-1);
+}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:4px;border-radius:50px;
+  background:linear-gradient(to right,var(--pink-cta) var(--fill,40%), #efd6e7 var(--fill,40%));
+  outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:22px;height:22px;border-radius:50%;
+  background:#fff;border:3px solid var(--pink-cta);
+  box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:pointer;
+}
+input[type=range]::-moz-range-thumb{
+  width:22px;height:22px;border-radius:50%;
+  background:#fff;border:3px solid var(--pink-cta);
+  box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:pointer;
+}
+.calc select{
+  width:100%;
+  font-family:var(--font-body);font-size:16px;
+  padding:12px 14px;
+  border:1px solid rgba(26,26,26,.18);
+  border-radius:var(--radius-sm);
+  background:#fff;color:var(--color-text);
+  cursor:pointer;
+}
+.calc__result{
+  background:var(--color-ink);
+  color:#fff;
+  padding:48px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.calc__result .label-sm{color:rgba(255,255,255,.55);margin-bottom:10px;}
+.calc__payment{
+  font-family:var(--font-heading);
+  font-size:56px;font-weight:300;line-height:1;
+  color:#fff;margin:0 0 4px;
+}
+.calc__payment-note{
+  font-family:var(--font-eyebrow);font-size:12px;font-weight:400;
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--pink-btn);
+  margin:0 0 30px;
+}
+.calc__breakdown{border-top:1px solid rgba(255,255,255,.14);padding-top:24px;}
+.calc__row{
+  display:flex;justify-content:space-between;
+  font-size:15px;padding:7px 0;color:rgba(255,255,255,.8);
+}
+.calc__row span:last-child{color:#fff;font-weight:400;font-family:var(--font-heading);}
+.calc__disclaimer{
+  font-family:var(--font-eyebrow);font-size:11px;line-height:1.6;
+  color:rgba(255,255,255,.45);margin:26px 0 0;text-transform:none;letter-spacing:0;
+}
+
+/* ===== Loan type cards ===== */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.card{
+  background:#fff;
+  border:1px solid rgba(26,26,26,.08);
+  border-radius:var(--radius-card);
+  padding:36px 32px;
+  transition:transform .25s ease, box-shadow .25s ease;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 44px -22px rgba(209,74,173,.42);}
+.card__icon{
+  width:46px;height:46px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:12px;
+  background:var(--color-pink-soft);
+  margin-bottom:20px;
+}
+.card__icon svg{width:24px;height:24px;stroke:var(--color-1);fill:none;stroke-width:1.6;}
+.card__badge{
+  align-self:flex-start;
+  font-family:var(--font-eyebrow);font-size:10px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.14em;
+  background:var(--color-pink-soft);color:var(--pink-deep);
+  padding:5px 11px;border-radius:50px;margin-bottom:16px;
+}
+.card h3{margin-bottom:.4em;}
+.card p{font-size:15.5px;line-height:1.65;margin:0;}
+.card__meta{
+  font-family:var(--font-eyebrow);font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.1em;color:#939393;
+  margin-top:18px;
+}
+
+/* Lender placeholder cards */
+.lender-card{
+  background:#fff;border:1px dashed rgba(209,74,173,.4);
+  border-radius:var(--radius-card);
+  padding:36px 32px;text-align:center;
+  position:relative;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.lender-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px -22px rgba(209,74,173,.3);}
+.lender-card__badge{
+  position:absolute;top:18px;right:18px;
+  font-family:var(--font-eyebrow);font-size:10px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.12em;
+  background:#fde5f3;color:var(--pink-deep);
+  padding:5px 11px;border-radius:50px;
+}
+.lender-card__logo{
+  width:100%;height:96px;border-radius:12px;
+  background:linear-gradient(135deg,#f6eef3,#fbe9f5);
+  display:flex;align-items:center;justify-content:center;
+  margin:18px 0 22px;
+}
+.lender-card__logo span{
+  font-family:var(--font-eyebrow);font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.16em;color:#b89bb0;
+}
+.lender-card h3{font-size:20px;color:#b58fab;}
+.lender-card p{font-size:14.5px;color:#9a8b95;margin:0;}
+
+/* ===== Guide split ===== */
+.guide{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center;}
+.guide__media{
+  height:420px;border-radius:var(--radius-card);
+  background:linear-gradient(150deg,#2a2a2a,#1a1a1a);
+  position:relative;overflow:hidden;
+}
+.guide__media::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 25%, rgba(247,99,176,.35), transparent 55%);
+}
+.guide__media::after{
+  content:"Your guide through every step";
+  position:absolute;left:28px;bottom:24px;right:28px;
+  font-family:var(--font-eyebrow);font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.18em;color:rgba(255,255,255,.6);
+}
+.guide__points{list-style:none;margin:30px 0 0;padding:0;}
+.guide__points li{
+  display:flex;gap:18px;padding:20px 0;
+  border-top:1px solid rgba(26,26,26,.1);
+}
+.guide__points li:first-child{border-top:none;padding-top:0;}
+.guide__check{
+  flex:0 0 36px;width:36px;height:36px;border-radius:50%;
+  background:var(--color-pink-soft);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.guide__check svg{width:18px;height:18px;stroke:var(--color-1);fill:none;stroke-width:2;}
+.guide__points h4{margin-bottom:.15em;}
+.guide__points p{font-size:15.5px;margin:0;line-height:1.6;}
+
+/* ===== FAQ ===== */
+.faq{max-width:820px;margin:0 auto;}
+.faq__item{border-bottom:1px solid rgba(26,26,26,.12);}
+.faq__q{
+  width:100%;
+  display:flex;justify-content:space-between;align-items:center;gap:24px;
+  background:none;border:none;cursor:pointer;
+  font-family:var(--font-heading);font-size:20px;font-weight:400;
+  color:var(--color-ink);
+  text-align:left;
+  padding:26px 0;
+}
+.faq__q:hover{color:var(--color-1);}
+.faq__icon{
+  flex:0 0 auto;width:26px;height:26px;position:relative;transition:transform .3s ease;
+}
+.faq__icon::before,.faq__icon::after{
+  content:"";position:absolute;background:var(--color-1);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.faq__icon::before{width:14px;height:2px;}
+.faq__icon::after{width:2px;height:14px;transition:transform .3s ease;}
+.faq__item.open .faq__icon::after{transform:translate(-50%,-50%) scaleY(0);}
+.faq__a{
+  max-height:0;overflow:hidden;
+  transition:max-height .35s ease;
+}
+.faq__a-inner{padding:0 0 26px;font-size:16.5px;line-height:1.75;color:var(--color-text);max-width:62em;}
+
+/* ===== Final CTA band ===== */
+.cta-band{
+  position:relative;
+  padding:110px 0;
+  text-align:center;
+  background:
+    linear-gradient(to right, rgba(253,229,243,.92), rgba(249,210,236,.86)),
+    linear-gradient(135deg,#f7cfe8,#efc1e0);
+}
+.cta-band h2{font-size:48px;max-width:18em;margin:0 auto .35em;}
+.cta-band p{font-size:19px;max-width:34em;margin:0 auto 36px;}
+
+/* ===== Footer ===== */
+.footer{background:var(--color-ink);color:rgba(255,255,255,.7);padding:72px 0 0;}
+.footer__top{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;
+  padding-bottom:52px;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.footer__brand{font-family:var(--font-heading);font-size:22px;color:#fff;margin-bottom:14px;}
+.footer__brand em{color:var(--color-1);}
+.footer__tagline{font-size:15px;line-height:1.7;max-width:30em;margin:0;}
+.footer__col-label{
+  font-family:var(--font-eyebrow);font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.16em;color:#fff;margin-bottom:18px;
+}
+.footer__links{list-style:none;margin:0;padding:0;}
+.footer__links li{margin-bottom:11px;}
+.footer__links a{font-size:14.5px;color:rgba(255,255,255,.7);}
+.footer__links a:hover{color:var(--pink-btn);}
+.footer__compliance{
+  padding:30px 0;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.footer__compliance p{
+  font-size:12px;line-height:1.7;color:rgba(255,255,255,.45);margin:0;max-width:none;
+}
+.footer__legal{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:26px 0 40px;
+  font-family:var(--font-eyebrow);font-size:12px;
+  text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,.5);
+}
+.footer__legal a{color:rgba(255,255,255,.5);}
+.footer__legal a:hover{color:var(--pink-btn);}
+
+@media (max-width:1080px){
+  .steps{grid-template-columns:repeat(2,1fr);}
+  .card-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:860px){
+  h1{font-size:44px;}
+  h2{font-size:34px;}
+  .hero__grid,.calc,.guide{grid-template-columns:1fr;}
+  .hero__media{height:300px;}
+  .site-header__inner{flex-wrap:wrap;}
+  .nav-links{order:3;width:100%;gap:22px;overflow-x:auto;padding-bottom:2px;}
+  .nav-links a{white-space:nowrap;}
+  .card-grid,.steps{grid-template-columns:1fr;}
+  .footer__top{grid-template-columns:1fr 1fr;}
+  .calc__result{padding:36px;}
+  .calc__controls{padding:32px;}
+}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">DESIGN PREVIEW — Tonya Bredamus — Mortgage page — AgenticPress — June 17, 2026</div>
+
+<!-- ===== Header / Nav ===== -->
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="#" class="wordmark">Tonya <span>Bredamus</span></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#">Buy</a></li>
+        <li><a href="#">Sell</a></li>
+        <li><a href="#">Communities</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">ADTV</a></li>
+      </ul>
+      <a href="#" class="btn btn--pink">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <span class="eyebrow">Financing in Southside Virginia</span>
+      <h1>Mortgage information for <em>Virginia buyers</em></h1>
+      <p class="hero__sub">Buying a home should not feel like decoding a contract. I break financing down into plain English — what to expect, what it costs, and how the timeline works — even if you're moving here from out of state and have never set foot in Martinsville yet.</p>
+      <div class="hero__cta-row">
+        <a href="#contact" class="btn btn--pink">Get pre-approved
+          <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 4h10M8 1l3 3-3 3"/></svg>
+        </a>
+        <a href="#calculator" class="btn btn--outline">Estimate my payment</a>
+      </div>
+      <p class="hero__note">No pressure · No jargon · Local lenders who answer the phone</p>
+    </div>
+    <div class="hero__media" role="img" aria-label="Photo placeholder of a Southside Virginia home">
+      <span class="hero__media-badge">American Dream TV Host</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Process steps ===== -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section__header">
+      <span class="eyebrow">The financing process</span>
+      <h2>From "is this even possible?" to keys in hand</h2>
+      <p class="section__sub">Five steps. I'll be beside you for all of them, coordinating with your lender so nothing falls through the cracks.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step__num">01</span>
+        <h3>Get pre-approved</h3>
+        <p>A lender reviews your income, credit, and savings, then puts your real budget in writing — so we shop with confidence, not guesses.</p>
+      </div>
+      <div class="step">
+        <span class="step__num">02</span>
+        <h3>Tour homes</h3>
+        <p>We see homes that fit your number and your life. Out of state? I tour on FaceTime and send honest walkthrough video.</p>
+      </div>
+      <div class="step">
+        <span class="step__num">03</span>
+        <h3>Make an offer</h3>
+        <p>We write a competitive, protected offer — price, terms, contingencies — and I negotiate on your behalf.</p>
+      </div>
+      <div class="step">
+        <span class="step__num">04</span>
+        <h3>Underwriting &amp; appraisal</h3>
+        <p>The lender verifies everything and an appraiser confirms value. I keep inspection and appraisal timing on track.</p>
+      </div>
+      <div class="step">
+        <span class="step__num">05</span>
+        <h3>Close</h3>
+        <p>You sign, funds transfer, and the home is yours. Most buyers close in 30–45 days from a ratified contract.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Calculator ===== -->
+<section class="section section--white" id="calculator">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="eyebrow">Run the numbers</span>
+      <h2>Estimate your monthly payment</h2>
+      <p class="section__sub">Move the sliders to see an estimated monthly principal &amp; interest payment. It's a starting point — your lender confirms the exact figure.</p>
+    </div>
+    <div class="calc">
+      <div class="calc__controls">
+        <div class="calc__field">
+          <div class="calc__field-top">
+            <label for="price">Home price</label>
+            <span class="calc__val" id="priceVal">$325,000</span>
+          </div>
+          <input type="range" id="price" min="75000" max="900000" step="5000" value="325000">
+        </div>
+        <div class="calc__field">
+          <div class="calc__field-top">
+            <label for="down">Down payment</label>
+            <span class="calc__val" id="downVal">20% · $65,000</span>
+          </div>
+          <input type="range" id="down" min="0" max="50" step="1" value="20">
+        </div>
+        <div class="calc__field">
+          <div class="calc__field-top">
+            <label for="rate">Interest rate</label>
+            <span class="calc__val" id="rateVal">6.50%</span>
+          </div>
+          <input type="range" id="rate" min="2" max="10" step="0.05" value="6.5">
+        </div>
+        <div class="calc__field">
+          <div class="calc__field-top">
+            <label for="term">Loan term</label>
+          </div>
+          <select id="term">
+            <option value="30">30-year fixed</option>
+            <option value="20">20-year fixed</option>
+            <option value="15">15-year fixed</option>
+            <option value="10">10-year fixed</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc__result">
+        <div class="label-sm">Estimated monthly payment</div>
+        <div class="calc__payment" id="payment">$1,643</div>
+        <p class="calc__payment-note">Principal &amp; interest</p>
+        <div class="calc__breakdown">
+          <div class="calc__row"><span>Loan amount</span><span id="loanAmt">$260,000</span></div>
+          <div class="calc__row"><span>Down payment</span><span id="downAmt">$65,000</span></div>
+          <div class="calc__row"><span>Total of payments</span><span id="totalPaid">$591,616</span></div>
+          <div class="calc__row"><span>Total interest</span><span id="totalInt">$331,616</span></div>
+        </div>
+        <p class="calc__disclaimer">Estimate only. Excludes property taxes, homeowners insurance, HOA dues, and mortgage insurance. Not a loan offer or commitment to lend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Loan types ===== -->
+<section class="section section--soft">
+  <div class="container">
+    <div class="section__header">
+      <span class="eyebrow">Loan types</span>
+      <h2>The right loan depends on you</h2>
+      <p class="section__sub">There's no single "best" mortgage. Here are the programs most of my Southside Virginia buyers use — and who each one tends to fit.</p>
+    </div>
+    <div class="card-grid">
+      <article class="card">
+        <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></span>
+        <h3>Conventional</h3>
+        <p>The most common option for buyers with solid credit. As little as 3–5% down, and you can drop mortgage insurance once you reach 20% equity.</p>
+        <div class="card__meta">Strong credit · Flexible terms</div>
+      </article>
+      <article class="card">
+        <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 3l9 4-9 4-9-4 9-4zM5 11v5c0 1.5 3 3 7 3s7-1.5 7-3v-5"/></svg></span>
+        <h3>FHA</h3>
+        <p>Government-backed and forgiving — as little as 3.5% down with lower credit-score requirements. A great fit for first-time and credit-rebuilding buyers.</p>
+        <div class="card__meta">Low down payment · First-time friendly</div>
+      </article>
+      <article class="card">
+        <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 17l-5.5 2.5 1-6.3L3 8.9 9 8z"/></svg></span>
+        <h3>VA</h3>
+        <p>For eligible veterans, active-duty service members, and surviving spouses: zero down payment, no monthly mortgage insurance, and competitive rates.</p>
+        <div class="card__meta">$0 down · No monthly MI</div>
+      </article>
+      <article class="card">
+        <span class="card__badge">Rural — Henry / Patrick / Franklin</span>
+        <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M3 21V10l9-7 9 7v11M9 21v-5h6v5M3 10h18"/></svg></span>
+        <h3>USDA</h3>
+        <p>Zero-down financing for homes in eligible rural areas — and much of Henry, Patrick, and Franklin County qualifies. Income limits apply.</p>
+        <div class="card__meta">$0 down · Rural eligibility</div>
+      </article>
+      <article class="card">
+        <span class="card__badge">First-time + down-payment help</span>
+        <span class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M7 21V11M17 21V11M4 21h16"/></svg></span>
+        <h3>Virginia Housing</h3>
+        <p>State programs built for first-time buyers — down-payment assistance, grants, and tax credits that can make a Virginia home reachable sooner.</p>
+        <div class="card__meta">Assistance · Grants · Tax credits</div>
+      </article>
+      <article class="card" style="background:var(--color-ink);border-color:var(--color-ink);">
+        <span class="card__icon" style="background:rgba(247,99,176,.18);"><svg viewBox="0 0 24 24" style="stroke:var(--pink-btn);"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-7.6-4.7A8.38 8.38 0 0 1 12 3a8.5 8.5 0 0 1 7.6 4.7"/><path d="M8 12h8M8 9h8M8 15h5"/></svg></span>
+        <h3 style="color:#fff;">Not sure which fits?</h3>
+        <p style="color:rgba(255,255,255,.78);">That's normal — and exactly what the first conversation is for. Tell me your situation and I'll point you toward the lender and program worth a closer look.</p>
+        <a href="#contact" class="card__meta" style="color:var(--pink-btn);">Let's figure it out →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Preferred lenders ===== -->
+<section class="section section--white">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="eyebrow">Preferred lenders</span>
+      <h2>Local lenders I trust</h2>
+      <p class="section__sub">These are placeholders — final lender partners are pending from Tonya. The published page will feature real local lenders who answer the phone and close on time.</p>
+    </div>
+    <div class="card-grid">
+      <article class="lender-card">
+        <span class="lender-card__badge">Placeholder</span>
+        <div class="lender-card__logo"><span>Lender Logo</span></div>
+        <h3>Lender Name One</h3>
+        <p>Short description of the lender's specialty, programs, and why Tonya recommends them.</p>
+      </article>
+      <article class="lender-card">
+        <span class="lender-card__badge">Placeholder</span>
+        <div class="lender-card__logo"><span>Lender Logo</span></div>
+        <h3>Lender Name Two</h3>
+        <p>Short description of the lender's specialty, programs, and why Tonya recommends them.</p>
+      </article>
+      <article class="lender-card">
+        <span class="lender-card__badge">Placeholder</span>
+        <div class="lender-card__logo"><span>Lender Logo</span></div>
+        <h3>Lender Name Three</h3>
+        <p>Short description of the lender's specialty, programs, and why Tonya recommends them.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Guide split ===== -->
+<section class="section section--soft">
+  <div class="container guide">
+    <div class="guide__media" role="img" aria-label="Photo placeholder of Tonya with clients"></div>
+    <div>
+      <span class="eyebrow">What I do on the financing side</span>
+      <h2>Your guide, not your loan officer</h2>
+      <p class="section__sub">I don't originate loans — and that's the point. My job is to make sure the financing piece moves smoothly while you stay informed and unpressured.</p>
+      <ul class="guide__points">
+        <li>
+          <span class="guide__check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div>
+            <h4>Connect you to trusted lenders</h4>
+            <p>I'll introduce you to local lenders I've worked with for years — people who pick up the phone and explain things, not call centers.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guide__check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div>
+            <h4>Coordinate inspection &amp; appraisal timing</h4>
+            <p>I keep the calendar tight so deadlines are met, your earnest money stays protected, and closing doesn't slip.</p>
+          </div>
+        </li>
+        <li>
+          <span class="guide__check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+          <div>
+            <h4>Explain every step — no pressure</h4>
+            <p>You'll always know what's happening next and why. Ask me anything, as many times as you need. Decisions stay yours.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section section--white">
+  <div class="container">
+    <div class="section__header section__header--center">
+      <span class="eyebrow">Common questions</span>
+      <h2>Straight answers, no fine-print games</h2>
+    </div>
+    <div class="faq">
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">How much do I really need for a down payment?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a"><div class="faq__a-inner">Less than most people think. Conventional loans can start around 3–5% down, FHA at 3.5%, and VA and USDA loans (common in Henry, Patrick, and Franklin counties) can be zero down for eligible buyers. Virginia Housing also offers down-payment assistance for first-timers. We'll match a program to what you actually have saved — you don't need 20% to buy.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">What credit score do I need?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a"><div class="faq__a-inner">It depends on the program. Many conventional loans look for around 620+, FHA can go lower (often 580, sometimes less with a larger down payment), and VA lenders set their own thresholds. If your score isn't where you want it yet, a good lender will give you a short, specific list of moves to lift it — and I'll connect you with one who does that for free, no obligation.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">What are closing costs, and how much should I expect?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a"><div class="faq__a-inner">Closing costs are the one-time fees to finalize your loan and transfer the home — lender fees, appraisal, title work, taxes, and prepaid items like insurance and escrow. In Virginia they typically run about 2–5% of the purchase price. The good news: they're often negotiable, and sellers can sometimes contribute toward them. We'll plan for them up front so there are no surprises at the table.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">Can I buy from out of state before I move?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a"><div class="faq__a-inner">Absolutely — a large share of my buyers are relocating to Southside Virginia and many never see a home in person until closing. I tour homes live on FaceTime, send honest walkthrough videos, and handle the local legwork. Lenders work with you remotely, documents are signed electronically, and many states allow remote or mobile-notary closings. I'll quarterback the whole thing so a move from three states away feels manageable.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA band ===== -->
+<section class="cta-band" id="contact">
+  <div class="container">
+    <span class="eyebrow">Let's get started</span>
+    <h2>Let's talk through your options</h2>
+    <p>One relaxed conversation — your goals, your timeline, your budget. No pressure, no obligation, and you'll leave knowing your next step.</p>
+    <a href="#" class="btn btn--pink">Schedule a conversation
+      <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 4h10M8 1l3 3-3 3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand">Tonya <em>Bredamus</em></div>
+        <p class="footer__tagline">Realtor serving Martinsville and Southside Virginia. American Dream TV host helping local and relocating buyers find home — with straight talk and zero pressure.</p>
+      </div>
+      <div>
+        <div class="footer__col-label">Buy</div>
+        <ul class="footer__links">
+          <li><a href="#">Home Search</a></li>
+          <li><a href="#">Featured Listings</a></li>
+          <li><a href="#">Mortgage Info</a></li>
+          <li><a href="#">Buyer's Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-label">Explore</div>
+        <ul class="footer__links">
+          <li><a href="#">Communities</a></li>
+          <li><a href="#">Sell Your Home</a></li>
+          <li><a href="#">About Tonya</a></li>
+          <li><a href="#">ADTV</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-label">Connect</div>
+        <ul class="footer__links">
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Call / Text</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__compliance">
+      <p>Tonya Bredamus is a licensed real estate agent in the Commonwealth of Virginia. This page is for general informational purposes only and is not financial, lending, or legal advice, nor a commitment to lend. Loan programs, rates, terms, and eligibility are subject to change and lender approval. Calculator results are estimates only and exclude taxes, insurance, HOA dues, and mortgage insurance. Equal Housing Opportunity.</p>
+    </div>
+    <div class="footer__legal">
+      <span>© 2026 Tonya Bredamus. All rights reserved.</span>
+      <span><a href="#">Privacy</a> · <a href="#">Accessibility</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var usd = new Intl.NumberFormat('en-US', {style:'currency', currency:'USD', maximumFractionDigits:0});
+
+  var priceEl = document.getElementById('price');
+  var downEl  = document.getElementById('down');
+  var rateEl  = document.getElementById('rate');
+  var termEl  = document.getElementById('term');
+
+  var priceVal = document.getElementById('priceVal');
+  var downVal  = document.getElementById('downVal');
+  var rateVal  = document.getElementById('rateVal');
+
+  var paymentEl = document.getElementById('payment');
+  var loanAmtEl = document.getElementById('loanAmt');
+  var downAmtEl = document.getElementById('downAmt');
+  var totalPaidEl = document.getElementById('totalPaid');
+  var totalIntEl  = document.getElementById('totalInt');
+
+  function setFill(el){
+    var min = parseFloat(el.min), max = parseFloat(el.max), v = parseFloat(el.value);
+    var pct = ((v - min) / (max - min)) * 100;
+    el.style.setProperty('--fill', pct + '%');
+  }
+
+  function calc(){
+    var price = parseFloat(priceEl.value);
+    var downPct = parseFloat(downEl.value);
+    var ratePct = parseFloat(rateEl.value);
+    var years = parseInt(termEl.value, 10);
+
+    var downAmt = price * (downPct / 100);
+    var loan = price - downAmt;
+    var n = years * 12;
+    var r = (ratePct / 100) / 12;
+
+    var monthly;
+    if (r === 0) {
+      monthly = loan / n;
+    } else {
+      var pow = Math.pow(1 + r, n);
+      monthly = loan * r * pow / (pow - 1);
+    }
+
+    var totalPaid = monthly * n;
+    var totalInterest = totalPaid - loan;
+
+    // Labels
+    priceVal.textContent = usd.format(price);
+    downVal.textContent  = Math.round(downPct) + '% · ' + usd.format(downAmt);
+    rateVal.textContent  = ratePct.toFixed(2) + '%';
+
+    // Results (all rounded)
+    paymentEl.textContent  = usd.format(Math.round(monthly));
+    loanAmtEl.textContent  = usd.format(Math.round(loan));
+    downAmtEl.textContent  = usd.format(Math.round(downAmt));
+    totalPaidEl.textContent = usd.format(Math.round(totalPaid));
+    totalIntEl.textContent  = usd.format(Math.round(totalInterest));
+
+    setFill(priceEl); setFill(downEl); setFill(rateEl);
+  }
+
+  [priceEl, downEl, rateEl, termEl].forEach(function(el){
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+
+  // FAQ accordion
+  var items = document.querySelectorAll('.faq__item');
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq__q');
+    var ans = item.querySelector('.faq__a');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      items.forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq__a').style.maxHeight = null;
+        other.querySelector('.faq__q').setAttribute('aria-expanded','false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
