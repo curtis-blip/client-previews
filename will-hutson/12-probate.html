@@ -200,6 +200,27 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
  .cta-btns{flex-direction:column;align-items:center}
  .foot-cols{grid-template-columns:1fr}
 }
+/* ===== PROBATE FAQ MODAL ===== */
+.pbmod-ov{position:fixed;inset:0;background:rgba(10,11,12,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:none;align-items:flex-start;justify-content:center;z-index:120;padding:5vh 20px;overflow-y:auto}
+.pbmod-ov.open{display:flex}
+.pbmod{background:var(--paper);max-width:920px;width:100%;position:relative;margin:auto;box-shadow:0 40px 120px rgba(0,0,0,.5);animation:pbup .4s ease}
+@keyframes pbup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.pbmod-head{position:sticky;top:0;z-index:2;background:var(--ink2);color:#fff;padding:24px 34px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.pbmod-head .eyebrow{color:var(--gold);margin-bottom:8px}
+.pbmod-head h3{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);color:#fff;line-height:1.15}
+.pbmod-close{background:none;border:1px solid rgba(255,255,255,.4);color:#fff;width:42px;height:42px;border-radius:50%;flex-shrink:0;cursor:pointer;font-size:22px;line-height:1;transition:.25s;display:grid;place-items:center}
+.pbmod-close:hover{background:var(--gold);border-color:var(--gold);color:#1a1814}
+.pbmod-body{padding:8px 34px 44px}
+.pbmod-disc{font-size:12.5px;color:var(--muted);font-weight:300;line-height:1.65;border-left:2px solid var(--gold);padding:8px 0 8px 16px;margin:24px 0 6px}
+.pbmod-group{margin-top:30px}
+.pbmod-group .gh{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.pbmod .faq-item .faq-q{font-size:16px;padding:19px 0;gap:16px}
+.pbmod .faq-item.open .faq-a{max-height:1600px}
+.pbmod .faq-a p{font-size:14px;padding:0 20px 24px 0}
+.pbmod-more{text-align:center;margin-top:34px}
+.pbmod-more a{color:var(--ink);font-weight:500;border-bottom:1px solid var(--gold);font-size:14px}
+.pbmod-more a:hover{color:var(--gold)}
+@media(max-width:640px){.pbmod-head{padding:20px}.pbmod-body{padding-left:20px;padding-right:20px}}
 </style>
 <link rel="stylesheet" href="hutson-motion.css">
 </head>
@@ -353,6 +374,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
    <div class="faq-item"><button class="faq-q">Do you work with our probate attorney?<span class="qi"></span></button><div class="faq-a"><p>Yes, and we prefer it. We handle marketing, showings, negotiation, and the closing logistics, while your attorney manages the legal filings and court requirements. If you do not have an attorney yet, the Council of Probate Court Judges of Georgia lists each county's court so you can find the right starting point.</p></div></div>
    <div class="faq-item"><button class="faq-q">How is selling an inherited house different from a normal sale?<span class="qi"></span></button><div class="faq-a"><p>The marketing and negotiation are similar. What differs is the legal layer, court authority, executor duties, and sometimes confirmation of the sale, plus the emotional weight of clearing a family home. We adjust the pace and the support to match, and we lean on experience with these sales so nothing catches you off guard.</p></div></div>
   </div>
+   <div class="pbfaq-cta" data-reveal="up" style="margin-top:40px">
+    <p style="max-width:648px;margin:0 auto 22px;color:#54585d;font-weight:300">The questions above cover selling the home itself. For the legal side, we put together a detailed Georgia probate FAQ that walks through the process, timelines, the personal representative's duties, wills and contests, creditors, and taxes.</p>
+    <button type="button" class="btn btn-ghost-dark" id="pbOpen">Open the Full Georgia Probate FAQ</button>
+   </div>
  </div>
 </section>
 
@@ -431,6 +456,77 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spa
  </div>
 </footer>
 
+<!-- ===== PROBATE FAQ MODAL ===== -->
+<div class="pbmod-ov" id="pbModal" role="dialog" aria-modal="true" aria-labelledby="pbModalTitle">
+ <div class="pbmod">
+  <div class="pbmod-head">
+   <div><span class="eyebrow">Georgia Probate</span><h3 id="pbModalTitle">The Full Probate FAQ</h3></div>
+   <button class="pbmod-close" id="pbClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="pbmod-body">
+   <p class="pbmod-disc">This overview is general information, delivered without warranty or guarantee of accuracy, and it is not legal advice. Probate rules vary by state, county, and estate. Always consult a licensed Georgia probate attorney about your specific situation.</p>
+   <div class="pbmod-group">
+    <div class="gh">The Probate Process</div>
+    <div class="faq">
+     <div class="faq-item"><button class="faq-q">How does the probate process work?<span class="qi"></span></button><div class="faq-a"><p>In broad strokes, the will is filed with the county probate court, interested parties are notified, and the court certifies a personal representative. Creditors get a window to file claims (often around four months), estate assets are identified and gathered, debts and taxes are paid, a final accounting is prepared, and what remains is distributed to the heirs.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How long does probate usually take to complete?<span class="qi"></span></button><div class="faq-a"><p>A straightforward estate often takes around six months, but delays are common. Hard-to-locate heirs, a will contest, unresolved claims or liens, property that has not sold, missed creditor notifications, or disputes over the representative's actions can all stretch the timeline.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Why is probate actually required?<span class="qi"></span></button><div class="faq-a"><p>Probate transfers legal title to the heirs, settles taxes and creditor claims, sets a deadline for claims against the estate, and gives a clear, court-supervised method for distributing property, which is also what lets estate real estate be sold with clean title.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Is it necessary for all of the decedent's property to go through probate?<span class="qi"></span></button><div class="faq-a"><p>Not necessarily. Assets such as joint tenancy with right of survivorship, life insurance and annuities with named beneficiaries, IRAs and 401(k)s, payable-on-death accounts, and property held in a living trust generally pass outside of probate.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How much does probate cost?<span class="qi"></span></button><div class="faq-a"><p>Costs commonly run between 3 and 7 percent of the estate's value once you combine appraisal fees, executor compensation, court costs, any required surety bond, and legal and accounting fees. A will contest can push the total higher.</p></div></div>
+     <div class="faq-item"><button class="faq-q">If there is a really small estate, is probate still necessary?<span class="qi"></span></button><div class="faq-a"><p>Many states, Georgia included, offer simplified procedures for smaller estates under a set threshold. That said, real estate in the estate or outstanding debts can require full probate regardless of size.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What goes on in the probate of an uncontested will?<span class="qi"></span></button><div class="faq-a"><p>The named executor retains an attorney, files a petition with the probate court, and gives legal notice to potential heirs and beneficiaries. A hearing is typically held weeks to months later, and with witness testimony if needed, the court approves the will and formally appoints the executor.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Where is probate handled?<span class="qi"></span></button><div class="faq-a"><p>In the probate court of the state and county where the person permanently lived. Court names vary by state (Georgia uses the Probate Court), but it is always the county of the decedent's primary residence.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Can I handle probate without a lawyer?<span class="qi"></span></button><div class="faq-a"><p>It is rarely advisable. Probate is formal and unforgiving, so a missed notice, a small omission, or a blown deadline can stall the case or create personal liability for the representative. Most families are better served with professional guidance.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What happens when the person who dies owned land in multiple states?<span class="qi"></span></button><div class="faq-a"><p>Probate is usually opened in the decedent's home state for personal property, but real property in another state often requires a separate "ancillary probate" there, and each state may apply its own rules for distribution.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How can I avoid probate of my own estate?<span class="qi"></span></button><div class="faq-a"><p>A common approach is a living trust, which holds title to your property and survives your death, so those assets can pass to your beneficiaries without going through probate.</p></div></div>
+    </div>
+   </div>
+   <div class="pbmod-group">
+    <div class="gh">The Personal Representative</div>
+    <div class="faq">
+     <div class="faq-item"><button class="faq-q">Who is legally responsible for handling the probate process?<span class="qi"></span></button><div class="faq-a"><p>If there is a will, the personal representative (executor or executrix) named in it handles probate. If there is no will, the court appoints an administrator, who is subject to the same probate rules and court oversight.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What are the main duties of a personal representative?<span class="qi"></span></button><div class="faq-a"><p>They generally include identifying and inventorying estate assets, opening an estate account and collecting payments due, determining beneficiaries, valuing assets, notifying and investigating creditors, paying valid debts and administrative expenses, handling required paperwork and tax filings, distributing what remains, and formally closing the estate.</p></div></div>
+     <div class="faq-item"><button class="faq-q">If I am named as the personal representative, do I have to accept the job?<span class="qi"></span></button><div class="faq-a"><p>No. You can serve or decline, and you can resign later, typically providing an accounting for the period you served. If you step aside, an alternate named in the will is appointed.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Are personal representatives usually paid for their work?<span class="qi"></span></button><div class="faq-a"><p>Usually yes, and personal expenses are reimbursable. Compensation often runs around 2 percent of the estate's value, subject to court approval, and may scale down as the estate grows. A sole beneficiary sometimes declines the fee to avoid the income tax on it.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What happens if the personal representative fails to perform their duty?<span class="qi"></span></button><div class="faq-a"><p>They can be held personally liable for losses caused by mismanaging assets, failing to collect debts, overpaying claims, unauthorized sales, late tax filings, or incorrect distributions.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Can there be more than one designated personal representative?<span class="qi"></span></button><div class="faq-a"><p>Co-representatives are possible but generally discouraged unless there is a specific reason, such as separating real estate from other assets. Naming co-representatives just to spare feelings tends to create friction.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Is it necessary for the personal representative to live in the decedent's state?<span class="qi"></span></button><div class="faq-a"><p>State law varies, and residency is usually not an absolute requirement, but a local representative simplifies administration, especially for larger estates and real property.</p></div></div>
+    </div>
+   </div>
+   <div class="pbmod-group">
+    <div class="gh">Wills, Contests &amp; No Will</div>
+    <div class="faq">
+     <div class="faq-item"><button class="faq-q">What if someone objects to or contests the will?<span class="qi"></span></button><div class="faq-a"><p>A contest begins with a formal objection or a competing will. Contests are costly and cause delays, and they rarely succeed, and "standing" rules limit who is even allowed to contest.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What is the basis for a will contest?<span class="qi"></span></button><div class="faq-a"><p>Typical grounds are improper execution or witnessing under state law, the testator lacking mental capacity when signing, fraud, force, or undue influence, or an allegation of forgery.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How can a will be "contested"?<span class="qi"></span></button><div class="faq-a"><p>A contest is filed with the probate court by an heir or beneficiary within the timeframe your state allows, and it must be backed by real evidence of an improperly created will, not simply unhappiness with its terms.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What if there is no will?<span class="qi"></span></button><div class="faq-a"><p>The estate is "intestate." The court appoints an administrator who distributes property according to state intestacy law rather than the decedent's wishes.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What happens if a will cannot be found?<span class="qi"></span></button><div class="faq-a"><p>A missing will raises complex questions that depend on state law. Courts may accept a copy with evidence of the original's signing if the original was stored somewhere later destroyed, or fall back on an earlier will or intestacy rules if it appears to have been intentionally revoked.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How can I find out if there was a will?<span class="qi"></span></button><div class="faq-a"><p>Check the probate court in the county where the person lived. Wills are generally public record once filed, and copies are available for a modest fee.</p></div></div>
+     <div class="faq-item"><button class="faq-q">After a will is created, can it be modified?<span class="qi"></span></button><div class="faq-a"><p>Yes, as long as the testator is competent. Changes are made with a codicil or a full rewrite. Note that some life events, such as divorce, can modify a will's effect by law.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Are provisions for the care and guardianship of minor children usually in a will?<span class="qi"></span></button><div class="faq-a"><p>Guardianship wishes are often included, but courts are not strictly bound by them and can override the choice if there is a valid reason to question it.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Are there specific rules about how property can be disposed of?<span class="qi"></span></button><div class="faq-a"><p>Generally you have wide latitude, but courts can void inappropriate provisions, and a will cannot override the legal rights of a spouse, child, or similar protected relationship.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How does "joint tenancy" affect a will?<span class="qi"></span></button><div class="faq-a"><p>Property held in joint tenancy with right of survivorship passes automatically to the surviving co-owner, outside the estate and probate, though there can be tax implications to keep in mind.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Must a will actually be read out loud to the family?<span class="qi"></span></button><div class="faq-a"><p>That is a movie scenario, not real life. The representative simply provides notice and makes copies of the will available to interested parties.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Should a will include a separate list for specific personal property?<span class="qi"></span></button><div class="faq-a"><p>Some states allow it, and the advantage is that the list can be updated without a formal codicil.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What are the actual requirements for a will to be valid?<span class="qi"></span></button><div class="faq-a"><p>Typically the will must be written and signed by the testator (at least 18 and of sound mind) and witnessed by two or more disinterested people who are not beneficiaries. Notarization helps but is not always required, and some states recognize handwritten (holographic) wills without witnesses if the handwriting can be proven.</p></div></div>
+     <div class="faq-item"><button class="faq-q">What happens if a person dies without leaving a will?<span class="qi"></span></button><div class="faq-a"><p>State default intestacy law decides who inherits, usually spouse and children first, then parents, siblings, and more distant relatives. If no family can be found, the property can eventually pass to the state, and creditors are paid before anything is distributed.</p></div></div>
+     <div class="faq-item"><button class="faq-q">When should I make a will?<span class="qi"></span></button><div class="faq-a"><p>As soon as reasonably possible, since death is unpredictable, and then review it periodically so it still reflects your wishes. It matters most for anyone who owns property or has an unmarried partner without automatic legal protections.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Who can or should draft my will?<span class="qi"></span></button><div class="faq-a"><p>Only an attorney can legally draft a will for someone else. Do-it-yourself drafts and generic kits are often incomplete or fail to meet a specific state's requirements.</p></div></div>
+    </div>
+   </div>
+   <div class="pbmod-group">
+    <div class="gh">Creditors &amp; Taxes</div>
+    <div class="faq">
+     <div class="faq-item"><button class="faq-q">How are creditors against the estate handled?<span class="qi"></span></button><div class="faq-a"><p>Notice to creditors varies by state, by direct letter or published notice, and creditors have a fixed window to file claims. Valid claims are paid from the estate, and rejected claims generally require the creditor to sue.</p></div></div>
+     <div class="faq-item"><button class="faq-q">Do beneficiaries have to pay creditors out of their own pocket if the estate is insolvent?<span class="qi"></span></button><div class="faq-a"><p>Generally no. Beneficiaries are not personally liable for the decedent's debts unless they took on the obligation themselves or received certain gifts near death. The estate's assets may simply be insufficient.</p></div></div>
+     <div class="faq-item"><button class="faq-q">How are taxes handled in probate?<span class="qi"></span></button><div class="faq-a"><p>A death creates a separate tax entity. Depending on the estate, filings can include a final personal income tax return (Form 1040), a fiduciary income tax return (Form 1041), and where applicable gift or estate tax returns (Forms 709 and 706), plus any state returns. Requirements vary by state.</p></div></div>
+    </div>
+   </div>
+   <p class="pbmod-more"><a href="https://gaprobate.org/" target="_blank" rel="noopener">Georgia probate courts &amp; official forms</a></p>
+  </div>
+ </div>
+</div>
+
 <!-- ===== SCRIPTS ===== -->
 <script>
 addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>40));
@@ -439,6 +535,8 @@ addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('s
 document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.parentElement.classList.toggle('open');});});
 /* year */
 document.getElementById('yr').textContent=new Date().getFullYear();
+/* probate FAQ modal */
+(function(){var ov=document.getElementById('pbModal');if(!ov)return;function close(){ov.classList.remove('open');document.body.style.overflow='';}var op=document.getElementById('pbOpen');if(op)op.addEventListener('click',function(){ov.classList.add('open');document.body.style.overflow='hidden';ov.scrollTop=0;});document.getElementById('pbClose').addEventListener('click',close);ov.addEventListener('click',function(e){if(e.target===ov)close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});})();
 </script>
 <script src="hutson-motion.js" defer></script>
 </body>
