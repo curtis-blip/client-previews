@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desert Ridge Homes for Sale and Community Guide | Amy Koch, The Brokery</title>
-<meta name="description" content="A local guide to Desert Ridge, north Phoenix's premier master-planned community. Explore neighborhoods, lifestyle, schools, and live MLS listings with Amy Koch of The Brokery.">
+<meta name="description" content="Desert Ridge neighborhoods, lifestyle, schools, and live MLS listings, from Amy Koch of The Brokery, a Desert Ridge Real Estate Advisor.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================
@@ -1586,6 +1586,7 @@ section { padding: var(--section-padding) 0; }
     </div>
     <div class="area-overview-body fade-up">
       <p>Desert Ridge is a 5,700-acre master-planned community in north Phoenix, just off the Loop 101 and Tatum Boulevard. Home to more than 50,000 residents, it blends resort living, regional shopping and dining, championship golf, and major employment campuses in one of the Valley's most sought-after locations. National homebuilders including Taylor Morrison, Toll Brothers, and Pulte have shaped its neighborhoods, from gated single-family enclaves to lock-and-leave condominiums. Desert Ridge sits within the highly rated Paradise Valley Unified School District.</p>
+      <p>It is also large enough that no two neighborhoods trade the same way. Each community inside Desert Ridge has its own builder, gate, association, and buyer, and the differences between them are what a Desert Ridge Real Estate Advisor is for. The guide below walks through all ten.</p>
       <div class="chip-row">
         <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>5,700 acres</span>
         <span class="fact-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>50,000+ residents</span>
@@ -1728,7 +1729,7 @@ section { padding: var(--section-padding) 0; }
     <div class="section-head center">
       <div class="eyebrow fade-up">Neighborhoods</div>
       <h2 class="fade-up">Ten Communities Within Desert Ridge</h2>
-      <p class="section-intro fade-up" style="margin:0 auto;">From gated single-family enclaves to lock-and-leave luxury condominiums. Select any neighborhood to explore its builder, layout, and amenities.</p>
+      <p class="section-intro fade-up" style="margin:0 auto;">From gated single-family enclaves to lock-and-leave luxury condominiums. Select any neighborhood to explore its builder, layout, and amenities, with notes from a Desert Ridge Real Estate Advisor who works these streets every week.</p>
     </div>
     <div class="community-grid">
 
@@ -2147,7 +2148,7 @@ section { padding: var(--section-padding) 0; }
       </div>
       <div class="dual-cta-card fade-up">
         <h3>Have Questions?</h3>
-        <p>Whether you are buying, selling, or just exploring the area, Amy is happy to help.</p>
+        <p>Whether you are buying, selling, or just exploring the area, talk to a Desert Ridge Real Estate Advisor who knows it street by street.</p>
         <a href="https://amykoch.com/contact/" class="btn btn-outline">Contact Amy</a>
       </div>
     </div>
@@ -2164,7 +2165,7 @@ section { padding: var(--section-padding) 0; }
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="amy-koch-logo transparent.png" alt="Amy Koch, The Brokery" class="footer-logo-img">
-        <p>Relentlessly local. Serving Desert Ridge, north Phoenix, and the wider Valley with white-glove real estate service for over 15 years.</p>
+        <p>Relentlessly local. A Desert Ridge Real Estate Advisor serving Desert Ridge, north Phoenix, and the wider Valley with white-glove service for over 18 years.</p>
       </div>
       <div>
         <h4 class="footer-heading">Explore</h4>
@@ -2461,9 +2462,28 @@ const modalTags = document.getElementById('modalTags');
 const modalCtaBtn = document.getElementById('modalCtaBtn');
 const modalContactBtn = document.getElementById('modalContactBtn');
 
-// Interim: every neighborhood routes to the Desert Ridge area search.
-// TBD: replace with per-subdivision Showcase saved searches when built.
+// Desert Ridge area-wide search (fallback for neighborhoods with no ARMLS subdivision).
 const desertRidgeSearchUrl = 'https://amykochstg.wpenginepowered.com/home-search/shared_search/b352f0991d';
+
+// Per-subdivision Showcase share URLs, built 2026-07-17 against account 18940.
+// Each is backed by a saved search chaining the VERIFIED ARMLS subdivision names
+// (see idx-config.json). Subdivision matching is case-sensitive, so these strings
+// are exact-match only; do not retype them by hand.
+//
+// Stonecrest and Wildfire are absent deliberately, not forgotten:
+//   Stonecrest - every ARMLS "Stonecrest" match is in Mesa (85205) or Flagstaff (86004), not Desert Ridge.
+//   Wildfire   - no ARMLS subdivision exists by that name. It is a marketing name only.
+// Both fall through to the Desert Ridge area search until a real geo is identified.
+const communitySearchUrls = {
+  'aviano':       'https://amykochstg.wpenginepowered.com/home-search/shared_search/7fa054cfeb',
+  'fireside':     'https://amykochstg.wpenginepowered.com/home-search/shared_search/6e6365feb5',
+  'sanctuary':    'https://amykochstg.wpenginepowered.com/home-search/shared_search/be3126d676',
+  'toscana':      'https://amykochstg.wpenginepowered.com/home-search/shared_search/5777ef9a5c',
+  'bella-monte':  'https://amykochstg.wpenginepowered.com/home-search/shared_search/a8071582c4',
+  'sierra-pass':  'https://amykochstg.wpenginepowered.com/home-search/shared_search/228b13f547',
+  'sky-crossing': 'https://amykochstg.wpenginepowered.com/home-search/shared_search/f362e20948',
+  'talinn':       'https://amykochstg.wpenginepowered.com/home-search/shared_search/ce0e4e0e2c'
+};
 
 function openModal(communityKey) {
   const data = communityData[communityKey];
@@ -2550,8 +2570,9 @@ function openModal(communityKey) {
     '<span class="modal-tag">' + tag + '</span>'
   ).join('');
 
-  // CTA buttons
-  modalCtaBtn.href = desertRidgeSearchUrl;
+  // CTA buttons. Neighborhoods with a verified ARMLS subdivision get their own
+  // filtered search; the rest fall back to the Desert Ridge area search.
+  modalCtaBtn.href = communitySearchUrls[communityKey] || desertRidgeSearchUrl;
   modalCtaBtn.textContent = 'View Homes for Sale in ' + data.name;
   modalContactBtn.href = 'https://amykoch.com/contact/';
   modalContactBtn.textContent = 'Contact Amy About ' + data.name;
