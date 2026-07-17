@@ -1029,37 +1029,49 @@ section { padding: var(--section-padding) 0; }
   margin-top: 3px;
 }
 
-/* Amy's take pull quote */
-.modal-take {
+/* Who it suits (navy block) */
+.modal-suits {
   margin-top: 36px;
-  padding: 26px 30px;
+  padding: 30px 32px;
   background: var(--navy);
   border-radius: 6px;
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
 }
-.modal-take-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-.modal-take-label {
+.modal-suits-label {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 8px;
+  margin-bottom: 22px;
 }
-.modal-take-text {
+.modal-suits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+}
+.modal-suit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.modal-suit svg {
+  width: 22px;
+  height: 22px;
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.modal-suit-title {
   font-family: var(--font-display);
   font-size: 17px;
-  font-style: italic;
+  color: var(--white);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.modal-suit-text {
+  font-size: 13px;
   line-height: 1.65;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.72);
 }
 
 /* PREVIEW-ONLY marker for copy we still need from Amy. Delete before launch. */
@@ -1081,13 +1093,13 @@ section { padding: var(--section-padding) 0; }
   color: var(--warm-accent-dark);
   margin-bottom: 4px;
 }
-/* Dark-context variant, for the todo marker sitting inside the navy take block */
-.modal-take .modal-todo {
+/* Dark-context variant, for a todo marker sitting inside a navy block */
+.modal-suits .modal-todo {
   border-color: rgba(212,160,75,0.55);
   background: rgba(212,160,75,0.12);
   color: rgba(255,255,255,0.72);
 }
-.modal-take .modal-todo strong { color: var(--warm-accent); }
+.modal-suits .modal-todo strong { color: var(--warm-accent); }
 
 /* Fact chips */
 .modal-chips {
@@ -1501,7 +1513,8 @@ section { padding: var(--section-padding) 0; }
   .modal-glance { grid-template-columns: repeat(2, 1fr); }
   .modal-highlights { grid-template-columns: 1fr; }
   .modal-schools { grid-template-columns: 1fr; }
-  .modal-take { flex-direction: column; gap: 14px; padding: 24px; }
+  .modal-suits { padding: 24px; }
+  .modal-suits-grid { grid-template-columns: 1fr; gap: 20px; }
   .modal-cta { flex-direction: column; align-items: stretch; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -1891,12 +1904,9 @@ section { padding: var(--section-padding) 0; }
         <div class="modal-schools" id="modalSchools"></div>
       </div>
 
-      <div class="modal-take" id="modalTakeWrap">
-        <img src="amy-headshot.jpg" alt="Amy Koch" class="modal-take-avatar">
-        <div>
-          <div class="modal-take-label" id="modalTakeLabel">Amy's Take</div>
-          <div id="modalTakeBody"></div>
-        </div>
+      <div class="modal-suits" id="modalSuitsWrap">
+        <div class="modal-suits-label" id="modalSuitsLabel">Who It Suits</div>
+        <div class="modal-suits-grid" id="modalSuits"></div>
       </div>
 
       <div class="modal-chips">
@@ -2292,13 +2302,19 @@ const modalIcons = {
   home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>',
   school: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.5 3 6 3s6-2 6-3v-5"/></svg>',
   star: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg>',
-  pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'
+  pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>',
+  key: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.778 7.778 5.5 5.5 0 017.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>'
 };
 
 // EXEMPLAR: 'aviano' below shows the expanded modal template in full.
 // The remaining 9 keep the original short shape and render fine, since every new
-// block (tagline / glance / highlights / schools / amyTake) is optional.
-// Fields marked `amyTake: null` render a visible "needs content" marker in the preview.
+// block (tagline / glance / highlights / schools / suits) is optional.
+//
+// NOTE FOR THE WP BUILD: do not port this JS modal. The live site implements
+// community modals as Spectra `uagb/modal` blocks, which render server-side HTML.
+// This JS object is a single-file-preview convention only; its content is not
+// crawlable and is not meant to be.
 const communityData = {
   'aviano': {
     name: 'Aviano',
@@ -2313,7 +2329,7 @@ const communityData = {
     ],
     description: [
       'Aviano is Toll Brothers\' community inside Desert Ridge, and it covers more ground than most addresses here. The Villages at Aviano hold luxury townhomes running roughly 1,300 to 2,400 square feet. The gated single-family homes start around 2,600 square feet and run past 5,000.',
-      'That spread is what makes Aviano worth a look. Most Desert Ridge neighborhoods commit to one kind of buyer. Aviano holds the lock-and-leave buyer who wants the address without the yard, and the family that needs the square footage, in the same community.',
+      'That matters when you are searching. A listing marked Aviano could be a 1,300 square foot townhome or a house more than three times the size, so the neighborhood name alone will not tell you what you are looking at. It is worth knowing which half of Aviano a home sits in before you get attached to it.',
       'Wildfire Elementary sits inside the community itself. Pinnacle High School, named one of Newsweek\'s 250 Best Public High Schools in America, serves the neighborhood, and the Desert Ridge Marketplace, the JW Marriott resort, and the Loop 101 are all minutes out.'
     ],
     highlights: [
@@ -2326,7 +2342,10 @@ const communityData = {
       { name: 'Wildfire Elementary', note: 'Inside the community' },
       { name: 'Pinnacle High School', note: 'Newsweek Top 250 in America' }
     ],
-    amyTake: null,
+    suits: [
+      { icon: 'key', title: 'The lock-and-leave buyer', text: 'The Villages at Aviano townhomes run about 1,300 to 2,400 square feet, for buyers who want the address without the yard that comes with it.' },
+      { icon: 'users', title: 'The family sizing up', text: 'Gated single-family homes from 2,600 to over 5,000 square feet, with Wildfire Elementary inside the community and Pinnacle High School serving it.' }
+    ],
     chips: ['Toll Brothers', 'Townhomes and single-family', 'Gated', '1,300 to 5,000+ sq ft']
   },
   'fireside': {
@@ -2435,9 +2454,9 @@ const modalHighlightsLabel = document.getElementById('modalHighlightsLabel');
 const modalHighlights = document.getElementById('modalHighlights');
 const modalSchoolsWrap = document.getElementById('modalSchoolsWrap');
 const modalSchools = document.getElementById('modalSchools');
-const modalTakeWrap = document.getElementById('modalTakeWrap');
-const modalTakeLabel = document.getElementById('modalTakeLabel');
-const modalTakeBody = document.getElementById('modalTakeBody');
+const modalSuitsWrap = document.getElementById('modalSuitsWrap');
+const modalSuitsLabel = document.getElementById('modalSuitsLabel');
+const modalSuits = document.getElementById('modalSuits');
 const modalTags = document.getElementById('modalTags');
 const modalCtaBtn = document.getElementById('modalCtaBtn');
 const modalContactBtn = document.getElementById('modalContactBtn');
@@ -2509,23 +2528,21 @@ function openModal(communityKey) {
     modalSchoolsWrap.style.display = 'none';
   }
 
-  // Amy's take. A string renders the quote; null renders the preview-only
-  // "needs content" marker; omitting the key hides the block entirely.
-  if ('amyTake' in data) {
-    modalTakeWrap.style.display = '';
-    if (data.amyTake) {
-      modalTakeLabel.textContent = 'Amy\'s Take on ' + data.name;
-      modalTakeBody.innerHTML = '<div class="modal-take-text">' + data.amyTake + '</div>';
-    } else {
-      modalTakeLabel.textContent = 'Amy\'s Take on ' + data.name;
-      modalTakeBody.innerHTML =
-        '<div class="modal-todo"><strong>Needs Amy\'s words</strong>' +
-        'Two or three sentences in Amy\'s own voice: who she has placed in ' + data.name +
-        ', what buyers get wrong about it, what she would tell a client over the phone. ' +
-        'This is the block that makes her the Desert Ridge Real Estate Advisor rather than a listing feed.</div>';
-    }
+  // Who it suits (optional). Buyer-fit rows, sourced from the neighborhood facts.
+  if (data.suits && data.suits.length) {
+    modalSuitsLabel.textContent = 'Who ' + data.name + ' Suits';
+    modalSuits.innerHTML = data.suits.map(s =>
+      '<div class="modal-suit">' +
+        (modalIcons[s.icon] || modalIcons.home) +
+        '<div>' +
+          '<div class="modal-suit-title">' + s.title + '</div>' +
+          '<div class="modal-suit-text">' + s.text + '</div>' +
+        '</div>' +
+      '</div>'
+    ).join('');
+    modalSuitsWrap.style.display = '';
   } else {
-    modalTakeWrap.style.display = 'none';
+    modalSuitsWrap.style.display = 'none';
   }
 
   // Fact chips
