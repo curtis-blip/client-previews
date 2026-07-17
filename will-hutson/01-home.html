@@ -7,724 +7,456 @@
 <meta name="description" content="The Hutson Group at Century 21 Results, a top 1% North Georgia real estate team serving Woodstock, Canton, Marietta and twelve counties across North Atlanta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0d0e0e;
-  --ink-2:#15171a;
-  --ink-3:#1d2024;
-  --pewter:#bcb6aa;
-  --pewter-bright:#ded8cc;
-  --pewter-dark:#8d877a;
-  --line:rgba(188,182,170,.22);
-  --line-strong:rgba(188,182,170,.42);
-  --paper:#f6f5f2;
-  --paper-2:#eceae4;
-  --ink-on-paper:#181a1c;
-  --muted-on-paper:#6c6c66;
-  --on-dark:#ece9e2;
-  --on-dark-muted:#9c988e;
-  --maxw:1280px;
-  --pad:clamp(22px,5vw,80px);
-  --r:3px;
-  --display:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;
-  --body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+ --serif:'Libre Baskerville',Georgia,serif;
+ --sans:'Poppins',system-ui,sans-serif;
+ --ink:#101214;
+ --ink2:#0c0d0f;
+ --paper:#ffffff;
+ --muted:#6c6f74;
+ --line:#e7e4dd;
+ --gold:#BEAF87;
+ --gold-d:#a8966a;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);color:var(--ink-on-paper);background:var(--paper);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.08;letter-spacing:.005em}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.eyebrow{font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--pewter-dark);display:inline-flex;align-items:center;gap:12px}
-.eyebrow::before{content:"";width:30px;height:1px;background:var(--pewter-dark);display:inline-block}
-.eyebrow.center{justify-content:center}
-.eyebrow.center::after{content:"";width:30px;height:1px;background:var(--pewter-dark);display:inline-block}
-.eyebrow.on-dark{color:var(--pewter)}
-.eyebrow.on-dark::before,.eyebrow.on-dark::after{background:var(--pewter)}
-h1{font-size:clamp(38px,6vw,74px);text-transform:uppercase;line-height:1.02;letter-spacing:.008em}
-h2{font-size:clamp(28px,3.7vw,46px);font-weight:700}
-h3{font-size:21px;font-weight:600;font-family:var(--display)}
-section{position:relative}
-.sec{padding:clamp(70px,9vw,128px) 0}
-.dark{background:var(--ink);color:var(--on-dark)}
-.dark h2,.dark h3{color:#fff}
-.dark p{color:var(--on-dark-muted)}
-.dark2{background:var(--ink-2);color:var(--on-dark)}
-.dark2 h2,.dark2 h3{color:#fff}.dark2 p{color:var(--on-dark-muted)}
-.alt{background:var(--paper-2)}
-.lede{font-size:18px;color:var(--muted-on-paper);max-width:620px}
-.dark .lede,.dark2 .lede{color:var(--on-dark-muted)}
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:var(--r);transition:.28s ease;cursor:pointer;border:1px solid transparent}
-.btn svg{width:15px;height:15px}
-.btn-primary{background:var(--pewter);color:var(--ink)}
-.btn-primary:hover{background:var(--pewter-bright);transform:translateY(-2px)}
-.btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line-strong);color:#fff;backdrop-filter:blur(8px)}
-.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:var(--pewter)}
-.btn-ghost.accent{border-color:var(--pewter);background:rgba(188,182,170,.1)}
-.btn-ghost.accent:hover{background:rgba(188,182,170,.22)}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{background:var(--ink-3);transform:translateY(-2px)}
-.btn-outline{background:transparent;border-color:var(--ink);color:var(--ink)}
-.btn-outline:hover{background:var(--ink);color:#fff}
-.link-arrow{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--pewter-dark);display:inline-flex;align-items:center;gap:9px;transition:.25s}
-.dark .link-arrow,.dark2 .link-arrow{color:var(--pewter)}
-.link-arrow svg{width:16px;height:16px;transition:.25s}
-.link-arrow:hover{color:var(--ink)}.dark .link-arrow:hover,.dark2 .link-arrow:hover{color:#fff}
-.link-arrow:hover svg{transform:translateX(5px)}
-/* ===== HEADER ===== */
-header{position:fixed;top:0;left:0;width:100%;z-index:200;transition:.35s ease;padding:20px 0}
-header.scrolled{background:var(--ink);box-shadow:0 1px 0 var(--line);padding:12px 0}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:30px}
-.brand{display:flex;align-items:center;gap:13px}
-.brand-mark{width:42px;height:42px;border:1px solid var(--pewter);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--pewter);flex-shrink:0}
-.brand-txt{display:flex;flex-direction:column;line-height:1.28}
-.brand-txt b{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#fff}
-.brand-txt span{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#fff;margin-top:4px;padding-top:4px;border-top:1px solid var(--line-strong)}
-.menu{display:flex;align-items:center;gap:6px}
-.menu>li{position:relative;list-style:none}
-.menu>li>a{display:flex;align-items:center;gap:6px;padding:12px 15px;font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark);transition:.2s}
-.menu>li>a:hover{color:#fff}
-.menu>li>a svg{width:11px;height:11px;opacity:.6}
-.dropdown{position:absolute;top:100%;left:0;min-width:215px;background:var(--ink-2);border:1px solid var(--line);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s;box-shadow:0 24px 50px rgba(0,0,0,.5)}
-.menu>li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown a{display:block;padding:11px 14px;font-size:13.5px;color:var(--on-dark-muted);transition:.18s;border-radius:var(--r)}
-.dropdown a:hover{background:rgba(255,255,255,.05);color:#fff;padding-left:18px}
-.nav-cta{display:flex;align-items:center;gap:16px}
-.nav-phone{font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.05em;color:#fff;display:flex;align-items:center;gap:8px}
-.nav-phone svg{width:15px;height:15px;color:var(--pewter)}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
-.burger span{width:24px;height:2px;background:#fff;transition:.3s}
+body{font-family:var(--sans);font-weight:300;color:#23262a;background:var(--paper);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none;transition:.3s}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spacing:.005em}
+
+/* shared atoms */
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:22px;display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;padding:15px 30px;border:1px solid currentColor;cursor:pointer;transition:.35s;background:none}
+.btn-ghost-light{color:#fff}
+.btn-ghost-light:hover{background:#fff;color:var(--ink)}
+.btn-ghost-dark{color:var(--ink);border-color:#cdc8bd}
+.btn-ghost-dark:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:#1a1814}
+.btn-gold:hover{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.lead{font-weight:300;color:#54585d;font-size:16px;max-width:440px}
+.dark .lead{color:rgba(255,255,255,.66)}
+
+/* watermark */
+.wm{position:absolute;font-family:var(--serif);font-weight:700;line-height:.8;letter-spacing:-.02em;pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
+.wm-light{color:#0d0f12;opacity:.045}
+.wm-dark{color:#ffffff;opacity:.05}
+
+/* ===== HEADER (verbatim) ===== */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:24px 44px;color:#fff;transition:.3s}
+.hdr.scrolled{background:rgba(15,16,18,.96);padding:14px 44px}
+.menu-open{display:flex;align-items:center;gap:12px;cursor:pointer;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+.menu-open .bars{display:inline-flex;flex-direction:column;gap:4px}.menu-open .bars i{width:24px;height:1.5px;background:#fff}
+.brand{font-family:var(--serif);font-size:20px;letter-spacing:.16em;text-transform:uppercase;text-align:center;line-height:1.2}
+.brand small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.32em;color:var(--gold);font-weight:500;margin-top:3px}
+.hdr-right{display:flex;gap:22px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}.hdr-right a:hover{color:var(--gold)}
+.fsmenu{position:fixed;inset:0;z-index:60;display:grid;grid-template-columns:repeat(4,1fr);opacity:0;visibility:hidden;transform:scale(1.02);transition:opacity .45s,transform .45s,visibility .45s}
+.fsmenu.open{opacity:1;visibility:visible;transform:none}
+.fscol{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 26px;background-size:cover;background-position:center;border-right:1px solid rgba(255,255,255,.08)}
+.fscol::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(13,13,13,.94),rgba(13,13,13,.66));transition:.35s}.fscol:hover::before{background:linear-gradient(rgba(22,19,12,.85),rgba(22,19,12,.5))}
+.fscol>*{position:relative;z-index:1}.fscol h3{color:#fff;font-size:30px;margin-bottom:6px}.fscol .gl{width:34px;height:2px;background:var(--gold);margin:14px 0 22px}
+.fscol a.sub{display:block;color:rgba(255,255,255,.82);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:9px 0}.fscol a.sub:hover{color:var(--gold)}
+.fsclose{position:absolute;top:26px;left:36px;z-index:70;display:flex;align-items:center;gap:12px;color:#fff;cursor:pointer;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:0;transition:.4s .15s}.fsmenu.open .fsclose{opacity:1}
+.fsclose .x{width:40px;height:40px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center;font-size:16px}
+
 /* ===== HERO ===== */
-.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;color:#fff;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,14,14,.55) 0%,rgba(13,14,14,.35) 45%,rgba(13,14,14,.92) 100%)}
-.hero-inner{padding-bottom:clamp(90px,12vh,150px);padding-top:160px;max-width:1180px}
-.hero h1{margin:24px 0 0;color:#fff;line-height:1.07}
-.hero .sub{font-size:clamp(17px,1.5vw,20px);font-weight:300;color:rgba(255,255,255,.85);max-width:600px;margin-top:26px;line-height:1.7}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:40px}
-.play{display:inline-flex;align-items:center;gap:13px;cursor:pointer;color:#fff;font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
-.play .circ{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:.3s}
-.play:hover .circ{background:var(--pewter);border-color:var(--pewter)}
-.play .circ svg{width:16px;height:16px;color:#fff;margin-left:2px}
-.play:hover .circ svg{color:var(--ink)}
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);writing-mode:vertical-rl;font-family:var(--display);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:14px}
-.scroll-hint::after{content:"";width:1px;height:44px;background:linear-gradient(rgba(255,255,255,.5),transparent)}
-/* ===== STATS ===== */
-.stats{background:var(--ink-2);border-top:1px solid var(--line);position:relative;z-index:5}
-.stats .grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:46px 26px;text-align:center;border-right:1px solid var(--line)}
-.stat:last-child{border-right:none}
-.stat .num{font-family:var(--display);font-weight:700;font-size:clamp(34px,4vw,52px);color:#fff;line-height:1}
-.stat .num span{color:var(--pewter)}
-.stat .lbl{font-family:var(--display);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-muted);margin-top:14px}
-/* ===== MAP ===== */
-.map-head{text-align:center;max-width:680px;margin:0 auto 50px}
-.map-head h2{margin:18px 0 18px}
-.map-head .lede{margin:0 auto}
-.map-stage{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
-#countyMap{width:100%;height:auto}
-.county{fill:var(--ink);stroke:var(--paper);stroke-width:3;cursor:pointer;transition:fill .25s}
-.county:hover{fill:var(--pewter-dark)}
-.county.active{fill:var(--pewter-dark)}
-.county-label{font-family:var(--display);font-weight:600;font-size:21px;fill:#fff;pointer-events:none;text-anchor:middle;letter-spacing:.01em}
-.map-aside h3{font-size:26px;margin-bottom:8px}
-.map-legend{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.chip{font-family:var(--display);font-weight:500;font-size:12.5px;letter-spacing:.04em;padding:9px 15px;border:1px solid var(--line-strong);border-radius:40px;cursor:pointer;transition:.22s;color:var(--ink-on-paper)}
-.chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-.map-cap{font-size:12px;color:var(--muted-on-paper);margin-top:22px;font-style:normal;opacity:.8}
-/* county modal */
-.modal-ov{position:fixed;inset:0;background:rgba(8,9,9,.78);backdrop-filter:blur(5px);z-index:400;opacity:0;visibility:hidden;transition:.3s;display:grid;place-items:center;padding:24px}
-.modal-ov.open{opacity:1;visibility:visible}
-.modal{background:var(--paper);max-width:560px;width:100%;max-height:88vh;overflow:auto;transform:translateY(20px);transition:.35s;position:relative}
-.modal-ov.open .modal{transform:translateY(0)}
-.modal-top{background:var(--ink);color:#fff;padding:34px 38px}
-.modal-top .eyebrow{color:var(--pewter)}.modal-top .eyebrow::before{background:var(--pewter)}
-.modal-top h3{color:#fff;font-size:30px;margin-top:12px}
-.modal-body{padding:30px 38px 38px}
-.modal-body p{color:var(--muted-on-paper);margin-bottom:18px}
-.modal-body .label{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--pewter-dark);margin-bottom:12px}
-.modal-cities{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
-.modal-cities span{font-size:13px;padding:7px 13px;background:var(--paper-2);border-radius:30px}
-.modal-actions{display:flex;flex-wrap:wrap;gap:12px}
-.modal-close{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s;z-index:2}
-.modal-close:hover{background:var(--pewter);color:var(--ink)}
-.modal-close svg{width:16px;height:16px}
-.idx-note{font-size:11.5px;color:var(--muted-on-paper);margin-top:16px;padding:10px 13px;background:var(--paper-2);border-left:2px solid var(--pewter-dark)}
-/* ===== LISTINGS ===== */
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px;flex-wrap:wrap}
-.sec-head h2{margin-top:16px}
-.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.lcard{background:#fff;border:1px solid var(--line-strong);overflow:hidden;transition:.3s}
-.lcard:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(0,0,0,.1)}
-.lcard .ph{aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--paper-2)}
-.lcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.lcard:hover .ph img{transform:scale(1.05)}
-.lcard .tag{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;font-family:var(--display);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 12px}
-.lcard .body{padding:22px 24px 26px}
-.lcard .price{font-family:var(--display);font-weight:700;font-size:23px;color:var(--ink)}
-.lcard .addr{font-size:14px;color:var(--muted-on-paper);margin:6px 0 16px}
-.lcard .specs{display:flex;gap:18px;border-top:1px solid var(--line-strong);padding-top:15px;font-size:13px;color:var(--ink-on-paper)}
-.lcard .specs b{font-family:var(--display);font-weight:600}
-.idx-banner{margin-top:34px;text-align:center;font-size:12.5px;color:var(--muted-on-paper);background:var(--paper-2);padding:14px;border:1px dashed var(--line-strong)}
-/* ===== BUY/SELL FULL-BLEED STACKED ===== */
-.bs-band{position:relative;min-height:clamp(440px,64vh,660px);display:flex;align-items:center;color:#fff;overflow:hidden;padding:clamp(48px,8vw,110px) var(--pad)}
-.bs-band .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s ease}
-.bs-band:hover .bg{transform:scale(1.05)}
-.bs-band::after{content:"";position:absolute;inset:0;z-index:-1}
-.bs-band.buy::after{background:linear-gradient(90deg,rgba(13,14,14,.92) 0%,rgba(13,14,14,.55) 48%,rgba(13,14,14,.12) 100%)}
-.bs-band.sell::after{background:linear-gradient(270deg,rgba(13,14,14,.92) 0%,rgba(13,14,14,.55) 48%,rgba(13,14,14,.12) 100%)}
-.bs-band-inner{max-width:540px;width:100%}
-.bs-band.sell{justify-content:flex-end}
-.bs-band h2{color:#fff;font-size:clamp(30px,4.2vw,54px);text-transform:uppercase;letter-spacing:.01em;margin:16px 0 16px;line-height:1.05}
-.bs-band p{color:rgba(255,255,255,.85);font-size:16px;max-width:450px;margin-bottom:28px}
-.bs-band .vlink{display:inline-block;margin-left:20px;color:var(--pewter);font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--pewter-dark);padding-bottom:3px}
-@media(max-width:760px){.bs-band.sell{justify-content:flex-start}.bs-band.buy::after,.bs-band.sell::after{background:linear-gradient(90deg,rgba(13,14,14,.93),rgba(13,14,14,.6))}.bs-band .vlink{display:block;margin:18px 0 0}}
-/* ===== INTRO ===== */
-.intro-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,72px);align-items:center}
-.intro-photo{position:relative}
-.intro-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.intro-photo .frame{position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--pewter-dark);z-index:-1}
-.intro-copy h2{margin:18px 0 22px}
-.intro-copy p{margin-bottom:18px;color:var(--muted-on-paper)}
-.sig{font-family:var(--display);font-weight:600;letter-spacing:.04em;color:var(--ink);margin-top:8px}
-.sig small{display:block;font-weight:500;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--pewter-dark);margin-top:4px}
-.intro-copy .btn{margin-top:30px}
-/* ===== WHY ===== */
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:54px}
-.why-card{background:var(--ink);padding:40px 30px;transition:.3s}
-.why-card:hover{background:var(--ink-3)}
-.why-ico{width:48px;height:48px;color:var(--pewter);margin-bottom:24px}
-.why-ico svg{width:100%;height:100%;stroke-width:1.2}
-.why-card h3{color:#fff;font-size:18px;margin-bottom:11px}
-.why-card p{font-size:14px;color:var(--on-dark-muted)}
-/* ===== TESTIMONIALS ===== */
-.tst{text-align:center;max-width:860px;margin:0 auto}
-.tst .stars{color:var(--pewter-dark);display:flex;gap:5px;justify-content:center;margin-bottom:28px}
-.tst .stars svg{width:20px;height:20px}
-.tst-track{position:relative;min-height:230px}
-.tst-item{position:absolute;inset:0;opacity:0;transition:.6s;pointer-events:none}
-.tst-item.on{opacity:1;position:relative;pointer-events:auto}
-.tst-quote{font-family:var(--display);font-weight:500;font-size:clamp(20px,2.4vw,28px);line-height:1.5;color:var(--ink);letter-spacing:.005em}
-.tst-by{margin-top:26px;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--pewter-dark)}
-.tst-dots{display:flex;gap:10px;justify-content:center;margin-top:40px}
-.tst-dots button{width:9px;height:9px;border-radius:50%;background:var(--line-strong);border:none;cursor:pointer;transition:.25s;padding:0}
-.tst-dots button.on{background:var(--ink);width:26px;border-radius:5px}
-.tst-src{text-align:center;margin-top:30px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-paper);font-family:var(--display)}
-/* ===== TEAM ===== */
-.team-flex{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.team-av{display:flex;flex-wrap:wrap;gap:14px;max-width:600px}
-.av{width:74px;height:74px;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:var(--ink-3);display:grid;place-items:center;position:relative}
-.av img{width:100%;height:100%;object-fit:cover}
-.av span{font-family:var(--display);font-weight:600;font-size:18px;color:var(--pewter)}
-.av.more{background:var(--pewter);color:var(--ink)}
-.av.more span{color:var(--ink);font-size:13px;letter-spacing:.04em}
-/* ===== PROGRAMS ===== */
-.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:50px}
-.prog{padding:34px 28px;border:1px solid var(--line-strong);background:#fff;transition:.3s;display:block}
-.prog:hover{border-color:var(--ink);transform:translateY(-5px)}
-.prog-ico{width:40px;height:40px;color:var(--ink);margin-bottom:22px}
-.prog-ico svg{width:100%;height:100%;stroke-width:1.3}
-.prog h3{font-size:17px;margin-bottom:9px}
-.prog p{font-size:13.5px;color:var(--muted-on-paper);margin-bottom:18px}
-/* ===== BLOG ===== */
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.bcard{background:#fff;border:1px solid var(--line-strong);overflow:hidden;transition:.3s}
-.bcard:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(0,0,0,.09)}
-.bcard .ph{aspect-ratio:16/10;overflow:hidden;background:var(--paper-2)}
-.bcard .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
-.bcard:hover .ph img{transform:scale(1.05)}
-.bcard .body{padding:24px 26px 28px}
-.bcard .meta{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pewter-dark);margin-bottom:12px}
-.bcard h3{font-size:18px;line-height:1.35;margin-bottom:12px}
-/* ===== CLOSING CTA ===== */
-.cta{position:relative;color:#fff;text-align:center;overflow:hidden}
-.cta-bg{position:absolute;inset:0;z-index:-2;background-attachment:fixed;background-size:cover;background-position:center}
-.cta::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(13,14,14,.78)}
-.cta h2{color:#fff;margin:20px 0 18px;font-size:clamp(32px,4.5vw,56px);text-transform:uppercase}
-.cta p{max-width:560px;margin:0 auto 38px;color:rgba(255,255,255,.82)}
-.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-/* ===== FOOTER ===== */
-footer{background:var(--ink);color:var(--on-dark-muted);padding:80px 0 0}
-.f-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:46px;padding-bottom:60px;border-bottom:1px solid var(--line)}
-.f-brand .brand-txt b{color:#fff}
-.f-tag{margin:22px 0;font-size:14px;max-width:280px;line-height:1.7}
-.f-social{display:flex;gap:20px;align-items:center}
-.f-social a{color:var(--on-dark-muted);transition:.25s;line-height:0}
-.f-social a:hover{color:var(--pewter);transform:translateY(-2px)}
-.f-social svg{width:19px;height:19px}
-.f-col h4{color:#fff;font-family:var(--display);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;font-weight:600}
-.f-col ul{list-style:none}
-.f-col li{margin-bottom:12px}
-.f-col a{font-size:14px;transition:.2s}
-.f-col a:hover{color:#fff;padding-left:5px}
-.f-comm{display:flex;flex-wrap:wrap;gap:7px}
-.f-comm a{font-size:12.5px;padding:5px 11px;border:1px solid var(--line);border-radius:30px}
-.f-col .f-all{color:var(--pewter);font-weight:600;margin-top:8px;display:inline-block}
-.f-contact li{display:flex;gap:11px;font-size:14px;margin-bottom:16px;align-items:flex-start}
-.f-contact svg{width:16px;height:16px;color:var(--pewter);flex-shrink:0;margin-top:3px}
-.f-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:26px 0;font-size:12.5px}
-.f-bottom a{text-decoration:underline;text-underline-offset:3px}
-.f-legal{max-width:820px;font-size:11.5px;line-height:1.7;color:#6a675f;padding-bottom:40px}
-.f-badges{display:flex;flex-wrap:wrap;gap:30px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
-.f-badge{display:inline-flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-muted)}
-.f-badge svg{width:27px;height:27px;color:var(--pewter);flex-shrink:0}
-.f-badge sup{font-size:.7em;letter-spacing:0}
-.f-links{display:inline-flex;flex-wrap:wrap;gap:6px 14px}
-.f-legal a{color:var(--pewter-dark);text-decoration:underline;text-underline-offset:2px}
-.f-legal a:hover{color:var(--pewter)}
-/* video lightbox */
-.vbox{position:fixed;inset:0;background:rgba(5,5,5,.92);z-index:500;display:grid;place-items:center;padding:24px;opacity:0;visibility:hidden;transition:.3s}
-.vbox.open{opacity:1;visibility:visible}
-.vbox .frame{width:min(960px,100%);aspect-ratio:16/9;position:relative}
-.vbox iframe{width:100%;height:100%;border:0}
-.vbox .x{position:absolute;top:-46px;right:0;color:#fff;background:none;border:none;cursor:pointer;font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
-/* reveal (scoped under .reveal-on so content stays visible if JS is off) */
-.reveal-on .reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.16,1,.3,1)}
-.reveal-on .reveal.in{opacity:1;transform:none}
-/* responsive */
-@media(max-width:1020px){
- .menu,.nav-phone{display:none}
- .burger{display:flex}
- .why-grid{grid-template-columns:repeat(2,1fr)}
- .prog-grid{grid-template-columns:repeat(2,1fr)}
- .map-stage{grid-template-columns:1fr;gap:36px}
- .stats .grid{grid-template-columns:repeat(2,1fr)}
- .stat:nth-child(2){border-right:none}
- .stat{border-bottom:1px solid var(--line)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1500&q=80) center/cover no-repeat}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(12,13,15,.55),rgba(12,13,15,.42),rgba(12,13,15,.66))}
+.hero-inner{position:relative;z-index:2;padding:0 24px;max-width:880px}
+.hero .eyebrow{color:rgba(255,255,255,.85)}
+.hero h1{font-size:clamp(52px,7.6vw,118px);font-weight:400;margin-bottom:24px}
+.hero-sub{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:300;margin-bottom:42px}
+.hero-sub b{color:var(--gold);font-weight:500}
+.hero-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;flex-direction:column;align-items:center;gap:12px}
+.scroll-cue .line{width:1px;height:46px;background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,0));animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+
+/* ===== EDITORIAL TWO-COLUMN ===== */
+.section{position:relative;overflow:hidden}
+.dark{background:var(--ink2);color:#fff}
+.dark h2,.dark h3{color:#fff}
+.editorial{position:relative;z-index:1;max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(40px,6vw,96px);padding:clamp(110px,12vw,185px) 44px}
+.ed-text h2{font-size:clamp(36px,4.3vw,64px);margin-bottom:26px}
+.ed-text .lead{margin-bottom:34px}
+.ed-media{position:relative}
+.portrait{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+.portrait:hover img{transform:scale(1.05)}
+.section.reverse .ed-text{order:2}
+.section.reverse .ed-media{order:1}
+
+/* stat row */
+.stats{display:flex;gap:38px;margin-top:40px;flex-wrap:wrap}
+.stat .n{font-family:var(--serif);font-size:clamp(38px,3.6vw,52px);color:var(--gold);line-height:1}
+.stat .l{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.dark .stat .l{color:rgba(255,255,255,.6)}
+
+/* areas map slot */
+#MAP_SLOT{aspect-ratio:4/5;background:#15171a url(https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1500&q=80) center/cover;border:1px solid rgba(190,175,135,.28);position:relative}
+#MAP_SLOT::after{content:"INTERACTIVE COUNTY MAP";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--sans);font-size:11px;letter-spacing:.24em;color:rgba(255,255,255,.7);background:linear-gradient(rgba(10,11,13,.5),rgba(10,11,13,.62))}
+
+/* overlapping card (listings) */
+.ed-media.overlap{padding-bottom:40px;padding-left:0}
+.overlap-card{position:absolute;right:-26px;bottom:0;background:#fff;padding:26px 30px;max-width:260px;box-shadow:0 30px 60px rgba(16,18,20,.16);border-bottom:2px solid var(--gold)}
+.overlap-card .ov-eye{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.overlap-card h4{font-family:var(--serif);font-size:21px;margin:8px 0 4px;color:var(--ink)}
+.overlap-card p{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+
+/* clients / testimonial */
+.clients{position:relative;z-index:1;max-width:920px;margin:0 auto;text-align:center;padding:clamp(90px,11vw,150px) 44px}
+.stars{color:var(--gold);letter-spacing:.3em;font-size:15px;margin-bottom:30px}
+.quote{font-family:var(--serif);font-size:clamp(30px,3.8vw,52px);line-height:1.45;color:#fff;font-weight:400;margin-bottom:36px}
+.quote-name{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+/* CTA */
+.cta{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:url(https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1500&q=80) center/cover}
+.cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(12,13,15,.62),rgba(12,13,15,.7))}
+.cta-inner{position:relative;z-index:2;padding:0 24px;max-width:720px}
+.cta-inner h2{font-size:clamp(44px,5.6vw,82px);margin-bottom:34px}
+
+/* footer */
+.footer{background:var(--ink2);color:rgba(255,255,255,.66);padding:88px 44px 40px}
+.foot-top{text-align:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:48px;margin-bottom:48px}
+.foot-mark{font-family:var(--serif);font-size:30px;letter-spacing:.16em;text-transform:uppercase;color:#fff}
+.foot-mark small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.32em;color:var(--gold);margin-top:8px;font-weight:500}
+.foot-addr{font-size:13px;letter-spacing:.06em;margin-top:22px}
+.foot-addr a:hover{color:var(--gold)}
+.foot-cols{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.foot-cols h5{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+.foot-cols a{display:block;font-size:13px;margin:10px 0;color:rgba(255,255,255,.62)}
+.foot-cols a:hover{color:#fff}
+.foot-bottom{max-width:1000px;margin:56px auto 0;border-top:1px solid rgba(255,255,255,.1);padding-top:28px;text-align:center;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.45)}
+.foot-compliance{text-transform:uppercase;letter-spacing:.14em;margin-bottom:14px}
+.foot-bottom .ap{color:var(--gold)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+ .editorial{grid-template-columns:1fr;gap:48px;padding:80px 28px}
+ .section.reverse .ed-text{order:1}
+ .section.reverse .ed-media{order:2}
+ .portrait{aspect-ratio:4/3;max-height:520px}
+ #MAP_SLOT{aspect-ratio:4/3}
+ .overlap-card{right:0;position:relative;bottom:auto;margin:-50px auto 0;max-width:80%}
+ .ed-media.overlap{padding-bottom:0}
+ .fsmenu{grid-template-columns:repeat(2,1fr)}
+ .hdr{padding:18px 22px}
+ .hdr.scrolled{padding:12px 22px}
+ .brand{font-size:16px}
+ .hdr-right{display:none}
 }
-@media(max-width:760px){
- .cards3,.blog-grid,.bs-grid,.intro-grid{grid-template-columns:1fr}
- .intro-photo{max-width:380px;margin:0 auto}
- .cta-bg{background-attachment:scroll}
- .sec-head{flex-direction:column;align-items:flex-start}
- .hero-inner{padding-top:130px}
- .mobile-menu .menu{display:flex}
+@media(max-width:560px){
+ .fsmenu{grid-template-columns:1fr;overflow-y:auto}
+ .fscol{padding:30px 26px}
+ .stats{gap:26px}
+ .hero-btns{flex-direction:column;align-items:center}
+ .hero-btns .btn{width:100%;max-width:300px;justify-content:center}
 }
-/* mobile menu panel */
-.mobile-menu{position:fixed;inset:0;background:var(--ink);z-index:300;transform:translateX(100%);transition:.4s;padding:90px 30px 30px;overflow:auto}
-.mobile-menu.open{transform:none}
-.mobile-menu .menu{flex-direction:column;align-items:stretch;gap:0}
-.mobile-menu .menu>li>a{padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
-.mobile-menu .dropdown{position:static;opacity:1;visibility:visible;transform:none;background:none;border:none;box-shadow:none;padding:0 0 12px 14px}
-.mobile-menu .mclose{position:absolute;top:26px;right:26px;background:none;border:none;color:#fff;cursor:pointer}
-.mobile-menu .mclose svg{width:26px;height:26px}
-/*COUNTY-HOVER-CSS*/
-#countyMap{overflow:visible}
-.county{transition:transform .25s cubic-bezier(.2,.8,.2,1),fill .25s ease,filter .25s ease;transform-box:fill-box;transform-origin:center}
-.county:hover,.county.lifted{fill:var(--pewter);transform:translateY(-12px) scale(1.05);filter:drop-shadow(0 18px 24px rgba(0,0,0,.45))}
-.county-label{transition:transform .28s cubic-bezier(.2,.8,.2,1),fill .2s ease}
-.county-label.is-lifted{transform:translateY(-12px);fill:var(--ink)}
+
+/* ===== CAROUSEL (Work With Us) ===== */
+.carousel{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:clamp(190px,17vw,260px) clamp(44px,6vw,96px) clamp(70px,8vw,110px)}
+.car-head{text-align:center;margin-bottom:clamp(36px,4.5vw,58px)}
+.car-head h2{color:#fff;font-size:clamp(44px,5vw,74px)}
+.car-head .uline{width:54px;height:1px;background:var(--gold);margin:20px auto 0}
+.cstage{position:relative;min-height:clamp(430px,42vw,560px)}
+.cslide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;justify-content:center}
+.cslide.on{opacity:1;visibility:visible;transform:none}
+.cslide.from-r{transform:translateX(6%);transition:none}
+.cslide.from-l{transform:translateX(-6%);transition:none}
+.cslide.leave-l{visibility:visible;transform:translateX(-6%)}
+.cslide.leave-r{visibility:visible;transform:translateX(6%)}
+.cmedia{position:relative;width:64%;z-index:1}
+.cnum{position:absolute;top:0;left:2px;transform:translateY(-58%);font-family:var(--serif);font-size:clamp(80px,9vw,150px);line-height:1;color:var(--gold);opacity:.55;z-index:2;pointer-events:none}
+.cphoto{position:relative;width:100%;aspect-ratio:16/11;overflow:hidden}
+.cphoto img{width:100%;height:100%;object-fit:cover;transition:transform 6.5s ease}
+.cslide.on .cphoto img{transform:scale(1.06)}
+.ccard{position:relative;z-index:2;align-self:center;background:#fff;color:var(--ink);padding:clamp(32px,2.8vw,46px);width:clamp(330px,31vw,460px);margin-left:clamp(-110px,-7vw,-60px);box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.ccard .ceye{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold)}
+.ccard h3{font-family:var(--serif);font-size:clamp(26px,2.9vw,38px);color:var(--ink);margin:8px 0 16px;line-height:1.2}
+.ccard p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:26px}
+.carrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:grid;place-items:center;cursor:pointer;color:#fff;font-size:20px;line-height:1;transition:.3s;user-select:none;z-index:5}
+.carrow:hover{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
+.carrow.prev{left:0}.carrow.next{right:0}
+@media(max-width:900px){.carousel{padding-top:clamp(90px,12vw,130px)}.cstage{min-height:0}.cnum{display:none}.cslide{position:relative;display:none;flex-direction:column}.cslide.on{display:flex;opacity:1;visibility:visible}.cmedia{width:100%}.cphoto{width:100%}.ccard{margin:-48px 18px 0;width:auto}.carrow.prev{left:4px}.carrow.next{right:4px}}
+
+/* ===== ABOUT image bleeds into Work With Us ===== */
+#about{overflow:visible;position:relative;z-index:5}
+#about .ed-media{position:relative;z-index:6;margin-bottom:clamp(-210px,-14vw,-110px)}
+#about .ed-media::after{content:"";position:absolute;inset:-16px;border:1px solid var(--gold);opacity:.5;pointer-events:none;z-index:7}
+#guides{position:relative;z-index:1}
+#areas .editorial{grid-template-columns:1.28fr .92fr}
+@media(max-width:900px){#about{overflow:hidden}#about .ed-media{margin-bottom:0}#about .ed-media::after{inset:-10px}}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+html.ranim .reveal{opacity:0;transform:translateY(36px)}
+html.ranim .reveal.in{opacity:1;transform:none}
+</style>
+<style id="mapcss">#countyMap{width:100%;height:auto;display:block;overflow:visible}.county{transform-box:fill-box;transform-origin:center;transition:transform .22s ease;cursor:pointer}.county .shape{fill:#2c2e31;stroke:#8d9097;stroke-width:2.4;transition:fill .2s}.county .lbl{font-family:var(--serif,Georgia);font-weight:700;font-size:15px;fill:#f3f1ec;text-anchor:middle;pointer-events:none;transition:fill .2s}.county.hot{transform:scale(1.4);filter:drop-shadow(0 16px 28px rgba(0,0,0,.6))}.county.hot .shape{fill:var(--gold,#BEAF87)}.county.hot .lbl{fill:#1a1a1a}.cities{opacity:0;transition:opacity .18s ease .04s;pointer-events:none}.county.hot .cities{opacity:1}.cdot{fill:#1a1a1a}.ctext{font-family:var(--sans,sans-serif);font-weight:600;font-size:9px;fill:#1a1a1a;text-anchor:middle;paint-order:stroke;stroke:#e9dfc4;stroke-width:2.4px;stroke-linejoin:round}.atl-ring{fill:#fff;stroke:#1a1a1a;stroke-width:2}.atl-core{fill:#1a1a1a}.atl-lbl{font-family:var(--serif,Georgia);font-weight:700;font-size:13px;fill:#fff;text-anchor:middle;paint-order:stroke;stroke:#1a1a1a;stroke-width:3px;stroke-linejoin:round}.cmov{position:fixed;inset:0;background:rgba(12,13,14,.66);display:none;align-items:center;justify-content:center;z-index:90;padding:24px}.cmov.open{display:flex}.cmod{background:#fff;max-width:430px;width:100%;padding:34px 32px;position:relative;font-family:var(--sans,sans-serif)}.cmod h3{font-family:var(--serif,Georgia);font-size:26px;margin-bottom:4px}.cmod p{color:#444;margin:12px 0 18px;font-size:14px;line-height:1.6}.cmclose{position:absolute;top:14px;right:16px;cursor:pointer;font-size:22px;color:#999}.cmch{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}.cmch span{background:#f6f4ef;border:1px solid #e7e4dd;font-size:12px;padding:5px 11px}.cmacts{display:flex;gap:10px;flex-wrap:wrap}.cmbtn{font-family:var(--sans,sans-serif);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;text-decoration:none;cursor:pointer}.cmbtn.g{background:var(--gold,#BEAF87);color:#1a1a1a}.cmbtn.d{border:1px solid #1a1a1a;color:#1a1a1a}</style>
+<style id="footer-upgrade">
+/* footer upgrade only: matches the approved about-page footer; home-a base styles above untouched */
+.foot-social{display:flex;gap:22px;justify-content:center;margin-top:24px}
+.foot-social a{color:rgba(255,255,255,.5);line-height:0}
+.foot-social a:hover{color:var(--gold)}
+.foot-social svg{width:18px;height:18px}
+.foot-cols{max-width:1200px;grid-template-columns:repeat(4,1fr)}
+.foot-bottom{max-width:1200px}
+.foot-bottom a{text-decoration:underline;text-underline-offset:3px}
+.foot-bottom a:hover{color:#fff}
+.foot-legal{max-width:860px;margin:22px auto 0;font-size:10.5px;line-height:1.8;letter-spacing:.04em;color:rgba(255,255,255,.35);text-align:center}
+.foot-legal a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:900px){.foot-cols{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.foot-cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header id="hdr">
- <div class="wrap nav">
-  <a href="index.html" class="brand" aria-label="The Hutson Group home">
-   <span class="brand-mark">THG</span>
-   <span class="brand-txt"><b>The Hutson Group</b><span>Century 21 Results</span></span>
-  </a>
-  <ul class="menu">
-   <li><a href="07-search.html">Search Homes</a></li>
-   <li><a href="06-communities.html">Communities</a></li>
-   <li><a href="02-buy.html">Buy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
-     <div class="dropdown"><a href="02-buy.html">Buyer's Guide</a><a href="09-financing.html">Financing</a></div></li>
-   <li><a href="03-sell.html">Sell <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
-     <div class="dropdown"><a href="03-sell.html">Seller's Guide</a><a href="03-sell.html#valuation">What's My Home Worth</a><a href="10-marketing-day.html">Marketing Day</a></div></li>
-   <li><a href="11-cash-offer.html">Programs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
-     <div class="dropdown"><a href="11-cash-offer.html">Cash Offer</a><a href="12-probate.html">Probate Program</a></div></li>
-   <li><a href="04-about.html">About <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
-     <div class="dropdown"><a href="04-about.html">About Us</a><a href="05-team.html">Meet the Team</a><a href="08-testimonials.html">Testimonials</a><a href="13-careers.html">Careers</a><a href="15-blog.html">Blog</a></div></li>
-  </ul>
-  <div class="nav-cta">
-   <a href="tel:6782184930" class="nav-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>678.218.4930</a>
-   <a href="14-contact.html" class="btn btn-primary">Contact</a>
-   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
- </div>
+<!-- ===== HEADER + FULL-SCREEN MENU (verbatim) ===== -->
+<header class="hdr" id="hdr">
+ <div class="menu-open" id="menuOpen"><span class="bars"><i></i><i></i><i></i></span> Menu</div>
+ <div class="brand">The Hutson Group<small>Century 21 Results</small></div>
+ <div class="hdr-right"><a href="tel:6782184930">678.218.4930</a><a href="07-search.html">Search</a><a href="14-contact.html">Contact</a></div>
 </header>
+<nav class="fsmenu" id="fsmenu">
+ <div class="fsclose" id="fsClose"><span class="x">&times;</span> Close</div>
+ <div class="fscol" style="background-image:url(https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1500&q=80)"><h3>Buy</h3><div class="gl"></div><a class="sub" href="02-buy.html">Buyer's Guide</a><a class="sub" href="07-search.html">Search Homes</a><a class="sub" href="09-financing.html">Financing</a><a class="sub" href="11-cash-offer.html">Cash Offer</a></div>
+ <div class="fscol" style="background-image:url(https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1500&q=80)"><h3>Sell</h3><div class="gl"></div><a class="sub" href="03-sell.html">Seller's Guide</a><a class="sub" href="03-sell.html#valuation">What's My Home Worth</a><a class="sub" href="10-marketing-day.html">Marketing Day</a><a class="sub" href="12-probate.html">Probate Program</a></div>
+ <div class="fscol" style="background-image:url(https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1500&q=80)"><h3>Communities</h3><div class="gl"></div><a class="sub" href="#areas">Explore the Map</a><a class="sub" href="06-communities.html">North &amp; Lake Counties</a><a class="sub" href="06-communities.html">Metro Counties</a><a class="sub" href="06-communities.html">Find Your Community</a></div>
+ <div class="fscol" style="background-image:url(https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1500&q=80)"><h3>About</h3><div class="gl"></div><a class="sub" href="04-about.html">About Us</a><a class="sub" href="05-team.html">Meet the Team</a><a class="sub" href="08-testimonials.html">Testimonials</a><a class="sub" href="13-careers.html">Careers</a><a class="sub" href="14-contact.html">Contact</a></div>
+</nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
- <button class="mclose" id="mclose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
- <ul class="menu">
-  <li><a href="07-search.html">Search Homes</a></li>
-  <li><a href="06-communities.html">Communities</a></li>
-  <li><a href="02-buy.html">Buy</a><div class="dropdown"><a href="02-buy.html">Buyer's Guide</a><a href="09-financing.html">Financing</a></div></li>
-  <li><a href="03-sell.html">Sell</a><div class="dropdown"><a href="03-sell.html">Seller's Guide</a><a href="03-sell.html#valuation">What's My Home Worth</a><a href="10-marketing-day.html">Marketing Day</a></div></li>
-  <li><a href="11-cash-offer.html">Programs</a><div class="dropdown"><a href="11-cash-offer.html">Cash Offer</a><a href="12-probate.html">Probate Program</a></div></li>
-  <li><a href="04-about.html">About</a><div class="dropdown"><a href="04-about.html">About Us</a><a href="05-team.html">Meet the Team</a><a href="08-testimonials.html">Testimonials</a><a href="13-careers.html">Careers</a><a href="15-blog.html">Blog</a></div></li>
- </ul>
-</div>
-
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section class="hero">
- <div class="hero-bg"><img src="images/hero-brick-traditional.webp" alt="Brick traditional home in North Georgia"></div>
- <div class="wrap hero-inner">
-  <span class="eyebrow on-dark">The Hutson Group &middot; Century 21 Results</span>
-  <h1>North Georgia Real Estate,<br>From First Tour to Final Keys</h1>
-  <p class="sub">A top 1% team, 750+ transactions across Woodstock, Canton, Marietta and nine more North Atlanta counties. Clients first equals clients for life.</p>
-  <div class="hero-actions">
-   <a href="#featured" class="btn btn-ghost accent">Search Homes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="#sell" class="btn btn-ghost">What's My Home Worth</a>
-   <div class="play" id="playBtn">
-     <span class="circ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-     Watch Our Story
+ <div class="hero-bg"></div>
+ <div class="hero-inner">
+  <span class="eyebrow">North Georgia Real Estate</span>
+  <h1>Guiding North Georgia Home.</h1>
+  <p class="hero-sub"><b>The Hutson Group</b> &middot; Century 21 Results</p>
+  <div class="hero-btns">
+   <a href="02-buy.html" class="btn btn-ghost-light">Your Guide to Buying</a>
+   <a href="03-sell.html" class="btn btn-ghost-light">Your Guide to Selling</a>
+  </div>
+ </div>
+ <div class="scroll-cue"><span class="line"></span>Scroll</div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+ <span class="wm wm-light" style="font-size:40vw;top:50%;left:-3%;transform:translateY(-50%)">ABOUT</span>
+ <div class="editorial">
+  <div class="ed-text">
+   <span class="eyebrow">About Us</span>
+   <h2>Proud To Be Your North Georgia Experts.</h2>
+   <p class="lead">From the foothills to the lake, we know these towns because we live in them. The Hutson Group pairs deep local knowledge with the resources of Century 21 Results to guide families through every move with clarity and care.</p>
+   <a href="05-team.html" class="btn btn-ghost-dark">About the Team</a>
+   <div class="stats">
+    <div class="stat"><div class="n">750+</div><div class="l">Homes Sold</div></div>
+    <div class="stat"><div class="n">12</div><div class="l">Counties</div></div>
+    <div class="stat"><div class="n">100+</div><div class="l">5-Star Reviews</div></div>
    </div>
   </div>
- </div>
- <div class="scroll-hint">Scroll</div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
- <div class="wrap"><div class="grid">
-  <div class="stat"><div class="num">$200<span>M+</span></div><div class="lbl">Career Sales</div></div>
-  <div class="stat"><div class="num">750<span>+</span></div><div class="lbl">Homes Sold</div></div>
-  <div class="stat"><div class="num">Top 1<span>%</span></div><div class="lbl">North Georgia Teams</div></div>
-  <div class="stat"><div class="num">1,200<span>+</span></div><div class="lbl">Five-Star Reviews</div></div>
- </div></div>
-</section>
-
-<!-- MAP -->
-<section class="sec" id="map">
- <div class="wrap">
-  <div class="map-head reveal">
-   <span class="eyebrow center">Explore the Map</span>
-   <h2>Find Your Place in North Georgia</h2>
-   <p class="lede">Click a county to explore its cities, lifestyle, and active listings. From the lake at Hall to the mountains of Pickens, we cover twelve counties across North Atlanta.</p>
+  <div class="ed-media">
+   <div class="portrait"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1500&q=80" alt="Light-filled North Georgia home interior with warm natural finishes"></div>
   </div>
-  <div class="map-stage reveal">
-   <div><svg id="countyMap" viewBox="0 0 1008 948" role="img" aria-label="Clickable map of twelve North Georgia counties">
-<g class="counties">
-<path class="county" data-c="Pickens" d="M288.9 79.6 L495.5 68.5 L512.8 145.0 L554.8 145.5 L554.3 215.1 L336.9 214.7 L289.6 189.6 L288.9 79.6 Z"/>
-<path class="county" data-c="Dawson" d="M554.0 252.1 L554.2 221.9 L554.3 219.9 L554.3 215.1 L554.8 145.5 L512.8 145.0 L495.5 68.5 L556.0 64.0 L595.0 24.0 L600.2 31.9 L600.5 36.3 L598.8 87.5 L658.4 147.7 L739.6 185.0 L755.3 253.0 L554.0 252.1 Z"/>
-<path class="county" data-c="Bartow" d="M53.8 205.9 L149.4 202.5 L289.6 189.6 L285.6 459.5 L276.7 459.4 L275.8 459.3 L275.1 459.4 L274.1 459.3 L269.8 459.2 L268.5 459.1 L266.9 459.1 L243.7 458.6 L243.2 458.6 L238.8 458.6 L233.0 458.4 L109.3 455.9 L26.3 444.7 L53.8 205.9 Z"/>
-<path class="county" data-c="Cherokee" d="M554.0 252.1 L553.5 372.5 L507.0 372.3 L446.4 463.3 L377.4 461.6 L285.6 459.5 L289.6 189.6 L336.9 214.7 L554.3 215.1 L554.3 219.9 L554.2 221.9 L554.0 252.1 Z"/>
-<path class="county" data-c="Forsyth" d="M554.0 252.1 L755.3 253.0 L775.3 297.1 L733.9 364.6 L684.6 387.0 L676.7 390.4 L663.2 416.2 L658.8 436.7 L658.0 438.7 L656.1 440.0 L654.9 441.7 L653.1 443.0 L647.8 469.8 L661.3 481.6 L592.6 449.7 L553.4 434.1 L553.5 372.5 L554.0 252.1 Z"/>
-<path class="county" data-c="Hall" d="M684.6 387.0 L733.9 364.6 L775.3 297.1 L755.3 253.0 L739.6 185.0 L831.4 114.7 L949.8 116.2 L984.0 174.2 L947.7 226.7 L980.7 284.3 L848.6 419.6 L814.9 443.2 L684.6 387.0 Z"/>
-<path class="county" data-c="Paulding" d="M24.0 599.5 L71.9 561.6 L109.3 455.9 L233.0 458.4 L242.0 617.7 L241.6 667.7 L241.5 670.1 L242.3 671.4 L242.2 678.8 L242.2 690.7 L241.3 693.0 L230.7 693.0 L211.6 696.1 L196.8 699.0 L194.7 700.0 L191.5 700.0 L169.6 701.1 L169.6 703.1 L138.5 704.1 L123.4 699.3 L112.1 694.8 L32.3 674.1 L33.1 599.6 L24.0 599.5 Z"/>
-<path class="county" data-c="Cobb" d="M242.0 617.7 L233.0 458.4 L238.8 458.6 L243.2 458.6 L243.7 458.6 L266.9 459.1 L268.5 459.1 L269.8 459.2 L274.1 459.3 L275.1 459.4 L275.8 459.3 L276.7 459.4 L285.6 459.5 L377.4 461.6 L446.4 463.3 L470.4 551.6 L430.5 601.9 L405.4 669.8 L339.9 729.3 L311.9 679.7 L242.2 678.8 L242.3 671.4 L241.5 670.1 L241.6 667.7 L242.0 617.7 Z"/>
-<path class="county" data-c="Gwinnett" d="M653.1 443.0 L654.9 441.7 L656.1 440.0 L658.0 438.7 L658.8 436.7 L663.2 416.2 L676.7 390.4 L684.6 387.0 L814.9 443.2 L848.6 419.6 L814.2 519.0 L861.0 579.0 L738.6 695.0 L736.9 696.4 L710.8 721.8 L611.5 637.4 L541.4 556.6 L661.3 481.6 L647.8 469.8 L653.1 443.0 Z"/>
-<path class="county" data-c="Douglas" d="M211.6 696.1 L230.7 693.0 L241.3 693.0 L242.2 690.7 L242.2 678.8 L311.9 679.7 L339.9 729.3 L223.1 820.7 L216.1 833.6 L207.8 837.3 L187.7 856.0 L185.5 866.0 L120.7 866.6 L122.8 795.8 L123.4 699.3 L138.5 704.1 L169.6 703.1 L169.6 701.1 L191.5 700.0 L194.7 700.0 L196.8 699.0 L211.6 696.1 Z"/>
-<path class="county" data-c="Fulton" d="M223.1 820.7 L339.9 729.3 L405.4 669.8 L430.5 601.9 L470.4 551.6 L446.4 463.3 L507.0 372.3 L553.5 372.5 L553.4 434.1 L592.6 449.7 L661.3 481.6 L541.4 556.6 L493.9 572.4 L493.9 581.3 L493.9 587.9 L493.8 588.3 L493.7 599.2 L493.7 608.8 L493.5 617.7 L493.7 619.9 L493.6 629.0 L493.7 631.4 L493.5 633.8 L493.7 635.8 L493.7 637.2 L493.6 641.4 L492.6 793.4 L492.3 806.4 L485.6 806.4 L482.2 806.5 L420.4 805.7 L419.9 838.1 L419.8 856.0 L420.0 867.1 L419.8 867.6 L419.6 872.6 L419.6 877.5 L419.8 880.4 L419.8 884.7 L318.9 923.7 L157.5 916.5 L185.5 866.0 L187.7 856.0 L207.8 837.3 L216.1 833.6 L223.1 820.7 Z"/>
-<path class="county" data-c="DeKalb" d="M556.6 807.1 L538.5 806.8 L537.6 807.2 L492.3 806.4 L492.6 793.4 L493.6 641.4 L493.7 637.2 L493.7 635.8 L493.5 633.8 L493.7 631.4 L493.6 629.0 L493.7 619.9 L493.5 617.7 L493.7 608.8 L493.7 599.2 L493.8 588.3 L493.9 587.9 L493.9 581.3 L493.9 572.4 L541.4 556.6 L611.5 637.4 L710.8 721.8 L688.7 743.0 L656.8 816.0 L603.4 807.9 L576.8 807.5 L576.6 820.4 L562.4 820.3 L556.6 807.1 Z"/>
-</g><g class="labels">
-<text class="county-label" data-label="Pickens" x="413.8" y="147.2">Pickens</text>
-<text class="county-label" data-label="Dawson" x="616.3" y="167.8">Dawson</text>
-<text class="county-label" data-label="Bartow" x="165.9" y="329.5">Bartow</text>
-<text class="county-label" data-label="Cherokee" x="408.9" y="327.4">Cherokee</text>
-<text class="county-label" data-label="Forsyth" x="644.5" y="339.2">Forsyth</text>
-<text class="county-label" data-label="Hall" x="849.6" y="265.8">Hall</text>
-<text class="county-label" data-label="Paulding" x="149.2" y="587.0">Paulding</text>
-<text class="county-label" data-label="Cobb" x="341.1" y="569.7">Cobb</text>
-<text class="county-label" data-label="Gwinnett" x="711.8" y="552.8">Gwinnett</text>
-<text class="county-label" data-label="Douglas" x="212.0" y="762.2">Douglas</text>
-<text class="county-label" data-label="Fulton" x="414.0" y="693.5">Fulton</text>
-<text class="county-label" data-label="DeKalb" x="576.6" y="708.4">DeKalb</text>
-</g></svg>
-     <p class="map-cap">Click any county to explore its cities and listings. On the live site the home map deep-links into the Communities page modals.</p>
+ </div>
+</section>
+
+<!-- ===== CAROUSEL / WORK WITH US ===== -->
+<section class="section dark" id="guides">
+ <span class="wm wm-dark" style="font-size:30vw;top:50%;left:50%;transform:translate(-50%,-50%)">BEGIN</span>
+ <div class="carousel">
+  <div class="car-head reveal">
+   <h2>Work With Us.</h2>
+   <div class="uline"></div>
+  </div>
+  <div class="cstage" id="cStage">
+   <div class="carrow prev" id="cPrev" role="button" aria-label="Previous">&#8249;</div>
+   <div class="carrow next" id="cNext" role="button" aria-label="Next">&#8250;</div>
+   <article class="cslide on">
+    <div class="cmedia"><span class="cnum">01</span><div class="cphoto"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1500&q=80" alt="A buyer's new North Georgia home at dusk"></div></div>
+    <div class="ccard"><span class="ceye">Buyers</span><h3>The best buying experience</h3><p>We're here to guide you through every part of the buying process. Know what to expect, avoid the common mistakes, and let us keep things moving smoothly.</p><a href="02-buy.html" class="btn btn-ghost-dark">Buy With Us</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cmedia"><span class="cnum">02</span><div class="cphoto"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1500&q=80" alt="A home prepared for sale"></div></div>
+    <div class="ccard"><span class="ceye">Sellers</span><h3>What your home is worth</h3><p>Strategic pricing, standout marketing, and Zillow Showcase exposure that puts your home in front of the right buyers, for more.</p><a href="03-sell.html" class="btn btn-ghost-dark">Sell With Us</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cmedia"><span class="cnum">03</span><div class="cphoto"><img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1500&q=80" alt="A lender consultation"></div></div>
+    <div class="ccard"><span class="ceye">Financing</span><h3>Get pre-approved fast</h3><p>Trusted local lenders ready to get you pre-approved quickly, so you can shop with confidence and move when the right home appears.</p><a href="09-financing.html" class="btn btn-ghost-dark">Explore Financing</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cmedia"><span class="cnum">04</span><div class="cphoto"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1500&q=80" alt="A home eligible for a cash offer"></div></div>
+    <div class="ccard"><span class="ceye">Cash Offer</span><h3>A fast, certain sale</h3><p>A competitive cash offer with no showings and no repairs, and a close on the timeline that works for you.</p><a href="11-cash-offer.html" class="btn btn-ghost-dark">Request a Cash Offer</a></div>
+   </article>
+   <article class="cslide">
+    <div class="cmedia"><span class="cnum">05</span><div class="cphoto"><img src="https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=1500&q=80" alt="A staged living space"></div></div>
+    <div class="ccard"><span class="ceye">Marketing Day</span><h3>Prep that sells for more</h3><p>A proven playbook that gets your home photo-ready and on the market looking its absolute best.</p><a href="10-marketing-day.html" class="btn btn-ghost-dark">See the Process</a></div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<!-- ===== AREAS ===== -->
+<section class="section dark reverse" id="areas">
+ <span class="wm wm-dark" style="font-size:37vw;top:50%;right:-2%;transform:translateY(-50%)">AREAS</span>
+ <div class="editorial">
+  <div class="ed-text">
+   <span class="eyebrow">Where You'll Live</span>
+   <h2>Explore North Georgia by County.</h2>
+   <p class="lead">From Cherokee and Cobb to the mountain towns along the lake, each county has its own rhythm. Find the community that fits the life you want to build, then let us help you make it home.</p>
+   <a href="06-communities.html" class="btn btn-ghost-light">View All Communities</a>
+  </div>
+  <div class="ed-media">
+   <svg id="countyMap" viewBox="0 0 1000 941" role="img" aria-label="Map of twelve North Georgia counties"><g class="counties">
+<g class="county" data-c="Bartow"><path class="shape" d="M53.5 204.6 148.3 201.2 287.4 188.4 283.4 456.3 108.6 452.7 26.3 441.6 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="188.9" cy="387.0" r="3.4"/><text class="ctext" x="188.9" y="399.0">Cartersville</text></g></g><text class="lbl" x="161.5" y="332.0">BARTOW</text></g>
+<g class="county" data-c="Cherokee"><path class="shape" d="M549.6 250.4 549.1 369.9 503.0 369.8 442.9 460.1 283.4 456.3 287.4 188.4 334.3 213.3 549.9 213.7 549.7 220.4 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="380.4" cy="436.2" r="3.4"/><text class="ctext" x="380.4" y="448.2">Woodstock</text></g><g class="city"><circle class="cdot" cx="395.2" cy="320.9" r="3.4"/><text class="ctext" x="395.2" y="332.9">Canton</text></g><g class="city"><circle class="cdot" cx="476.5" cy="247.2" r="3.4"/><text class="ctext" x="476.5" y="259.2">Ball Ground</text></g><g class="city"><circle class="cdot" cx="399.4" cy="384.9" r="3.4"/><text class="ctext" x="399.4" y="396.9">Holly Springs</text></g><g class="city"><circle class="cdot" cx="355.2" cy="264.9" r="3.4"/><text class="ctext" x="355.2" y="276.9">Waleska</text></g></g><text class="lbl" x="397.6" y="324.3">CHEROKEE</text></g>
+<g class="county" data-c="Cobb"><path class="shape" d="M240.2 613.4 231.3 455.2 442.9 460.1 466.7 547.8 427.1 597.6 402.2 665.1 337.2 724.2 309.5 674.9 240.4 674.0 239.8 663.0 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="360.9" cy="556.0" r="3.4"/><text class="ctext" x="360.9" y="568.0">Marietta</text></g><g class="city"><circle class="cdot" cx="311.4" cy="497.0" r="3.4"/><text class="ctext" x="311.4" y="509.0">Kennesaw</text></g><g class="city"><circle class="cdot" cx="268.9" cy="469.2" r="3.4"/><text class="ctext" x="268.9" y="481.2">Acworth</text></g><g class="city"><circle class="cdot" cx="378.4" cy="628.9" r="3.4"/><text class="ctext" x="378.4" y="640.9">Smyrna</text></g></g><text class="lbl" x="336.4" y="556.1">COBB</text></g>
+<g class="county" data-c="Dawson"><path class="shape" d="M549.6 250.4 550.4 144.6 508.7 144.2 491.5 68.2 551.5 63.7 590.2 24.0 595.7 36.2 594.0 87.1 653.1 146.8 733.6 183.8 749.2 251.3 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="638.2" cy="171.6" r="3.4"/><text class="ctext" x="638.2" y="183.6">Dawsonville</text></g></g><text class="lbl" x="611.2" y="190.4">DAWSON</text></g>
+<g class="county" data-c="DeKalb"><path class="shape" d="M552.2 801.4 488.4 800.7 490.0 568.4 540.4 554.1 544.1 560.8 540.2 563.0 550.9 587.4 566.7 597.3 585.8 620.5 601.7 627.4 705.0 716.7 683.2 737.7 651.5 810.3 572.2 801.8 572.0 814.6 557.9 814.5 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="513.3" cy="565.7" r="3.4"/><text class="ctext" x="513.3" y="577.7">Dunwoody</text></g><g class="city"><circle class="cdot" cx="496.2" cy="630.0" r="3.4"/><text class="ctext" x="496.2" y="642.0">Brookhaven</text></g></g><text class="lbl" x="573.5" y="716.9">DEKALB</text></g>
+<g class="county" data-c="Douglas"><path class="shape" d="M210.0 691.2 239.5 688.1 240.4 674.0 309.5 674.9 337.2 724.2 331.5 735.7 321.6 739.5 317.4 748.7 301.4 758.8 302.8 764.5 221.4 814.9 214.5 827.7 186.3 850.0 184.1 859.9 119.9 860.4 122.6 694.4 137.5 699.2 195.4 694.0 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="255.7" cy="729.6" r="3.4"/><text class="ctext" x="255.7" y="741.6">Douglasville</text></g></g><text class="lbl" x="185.9" y="760.6">DOUGLAS</text></g>
+<g class="county" data-c="Forsyth"><path class="shape" d="M549.6 250.4 749.2 251.3 769.0 295.1 728.0 362.1 671.3 387.7 657.9 413.3 652.7 435.7 647.9 440.0 642.6 466.5 656.0 478.2 549.0 431.1 549.1 369.9 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="632.0" cy="353.8" r="3.4"/><text class="ctext" x="632.0" y="365.8">Cumming</text></g></g><text class="lbl" x="623.6" y="327.7">FORSYTH</text></g>
+<g class="county" data-c="Fulton"><path class="shape" d="M221.4 814.9 302.8 764.5 301.4 758.8 317.4 748.7 321.6 739.5 331.5 735.7 337.2 724.2 402.2 665.1 427.1 597.6 466.7 547.8 442.9 460.1 503.0 369.8 549.1 369.9 549.0 431.1 656.0 478.2 537.1 552.7 490.0 568.4 488.4 800.7 417.1 800.0 416.5 878.4 316.4 917.2 156.4 910.0 186.3 850.0 214.5 827.7 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="487.9" cy="487.2" r="3.4"/><text class="ctext" x="487.9" y="499.2">Roswell</text></g><g class="city"><circle class="cdot" cx="539.9" cy="462.1" r="3.4"/><text class="ctext" x="539.9" y="474.1">Alpharetta</text></g></g><text class="lbl" x="343.7" y="829.2">FULTON</text></g>
+<g class="county" data-c="Gwinnett"><path class="shape" d="M647.9 440.0 652.7 435.7 657.9 413.3 671.3 387.7 679.1 384.4 808.3 440.1 841.7 416.7 807.6 515.4 854.0 575.0 705.0 716.7 601.7 627.4 585.8 620.5 566.7 597.3 550.9 587.4 540.2 563.0 544.1 560.8 537.1 552.7 656.0 478.2 642.6 466.5 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="725.9" cy="556.5" r="3.4"/><text class="ctext" x="725.9" y="568.5">Lawrenceville</text></g><g class="city"><circle class="cdot" cx="620.9" cy="517.6" r="3.4"/><text class="ctext" x="620.9" y="529.6">Duluth</text></g><g class="city"><circle class="cdot" cx="677.0" cy="477.9" r="3.4"/><text class="ctext" x="677.0" y="489.9">Suwanee</text></g></g><text class="lbl" x="701.2" y="574.3">GWINNETT</text></g>
+<g class="county" data-c="Hall"><path class="shape" d="M679.1 384.4 728.0 362.1 769.0 295.1 749.2 251.3 733.6 183.8 824.6 114.0 942.1 115.5 976.0 173.1 940.0 225.2 972.8 282.4 841.7 416.7 808.3 440.1 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="834.1" cy="286.5" r="3.4"/><text class="ctext" x="834.1" y="298.5">Gainesville</text></g><g class="city"><circle class="cdot" cx="774.7" cy="381.6" r="3.4"/><text class="ctext" x="774.7" y="393.6">Flowery Branch</text></g></g><text class="lbl" x="843.4" y="224.7">HALL</text></g>
+<g class="county" data-c="Paulding"><path class="shape" d="M24.0 595.3 71.5 557.7 108.6 452.7 231.3 455.2 240.2 613.4 239.5 688.1 137.5 699.2 32.2 669.4 33.0 595.4 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="163.0" cy="585.7" r="3.4"/><text class="ctext" x="163.0" y="597.7">Dallas</text></g><g class="city"><circle class="cdot" cx="222.9" cy="606.3" r="3.4"/><text class="ctext" x="222.9" y="618.3">Hiram</text></g></g><text class="lbl" x="147.5" y="606.8">PAULDING</text></g>
+<g class="county" data-c="Pickens"><path class="shape" d="M286.7 79.2 491.5 68.2 508.7 144.2 550.4 144.6 549.9 213.7 334.3 213.3 287.4 188.4 Z"/><g class="cities"><g class="city"><circle class="cdot" cx="431.6" cy="145.5" r="3.4"/><text class="ctext" x="431.6" y="157.5">Jasper</text></g><g class="city"><circle class="cdot" cx="394.4" cy="95.0" r="3.4"/><text class="ctext" x="394.4" y="107.0">Talking Rock</text></g></g><text class="lbl" x="432.6" y="143.6">PICKENS</text></g>
+</g><g class="atl"><circle class="atl-ring" cx="440.4" cy="708.7" r="8"/><circle class="atl-core" cx="440.4" cy="708.7" r="3.2"/><text class="atl-lbl" x="440.4" y="730.7">Atlanta</text></g></svg>
+  </div>
+ </div>
+</section>
+
+<!-- ===== LISTINGS ===== -->
+<section class="section" id="listings">
+ <span class="wm wm-light" style="font-size:35vw;top:50%;right:-4%;transform:translateY(-50%)">LISTINGS</span>
+ <div class="editorial">
+  <div class="ed-media overlap">
+   <div class="portrait"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1500&q=80" alt="Refined interior of a featured North Georgia listing"></div>
+   <div class="overlap-card">
+    <span class="ov-eye">Now Showing</span>
+    <h4>Lakefront Living</h4>
+    <p>Curated homes across 12 counties</p>
    </div>
-   <div class="map-aside">
-    <h3>Twelve counties, one local team.</h3>
-    <p class="lede">From the lake at Hall to the foothills of Pickens, we know every market across North Atlanta. Click your county to explore its cities and active listings.</p>
-   </div>
+  </div>
+  <div class="ed-text">
+   <span class="eyebrow">Featured Listings</span>
+   <h2>Hand-Picked Properties.</h2>
+   <p class="lead">A focused collection of the finest homes on the market, from lake retreats to in-town estates. Each listing is chosen and presented with the detail it deserves.</p>
+   <a href="07-search.html" class="btn btn-ghost-dark">Browse Listings</a>
   </div>
  </div>
 </section>
 
-<!-- FEATURED LISTINGS -->
-<section class="sec alt" id="featured">
- <div class="wrap">
-  <div class="sec-head reveal">
-   <div><span class="eyebrow">On the Market</span><h2>Featured Listings</h2></div>
-   <a href="07-search.html" class="link-arrow">View All Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
-  <div class="cards3 reveal">
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$525,000</div><div class="addr">Woodstock, Cherokee County</div><div class="specs"><span><b>4</b> Beds</span><span><b>3</b> Baths</span><span><b>2,640</b> Sq Ft</span></div></div></a>
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$689,900</div><div class="addr">Marietta, Cobb County</div><div class="specs"><span><b>5</b> Beds</span><span><b>4</b> Baths</span><span><b>3,180</b> Sq Ft</span></div></div></a>
-   <a href="07-search.html" class="lcard"><div class="ph"><span class="tag">For Sale</span><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Listing"></div><div class="body"><div class="price">$447,500</div><div class="addr">Canton, Cherokee County</div><div class="specs"><span><b>3</b> Beds</span><span><b>2</b> Baths</span><span><b>1,975</b> Sq Ft</span></div></div></a>
-  </div>
-  <div class="idx-banner reveal">Live listings feed, Showcase IDX. Placeholder cards shown for preview: <code>[showcaseidx_hotsheet name="Featured Listings"]</code></div>
+<!-- ===== CLIENTS ===== -->
+<section class="section dark" id="clients">
+ <span class="wm wm-dark" style="font-size:35vw;top:50%;left:50%;transform:translate(-50%,-50%)">CLIENTS</span>
+ <div class="clients">
+  <span class="eyebrow">Success Stories</span>
+  <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+  <p class="quote">"They knew every street, every school, every detail that mattered to us. We never felt rushed, only guided. The Hutson Group made finding home in North Georgia feel effortless."</p>
+  <p class="quote-name">The Calhoun Family &middot; Cherokee County</p>
  </div>
 </section>
 
-<!-- BUY / SELL FULL-BLEED STACKED -->
-<section id="sell">
- <div class="bs-band buy">
-  <img class="bg" src="images/buy-living-room.webp" alt="Buying a home in North Georgia">
-  <div class="bs-band-inner reveal">
-   <span class="eyebrow on-dark">For Buyers</span>
-   <h2>Buy in Six Clear Steps</h2>
-   <p>From your first tour to closing day, you always know what is happening and what comes next.</p>
-   <a href="02-buy.html" class="btn btn-primary">Buyer's Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
- </div>
- <div class="bs-band sell">
-  <img class="bg" src="images/sell-exterior.webp" alt="Selling a home in North Georgia">
-  <div class="bs-band-inner reveal">
-   <span class="eyebrow on-dark">For Sellers</span>
-   <h2>Sell For More</h2>
-   <p>Strategic pricing, professional marketing, and Zillow Showcase get your home seen by the right buyers and sold.</p>
-   <a href="03-sell.html" class="btn btn-primary">Seller's Guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="03-sell.html" class="vlink">What's my home worth?</a>
-  </div>
+<!-- ===== CTA ===== -->
+<section class="cta">
+ <div class="cta-bg"></div>
+ <div class="cta-inner">
+  <span class="eyebrow" style="color:rgba(255,255,255,.85)">Let's Begin</span>
+  <h2>Ready to make your move?</h2>
+  <a href="14-contact.html" class="btn btn-gold">Start a Conversation</a>
  </div>
 </section>
 
-<!-- INTRO -->
-<section class="sec" id="about">
- <div class="wrap intro-grid">
-  <div class="intro-photo reveal"><span class="frame"></span><img src="content-snare-export/will-hutson-headshot.jpg" alt="Will Hutson, founder of The Hutson Group"></div>
-  <div class="intro-copy reveal">
-   <span class="eyebrow">Meet the Founder</span>
-   <h2>Will Hutson</h2>
-   <p>Will founded The Hutson Group at Century 21 Results on a simple belief: clients first equals clients for life. Licensed since 2017, he has guided more than 750 transactions and over $200 million in sales across North Georgia.</p>
-   <p>Today that standard carries across a full team serving Woodstock, Canton, Marietta and the counties surrounding North Atlanta, from first-time buyers to seasoned sellers.</p>
-   <div class="sig">Will Hutson<small>Founder, The Hutson Group</small></div>
-   <a href="04-about.html" class="btn btn-outline">About the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<!-- ===== FOOTER (full footer from approved about page) ===== -->
+<footer class="footer">
+ <div class="foot-top">
+  <div class="foot-mark">The Hutson Group<small>Century 21 Results</small></div>
+  <p class="foot-addr">6424 East Bells Ferry Rd Ste 144, Woodstock GA &middot; <a href="tel:6782184930">678.218.4930</a> &middot; <a href="mailto:thginfo@youneedresults.com">thginfo@youneedresults.com</a></p>
+  <div class="foot-social">
+   <a href="https://www.facebook.com/thehutsongroup" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+   <a href="https://www.instagram.com/thehutsongroup/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+   <a href="https://x.com/thehutsongroup1" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+   <a href="https://www.youtube.com/@thehutsongroup" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5a2.5 2.5 0 0 0-1.8-1.8C19 4.7 12 4.7 12 4.7s-7 0-8.7.5A2.5 2.5 0 0 0 1.5 7C1 8.5 1 12 1 12s0 3.5.5 5a2.5 2.5 0 0 0 1.8 1.8c1.7.5 8.7.5 8.7.5s7 0 8.7-.5a2.5 2.5 0 0 0 1.8-1.8c.5-1.5.5-5 .5-5zM10 15.5v-7l6 3.5z"/></svg></a>
+   <a href="https://www.linkedin.com/company/101086278" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8h4.8v2.2h.07c.67-1.2 2.3-2.5 4.73-2.5 5 0 6 3.3 6 7.6V24h-5v-7.1c0-1.7 0-3.9-2.4-3.9s-2.7 1.8-2.7 3.8V24h-5z"/></svg></a>
   </div>
  </div>
-</section>
-
-<!-- WHY -->
-<section class="sec dark2">
- <div class="wrap">
-  <div class="map-head reveal" style="text-align:left;margin:0 0 0;max-width:560px">
-   <span class="eyebrow on-dark">The Hutson Difference</span>
-   <h2>Marketing That Moves Homes</h2>
-   <p class="lede">A national brand, a local team, and tools most agents cannot offer.</p>
+ <div class="foot-cols">
+  <div>
+   <h5>Explore</h5>
+   <a href="07-search.html">Search Homes</a>
+   <a href="06-communities.html">Communities</a>
+   <a href="03-sell.html#valuation">What's My Home Worth</a>
+   <a href="15-blog.html">Blog</a>
   </div>
-  <div class="why-grid reveal">
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div><h3>Zillow Showcase</h3><p>Premium placement that earns up to 80% more views and sells faster than standard listings.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>LiveEasy Concierge</h3><p>A complimentary move concierge for every client, from utility setup to trusted vendors, for life.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></div><h3>Century 21 Reach</h3><p>The most recognized name in real estate, with global exposure that brings buyers to your door.</p></div>
-   <div class="why-card"><div class="why-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9M3 20h2M5 20V8a2 2 0 0 1 2-2h2M9 20V4h6v16"/></svg></div><h3>In-House Marketing</h3><p>A dedicated marketing team producing pro photos, video, and campaigns for every home we list.</p></div>
+  <div>
+   <h5>Company</h5>
+   <a href="04-about.html">About Us</a>
+   <a href="05-team.html">Meet the Team</a>
+   <a href="08-testimonials.html">Testimonials</a>
+   <a href="13-careers.html">Careers</a>
+   <a href="14-contact.html">Contact</a>
   </div>
- </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="sec">
- <div class="wrap">
-  <div class="tst reveal">
-   <div class="stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
-   <div class="tst-track" id="tstTrack">
-    <div class="tst-item on"><p class="tst-quote">"The entire Century 21 Results team was awesome. Will was extremely patient and responsive and helped us find the perfect home. He made a stressful experience very pleasant."</p><div class="tst-by">Tracy Evans</div></div>
-    <div class="tst-item"><p class="tst-quote">"We weren't even sure we wanted to sell, but the team made it clear this was the best time. Our home sold in less than a week for way more than it was listed for."</p><div class="tst-by">Shannon Santiago</div></div>
-    <div class="tst-item"><p class="tst-quote">"The Hutson Group was great helping me sell my existing home and purchase my new property. They know this market, and I recommend the entire team highly."</p><div class="tst-by">Todd Kaska</div></div>
-    <div class="tst-item"><p class="tst-quote">"I felt 100% confident choosing this team. They explained every detail and managed the negotiation brilliantly. I never felt more taken care of and appreciated."</p><div class="tst-by">Lyn Wilgenbusch</div></div>
-   </div>
-   <div class="tst-dots" id="tstDots"></div>
-   <p class="tst-src">Live reviews from Google &middot; auto-rotating feed</p>
+  <div>
+   <h5>Programs</h5>
+   <a href="02-buy.html">Buyer's Guide</a>
+   <a href="03-sell.html">Seller's Guide</a>
+   <a href="09-financing.html">Financing</a>
+   <a href="11-cash-offer.html">Cash Offer</a>
+   <a href="12-probate.html">Probate Program</a>
+   <a href="10-marketing-day.html">Marketing Day</a>
   </div>
- </div>
-</section>
-
-<!-- TEAM TEASER -->
-<section class="sec dark">
- <div class="wrap team-flex">
-  <div class="reveal" style="max-width:420px">
-   <span class="eyebrow on-dark">The Team</span>
-   <h2 style="margin:18px 0 16px">Seventeen Agents,<br>One Standard</h2>
-   <p class="lede">Behind every transaction is a full team of North Georgia specialists, marketers, and client advocates.</p>
-   <a href="05-team.html" class="btn btn-primary" style="margin-top:28px">Meet the Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-  </div>
-  <div class="team-av reveal">
-   <div class="av"><img src="content-snare-export/will-hutson-headshot.jpg" alt="Will Hutson"></div>
-   <div class="av"><span>JS</span></div><div class="av"><span>MS</span></div><div class="av"><span>MH</span></div>
-   <div class="av"><span>LA</span></div><div class="av"><span>JC</span></div><div class="av"><span>NA</span></div>
-   <div class="av"><span>CD</span></div><div class="av"><span>ES</span></div><div class="av"><span>GB</span></div>
-   <div class="av"><span>PB</span></div><div class="av more"><span>+6</span></div>
+  <div>
+   <h5>Communities</h5>
+   <a href="homes-for-sale-bartow-county.html">Bartow County</a>
+   <a href="homes-for-sale-cherokee-county.html">Cherokee County</a>
+   <a href="homes-for-sale-cobb-county.html">Cobb County</a>
+   <a href="homes-for-sale-dawson-county.html">Dawson County</a>
+   <a href="homes-for-sale-dekalb-county.html">DeKalb County</a>
+   <a href="homes-for-sale-douglas-county.html">Douglas County</a>
+   <a href="homes-for-sale-forsyth-county.html">Forsyth County</a>
+   <a href="homes-for-sale-fulton-county.html">Fulton County</a>
+   <a href="homes-for-sale-gwinnett-county.html">Gwinnett County</a>
+   <a href="homes-for-sale-hall-county.html">Hall County</a>
+   <a href="homes-for-sale-paulding-county.html">Paulding County</a>
+   <a href="homes-for-sale-pickens-county.html">Pickens County</a>
   </div>
  </div>
-</section>
-
-<!-- PROGRAMS -->
-<section class="sec">
- <div class="wrap">
-  <div class="map-head reveal" style="max-width:620px"><span class="eyebrow center">Specialized Programs</span><h2>More Ways We Help</h2><p class="lede" style="margin:0 auto">Beyond buying and selling, we offer programs for every situation.</p></div>
-  <div class="prog-grid reveal">
-   <a href="11-cash-offer.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>Cash Offer</h3><p>A fast, certain sale with a competitive cash offer, no showings required.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="09-financing.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Financing</h3><p>Trusted local lenders ready to get you pre-approved fast.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="12-probate.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h3>Probate Program</h3><p>Compassionate, experienced support for selling an inherited or estate property.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-   <a href="10-marketing-day.html" class="prog"><div class="prog-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3>Marketing Day</h3><p>A proven prep playbook that gets your home photo-ready and selling for top dollar.</p><span class="link-arrow">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-  </div>
- </div>
-</section>
-
-<!-- BLOG -->
-<section class="sec alt">
- <div class="wrap">
-  <div class="sec-head reveal"><div><span class="eyebrow">From the Blog</span><h2>North Georgia Insights</h2></div><a href="15-blog.html" class="link-arrow">All Articles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
-  <div class="blog-grid reveal">
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Buying &middot; Draft</div><h3>What First-Time Buyers Should Know About North Atlanta</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Selling &middot; Draft</div><h3>Preparing Your Home for Marketing Day, Room by Room</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-   <a href="15-blog.html" class="bcard"><div class="ph"><img src="https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=700&q=80" alt="Article"></div><div class="body"><div class="meta">Communities &middot; Draft</div><h3>Cherokee vs Cobb: Choosing Your North Georgia County</h3><span class="link-arrow">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div></a>
-  </div>
- </div>
-</section>
-
-<!-- CLOSING CTA -->
-<section class="sec cta" id="contact">
- <div class="cta-bg" style="background-image:url('images/cta-oak-street.webp')"></div>
- <div class="wrap reveal">
-  <span class="eyebrow on-dark center">Let's Talk</span>
-  <h2>What Are You Trying to Do This Year?</h2>
-  <p>Send a message or call. We'll give you a straight answer on timing, what your home is worth, and which county fits your budget.</p>
-  <div class="cta-actions">
-   <a href="14-contact.html" class="btn btn-primary">Start a Conversation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-   <a href="13-careers.html" class="btn btn-ghost">Join Our Team</a>
-  </div>
- </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
- <div class="wrap">
-  <div class="f-grid">
-   <div class="f-brand">
-    <a href="index.html" class="brand"><span class="brand-mark">THG</span><span class="brand-txt"><b>The Hutson Group</b><span>Century 21 Results</span></span></a>
-    <p class="f-tag">Clients first equals clients for life. Real estate done right across North Georgia.</p>
-    <div class="f-social">
-     <a href="https://www.facebook.com/thehutsongroup" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-     <a href="https://www.instagram.com/thehutsongroup/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
-     <a href="https://x.com/thehutsongroup1" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-     <a href="https://www.youtube.com/@thehutsongroup" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5a2.5 2.5 0 0 0-1.8-1.8C19 4.7 12 4.7 12 4.7s-7 0-8.7.5A2.5 2.5 0 0 0 1.5 7C1 8.5 1 12 1 12s0 3.5.5 5a2.5 2.5 0 0 0 1.8 1.8c1.7.5 8.7.5 8.7.5s7 0 8.7-.5a2.5 2.5 0 0 0 1.8-1.8c.5-1.5.5-5 .5-5zM10 15.5v-7l6 3.5z"/></svg></a>
-     <a href="https://www.linkedin.com/company/101086278" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM0 8h5v16H0zM7.5 8h4.8v2.2h.07c.67-1.2 2.3-2.5 4.73-2.5 5 0 6 3.3 6 7.6V24h-5v-7.1c0-1.7 0-3.9-2.4-3.9s-2.7 1.8-2.7 3.8V24h-5z"/></svg></a>
-    </div>
-   </div>
-   <div class="f-col"><h4>Explore</h4><ul>
-    <li><a href="07-search.html">Search Homes</a></li><li><a href="02-buy.html">Buyer's Guide</a></li><li><a href="03-sell.html">Seller's Guide</a></li><li><a href="03-sell.html#valuation">What's My Home Worth</a></li><li><a href="04-about.html">About Us</a></li><li><a href="05-team.html">Meet the Team</a></li><li><a href="08-testimonials.html">Testimonials</a></li><li><a href="13-careers.html">Careers</a></li><li><a href="15-blog.html">Blog</a></li>
-   </ul></div>
-   <div class="f-col"><h4>Communities</h4><ul>
-    <li><a href="homes-for-sale-bartow-county.html">Bartow County</a></li><li><a href="homes-for-sale-cherokee-county.html">Cherokee County</a></li><li><a href="homes-for-sale-cobb-county.html">Cobb County</a></li><li><a href="homes-for-sale-dawson-county.html">Dawson County</a></li><li><a href="homes-for-sale-dekalb-county.html">DeKalb County</a></li><li><a href="homes-for-sale-douglas-county.html">Douglas County</a></li><li><a href="homes-for-sale-forsyth-county.html">Forsyth County</a></li><li><a href="homes-for-sale-fulton-county.html">Fulton County</a></li><li><a href="homes-for-sale-gwinnett-county.html">Gwinnett County</a></li><li><a href="homes-for-sale-hall-county.html">Hall County</a></li><li><a href="homes-for-sale-paulding-county.html">Paulding County</a></li><li><a href="homes-for-sale-pickens-county.html">Pickens County</a></li>
-    <li><a href="06-communities.html" class="f-all">View all communities</a></li>
-   </ul></div>
-   <div class="f-col"><h4>Contact</h4><ul class="f-contact">
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>6424 East Bells Ferry Rd, Ste 144<br>Woodstock, GA</span></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:6782184930">678.218.4930</a></li>
-    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg><a href="mailto:thginfo@youneedresults.com">thginfo@youneedresults.com</a></li>
-   </ul></div>
-  </div>
-  <div class="f-badges">
-   <span class="f-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11.4 12 4l9 7.4"/><path d="M5.5 10.2V20h13V10.2"/><path d="M9 13.6h6M9 16.4h6"/></svg>Equal Housing Opportunity</span>
-   <span class="f-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.4"/><path d="M9 17.5V6.5h3.6a2.7 2.7 0 0 1 0 5.4H9m4 0 3 5.6"/></svg>REALTOR<sup>&reg;</sup></span>
-  </div>
-  <div class="f-bottom">
-   <span>&copy; <span id="yr"></span> The Hutson Group at Century 21 Results. All rights reserved.</span>
-   <span class="f-links"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a> &middot; <a href="https://agenticpress.com" target="_blank" rel="noopener">Website by AgenticPress</a></span>
-  </div>
-  <p class="f-legal">The Hutson Group at Century 21 Results &middot; 6424 East Bells Ferry Rd, Ste 144, Woodstock, GA &middot; <a href="tel:6782184930">678.218.4930</a>. Georgia Real Estate License <a href="https://grec.state.ga.us/" target="_blank" rel="noopener">#[PLACEHOLDER]</a>, verify at the Georgia Real Estate Commission. Each office is independently owned and operated. Equal Housing Opportunity. CENTURY 21<sup>&reg;</sup> and the CENTURY 21 logo are registered service marks owned by Century 21 Real Estate LLC. The Hutson Group fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.</p>
+ <div class="foot-bottom">
+  <div class="foot-compliance">Equal Housing Opportunity &middot; REALTOR&reg; &middot; Each office independently owned &amp; operated</div>
+  <div>&copy; <span id="yr">2026</span> The Hutson Group at Century 21 Results &middot; <a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a> &middot; Website by <a class="ap" href="https://agenticpress.com" target="_blank" rel="noopener">AgenticPress</a></div>
+  <p class="foot-legal">The Hutson Group at Century 21 Results &middot; 6424 East Bells Ferry Rd, Ste 144, Woodstock, GA &middot; <a href="tel:6782184930">678.218.4930</a>. Georgia Real Estate License <a href="https://grec.state.ga.us/" target="_blank" rel="noopener">#[PLACEHOLDER]</a>, verify at the Georgia Real Estate Commission. Each office is independently owned and operated. Equal Housing Opportunity. CENTURY 21<sup>&reg;</sup> and the CENTURY 21 logo are registered service marks owned by Century 21 Real Estate LLC. The Hutson Group fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.</p>
  </div>
 </footer>
 
-<!-- COUNTY MODAL -->
-<div class="modal-ov" id="countyModal">
- <div class="modal">
-  <button class="modal-close" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
-  <div class="modal-top"><span class="eyebrow">North Georgia</span><h3 id="mCounty">County</h3></div>
-  <div class="modal-body">
-   <p id="mBlurb"></p>
-   <div class="label">Cities &amp; Communities</div>
-   <div class="modal-cities" id="mCities"></div>
-   <div class="modal-actions">
-    <a href="07-search.html" class="btn btn-dark" id="mSearch">View Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="06-communities.html" class="btn btn-outline">Explore County</a>
-   </div>
-   <p class="idx-note">Each county links to a live Showcase IDX saved search. On the live site this modal lives on the Communities page; the home map deep-links straight to it.</p>
-  </div>
- </div>
-</div>
-
-<!-- VIDEO LIGHTBOX -->
-<div class="vbox" id="vbox">
- <div class="frame"><button class="x" id="vclose">Close <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M18 6L6 18M6 6l12 12"/></svg></button><div id="vframe"></div></div>
-</div>
-
+<!-- ===== SCRIPTS ===== -->
 <script>
-// ---- county data (12) with approximate geographic centers ----
-var COUNTIES=[
- {n:"Pickens",cx:240,cy:62,cities:["Jasper","Talking Rock"],blurb:"Mountain views and small-town charm at the gateway to the North Georgia foothills."},
- {n:"Dawson",cx:330,cy:62,cities:["Dawsonville"],blurb:"Outlet shopping, lake access, and easy reach to the mountains north of Atlanta."},
- {n:"Bartow",cx:160,cy:140,cities:["Cartersville"],blurb:"History, value, and space, an affordable foothold west of the metro core."},
- {n:"Cherokee",cx:243,cy:140,cities:["Woodstock","Canton","Ball Ground","Holly Springs","Waleska"],blurb:"One of the fastest-growing counties in Georgia, anchored by downtown Woodstock."},
- {n:"Forsyth",cx:330,cy:140,cities:["Cumming"],blurb:"Top-rated schools and Lake Lanier living, consistently among Georgia's most sought-after counties."},
- {n:"Hall",cx:417,cy:140,cities:["Gainesville","Flowery Branch"],blurb:"Lake Lanier's northern shore, blending lakefront lifestyle with a growing economy."},
- {n:"Paulding",cx:200,cy:212,cities:["Dallas","Hiram"],blurb:"Newer construction and room to grow, a value-driven choice on the metro's west side."},
- {n:"Cobb",cx:283,cy:212,cities:["Marietta","Kennesaw","Acworth","Smyrna"],blurb:"Established neighborhoods, top schools, and The Battery, the heart of Northwest Atlanta."},
- {n:"Gwinnett",cx:366,cy:212,cities:["Lawrenceville","Duluth","Suwanee"],blurb:"Diverse, dynamic, and full of choices, one of metro Atlanta's largest and most varied markets."},
- {n:"Douglas",cx:243,cy:284,cities:["Douglasville"],blurb:"Quick access to the city with suburban value, just west of Fulton."},
- {n:"Fulton",cx:330,cy:284,cities:["Roswell","Alpharetta"],blurb:"From walkable Roswell to upscale Alpharetta, North Fulton sets the standard for North Atlanta living."},
- {n:"DeKalb",cx:417,cy:284,cities:["Dunwoody","Brookhaven"],blurb:"In-town convenience with leafy, established communities northeast of the city."}
-];
-function slug(s){return s.toLowerCase().replace(/[^a-z]+/g,'-');}
-var CMAP={};COUNTIES.forEach(function(c){CMAP[c.n]=c;});
-document.querySelectorAll('#countyMap .county').forEach(function(p){
- p.addEventListener('click',function(){openCounty(CMAP[p.getAttribute('data-c')]);});
-});
-var mov=document.getElementById('countyModal');
-function openCounty(c){
- document.getElementById('mCounty').textContent=c.n+' County';
- document.getElementById('mBlurb').textContent=c.blurb;
- document.getElementById('mSearch').innerHTML='View '+c.n+' Listings <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
- document.getElementById('mSearch').href='homes-for-sale-'+slug(c.n)+'-county.html';
- var ct=document.getElementById('mCities');ct.innerHTML='';
- c.cities.forEach(function(city){var s=document.createElement('span');s.textContent=city;ct.appendChild(s);});
- if(history.replaceState)history.replaceState(null,'','#'+slug(c.n));
- mov.classList.add('open');document.body.style.overflow='hidden';
-}
-function closeCounty(){mov.classList.remove('open');document.body.style.overflow='';if(history.replaceState)history.replaceState(null,'',' ');}
-document.getElementById('modalClose').addEventListener('click',closeCounty);
-mov.addEventListener('click',function(e){if(e.target===mov)closeCounty();});
-// open from hash on load (demonstrates deep-link)
-window.addEventListener('load',function(){var h=location.hash.replace('#','');if(h){var f=COUNTIES.filter(function(c){return slug(c.n)===h;});if(f.length)openCounty(f[0]);}});
-
-// ---- header scroll ----
-var hdr=document.getElementById('hdr');
-window.addEventListener('scroll',function(){hdr.classList.toggle('scrolled',window.scrollY>40);});
-// ---- mobile menu ----
-var mm=document.getElementById('mobileMenu');
-document.getElementById('burger').addEventListener('click',function(){mm.classList.add('open');document.body.style.overflow='hidden';});
-document.getElementById('mclose').addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});
-mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');document.body.style.overflow='';});});
-// ---- testimonials ----
-(function(){var items=document.querySelectorAll('.tst-item');var dots=document.getElementById('tstDots');var i=0;
- items.forEach(function(_,idx){var b=document.createElement('button');if(idx===0)b.className='on';b.addEventListener('click',function(){go(idx);});dots.appendChild(b);});
- function go(n){items[i].classList.remove('on');dots.children[i].classList.remove('on');i=n;items[i].classList.add('on');dots.children[i].classList.add('on');}
- setInterval(function(){go((i+1)%items.length);},6000);
-})();
-// ---- video lightbox ----
-var vbox=document.getElementById('vbox');var vframe=document.getElementById('vframe');
-document.getElementById('playBtn').addEventListener('click',function(){vframe.innerHTML='<iframe src="https://www.youtube.com/embed/4b2NbjL5qec?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';vbox.classList.add('open');document.body.style.overflow='hidden';});
-function vclose(){vbox.classList.remove('open');vframe.innerHTML='';document.body.style.overflow='';}
-document.getElementById('vclose').addEventListener('click',vclose);
-vbox.addEventListener('click',function(e){if(e.target===vbox)vclose();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCounty();vclose();}});
-// ---- reveal (fail-safe: only hide if IntersectionObserver is available) ----
-if('IntersectionObserver' in window){
- document.documentElement.classList.add('reveal-on');
- var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
- document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-}
-// ---- year ----
-document.getElementById('yr').textContent=new Date().getFullYear();
+addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>40));
+(function(){var fs=document.getElementById('fsmenu');document.getElementById('menuOpen').onclick=()=>{fs.classList.add('open');document.body.style.overflow='hidden';};document.getElementById('fsClose').onclick=()=>{fs.classList.remove('open');document.body.style.overflow='';};addEventListener('keydown',e=>{if(e.key==='Escape'){fs.classList.remove('open');document.body.style.overflow='';}});})();
+/* carousel */
+(function(){var s=[].slice.call(document.querySelectorAll('.cslide'));if(!s.length)return;var i=0,n=s.length,t;
+function show(k,dir){var j=(k+n)%n;if(j===i)return;dir=dir||1;var old=s[i],nw=s[j];i=j;
+s.forEach(function(el){el.classList.remove('leave-l','leave-r','from-r','from-l');});
+old.classList.remove('on');old.classList.add(dir>0?'leave-l':'leave-r');
+nw.classList.add(dir>0?'from-r':'from-l');void nw.offsetWidth;nw.classList.remove('from-r','from-l');nw.classList.add('on');
+setTimeout(function(){old.classList.remove('leave-l','leave-r');},850);}
+function go(){clearInterval(t);t=setInterval(function(){show(i+1,1);},6000);}
+var nx=document.getElementById('cNext'),pv=document.getElementById('cPrev');
+if(nx)nx.onclick=function(){show(i+1,1);go();};if(pv)pv.onclick=function(){show(i-1,-1);go();};
+var st=document.getElementById('cStage');if(st){st.addEventListener('mouseenter',function(){clearInterval(t);});st.addEventListener('mouseleave',go);}
+go();})();
+/* scroll reveal */
+(function(){if(!('IntersectionObserver' in window))return;document.documentElement.classList.add('ranim');
+document.querySelectorAll('.ed-text,.ed-media,.clients,.car-head,.cta-inner,.foot-cols').forEach(function(e){e.classList.add('reveal');});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);})})();
+/* footer year */
+(function(){var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();})();
 </script>
-<script>/*COUNTY-HOVER-JS*/
-(function(){
- var cm=document.getElementById('countyMap'); if(!cm) return;
- var cg=cm.querySelector('g.counties');
- var lab={}; cm.querySelectorAll('.county-label').forEach(function(t){lab[t.getAttribute('data-label')]=t;});
- cm.querySelectorAll('.county').forEach(function(p){
-  p.addEventListener('mouseenter',function(){ if(cg) cg.appendChild(p); p.classList.add('lifted'); var l=lab[p.getAttribute('data-c')]; if(l) l.classList.add('is-lifted'); });
-  p.addEventListener('mouseleave',function(){ p.classList.remove('lifted'); var l=lab[p.getAttribute('data-c')]; if(l) l.classList.remove('is-lifted'); });
- });
-})();
-</script>
+<div class="cmov" id="cmov"><div class="cmod"><span class="cmclose" id="cmclose">&times;</span><div style="font:600 12px/1 var(--sans,sans-serif);letter-spacing:.22em;text-transform:uppercase;color:var(--gold,#BEAF87);margin-bottom:8px">North Georgia</div><h3 id="cmC">County</h3><p id="cmB"></p><div class="cmch" id="cmCh"></div><div class="cmacts"><a class="cmbtn g" id="cmS" href="07-search.html">Homes for Sale</a><a class="cmbtn d" href="14-contact.html">Talk to Will</a></div></div></div>
+<script>(function(){var DATA={"Bartow": {"cities": ["Cartersville"], "blurb": "History, value, and space west of the metro core."}, "Cherokee": {"cities": ["Woodstock", "Canton", "Ball Ground", "Holly Springs", "Waleska"], "blurb": "One of Georgia's fastest-growing counties, anchored by downtown Woodstock."}, "Cobb": {"cities": ["Marietta", "Kennesaw", "Acworth", "Smyrna"], "blurb": "Established neighborhoods, top schools, and The Battery."}, "Dawson": {"cities": ["Dawsonville"], "blurb": "Outlet shopping, lake access, and an easy reach to the mountains."}, "DeKalb": {"cities": ["Dunwoody", "Brookhaven"], "blurb": "In-town convenience with leafy, established communities."}, "Douglas": {"cities": ["Douglasville"], "blurb": "Quick access to the city with suburban value."}, "Forsyth": {"cities": ["Cumming"], "blurb": "Top-rated schools and Lake Lanier living."}, "Fulton": {"cities": ["Roswell", "Alpharetta"], "blurb": "From walkable Roswell to upscale Alpharetta in North Fulton."}, "Gwinnett": {"cities": ["Lawrenceville", "Duluth", "Suwanee"], "blurb": "One of metro Atlanta's largest and most varied markets."}, "Hall": {"cities": ["Gainesville", "Flowery Branch"], "blurb": "Lake Lanier's northern shore and a growing economy."}, "Paulding": {"cities": ["Dallas", "Hiram"], "blurb": "Newer construction and room to grow on the west side."}, "Pickens": {"cities": ["Jasper", "Talking Rock"], "blurb": "Mountain views and small-town charm at the gateway to the foothills."}};function slug(s){return s.toLowerCase().replace(/[^a-z]+/g,"-");}var cm=document.getElementById("countyMap");if(!cm)return;var root=cm.querySelector("g.counties");var C=cm.querySelectorAll(".county");function reset(){C.forEach(function(c){c.classList.remove("hot");});}C.forEach(function(c){c.addEventListener("mouseenter",function(){reset();root.appendChild(c);c.classList.add("hot");});c.addEventListener("mouseleave",function(){c.classList.remove("hot");});c.addEventListener("click",function(){var n=c.getAttribute("data-c"),d=DATA[n];if(!d)return;document.getElementById("cmC").textContent=n+" County";document.getElementById("cmB").textContent=d.blurb;var s=document.getElementById("cmS");s.href="homes-for-sale-"+slug(n)+"-county.html";s.textContent="Homes for Sale in "+n;var ch=document.getElementById("cmCh");ch.innerHTML="";d.cities.forEach(function(x){var e=document.createElement("span");e.textContent=x;ch.appendChild(e);});document.getElementById("cmov").classList.add("open");});});cm.addEventListener("mouseleave",reset);var mv=document.getElementById("cmov");document.getElementById("cmclose").onclick=function(){mv.classList.remove("open");};mv.addEventListener("click",function(e){if(e.target===mv)mv.classList.remove("open");})})();</script>
 </body>
 </html>
