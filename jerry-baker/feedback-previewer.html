@@ -1,0 +1,1771 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feedback Previewer</title>
+<style>
+  :root{
+    --ink:#0a2540; --ink-2:#142e4f; --gold:#c9a352; --gold-soft:#e6cf91;
+    --burgundy:#6e2229; --cream:#f8f3eb; --line:#dfe3ea; --slate:#5a6373; --paper:#fff;
+    --bar:56px; --side:340px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:#eef1f5;overflow:hidden}
+
+  /* ===== Top bar ===== */
+  .bar{height:var(--bar);background:var(--ink);color:#fff;display:flex;align-items:center;gap:16px;padding:0 18px;position:fixed;top:0;left:0;right:0;z-index:30}
+  .bar__brand{font-weight:700;letter-spacing:.02em;font-size:15px;white-space:nowrap}
+  .bar__brand small{display:block;font-weight:400;font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.04em}
+  select{font:inherit;font-size:14px;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:#142e4f;color:#fff;cursor:pointer;max-width:230px}
+  .spacer{flex:1}
+  .btn{font:inherit;font-size:13px;font-weight:600;padding:9px 16px;border-radius:6px;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+  .btn--toggle{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+  .btn--toggle.on{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+  .btn--ghost{background:transparent;color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.25)}
+  .btn--ghost:hover{background:rgba(255,255,255,.1)}
+  .btn--gold{background:var(--gold);color:var(--ink)}
+  .btn--gold:hover{background:var(--gold-soft)}
+  .count{font-size:12px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.08);padding:5px 10px;border-radius:20px;white-space:nowrap}
+
+  /* ===== Layout ===== */
+  .stage{position:fixed;top:var(--bar);left:0;right:var(--side);bottom:0;background:#dde2e9}
+  .stage iframe{width:100%;height:100%;border:0;background:#fff}
+  .stage.commenting iframe{cursor:crosshair}
+  .hint{position:absolute;top:14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:20px;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:5;display:none}
+  .stage.commenting .hint{display:block}
+
+  /* ===== Sidebar shell ===== */
+  .side{position:fixed;top:var(--bar);right:0;bottom:0;width:var(--side);background:var(--paper);border-left:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  .list{flex:1;overflow-y:auto;padding:12px}
+
+  /* ===== Sidebar tab bar (Comments / What We Need) ===== */
+  .side-tabs{display:flex;border-bottom:1px solid var(--line);background:#fff;flex-shrink:0}
+  .side-tab{flex:1;position:relative;font:inherit;font-size:12.5px;font-weight:600;letter-spacing:.02em;color:var(--slate);background:transparent;border:0;padding:12px 8px 11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:color .15s,background .15s}
+  .side-tab:hover{color:var(--ink);background:#faf7f1}
+  .side-tab.is-active{color:var(--ink)}
+  .side-tab.is-active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:2.5px;background:var(--gold);border-radius:2px}
+  .side-tab__count{display:none;min-width:18px;height:18px;padding:0 5px;align-items:center;justify-content:center;border-radius:9px;background:var(--burgundy);color:#fff;font-size:10.5px;font-weight:700;line-height:1}
+  .side-tab.is-active .side-tab__count{background:var(--gold);color:var(--ink)}
+
+  /* ===== Panel show/hide (panels live in the sidebar body) ===== */
+  [data-panel]{display:none;flex:1;min-height:0;flex-direction:column}
+  [data-panel].is-active{display:flex}
+
+  /* ===== Filter control (sits above #list) ===== */
+  .filter{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);background:#fafbfc;flex-shrink:0}
+  .filter__btn{flex:1;font:inherit;font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--slate);background:#fff;border:1px solid var(--line);border-radius:6px;padding:7px 6px;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+  .filter__btn:hover{border-color:var(--gold);color:var(--ink)}
+  .filter__btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* ===== Comment rows ===== */
+  .cmt{border:1px solid var(--line);border-radius:8px;padding:12px 12px 12px 40px;margin-bottom:10px;position:relative;background:#fff;transition:border-color .15s,box-shadow .15s,opacity .15s}
+  .cmt:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(10,37,64,.06)}
+
+  /* open + anchored: burgundy number badge (matches the pin) */
+  .cmt__num{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;background:var(--burgundy);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+  /* open page-note: outlined glyph, gold left rail, no pin */
+  .cmt--note{padding-left:12px;border-left:3px solid var(--gold);background:#fffdf7}
+  .cmt__note-dot{width:20px;height:20px;display:none}
+  .cmt--note .cmt__note-dot{display:flex;align-items:center;justify-content:center;float:left;margin:1px 8px 0 0;color:var(--gold)}
+
+  /* resolved: grey check, greyed + struck */
+  .cmt--resolved{background:#f6f7f9;border-color:#e4e7ec;opacity:.82}
+  .cmt--resolved:hover{opacity:1;border-color:var(--gold)}
+  .cmt__check{position:absolute;left:10px;top:11px;width:22px;height:22px;border-radius:50%;background:#cbd2dc;color:#fff;display:flex;align-items:center;justify-content:center}
+  .cmt--resolved.cmt--note{padding-left:40px;border-left:1px solid #e4e7ec;background:#f6f7f9}
+  .cmt--resolved.cmt--note .cmt__note-dot{display:none}
+  .cmt--resolved .cmt__text{color:#7b8390;text-decoration:line-through;text-decoration-color:#c3cad4}
+  .cmt--resolved .cmt__ctx{color:#9aa2af}
+
+  /* tags row */
+  .cmt__tags{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+  .cmt__badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold);padding:3px 8px;border-radius:4px}
+  .cmt__tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--burgundy);background:#fff;border:1px solid var(--burgundy);padding:2px 7px;border-radius:4px}
+
+  .cmt__ctx{font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;word-break:break-word}
+  .cmt__text{width:100%;font:inherit;font-size:13.5px;line-height:1.5;border:0;resize:vertical;min-height:42px;color:var(--ink);outline:none;background:transparent}
+
+  /* resolved-note editor (shown on resolved rows) */
+  .cmt__resolvewrap{margin-top:8px;padding:8px 10px;background:#fff;border:1px solid #e4e7ec;border-radius:6px}
+  .cmt__resolvelabel{display:block;font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .cmt__resolve{width:100%;font:inherit;font-style:italic;font-size:12.5px;line-height:1.45;border:0;resize:vertical;min-height:24px;color:var(--slate);outline:none;background:transparent}
+
+  /* prior note shown when an item with a note is reopened */
+  .cmt__priornote{margin-top:8px;font-size:12px;color:var(--slate)}
+  .cmt__priornote em{color:var(--slate)}
+
+  /* actions */
+  .cmt__actions{display:flex;gap:14px;margin-top:8px;align-items:center;flex-wrap:wrap}
+  .cmt__actions .act{font:inherit;font-size:11.5px;background:none;border:0;color:var(--slate);cursor:pointer;padding:0;transition:color .12s}
+  .cmt__actions .act:hover{color:var(--burgundy)}
+  .cmt__actions .act--jump{color:var(--ink);font-weight:600}
+  .cmt__actions .act--jump:hover{color:var(--gold)}
+  .cmt__actions .act--toggle{color:var(--ink);font-weight:600}
+  .cmt--resolved .cmt__actions .act--toggle{color:var(--slate)}
+
+  .empty{color:var(--slate);font-size:13px;text-align:center;padding:40px 20px;line-height:1.6}
+
+  /* add-note button (whole-page note) */
+  .addnote{margin:0 12px 12px;font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);background:#fff;border:1px dashed var(--gold);border-radius:7px;padding:9px 12px;cursor:pointer;transition:background .15s;flex-shrink:0}
+  .addnote:hover{background:#fffaf0}
+
+  /* comments-panel footer (export) */
+  .side__foot{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:8px;flex-shrink:0}
+  .side__foot .btn{flex:1;text-align:center}
+  .side__foot .btn--ghost2{background:#fff;color:var(--ink);border-color:var(--line)}
+  .side__foot .btn--ghost2:hover{border-color:var(--gold)}
+
+  /* ===== Pin row flash (parent doc; pin visuals are injected into iframe) ===== */
+  .cmt.__fbflash{animation:fbRowFlash 1.1s ease-out}
+  @keyframes fbRowFlash{
+    0%   { box-shadow:0 0 0 2px var(--gold), 0 2px 14px rgba(201,163,82,.45); }
+    100% { box-shadow:0 0 0 0 rgba(201,163,82,0); }
+  }
+
+  /* ===== Needs panel ===== */
+  .needs-head{padding:16px 18px 12px;border-bottom:1px solid var(--line);flex-shrink:0}
+  .needs-head h2{font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate)}
+  .needs-head p{font-size:12.5px;color:var(--slate);margin-top:4px;line-height:1.5}
+  .needs-head__count{display:inline-block;margin-top:9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--burgundy);background:#fbeef0;border:1px solid #f0d6da;padding:4px 10px;border-radius:20px}
+  #needsList{flex:1;overflow-y:auto;padding:12px}
+  .needs-empty{color:var(--slate);font-size:13px;text-align:center;padding:40px 20px;line-height:1.6}
+
+  /* ===== A single "need" row (checkbox + label) ===== */
+  .need{display:flex;align-items:flex-start;gap:11px;border:1px solid var(--line);border-radius:8px;padding:12px 13px;margin-bottom:10px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s;position:relative}
+  .need:hover{border-color:var(--gold);box-shadow:0 2px 10px rgba(10,37,64,.06)}
+  .need__cb{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+  .need__box{flex-shrink:0;width:20px;height:20px;margin-top:1px;border:2px solid #c2c9d4;border-radius:5px;background:#fff;position:relative;transition:border-color .15s,background .15s}
+  .need__box::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) scale(0);transform-origin:center;transition:transform .15s}
+  .need__cb:focus-visible + .need__box{outline:2px solid var(--gold);outline-offset:2px}
+  .need__body{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .need__label{font-size:13.5px;line-height:1.45;color:var(--ink);word-break:break-word}
+  .need__state{font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--slate)}
+
+  /* sent state: gold accent, checked box, struck label */
+  .need--sent{background:#fffdf7;border-color:var(--gold)}
+  .need--sent .need__box{background:var(--gold);border-color:var(--gold)}
+  .need--sent .need__box::after{transform:rotate(45deg) scale(1)}
+  .need--sent .need__label{color:var(--slate);text-decoration:line-through;text-decoration-color:var(--gold)}
+  .need--sent .need__state{color:var(--gold)}
+
+  /* ===== Needs panel footer + send button + confirmation ===== */
+  .needs-foot{padding:14px 18px;border-top:1px solid var(--line);flex-shrink:0}
+  .btn--send{width:100%;text-align:center;background:var(--gold);color:var(--ink);font:inherit;font-size:13.5px;font-weight:700;padding:11px 16px;border:1px solid var(--gold);border-radius:7px;cursor:pointer;transition:background .15s,border-color .15s}
+  .btn--send:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+  .btn--send:active{transform:translateY(1px)}
+  .send-note{font-size:11px;color:var(--slate);text-align:center;margin-top:8px;line-height:1.5}
+  .send-msg{display:none;margin-top:11px;font-size:12.5px;line-height:1.5;padding:9px 12px;border-radius:7px;font-weight:600}
+  .send-msg--ok{color:#1d5b32;background:#e9f5ee;border:1px solid #c4e6d1}
+  .send-msg--warn{color:var(--burgundy);background:#fbeef0;border:1px solid #f0d6da}
+
+  /* ===== Export modal (MD / JSON toggle + Download feedback.json) ===== */
+  .modal{position:fixed;inset:0;background:rgba(10,37,64,.55);z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
+  .modal.open{display:flex}
+  .modal__panel{background:#fff;border-radius:10px;width:min(760px,100%);max-height:88vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px rgba(10,37,64,.4)}
+  .modal__head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .modal__head h3{font-size:16px;color:var(--ink)}
+  .modal__tabs{display:flex;gap:6px;padding:12px 20px 0;flex-wrap:wrap}
+  .modal__tab{font:inherit;font-size:13px;font-weight:600;padding:8px 16px;border-radius:7px 7px 0 0;border:1px solid var(--line);border-bottom:0;background:#f4f6f9;color:var(--slate);cursor:pointer;transition:background .15s,color .15s}
+  .modal__tab.on{background:#fff;color:var(--ink);box-shadow:inset 0 -2px 0 0 var(--gold)}
+  .modal__hint{padding:9px 20px;font-size:12px;color:var(--slate);background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.5}
+  .modal textarea{flex:1;border:0;padding:18px 20px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.6;resize:none;color:var(--ink);outline:none;min-height:340px;white-space:pre;tab-size:2;background:#fff}
+  .modal__foot{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+  .modal__foot .modal__spacer{flex:1}
+  .modal .btn--copy{background:var(--gold);color:var(--ink)}
+  .modal .btn--copy:hover{background:var(--gold-soft)}
+  .modal .btn--download{background:var(--ink);color:#fff}
+  .modal .btn--download:hover{background:var(--ink-2)}
+  .modal .btn--close{background:#fff;color:var(--ink);border-color:var(--line)}
+  .modal .btn--close:hover{border-color:var(--burgundy);color:var(--burgundy)}
+  @media(max-width:560px){.modal__foot{justify-content:stretch}.modal__foot .btn{flex:1;text-align:center}.modal__foot .modal__spacer{display:none}}
+</style>
+</head>
+<body>
+
+  <!-- ===== Top bar ===== -->
+  <div class="bar">
+    <div class="bar__brand" id="brand">Feedback Previewer<small id="brandClient">&nbsp;</small></div>
+    <select id="pageSel" aria-label="Choose a page"></select>
+    <button class="btn btn--toggle" id="toggleBtn" type="button" aria-pressed="false">Comment Mode</button>
+    <span class="count" id="count">0 open / 0 resolved on this page</span>
+    <span class="spacer"></span>
+    <button class="btn btn--ghost" id="pullBtn" type="button">Pull team updates</button>
+    <button class="btn btn--gold" id="exportBtn" type="button">Export</button>
+  </div>
+
+  <!-- ===== Stage (iframe) ===== -->
+  <div class="stage" id="stage">
+    <div class="hint">Comment Mode is on. Click anywhere on the page to drop a pin.</div>
+    <iframe id="frame" title="Mockup preview"></iframe>
+  </div>
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="side">
+
+    <!-- Tab bar: Comments / What We Need -->
+    <div class="side-tabs" role="tablist" aria-label="Sidebar views">
+      <button class="side-tab is-active" data-tab="comments" role="tab" aria-selected="true" id="tabComments">Comments</button>
+      <button class="side-tab" data-tab="needs" role="tab" aria-selected="false" id="tabNeeds">
+        What We Need
+        <span class="side-tab__count" id="needsTabCount">0</span>
+      </button>
+    </div>
+
+    <!-- Comments panel -->
+    <div data-panel="comments" class="is-active" role="tabpanel" aria-labelledby="tabComments">
+      <div class="filter" id="filterBar" role="group" aria-label="Filter comments">
+        <button class="filter__btn on" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter__btn" type="button" data-filter="open" aria-pressed="false">Open</button>
+        <button class="filter__btn" type="button" data-filter="resolved" aria-pressed="false">Resolved</button>
+      </div>
+      <div class="list" id="list"></div>
+      <button class="addnote" id="addNoteBtn" type="button">+ Add a whole-page note</button>
+      <div class="side__foot">
+        <button class="btn btn--ghost2" id="exportBtn2" type="button">Export feedback</button>
+      </div>
+    </div>
+
+    <!-- Needs panel -->
+    <div data-panel="needs" id="needsPanel" role="tabpanel" aria-labelledby="tabNeeds">
+      <div class="needs-head">
+        <h2>What we still need from you</h2>
+        <p>Tick each item once you have sent it over to us, then hit send. Your new comments ride along too.</p>
+        <span class="needs-head__count" id="needsCount">0 outstanding</span>
+      </div>
+      <div id="needsList"></div>
+      <div class="needs-foot">
+        <button class="btn--send" id="sendUpdateBtn" type="button">Send update to team</button>
+        <p class="send-note">Sends your ticked items plus any new comments to the AgenticPress team.</p>
+        <div class="send-msg" id="sendMsg" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ===== Export modal ===== -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Export feedback">
+    <div class="modal__panel">
+      <div class="modal__head">
+        <h3 id="modalTitle">Export feedback</h3>
+        <button class="btn btn--close" id="modalClose" type="button">Close</button>
+      </div>
+      <div class="modal__tabs" role="tablist">
+        <button class="modal__tab on" id="tabMd" role="tab" aria-selected="true" data-fmt="md">Markdown (for review)</button>
+        <button class="modal__tab" id="tabJson" role="tab" aria-selected="false" data-fmt="json">feedback.json (for the team)</button>
+      </div>
+      <div class="modal__hint" id="exportHint">Readable summary, grouped by page. Copy this into Slack or the Trello card.</div>
+      <textarea id="exportText" readonly spellcheck="false"></textarea>
+      <div class="modal__foot">
+        <button class="btn btn--close" id="modalClose2" type="button">Close</button>
+        <span class="modal__spacer"></span>
+        <button class="btn btn--download" id="downloadBtn" type="button">Download .md</button>
+        <button class="btn btn--copy" id="copyBtn" type="button">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* =====================================================================
+     SHARED GLOBALS (defined exactly once)
+     ===================================================================== */
+
+  /* ---------------------------------------------------------------------
+     CONFIG: every per-client value lives here. Populated from config.json
+     at boot (see loadConfig). These are only the safe fallbacks used if
+     config.json is missing, so the file still runs standalone.
+     --------------------------------------------------------------------- */
+  var CONFIG = {
+    client: 'Client',                 // shown in the brand bar + exports
+    slug: 'client',                   // used for storageKey + export filename
+    storageKey: '',                   // localStorage key; derived from slug if blank
+    webhookUrl: '',                   // '' = mailto fallback; else POST target (Zapier/GHL)
+    contactEmail: 'curtis@agenticpress.ai',
+    pages: [],                        // [[file,label], ...]; if empty, falls back to PAGES below
+    backend: null                     // reserved for the shared-store seam (e.g. Supabase). null = feedback.json
+  };
+
+  // Fallback page list if config.json omits one (keeps the file usable solo).
+  var PAGES = [
+    ['01-home.html', 'Home']
+  ];
+
+  var FB_KEY = 'client-fb-v2';        // re-derived from CONFIG in applyConfig()
+  var WEBHOOK_URL = '';               // re-assigned from CONFIG in applyConfig()
+  var _uidSeq = 0;
+
+  var store = emptyStore();        // re-assigned by loadStore()
+  var currentPage = PAGES[0][0];   // page filename
+  var frame = document.getElementById('frame');
+  var commentMode = false;
+
+  function emptyStore(){
+    return { version: 2, client: CONFIG.client, needs: [], comments: {} };
+  }
+
+  /* loadConfig(): fetch config.json (sibling file), merge over CONFIG defaults. */
+  async function loadConfig(){
+    try {
+      var res = await fetch('config.json', { cache: 'no-store' });
+      if(res && res.ok){
+        var c = await res.json();
+        if(c && typeof c === 'object'){
+          Object.keys(CONFIG).forEach(function(k){ if(k in c && c[k] != null) CONFIG[k] = c[k]; });
+        }
+      }
+    } catch(e){ /* no config.json: run on built-in fallbacks */ }
+    applyConfig();
+  }
+
+  /* applyConfig(): push CONFIG into the legacy module-level vars + the DOM chrome. */
+  function applyConfig(){
+    if(Array.isArray(CONFIG.pages) && CONFIG.pages.length) PAGES = CONFIG.pages;
+    if(!CONFIG.slug && CONFIG.client) CONFIG.slug = String(CONFIG.client).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    FB_KEY = CONFIG.storageKey || (CONFIG.slug + '-fb-v2');
+    WEBHOOK_URL = CONFIG.webhookUrl || '';
+    currentPage = (PAGES[0] && (Array.isArray(PAGES[0]) ? PAGES[0][0] : (PAGES[0].file || PAGES[0].id))) || currentPage;
+
+    var bc = document.getElementById('brandClient');
+    if(bc) bc.textContent = CONFIG.client || '';
+    document.title = 'Feedback Previewer' + (CONFIG.client ? ' · ' + CONFIG.client : '');
+  }
+
+  /* frameDoc(): the iframe's document, or null (always guarded). */
+  function frameDoc(){
+    try {
+      if(frame && frame.contentDocument) return frame.contentDocument;
+      if(frame && frame.contentWindow) return frame.contentWindow.document || null;
+    } catch(e){ /* cross-origin */ }
+    return null;
+  }
+
+  /* save(): persist to localStorage (instant, offline-safe), then debounce-push
+     to the shared backend if one is configured. localStorage is always the
+     local source of truth, so a failed/absent backend never loses work. */
+  function save(){
+    try { localStorage.setItem(FB_KEY, JSON.stringify(store)); } catch(e){ /* quota / private mode: no-op */ }
+    schedulePush();
+  }
+
+  /* =====================================================================
+     SHARED BACKEND (optional) - Supabase REST. Enabled only when
+     CONFIG.backend = { type:'supabase', url, anonKey, table?, pollSeconds? }.
+     When absent, every call below no-ops and the file behaves exactly as the
+     localStorage + feedback.json version.
+     ===================================================================== */
+
+  var _pushTimer = 0;
+  var _pollTimer = 0;
+
+  function backendEnabled(){
+    var b = CONFIG.backend;
+    return !!(b && b.type === 'supabase' && b.url && b.anonKey);
+  }
+  function backendTable(){ return (CONFIG.backend && CONFIG.backend.table) || 'feedback'; }
+  function backendHeaders(extra){
+    var b = CONFIG.backend, h = {
+      'apikey': b.anonKey,
+      'Authorization': 'Bearer ' + b.anonKey,
+      'Content-Type': 'application/json'
+    };
+    if(extra) Object.keys(extra).forEach(function(k){ h[k] = extra[k]; });
+    return h;
+  }
+  function backendRowUrl(){
+    var b = CONFIG.backend;
+    var base = String(b.url).replace(/\/+$/,'');
+    return base + '/rest/v1/' + encodeURIComponent(backendTable());
+  }
+
+  /* backendGet(): fetch this client's row, return its stored data blob or null. */
+  async function backendGet(){
+    if(!backendEnabled()) return null;
+    var url = backendRowUrl() + '?slug=eq.' + encodeURIComponent(CONFIG.slug) + '&select=data';
+    var res = await fetch(url, { method:'GET', headers: backendHeaders(), cache:'no-store' });
+    if(!res || !res.ok) throw new Error('backend GET ' + (res && res.status));
+    var rows = await res.json();
+    if(Array.isArray(rows) && rows.length && rows[0] && rows[0].data) return rows[0].data;
+    return null;
+  }
+
+  /* backendUpsert(): write the whole store to this client's row (last write wins
+     per client; see CLAUDE.md note on the blob model). */
+  async function backendUpsert(){
+    if(!backendEnabled()) return false;
+    var body = [{ slug: CONFIG.slug, client: store.client || CONFIG.client, data: store }];
+    var res = await fetch(backendRowUrl(), {
+      method: 'POST',
+      headers: backendHeaders({ 'Prefer': 'resolution=merge-duplicates,return=minimal' }),
+      body: JSON.stringify(body)
+    });
+    if(!res || !res.ok) throw new Error('backend upsert ' + (res && res.status));
+    return true;
+  }
+
+  /* schedulePush(): debounce backend writes so we push ~1s after edits settle. */
+  function schedulePush(){
+    if(!backendEnabled()) return;
+    if(_pushTimer) clearTimeout(_pushTimer);
+    _pushTimer = setTimeout(function(){
+      _pushTimer = 0;
+      backendUpsert().catch(function(e){ if(window.console) console.warn('[previewer] backend push failed, keeping local copy:', e && e.message); });
+    }, 1000);
+  }
+
+  /* syncFromBackend(): pull the shared row and fold it into the local store
+     (team authoritative for resolution, local unsent comments preserved).
+     Persists to localStorage and re-renders. Does NOT push back. */
+  async function syncFromBackend(){
+    if(!backendEnabled()) return false;
+    var remote = await backendGet();
+    if(remote && typeof remote === 'object') _mergeTeam(remote);
+    try { localStorage.setItem(FB_KEY, JSON.stringify(store)); } catch(e){}
+    renderAll();
+    return true;
+  }
+
+  /* startBackendPoll(): light auto-refresh so each side sees the other's edits
+     without a button press. Off when pollSeconds is 0. */
+  function startBackendPoll(){
+    if(_pollTimer){ clearInterval(_pollTimer); _pollTimer = 0; }
+    if(!backendEnabled()) return;
+    var secs = CONFIG.backend.pollSeconds;
+    if(secs == null) secs = 15;
+    secs = Number(secs);
+    if(!secs || secs < 1) return;
+    _pollTimer = setInterval(function(){
+      syncFromBackend().catch(function(){ /* transient: next tick retries */ });
+    }, secs * 1000);
+  }
+
+  /* pageComments(p): array for a page, auto-initialized. Includes tombstones. */
+  function pageComments(p){
+    if(!store.comments || typeof store.comments !== 'object') store.comments = {};
+    return store.comments[p] || (store.comments[p] = []);
+  }
+
+  /* visibleComments(arr): drop soft-deleted tombstones. A deleted comment stays
+     in the store (with deleted:true) so the deletion survives a backend merge,
+     but it is never shown, counted, pinned, or exported. */
+  function visibleComments(arr){
+    return (arr || []).filter(function(c){ return c && !c.deleted; });
+  }
+
+  /* uid(): unique-enough id for new local comments / needs. */
+  function uid(){
+    var t = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    return 'c' + Math.round(t * 1000) + '_' + (_uidSeq++);
+  }
+
+  /* escapeHtml(s): safe text for innerHTML. */
+  function escapeHtml(s){
+    return (s == null ? '' : String(s))
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  /* renderAll(): the shared orchestrator. */
+  function renderAll(){
+    renderList();
+    updateCounts();
+    renderPins(frameDoc());
+    renderNeeds();
+  }
+
+  /* =====================================================================
+     STORE CORE + EXPORT + SHARED feedback.json  (data layer)
+     ===================================================================== */
+
+  function pageLabel(p){
+    if(Array.isArray(PAGES)){
+      for(var i=0;i<PAGES.length;i++){
+        var row = PAGES[i];
+        if(Array.isArray(row)){ if(row[0] === p) return row[1]; }
+        else if(row && typeof row === 'object'){
+          if((row.file || row.f || row.id) === p) return (row.label || row.name || p);
+        }
+      }
+    }
+    return p;
+  }
+  function pageList(){
+    var out = [];
+    if(Array.isArray(PAGES)){
+      PAGES.forEach(function(row){
+        if(Array.isArray(row)) out.push(row[0]);
+        else if(row && typeof row === 'object') out.push(row.file || row.f || row.id);
+      });
+    }
+    return out;
+  }
+
+  /* normalizeStore(s): ensure the shape invariants. */
+  function normalizeStore(s){
+    if(!s || typeof s !== 'object') return emptyStore();
+    if(!s.comments || typeof s.comments !== 'object') s.comments = {};
+    if(!Array.isArray(s.needs)) s.needs = [];
+    if(!s.version) s.version = 2;
+    if(!s.client) s.client = CONFIG.client;
+    return s;
+  }
+
+  /* loadStore(): async.
+       1. local working copy from localStorage (offline edits live here)
+       2. else seed from feedback.json baseline
+       3. if a shared backend is configured, overlay the remote row on top
+          (team authoritative for resolution; local unsent comments kept)
+     With no backend this matches the original localStorage + feedback.json flow. */
+  async function loadStore(){
+    var saved = null;
+    try { var raw = localStorage.getItem(FB_KEY); if(raw) saved = JSON.parse(raw); } catch(e){ saved = null; }
+
+    if(saved && typeof saved === 'object'){
+      store = normalizeStore(saved);
+    } else {
+      try {
+        var res = await fetch('feedback.json', { cache: 'no-store' });
+        if(!res || !res.ok) throw new Error('feedback.json not reachable');
+        var data = await res.json();
+        store = normalizeStore(JSON.parse(JSON.stringify(data || {})));   // deep clone of the shared baseline
+      } catch(e){
+        store = emptyStore();
+      }
+    }
+
+    if(backendEnabled()){
+      try {
+        var remote = await backendGet();
+        if(remote && typeof remote === 'object') _mergeTeam(remote);
+      } catch(e){ if(window.console) console.warn('[previewer] backend load failed, using local copy:', e && e.message); }
+    }
+
+    save();   // persists locally; pushes the merged view up if a backend is set (creates the row on first run)
+    return store;
+  }
+
+  /* _mergeTeam(remote): team is authoritative for resolution; add new shared items; keep local unsent. */
+  function _mergeTeam(remote){
+    if(!remote || typeof remote !== 'object') return;
+
+    /* ---- needs ---- */
+    var localNeeds = Array.isArray(store.needs) ? store.needs : (store.needs = []);
+    var remoteNeeds = Array.isArray(remote.needs) ? remote.needs : [];
+    var needById = {}; localNeeds.forEach(function(n){ if(n && n.id) needById[n.id] = n; });
+    remoteNeeds.forEach(function(rn){
+      if(!rn || !rn.id) return;
+      var ln = needById[rn.id];
+      if(ln){ ln.label = rn.label; ln.status = rn.status; }              // team authoritative
+      else { var nn = { id: rn.id, label: rn.label, status: rn.status || 'open' }; localNeeds.push(nn); needById[rn.id] = nn; }
+    });
+
+    /* ---- comments, per page ---- */
+    if(!store.comments || typeof store.comments !== 'object') store.comments = {};
+    var rc = (remote.comments && typeof remote.comments === 'object') ? remote.comments : {};
+    Object.keys(rc).forEach(function(page){
+      var rlist = Array.isArray(rc[page]) ? rc[page] : [];
+      var llist = pageComments(page);
+      var byId = {}; llist.forEach(function(c){ if(c && c.id) byId[c.id] = c; });
+      rlist.forEach(function(r){
+        if(!r || !r.id) return;
+        var lc = byId[r.id];
+        if(lc){
+          lc.status = r.status;                                          // team authoritative for resolution
+          if('resolvedNote' in r) lc.resolvedNote = r.resolvedNote;
+          if(r.ctx && !lc.ctx) lc.ctx = r.ctx;
+          if(r.text && !lc.text) lc.text = r.text;
+          if(r.selector && !lc.selector){ lc.selector = r.selector; lc.fracX = r.fracX; lc.fracY = r.fracY; lc.x = r.x; lc.y = r.y; }
+          if(r.anchorText && !lc.anchorText) lc.anchorText = r.anchorText;
+          if(r.tag && !lc.tag) lc.tag = r.tag;
+          if(typeof r.docFracY === 'number' && typeof lc.docFracY !== 'number') lc.docFracY = r.docFracY;
+          if(r.deleted) lc.deleted = true;                               // deletion is sticky: a tombstone on either side wins
+          lc.local = false;                                              // came back from team, no longer pending-local
+        } else {
+          var copy = JSON.parse(JSON.stringify(r)); copy.local = false;  // new shared item
+          llist.push(copy); byId[r.id] = copy;
+        }
+      });
+    });
+  }
+
+  /* pullTeam(): confirm, re-fetch feedback.json, merge, persist, re-render. */
+  async function pullTeam(opts){
+    opts = opts || {};
+    var confirmFn = opts.confirm || (typeof confirm === 'function' ? confirm : function(){ return true; });
+    if(!opts.skipConfirm){
+      var ok = confirmFn('Pull the latest team updates?\n\nResolved status and notes from the team will overwrite the matching items here. Your unsent local comments are kept.');
+      if(!ok) return false;
+    }
+    var remote;
+    try {
+      if(backendEnabled()){
+        remote = await backendGet();
+      } else {
+        var res = await fetch('feedback.json', { cache: 'no-store' });
+        if(!res || !res.ok) throw new Error('feedback.json not reachable');
+        remote = await res.json();
+      }
+    } catch(e){
+      if(opts.onError) opts.onError(e);
+      else if(typeof alert === 'function') alert('Could not reach the latest updates. Check your connection and try again.');
+      return false;
+    }
+    if(remote && typeof remote === 'object') _mergeTeam(remote);
+    save();
+    renderAll();
+    return true;
+  }
+
+  /* ----- export helpers ----- */
+  function _openComments(arr){ return arr.filter(function(c){ return c && !c.deleted && c.status !== 'resolved'; }); }
+  function _resolvedComments(arr){ return arr.filter(function(c){ return c && !c.deleted && c.status === 'resolved'; }); }
+
+  /* buildMarkdown(): "What we still need" + per-page open (numbered) then Resolved (checked). No em dashes. */
+  function buildMarkdown(){
+    var L = [];
+    var clientName = (store && store.client) ? store.client : CONFIG.client;
+    L.push('# ' + clientName + ' · Preview Feedback');
+    L.push('');
+    L.push('_Generated ' + new Date().toISOString().slice(0,10) + ' from the annotation previewer._');
+    L.push('');
+
+    /* What we still need */
+    var needs = (store && Array.isArray(store.needs)) ? store.needs : [];
+    var openNeeds = needs.filter(function(n){ return n.status !== 'sent'; });
+    var sentNeedsArr = needs.filter(function(n){ return n.status === 'sent'; });
+    L.push('## What we still need');
+    L.push('');
+    if(!needs.length){
+      L.push('_Nothing outstanding._'); L.push('');
+    } else {
+      if(openNeeds.length){ openNeeds.forEach(function(n){ L.push('- [ ] ' + (n.label || '').trim()); }); }
+      else { L.push('_All items sent._'); }
+      if(sentNeedsArr.length){
+        L.push('');
+        L.push('**Already sent / provided:**');
+        sentNeedsArr.forEach(function(n){ L.push('- [x] ' + (n.label || '').trim()); });
+      }
+      L.push('');
+    }
+
+    /* Per-page comments, in PAGES order */
+    var hadAny = false;
+    pageList().forEach(function(page){
+      var arr = (store.comments && store.comments[page]) ? store.comments[page] : [];
+      if(!arr.length) return;
+      var open = _openComments(arr);
+      var resolved = _resolvedComments(arr);
+      if(!open.length && !resolved.length) return;
+      hadAny = true;
+      L.push('## ' + pageLabel(page));
+      L.push('');
+      if(open.length){
+        L.push('**Whole-page / pinned comments:**');
+        L.push('');
+        open.forEach(function(c, i){
+          var ctx = c.ctx ? ' _(near: ' + c.ctx + ')_' : '';
+          var body = (c.text || '').trim() || '[no text]';
+          L.push((i + 1) + '. ' + body + ctx);
+        });
+        L.push('');
+      }
+      if(resolved.length){
+        L.push('**Resolved:**');
+        L.push('');
+        resolved.forEach(function(c){
+          var body = (c.text || '').trim() || '[no text]';
+          var line = '- [x] ' + body + (c.ctx ? ' _(near: ' + c.ctx + ')_' : '');
+          L.push(line);
+          var note = (c.resolvedNote || '').trim();
+          if(note) L.push('  - Resolution: ' + note);
+        });
+        L.push('');
+      }
+    });
+    if(!hadAny){
+      L.push('## Page comments'); L.push(''); L.push('_No page comments yet._'); L.push('');
+    }
+    return L.join('\n');
+  }
+
+  /* buildExportJSON(): pretty store for the team to commit. Local flags normalized to false. */
+  function buildExportJSON(){
+    var clone = JSON.parse(JSON.stringify(store || emptyStore()));
+    if(!clone.version) clone.version = 2;
+    if(!Array.isArray(clone.needs)) clone.needs = [];
+    if(!clone.comments || typeof clone.comments !== 'object') clone.comments = {};
+    Object.keys(clone.comments).forEach(function(page){
+      (clone.comments[page] || []).forEach(function(c){ if('local' in c) c.local = false; });
+    });
+    return JSON.stringify(clone, null, 2);
+  }
+
+  /* ----- export modal wiring ----- */
+  var _exportFmt = 'md';  // 'md' | 'json'
+
+  function _exportFilename(){
+    if(_exportFmt === 'json') return 'feedback.json';
+    return (CONFIG.slug || 'client') + '-feedback.md';
+  }
+  function _refreshExportText(){
+    var ta = document.getElementById('exportText');
+    if(!ta) return;
+    ta.value = (_exportFmt === 'json') ? buildExportJSON() : buildMarkdown();
+  }
+  function _setExportFmt(fmt){
+    _exportFmt = (fmt === 'json') ? 'json' : 'md';
+    var tMd = document.getElementById('tabMd'), tJson = document.getElementById('tabJson');
+    var hint = document.getElementById('exportHint'), dl = document.getElementById('downloadBtn'), title = document.getElementById('modalTitle');
+    var isJson = _exportFmt === 'json';
+    if(tMd){ tMd.classList.toggle('on', !isJson); tMd.setAttribute('aria-selected', String(!isJson)); }
+    if(tJson){ tJson.classList.toggle('on', isJson); tJson.setAttribute('aria-selected', String(isJson)); }
+    if(hint) hint.textContent = isJson
+      ? 'The full shared state. Download this, replace feedback.json in the client-previews repo, and commit. This is what the team pulls.'
+      : 'Readable summary, grouped by page. Copy this into Slack or the Trello card.';
+    if(dl) dl.textContent = isJson ? 'Download feedback.json' : 'Download .md';
+    if(title) title.textContent = isJson ? 'Export feedback (JSON)' : 'Export feedback (Markdown)';
+    _refreshExportText();
+  }
+  function openExport(fmt){
+    var m = document.getElementById('modal');
+    if(!m) return;
+    _setExportFmt(fmt || _exportFmt);
+    m.classList.add('open');
+    m.setAttribute('aria-hidden', 'false');
+  }
+  function closeExport(){
+    var m = document.getElementById('modal');
+    if(!m) return;
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden', 'true');
+  }
+
+  function initExport(){
+    var tMd = document.getElementById('tabMd'), tJson = document.getElementById('tabJson');
+    if(tMd) tMd.addEventListener('click', function(){ _setExportFmt('md'); });
+    if(tJson) tJson.addEventListener('click', function(){ _setExportFmt('json'); });
+
+    ['modalClose','modalClose2'].forEach(function(id){
+      var b = document.getElementById(id); if(b) b.addEventListener('click', closeExport);
+    });
+    var m = document.getElementById('modal');
+    if(m) m.addEventListener('click', function(e){ if(e.target === m) closeExport(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && m && m.classList.contains('open')) closeExport();
+    });
+
+    var copyBtn = document.getElementById('copyBtn');
+    if(copyBtn) copyBtn.addEventListener('click', function(){
+      var ta = document.getElementById('exportText'); if(!ta) return;
+      ta.focus(); ta.select();
+      var done = function(){ var o = copyBtn.textContent; copyBtn.textContent = 'Copied ✓'; setTimeout(function(){ copyBtn.textContent = o; }, 1500); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(ta.value).then(done).catch(function(){ try{ document.execCommand('copy'); done(); }catch(e){} });
+      } else { try{ document.execCommand('copy'); done(); }catch(e){} }
+    });
+
+    var dlBtn = document.getElementById('downloadBtn');
+    if(dlBtn) dlBtn.addEventListener('click', function(){
+      var isJson = _exportFmt === 'json';
+      var text = isJson ? buildExportJSON() : buildMarkdown();
+      var blob = new Blob([text], { type: isJson ? 'application/json' : 'text/markdown' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = _exportFilename();
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 0);
+    });
+
+    ['exportBtn','exportBtn2'].forEach(function(id){
+      var b = document.getElementById(id); if(b) b.addEventListener('click', function(){ openExport('md'); });
+    });
+    document.querySelectorAll('[data-export]').forEach(function(b){
+      b.addEventListener('click', function(){ openExport(b.getAttribute('data-export') || 'md'); });
+    });
+    var pullBtn = document.getElementById('pullBtn');
+    if(pullBtn) pullBtn.addEventListener('click', function(){ pullTeam(); });
+  }
+
+  /* =====================================================================
+     ELEMENT-ANCHORED PINS
+     ===================================================================== */
+
+  var FBPIN_CSS =
+    '.__fbpin{position:absolute;z-index:2147483000;width:26px;height:26px;'+
+      'margin:-13px 0 0 -13px;border-radius:50% 50% 50% 2px;'+
+      'background:#0a2540;color:#fff;'+
+      'font:700 13px/24px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;'+
+      'text-align:center;cursor:pointer;border:2px solid #fff;'+
+      'box-shadow:0 2px 9px rgba(10,37,64,.4);'+
+      'transition:background .15s,color .15s,transform .12s;'+
+      '-webkit-user-select:none;user-select:none}'+
+    '.__fbpin:hover{background:#c9a352;color:#0a2540;transform:scale(1.12)}'+
+    '.__fbpin.__fbresolved{background:#aeb6c2;color:#fff;box-shadow:0 1px 5px rgba(10,37,64,.22)}'+
+    '.__fbpin.__fbresolved:hover{background:#7e8694;color:#fff;transform:scale(1.08)}'+
+    '.__fbpin.__fbdrift{border-style:dashed;border-color:#c9a352;opacity:.9;'+
+      'box-shadow:0 0 0 3px rgba(201,163,82,.25),0 2px 9px rgba(10,37,64,.35)}'+
+    '.__fbpin svg{width:13px;height:13px;display:inline-block;vertical-align:-2px;'+
+      'stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}';
+
+  function injectPinStyle(doc){
+    if(!doc) return;
+    try {
+      if(doc.getElementById('__fbpinstyle')) return;
+      var s = doc.createElement('style');
+      s.id = '__fbpinstyle';
+      s.textContent = FBPIN_CSS;
+      (doc.head || doc.documentElement).appendChild(s);
+    } catch(e){ /* cross-origin or detached doc */ }
+  }
+
+  function cssPath(el){
+    if(!el || el.nodeType !== 1) return '';
+    var doc = el.ownerDocument;
+    var tn = (el.tagName || '').toLowerCase();
+    if(!tn || tn === 'html' || tn === 'body') return tn === 'body' ? 'body' : '';
+
+    function safeId(node){
+      var id = node.id;
+      if(!id) return null;
+      if(!/^[A-Za-z][\w\-]*$/.test(id)) return null;
+      try { if(doc && doc.querySelectorAll('#'+id).length === 1) return '#'+id; }
+      catch(e){ return null; }
+      return null;
+    }
+
+    var hit = safeId(el);
+    if(hit) return hit;
+
+    var parts = [];
+    var node = el;
+    while(node && node.nodeType === 1){
+      var name = (node.tagName || '').toLowerCase();
+      if(name === 'html') break;
+      if(name === 'body'){ parts.unshift('body'); break; }
+
+      var idHit = safeId(node);
+      if(idHit){ parts.unshift(idHit); break; }
+
+      var idx = 1, sib = node.previousElementSibling;
+      while(sib){
+        if(sib.tagName && sib.tagName.toLowerCase() === name) idx++;
+        sib = sib.previousElementSibling;
+      }
+      parts.unshift(name + ':nth-of-type(' + idx + ')');
+      node = node.parentElement;
+    }
+    return parts.join(' > ');
+  }
+
+  function pinCtxHint(el){
+    if(!el || el.nodeType !== 1) return '';
+    function clip(s){
+      s = (s || '').replace(/\s+/g,' ').trim();
+      return s.length > 54 ? s.slice(0,53).trim() + '…' : s;
+    }
+    if(/^H[1-6]$/.test(el.tagName)) return clip(el.textContent);
+    var node = el, hops = 0;
+    while(node && hops < 4){
+      if(node.tagName && /^H[1-6]$/.test(node.tagName)) return clip(node.textContent);
+      node = node.parentElement; hops++;
+    }
+    var sec = el.closest ? el.closest('section,article,header,footer,main,div') : null;
+    if(sec){
+      var h = sec.querySelector('h1,h2,h3,h4,h5,h6');
+      if(h && h.textContent && h.textContent.trim()) return clip(h.textContent);
+    }
+    var own = clip(el.textContent);
+    return own || (el.tagName ? el.tagName.toLowerCase() : '');
+  }
+
+  /* normText(): collapse whitespace, clip, for text-fingerprint matching. */
+  function normText(s){
+    s = (s == null ? '' : String(s)).replace(/\s+/g,' ').trim();
+    return s.length > 80 ? s.slice(0,80) : s;
+  }
+
+  /* docHeight(doc): full scrollable height, for the doc-fraction fallback. */
+  function docHeight(doc){
+    var de = doc.documentElement, b = doc.body;
+    return Math.max(
+      (b && b.scrollHeight) || 0, (de && de.scrollHeight) || 0,
+      (b && b.offsetHeight) || 0, (de && de.offsetHeight) || 0, 1
+    );
+  }
+
+  function captureAnchor(doc, evt){
+    var target = (evt && evt.target && evt.target.nodeType === 1) ? evt.target : null;
+    var selector = cssPath(target);
+    var fracX = 0.5, fracY = 0.5;
+    if(target && typeof target.getBoundingClientRect === 'function'){
+      var rect = target.getBoundingClientRect();
+      if(rect.width > 0)  fracX = (evt.clientX - rect.left) / rect.width;
+      if(rect.height > 0) fracY = (evt.clientY - rect.top)  / rect.height;
+      fracX = Math.max(0, Math.min(1, fracX));
+      fracY = Math.max(0, Math.min(1, fracY));
+    }
+    var px = (typeof evt.pageX === 'number') ? evt.pageX : 0;
+    var py = (typeof evt.pageY === 'number') ? evt.pageY : 0;
+    /* drift-resistance fingerprints: text of the clicked element + its tag,
+       and the click's fractional position down the whole document. */
+    var anchorText = target ? normText(target.textContent) : '';
+    var tag = target && target.tagName ? target.tagName.toLowerCase() : '';
+    var docFracY = py / docHeight(doc);
+    return {
+      selector: selector, fracX: fracX, fracY: fracY, x: px, y: py,
+      ctx: pinCtxHint(target), anchorText: anchorText, tag: tag, docFracY: docFracY
+    };
+  }
+
+  /* resolveAnchorEl(doc, c): find the live element for a stored comment via a
+     cascade that survives block restructuring:
+       1. the saved CSS selector (exact, fast)
+       2. text fingerprint: an element whose tag + collapsed text matches
+          what was clicked (leaf-most wins, so we don't grab a whole section)
+       3. heading-context: the nearest element matching the saved "near:" hint
+     Returns null if nothing matches (caller falls back to doc-fraction). */
+  function resolveAnchorEl(doc, c){
+    if(!doc || !c) return null;
+
+    if(c.selector){
+      try { var el = doc.querySelector(c.selector); if(el) return el; } catch(e){}
+    }
+
+    if(c.anchorText){
+      var want = normText(c.anchorText);
+      var scope = c.tag ? c.tag : '*';
+      var best = null, bestLen = Infinity, nodes;
+      try { nodes = doc.querySelectorAll(scope); } catch(e){ nodes = []; }
+      for(var i=0;i<nodes.length;i++){
+        var t = normText(nodes[i].textContent);
+        if(t && t === want && t.length < bestLen){ best = nodes[i]; bestLen = t.length; }
+      }
+      if(best) return best;
+    }
+
+    if(c.ctx){
+      var hint = normText(c.ctx).replace(/…$/,'');
+      if(hint){
+        var hs;
+        try { hs = doc.querySelectorAll('h1,h2,h3,h4,h5,h6'); } catch(e){ hs = []; }
+        for(var j=0;j<hs.length;j++){
+          if(normText(hs[j].textContent).indexOf(hint) === 0) return hs[j];
+        }
+      }
+    }
+    return null;
+  }
+
+  function pinXY(doc, c){
+    if(!doc || !c) return null;
+    var win = doc.defaultView || window;
+    var sx = win.pageXOffset || (doc.documentElement && doc.documentElement.scrollLeft) || 0;
+    var sy = win.pageYOffset || (doc.documentElement && doc.documentElement.scrollTop)  || 0;
+
+    var el = resolveAnchorEl(doc, c);
+    if(el && typeof el.getBoundingClientRect === 'function'){
+      var rect = el.getBoundingClientRect();
+      return {
+        x: rect.left + sx + (c.fracX || 0) * rect.width,
+        y: rect.top  + sy + (c.fracY || 0) * rect.height
+      };
+    }
+
+    /* nothing matched: drop the pin at its saved fraction of the document so it
+       stays in the right zone (and gets a drifted flag) instead of vanishing. */
+    if(typeof c.docFracY === 'number'){
+      return { x: (c.fracX != null ? c.fracX : 0.5) * (doc.documentElement.clientWidth || 800),
+               y: c.docFracY * docHeight(doc), drifted: true };
+    }
+    if(typeof c.x === 'number' && typeof c.y === 'number') return { x: c.x, y: c.y, drifted: true };
+    return null;
+  }
+
+  function focusCommentRow(id){
+    var row = document.querySelector('.cmt[data-id="' + id + '"]');
+    if(!row){
+      // row may be hidden by the current filter; reset to All and try once more
+      if(listFilter !== 'all'){
+        setFilter('all');
+        row = document.querySelector('.cmt[data-id="' + id + '"]');
+      }
+    }
+    if(!row) return;
+    row.scrollIntoView({ behavior:'smooth', block:'center' });
+    row.classList.remove('__fbflash');
+    void row.offsetWidth;
+    row.classList.add('__fbflash');
+    var ta = row.querySelector('textarea');
+    if(ta) ta.focus();
+  }
+  /* expose for the list component's "Jump to pin" preferred path */
+  window.focusPin = function(id){
+    var doc = frameDoc();
+    if(doc){
+      var pin = null;
+      try { pin = doc.querySelector('.__fbpin[data-id="' + id + '"]'); } catch(e){ pin = null; }
+      if(pin && pin.scrollIntoView){ pin.scrollIntoView({ behavior:'smooth', block:'center' }); }
+    }
+    focusCommentRow(id);
+  };
+
+  function renderPins(doc){
+    if(!doc || !doc.body) return;
+    injectPinStyle(doc);
+
+    try {
+      var old = doc.querySelectorAll('.__fbpin');
+      for(var i=0;i<old.length;i++){ old[i].parentNode && old[i].parentNode.removeChild(old[i]); }
+    } catch(e){ /* ignore */ }
+
+    var list = pageComments(currentPage) || [];
+    var openNum = 0;
+    var check = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+    list.forEach(function(c){
+      if(c.deleted) return; // tombstone: no pin
+      var pos = pinXY(doc, c);
+      if(!pos) return; // page-level / unanchored notes get no pin
+
+      var resolved = (c.status === 'resolved');
+      if(!resolved) openNum++;
+
+      var pin;
+      try { pin = doc.createElement('div'); } catch(e){ return; }
+      pin.className = '__fbpin' + (resolved ? ' __fbresolved' : '') + (pos.drifted ? ' __fbdrift' : '');
+      pin.setAttribute('data-id', c.id);
+      if(resolved){
+        pin.innerHTML = check;
+        pin.title = 'Resolved' + (c.ctx ? ': ' + c.ctx : '');
+      } else {
+        pin.textContent = String(openNum);
+        pin.title = (pos.drifted ? 'Approximate location (the page changed since this was pinned) · ' : '')
+          + (c.ctx ? c.ctx + ' · ' : '') + 'click to open comment';
+      }
+      pin.style.left = pos.x + 'px';
+      pin.style.top  = pos.y + 'px';
+
+      (function(id){
+        pin.addEventListener('click', function(ev){
+          ev.preventDefault(); ev.stopPropagation();
+          focusCommentRow(id);
+        }, true);
+      })(c.id);
+
+      try { doc.body.appendChild(pin); } catch(e){ /* ignore */ }
+    });
+  }
+
+  function fbCommentClick(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if(typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+
+    var doc = frameDoc();
+    if(!doc) return;
+
+    var t = e.target;
+    while(t && t.nodeType === 1){
+      if(t.classList && t.classList.contains('__fbpin')) return;
+      t = t.parentElement;
+    }
+
+    var a = captureAnchor(doc, e);
+    var c = {
+      id: uid(),
+      selector: a.selector,
+      fracX: a.fracX,
+      fracY: a.fracY,
+      x: a.x,
+      y: a.y,
+      ctx: a.ctx,
+      anchorText: a.anchorText,
+      tag: a.tag,
+      docFracY: a.docFracY,
+      text: '',
+      status: 'open',
+      resolvedNote: '',
+      local: true
+    };
+    pageComments(currentPage).push(c);
+    save();
+    // ensure the new pin is visible regardless of the active filter
+    if(listFilter === 'resolved') setFilter('all');
+    renderAll();
+    focusCommentRow(c.id);
+  }
+
+  function attachCommentClick(doc){
+    if(!doc) return;
+    try {
+      if(doc.__fbClickBound) return;
+      doc.addEventListener('click', fbCommentClick, true);
+      doc.__fbClickBound = true;
+    } catch(e){ /* ignore */ }
+  }
+  function detachCommentClick(doc){
+    if(!doc) return;
+    try {
+      if(!doc.__fbClickBound) return;
+      doc.removeEventListener('click', fbCommentClick, true);
+      doc.__fbClickBound = false;
+    } catch(e){ /* ignore */ }
+  }
+
+  /* =====================================================================
+     HOVER NAMING (added 2026-08-11)
+     Comment mode used to give no indication of what you were about to pin, so
+     a reviewer had to describe the location in words. Now the element under
+     the cursor is outlined and named, e.g. "H3 in How I market your property".
+     Runs inside the iframe document. Injects its own style tag once.
+     ===================================================================== */
+
+  var HOVER_TAGGABLE = 'h1,h2,h3,h4,h5,p,img,figure,blockquote,li,dt,dd,a,button,'
+    + 'input,textarea,select,form,svg,table,section,header,footer,aside,'
+    + '[class*="__"],'
+    /* single-word utility classes: [class*="__"] misses these, so a chip or a
+       badge used to resolve to its parent dd instead of itself */
+    + '.needs,.badge,.eyebrow,.btn,.btn-text,.sig,.press,.legal,.idx,.ask,.path,'
+    + '.it,.itg,.itl,.svc,.cmp,.mkt,.np,.res,.xf,.hv,.cta,.about,.proc,.cgrid';
+
+  /* exact class name wins over the fragment guess below */
+  var HOVER_EXACT = {
+    'statrail__n':'Stat number', 'statrail__l':'Stat label',
+    'comm__idx':'Index number', 'comm__name':'Town name', 'comm__blurb':'Town blurb',
+    'proc__n':'Step number', 'mkt__n':'Pillar number', 'cmp__tag':'Column label',
+    'np__total':'Calculator total', 'tst__stars':'Star rating', 'tst__meta':'Attribution',
+    'needs':'Needs-client chip', 'badge':'Compliance badge', 'eyebrow':'Eyebrow',
+    'sig':'Signature', 'idx__tag':'IDX tag', 'ph-media':'Image placeholder',
+    'ph-portrait':'Portrait placeholder', 'comm__card__ph':'Image placeholder'
+  };
+
+  /* class fragment -> human name. Unknown classes fall back to the tag or a
+     de-underscored class, so this never needs to be exhaustive per client. */
+  var HOVER_NAMES = {
+    hero:'Hero', phero:'Page hero', media:'Image', inner:'Copy block', scrim:'Overlay',
+    statrail:'Stat rail', cell:'Stat cell', caption:'Caption',
+    path:'Path row', proc:'Process step', row:'Row', body:'Copy', list:'List',
+    card:'Card', panel:'Panel', grid:'Grid', head:'Heading block',
+    eyebrow:'Eyebrow', btn:'Button', cue:'Text link', needs:'Needs-client chip',
+    idx:'IDX placeholder zone', ask:'FAQ item', tst:'Testimonial',
+    cmp:'Comparison column', mkt:'Marketing pillar', np:'Calculator',
+    comm:'Community block', cgrid:'Community grid', res:'Resources strip',
+    foot:'Footer', nav:'Navigation', legal:'Legal body', cta:'Closing CTA',
+    xf:'Cross funnel', hv:'Home value band', about:'About block', bio:'Bio',
+    sig:'Signature', badge:'Badge', press:'Press strip', it:'Image and text',
+    itg:'Feature grid', itl:'Icon list', svc:'Service card', form:'Form'
+  };
+
+  function hoverRole(el){
+    var cl = (typeof el.className === 'string' ? el.className : '').split(/\s+/);
+    for(var x = 0; x < cl.length; x++){ if(HOVER_EXACT[cl[x]]) return HOVER_EXACT[cl[x]]; }
+    var t = (el.tagName || '').toLowerCase();
+    if(t === 'img') return 'Image';
+    if(t === 'svg') return 'Icon';
+    if(/^h[1-5]$/.test(t)) return t.toUpperCase();
+    if(t === 'p') return 'Paragraph';
+    if(t === 'li') return 'List item';
+    if(t === 'blockquote') return 'Quote';
+    if(t === 'dt' || t === 'dd') return 'Detail';
+    if(t === 'input' || t === 'textarea' || t === 'select') return 'Form field';
+    if(t === 'button') return 'Button';
+    if(t === 'a') return 'Link';
+    if(t === 'section') return 'Whole section';
+    if(t === 'header') return 'Header';
+    if(t === 'footer') return 'Footer';
+    var cls = (typeof el.className === 'string' ? el.className : '').split(/\s+/);
+    for(var i = 0; i < cls.length; i++){
+      var parts = cls[i].split('__');
+      var last = parts[parts.length - 1];
+      if(HOVER_NAMES[last]) return HOVER_NAMES[last];
+      if(HOVER_NAMES[parts[0]]) return HOVER_NAMES[parts[0]];
+    }
+    return t || 'Element';
+  }
+
+  function hoverCtx(el){
+    var s = el.closest ? el.closest('section, header, footer, article') : null;
+    if(!s) return '';
+    var h = s.querySelector('h1,h2,h3');
+    if(h) return normText(h.textContent).slice(0, 44);
+    return '';
+  }
+
+  function hoverIsChrome(el){
+    if(!el || typeof el.closest !== 'function') return true;
+    return !!el.closest('.fb-pin, #fbHover, #fbHoverLabel');
+  }
+
+  function ensureHoverLayer(doc){
+    if(!doc || doc.getElementById('fbHover')) return;
+    var st = doc.createElement('style');
+    st.textContent =
+      '#fbHover{position:absolute;z-index:2147483000;pointer-events:none;display:none;'
+      + 'border:2px solid #C8A96A;background:rgba(200,169,106,.12)}'
+      + '#fbHoverLabel{position:fixed;z-index:2147483001;pointer-events:none;display:none;'
+      + 'background:#1a1a1a;color:#fff;font:600 11px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;'
+      + 'padding:6px 9px;max-width:330px;box-shadow:0 4px 14px rgba(0,0,0,.34);border-radius:2px}'
+      + '#fbHoverLabel b{color:#E8CB92;text-transform:uppercase;letter-spacing:.06em;font-size:10px}'
+      + '#fbHoverLabel i{color:rgba(255,255,255,.6);font-style:normal;font-weight:400}';
+    doc.head.appendChild(st);
+    var box = doc.createElement('div'); box.id = 'fbHover';
+    var lab = doc.createElement('div'); lab.id = 'fbHoverLabel';
+    doc.body.appendChild(box); doc.body.appendChild(lab);
+  }
+
+  function fbHoverMove(e){
+    var doc = this;
+    var box = doc.getElementById('fbHover'), lab = doc.getElementById('fbHoverLabel');
+    if(!box || !lab) return;
+    var el = doc.elementFromPoint(e.clientX, e.clientY);
+    if(!el || hoverIsChrome(el)){ box.style.display = 'none'; lab.style.display = 'none'; return; }
+    var t = el.closest(HOVER_TAGGABLE) || el;
+    var r = t.getBoundingClientRect();
+    var win = doc.defaultView;
+    box.style.display = 'block';
+    box.style.left = (r.left + win.scrollX) + 'px';
+    box.style.top = (r.top + win.scrollY) + 'px';
+    box.style.width = r.width + 'px';
+    box.style.height = r.height + 'px';
+    var role = hoverRole(t), ctx = hoverCtx(t);
+    var txt = t.tagName.toLowerCase() === 'img'
+      ? (t.getAttribute('alt') || '')
+      : normText(t.textContent).slice(0, 52);
+    /* when you hover the section heading itself, ctx and txt are the same
+       string, so showing both read as a stutter */
+    if(ctx && txt && ctx.slice(0, 30) === txt.slice(0, 30)) ctx = '';
+    lab.innerHTML = '<b>' + escHtml(role) + '</b>'
+      + (ctx ? ' <i>in ' + escHtml(ctx) + '</i>' : '')
+      + (txt ? '<br>' + escHtml(txt) : '');
+    lab.style.display = 'block';
+    lab.style.left = Math.max(4, Math.min(e.clientX + 15, win.innerWidth - 344)) + 'px';
+    lab.style.top = Math.max(4, Math.min(e.clientY + 17, win.innerHeight - 76)) + 'px';
+  }
+
+  function attachHover(doc){
+    if(!doc || doc.__fbHoverBound) return;
+    try {
+      ensureHoverLayer(doc);
+      doc.__fbHoverFn = fbHoverMove.bind(doc);
+      doc.addEventListener('mousemove', doc.__fbHoverFn, true);
+      doc.__fbHoverBound = true;
+    } catch(e){ /* ignore */ }
+  }
+  function detachHover(doc){
+    if(!doc || !doc.__fbHoverBound) return;
+    try {
+      doc.removeEventListener('mousemove', doc.__fbHoverFn, true);
+      doc.__fbHoverBound = false;
+      var box = doc.getElementById('fbHover'), lab = doc.getElementById('fbHoverLabel');
+      if(box) box.style.display = 'none';
+      if(lab) lab.style.display = 'none';
+    } catch(e){ /* ignore */ }
+  }
+
+  function escHtml(s){
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c];
+    });
+  }
+
+  function bindPinReflow(doc){
+    if(!doc) return;
+    try {
+      if(doc.__fbReflowBound) return;
+      var win = doc.defaultView;
+      if(!win) return;
+      var raf = 0;
+      function schedule(){
+        if(raf) return;
+        raf = win.requestAnimationFrame(function(){ raf = 0; renderPins(doc); });
+      }
+      win.addEventListener('scroll', schedule, true);
+      win.addEventListener('resize', schedule, true);
+      doc.__fbReflowBound = true;
+    } catch(e){ /* ignore */ }
+  }
+
+  /* =====================================================================
+     STATUS + SIDEBAR LIST + FILTER
+     ===================================================================== */
+
+  var listFilter = 'all'; // 'all' | 'open' | 'resolved'
+
+  function setFilter(f){
+    listFilter = (f === 'open' || f === 'resolved') ? f : 'all';
+    var fb = document.getElementById('filterBar');
+    if(fb){
+      fb.querySelectorAll('.filter__btn').forEach(function(b){
+        var on = b.getAttribute('data-filter') === listFilter;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    renderList();
+  }
+
+  function isAnchored(c){
+    return !!(c && (c.selector || (typeof c.x === 'number' && typeof c.y === 'number')));
+  }
+
+  function pinNumberMap(p){
+    var arr = pageComments(p), map = {}, n = 0;
+    for(var i=0;i<arr.length;i++){
+      var c = arr[i];
+      if(!c.deleted && c.status !== 'resolved' && isAnchored(c)){ n++; map[c.id] = n; }
+    }
+    return map;
+  }
+  function pinNumberFor(id){ return pinNumberMap(currentPage)[id] || null; }
+
+  function updateCounts(){
+    var arr = pageComments(currentPage), open = 0, resolved = 0;
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].deleted) continue;
+      if(arr[i].status === 'resolved') resolved++; else open++;
+    }
+    var el = document.getElementById('count');
+    if(el) el.textContent = open + ' open / ' + resolved + ' resolved on this page';
+  }
+
+  function jumpToPin(c){
+    if(typeof window.focusPin === 'function'){ window.focusPin(c.id); return; }
+    var doc = frameDoc();
+    if(!doc) return;
+    var pin = null;
+    try { pin = doc.querySelector('.__fbpin[data-id="'+c.id+'"]'); } catch(e){ pin = null; }
+    if(pin && pin.scrollIntoView){ pin.scrollIntoView({behavior:'smooth', block:'center'}); return; }
+    if(c.selector){
+      try { var t = doc.querySelector(c.selector); if(t) t.scrollIntoView({behavior:'smooth', block:'center'}); } catch(e){}
+    }
+  }
+
+  function buildRow(c, num){
+    var resolved = (c.status === 'resolved');
+    var anchored = isAnchored(c);
+    var row = document.createElement('div');
+    row.className = 'cmt' + (resolved ? ' cmt--resolved' : '') + (anchored ? '' : ' cmt--note');
+    row.setAttribute('data-id', c.id);
+
+    var marker;
+    if(resolved){
+      marker = '<div class="cmt__check" aria-label="Resolved">'+
+        '<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2.5 8.5l3.2 3.4 7.8-8.1" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>';
+    } else if(anchored && num){
+      marker = '<div class="cmt__num">'+num+'</div>';
+    } else {
+      marker = '<div class="cmt__note-dot" aria-label="Page note">'+
+        '<svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M2.5 3h11v7.5h-6L4 13.5V10.5H2.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>';
+    }
+
+    var tags = '';
+    if(resolved) tags += '<span class="cmt__badge">Addressed</span>';
+    if(c.local && !resolved) tags += '<span class="cmt__tag">unsent</span>';
+
+    var ctx = c.ctx ? '<div class="cmt__ctx">'+escapeHtml(c.ctx)+'</div>' : '';
+
+    var ph = anchored ? 'Type your feedback' : 'Feedback about this whole page';
+    var textArea = '<textarea class="cmt__text" placeholder="'+ph+'">'+escapeHtml(c.text||'')+'</textarea>';
+
+    var noteBlock = '';
+    if(resolved){
+      noteBlock = '<div class="cmt__resolvewrap">'+
+        '<span class="cmt__resolvelabel">Addressed</span>'+
+        '<textarea class="cmt__resolve" placeholder="How was this handled? (optional)">'+escapeHtml(c.resolvedNote||'')+'</textarea>'+
+        '</div>';
+    } else if(c.resolvedNote){
+      noteBlock = '<div class="cmt__priornote">Prior note: <em>'+escapeHtml(c.resolvedNote)+'</em></div>';
+    }
+
+    var toggleLabel = resolved ? 'Reopen' : 'Mark resolved';
+    var jumpBtn = anchored ? '<button class="act act--jump" type="button">Jump to pin</button>' : '';
+    var actions =
+      '<div class="cmt__actions">'+
+        jumpBtn+
+        '<button class="act act--toggle" type="button">'+toggleLabel+'</button>'+
+        '<button class="act act--del" type="button">Delete</button>'+
+      '</div>';
+
+    row.innerHTML = marker + (tags ? '<div class="cmt__tags">'+tags+'</div>' : '') + ctx + textArea + noteBlock + actions;
+
+    var ta = row.querySelector('.cmt__text');
+    ta.addEventListener('input', function(){ c.text = ta.value; save(); });
+
+    var rn = row.querySelector('.cmt__resolve');
+    if(rn) rn.addEventListener('input', function(){ c.resolvedNote = rn.value; save(); });
+
+    var jb = row.querySelector('.act--jump');
+    if(jb) jb.addEventListener('click', function(){ jumpToPin(c); });
+
+    row.querySelector('.act--toggle').addEventListener('click', function(){
+      if(c.status === 'resolved'){
+        c.status = 'open';
+      } else {
+        c.status = 'resolved';
+        if(typeof c.resolvedNote !== 'string') c.resolvedNote = '';
+      }
+      save();
+      renderAll();
+    });
+
+    row.querySelector('.act--del').addEventListener('click', function(){
+      c.deleted = true;   // tombstone, not array-removal: the deletion survives a backend merge / poll
+      save();
+      renderAll();
+    });
+
+    return row;
+  }
+
+  function renderList(){
+    var listEl = document.getElementById('list');
+    if(!listEl) return;
+    var arr = visibleComments(pageComments(currentPage));
+    var numMap = pinNumberMap(currentPage);
+
+    var open = [], resolved = [];
+    for(var i=0;i<arr.length;i++){
+      var c = arr[i];
+      if(c.status === 'resolved') resolved.push(c); else open.push(c);
+    }
+    var show;
+    if(listFilter === 'open') show = open;
+    else if(listFilter === 'resolved') show = resolved;
+    else show = open.concat(resolved); // All: OPEN first, then RESOLVED
+
+    listEl.innerHTML = '';
+
+    if(!show.length){
+      var e = document.createElement('div');
+      e.className = 'empty';
+      if(listFilter === 'resolved') e.innerHTML = 'Nothing addressed yet on this page.';
+      else if(listFilter === 'open') e.innerHTML = 'No open items on this page. Nice and clear.';
+      else e.innerHTML = 'No comments on this page yet.<br>Turn on Comment Mode and click the page to pin one, or add a whole-page note.';
+      listEl.appendChild(e);
+      return;
+    }
+
+    show.forEach(function(c){ listEl.appendChild(buildRow(c, numMap[c.id])); });
+  }
+
+  /* =====================================================================
+     "WHAT WE STILL NEED FROM YOU" PANEL + SEND
+     ===================================================================== */
+
+  function outstandingNeeds(){
+    return (store.needs || []).filter(function(n){ return n.status !== 'sent'; });
+  }
+  function sentNeeds(){
+    return (store.needs || []).filter(function(n){ return n.status === 'sent'; });
+  }
+  function unsentLocalComments(){
+    var out = [], c = store.comments || {};
+    Object.keys(c).forEach(function(page){
+      (c[page] || []).forEach(function(cm){
+        if(cm.local === true && !cm.deleted && cm.status !== 'resolved' && (cm.text || '').trim()){
+          out.push({ page: page, ctx: cm.ctx || '', text: cm.text.trim() });
+        }
+      });
+    });
+    return out;
+  }
+  function needsPageLabel(p){
+    for(var i=0;i<PAGES.length;i++){
+      var row = PAGES[i];
+      var file = Array.isArray(row) ? row[0] : (row.file || row.id);
+      if(file === p) return Array.isArray(row) ? row[1] : (row.label || file);
+    }
+    return p;
+  }
+
+  function renderNeeds(){
+    var listEl = document.getElementById('needsList');
+    if(!listEl) return;
+    var needs = store.needs || [];
+    var openCount = outstandingNeeds().length;
+
+    var badge = document.getElementById('needsTabCount');
+    if(badge){
+      badge.textContent = openCount;
+      badge.style.display = openCount ? 'inline-flex' : 'none';
+    }
+    var countEl = document.getElementById('needsCount');
+    if(countEl){
+      countEl.textContent = (openCount === 1 ? '1 outstanding' : openCount + ' outstanding');
+    }
+
+    if(!needs.length){
+      listEl.innerHTML = '<div class="needs-empty">Nothing outstanding right now. You are all set.</div>';
+      return;
+    }
+
+    var html = '';
+    needs.forEach(function(n){
+      var isSent = n.status === 'sent';
+      html +=
+        '<label class="need' + (isSent ? ' need--sent' : '') + '" data-id="' + escapeHtml(n.id) + '">' +
+          '<input type="checkbox" class="need__cb"' + (isSent ? ' checked' : '') + ' />' +
+          '<span class="need__box" aria-hidden="true"></span>' +
+          '<span class="need__body">' +
+            '<span class="need__label">' + escapeHtml(n.label) + '</span>' +
+            '<span class="need__state">' + (isSent ? 'Marked sent' : 'Still needed') + '</span>' +
+          '</span>' +
+        '</label>';
+    });
+    listEl.innerHTML = html;
+
+    listEl.querySelectorAll('.need__cb').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        var row = cb.closest('.need');
+        if(!row) return;
+        var id = row.getAttribute('data-id');
+        var item = (store.needs || []).filter(function(x){ return x.id === id; })[0];
+        if(!item) return;
+        item.status = cb.checked ? 'sent' : 'open';
+        save();
+        renderNeeds();
+      });
+    });
+  }
+
+  function sendUpdate(){
+    var sent = sentNeeds();
+    var comments = unsentLocalComments();
+
+    if(!sent.length && !comments.length){
+      flashSend('Nothing marked to send yet. Tick what you have handled, then send.', true);
+      return;
+    }
+
+    var payload = {
+      client: store.client,
+      sentNeeds: sent.map(function(n){ return { id: n.id, label: n.label }; }),
+      newComments: comments
+    };
+
+    if(WEBHOOK_URL){
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function(r){
+        flashSend(r.ok ? 'Update sent to the team. Thank you.' : 'Send failed (status ' + r.status + '). Please try again.', !r.ok);
+      }).catch(function(){
+        mailtoFallback(sent, comments);
+        flashSend('Could not reach the team directly, opening your email instead.', true);
+      });
+    } else {
+      mailtoFallback(sent, comments);
+      flashSend('Opening your email with the update prefilled.');
+    }
+  }
+
+  function mailtoFallback(sent, comments){
+    var subject = (CONFIG.client || 'Client') + ' preview update';
+    var lines = [];
+    lines.push('Client: ' + (store.client || ''));
+    lines.push('');
+    if(sent.length){
+      lines.push('Items I have now provided (marked sent):');
+      sent.forEach(function(n){ lines.push('- ' + n.label); });
+    } else {
+      lines.push('Items I have now provided (marked sent): none');
+    }
+    lines.push('');
+    if(comments.length){
+      lines.push('New comments left on the preview:');
+      comments.forEach(function(c){
+        var where = needsPageLabel(c.page) + (c.ctx ? ' (near: ' + c.ctx + ')' : '');
+        lines.push('- [' + where + '] ' + c.text);
+      });
+    } else {
+      lines.push('New comments left on the preview: none');
+    }
+    var body = lines.join('\n');
+    var href = 'mailto:' + (CONFIG.contactEmail || 'curtis@agenticpress.ai') +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+    window.location.href = href;
+  }
+
+  function flashSend(msg, isWarn){
+    var el = document.getElementById('sendMsg');
+    if(!el) return;
+    el.textContent = msg;
+    el.className = 'send-msg ' + (isWarn ? 'send-msg--warn' : 'send-msg--ok');
+    el.style.display = 'block';
+    clearTimeout(flashSend._t);
+    flashSend._t = setTimeout(function(){ el.style.display = 'none'; }, 4200);
+  }
+
+  function switchTab(name){
+    document.querySelectorAll('.side-tab').forEach(function(t){
+      var on = t.getAttribute('data-tab') === name;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-panel]').forEach(function(p){
+      p.classList.toggle('is-active', p.getAttribute('data-panel') === name);
+    });
+    if(name === 'needs') renderNeeds();
+  }
+
+  function initNeedsPanel(){
+    document.querySelectorAll('.side-tab').forEach(function(b){
+      b.addEventListener('click', function(){ switchTab(b.getAttribute('data-tab')); });
+    });
+    var sendBtn = document.getElementById('sendUpdateBtn');
+    if(sendBtn) sendBtn.addEventListener('click', sendUpdate);
+    renderNeeds();
+  }
+
+  /* =====================================================================
+     FILTER BAR + ADD-NOTE WIRING
+     ===================================================================== */
+
+  function initFilterBar(){
+    var fb = document.getElementById('filterBar');
+    if(!fb || fb.__wired) return;
+    fb.__wired = true;
+    fb.addEventListener('click', function(e){
+      var b = e.target.closest('.filter__btn');
+      if(b) setFilter(b.getAttribute('data-filter'));
+    });
+  }
+
+  /* whole-page note: no selector, no x/y -> renders as a gold-railed note row */
+  function addPageNote(){
+    var c = {
+      id: uid(),
+      selector: '',
+      fracX: 0.5,
+      fracY: 0.5,
+      x: null,
+      y: null,
+      ctx: '',
+      text: '',
+      status: 'open',
+      resolvedNote: '',
+      local: true
+    };
+    pageComments(currentPage).push(c);
+    save();
+    if(listFilter === 'resolved') setFilter('all');
+    renderAll();
+    focusCommentRow(c.id);
+  }
+  function initAddNote(){
+    var b = document.getElementById('addNoteBtn');
+    if(b) b.addEventListener('click', addPageNote);
+  }
+
+  /* =====================================================================
+     IFRAME / PAGE NAVIGATION + COMMENT-MODE TOGGLE
+     ===================================================================== */
+
+  function populatePageSelect(){
+    var sel = document.getElementById('pageSel');
+    if(!sel) return;
+    sel.innerHTML = '';
+    PAGES.forEach(function(row){
+      var file = Array.isArray(row) ? row[0] : (row.file || row.id);
+      var label = Array.isArray(row) ? row[1] : (row.label || file);
+      var opt = document.createElement('option');
+      opt.value = file;
+      opt.textContent = label;
+      sel.appendChild(opt);
+    });
+    sel.value = currentPage;
+  }
+
+  function loadPage(file){
+    currentPage = file;
+    var sel = document.getElementById('pageSel');
+    if(sel && sel.value !== file) sel.value = file;
+    // reset filter so the new page's comments are all visible
+    listFilter = 'all';
+    var fb = document.getElementById('filterBar');
+    if(fb){
+      fb.querySelectorAll('.filter__btn').forEach(function(b){
+        var on = b.getAttribute('data-filter') === 'all';
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    }
+    // the 'load' event handler (bound once) finishes the wiring + renderAll
+    frame.src = file;
+  }
+
+  function onFrameLoad(){
+    var doc = frameDoc();
+    if(doc){
+      injectPinStyle(doc);
+      bindPinReflow(doc);
+      /* re-attach BOTH handlers: the iframe got a fresh document, so the
+         previous bindings are gone. Missing the hover here meant naming
+         silently stopped working after the first page change. */
+      if(commentMode){ attachCommentClick(doc); attachHover(doc); }
+    }
+    renderAll();
+  }
+
+  function setCommentMode(on){
+    commentMode = !!on;
+    var btn = document.getElementById('toggleBtn');
+    var stage = document.getElementById('stage');
+    if(btn){ btn.classList.toggle('on', commentMode); btn.setAttribute('aria-pressed', commentMode ? 'true' : 'false'); }
+    if(stage) stage.classList.toggle('commenting', commentMode);
+    document.body.classList.toggle('is-commenting', commentMode);
+    var doc = frameDoc();
+    if(commentMode){ attachCommentClick(doc); attachHover(doc); }
+    else { detachCommentClick(doc); detachHover(doc); }
+  }
+
+  function initTopBar(){
+    var sel = document.getElementById('pageSel');
+    if(sel) sel.addEventListener('change', function(){ loadPage(sel.value); });
+
+    var toggle = document.getElementById('toggleBtn');
+    if(toggle) toggle.addEventListener('click', function(){ setCommentMode(!commentMode); });
+
+    if(frame) frame.addEventListener('load', onFrameLoad);
+  }
+
+  /* =====================================================================
+     BOOT
+     ===================================================================== */
+
+  async function boot(){
+    await loadConfig();          // per-client config first: sets PAGES, client, keys, chrome
+
+    initTopBar();
+    initFilterBar();
+    initAddNote();
+    initExport();
+    initNeedsPanel();
+
+    await loadStore();
+
+    populatePageSelect();
+    // first render before the iframe loads so the sidebar is populated immediately
+    renderAll();
+    // load the first page; onFrameLoad re-renders with pins once the doc is ready
+    loadPage(currentPage);
+    // shared backend: light auto-refresh so each side sees the other's edits
+    startBackendPoll();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+
+})();
+</script>
+</body>
+</html>
