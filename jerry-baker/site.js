@@ -4,6 +4,19 @@
 (function () {
   'use strict';
 
+  /* ---- review editor loader ----
+     Injects review.css + review.js ONLY when the URL carries ?review.
+     Curtis reviews at ?review=1; Jerry and Rachael never see the chrome even
+     though the two files sit in the same directory. */
+  if (/[?&]review\b/.test(location.search)) {
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = 'review.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = 'review.js'; js.defer = true;
+    document.head.appendChild(js);
+  }
+
   /* ---- nav: transparent over a hero, solid everywhere else ---- */
   var nav = document.getElementById('nav');
   if (nav) {

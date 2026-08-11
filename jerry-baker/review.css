@@ -1,0 +1,125 @@
+/* ============================================================
+   REVIEW CHROME  ·  loaded only when the URL carries ?review
+   Never part of the client-facing site. See review.js for the loader gate.
+
+   NOTE: do NOT add `[data-block] { position: relative }` or anything with
+   single-class specificity that targets .nav. That is what silently overrode
+   `.nav { position: fixed }` in an earlier version and the header scrolled
+   away with the page. Pins live in their own overlay layer for this reason.
+   ============================================================ */
+
+body.review { cursor: crosshair; }
+
+/* highlight box tracks whatever element is under the cursor */
+#hl { position: absolute; z-index: 8300; pointer-events: none; display: none;
+  border: 2px solid #35C4B5; background: rgba(53,196,181,.1); }
+body.review #hl.on { display: block; }
+
+/* label chip naming the exact element you are about to tag */
+#hlLabel { position: fixed; z-index: 8400; pointer-events: none; display: none;
+  background: #06231F; color: #EAFBF8; font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px; line-height: 1.45; padding: 6px 9px; max-width: 340px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+body.review #hlLabel.on { display: block; }
+#hlLabel b { color: #35C4B5; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; font-size: 10px; }
+#hlLabel i { color: rgba(234,251,248,.62); font-style: normal; }
+
+/* pin overlay, document-flow anchored so no scroll recompute is needed */
+#pinLayer { position: absolute; top: 0; left: 0; width: 100%; height: 0;
+  z-index: 8500; pointer-events: none; }
+.pin { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+  border-radius: 50%; background: #E0483C; color: #fff;
+  font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 12px rgba(0,0,0,.4); cursor: pointer; border: 2px solid #fff;
+  pointer-events: auto; transition: transform .18s ease; }
+.pin:hover, .pin.sel { transform: scale(1.18); background: #C9342A; }
+
+/* ---- bottom chrome bar ---- */
+.pc { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 9000; background: rgba(11,18,32,.95); backdrop-filter: blur(8px);
+  padding: 9px; display: flex; gap: 7px; align-items: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,.36); max-width: calc(100vw - 32px); }
+.pc button, .pc select { font-family: 'Inter', system-ui, sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: .09em; text-transform: uppercase;
+  padding: 11px 16px; border: 1px solid rgba(255,255,255,.2); background: transparent;
+  color: rgba(255,255,255,.68); cursor: pointer; transition: all .25s ease;
+  border-radius: 0; }
+.pc button:hover, .pc select:hover { color: #fff; border-color: rgba(255,255,255,.5); }
+.pc button.is-live { background: #E0483C; color: #fff; border-color: #E0483C; }
+.pc select { text-transform: none; letter-spacing: .02em; max-width: 210px; }
+.pc select option { background: #0B1220; color: #fff; }
+.pc__tag { font-family: 'Inter', system-ui, sans-serif; font-size: 9.5px;
+  letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.4);
+  padding: 0 8px 0 4px; white-space: nowrap; }
+.pc__count { background: #35C4B5; color: #06231F; font-weight: 700;
+  padding: 3px 7px; font-size: 10px; margin-left: 4px; }
+
+/* ---- feedback panel ---- */
+.rp { position: fixed; top: 0; right: 0; bottom: 0; width: 380px; z-index: 9100;
+  background: #0B1220; color: #E7EFED; transform: translateX(100%);
+  transition: transform .32s cubic-bezier(.2,.8,.2,1); display: flex;
+  flex-direction: column; box-shadow: -8px 0 40px rgba(0,0,0,.4); }
+body.review-panel .rp { transform: translateX(0); }
+.rp__head { padding: 20px 22px; border-bottom: 1px solid rgba(255,255,255,.12);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rp__head h2 { font-family: 'Inter', system-ui, sans-serif; font-size: 12px;
+  font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: #fff; margin: 0; }
+.rp__x { background: none; border: 0; color: rgba(255,255,255,.5); font-size: 22px;
+  cursor: pointer; line-height: 1; padding: 0 4px; }
+.rp__list { flex: 1; overflow-y: auto; padding: 8px 0; }
+.rp__item { display: flex; gap: 12px; padding: 14px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.07); }
+.rp__num { flex: none; width: 22px; height: 22px; border-radius: 50%;
+  background: #E0483C; color: #fff; font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px; font-weight: 700; display: flex; align-items: center;
+  justify-content: center; }
+.rp__body { flex: 1; min-width: 0; }
+.rp__where { font-family: 'Inter', system-ui, sans-serif; font-size: 9.5px;
+  letter-spacing: .1em; text-transform: uppercase; color: #35C4B5; margin-bottom: 5px; }
+.rp__pg { color: rgba(255,255,255,.38); }
+.rp__txt { font-family: 'Inter', system-ui, sans-serif; font-size: 13px;
+  line-height: 1.5; color: rgba(255,255,255,.86); word-wrap: break-word; }
+.rp__del { background: none; border: 0; color: rgba(255,255,255,.28); cursor: pointer;
+  font-size: 17px; line-height: 1; padding: 0 2px; flex: none; }
+.rp__del:hover { color: #E0483C; }
+.rp__empty { padding: 24px 22px; font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.5); }
+.rp__foot { padding: 16px 22px; border-top: 1px solid rgba(255,255,255,.12);
+  display: grid; gap: 8px; }
+.rp__foot button { font-family: 'Inter', system-ui, sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: .09em; text-transform: uppercase; padding: 12px;
+  border: 1px solid rgba(255,255,255,.22); background: transparent;
+  color: rgba(255,255,255,.72); cursor: pointer; border-radius: 0; }
+.rp__foot button.primary { background: #35C4B5; color: #06231F; border-color: #35C4B5;
+  font-weight: 700; }
+.rp__foot button:hover { color: #fff; border-color: #fff; }
+.rp__foot button.primary:hover { color: #06231F; }
+
+/* ---- comment box ---- */
+.cmt { position: fixed; z-index: 9200; width: 310px; background: #fff; color: #0B1220;
+  box-shadow: 0 12px 44px rgba(0,0,0,.34); display: none; }
+.cmt.is-open { display: block; }
+.cmt__where { font-family: 'Inter', system-ui, sans-serif; font-size: 9.5px;
+  letter-spacing: .1em; text-transform: uppercase; color: #0D6E64;
+  padding: 11px 14px 0; line-height: 1.4; }
+.cmt textarea { width: 100%; border: 0; padding: 11px 14px; font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13.5px; line-height: 1.5; resize: vertical; min-height: 92px;
+  color: #0B1220; background: #fff; }
+.cmt textarea:focus { outline: none; }
+.cmt__row { display: flex; gap: 6px; padding: 10px 12px; border-top: 1px solid #E4E9F0;
+  justify-content: flex-end; }
+.cmt__row button { font-family: 'Inter', system-ui, sans-serif; font-size: 11px;
+  font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  padding: 9px 15px; border: 1px solid #D5DCE7; background: #fff; color: #5A6472;
+  cursor: pointer; border-radius: 0; }
+.cmt__row button.save { background: #0B1220; color: #fff; border-color: #0B1220; }
+.cmt__row button#cmtDelete { margin-right: auto; border-color: #F0C9C5; color: #C9342A; }
+
+@media (max-width: 720px) {
+  .rp { width: 100%; }
+  .pc { flex-wrap: wrap; justify-content: center; }
+  .pc select { max-width: 140px; }
+}
