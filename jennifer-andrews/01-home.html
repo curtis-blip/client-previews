@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jennifer Andrews Real Estate · Shelbyville &amp; Central Indiana</title>
+    <meta name="description" content="Residential and investment real estate across Shelby County and Central Indiana, from a broker who buys and renovates here herself. Jennifer Andrews, Carpenter REALTORS, Shelbyville, Indiana.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    /* ========================================================================
+       JENNIFER ANDREWS · HOME
+       Look: the Editorial Luxe benchmark register (Raleway 200 uppercase,
+       generous rhythm, single accent on a warm neutral).
+       Composition: assembled from _block-library variants, deliberately NOT
+       the ones Michael Sapp, Dodee Hill and Rhonda v2 share, because those
+       three already read as one site.
+         hero            home-hero V7   minimal, type only (V6 and V8 both rejected)
+         about teaser    about-teaser V3 asymmetric, sticky portrait, inline creds
+         buy / sell      buy-sell-paths V3 magazine spread, overlapping card
+         investment      signature band, her differentiator, carries the ROI slot
+         communities     communities V2 full-bleed alternating featured
+         testimonials    testimonials V1 featured + supporting
+         home value      parallax band (HVT-3 replaced, Curtis 2026-08-13)
+         closing CTA     closing-cta V4 photo + content card overlap
+         footer          footer F-B masthead (all three lookalikes use F-A)
+       ======================================================================== */
+
+    /* ---------- nav: her name is the brand, Carpenter is an affiliation ---- */
+    .ja-brand { display:flex; align-items:center; gap:18px; text-decoration:none; }
+    .ja-brand__name {
+        font-family: var(--font-heading); font-weight:200; font-size:19px;
+        letter-spacing:4px; text-transform:uppercase; line-height:1.2; color: var(--white);
+    }
+    .ja-brand__name span {
+        display:block; font-size:9px; font-weight:500; letter-spacing:4.5px;
+        color: rgba(255,255,255,0.62); margin-top:5px;
+    }
+    .ja-brand__rule { width:1px; height:34px; background: rgba(255,255,255,0.28); }
+    .ja-brand__mark { height:42px; width:auto; opacity:0.8; }
+    .nav--solid .ja-brand__name { color: var(--black); }
+    .nav--solid .ja-brand__name span { color: var(--text-muted); }
+    .nav--solid .ja-brand__rule { background: var(--border-light); }
+    .nav--solid .ja-knock-light { display:none; }
+    .nav--transparent .ja-knock-dark { display:none; }
+    /* Inherited defect: .btn--outline is black text on a black border, so the
+       nav CTA is invisible while the nav is transparent over a hero. Present in
+       the register itself, not introduced here. */
+    .nav--transparent .nav__links .btn--outline {
+        color: var(--white); border-color: rgba(255,255,255,0.65);
+    }
+    .nav--transparent .nav__links .btn--outline:hover {
+        background: var(--white); border-color: var(--white); color: var(--black);
+    }
+
+    /* ---------- HERO · home-hero V7, minimal, type only -------------------
+       Curtis 2026-08-13, after rejecting V6 and V8: the photograph is the hero.
+       A title card (V8) was a 660x560 opaque panel over an 846px frame and
+       buried the picture; anything that occupies the frame is the same mistake
+       at a different size. Here the only marks on the photo are an eyebrow, the
+       H1 and two text links. No supporting paragraph, no card, no filled
+       buttons. Her positioning is carried by the About teaser directly below. */
+    .ja-hero {
+        position:relative; min-height:92vh; display:flex; align-items:center;
+        text-align:center; overflow:hidden; background:#0C1618;
+    }
+    .ja-hero__bg {
+        position:absolute; inset:0; background-size:cover; background-position:center 46%;
+        opacity:0.92;
+    }
+    /* A top strip so the transparent nav stays legible, plus a soft ellipse
+       behind the type only. The edges of the photograph stay open. */
+    .ja-hero::after {
+        content:''; position:absolute; inset:0;
+        background:
+            linear-gradient(180deg, rgba(6,12,14,0.54) 0%, rgba(6,12,14,0.14) 15%, rgba(6,12,14,0) 30%),
+            radial-gradient(ellipse 58% 40% at 50% 48%, rgba(6,12,14,0.66) 0%, rgba(6,12,14,0.30) 55%, rgba(6,12,14,0) 100%),
+            linear-gradient(180deg, rgba(6,12,14,0) 62%, rgba(6,12,14,0.42) 100%);
+    }
+    .ja-hero__inner {
+        position:relative; z-index:2; max-width: var(--max-width); width:100%;
+        margin:0 auto; padding:0 24px;
+    }
+    .ja-hero__block { max-width:920px; margin:0 auto; }
+    /* Lifted off the palette teal: #8FBFCB washed out against the sunlit road
+       in the type-only layout, where there is no card to sit on. */
+    .ja-hero__label {
+        font-family: var(--font-heading); font-size:11px; font-weight:600; letter-spacing:0.36em;
+        text-transform:uppercase; color:#B9DCE4; margin:0 0 26px;
+        text-shadow:0 1px 16px rgba(6,12,14,0.85);
+    }
+    .ja-hero h1 {
+        color: var(--white); font-family: var(--font-heading); font-weight:200;
+        font-size: clamp(33px,5.1vw,66px); line-height:1.10; letter-spacing:0.035em;
+        text-transform:uppercase; margin:0 0 38px;
+        text-shadow:0 2px 34px rgba(6,12,14,0.62);
+    }
+    /* Without the break it wrapped as "AND A FEW I" / "OWN MYSELF", leaving a
+       dangling I. Below 700px the natural wrap is better. */
+    .h1-break { display:inline; }
+    @media (max-width:700px){ .h1-break { display:none; } }
+    .ja-hero__actions { display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center; }
+    /* Text links, not filled buttons. A button block is the card mistake, small. */
+    .ja-hero__go {
+        font-family: var(--font-heading); font-size:12px; font-weight:500; letter-spacing:0.2em;
+        text-transform:uppercase; color: var(--white); padding-bottom:7px;
+        border-bottom:1px solid rgba(255,255,255,0.55); transition: all 240ms ease;
+        text-shadow:0 1px 14px rgba(6,12,14,0.7);
+    }
+    .ja-hero__go:hover { color:#B9DCE4; border-bottom-color:#B9DCE4; }
+
+    /* ---------- ABOUT · about-teaser V3, asymmetric + inline credentials -- */
+    .ja-about { padding: var(--section-padding); background: var(--gray-bg); }
+    .ja-about__inner {
+        max-width: var(--max-width); margin:0 auto; padding:0 24px;
+        display:grid; grid-template-columns:0.72fr 1.28fr; gap:88px; align-items:center;
+    }
+    /* The library variant stickies the portrait against a long scrolling copy
+       column. Her copy is shorter, so sticky just left a tall void under the
+       photo. Centring it against the copy column closes the gap. */
+    .ja-about__photo { max-width:380px; width:100%; }
+    .ja-about__photo img { width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 20%; display:block; }
+    .ja-about__eyebrow {
+        font-family: var(--font-heading); font-size:12px; font-weight:600; letter-spacing:3px;
+        text-transform:uppercase; color: var(--purple); margin:0 0 20px; display:block;
+    }
+    .ja-about h2 { font-size: clamp(26px,3vw,38px); line-height:1.24; margin:0 0 26px; }
+    .ja-about p { font-size:16px; line-height:1.85; color: var(--text-muted); margin:0 0 18px; }
+    .ja-about p a { color: var(--purple); border-bottom:1px solid rgba(46,95,107,0.35); }
+    .ja-about p a:hover { border-bottom-color: var(--purple); }
+    /* Credentials, not numbers. Doctrine bans stats that go stale. */
+    .ja-creds {
+        margin-top:44px; padding-top:38px; border-top:1px solid var(--border-strong);
+        display:grid; grid-template-columns:repeat(4,1fr); gap:30px;
+    }
+    .ja-creds__key {
+        font-family: var(--font-heading); font-size: clamp(20px,2.2vw,27px); font-weight:300;
+        letter-spacing:0.06em; color: var(--purple); margin-bottom:10px; line-height:1;
+    }
+    .ja-creds__label {
+        font-family: var(--font-body); font-size:13px; line-height:1.5; color: var(--text-muted);
+    }
+    .ja-about .btn { margin-top:40px; }
+
+    /* ---------- PATHS · buy-sell-paths V3, magazine spread ---------------- */
+    .ja-paths { padding: var(--section-padding); background: var(--white); }
+    .ja-paths__inner { max-width: var(--max-width); margin:0 auto; padding:0 24px; }
+    .ja-paths__row { position:relative; display:flex; align-items:center; min-height:520px; }
+    .ja-paths__row + .ja-paths__row { margin-top:104px; }
+    /* flex-basis, not width: as a shrinkable flex item the photo collapsed to
+       ~59% on the forward row, so the card sat beside it instead of overlapping
+       it and the magazine effect was lost on every other row. */
+    .ja-paths__photo { position:relative; flex:0 0 70%; aspect-ratio:4/3; overflow:hidden; background: var(--black); }
+    .ja-paths__row--reverse .ja-paths__photo { margin-left:auto; }
+    .ja-paths__photo img {
+        position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+        transition: transform 1500ms cubic-bezier(0.2,0.8,0.2,1);
+    }
+    .ja-paths__row:hover .ja-paths__photo img { transform: scale(1.04); }
+    .ja-paths__card {
+        position:absolute; top:50%; transform:translateY(-50%); right:0; max-width:470px;
+        background: var(--white); padding:52px 46px; z-index:2; border-top:3px solid var(--purple);
+        box-shadow: 0 30px 70px rgba(13,13,13,0.10);
+    }
+    .ja-paths__row--reverse .ja-paths__card { right:auto; left:0; }
+    .ja-paths__num {
+        font-family: var(--font-heading); font-size:11px; font-weight:500; letter-spacing:0.3em;
+        text-transform:uppercase; color: var(--purple); margin:0 0 22px;
+    }
+    .ja-paths__card h2 { font-size: clamp(24px,2.6vw,33px); line-height:1.2; margin:0 0 18px; }
+    .ja-paths__card p { font-size:15.5px; line-height:1.75; color: var(--text-muted); margin:0 0 28px; }
+
+    /* ---------- INVESTMENT SIGNATURE BAND -------------------------------- */
+    .ja-invest { position:relative; background-size:cover; background-position:center; color: var(--white); }
+    .ja-invest::before { content:''; position:absolute; inset:0; background: rgba(8,16,18,0.86); }
+    .ja-invest__inner {
+        position:relative; z-index:2; max-width: var(--max-width); margin:0 auto;
+        padding:132px 24px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    .ja-invest__eyebrow {
+        font-family: var(--font-heading); font-size:12px; font-weight:600; letter-spacing:3px;
+        text-transform:uppercase; color: var(--gold); margin:0 0 18px; display:block;
+    }
+    .ja-invest h2 { color: var(--white); font-size: clamp(28px,3.4vw,42px); line-height:1.22; margin:0 0 24px; }
+    .ja-invest p { color: rgba(255,255,255,0.8); font-size:16px; line-height:1.85; margin:0 0 18px; }
+    .ja-invest__ledger { border-top:1px solid rgba(255,255,255,0.22); }
+    .ja-invest__row {
+        display:grid; grid-template-columns:150px 1fr; gap:26px; padding:24px 0;
+        border-bottom:1px solid rgba(255,255,255,0.14); align-items:baseline;
+    }
+    .ja-invest__term {
+        font-family: var(--font-heading); font-weight:300; font-size:17px; letter-spacing:0.18em;
+        text-transform:uppercase; color: var(--gold);
+    }
+    .ja-invest__def { font-size:15px; line-height:1.7; color: rgba(255,255,255,0.78); }
+    .ja-invest__tool { margin-top:32px; border:1px dashed rgba(143,191,203,0.5); padding:24px; text-align:center; }
+    .ja-invest__tool b {
+        display:block; font-family: var(--font-heading); font-size:11px; font-weight:600;
+        letter-spacing:0.22em; text-transform:uppercase; color: var(--gold); margin-bottom:9px;
+    }
+    .ja-invest__tool span { font-size:14px; line-height:1.7; color: rgba(255,255,255,0.6); }
+
+    /* ---------- COMMUNITIES · V2 full-bleed alternating featured ---------- */
+    .ja-comm__row { display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+    .ja-comm__row--reverse .ja-comm__photo { order:2; }
+    .ja-comm__photo { position:relative; min-height:560px; background-size:cover; background-position:center; }
+    .ja-comm__content {
+        display:flex; flex-direction:column; justify-content:center;
+        padding:88px 76px; max-width:620px; margin:0 auto;
+    }
+    .ja-comm__row:nth-child(even) .ja-comm__content { background: var(--gray-bg); }
+    .ja-comm__num {
+        font-family: var(--font-heading); font-size:11px; font-weight:500; letter-spacing:0.3em;
+        text-transform:uppercase; color: var(--purple); display:inline-flex; align-items:center;
+        gap:14px; margin:0 0 26px;
+    }
+    .ja-comm__num::after { content:''; width:40px; height:1px; background: var(--purple); }
+    .ja-comm__name {
+        font-family: var(--font-heading); font-size: clamp(32px,4vw,50px); font-weight:200;
+        line-height:1.1; letter-spacing:0.03em; text-transform:uppercase; margin:0 0 22px;
+    }
+    .ja-comm__desc { font-size:16.5px; line-height:1.75; color: var(--text-muted); margin:0 0 32px; }
+    .ja-comm__link {
+        align-self:flex-start; font-family: var(--font-heading); font-size:12px; font-weight:500;
+        letter-spacing:0.18em; text-transform:uppercase; color: var(--black);
+        padding-bottom:8px; border-bottom:1px solid var(--black); transition: all 220ms ease;
+    }
+    .ja-comm__link:hover { color: var(--purple); border-bottom-color: var(--purple); }
+    .ja-comm__all { padding:104px 24px; text-align:center; background: var(--white); }
+    .ja-comm__all p { color: var(--text-muted); font-size:16px; max-width:56ch; margin:0 auto 28px; line-height:1.75; }
+    .img-note {
+        position:absolute; top:18px; right:18px; z-index:3; background: rgba(13,13,13,0.74);
+        border:1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.85);
+        font-family: var(--font-heading); font-size:9px; font-weight:600; letter-spacing:1.6px;
+        text-transform:uppercase; padding:5px 9px;
+    }
+
+    /* ---------- TESTIMONIALS · V1 featured + supporting ------------------- */
+    .ja-tt { padding: var(--section-padding); background: var(--gray-bg); }
+    .ja-tt__inner { max-width: var(--max-width); margin:0 auto; padding:0 24px; }
+    .ja-tt__grid { display:grid; grid-template-columns:1.6fr 1fr; gap:26px; align-items:start; margin-top:52px; }
+    .ja-tt__feature { background: var(--white); padding:56px 52px; border-top:3px solid var(--purple); }
+    .ja-tt__feature blockquote {
+        margin:0; font-family: var(--font-heading); font-weight:300;
+        font-size: clamp(20px,2.1vw,27px); line-height:1.5; color: var(--text-dark);
+    }
+    .ja-tt__side { display:grid; gap:26px; }
+    .ja-tt__card { background: var(--white); padding:34px 32px; }
+    .ja-tt__card blockquote { margin:0; font-size:15.5px; line-height:1.72; color: var(--text-muted); }
+    .ja-tt__by {
+        margin:26px 0 0; font-family: var(--font-heading); font-size:11px; font-weight:600;
+        letter-spacing:0.2em; text-transform:uppercase; color: var(--purple);
+    }
+    .ja-stars { color: var(--purple); letter-spacing:0.24em; font-size:13px; margin-bottom:20px; }
+
+    /* ---------- HOME VALUE · parallax band (Curtis 2026-08-13, replaced HVT-3)
+       background-attachment:fixed gives the parallax on desktop. It is ignored
+       or janky on most mobile browsers, so the media query pins it to scroll
+       rather than leaving it broken. */
+    .ja-value {
+        position:relative; background-image:url('https://images.unsplash.com/photo-1768700519387-e7723997cdd8?w=2200&q=80&auto=format&fit=crop');
+        background-size:cover; background-position:center 40%; background-attachment:fixed;
+        padding:clamp(120px,13vw,190px) 0;
+    }
+    .ja-value::before { content:''; position:absolute; inset:0;
+        background:linear-gradient(180deg,rgba(6,12,14,.72) 0%,rgba(6,12,14,.58) 50%,rgba(6,12,14,.78) 100%); }
+    .ja-value__inner { position:relative; z-index:2; max-width:var(--max-width); margin:0 auto; padding:0 24px;
+        display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(44px,6vw,84px); align-items:center; }
+    .ja-value h2 { color:var(--white); font-size:clamp(28px,3.5vw,44px); line-height:1.2; margin:0 0 22px;
+        text-shadow:0 2px 30px rgba(6,12,14,.5); }
+    .ja-value__lead { font-size:17px; line-height:1.8; color:rgba(255,255,255,.85); margin:0 0 30px;
+        text-shadow:0 1px 18px rgba(6,12,14,.6); }
+    .ja-value__card { background:rgba(13,13,13,.62); backdrop-filter:blur(6px);
+        border:1px solid rgba(255,255,255,.2); padding:clamp(34px,3.6vw,46px); }
+    .ja-value__card h3 { font-family:var(--font-heading); font-size:12px; font-weight:600; letter-spacing:.22em;
+        text-transform:uppercase; color:var(--gold); margin:0 0 24px; }
+    .ja-value__list { list-style:none; padding:0; margin:0 0 32px; }
+    .ja-value__list li { display:grid; grid-template-columns:auto 1fr; gap:16px; padding:16px 0;
+        border-top:1px solid rgba(255,255,255,.16); font-size:15.5px; line-height:1.6; color:rgba(255,255,255,.9); }
+    .ja-value__list li:last-child { border-bottom:1px solid rgba(255,255,255,.16); }
+    .ja-value__list svg { margin-top:4px; }
+    @media (max-width:900px) {
+        .ja-value { background-attachment:scroll; }
+        .ja-value__inner { grid-template-columns:1fr; }
+    }
+
+    /* ---------- CLOSING CTA · V4 photo + content card overlap ------------- */
+    .ja-cta { position:relative; padding:0; background: var(--white); }
+    .ja-cta__media { position:relative; height:clamp(400px,46vw,580px); overflow:hidden; }
+    .ja-cta__media img { width:100%; height:100%; object-fit:cover; }
+    .ja-cta__media::after {
+        content:''; position:absolute; inset:0;
+        background: linear-gradient(90deg, rgba(8,16,18,0.82) 0%, rgba(8,16,18,0.30) 68%);
+    }
+    .ja-cta__wrap { position:relative; z-index:2; max-width: var(--max-width); margin:-150px auto 0; padding:0 24px 104px; }
+    .ja-cta__card { background: var(--black); color: var(--white); padding:64px 60px; max-width:660px; }
+    .ja-cta__eyebrow {
+        font-family: var(--font-heading); font-size:12px; font-weight:600; letter-spacing:3px;
+        text-transform:uppercase; color: var(--gold); margin:0 0 18px; display:block;
+    }
+    .ja-cta__card h2 { color: var(--white); font-size: clamp(26px,3vw,38px); line-height:1.24; margin:0 0 20px; }
+    .ja-cta__card p { color: rgba(255,255,255,0.78); font-size:16px; line-height:1.8; margin:0 0 34px; }
+    .ja-cta__actions { display:flex; flex-wrap:wrap; gap:14px; }
+
+    /* ---------- FOOTER · F-B masthead ------------------------------------- */
+    .ja-foot { background: var(--black); color: var(--white); padding:104px 0 34px; }
+    .ja-foot__inner { max-width: var(--max-width); margin:0 auto; padding:0 24px; }
+    .ja-foot__masthead {
+        font-family: var(--font-heading); font-weight:200;
+        font-size: clamp(38px,7.6vw,104px); line-height:0.98; letter-spacing:0.02em;
+        text-transform:uppercase; color: var(--white); margin:0 0 12px;
+    }
+    .ja-foot__sub {
+        font-family: var(--font-heading); font-size: clamp(10px,1vw,13px); font-weight:500;
+        letter-spacing:0.32em; text-transform:uppercase; color: var(--gold); margin:0 0 64px;
+    }
+    .ja-foot__row {
+        display:flex; flex-wrap:wrap; gap:14px 40px; padding:34px 0;
+        border-top:1px solid rgba(255,255,255,0.16); border-bottom:1px solid rgba(255,255,255,0.16);
+    }
+    .ja-foot__row a {
+        font-family: var(--font-heading); font-size:12px; font-weight:500; letter-spacing:0.16em;
+        text-transform:uppercase; color: rgba(255,255,255,0.74); transition:color var(--transition);
+    }
+    .ja-foot__row a:hover { color: var(--white); }
+    .ja-foot__base {
+        display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; padding:48px 0 40px;
+    }
+    .ja-foot__base p { font-size:14px; line-height:1.8; color: rgba(255,255,255,0.6); margin:0 0 10px; }
+    .ja-foot__base a { color: rgba(255,255,255,0.74); }
+    .ja-foot__base a:hover { color: var(--white); }
+    .ja-foot__h { font-family: var(--font-heading); font-size:10.5px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color: var(--gold); margin:0 0 16px; }
+    .ja-foot__social { display:flex; gap:12px; margin-top:20px; list-style:none; padding:0; flex-wrap:wrap; }
+    .ja-foot__social a {
+        display:flex; align-items:center; justify-content:center; width:40px; height:40px;
+        border:1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); transition: all var(--transition);
+    }
+    .ja-foot__social a:hover { background: var(--purple); border-color: var(--purple); color: var(--white); }
+    .ja-foot__legal {
+        border-top:1px solid rgba(255,255,255,0.12); padding-top:26px; text-align:center;
+        font-size:12px; line-height:1.9; color: rgba(255,255,255,0.42);
+    }
+    .ja-foot__legal a { color: rgba(255,255,255,0.55); }
+    .ja-foot__legal a:hover { color: var(--gold); }
+    .ja-marks { display:flex; align-items:center; gap:16px; margin-top:22px; }
+    .ja-marks img { height:34px; width:auto; opacity:0.7; }
+
+    /* ---------- responsive ------------------------------------------------ */
+    @media (max-width:1024px){
+        .ja-about__inner, .ja-invest__inner, .ja-value__inner, .ja-tt__grid { grid-template-columns:1fr; gap:48px; }
+        .ja-about__photo { position:relative; top:auto; margin:0 auto; }
+        .ja-creds { grid-template-columns:repeat(2,1fr); }
+        .ja-comm__row, .ja-comm__row--reverse { grid-template-columns:1fr; }
+        .ja-comm__row--reverse .ja-comm__photo { order:0; }
+        .ja-comm__photo { min-height:340px; }
+        .ja-comm__content { padding:64px 32px; max-width:none; }
+        .ja-paths__row { flex-direction:column; min-height:0; align-items:stretch; }
+        .ja-paths__photo, .ja-paths__row--reverse .ja-paths__photo { width:100%; margin:0; }
+        .ja-paths__card, .ja-paths__row--reverse .ja-paths__card {
+            position:relative; top:auto; left:auto; right:auto; transform:none;
+            max-width:none; margin:-56px 24px 0;
+        }
+        .ja-foot__base { grid-template-columns:1fr 1fr; }
+        .ja-cta__wrap { margin-top:-100px; }
+    }
+    /* The register's nav hides .nav__links at 1024 but never .nav__phone, so on
+       a phone the wordmark, lockup, phone and hamburger collide. */
+    @media (max-width:760px){
+        .nav__phone { display:none; }
+        .ja-brand__mark, .ja-brand__rule { display:none; }
+        .ja-brand__name { font-size:16px; letter-spacing:3px; }
+        .ja-brand__name span { font-size:8px; letter-spacing:3.5px; }
+        .ja-hero { min-height:640px; }
+        .ja-creds { grid-template-columns:1fr 1fr; gap:24px; }
+        /* "GREENSBURG" at the 32px clamp floor, uppercase and letterspaced, is
+           wider than the card's inner width on a narrow phone and pushed the
+           document 10px past the viewport. */
+        .ja-comm__content { padding:56px 24px; }
+        .ja-comm__name { font-size:clamp(25px,6.4vw,38px); }
+        .ja-foot__base { grid-template-columns:1fr; gap:34px; }
+        .ja-cta__card { padding:44px 28px; }
+        .ja-value__card { padding:38px 28px; }
+        .ja-tt__feature { padding:38px 30px; }
+    }
+    </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent",
+ "name": "Jennifer Andrews Real Estate",
+ "telephone": "+1-317-488-7739",
+ "email": "jandrews@callcarpenter.com",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "1011 North Riley Highway",
+  "addressLocality": "Shelbyville",
+  "addressRegion": "IN",
+  "postalCode": "46176",
+  "addressCountry": "US"
+ },
+ "areaServed": ["Shelbyville, IN","Rushville, IN","Greensburg, IN","Greenfield, IN","Franklin, IN","Whiteland, IN","Columbus, IN","Edinburgh, IN","Greenwood, IN"],
+ "memberOf": { "@type": "Organization", "name": "Carpenter REALTORS" },
+ "url": "https://jenandrewsrealestate.com/",
+ "founder": { "@type": "Person", "name": "Jennifer Andrews", "jobTitle": "Real Estate Broker" },
+ "hasCredential": ["Accredited Buyer's Representative (ABR)","Seller Representative Specialist (SRS)","Military Relocation Professional (MRP)"],
+ "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "reviewCount": "23" },
+ "sameAs": [
+  "https://www.facebook.com/jenandrewsrealestate/",
+  "https://www.instagram.com/jenandrewsrealestate/",
+  "https://x.com/soldwithjen",
+  "https://www.linkedin.com/in/jennifer-andrews-58a3051b9/",
+  "https://www.zillow.com/profile/jandrews46176",
+  "https://www.youtube.com/@jenniferandrewscarpenterre7280"
+ ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav nav--transparent" id="mainNav">
+    <a href="01-home.html" class="ja-brand" aria-label="Jennifer Andrews Real Estate, home">
+        <span class="ja-brand__name">Jennifer Andrews<span>Real Estate</span></span>
+        <span class="ja-brand__rule" aria-hidden="true"></span>
+        <img src="assets/logo-white.png" alt="Carpenter REALTORS" class="ja-brand__mark ja-knock-light">
+        <img src="assets/logo-ink.png" alt="Carpenter REALTORS" class="ja-brand__mark ja-knock-dark">
+    </a>
+    <ul class="nav__links">
+        <li><a href="04-home-search.html">Home Search</a></li>
+        <li class="nav__dropdown">
+            <a href="05-buyers-guide.html">Buy</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="05-buyers-guide.html">Buyer's Guide</a></li>
+                <li><a href="07-investment-property.html">Investment Property</a></li>
+                <li><a href="04-home-search.html">Home Search</a></li>
+            </ul>
+        </li>
+        <li class="nav__dropdown">
+            <a href="06-sellers-guide.html">Sell</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="06-sellers-guide.html">Seller's Guide</a></li>
+                <li><a href="08-home-valuation.html">What's My Home Worth</a></li>
+            </ul>
+        </li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li class="nav__dropdown">
+            <a href="02-about.html">About</a>
+            <ul class="nav__dropdown-menu">
+                <li><a href="02-about.html">About Jennifer</a></li>
+                <li><a href="09-testimonials.html">Testimonials</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html" class="btn btn--outline" style="padding:10px 24px;">Contact</a></li>
+    </ul>
+    <a href="tel:3174887739" class="nav__phone">(317) 488-7739</a>
+    <button class="nav__hamburger" aria-label="Open menu" id="hamburgerBtn">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<div class="mobile-menu__overlay" id="mobileMenuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+    <ul>
+        <li><a href="04-home-search.html">Home Search</a></li>
+        <li><a href="05-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="06-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="07-investment-property.html">Investment Property</a></li>
+        <li><a href="08-home-valuation.html">What's My Home Worth</a></li>
+        <li><a href="03-communities.html">Communities</a></li>
+        <li><a href="02-about.html">About Jennifer</a></li>
+        <li><a href="09-testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p style="margin-top:32px;font-family:var(--font-heading);font-size:13px;letter-spacing:2px;text-transform:uppercase;">
+        <a href="tel:3174887739">(317) 488-7739</a>
+    </p>
+</aside>
+
+<main>
+
+    <!-- ============ HERO · V7 minimal, type only ============ -->
+    <section class="ja-hero">
+        <div class="ja-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1761839259488-2bdeeae794f5?w=2400&amp;q=80&amp;auto=format&amp;fit=crop');"></div>
+        <div class="ja-hero__inner">
+            <div class="ja-hero__block">
+                <p class="ja-hero__label">Shelbyville &nbsp;·&nbsp; Shelby County, Indiana</p>
+                <h1>Nine towns, and a few<br class="h1-break">I own myself</h1>
+                <div class="ja-hero__actions">
+                    <a href="contact.html" class="ja-hero__go">Talk To Jennifer</a>
+                    <a href="04-home-search.html" class="ja-hero__go">Search Homes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT · V3 asymmetric + inline credentials ============ -->
+    <section class="ja-about">
+        <div class="ja-about__inner">
+            <div class="ja-about__photo">
+                <img src="assets/portrait.jpg" alt="Jennifer Andrews, real estate broker with Carpenter REALTORS in Shelbyville, Indiana">
+            </div>
+            <div>
+                <span class="ja-about__eyebrow">Meet Jennifer</span>
+                <h2>Most of what she knows about these towns did not come from the MLS</h2>
+                <p>Jennifer earned her license in 2020 and has worked the same stretch of Central Indiana every year since. She came up through Leadership Shelby County and sits with the Chamber, Mainstreet Shelbyville, and the MHP Women's Alliance. That is the part of the job that never shows up on a listing sheet, and it is the reason she can tell you what is happening on a street before you write an offer on it.</p>
+                <p>She is solo by choice. The person who answers the phone is the person who negotiates your contract, which puts a deliberate limit on how many clients she takes at once. The <a href="05-buyers-guide.html">buyer's guide</a> and the <a href="06-sellers-guide.html">seller's guide</a> both set out how she works.</p>
+                <div class="ja-creds">
+                    <div>
+                        <div class="ja-creds__key">ABR</div>
+                        <div class="ja-creds__label">Accredited Buyer's Representative, the buy side</div>
+                    </div>
+                    <div>
+                        <div class="ja-creds__key">SRS</div>
+                        <div class="ja-creds__label">Seller Representative Specialist, the list side</div>
+                    </div>
+                    <div>
+                        <div class="ja-creds__key">MRP</div>
+                        <div class="ja-creds__label">Military Relocation Professional, and Camp Atterbury is next door</div>
+                    </div>
+                    <div>
+                        <div class="ja-creds__key">2020</div>
+                        <div class="ja-creds__label">Licensed, and in the same nine towns ever since</div>
+                    </div>
+                </div>
+                <a href="02-about.html" class="btn btn--outline">Her Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PATHS · V3 magazine spread ============ -->
+    <section class="ja-paths">
+        <div class="ja-paths__inner">
+            <div class="ja-paths__row">
+                <div class="ja-paths__photo">
+                    <img src="https://images.unsplash.com/photo-1741156386380-0236c72eb6f9?w=1600&amp;q=80&amp;auto=format&amp;fit=crop" alt="A set of house keys held in front of a front entrance">
+                </div>
+                <div class="ja-paths__card">
+                    <p class="ja-paths__num">01 &nbsp;·&nbsp; Buying</p>
+                    <h2>First house, or the next one</h2>
+                    <p>A lot of her buyers are buying their first. You get the offer, the inspection, the appraisal and what actually happens at closing explained in plain words before you need to know any of it, not while you are signing.</p>
+                    <a href="05-buyers-guide.html" class="btn btn--outline">Buyer's Guide</a>
+                </div>
+            </div>
+            <div class="ja-paths__row ja-paths__row--reverse">
+                <div class="ja-paths__photo">
+                    <img src="https://images.unsplash.com/photo-1784258074509-dfebb3bbf34e?w=1600&amp;q=80&amp;auto=format&amp;fit=crop" alt="A traditional two story house with white shutters and a covered front porch">
+                </div>
+                <div class="ja-paths__card">
+                    <p class="ja-paths__num">02 &nbsp;·&nbsp; Selling</p>
+                    <h2>Priced from the comps, not from hope</h2>
+                    <p>Overpricing the first two weeks costs you the buyers who were ready to move. In a small market there are fewer comps to hide behind, so she shows you the sales the price came from and tells you if she thinks your number is wrong.</p>
+                    <a href="06-sellers-guide.html" class="btn btn--outline">Seller's Guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INVESTMENT SIGNATURE ============ -->
+    <section class="ja-invest" style="background-image:url('https://images.unsplash.com/photo-1680919838857-d54e011093d3?w=2000&amp;q=80&amp;auto=format&amp;fit=crop');">
+        <div class="ja-invest__inner">
+            <div>
+                <span class="ja-invest__eyebrow">03 &nbsp;·&nbsp; The signature practice</span>
+                <h2>She buys and renovates here too, so the numbers are not theoretical</h2>
+                <p>Shelby County and the towns along I-65 still have entry prices that make a rental or a flip work. That is why she built this side of the practice, and it is why clients bring her split parcels and problem properties other agents pass on.</p>
+                <p>Before you make an offer on an investment, three numbers decide whether it works. Everything else is detail.</p>
+                <a href="07-investment-property.html" class="btn btn--white" style="margin-top:14px;">Investment Property</a>
+            </div>
+            <div>
+                <div class="ja-invest__ledger">
+                    <div class="ja-invest__row">
+                        <span class="ja-invest__term">Acquisition</span>
+                        <span class="ja-invest__def">What you pay, plus what you pay to borrow it.</span>
+                    </div>
+                    <div class="ja-invest__row">
+                        <span class="ja-invest__term">Rehab</span>
+                        <span class="ja-invest__def">The real scope, priced by the people who will actually do the work.</span>
+                    </div>
+                    <div class="ja-invest__row">
+                        <span class="ja-invest__term">Exit</span>
+                        <span class="ja-invest__def">Rent it or resell it, and what the comps support either way.</span>
+                    </div>
+                </div>
+                <div class="ja-invest__tool">
+                    <b>ROI calculator</b>
+                    <span>Interactive tool, self-contained arithmetic. Requested by the client, placement confirmed on the Investment Property page.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COMMUNITIES · V2 full-bleed alternating ============ -->
+    <section class="ja-comm">
+        <div class="ja-comm__row">
+            <div class="ja-comm__photo" style="background-image:url('https://images.unsplash.com/photo-1696699651613-b81a429a0fec?w=2000&amp;q=80&amp;auto=format&amp;fit=crop');">
+                <span class="img-note">Directional photo</span>
+            </div>
+            <div class="ja-comm__content">
+                <p class="ja-comm__num">01 / Where the office is</p>
+                <h3 class="ja-comm__name">Shelbyville</h3>
+                <p class="ja-comm__desc">The county seat, and home. Blue River runs through it, the courthouse square still anchors downtown, and the office sits on North Riley Highway. Most of her closings happen inside twenty minutes of this street.</p>
+                <a href="03-communities.html#shelbyville" class="ja-comm__link">View Shelbyville</a>
+            </div>
+        </div>
+        <div class="ja-comm__row ja-comm__row--reverse">
+            <div class="ja-comm__photo" style="background-image:url('https://images.unsplash.com/photo-1683547664033-2c2f4d6d1b5d?w=2000&amp;q=80&amp;auto=format&amp;fit=crop');">
+                <span class="img-note">Directional photo</span>
+            </div>
+            <div class="ja-comm__content">
+                <p class="ja-comm__num">02 / Decatur County</p>
+                <h3 class="ja-comm__name">Greensburg</h3>
+                <p class="ja-comm__desc">Half an hour southeast, and a different market entirely. Lower entry prices, a working downtown, and the tower with a tree growing out of it. Buyers priced out of Johnson County often find their number here.</p>
+                <a href="03-communities.html#greensburg" class="ja-comm__link">View Greensburg</a>
+            </div>
+        </div>
+        <div class="ja-comm__row">
+            <div class="ja-comm__photo" style="background-image:url('https://images.unsplash.com/photo-1783279484397-5c489ae56c9d?w=2000&amp;q=80&amp;auto=format&amp;fit=crop');">
+                <span class="img-note">Directional photo</span>
+            </div>
+            <div class="ja-comm__content">
+                <p class="ja-comm__num">03 / Johnson County</p>
+                <h3 class="ja-comm__name">Franklin</h3>
+                <p class="ja-comm__desc">The I-65 side, and the fastest-moving of the three. Franklin College, a restored downtown, and Camp Atterbury close enough that military relocation is a regular part of the work here rather than an occasional one.</p>
+                <a href="03-communities.html#franklin" class="ja-comm__link">View Franklin</a>
+            </div>
+        </div>
+        <div class="ja-comm__all">
+            <p>Six more sit alongside them: Rushville, Greenfield, Whiteland, Columbus, Edinburgh and Greenwood. Each prices differently, and the communities page takes them one at a time.</p>
+            <a href="03-communities.html" class="btn btn--outline">All Nine Communities</a>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS · V1 featured + supporting ============ -->
+    <section class="ja-tt">
+        <div class="ja-tt__inner">
+            <div class="home-section-header" style="text-align:center;max-width:720px;margin:0 auto;">
+                <span class="ja-about__eyebrow">Twenty three reviews, every one five stars</span>
+                <h2 style="font-size:clamp(27px,3.2vw,38px);line-height:1.24;">Susan came back to her years after they first started looking</h2>
+            </div>
+            <div class="ja-tt__grid">
+                <div class="ja-tt__feature">
+                    <div class="ja-stars">★★★★★</div>
+                    <blockquote>Jennifer Andrews was a tremendous help to us. We ran into several snags which delayed us. She made such a great impression on us, that we sought her out after a long break in our search, but even years later, she remembered us and was there to help.</blockquote>
+                    <p class="ja-tt__by">Susan D. &nbsp;·&nbsp; January 2024</p>
+                </div>
+                <div class="ja-tt__side">
+                    <div class="ja-tt__card">
+                        <div class="ja-stars">★★★★★</div>
+                        <blockquote>Our extremely professional Realtor, Jennifer Andrews, helped us close on a split parcel. This sale and close was not normal, nor was it easy, she made it as simple as possible.</blockquote>
+                        <p class="ja-tt__by">Travis B. &nbsp;·&nbsp; June 2023</p>
+                    </div>
+                    <div class="ja-tt__card">
+                        <div class="ja-stars">★★★★★</div>
+                        <blockquote>So appreciate all of Jennifer Andrews' efforts in selling our long time family home. She went above and beyond to make it happen quickly.</blockquote>
+                        <p class="ja-tt__by">Karen C. &nbsp;·&nbsp; October 2025</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:48px;">
+                <a href="09-testimonials.html" class="btn btn--outline">Read All Twenty Three</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ HOME VALUE · parallax band ============ -->
+    <section class="ja-value">
+        <div class="ja-value__inner">
+            <div>
+                <span class="ja-hero__label" style="color:var(--gold);margin-bottom:18px">Thinking about listing</span>
+                <h2>An automated estimate has never driven down your street</h2>
+                <p class="ja-value__lead">It does not know that the house three doors down backs onto the rail line, or that the school corporation boundary runs behind your fence. Jennifer walks the comps in person before she gives you a number.</p>
+                <a href="08-home-valuation.html" class="btn btn--white">Request A Valuation</a>
+            </div>
+            <div class="ja-value__card">
+                <h3>What comes back to you</h3>
+                <ul class="ja-value__list">
+                    <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#8FBFCB" stroke-width="1.7"><path d="M2 8.5 6 12.5 14 4"/></svg><span>The three to five comparable sales the price came from, with the actual addresses</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#8FBFCB" stroke-width="1.7"><path d="M2 8.5 6 12.5 14 4"/></svg><span>A range, and the single number she would actually list it at</span></li>
+                    <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#8FBFCB" stroke-width="1.7"><path d="M2 8.5 6 12.5 14 4"/></svg><span>What she would fix before listing, and what she would leave alone</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CLOSING CTA · V4 photo + card overlap ============ -->
+    <section class="ja-cta">
+        <div class="ja-cta__media">
+            <img src="https://images.unsplash.com/photo-1768700519387-e7723997cdd8?w=2000&amp;q=80&amp;auto=format&amp;fit=crop" alt="A brick family home with a grey roof set back behind mature trees">
+        </div>
+        <div class="ja-cta__wrap">
+            <div class="ja-cta__card">
+                <span class="ja-cta__eyebrow">Start here</span>
+                <h2>Tell her what you are trying to do, and she will tell you if she is the right fit</h2>
+                <p>Call or text the office line. If you would rather write it out, the contact form comes straight to Jennifer, not to a lead desk.</p>
+                <div class="ja-cta__actions">
+                    <a href="tel:3174887739" class="btn btn--white">(317) 488-7739</a>
+                    <a href="contact.html" class="btn btn--outline" style="border-color:rgba(255,255,255,0.5);color:#fff;">Send A Message</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ============ FOOTER · F-B masthead ============ -->
+<footer class="ja-foot">
+    <div class="ja-foot__inner">
+        <p class="ja-foot__masthead">Jennifer Andrews</p>
+        <p class="ja-foot__sub">Real Estate &nbsp;·&nbsp; Shelbyville, Indiana</p>
+
+        <nav class="ja-foot__row" aria-label="Footer">
+            <a href="02-about.html">About</a>
+            <a href="05-buyers-guide.html">Buyer's Guide</a>
+            <a href="06-sellers-guide.html">Seller's Guide</a>
+            <a href="07-investment-property.html">Investment Property</a>
+            <a href="08-home-valuation.html">Home Value</a>
+            <a href="04-home-search.html">Home Search</a>
+            <a href="03-communities.html">Communities</a>
+            <a href="09-testimonials.html">Testimonials</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="ja-foot__base">
+            <div>
+                <p class="ja-foot__h">Office</p>
+                <p>Carpenter REALTORS&reg;<br>1011 North Riley Highway<br>Shelbyville, IN 46176</p>
+                <p style="margin-top:14px;"><a href="tel:3174887739">(317) 488-7739</a><br><a href="mailto:jandrews@callcarpenter.com">jandrews@callcarpenter.com</a></p>
+                <ul class="ja-foot__social">
+                    <li><a href="https://www.facebook.com/jenandrewsrealestate/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a></li>
+                    <li><a href="https://www.instagram.com/jenandrewsrealestate/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a></li>
+                    <li><a href="https://x.com/soldwithjen" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.5 7.4L22 22h-6l-4.7-6.2L5.9 22H3l7-8L2.3 2h6.2l4.2 5.6L18.2 2zm-1 18h1.6L7.9 3.7H6.1L17.2 20z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/in/jennifer-andrews-58a3051b9/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zM6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 8h4v2a4 4 0 0 1 4-2c3 0 4 2 4 5v7h-4v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-4z"/></svg></a></li>
+                    <li><a href="https://www.zillow.com/profile/jandrews46176" target="_blank" rel="noopener noreferrer" aria-label="Zillow"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L0 9.6v1.92h3.36V24h17.28V11.52H24V9.6L12 0zm0 3.36l8.64 6.72v.96H3.36v-.96L12 3.36zm-3.84 8.64h7.68v9.6h-2.88v-5.76h-1.92v5.76H8.16v-9.6z"/></svg></a></li>
+                    <li><a href="https://www.youtube.com/@jenniferandrewscarpenterre7280" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2s-.2-1.4-.8-2c-.7-.8-1.6-.8-2-.9C16 4 12 4 12 4s-4 0-6.8.3c-.4 0-1.3 0-2 .9-.6.6-.8 2-.8 2S2 8.8 2 10.5v1.6c0 1.6.2 3.3.2 3.3s.2 1.4.8 2c.7.8 1.7.8 2.1.9 1.6.1 6.9.2 6.9.2s4 0 6.8-.3c.4 0 1.3 0 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.3v-1.6c0-1.6-.2-3.3-.2-3.3zM10 14.6V9.1l5.2 2.8-5.2 2.7z"/></svg></a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="ja-foot__h">The Nine Towns</p>
+                <p>Shelbyville &middot; Rushville &middot; Greensburg &middot; Greenfield &middot; Franklin &middot; Whiteland &middot; Columbus &middot; Edinburgh &middot; Greenwood</p>
+                <p style="margin-top:12px;"><a href="03-communities.html">All communities</a></p>
+            </div>
+            <div>
+                <p class="ja-foot__h">Compliance</p>
+                <p>Jennifer Andrews is a licensed real estate broker in the State of Indiana, affiliated with Carpenter REALTORS&reg;. Indiana license number and managing broker to be confirmed before launch.</p>
+                <div class="ja-marks">
+                    <img src="assets/logo-white.png" alt="Carpenter REALTORS">
+                    <svg width="30" height="34" viewBox="0 0 34 38" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.4" aria-label="Equal Housing Opportunity"><path d="M17 4 3 14v20h28V14L17 4z"/><path d="M11 34V21h12v13"/></svg>
+                    <svg width="30" height="30" viewBox="0 0 34 34" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.4" aria-label="REALTOR"><rect x="3" y="3" width="28" height="28"/><path d="M10 24V12h6a3 3 0 0 1 0 6h-6m6 0 5 6"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="ja-foot__legal">
+            <p>&copy; 2026 Jennifer Andrews Real Estate &middot; Equal Housing Opportunity &middot; Listing data via Showcase IDX and the MIBOR REALTOR&reg; Association</p>
+            <p><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="https://agenticpress.com" target="_blank" rel="noopener noreferrer">Website by AgenticPress</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const mainNav=document.getElementById('mainNav');
+function updateNav(){if(window.scrollY>80){mainNav.classList.remove('nav--transparent');mainNav.classList.add('nav--solid');}else{mainNav.classList.add('nav--transparent');mainNav.classList.remove('nav--solid');}}
+window.addEventListener('scroll',updateNav);updateNav();
+const hamburger=document.getElementById('hamburgerBtn'),mobileMenu=document.getElementById('mobileMenu'),mobileOverlay=document.getElementById('mobileMenuOverlay'),mobileClose=document.getElementById('mobileMenuClose');
+function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');}
+function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');}
+if(hamburger)hamburger.addEventListener('click',openMobile);if(mobileClose)mobileClose.addEventListener('click',closeMobile);if(mobileOverlay)mobileOverlay.addEventListener('click',closeMobile);
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1});document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
