@@ -456,6 +456,21 @@ body.is-locked{overflow:hidden}
 .phero p{color:rgba(255,255,255,.84);max-width:58ch;font-size:17px}
 .phero--plain{background:var(--navy-deep)}
 .phero--slim{padding:calc(var(--nav-h) + 64px) 0 64px}
+
+/* ---- phero--portrait: hero whose photo is a group shot ----
+   A centred group photo cannot be shifted sideways (cover leaves no horizontal
+   slack at these ratios), so the copy moves instead: faces own the top of the
+   frame, text sits in a darkened band beneath them. */
+.phero--portrait{padding:calc(var(--nav-h) + 300px) 0 72px}
+.phero--portrait .phero__bg img{opacity:.78}
+.phero--portrait .phero__bg::after{
+  background:linear-gradient(180deg,rgba(0,0,0,.16) 0%,rgba(0,0,0,.10) 38%,rgba(1,15,53,.74) 68%,rgba(1,15,53,.92) 100%)}
+@media(max-width:900px){
+  .phero--portrait{padding:calc(var(--nav-h) + 190px) 0 56px}
+}
+@media(max-width:600px){
+  .phero--portrait{padding:calc(var(--nav-h) + 140px) 0 48px}
+}
 .crumbs{font-family:var(--font-body);font-size:10.5px;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:24px}
 .crumbs a:hover{color:#fff}
