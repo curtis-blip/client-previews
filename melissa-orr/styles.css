@@ -486,13 +486,31 @@ body.is-locked{overflow:hidden}
 .split__body p{color:var(--granite);margin-bottom:18px}
 .media-trail .split__media{order:2}
 
-/* ---- process steps: 2-col grid, large numerals (never a zigzag timeline) ---- */
-.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,3.4vw,52px);margin-top:clamp(40px,5vw,64px)}
-.step{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
-.step__n{font-family:var(--font-display);font-weight:200;font-size:clamp(40px,4.6vw,62px);
-  line-height:.85;color:var(--accent);letter-spacing:.01em}
-.step h3{color:var(--navy);margin-bottom:10px}
-.step p{color:var(--granite);font-size:15px;margin:0}
+/* ---- process steps: full-bleed alternating image + text ----
+   Pattern taken from the Melo-de Savage build (Curtis, 2026-08-24); it is the
+   alternating family in _block-library/process-steps. Edge-to-edge 50/50 rows,
+   the photo half bleeds to the viewport edge, sides alternate, and the content
+   half carries the padding. Still never a zigzag timeline. */
+.steps-sec{padding-bottom:0}
+.steps-head{margin-bottom:clamp(40px,5vw,68px)}
+.steps{display:block;margin:0}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:520px;align-items:stretch;background:var(--white)}
+.step:nth-child(even){background:var(--mist)}
+.step:nth-child(even) .step__img{order:2}
+.step__img{min-height:440px;background-size:cover;background-position:center;background-color:var(--navy-deep)}
+.step__body{display:flex;flex-direction:column;justify-content:center;width:100%;max-width:620px;margin:0 auto;padding:clamp(44px,5.5vw,80px)}
+.step__n{font-family:var(--font-display);font-weight:200;font-size:clamp(46px,5.2vw,74px);
+  line-height:.85;color:var(--accent);letter-spacing:-.02em;margin-bottom:22px}
+.step h3{color:var(--navy);font-size:clamp(22px,2.6vw,32px);line-height:1.16;margin-bottom:18px}
+.step p{color:var(--granite);font-size:15.5px;line-height:1.72;margin:0 0 16px}
+.step__list{list-style:none;margin:0;padding:0}
+.step__list li{position:relative;padding:7px 0 7px 22px;font-size:14.5px;line-height:1.68;color:var(--granite)}
+.step__list li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+/* inline links inside a step must read as links; body colour alone is invisible.
+   Matches the .close__list a convention: underline hairline, accent on hover. */
+.step p a,.step__list a{color:var(--navy);border-bottom:1px solid var(--accent);
+  transition:color .3s var(--ease),border-color .3s var(--ease)}
+.step p a:hover,.step__list a:hover{color:var(--accent);border-bottom-color:var(--navy)}
 
 /* ---- icon service grid ---- */
 .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,32px);margin-top:clamp(40px,5vw,62px)}
@@ -643,7 +661,11 @@ body.is-locked{overflow:hidden}
 @media(max-width:1080px){
   .split,.split--lead,.split--trail{grid-template-columns:1fr}
   .media-trail .split__media{order:0}
-  .steps,.sgrid,.roster{grid-template-columns:repeat(2,1fr)}
+  .sgrid,.roster{grid-template-columns:repeat(2,1fr)}
+  .step{grid-template-columns:1fr;min-height:0}
+  .step:nth-child(even) .step__img{order:0}
+  .step__img{min-height:320px}
+  .step__body{max-width:none}
   .twall{columns:2}
   .cmodal__stats{grid-template-columns:repeat(2,1fr)}
   .srow{grid-template-columns:repeat(2,1fr)}
@@ -651,7 +673,8 @@ body.is-locked{overflow:hidden}
   .srow > div:nth-child(-n+2){border-bottom:1px solid var(--line)}
 }
 @media(max-width:680px){
-  .steps,.sgrid,.roster,.form--2,.cmodal__hl{grid-template-columns:1fr}
+  .sgrid,.roster,.form--2,.cmodal__hl{grid-template-columns:1fr}
+  .step__img{min-height:250px}
   .twall{columns:1}
   .srow{grid-template-columns:1fr}
   .srow > div{border-right:0;border-bottom:1px solid var(--line)}
