@@ -36,7 +36,7 @@
   --wrap:1240px;
   --pad:clamp(20px,5vw,64px);
   --sec:clamp(64px,7.5vw,96px);   /* live site = 96px */
-  --nav-h:88px;
+  --nav-h:112px;
   --edge:calc(max(0px,(100vw - var(--wrap))/2) + var(--pad));
 }
 
@@ -145,14 +145,17 @@ p:last-child{margin-bottom:0}
 .nav{position:sticky;top:0;z-index:900;background:transparent;border:0;
   transition:background-color .35s ease,backdrop-filter .35s ease}
 .nav.scrolled{background:rgba(0,0,0,.92);backdrop-filter:blur(12px)}
+.nav.scrolled .nav-in{height:88px}
+.nav.scrolled .nav-logo img{height:56px}
 .nav.solid{background:var(--black)}
 .nav-in{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;gap:24px}
-.nav-logo img{height:54px;width:auto;filter:brightness(0) invert(1)}
+.nav-logo img{height:74px;width:auto;filter:brightness(0) invert(1);transition:height .35s ease}
 .nav:not(.scrolled):not(.solid) .nav-logo img{filter:brightness(0) invert(1) drop-shadow(0 1px 8px rgba(0,0,0,.55))}
 .nav-links{display:flex;align-items:center;gap:30px;list-style:none}
 .nav-links>li{position:relative}
-.nav-label{font-size:14px;font-weight:300;color:#fff;display:inline-flex;align-items:center;gap:6px;
+.nav-label{font-size:13px;font-weight:400;letter-spacing:.10em;text-transform:uppercase;
+  color:#fff;display:inline-flex;align-items:center;gap:7px;
   padding:calc((var(--nav-h) - 20px)/2) 0;cursor:pointer;transition:color .25s;white-space:nowrap}
 .nav:not(.scrolled):not(.solid) .nav-label{text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .nav-links>li:hover>.nav-label{color:var(--bronze-lt)}
