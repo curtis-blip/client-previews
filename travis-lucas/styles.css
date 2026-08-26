@@ -1,0 +1,454 @@
+/* ==========================================================================
+   BOLD MODERN
+   Drawn from Eleos, abvtek and Storey Architecture (all scored 5 in the
+   2026-08 study), plus 250 Broadway's ghost numeral and Aaron Kirman's
+   caption-only listing treatment.
+
+   Colour strategy: photography-led-neutral. Three flat grounds do the
+   chaptering (white, cold grey, near-black) and the accent occupies roughly
+   one percent of the page: kicker rules, link hover, one filled button.
+   Every top-scoring bold site in the study works this way. Do not fill
+   --brand with a saturated hue here; use the deep-field template instead.
+   ========================================================================== */
+
+:root{
+  /* --- contract: colour, as RGB triplets -------------------------------- */
+  /* Photo overlays, inverted text and on-photo rules all need a colour AT AN
+     ALPHA, and a hex token cannot supply one. Declaring the triplets lets
+     every gradient and veil read `rgb(var(--x-scrim) / .8)` instead of
+     hardcoding a value. Before this, 103 colour values were hardcoded across
+     the two sheets, so stamping a different token set left every photo tint
+     stubbornly blue-black while the grounds and type changed around it. A
+     skin must override these four or it will not fully take. */
+  --x-scrim:10 13 14;            /* the dark behind every photo overlay */
+  --x-ink:14 17 18;              /* --text as a triplet */
+  --x-invert:244 246 246;        /* --text-invert as a triplet */
+  --x-onphoto:255 255 255;       /* text and rules sitting on photography */
+
+  /* --- contract: colour ------------------------------------------------ */
+  --ground:#ffffff;
+  --ground-alt:#eceeef;          /* cold grey, the second chapter ground */
+  --ground-deep:#0e1112;         /* near-black, the third chapter ground */
+  --brand:#0e1112;               /* the field colour is the near-black itself */
+  --brand-ink:#f4f6f6;
+  --accent:#9c3b26;              /* oxide red, small areas only */
+  --accent-ink:#ffffff;
+  --text:#0e1112;
+  --text-soft:#4d5457;
+  --text-invert:#f4f6f6;
+  --rule:rgb(var(--x-ink) / .16);
+
+  /* --- contract: type -------------------------------------------------- */
+  --font-display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --font-body:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --font-label:'IBM Plex Mono',ui-monospace,'SF Mono',monospace;
+  --weight-display:700;
+  --weight-body:400;
+  --case-display:uppercase;
+  --tracking-display:-.025em;
+  --tracking-label:.2em;
+  --scale-display:clamp(42px,7.2vw,104px);
+
+  /* --- contract: space and motion -------------------------------------- */
+  --section-y:clamp(88px,10vw,150px);
+  --measure:64ch;
+  --container:1360px;
+  --gutter:clamp(20px,4vw,56px);
+  --radius:0px;
+  --dur:.55s;
+  --ease:cubic-bezier(.4,0,.2,1);
+
+  /* --- template-private ------------------------------------------------ */
+  --x-rule-invert:rgb(var(--x-invert) / .22);
+  --x-grid-line:rgb(var(--x-onphoto) / .16);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--text);
+  font-family:var(--font-body);font-weight:var(--weight-body);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{
+  font-family:var(--font-display);font-weight:var(--weight-display);
+  text-transform:var(--case-display);letter-spacing:var(--tracking-display);
+  line-height:.96;margin:0;text-wrap:balance;
+}
+p{margin:0 0 20px}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.measure{max-width:var(--measure)}
+
+/* Numbered kicker. The numbering encodes real page order, which is why the
+   study's top scorers use it: a long scroll reads as a chaptered document. */
+.kicker{
+  font-family:var(--font-label);font-size:11.5px;letter-spacing:var(--tracking-label);
+  text-transform:uppercase;color:var(--text-soft);display:flex;align-items:center;
+  gap:12px;margin-bottom:26px;
+}
+.kicker::after{content:"";flex:1;height:1px;background:var(--rule);max-width:120px}
+.kicker b{color:var(--accent);font-weight:500}
+.on-dark .kicker{color:rgb(var(--x-invert) / .72)}
+.on-dark .kicker::after{background:var(--x-rule-invert)}
+
+/* background MUST be declared: an <a class="btn"> has no background of its own,
+   but a <button class="btn"> inherits the user agent's buttonface grey and
+   renders as a filled light box. That made an invert button on the deep ground
+   read as a blank grey rectangle, and it would hit any build whose CTA is a
+   real form submit rather than a link. */
+.btn{
+  display:inline-block;font-family:var(--font-label);font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;padding:16px 34px;
+  background:transparent;cursor:pointer;
+  border:1px solid var(--text);color:var(--text);border-radius:var(--radius);
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.btn:hover{background:var(--text);color:var(--ground)}
+.btn--fill{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn--fill:hover{background:var(--text);border-color:var(--text);color:var(--ground)}
+.btn--invert{border-color:var(--text-invert);color:var(--text-invert)}
+.btn--invert:hover{background:var(--text-invert);color:var(--text)}
+.tlink{
+  font-family:var(--font-label);font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1px solid var(--accent);padding-bottom:5px;
+  transition:color var(--dur) var(--ease);
+}
+.tlink:hover{color:var(--accent)}
+
+/* --- chapter grounds -------------------------------------------------- */
+.chapter{padding:var(--section-y) 0}
+.chapter--alt{background:var(--ground-alt)}
+.chapter--deep{background:var(--ground-deep);color:var(--text-invert)}
+.chapter--deep h1,.chapter--deep h2,.chapter--deep h3{color:var(--text-invert)}
+.chapter--deep p{color:rgb(var(--x-invert) / .82)}
+
+/* --- nav: transparent over the hero, never a border underneath --------- */
+.nav{position:absolute;top:0;left:0;right:0;z-index:20;padding:30px 0}
+.nav__in{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav__logo{
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  letter-spacing:.16em;text-transform:uppercase;color:rgb(var(--x-onphoto));
+  text-shadow:0 1px 14px rgba(0,0,0,.5);
+}
+.nav__links{display:flex;gap:34px;list-style:none;margin:0;padding:0;align-items:center}
+.nav__links a{
+  font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto));opacity:.92;
+  text-shadow:0 1px 12px rgba(0,0,0,.55);
+}
+.nav__links a:hover{opacity:1}
+.nav__cta{
+  border:1px solid rgb(var(--x-onphoto) / .8);padding:11px 24px;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.nav__cta:hover{background:rgb(var(--x-onphoto));color:var(--text)!important;text-shadow:none}
+
+/* --- hero: headline at wordmark scale, no wash, column rules over ------ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  isolation:isolate;color:rgb(var(--x-onphoto));overflow:hidden}
+.hero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center 32%;filter:saturate(1.03) contrast(1.04)}
+/* Legibility comes from art direction plus a text-side gradient, never a flat
+   wash over the whole frame: the study's most common hero overlay is none. */
+.hero__tint{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to bottom,rgb(var(--x-scrim) / .42) 0%,rgb(var(--x-scrim) / 0) 22%),
+  linear-gradient(to top,rgb(var(--x-scrim) / .72) 0%,rgb(var(--x-scrim) / .12) 46%,rgb(var(--x-scrim) / 0) 66%)}
+.hero__rules{position:absolute;inset:0;z-index:-1;display:grid;
+  grid-template-columns:repeat(4,1fr);pointer-events:none}
+.hero__rules span{border-left:1px solid var(--x-grid-line)}
+.hero__rules span:first-child{border-left:none}
+.hero__in{padding-bottom:clamp(56px,9vh,110px);width:100%}
+.hero h1{font-size:var(--scale-display);max-width:16ch;
+  text-shadow:0 2px 30px rgba(0,0,0,.42)}
+.hero__foot{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:30px;margin-top:34px;flex-wrap:wrap}
+.hero__meta{font-family:var(--font-label);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;opacity:.9;max-width:44ch;line-height:1.9}
+
+/* --- stat strip ------------------------------------------------------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:8px 26px 8px 0;border-left:1px solid var(--rule);padding-left:26px}
+.stat:first-child{border-left:none;padding-left:0}
+.stat__n{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(38px,4.6vw,62px);line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums}
+.stat__l{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-soft);margin-top:14px}
+
+/* --- staircase headline: each line indented one step further ----------- */
+.stair{display:block}
+.stair span{display:block}
+.stair span:nth-child(2){padding-left:2.2ch}
+.stair span:nth-child(3){padding-left:4.4ch}
+@media(max-width:700px){.stair span{padding-left:0!important}}
+
+/* --- about ------------------------------------------------------------ */
+.about__grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(40px,6vw,92px);
+  align-items:center}
+.about h2{font-size:clamp(30px,4vw,58px);margin-bottom:32px}
+.about__media{position:relative}
+.about__media img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about__media::after{content:"";position:absolute;inset:auto -18px -18px auto;
+  width:56%;height:56%;border:1px solid var(--accent);z-index:-1}
+
+/* --- paths: two full-bleed panels, image-driven ----------------------- */
+.paths{display:grid;grid-template-columns:1fr 1fr}
+.path{position:relative;min-height:62vh;display:flex;align-items:flex-end;
+  isolation:isolate;overflow:hidden;color:rgb(var(--x-onphoto));padding:44px}
+.path__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;transition:transform 1.2s var(--ease)}
+.path:hover .path__bg{transform:scale(1.04)}
+.path__tint{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to top,rgb(var(--x-scrim) / .78) 0%,rgb(var(--x-scrim) / .1) 62%)}
+.path h3{font-size:clamp(24px,2.6vw,38px);margin-bottom:14px}
+.path p{font-size:15px;max-width:34ch;margin-bottom:22px;color:rgb(var(--x-onphoto) / .9)}
+
+/* --- listing feature: caption-only, spec table, index counter --------- */
+.feature__head{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.feature h2{font-size:clamp(28px,3.6vw,52px)}
+.feature__photo{width:100%;aspect-ratio:16/8.4;object-fit:cover}
+.feature__bar{display:grid;grid-template-columns:1.5fr 1fr auto;gap:30px;
+  align-items:center;padding:26px 0;border-top:1px solid var(--rule)}
+.on-dark .feature__bar{border-top-color:var(--x-rule-invert)}
+.feature__name{font-family:var(--font-display);font-weight:700;font-size:21px;
+  text-transform:uppercase;letter-spacing:-.01em}
+/* Spec table replaces the bed/bath/sqft icon strip (Eleos). The study's
+   highest-scoring listing treatments strip metadata to price plus place.
+   Both grounds are supported: the block is placed on white here because three
+   consecutive dark bands read as stacked slabs rather than a composed page. */
+.spec{display:flex;gap:26px;font-family:var(--font-label);font-size:11.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-soft);
+  flex-wrap:wrap}
+.spec b{color:var(--text);font-weight:500}
+.on-dark .spec{color:rgb(var(--x-invert) / .72)}
+.on-dark .spec b{color:var(--text-invert)}
+.counter{font-family:var(--font-label);font-size:12px;letter-spacing:.16em;
+  color:var(--text-soft);white-space:nowrap}
+.counter b{color:var(--accent);font-weight:500}
+.on-dark .counter{color:rgb(var(--x-invert) / .7)}
+.on-dark .counter b{color:var(--accent-ink)}
+
+/* --- communities: hairline grid over ONE photograph ------------------- */
+/* Observed on The Beverly Hills Estates: cells outlined in hairlines over a
+   single continuous image, each labelled with a place and a real figure. */
+.areas{position:relative;isolation:isolate;overflow:hidden}
+.areas__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center}
+.areas__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to right,rgb(var(--x-scrim) / .8),rgb(var(--x-scrim) / .42))}
+.areas__grid{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--x-rule-invert);border-left:1px solid var(--x-rule-invert)}
+.area{padding:34px 30px;border-right:1px solid var(--x-rule-invert);
+  border-bottom:1px solid var(--x-rule-invert);color:rgb(var(--x-onphoto));min-height:190px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:background var(--dur) var(--ease)}
+.area:hover{background:rgb(var(--x-onphoto) / .07)}
+.area__n{font-family:var(--font-display);font-weight:700;font-size:22px;
+  text-transform:uppercase;letter-spacing:-.01em}
+.area__d{font-family:var(--font-label);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto) / .72);margin-top:10px;line-height:1.8}
+
+/* --- testimonials ----------------------------------------------------- */
+.quotes{display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(36px,5vw,72px)}
+.quote--lead blockquote{font-family:var(--font-display);font-weight:400;
+  font-size:clamp(21px,2.5vw,33px);line-height:1.35;letter-spacing:-.01em;
+  margin:0;text-transform:none}
+.quote--side{display:flex;flex-direction:column;gap:38px;justify-content:center;
+  border-left:1px solid var(--rule);padding-left:clamp(24px,3vw,44px)}
+.quote--side blockquote{margin:0;font-size:15.5px;color:var(--text-soft);line-height:1.75}
+.who{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-soft);margin-top:20px}
+
+/* --- closing ---------------------------------------------------------- */
+.closing{text-align:left}
+.closing h2{font-size:clamp(32px,5vw,76px);max-width:14ch;margin-bottom:30px}
+
+/* --- footer ----------------------------------------------------------- */
+.foot{background:var(--ground-deep);color:rgb(var(--x-invert) / .72);
+  padding:clamp(60px,7vw,92px) 0 44px;border-top:3px solid var(--accent)}
+.foot__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.1fr;
+  gap:clamp(30px,4vw,60px);margin-bottom:60px}
+.foot__brand{font-family:var(--font-display);font-weight:700;font-size:16px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-invert)}
+.foot p{font-size:14.5px;line-height:1.85;margin:16px 0 0;max-width:34ch}
+.foot__h{font-family:var(--font-label);font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-invert);margin-bottom:20px}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.foot ul a{font-size:14.5px}
+.foot ul a:hover{color:var(--text-invert)}
+.foot__social{display:flex;gap:14px;margin-top:24px}
+.foot__social a{width:38px;height:38px;border:1px solid var(--x-rule-invert);
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--dur) var(--ease)}
+.foot__social a:hover{background:var(--accent);border-color:var(--accent)}
+.foot__social svg{width:15px;height:15px;fill:var(--text-invert)}
+.foot__base{border-top:1px solid var(--x-rule-invert);padding-top:34px;
+  display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:center}
+.foot__marks{display:flex;align-items:center;gap:18px}
+.foot__marks img{height:28px;width:auto;opacity:.86}
+.foot__marks img.rlt{filter:invert(1);height:24px}
+.legal{font-size:12.5px;line-height:1.85;max-width:66ch;opacity:.75}
+.legal a{border-bottom:1px solid var(--x-rule-invert)}
+
+/* --- interior page hero: the derivation rule, see README -------------- */
+.phero{position:relative;min-height:56svh;display:flex;align-items:flex-end;
+  isolation:isolate;color:rgb(var(--x-onphoto));overflow:hidden}
+.phero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center 40%}
+.phero__tint{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to bottom,rgb(var(--x-scrim) / .44) 0%,rgb(var(--x-scrim) / 0) 26%),
+  linear-gradient(to top,rgb(var(--x-scrim) / .74) 0%,rgb(var(--x-scrim) / .1) 60%)}
+.phero__in{padding-bottom:clamp(40px,6vh,72px);width:100%}
+.phero h1{font-size:clamp(34px,5.2vw,72px);max-width:18ch;
+  text-shadow:0 2px 26px rgba(0,0,0,.4)}
+
+/* --- process: alternating image and text rows ------------------------- */
+/* House doctrine, kept deliberately: Curtis 2026-08-21, the step-by-step
+   alternating image and content pattern is the one that comes across best on
+   Buy and Sell. Eight steps is the production default. */
+.step{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);
+  align-items:center;padding:clamp(40px,5vw,68px) 0;border-top:1px solid var(--rule)}
+.step:first-of-type{border-top:none}
+.step:nth-child(even) .step__media{order:2}
+.step__media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.step__n{font-family:var(--font-label);font-size:12px;letter-spacing:.2em;
+  color:var(--accent);margin-bottom:16px}
+.step h3{font-size:clamp(21px,2.3vw,30px);margin-bottom:16px}
+.step p{color:var(--text-soft);margin:0;max-width:46ch}
+
+/* --- faq -------------------------------------------------------------- */
+.faq details{border-top:1px solid var(--rule);padding:22px 0}
+.faq details:last-of-type{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  gap:20px;font-family:var(--font-display);font-weight:700;font-size:17px;
+  text-transform:uppercase;letter-spacing:-.005em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-weight:400}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:16px 0 0;color:var(--text-soft);max-width:var(--measure)}
+
+@media(max-width:900px){
+  .nav__links li:not(:last-child){display:none}
+  .stats{grid-template-columns:1fr 1fr;gap:34px 0}
+  .stat{border-left:none;padding-left:0}
+  .about__grid,.quotes,.paths,.step{grid-template-columns:1fr}
+  .step:nth-child(even) .step__media{order:0}
+  .quote--side{border-left:none;border-top:1px solid var(--rule);
+    padding-left:0;padding-top:34px}
+  .areas__grid{grid-template-columns:1fr}
+  .feature__bar{grid-template-columns:1fr;gap:16px}
+  .foot__grid{grid-template-columns:1fr 1fr}
+  .hero__rules{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ==========================================================================
+   VARIANT VOCABULARY
+   Additional block treatments used by the composition variants. Everything
+   below is the same language as above: flat grounds, hairlines, tracked caps,
+   heavy display type. A variant differs by which treatments it uses and in
+   what order, never by introducing a second visual language.
+   ========================================================================== */
+
+/* --- listings rail: the SECOND listing instance ------------------------ */
+/* Running listings twice is earned only when the two instances use different
+   treatments (composition-grammar.md). This is the index to the feature's
+   headline: small, dense, caption-only, no metadata strip. */
+.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.rail__item{position:relative;display:block;overflow:hidden;aspect-ratio:4/3.2}
+.rail__item img{width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--ease)}
+.rail__item:hover img{transform:scale(1.05)}
+.rail__cap{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .86),rgb(var(--x-scrim) / 0));color:rgb(var(--x-onphoto))}
+.rail__cap b{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:16px;text-transform:uppercase;letter-spacing:-.01em}
+.rail__cap span{font-family:var(--font-label);font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;opacity:.82}
+
+/* --- one card per place, bold-modern cut ------------------------------- */
+/* The deep-field template masks this shape with an arch. Here the same idea is
+   hard-edged, with the place name locked into the corner like signage. */
+.placard{position:relative;display:flex;align-items:flex-end;overflow:hidden;
+  min-height:clamp(300px,36vw,430px);isolation:isolate;color:rgb(var(--x-onphoto));
+  padding:clamp(26px,3.4vw,44px);margin-bottom:2px}
+.placard__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;transition:transform 1.3s var(--ease)}
+.placard:hover .placard__bg{transform:scale(1.04)}
+.placard__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .82) 0%,rgb(var(--x-scrim) / .06) 64%)}
+.placard__row{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;width:100%;flex-wrap:wrap}
+.placard h3{font-size:clamp(26px,3.2vw,44px)}
+.placard p{font-size:15px;max-width:40ch;margin:10px 0 0;color:rgb(var(--x-onphoto) / .88)}
+.placard__tag{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent-ink);text-align:right;line-height:1.9;
+  border-left:1px solid rgb(var(--x-onphoto) / .4);padding-left:18px}
+
+/* --- display-scale statistics ----------------------------------------- */
+/* Numbers set at headline scale and cropped by the container, observed on
+   Sally Forster Jones. Replaces the uniform four-up strip when the numbers
+   themselves are the client's strongest asset. */
+.bignum{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(30px,4vw,64px)}
+.bignum__item{border-top:1px solid var(--rule);padding-top:24px}
+.bignum__n{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(64px,11vw,168px);line-height:.86;letter-spacing:-.045em;
+  font-variant-numeric:tabular-nums}
+.bignum__n em{font-style:normal;color:var(--accent)}
+.bignum__l{font-family:var(--font-label);font-size:11.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-soft);margin-top:16px;max-width:32ch;
+  line-height:1.9}
+
+/* --- services as a ruled table ---------------------------------------- */
+/* Storey Architecture rebuilds its services block as a table with an oversized
+   pale numeral gutter, which reads far more considered than an icon grid. */
+.svc{border-top:1px solid var(--rule)}
+.svc__row{display:grid;grid-template-columns:88px 1fr 1.3fr;gap:clamp(18px,3vw,44px);
+  padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--rule);
+  align-items:baseline}
+.svc__n{font-family:var(--font-display);font-weight:700;font-size:30px;
+  color:transparent;-webkit-text-stroke:1px var(--rule);line-height:1}
+.svc__t{font-family:var(--font-display);font-weight:700;font-size:clamp(17px,1.9vw,23px);
+  text-transform:uppercase;letter-spacing:-.01em}
+.svc__d{color:var(--text-soft);font-size:15.5px;margin:0}
+
+/* --- long-form about with a pull quote -------------------------------- */
+.longform{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(36px,6vw,88px)}
+.longform__side{position:sticky;top:40px;align-self:start}
+.longform p{max-width:56ch}
+.bigquote{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(23px,3vw,40px);text-transform:uppercase;letter-spacing:-.02em;
+  line-height:1.08;margin:clamp(30px,4vw,52px) 0;padding-left:26px;
+  border-left:3px solid var(--accent)}
+
+/* --- lead form -------------------------------------------------------- */
+/* Storey's numbered intake sheet: underline rules rather than boxes, and the
+   fields numbered so the form reads as a document. */
+.intake{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,42px)}
+.intake__field{border-bottom:1px solid var(--x-rule-invert);padding-bottom:12px}
+.intake__field label{display:block;font-family:var(--font-label);font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:rgb(var(--x-invert) / .66);
+  margin-bottom:10px}
+.intake__field label b{color:var(--accent-ink);font-weight:500;margin-right:8px}
+.intake__field input,.intake__field textarea{
+  width:100%;background:transparent;border:none;color:var(--text-invert);
+  font-family:var(--font-body);font-size:16px;padding:4px 0;resize:none}
+.intake__field input:focus,.intake__field textarea:focus{outline:none}
+.intake__field:focus-within{border-bottom-color:var(--accent)}
+.intake__wide{grid-column:1 / -1}
+
+@media(max-width:900px){
+  .rail{grid-template-columns:1fr}
+  .bignum{grid-template-columns:1fr}
+  .svc__row{grid-template-columns:44px 1fr;row-gap:10px}
+  .svc__d{grid-column:2}
+  .longform{grid-template-columns:1fr}
+  .longform__side{position:static}
+  .intake{grid-template-columns:1fr}
+}

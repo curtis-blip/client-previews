@@ -1,0 +1,760 @@
+/* ==========================================================================
+   BOLD MODERN, TREATMENT VOCABULARY
+   Loaded after styles.css. Every treatment below is an alternative rendering
+   of a block that already exists in the language: same tokens, same type,
+   same accent discipline, same seam logic. Treatment is the axis a reader
+   actually sees, so this is where distinctness between two clients on this
+   template comes from, not from reordering sections.
+
+   Treatments tagged BLEND fuse two blocks into one moment, which is a device
+   the 2026-08 study found repeatedly and which also shortens the page.
+   ========================================================================== */
+
+/* --- specimen scaffolding, used only by the matrix sheets --------------- */
+.smp{border-top:1px solid var(--rule)}
+.smp__label{background:var(--ground-deep);color:var(--text-invert);
+  font-family:var(--font-label);font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;padding:14px 22px;display:flex;gap:16px;align-items:baseline}
+.smp__label b{color:var(--accent);font-weight:500}
+.smp__label span{opacity:.6;letter-spacing:.1em;text-transform:none;
+  font-size:11.5px;margin-left:auto}
+.smp__frame{position:relative;overflow:hidden}
+.smp__frame .hero,.smp__frame .phero{min-height:100%;height:100%}
+
+/* ==========================================================================
+   HERO TREATMENTS
+   ========================================================================== */
+
+/* H2 lower-third placard: type sits in a solid panel rather than on the photo,
+   which is the most reliable answer to a busy or pale image. */
+.hero--placard .hero__in{padding-bottom:0}
+.hero--placard .hero__panel{background:var(--ground-deep);color:var(--text-invert);
+  padding:clamp(30px,3.6vw,52px);max-width:min(620px,54vw);margin-bottom:-1px}
+.hero--placard h1{font-size:clamp(32px,4.2vw,60px);text-shadow:none;max-width:14ch}
+.hero--placard .hero__meta{opacity:.78;margin-top:22px}
+
+/* H3 BLEND, stat-overlapped: the stat strip overlaps the hero's lower edge so
+   hero and proof read as one moment (observed on 4realestatehelp). */
+.hero--stats{padding-bottom:96px}
+.hero--stats .hero__in{padding-bottom:clamp(90px,12vh,150px)}
+.stats--float{position:relative;z-index:3;margin-top:-96px;background:var(--ground-deep);
+  color:var(--text-invert);padding:34px clamp(24px,3vw,44px);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stats--float .stat{border-left:1px solid var(--x-rule-invert);padding-left:24px}
+.stats--float .stat:first-child{border-left:none;padding-left:0}
+.stats--float .stat__l{color:rgb(var(--x-invert) / .66)}
+
+/* H4 centered-minimal: dead-centre headline, one text link, nothing else.
+   Centred was the most common headline placement in the study at 26 sites. */
+.hero--centered{align-items:center;text-align:center}
+.hero--centered .hero__in{padding-bottom:0}
+.hero--centered h1{margin:0 auto;max-width:18ch}
+.hero--centered .hero__foot{justify-content:center;margin-top:38px}
+.hero--centered .hero__meta{max-width:52ch}
+
+/* H6 type-first, full bleed: the photograph runs the whole frame and the type
+   is set larger than in any other hero here, so type leads and the picture is
+   ground rather than subject. Legibility comes from a text-side gradient, not
+   a flat wash: the same device the house rule prescribes for a transparent
+   nav. Replaced an inset-photo version (Curtis, 2026-08-24: "I want it to be
+   in the background"), which also means this is no longer the thin-library
+   escape. Every hero treatment now needs one strong full-bleed photograph. */
+.hero--type .hero__tint{background:
+  linear-gradient(to right,rgb(var(--x-scrim) / .8) 0%,rgb(var(--x-scrim) / .4) 40%,rgb(var(--x-scrim) / 0) 74%),
+  linear-gradient(to top,rgb(var(--x-scrim) / .46) 0%,rgb(var(--x-scrim) / 0) 38%)}
+.hero--type .kicker{display:block;color:rgb(var(--x-onphoto) / .72);
+  margin-bottom:clamp(16px,2vw,28px)}
+.hero--type h1{font-size:clamp(42px,7.6vw,110px);max-width:12ch}
+.hero--type .hero__meta{opacity:.86;margin-top:26px}
+
+/* ==========================================================================
+   BUY AND SELL PATHWAY TREATMENTS
+   House rule: every pathway treatment is image-driven. There is no icon-only
+   or text-only variant here by design.
+   ========================================================================== */
+
+/* P2 stacked cinematic: two full-width bands rather than a side-by-side pair.
+   Gives each side a full-width photograph instead of half of one. */
+.pstack{display:block}
+.pstack .path{min-height:clamp(320px,42vw,480px);width:100%;padding:clamp(30px,4vw,56px)}
+.pstack .path:nth-child(2) .path__tint{
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .8) 0%,rgb(var(--x-scrim) / .08) 62%)}
+.pstack .path__in{max-width:44ch;margin-left:auto}
+.pstack .path:first-child .path__in{margin-left:0;margin-right:auto}
+
+/* P3 alternating editorial rows: the process cadence applied to two pathways,
+   contained rather than full-bleed. Quietest of the pathway treatments. */
+.prow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);
+  align-items:center;padding:clamp(34px,4vw,60px) 0;border-top:1px solid var(--rule)}
+.prow:last-of-type{border-bottom:1px solid var(--rule)}
+.prow:nth-of-type(even) .prow__media{order:2}
+.prow__media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.prow h3{font-size:clamp(22px,2.4vw,32px);margin-bottom:14px}
+.prow p{color:var(--text-soft);max-width:44ch}
+
+/* P4 BLEND, overlapping card: a solid content card straddles the photo edge
+   (250 Broadway). Two blocks become one composed moment. */
+.pcard{display:grid;grid-template-columns:1.3fr .9fr;align-items:center}
+.pcard+.pcard{margin-top:clamp(30px,4vw,56px)}
+.pcard__media{grid-column:1;grid-row:1;overflow:hidden}
+.pcard__media img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.pcard__body{grid-column:2;grid-row:1;background:var(--ground-deep);
+  color:var(--text-invert);padding:clamp(30px,3.4vw,50px);margin-left:-22%;
+  position:relative;z-index:2}
+/* The flipped row mirrors the column ratio as well as the placement, so the
+   photograph keeps the same 1.3fr share in both rows. Without this the second
+   image lands in the .9fr column and renders visibly smaller than the first
+   (Curtis, 2026-08-24: "the images need to be the same size"). */
+.pcard--flip{grid-template-columns:.9fr 1.3fr}
+.pcard--flip .pcard__media{grid-column:2}
+.pcard--flip .pcard__body{grid-column:1;margin-left:0;margin-right:-22%}
+.pcard__body h3{font-size:clamp(21px,2.3vw,30px);margin-bottom:14px}
+.pcard__body p{color:rgb(var(--x-invert) / .82);margin-bottom:24px}
+
+/* P5 diptych with a flat panel: one half photograph, one half flat ground,
+   so the pair reads as composed rather than as two photos (Duos Wynwood). */
+.pdip{display:grid;grid-template-columns:repeat(2,1fr)}
+.pdip__cell{min-height:clamp(300px,34vw,420px);display:flex;align-items:flex-end;
+  padding:clamp(26px,3vw,44px);overflow:hidden;position:relative}
+.pdip__cell--photo{isolation:isolate;color:rgb(var(--x-onphoto))}
+.pdip__cell--photo .path__bg{position:absolute;inset:0;z-index:-2;
+  background-size:cover;background-position:center}
+.pdip__cell--photo .path__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .74),rgb(var(--x-scrim) / .05) 64%)}
+.pdip__cell--flat{background:var(--ground-alt)}
+.pdip__cell--ink{background:var(--ground-deep);color:var(--text-invert)}
+.pdip__cell h3{font-size:clamp(21px,2.4vw,32px);margin-bottom:12px}
+.pdip__cell p{max-width:38ch;margin-bottom:20px}
+.pdip__cell--flat p{color:var(--text-soft)}
+.pdip__cell--ink p{color:rgb(var(--x-invert) / .8)}
+
+/* P6 BLEND, pathway carrying its own proof: each side takes one statistic, so
+   the stat bar disappears as a separate band. */
+.pproof .path__stat{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(34px,4vw,56px);line-height:1;letter-spacing:-.03em;
+  color:var(--accent-ink);margin-bottom:10px;font-variant-numeric:tabular-nums}
+.pproof .path__statl{font-family:var(--font-label);font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:rgb(var(--x-onphoto) / .72);
+  display:block;margin-bottom:22px}
+
+/* ==========================================================================
+   COMMUNITY TREATMENTS
+   The study's widest-ranging block, and the one place differentiation still
+   lives now that register has converged across half the corpus.
+   ========================================================================== */
+
+/* C2 alternating placards: the copy switches sides band to band, so a run of
+   placards reads as a composed sequence rather than one card repeated (Curtis,
+   2026-08-24: "I think they should alternate. The text should alternate").
+   The base .placard lives in styles.css; this is the alternation modifier. */
+.placard--flip .placard__row{flex-direction:row-reverse;text-align:right}
+.placard--flip .placard__row p{margin-left:auto}
+.placard--flip .placard__tag{text-align:left;border-left:none;padding-left:0;
+  border-right:1px solid rgb(var(--x-onphoto) / .4);padding-right:18px}
+
+/* C3 name list with a swapping photograph (Tracy Tutor). Surfaces eight or
+   more places in less height than a four-card row, and needs one photo. */
+.cnames{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,70px);
+  align-items:center}
+.cnames__list{list-style:none;margin:0;padding:0}
+.cnames__list li{border-bottom:1px solid var(--rule)}
+.cnames__list a{display:flex;justify-content:space-between;align-items:baseline;
+  gap:20px;padding:16px 0;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(19px,2.2vw,29px);text-transform:uppercase;letter-spacing:-.015em;
+  color:var(--text-soft);transition:color var(--dur) var(--ease)}
+.cnames__list a:hover,.cnames__list li.is-on a{color:var(--text)}
+.cnames__list span{font-family:var(--font-label);font-size:10.5px;
+  letter-spacing:.16em;color:var(--text-soft);text-transform:uppercase}
+.cnames__media img{width:100%;aspect-ratio:4/3.4;object-fit:cover}
+
+/* C4 BLEND, mosaic with the title in a cell (Smith & Berg). The section
+   heading occupies one tile of the grid instead of sitting above it. */
+.cmosaic{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.cmosaic__tile{position:relative;aspect-ratio:1/1;overflow:hidden;display:block}
+.cmosaic__tile img{width:100%;height:100%;object-fit:cover;
+  transition:transform 1.1s var(--ease)}
+.cmosaic__tile:hover img{transform:scale(1.05)}
+.cmosaic__cap{position:absolute;left:0;right:0;bottom:0;padding:22px;color:rgb(var(--x-onphoto));
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .84),rgb(var(--x-scrim) / 0))}
+.cmosaic__cap b{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:18px;text-transform:uppercase;letter-spacing:-.01em}
+.cmosaic__cap span{font-family:var(--font-label);font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;opacity:.8}
+.cmosaic__title{background:var(--ground-deep);color:var(--text-invert);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:clamp(22px,2.6vw,34px);aspect-ratio:1/1}
+.cmosaic__title h2{font-size:clamp(22px,2.5vw,34px)}
+
+/* C5 zero-gutter tiles with a hover reveal, the tightest photo treatment. */
+.ctiles{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ctile{position:relative;aspect-ratio:3/3.7;overflow:hidden;display:block;color:rgb(var(--x-onphoto))}
+.ctile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.ctile:hover img{transform:scale(1.06)}
+.ctile__veil{position:absolute;inset:0;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .76) 0%,rgb(var(--x-scrim) / .04) 56%)}
+.ctile__meta{position:absolute;left:26px;right:26px;bottom:26px}
+.ctile__meta h3{font-size:21px}
+.ctile__meta .r{width:0;height:1px;background:var(--accent);margin:12px 0;
+  transition:width var(--dur) var(--ease)}
+.ctile:hover .r{width:56px}
+.ctile__meta p{font-size:13.5px;opacity:0;transform:translateY(6px);margin:0;
+  transition:all var(--dur) var(--ease);line-height:1.6}
+.ctile:hover .ctile__meta p{opacity:.92;transform:none}
+
+/* C6 index directory: no photography at all. Every place name is a real link,
+   which makes this the strongest internal-linking treatment and the answer
+   when a client's photo library cannot cover the markets they serve. */
+.cindex{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,4vw,60px)}
+.cindex__col{border-top:1px solid var(--rule)}
+.cindex__group{padding:22px 0;border-bottom:1px solid var(--rule)}
+.cindex__group h3{font-family:var(--font-display);font-weight:700;font-size:17px;
+  text-transform:uppercase;letter-spacing:-.005em;margin-bottom:12px}
+.cindex__group ul{list-style:none;margin:0;padding:0;
+  display:flex;flex-wrap:wrap;gap:6px 14px}
+.cindex__group a{font-family:var(--font-label);font-size:11.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-soft)}
+.cindex__group a:hover{color:var(--accent)}
+.cindex__count{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;
+  color:var(--accent);float:right}
+
+/* ==========================================================================
+   PROCESS STEP TREATMENTS
+   House doctrine, non-negotiable: process steps are alternating image and
+   content rows. The numbered-circle timeline was removed in May 2026 and does
+   not come back. So every treatment below varies HOW the alternating row is
+   rendered, never whether it alternates. Production default is eight steps;
+   the specimens show three for compactness.
+   ========================================================================== */
+
+/* S1 contained alternating rows, the validated baseline. */
+.stp{border-top:1px solid var(--rule)}
+.stp__row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);
+  align-items:center;padding:clamp(32px,4vw,62px) 0;border-bottom:1px solid var(--rule)}
+.stp__row:nth-of-type(even) .stp__media{order:2}
+.stp__media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.stp__n{display:block;font-family:var(--font-label);font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.stp__row h3{font-size:clamp(21px,2.4vw,33px);margin-bottom:14px}
+.stp__row p{color:var(--text-soft);max-width:46ch;margin:0}
+
+/* S2 full-bleed alternating: each row is a two-cell band running edge to edge,
+   and the content cell alternates ground so the page chapters as it steps. */
+.stp--bleed{border:none}
+.stp--bleed .stp__row{gap:0;padding:0;border:none;align-items:stretch;
+  min-height:clamp(340px,42vw,540px)}
+.stp--bleed .stp__media{overflow:hidden}
+.stp--bleed .stp__media img{height:100%;aspect-ratio:auto;object-fit:cover}
+.stp--bleed .stp__body{display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(28px,4.2vw,68px);background:var(--ground-alt)}
+.stp--bleed .stp__row:nth-of-type(even) .stp__body{background:var(--ground-deep)}
+.stp--bleed .stp__row:nth-of-type(even) h3{color:var(--text-invert)}
+.stp--bleed .stp__row:nth-of-type(even) p{color:rgb(var(--x-invert) / .82)}
+
+/* S3 ghost numeral with an overlapping card (250 Broadway). The step number is
+   set as outlined display type behind the row. Note the mirrored column ratio
+   on even rows: without it the flipped photograph renders smaller, which is
+   the defect Curtis caught on P4. */
+.stp--ghost{border:none}
+.stp--ghost .stp__row{position:relative;grid-template-columns:1.28fr .92fr;
+  gap:0;border:none;padding:clamp(44px,5.2vw,88px) 0 clamp(24px,3.2vw,50px)}
+.stp--ghost .stp__row:nth-of-type(even){grid-template-columns:.92fr 1.28fr}
+/* The numeral sits in the row's top padding, clear of the card rather than
+   behind it, and carries a stroke heavy enough to actually read. A first pass
+   put it at z-index 0 under the solid card with a 1px --rule stroke, which
+   made the entire device invisible. */
+.stp--ghost .stp__ghost{position:absolute;top:0;right:0;z-index:3;
+  font-family:var(--font-display);font-weight:700;font-size:clamp(96px,13vw,190px);
+  line-height:.82;letter-spacing:-.05em;color:transparent;
+  -webkit-text-stroke:2px rgb(var(--x-ink) / .26);pointer-events:none;user-select:none}
+.stp--ghost .stp__row:nth-of-type(even) .stp__ghost{right:auto;left:0}
+.stp--ghost .stp__media{position:relative;z-index:1}
+.stp--ghost .stp__media img{aspect-ratio:16/11}
+.stp--ghost .stp__body{position:relative;z-index:2;background:var(--ground-deep);
+  padding:clamp(26px,3.2vw,46px);margin-left:-18%;align-self:center}
+.stp--ghost .stp__row:nth-of-type(even) .stp__media{order:2}
+.stp--ghost .stp__row:nth-of-type(even) .stp__body{margin-left:0;margin-right:-18%}
+.stp--ghost .stp__body h3{color:var(--text-invert)}
+.stp--ghost .stp__body p{color:rgb(var(--x-invert) / .82)}
+
+/* S4 compact alternating: a small square image, so eight steps fit in the
+   height two cinematic rows would take. The answer when the process is the
+   point but the page cannot be six screens long. */
+.stp--tight .stp__row{grid-template-columns:clamp(96px,11vw,158px) .85fr 1.35fr;
+  gap:clamp(20px,2.8vw,44px);padding:clamp(16px,2vw,28px) 0;align-items:center}
+/* The column ratio mirrors with the placement, exactly as .pcard--flip must.
+   Without this the flipped row drops its thumbnail into the 1.35fr column and
+   the image balloons while the title is squeezed into the thumbnail's slot. */
+.stp--tight .stp__row:nth-of-type(even){
+  grid-template-columns:.85fr 1.35fr clamp(96px,11vw,158px)}
+.stp--tight .stp__row:nth-of-type(even) .stp__media{order:3}
+.stp--tight .stp__media img{aspect-ratio:1/1}
+.stp--tight .stp__row h3{font-size:clamp(16px,1.7vw,21px);margin:0}
+.stp--tight .stp__row p{font-size:14.5px;max-width:54ch}
+.stp--tight .stp__n{margin-bottom:7px}
+
+/* S5 BLEND, each step carries its own timing. The "what to expect" band and
+   the timeline both disappear, because the answer sits on the step it belongs
+   to rather than in a summary somewhere else on the page. */
+.stp--timed .stp__when{display:flex;align-items:baseline;gap:12px;margin-top:22px;
+  padding-top:16px;border-top:1px solid var(--rule)}
+.stp--timed .stp__when b{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(22px,2.6vw,36px);line-height:1;letter-spacing:-.03em;
+  color:var(--accent);font-variant-numeric:tabular-nums}
+.stp--timed .stp__when span{font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft)}
+
+/* S6 BLEND, the section heading occupies the first row's content cell, so the
+   block opens straight into step one and the heading band disappears. Same
+   device as the communities mosaic, applied one block over. */
+.stp--titled{border:none}
+.stp--titled .stp__row{gap:0;padding:0;border:none;align-items:stretch;
+  min-height:clamp(300px,34vw,430px)}
+.stp--titled .stp__media{overflow:hidden}
+.stp--titled .stp__media img{height:100%;aspect-ratio:auto;object-fit:cover}
+.stp--titled .stp__body,.stp--titled .stp__head{display:flex;flex-direction:column;
+  justify-content:center;padding:clamp(26px,3.4vw,52px)}
+.stp--titled .stp__body{background:var(--ground-alt)}
+.stp--titled .stp__head{background:var(--ground-deep)}
+.stp--titled .stp__head h2{font-size:clamp(25px,3.1vw,44px);color:var(--text-invert)}
+.stp--titled .stp__head p{color:rgb(var(--x-invert) / .78);margin:18px 0 0;max-width:32ch}
+
+/* ==========================================================================
+   AGENT BIO TREATMENTS
+   Every one carries a portrait at a portrait aspect, per the house rule: a
+   landscape lifestyle photograph is a different block. These are the highest
+   EEAT-density surface on the site, so each treatment has somewhere real for
+   licence, brokerage, designations and tenure to live.
+   ========================================================================== */
+
+.bio__grid{display:grid;grid-template-columns:.86fr 1.14fr;
+  gap:clamp(34px,5.5vw,84px);align-items:start}
+.bio__portrait img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.bio__grid h2{font-size:clamp(27px,3.6vw,52px);margin-bottom:26px}
+.bio__grid p{color:var(--text-soft);margin:0 0 20px;max-width:56ch}
+.bio__creds{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.6vw,38px);
+  margin-top:clamp(32px,4vw,56px);padding-top:28px;border-top:1px solid var(--rule)}
+.bio__cred b{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.bio__cred span{font-size:14.5px;color:var(--text-soft);line-height:1.6}
+
+/* B2 structured CV: the same facts as a scannable record rather than prose.
+   Strongest for a credentialed agent and the easiest for a model to parse. */
+.bio--cv .bio__grid{grid-template-columns:.78fr 1.22fr}
+.bio__rows{border-top:1px solid var(--rule);margin:0}
+.bio__r{display:grid;grid-template-columns:.5fr 1.5fr;gap:clamp(16px,3vw,44px);
+  padding:20px 0;border-bottom:1px solid var(--rule)}
+.bio__r dt{margin:0;font-family:var(--font-label);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-soft)}
+.bio__r dd{margin:0;font-size:15.5px}
+.bio__r dd b{font-family:var(--font-display);font-weight:700}
+.bio__r dd span{display:block;color:var(--text-soft);font-size:14px;margin-top:4px}
+
+/* B3 prose with a credential rail that holds position while the bio scrolls. */
+.bio--rail .bio__grid{grid-template-columns:1.32fr .68fr}
+.bio--rail .bio__portrait{float:left;width:44%;margin:6px clamp(24px,3vw,38px) 18px 0}
+.bio--rail .bio__portrait img{aspect-ratio:3/4}
+.bio__side{position:sticky;top:24px;background:var(--ground-alt);
+  padding:clamp(22px,2.8vw,36px)}
+.bio__side h3{font-family:var(--font-label);font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:500;margin:0 0 4px}
+.bio__side ul{list-style:none;margin:0;padding:0}
+.bio__side li{padding:12px 0;border-top:1px solid var(--rule);font-size:14.5px}
+.bio__side li b{display:block;font-family:var(--font-label);font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--text-soft);margin-bottom:3px}
+
+/* B4 portrait with an overlapping card, the bio read of the P4 device. */
+.bio--card .bio__grid{grid-template-columns:1.2fr .95fr;align-items:center;gap:0}
+.bio--card .bio__body{background:var(--ground-deep);padding:clamp(28px,3.6vw,54px);
+  margin-left:-22%;position:relative;z-index:2}
+.bio--card .bio__body h2{color:var(--text-invert);font-size:clamp(24px,2.9vw,40px)}
+.bio--card .bio__body p{color:rgb(var(--x-invert) / .82)}
+.bio--card .bio__body .tlink{color:var(--text-invert)}
+
+/* B5 BLEND, the bio carries its own numbers at display scale, so the stat bar
+   stops being a separate band. Tenure and volume belong next to the claim they
+   support, not stranded four sections away. */
+.bio__figs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,42px);
+  margin-top:clamp(30px,3.6vw,50px);padding-top:28px;border-top:1px solid var(--rule)}
+.bio__fig b{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(32px,4.4vw,60px);line-height:.95;letter-spacing:-.035em;
+  font-variant-numeric:tabular-nums}
+.bio__fig span{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);margin-top:10px}
+
+/* B6 a pull quote breaking the measure, for an agent whose voice is the asset. */
+.bio--quote .bio__grid{grid-template-columns:.78fr 1.22fr}
+.bio__pull{font-family:var(--font-display);font-weight:400;
+  font-size:clamp(22px,3vw,42px);line-height:1.22;letter-spacing:-.02em;color:var(--text);
+  margin:clamp(28px,3.6vw,50px) 0;padding-left:clamp(18px,2.6vw,40px);
+  border-left:2px solid var(--accent);max-width:24ch}
+
+/* ==========================================================================
+   TESTIMONIAL TREATMENTS
+   T1 is the .quotes structure already in styles.css, kept as the baseline.
+   ========================================================================== */
+
+/* T2 three-card grid ruled by hairlines rather than boxed in cards. */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule)}
+.tst-grid__c{padding:clamp(26px,3vw,44px) clamp(20px,2.2vw,34px);
+  border-left:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  display:flex;flex-direction:column;justify-content:space-between}
+.tst-grid__c:first-child{border-left:none;padding-left:0}
+.tst-grid blockquote{margin:0 0 24px;font-size:16px;line-height:1.7}
+
+/* T3 testimonials over photography, as a carousel (Curtis, 2026-08-24: "I love
+   this one, and I would like it to be a carousel"). Each quote gets its own
+   photograph and the block holds one band of page height however many quotes
+   the client has. Text-side gradient only, never a flat wash: same rule as
+   the hero. */
+.tstc{position:relative;overflow:hidden;isolation:isolate;color:rgb(var(--x-onphoto))}
+.tstc__track{display:flex;transition:transform .7s var(--ease)}
+.tstc__slide{position:relative;flex:0 0 100%;isolation:isolate;display:flex;
+  align-items:center;min-height:clamp(340px,42vw,520px)}
+.tstc__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;filter:saturate(1.03) contrast(1.04)}
+.tstc__tint{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to right,rgb(var(--x-scrim) / .8) 0%,rgb(var(--x-scrim) / .34) 50%,rgb(var(--x-scrim) / 0) 82%)}
+.tstc blockquote{margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(21px,2.9vw,40px);line-height:1.24;letter-spacing:-.02em;
+  max-width:21ch;text-shadow:0 2px 26px rgba(0,0,0,.4)}
+.tstc .who{color:rgb(var(--x-onphoto) / .8);margin-top:24px}
+/* .wrap has margin:0 auto, and auto margins CENTRE a flex item rather than
+   filling it, so without an explicit width the copy drifts to the middle of
+   the band while the gradient stays on the left. styles.css already solves
+   this for the hero via .hero__in{width:100%}; these are the same case. */
+.tstc__slide .wrap,.cx-quiet .wrap,.cx-para .wrap{width:100%}
+.tstc__ui{position:absolute;z-index:4;right:clamp(20px,4vw,58px);
+  bottom:clamp(22px,3vw,42px);display:flex;align-items:center;gap:clamp(14px,2vw,26px)}
+.tstc__count{font-family:var(--font-label);font-size:11px;letter-spacing:.18em;
+  color:rgb(var(--x-onphoto) / .72);font-variant-numeric:tabular-nums}
+.tstc__dots{display:flex;gap:9px}
+.tstc__dot{width:8px;height:8px;padding:0;border:none;border-radius:50%;
+  background:rgb(var(--x-onphoto) / .38);cursor:pointer}
+.tstc__dot.is-on{background:rgb(var(--x-onphoto))}
+.tstc__arrow{width:44px;height:44px;padding:0;background:transparent;cursor:pointer;
+  border:1px solid rgb(var(--x-onphoto) / .45);color:rgb(var(--x-onphoto));font-size:15px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:background var(--dur) var(--ease)}
+.tstc__arrow:hover{background:rgb(var(--x-onphoto) / .15)}
+
+/* T4 one quote at display scale and nothing else. The quietest treatment here
+   and the most confident: it works only when the quote is genuinely good. */
+.tst-big blockquote{margin:0;font-family:var(--font-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:-.03em;line-height:1.04;
+  font-size:clamp(28px,5vw,74px);max-width:17ch}
+.tst-big .who{margin-top:clamp(26px,3.2vw,44px)}
+
+/* T5 BLEND, the testimonial carries the transaction that produced it, so the
+   quote doubles as proof and a separate stat band is no longer needed. */
+.tst-deal{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.tst-deal__c{background:var(--ground-alt);padding:clamp(26px,3.2vw,46px);
+  display:flex;flex-direction:column;justify-content:space-between}
+.tst-deal blockquote{margin:0 0 30px;font-size:16.5px;line-height:1.7}
+.tst-deal__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  padding-top:22px;border-top:1px solid var(--rule)}
+.tst-deal__f b{display:block;font-family:var(--font-display);font-weight:700;
+  font-size:clamp(18px,2vw,27px);line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums}
+.tst-deal__f span{display:block;font-family:var(--font-label);font-size:9px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--text-soft);margin-top:8px}
+
+/* T6 an offset stack, quotes stepping down the page left and right. Reads as a
+   conversation rather than a wall of equal cards. */
+.tst-stack{display:flex;flex-direction:column;gap:clamp(28px,3.6vw,54px)}
+.tst-stack__c{max-width:62%;border-top:1px solid var(--rule);padding-top:22px}
+.tst-stack__c:nth-child(even){margin-left:auto;text-align:right}
+.tst-stack blockquote{margin:0 0 16px;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(18px,2.2vw,31px);line-height:1.3;letter-spacing:-.018em}
+
+/* ==========================================================================
+   CLOSING CTA TREATMENTS
+   ========================================================================== */
+
+/* X1 parallax photograph, centred. The validated baseline. */
+.cx-para{position:relative;isolation:isolate;color:rgb(var(--x-onphoto));overflow:hidden;
+  min-height:clamp(360px,44vw,540px);display:flex;align-items:center;text-align:center}
+.cx-para__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;background-attachment:fixed}
+.cx-para__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .74),rgb(var(--x-scrim) / .3))}
+.cx-para h2{font-size:clamp(28px,4.4vw,64px);max-width:18ch;margin:0 auto 22px;
+  text-shadow:0 2px 26px rgba(0,0,0,.42)}
+.cx-para p{max-width:46ch;margin:0 auto 32px;color:rgb(var(--x-onphoto) / .86)}
+
+/* X2 a solid deep band and nothing else, for a page that already carries
+   enough photography that one more image would be noise. */
+.cx-band{text-align:center}
+.cx-band h2{font-size:clamp(28px,4.4vw,64px);max-width:16ch;margin:0 auto 22px}
+.cx-band p{max-width:46ch;margin:0 auto 32px}
+
+/* X3 split, the argument on one side and the form on the other. */
+.cx-split{display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(34px,5vw,80px);align-items:start}
+.cx-split h2{font-size:clamp(25px,3.2vw,46px);margin-bottom:18px}
+.cx-form{display:grid;gap:20px}
+.cx-form label{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);margin-bottom:7px}
+.cx-form input,.cx-form textarea{width:100%;border:none;
+  border-bottom:1px solid var(--rule);background:transparent;font-family:inherit;
+  font-size:16px;padding:9px 2px;color:inherit}
+.cx-form input:focus,.cx-form textarea:focus{outline:none;border-bottom-color:var(--accent)}
+
+/* X4 photograph with an overlapping card. */
+.cx-card{display:grid;grid-template-columns:1.25fr .9fr;align-items:center}
+.cx-card__media{grid-column:1;grid-row:1;overflow:hidden}
+.cx-card__media img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.cx-card__body{grid-column:2;grid-row:1;background:var(--ground-deep);
+  padding:clamp(30px,3.8vw,56px);margin-left:-24%;position:relative;z-index:2}
+.cx-card__body h2{font-size:clamp(23px,2.8vw,39px);color:var(--text-invert);
+  margin-bottom:16px}
+.cx-card__body p{color:rgb(var(--x-invert) / .82);margin-bottom:26px}
+
+/* X5 BLEND, the form set inline in a sentence. The lead form stops being a
+   separate band and becomes the closing line itself, which is the shortest
+   possible distance between the last argument and the first answer. */
+.cx-inline{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.02em;font-size:clamp(19px,2.6vw,38px);line-height:1.7;max-width:27ch}
+.cx-inline input{font:inherit;text-transform:inherit;letter-spacing:inherit;
+  border:none;border-bottom:2px solid var(--accent);background:transparent;
+  color:var(--text-invert);padding:0 .12em;width:auto}
+/* The placeholder has to be a light value: this block sits on the deep ground,
+   and a first pass used --rule, which is black at 16 percent and therefore
+   invisible against it. */
+.cx-inline input::placeholder{color:rgb(var(--x-invert) / .45);opacity:1}
+.cx-inline input:focus{outline:none;background:rgb(var(--x-invert) / .09)}
+.cx-inline__go{margin-top:clamp(26px,3.2vw,44px)}
+
+/* X6 edge-to-edge photograph, the call set as display type with no button at
+   all. The study's most common hero CTA count was zero, and the same restraint
+   reads as confidence at the foot of a page. */
+.cx-quiet{position:relative;isolation:isolate;color:rgb(var(--x-onphoto));overflow:hidden;
+  min-height:clamp(380px,46vw,580px);display:flex;align-items:flex-end}
+.cx-quiet__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;filter:saturate(1.03) contrast(1.04)}
+.cx-quiet__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .76) 0%,rgb(var(--x-scrim) / .06) 56%)}
+.cx-quiet .wrap{padding-top:clamp(44px,6vw,84px);padding-bottom:clamp(34px,4.4vw,62px)}
+.cx-quiet h2{font-size:clamp(30px,5.6vw,86px);max-width:13ch;margin:0;
+  text-shadow:0 2px 30px rgba(0,0,0,.42)}
+.cx-quiet .tel{display:inline-block;margin-top:24px;font-family:var(--font-label);
+  font-size:clamp(12px,1.4vw,18px);letter-spacing:.2em;color:rgb(var(--x-onphoto));
+  border-bottom:1px solid rgb(var(--x-onphoto) / .5);padding-bottom:6px}
+
+/* ==========================================================================
+   INTERIOR-PAGE BLOCKS: buyer agency, listing preparation, the three numbers,
+   communities served, and the IDX listings frame.
+
+   Most of these compose from structures already rated rather than inventing
+   new ones, which is what the 2026-08 study argued for: the top of the market
+   runs on seven to nine structures per block, and distinctiveness comes from
+   art direction and one signature device, not from novel skeletons. New CSS
+   below is only for devices that genuinely did not exist yet.
+   ========================================================================== */
+
+/* --- a full-bleed photograph carrying a solid card ---------------------- */
+/* Reused by the buyer-agency commitment and the listing-prep checklist. */
+.ovb{position:relative;isolation:isolate;overflow:hidden;display:flex;
+  align-items:center;min-height:clamp(360px,42vw,540px)}
+.ovb__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;filter:saturate(1.03) contrast(1.04)}
+.ovb__tint{position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(to right,rgb(var(--x-scrim) / .66) 0%,rgb(var(--x-scrim) / .14) 64%,rgb(var(--x-scrim) / 0) 100%)}
+.ovb .wrap{width:100%}
+.ovb__card{background:var(--ground-deep);color:var(--text-invert);
+  padding:clamp(26px,3.2vw,48px);max-width:min(560px,54%)}
+.ovb__card h3{color:var(--text-invert);font-size:clamp(19px,2.3vw,31px);margin:0 0 16px}
+.ovb__card p{color:rgb(var(--x-invert) / .82);margin:0 0 18px}
+.ovb__list{list-style:none;margin:0;padding:0;counter-reset:o}
+.ovb__list li{counter-increment:o;display:flex;gap:14px;padding:11px 0;font-size:15px;
+  border-top:1px solid var(--x-rule-invert);color:rgb(var(--x-invert) / .9)}
+.ovb__list li::before{content:counter(o,decimal-leading-zero);padding-top:3px;
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;
+  color:var(--accent-ink);opacity:.7}
+
+/* --- plain-language question and answer pairs -------------------------- */
+.qa{border-top:1px solid var(--rule)}
+.qa__row{padding:20px 0;border-bottom:1px solid var(--rule)}
+.qa__q{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:clamp(15px,1.7vw,20px);margin:0 0 9px}
+.qa__a{margin:0;color:var(--text-soft);font-size:15.5px;max-width:54ch}
+
+/* --- accordion, for the blends that absorb a separate FAQ band ---------- */
+.acc{border-top:1px solid var(--rule)}
+.acc__i{border-bottom:1px solid var(--rule)}
+.acc__b{width:100%;display:flex;justify-content:space-between;align-items:center;
+  gap:20px;padding:19px 0;background:transparent;border:none;cursor:pointer;
+  text-align:left;color:inherit;font-family:var(--font-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:-.01em;font-size:clamp(15px,1.7vw,20px)}
+.acc__s{flex:0 0 auto;display:inline-block;font-family:var(--font-label);font-size:17px;
+  color:var(--accent);transition:transform var(--dur) var(--ease)}
+.acc__i.is-on .acc__s{transform:rotate(45deg)}
+.acc__p{margin:0;padding:0 0 20px;color:var(--text-soft);font-size:15.5px;max-width:56ch}
+.acc__i:not(.is-on) .acc__p{display:none}
+
+/* --- before and after pairs -------------------------------------------- */
+.ba{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.ba__c{position:relative}
+.ba__c img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.ba__tag{position:absolute;top:0;left:0;background:var(--ground-deep);
+  color:var(--text-invert);font-family:var(--font-label);font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;padding:9px 15px}
+.ba__cap{margin:0;padding:16px 0 0;font-size:14.5px;color:var(--text-soft);
+  grid-column:1 / -1}
+
+/* --- the three numbers, each on its own photograph --------------------- */
+.numz{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.numz__c{position:relative;overflow:hidden;isolation:isolate;color:rgb(var(--x-onphoto));
+  display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:clamp(300px,32vw,420px);padding:clamp(22px,2.6vw,36px)}
+.numz__bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center}
+.numz__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .9) 0%,rgb(var(--x-scrim) / .12) 74%)}
+.numz__who{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent-ink);
+  opacity:.8;margin-bottom:12px}
+.numz__c h3{font-size:clamp(18px,2vw,26px);margin:0 0 11px}
+.numz__c p{margin:0;font-size:14.5px;line-height:1.65;color:rgb(var(--x-onphoto) / .85)}
+
+/* --- three flat chips, for a statement that needs a short breakdown ----- */
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  margin-top:clamp(22px,2.8vw,38px)}
+.chips__c{background:var(--ground-alt);padding:clamp(20px,2.4vw,32px)}
+.chips__c b{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.chips__c h4{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:clamp(15px,1.6vw,19px);margin:0 0 8px}
+.chips__c p{margin:0;font-size:14px;line-height:1.6;color:var(--text-soft)}
+
+/* --- communities served, the interior-page strip ------------------------ */
+/* Curtis, 2026-08-24: "on the Buy page, the Communities I Serve type of block
+   is very good, something that can link to the idx pages". Every card here
+   points at that community's IDX saved-search page, which is also the house
+   pattern for the communities modals. */
+.nserve{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.nserve__c{position:relative;display:block;overflow:hidden;isolation:isolate;
+  color:rgb(var(--x-onphoto));aspect-ratio:4/3.4}
+.nserve__c img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.nserve__c:hover img{transform:scale(1.05)}
+.nserve__v{position:absolute;inset:0;
+  background:linear-gradient(to top,rgb(var(--x-scrim) / .84) 0%,rgb(var(--x-scrim) / .06) 62%)}
+.nserve__m{position:absolute;left:18px;right:18px;bottom:16px}
+.nserve__m h3{font-size:16px;margin:0}
+.nserve__m span{display:block;margin-top:7px;font-family:var(--font-label);
+  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgb(var(--x-onphoto) / .76)}
+
+/* row variant: names and inventory counts, for a page that already carries
+   a lot of photography above it */
+.nrow{border-top:1px solid var(--rule)}
+.nrow__c{display:grid;grid-template-columns:clamp(80px,9vw,120px) 1fr auto;
+  gap:clamp(16px,2.4vw,36px);align-items:center;padding:14px 0;
+  border-bottom:1px solid var(--rule)}
+.nrow__c img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.nrow__c h3{font-size:clamp(16px,1.8vw,22px);margin:0}
+.nrow__c p{margin:5px 0 0;font-size:14px;color:var(--text-soft)}
+.nrow__go{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);white-space:nowrap}
+
+/* ==========================================================================
+   LISTING PREPARATION, REBUILT
+   Round 3 killed four of six, all for content-to-structure mismatch rather
+   than for the idea. The content is an UNORDERED set of rooms, each with an
+   instruction the reader has to actually read. So: nothing that numbers the
+   rooms, and nothing that hides the instruction behind a hover.
+   ========================================================================== */
+
+/* R7 cards. The instruction is on the face of the card, not behind it. */
+.prepcards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px)}
+.prepcard{background:var(--ground-alt);display:flex;flex-direction:column}
+.prepcard img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.prepcard__b{padding:clamp(19px,2.2vw,30px)}
+.prepcard__b h3{font-size:clamp(16px,1.8vw,22px);margin:0 0 10px}
+.prepcard__b p{margin:0;font-size:14.5px;line-height:1.65;color:var(--text-soft)}
+
+/* R8 accordion with a thumbnail per room. Reveal on demand is legitimate
+   here in a way hover is not: the control is visible and the reader chooses
+   the room they care about. */
+.acc--thumb .acc__b{gap:clamp(14px,2vw,22px)}
+.acc__t{flex:0 0 auto;width:clamp(52px,6.5vw,82px);aspect-ratio:1/1;object-fit:cover}
+.acc__lbl{flex:1}
+.acc--thumb .acc__p{padding-left:calc(clamp(52px,6.5vw,82px) + clamp(14px,2vw,22px))}
+
+/* R9 one annotated room photograph. The tasks are located in the space they
+   belong to, which is the one thing a list can never show. */
+.anno{display:grid;grid-template-columns:1.5fr .85fr;gap:clamp(24px,3.2vw,48px);
+  align-items:start}
+.anno__fig{position:relative}
+.anno__fig img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.anno__pin{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;
+  border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  font-family:var(--font-label);font-size:11.5px;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 2px 14px rgba(0,0,0,.4)}
+.anno__key{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.anno__key li{display:flex;gap:14px;padding:13px 0;font-size:14.5px;
+  border-bottom:1px solid var(--rule);color:var(--text-soft)}
+.anno__key b{flex:0 0 auto;padding-top:2px;font-family:var(--font-label);
+  font-size:11px;letter-spacing:.14em;color:var(--accent)}
+
+/* R10 a room list that swaps the photograph, with the instruction beside it
+   rather than hidden. The .cnames device it descends from surfaces names
+   only, which is right for places and wrong for tasks. */
+.rswap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(26px,4vw,58px);
+  align-items:start}
+.rswap__list{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.rswap__list li{border-bottom:1px solid var(--rule)}
+.rswap__list button{width:100%;padding:15px 0;text-align:left;cursor:pointer;
+  background:transparent;border:none;color:var(--text-soft);
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:clamp(16px,1.9vw,25px);
+  transition:color var(--dur) var(--ease)}
+.rswap__list li.is-on button,.rswap__list button:hover{color:var(--text)}
+.rswap__pane{display:none}
+.rswap__pane.is-on{display:block}
+.rswap__pane img{width:100%;aspect-ratio:4/3;object-fit:cover;margin-bottom:18px}
+.rswap__pane p{margin:0;max-width:48ch;color:var(--text-soft)}
+
+/* --- the IDX listings frame and its empty state ------------------------ */
+/* We do not control the listing card on Showcase IDX, so what we design is
+   the frame and, above all, the empty state: four of seven sites in one study
+   batch shipped a visibly blank box when their embed had nothing to return. */
+.idxz{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:13px;text-align:center;border:1px solid var(--rule);
+  padding:clamp(24px,3vw,44px);min-height:clamp(230px,25vw,330px)}
+.idxz__tag{font-family:var(--font-label);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent)}
+.idxz__h{margin:0;font-family:var(--font-display);font-weight:700;
+  text-transform:uppercase;letter-spacing:-.015em;font-size:clamp(18px,2.1vw,26px)}
+.idxz__p{margin:0;max-width:46ch;font-size:15px;color:var(--text-soft)}
+.idxz--dark{border-color:var(--x-rule-invert)}
+.idxz--dark .idxz__h{color:var(--text-invert)}
+.idxz--dark .idxz__p{color:rgb(var(--x-invert) / .76)}
+
+@media(max-width:900px){
+  .numz,.chips,.ba,.qa__row,.ovb__card,.anno,.rswap{grid-template-columns:1fr}
+  .prepcards{grid-template-columns:1fr}
+  .acc--thumb .acc__p{padding-left:0}
+  .ovb__card{max-width:100%}
+  .nserve{grid-template-columns:repeat(2,1fr)}
+  .nrow__c{grid-template-columns:clamp(70px,20vw,110px) 1fr;row-gap:8px}
+  .nrow__go{grid-column:2}
+  .stp__row,.stp--ghost .stp__row,.stp--ghost .stp__row:nth-of-type(even),
+  .stp--tight .stp__row,.bio__grid,.bio--cv .bio__grid,.bio--rail .bio__grid,
+  .bio--card .bio__grid,.bio--quote .bio__grid,.cx-split,.cx-card,
+  .tst-grid,.tst-deal{grid-template-columns:1fr}
+  .stp__row:nth-of-type(even) .stp__media,
+  .stp--tight .stp__row:nth-of-type(even) .stp__media{order:0}
+  .stp--ghost .stp__body,.stp--ghost .stp__row:nth-of-type(even) .stp__body,
+  .bio--card .bio__body,.cx-card__body{margin:-40px 20px 0}
+  .bio--rail .bio__portrait{float:none;width:100%;margin:0 0 24px}
+  .bio__side{position:static}
+  .bio__creds,.bio__figs,.tst-deal__facts{grid-template-columns:repeat(2,1fr)}
+  .tst-stack__c,.tst-stack__c:nth-child(even){max-width:100%;text-align:left}
+  .cx-card__media,.cx-card__body{grid-column:1}
+  .cx-card__body{grid-row:2}
+  .cnames,.pcard,.pcard--flip,.prow{grid-template-columns:1fr}
+  .pcard__body,.pcard--flip .pcard__body{margin:-40px 20px 0}
+  .placard--flip .placard__row{flex-direction:row;text-align:left}
+  .stats--float,.pdip{grid-template-columns:1fr 1fr}
+  .cmosaic,.ctiles,.cindex{grid-template-columns:1fr}
+}
