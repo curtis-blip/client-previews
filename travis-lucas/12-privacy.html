@@ -85,8 +85,12 @@
   transition:opacity .2s,transform .2s,visibility .2s;box-shadow:0 18px 44px rgb(var(--x-scrim) / .38);z-index:30}
 .nav__has:hover .nav__sub,.nav__has:focus-within .nav__sub{opacity:1;visibility:visible;transform:translateY(0)}
 .nav__sub::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
-.nav__sub li a{display:block;padding:9px 20px;font-family:var(--font-body);font-size:13.5px;
-  letter-spacing:0;text-transform:none;color:rgb(var(--x-invert) / .82);text-shadow:none;opacity:1}
+/* Dropdowns inherit the nav's case treatment: if the top level is capped, the
+   submenu is capped (Curtis 2026-08-26). A lowercase submenu under an uppercase
+   nav reads as a different component bolted on. */
+.nav__sub li a{display:block;padding:10px 20px;font-family:var(--font-label);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgb(var(--x-invert) / .82);
+  text-shadow:none;opacity:1;white-space:nowrap}
 .nav__sub li a:hover{color:var(--x-gold);background:rgba(255,255,255,.045)}
 .nav__burger{display:none;background:none;border:0;cursor:pointer;padding:8px;gap:5px;flex-direction:column}
 .nav__burger span{display:block;width:24px;height:1.5px;background:rgb(var(--x-onphoto))}
