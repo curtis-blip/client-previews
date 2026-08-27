@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rhaus + Co &middot; Whitney &middot; mobile view</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--fw:375px;--ink:#0A0909;--rule:rgba(255,255,255,.16);--soft:#98938D;--weichert:#FFCE00}
+*{box-sizing:border-box}
+body{margin:0;background:#161414;color:#EDEAE5;font-family:'Montserrat',system-ui,sans-serif;font-weight:300}
+header{position:sticky;top:0;z-index:5;background:var(--ink);border-bottom:1px solid var(--rule);
+  padding:16px clamp(16px,3vw,30px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+h1{font-family:'Raleway',Georgia,serif;font-weight:200;text-transform:uppercase;letter-spacing:.05em;
+  font-size:15px;margin:0}
+h1 small{font-weight:300;text-transform:none;letter-spacing:0;color:var(--soft);font-family:'Montserrat',sans-serif;font-size:12px}
+a.back{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--weichert);text-decoration:none}
+.w{display:flex;gap:6px}
+.w button{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;letter-spacing:.14em;
+  background:none;border:1px solid var(--rule);color:var(--soft);padding:5px 11px;cursor:pointer;transition:all .3s}
+.w button.on{border-color:var(--weichert);color:var(--weichert)}
+.row{display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;padding:clamp(18px,3vw,30px);align-items:flex-start}
+body.single .row{justify-content:center}
+figure{margin:0;flex:0 0 auto;width:var(--fw)}
+figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 2px 9px}
+figcaption span{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+figcaption a{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none}
+figcaption a:hover{color:var(--weichert)}
+iframe{width:var(--fw);height:78vh;min-height:560px;border:1px solid var(--rule);background:#fff;display:block}
+</style></head>
+<body>
+<header>
+  <h1>Whitney <small>&middot; the same live pages at phone width</small></h1>
+  <span class="w"><button data-w="375px" class="on">375</button><button data-w="768px">768</button></span>
+  <a class="back" href="index.html">&larr; All variants</a>
+</header>
+<div class="row" id="row"></div>
+<script>
+var PAGES = [
+  ["17-whitney-d.html","D · The split"],
+  ["17-whitney-e.html","E · The sticky plate"],
+  ["17-whitney-c.html","C · Tabs plus search"],
+  ["17-whitney-tabs.html","B · Four tabs"],
+  ["17-whitney.html","A · Long scroll"],
+  ["01-home.html","Home page"]
+];
+var q = new URLSearchParams(location.search).get("page");
+var list = q ? PAGES.filter(function(p){ return p[0] === q; }) : PAGES;
+if (q) document.body.classList.add("single");
+var row = document.getElementById("row");
+list.forEach(function(p){
+  var f = document.createElement("figure");
+  f.innerHTML = '<figcaption><span>' + p[1] + '</span><a href="' + p[0] + '">open full page</a></figcaption>' +
+    '<iframe loading="lazy" src="' + p[0] + '" title="' + p[1] + '"></iframe>';
+  row.appendChild(f);
+});
+document.querySelectorAll(".w button").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.documentElement.style.setProperty("--fw", b.dataset.w);
+    document.querySelectorAll(".w button").forEach(function(o){ o.classList.toggle("on", o === b); });
+  });
+});
+</script>
+</body></html>
