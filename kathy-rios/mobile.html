@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile view · Kathy Rios</title>
+<style>
+body{margin:0;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;background:#181818;color:#ddd}
+header{display:flex;align-items:center;gap:14px;padding:14px 20px;position:sticky;top:0;background:#181818;z-index:2;border-bottom:1px solid #2a2a2a}
+h1{font-size:15px;font-weight:600;margin:0}
+h1 small{color:#888;font-weight:400}
+.w{display:flex;gap:4px;margin-left:auto}
+.w button{font:inherit;font-size:12px;padding:6px 12px;border-radius:5px;border:1px solid #3a3a3a;background:transparent;color:#ccc;cursor:pointer}
+.w button.on{background:#c9a35a;border-color:#c9a35a;color:#161616}
+.row{display:flex;gap:24px;overflow-x:auto;padding:22px;align-items:flex-start}
+figure{margin:0;flex:0 0 auto}
+figcaption{display:flex;justify-content:space-between;gap:10px;padding:0 2px 8px;color:#aaa}
+figcaption a{color:#7ab8ff;text-decoration:none}
+iframe{border:0;background:#fff;width:var(--fw,375px);height:74vh;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 14px 40px rgba(0,0,0,.5)}
+.single .row{justify-content:center}
+.single iframe{height:84vh}
+</style>
+</head>
+<body>
+<header>
+  <h1>Kathy Rios <small>· mobile view · the same live pages at phone width</small></h1>
+  <span class="w"><button data-w="375px" class="on">375</button><button data-w="768px">768</button></span>
+</header>
+<div class="row" id="row"></div>
+<script>
+var PAGES = [["01-home.html", "Home"], ["02-about.html", "About"], ["03-buyers-guide.html", "Buyers Guide"], ["04-sellers-guide.html", "Sellers Guide"], ["05-why-sell-with-kathy.html", "Why Sell With Kathy"], ["06-home-valuation.html", "Home Valuation"], ["07-communities.html", "Communities"], ["08-testimonials.html", "Testimonials"], ["09-contact.html", "Contact"], ["10-blog.html", "Blog"], ["11-sitemap.html", "Sitemap"], ["12-privacy.html", "Privacy"], ["13-terms.html", "Terms of Use"], ["14-troon-north.html", "Troon North"]];
+var q = new URLSearchParams(location.search).get("page");
+var list = q ? PAGES.filter(function(p){ return p[0] === q; }) : PAGES;
+if (q) document.body.classList.add("single");
+var row = document.getElementById("row");
+list.forEach(function(p){
+  var f = document.createElement("figure");
+  f.innerHTML = '<figcaption><span>' + p[1] + '</span>' +
+    '<a href="' + p[0] + '">open full page</a></figcaption>' +
+    '<iframe loading="lazy" src="' + p[0] + '" title="' + p[1] + '"></iframe>';
+  row.appendChild(f);
+});
+document.querySelectorAll(".w button").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.documentElement.style.setProperty("--fw", b.dataset.w);
+    document.querySelectorAll(".w button").forEach(function(o){
+      o.classList.toggle("on", o === b); });
+  });
+});
+</script>
+</body>
+</html>
