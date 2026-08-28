@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Day Group | Real Estate in Southeast Georgia</title>
+<meta name="description" content="The Day Group, brokered by eXp Realty. Alicia Day and team serve Hazlehurst, Vidalia, Baxley, Jesup, Douglas, Fitzgerald and Hinesville across ten Southeast Georgia counties.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ============================================================
+   00 HERO : cross-fade, slow push-in, 88vh so the next block peeks
+   ============================================================ */
+.hero{position:relative;height:88vh;min-height:600px;overflow:hidden;background:var(--ink)}
+.hero__img{position:absolute;inset:0;opacity:0;transition:opacity 2.4s var(--ease)}
+.hero__img.on{opacity:1}
+.hero__img img{width:100%;height:100%;object-fit:cover;animation:push 22s var(--ease) forwards}
+@keyframes push{from{transform:scale(1.0)}to{transform:scale(1.13)}}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(14,17,14,.48),rgba(14,17,14,.10) 38%,rgba(14,17,14,.74))
+}
+.hero__copy{
+  position:absolute;left:0;right:0;bottom:11vh;z-index:3;
+  padding:0 46px 0 calc(var(--rail) + 12px);color:#fff
+}
+.hero__copy h1{font-size:clamp(32px,5.4vw,78px);color:#fff;line-height:1.14;letter-spacing:3px}
+.hero__sub{
+  margin:26px 0 0;max-width:520px;font-size:clamp(15px,1.15vw,17.5px);
+  line-height:1.8;color:rgba(255,255,255,.86);font-weight:300
+}
+.hero__meta{
+  position:absolute;right:46px;bottom:11vh;z-index:3;text-align:right;
+  font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.66)
+}
+.hero__dots{position:absolute;left:calc(var(--rail) + 12px);bottom:5.4vh;z-index:4;display:flex;gap:10px}
+.hero__dots button{width:34px;height:2px;border:0;padding:0;background:rgba(255,255,255,.34);cursor:pointer;transition:background .5s}
+.hero__dots button.on{background:#fff}
+
+/* ============================================================
+   01 SEARCH BAND : photo container under the hero, Showcase IDX on top.
+   Widget markup + override CSS lifted from the Rhonda Giarraffa build
+   (homeonlakelanier.com), accent remapped gold -> her green.
+   ============================================================ */
+.sband{position:relative;padding:110px 46px;overflow:hidden;isolation:isolate}
+.sband__bg{position:absolute;inset:-18% 0;z-index:-2;will-change:transform}
+.sband__bg img{width:100%;height:100%;object-fit:cover}
+.sband::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(12,15,12,.56)}
+.sband__panel{
+  max-width:1180px;margin:0 auto;background:var(--white);
+  padding:52px 56px 56px;box-shadow:0 30px 80px -40px rgba(0,0,0,.55)
+}
+.sband__panel h2{margin:18px 0 34px}
+
+/* ---- Showcase IDX widget, real class names ---- */
+.sidx-searchform{--sidx-accent:#4C6B54;--sidx-ink:#000000;font-family:var(--sans)}
+.sidx-searchform *{border-radius:0!important;box-sizing:border-box}
+.sidx-basic{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
+.sidx-locations-field-wrapper{flex:1 1 320px;min-width:220px}
+.sidx-suggestions-input{
+  display:flex;align-items:center;gap:10px;height:46px;padding:9px 14px;
+  background:#fff;border:1px solid var(--sidx-accent)
+}
+.sidx-suggestions-input input{
+  flex:1;border:0;outline:none;background:transparent;
+  font-family:var(--sans);font-size:13px;color:var(--sidx-ink)
+}
+.sidx-suggestions-input input::placeholder{color:#8b918c}
+.sidx-field,.sidx-streamlined-toggle{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  height:46px;padding:9px 16px;background:transparent;border:1px solid var(--sidx-accent);
+  font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--sidx-ink);
+  cursor:pointer;white-space:nowrap;transition:background .2s,color .2s
+}
+.sidx-range,.sidx-field-options{flex:0 0 auto}
+.sidx-beds-and-baths{display:flex;gap:10px}
+.sidx-streamlined-search{flex:0 0 auto}
+.sidx-streamlined-toggle{flex-shrink:0}
+.sidx-streamlined-toggle span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.sidx-field:hover,.sidx-streamlined-toggle:hover{background:var(--sidx-accent);color:#fff}
+.sidx-icon{color:var(--sidx-accent);font-style:normal;line-height:0}
+.sidx-icon svg{width:15px;height:15px;display:block;fill:none;stroke:currentColor;stroke-width:1.8}
+.sidx-field:hover .sidx-icon,.sidx-streamlined-toggle:hover .sidx-icon{color:#fff}
+.sidx-primary{
+  flex:0 0 auto;height:46px;padding:9px 30px;cursor:pointer;
+  background:var(--sidx-accent);border:1px solid var(--sidx-accent);color:#fff;
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  transition:background .2s,border-color .2s
+}
+.sidx-primary:hover{background:var(--green-deep);border-color:var(--green-deep)}
+.sidx-primary .sidx-icon{color:#fff}
+.sidx-save-search-pill{
+  display:flex;align-items:center;height:46px;padding:9px 18px;cursor:pointer;
+  border:1px solid rgba(0,0,0,.18);color:var(--gray);
+  font-size:12px;letter-spacing:1.2px;text-transform:uppercase;transition:border-color .2s,color .2s
+}
+.sidx-save-search-pill:hover{border-color:var(--sidx-accent);color:var(--sidx-accent)}
+@media (max-width:1080px){
+  .sband{padding:72px 22px}
+  .sband__panel{padding:34px 24px 38px}
+  .sidx-locations-field-wrapper{flex:1 1 100%}
+  .sidx-range,.sidx-beds-and-baths,.sidx-streamlined-search{flex:1 1 auto}
+  .sidx-field,.sidx-streamlined-toggle{justify-content:center}
+  .sidx-primary{flex:1 1 100%;justify-content:center}
+  .sidx-save-search-pill{flex:1 1 100%;justify-content:center}
+}
+
+/* ============================================================
+   02 BIO : oversized name, offset portrait, stats, signature
+   ============================================================ */
+.bio{padding:150px 46px 130px;background:var(--white)}
+.bio__in{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0 84px;align-items:start}
+.bio__name{grid-column:1/-1;margin-bottom:54px}
+.bio__name h2{font-size:clamp(34px,5.4vw,76px);line-height:1.1;letter-spacing:3px}
+.bio__eyebrow{display:flex;align-items:center;gap:26px;margin-bottom:30px}
+.bio__portrait{position:relative}
+.bio__portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
+.bio__portrait figcaption{
+  position:absolute;left:0;bottom:-1px;background:var(--green);color:#fff;
+  padding:15px 24px;font-size:10px;letter-spacing:.28em;text-transform:uppercase
+}
+.bio__body p{margin:0 0 20px}
+.bio__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:44px 0 34px;padding-top:34px;border-top:1px solid var(--rule)}
+.bio__stats b{display:block;font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);font-weight:300;line-height:1;color:var(--green)}
+.bio__stats span{display:block;margin-top:11px;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray)}
+.bio__sig{font-family:var(--serif);font-size:22px;letter-spacing:2px;text-transform:uppercase;margin:0 0 30px}
+@media (max-width:940px){
+  .bio{padding:96px 22px 88px}
+  .bio__in{grid-template-columns:1fr;gap:40px}
+  .bio__portrait{max-width:420px}
+}
+
+/* ============================================================
+   03 PATHS : two full-height photo panels. A fork, not a row.
+   ============================================================ */
+.paths{display:grid;grid-template-columns:1fr 1fr;min-height:82vh}
+.paths__p{position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:64px 56px;isolation:isolate}
+.paths__p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.4s var(--ease)}
+.paths__p::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(16,20,17,.80),rgba(16,20,17,.16) 62%,rgba(16,20,17,.28))}
+.paths__p:hover img{transform:scale(1.06)}
+.paths__p h3{font-size:clamp(34px,4.4vw,64px);color:#fff;margin-bottom:16px}
+.paths__p p{color:rgba(255,255,255,.82);max-width:360px;margin:0 0 30px;font-size:15px;line-height:1.8}
+.paths__n{font-size:10px;letter-spacing:.34em;color:rgba(255,255,255,.6);display:block;margin-bottom:20px}
+@media (max-width:860px){.paths{grid-template-columns:1fr}.paths__p{min-height:62vh;padding:44px 24px}}
+
+/* ============================================================
+   04 LISTINGS : alternating full-bleed 50/50 splits
+   ============================================================ */
+.list{background:var(--ink);color:#fff}
+.list__head{padding:120px 46px 76px;text-align:center;max-width:760px;margin:0 auto}
+.list__head h2{color:#fff;margin:22px 0 20px}
+.list__head p{color:rgba(255,255,255,.62)}
+.list__row{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.list__row:nth-child(even) .list__ph{order:2}
+.list__ph{position:relative;overflow:hidden}
+.list__ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.list__row:hover .list__ph img{transform:scale(1.05)}
+.list__ph b{
+  position:absolute;top:26px;left:26px;background:var(--green);color:#fff;
+  padding:9px 17px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:400
+}
+.list__info{display:flex;flex-direction:column;justify-content:center;padding:70px 66px;background:var(--ink-soft)}
+.list__info h3{font-size:clamp(28px,3.2vw,46px);color:#fff;margin-bottom:14px}
+.list__loc{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-light);margin-bottom:34px}
+.list__lede{color:var(--gray-light);font-size:15.5px;line-height:1.82;margin:0 0 34px;max-width:44ch}
+.list__info .eyebrow{margin-bottom:20px;display:block}
+.list--routes{padding-bottom:0}
+
+/* Showcase IDX provider slot: we style the frame, the widget draws the cards */
+.idx{padding:0 46px 118px}
+.idx__slot{
+  max-width:1240px;margin:0 auto;border:1px solid rgba(255,255,255,.22);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 12px,transparent 12px 24px);
+  padding:78px 40px;text-align:center;position:relative
+}
+.idx__badge{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;
+  padding:6px 18px;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap
+}
+.idx__what{font-family:var(--serif);font-size:clamp(20px,2.2vw,30px);letter-spacing:2px;text-transform:uppercase;color:#fff;margin:0 0 16px}
+.idx__how{color:var(--gray-light);font-size:14px;line-height:1.8;max-width:56ch;margin:0 auto}
+@media (max-width:900px){
+  .list__head{padding:82px 22px 54px}
+  .list__row{grid-template-columns:1fr}
+  .list__row:nth-child(even) .list__ph{order:0}
+  .list__ph{min-height:52vh}.list__info{padding:46px 24px}
+  .idx{padding:0 22px 78px}.idx__slot{padding:56px 22px}
+}
+
+/* ============================================================
+   05 COMMUNITIES : photo tiles, hairline extends on hover
+   ============================================================ */
+.comm{padding:130px 46px 130px;background:var(--white)}
+.comm__head{max-width:1400px;margin:0 auto 62px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end}
+.comm__head h2{margin:20px 0 0}
+.comm__grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:352px;gap:20px}
+.comm__t{position:relative;height:100%;overflow:hidden;display:block;cursor:pointer;background:var(--ink)}
+.comm__t:nth-child(1),.comm__t:nth-child(6),.comm__t:nth-child(7),.comm__t:nth-child(8){grid-column:span 2}
+.comm__t img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s var(--ease)}
+.comm__t:hover img{transform:scale(1.07)}
+.comm__t::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,14,.90) 0%,rgba(14,17,14,.58) 32%,rgba(14,17,14,.14) 66%,rgba(14,17,14,.06) 100%)}
+.comm__c{position:absolute;left:24px;right:24px;bottom:22px;z-index:2;color:#fff}
+.comm__c h3{font-size:clamp(21px,1.9vw,31px);color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.55)}
+.comm__c span{display:block;margin-top:7px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.86);text-shadow:0 1px 14px rgba(0,0,0,.6)}
+.comm__c i{display:block;height:1px;width:26px;background:rgba(255,255,255,.7);margin-top:14px;transition:width .6s var(--ease)}
+.comm__t:hover .comm__c i{width:76px}
+@media (max-width:1080px){.comm__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:300px}.comm__t:nth-child(1),.comm__t:nth-child(6),.comm__t:nth-child(7),.comm__t:nth-child(8){grid-column:span 2}}
+@media (max-width:860px){.comm{padding:88px 22px}.comm__head{grid-template-columns:1fr;gap:24px}}
+@media (max-width:560px){.comm__grid{grid-template-columns:1fr;grid-auto-rows:260px}.comm__t,.comm__t:nth-child(1),.comm__t:nth-child(6),.comm__t:nth-child(7),.comm__t:nth-child(8){grid-column:span 1}}
+
+
+/* ============================================================
+   07 TESTIMONIALS : cream ground, real faces
+   ============================================================ */
+.test{padding:130px 46px;background:var(--sand)}
+.test__head{max-width:1400px;margin:0 auto 66px;text-align:center}
+.test__head h2{margin-top:20px}
+.test__grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.test__c{background:var(--white);display:flex;flex-direction:column}
+.test__c img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.test__b{padding:36px 34px 34px;display:flex;flex-direction:column;flex:1}
+.test__stars{display:flex;gap:5px;margin-bottom:20px}
+.test__stars svg{width:14px;height:14px;fill:var(--green)}
+.test__c blockquote{margin:0 0 26px;font-size:15px;line-height:1.82;color:var(--ink);flex:1}
+.test__c cite{font-style:normal;font-family:var(--serif);font-size:17px;letter-spacing:1.5px;text-transform:uppercase;display:block}
+.test__c small{display:block;margin-top:6px;font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray)}
+.test__more{text-align:center;margin-top:56px}
+@media (max-width:960px){.test{padding:88px 22px}.test__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   09 CLOSING CTA : routes as buttons, never a form
+   ============================================================ */
+.cta{position:relative;padding:170px 46px 160px;text-align:center;overflow:hidden;isolation:isolate;color:#fff}
+.cta__bg{position:absolute;inset:-18% 0;z-index:-2;will-change:transform}
+.cta__bg img{width:100%;height:100%;object-fit:cover}
+.cta::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(12,15,12,.66),rgba(12,15,12,.74))}
+.cta .eyebrow{color:#fff;opacity:.75}
+.cta h2{font-size:clamp(30px,4.4vw,64px);max-width:18ch;margin:24px auto 26px;line-height:1.14;color:#fff}
+.cta p{max-width:50ch;margin:0 auto 48px;color:rgba(255,255,255,.82)}
+.cta__routes{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+@media (max-width:760px){.cta{padding:104px 22px 96px}.cta__routes .btn{width:100%;max-width:340px}}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <ul class="hdr__nav">
+    <li><a href="04-home-search.html">Properties</a>
+      <ul class="hdr__sub">
+        <li><a href="04-home-search.html">Home Search</a></li>
+        <li><a href="05-featured-listings.html">Featured Listings</a></li>
+        <li><a href="07-land-acreage.html">Land &amp; Acreage</a></li>
+        <li><a href="06-home-valuation.html">What Is My Home Worth</a></li>
+      </ul>
+    </li>
+    <li><a href="10-communities.html">Communities</a>
+      <ul class="hdr__sub">
+        <li><a href="10-communities.html">All Communities</a></li>
+        <li><a href="11-hinesville.html">Hinesville</a></li>
+        <li><a href="16-douglas.html">Douglas</a></li>
+        <li><a href="12-jesup.html">Jesup</a></li>
+        <li><a href="15-vidalia.html">Vidalia</a></li>
+        <li><a href="14-hazlehurst.html">Hazlehurst</a></li>
+      </ul>
+    </li>
+    <li><a href="08-buyers-guide.html">Buy</a>
+      <ul class="hdr__sub">
+        <li><a href="08-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="04-home-search.html">Search Homes</a></li>
+        <li><a href="07-land-acreage.html">Land &amp; Acreage</a></li>
+      </ul>
+    </li>
+    <li><a href="09-sellers-guide.html">Sell</a>
+      <ul class="hdr__sub">
+        <li><a href="09-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">Home Valuation</a></li>
+      </ul>
+    </li>
+    <li><a href="02-about.html">About</a>
+      <ul class="hdr__sub">
+        <li><a href="02-about.html">Our Story</a></li>
+        <li><a href="03-meet-the-team.html">Meet The Team</a></li>
+        <li><a href="21-testimonials.html">Testimonials</a></li>
+        <li><a href="22-blog.html">Journal</a></li>
+      </ul>
+    </li>
+  </ul>
+  <a class="hdr__logo" href="01-home.html" aria-label="The Day Group, home"><img src="img/logo.png" alt="The Day Group, brokered by eXp Realty"></a>
+  <div class="hdr__right">
+    <a class="hdr__tel" href="tel:+19122535721">912.253.5721</a>
+    <a class="hdr__cta" href="23-contact.html">Contact</a>
+    <button class="hdr__burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+
+<!-- ============ SECTION RAIL ============ -->
+<div class="rail" id="rail" aria-hidden="true">
+  <span data-for="hero">00 / Southeast Georgia</span>
+  <span data-for="search">01 / Search</span>
+  <span data-for="about">02 / Alicia Day</span>
+  <span data-for="paths">03 / Buy &amp; Sell</span>
+  <span data-for="listings">04 / Listings</span>
+  <span data-for="routes">05 / Where to start</span>
+  <span data-for="communities">06 / Communities</span>
+  <span data-for="testimonials">07 / Clients</span>
+  <span data-for="contact">08 / Contact</span>
+</div>
+
+<main>
+
+<!-- ============ 00 HERO ============ -->
+<section class="hero" id="hero" data-tone="dark">
+  <div class="hero__img on"><img src="img/hero-listing.jpg" alt="A white farmhouse with a full front porch and dormer windows on a wide lawn in Southeast Georgia"></div>
+  <div class="hero__img"><img src="img/ga-antebellum-brick-georgia-01.webp" alt="A residential street shaded by mature live oaks in South Georgia"></div>
+  <div class="hero__img"><img src="img/ga-southern-brick-traditional-02.webp" alt="A columned brick house at the end of a long front lawn"></div>
+  <div class="hero__copy">
+    <h1>What a difference<br>a Day makes</h1>
+    <p class="hero__sub">Real estate across ten counties of Southeast Georgia, from the Altamaha basin to the coast. Twenty years in accounting first, so the numbers make sense before you fall in love with the house.</p>
+  </div>
+  <div class="hero__meta">The Day Group<br>Brokered by eXp Realty</div>
+  <div class="hero__dots" id="dots">
+    <button class="on" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button>
+  </div>
+</section>
+
+<!-- ============ 01 SEARCH BAND : Showcase IDX widget ============ -->
+<section class="sband" id="search" data-tone="dark">
+  <div class="sband__bg" data-parallax="18"><img src="img/ga-southern-brick-traditional-02.webp" alt="A columned brick house at the end of a long front lawn"></div>
+  <div class="sband__panel rv">
+    <span class="eyebrow">01 / Find it</span>
+    <h2 class="display-sm">Search every listing<br>in ten counties</h2>
+
+    <div class="sidx-container">
+      <div class="sidx-widget-wrapper">
+        <div class="sidx-searchform sidx-widget">
+          <div class="sidx-basic">
+            <div class="sidx-locations-field-wrapper">
+              <div class="sidx-dropdown"><div class="sidx-floating-menu-anchor">
+                <div class="sidx-suggestions-input">
+                  <i class="sidx-search sidx-icon sidx-fa sidx-fa-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></i>
+                  <input type="text" placeholder="Enter a Location or Keyword" aria-label="Enter a location or keyword" maxlength="100">
+                </div>
+              </div></div>
+            </div>
+            <div class="sidx-range">
+              <div class="sidx-dropdown"><div class="sidx-floating-menu-anchor" tabindex="0">
+                <div class="sidx-field">Price <i class="sidx-chevron-down sidx-icon sidx-fa sidx-fa-chevron-down"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></i></div>
+              </div></div>
+            </div>
+            <div class="sidx-beds-and-baths">
+              <div class="sidx-field-options"><div class="sidx-dropdown"><div class="sidx-floating-menu-anchor" tabindex="0">
+                <div class="sidx-field">Beds <i class="sidx-chevron-down sidx-icon sidx-fa sidx-fa-chevron-down"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></i></div>
+              </div></div></div>
+              <div class="sidx-field-options"><div class="sidx-dropdown"><div class="sidx-floating-menu-anchor" tabindex="0">
+                <div class="sidx-field">Baths <i class="sidx-chevron-down sidx-icon sidx-fa sidx-fa-chevron-down"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></i></div>
+              </div></div></div>
+            </div>
+            <div class="sidx-streamlined-search" tabindex="0">
+              <div class="sidx-streamlined-toggle"><span>More <i class="sidx-chevron-down sidx-icon sidx-fa sidx-fa-chevron-down"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></i></span></div>
+            </div>
+            <button class="sidx-primary" aria-label="Search"><i class="sidx-search sidx-icon sidx-fa sidx-fa-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></i> Search</button>
+            <div class="sidx-save-search-pill sidx-search-pill sidx-dropdown-pill sidx-unsaved" tabindex="0">
+              <span class="sidx-label">Save Search</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 BIO ============ -->
+<section class="bio" id="about" data-tone="light">
+  <div class="bio__in">
+    <div class="bio__name rv">
+      <div class="bio__eyebrow"><span class="eyebrow">02 / The Agent</span><span class="hairline"><i></i><b></b></span></div>
+      <h2>Alicia Day</h2>
+      <p class="sub" style="margin:18px 0 0">Twenty years on the numbers before the houses</p>
+    </div>
+    <figure class="bio__portrait rv" style="margin:0">
+      <img src="img/alicia.jpg" alt="Alicia Day, team lead agent at The Day Group">
+      <figcaption>Team Lead Agent</figcaption>
+    </figure>
+    <div class="bio__body rv rv-d1">
+      <p class="lede">Twenty years in accounting before real estate, which changes the order of the conversation. Most agents show you the house and work out the money afterwards. Alicia starts with what the month actually looks like once you own it.</p>
+      <p>She holds a BSBA and works the ten counties of the Altamaha basin and out to the coast, alongside Randy Day and Kathy Rogers. Between them they cover showings, listings and the paperwork that keeps a contract from falling apart in week three.</p>
+      <p>Buying or selling a house is not a transaction to her clients. It is the largest financial decision most of them will make. She treats it that way, and she says the honest thing about a house even when the honest thing loses her the sale.</p>
+      <div class="bio__stats">
+        <div><b>20+</b><span>Years in finance</span></div>
+        <div><b>10</b><span>Counties served</span></div>
+        <div><b>3</b><span>On the team</span></div>
+      </div>
+      <p class="bio__sig">Alicia Day</p>
+      <a class="btn" href="02-about.html">Read the full story</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PATHS ============ -->
+<section class="paths" id="paths" data-tone="dark">
+  <article class="paths__p">
+    <img src="img/ga-southern-ranch-tree-lined-01.webp" alt="A tree lined South Georgia ranch home on a wide green lot">
+    <div>
+      <span class="paths__n">03 / Buying</span>
+      <h3>Buy</h3>
+      <p>What your number really buys, county by county, and what the payment looks like on the other side of closing.</p>
+      <a class="btn btn--light" href="08-buyers-guide.html">The Buyer's Guide</a>
+    </div>
+  </article>
+  <article class="paths__p">
+    <img src="img/ga-southern-brick-traditional-01.webp" alt="A brick traditional home with clipped hedges and a deep front lawn">
+    <div>
+      <span class="paths__n">03 / Selling</span>
+      <h3>Sell</h3>
+      <p>What buyers in this market will actually pay, what to fix before listing, and what to leave alone.</p>
+      <a class="btn btn--light" href="09-sellers-guide.html">The Seller's Guide</a>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 03 FEATURED LISTINGS : Showcase IDX slot ============ -->
+<section class="list" id="listings" data-tone="dark">
+  <div class="list__head rv">
+    <span class="eyebrow eyebrow--light">04 / On the market</span>
+    <h2 class="display-sm">Currently listed</h2>
+    <p>Live from the MLS and refreshed through the day, not a gallery of sold signs left up for decoration.</p>
+  </div>
+
+  <div class="idx rv">
+    <div class="idx__slot">
+      <span class="idx__badge">Showcase IDX</span>
+      <p class="idx__what">Featured listings render here</p>
+      <p class="idx__how">Showcase IDX owns the card markup, so this region is a provider slot. We style the frame around it, the widget draws the cards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ROUTES : alternating full-bleed splits ============ -->
+<section class="list list--routes" id="routes" data-tone="dark">
+  <article class="list__row">
+    <div class="list__ph"><img src="img/ga-antebellum-brick-georgia-02.webp" alt="A brick home with an attached garage beneath a large shade tree"></div>
+    <div class="list__info">
+      <span class="eyebrow eyebrow--light">05 / Route 01</span>
+      <h3>Search every home</h3>
+      <p class="list__lede">The whole MLS, the same feed the agents use, with no drip campaign attached to it. Filter by county, price, acreage or school zone and save what you like.</p>
+      <a class="btn btn--light" href="04-home-search.html">Start searching</a>
+    </div>
+  </article>
+
+  <article class="list__row">
+    <div class="list__ph"><img src="img/ga-southern-brick-traditional-03.webp" alt="A white house framed by the branches of a mature oak"></div>
+    <div class="list__info">
+      <span class="eyebrow eyebrow--light">05 / Route 02</span>
+      <h3>Featured listings</h3>
+      <p class="list__lede">The homes The Day Group has out right now, across all ten counties. New listings go up here first, usually before they reach the portals.</p>
+      <a class="btn btn--light" href="05-featured-listings.html">See what is listed</a>
+    </div>
+  </article>
+
+  <article class="list__row">
+    <div class="list__ph"><img src="img/ga-antebellum-brick-georgia-03.webp" alt="A brick home reached by a curving paved drive"></div>
+    <div class="list__info">
+      <span class="eyebrow eyebrow--light">05 / Route 03</span>
+      <h3>What is your home worth</h3>
+      <p class="list__lede">Not an algorithm's guess off a satellite photo. A number from someone who has walked the comparable houses in your county this year.</p>
+      <a class="btn btn--light" href="06-home-valuation.html">Request your valuation</a>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 05 COMMUNITIES ============ -->
+<section class="comm" id="communities" data-tone="light">
+  <div class="comm__head rv">
+    <div>
+      <span class="eyebrow">06 / The map</span>
+      <h2 class="display-sm">Ten counties,<br>one long river</h2>
+    </div>
+    <p class="lede">The Altamaha basin and the country around it. Each of these towns runs on its own clock, and what sells in a weekend in Hinesville can sit a season in Alma. Knowing the difference is most of the job.</p>
+  </div>
+  <div class="comm__grid">
+    <a class="comm__t rv" href="14-hazlehurst.html"><img src="img/ga-antebellum-brick-georgia-01.webp" alt="A residential street shaded by a canopy of mature live oaks"><span class="comm__c"><h3>Hazlehurst</h3><span>Jeff Davis County</span><i></i></span></a>
+    <a class="comm__t rv rv-d1" href="15-vidalia.html"><img src="img/ga-southern-brick-traditional-01.webp" alt="A brick colonial home behind clipped boxwood hedges"><span class="comm__c"><h3>Vidalia</h3><span>Toombs County</span><i></i></span></a>
+    <a class="comm__t rv rv-d2" href="13-baxley.html"><img src="img/ga-antebellum-brick-georgia-03.webp" alt="A brick home at the end of a paved drive among tall pines"><span class="comm__c"><h3>Baxley</h3><span>Appling County</span><i></i></span></a>
+    <a class="comm__t rv" href="12-jesup.html"><img src="img/ga-southern-ranch-tree-lined-02.webp" alt="A brick two storey home with a wide driveway and lawn"><span class="comm__c"><h3>Jesup</h3><span>Wayne County</span><i></i></span></a>
+    <a class="comm__t rv rv-d1" href="17-fitzgerald.html"><img src="img/ga-southern-ranch-tree-lined-01.webp" alt="A low brick ranch house on a broad open lawn"><span class="comm__c"><h3>Fitzgerald</h3><span>Ben Hill County</span><i></i></span></a>
+    <a class="comm__t rv rv-d2" href="11-hinesville.html"><img src="img/ga-southern-brick-traditional-02.webp" alt="A columned brick house set back behind a long front lawn"><span class="comm__c"><h3>Hinesville</h3><span>Liberty County &middot; Fort Stewart</span><i></i></span></a>
+    <a class="comm__t rv" href="16-douglas.html"><img src="img/ga-carpenter-gothic-historic-01.webp" alt="Rocking chairs and a small table on a white columned porch"><span class="comm__c"><h3>Douglas</h3><span>Coffee County</span><i></i></span></a>
+    <a class="comm__t rv rv-d1" href="10-communities.html"><img src="img/ga-victorian-southern-porch-01.webp" alt="A deep Southern porch with wicker seating and autumn flowers"><span class="comm__c"><h3>All ten counties</h3><span>Tattnall &middot; Bacon &middot; Montgomery</span><i></i></span></a>
+  </div>
+</section>
+
+<!-- ============ 07 TESTIMONIALS ============ -->
+<section class="test" id="testimonials" data-tone="light">
+  <div class="test__head rv">
+    <span class="eyebrow">07 / Clients</span>
+    <h2 class="display-sm">In their words</h2>
+  </div>
+  <div class="test__grid">
+    <article class="test__c rv">
+      <img src="img/t1.png" alt="Greg Huff, a client of The Day Group in Fitzgerald, Georgia">
+      <div class="test__b">
+        <div class="test__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg></div>
+        <blockquote>The best realtors in South Georgia. If you're looking for a home in South Georgia, let Alicia and Randy work their magic and find you your perfect home. From helping find the right listings, scheduling showings, and her knowledge of the area and market made the process as easy as it could be.</blockquote>
+        <cite>Greg Huff</cite><small>Fitzgerald, GA</small>
+      </div>
+    </article>
+    <article class="test__c rv rv-d1">
+      <img src="img/t2.jpg" alt="Danielle and Jeff Hutcheson outside their home in Baxley, Georgia">
+      <div class="test__b">
+        <div class="test__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg></div>
+        <blockquote>We truly could not have asked for a better experience buying our home. She was always quick to respond, incredibly knowledgeable, and went above and beyond to make sure we understood everything and felt confident in our decisions. No question was ever too small, and she always had our best interest at heart.</blockquote>
+        <cite>The Hutcheson Family</cite><small>Baxley, GA</small>
+      </div>
+    </article>
+    <article class="test__c rv rv-d2">
+      <img src="img/t3.jpg" alt="Karleigh and Johnny Runyon at their new home in Screven, Georgia">
+      <div class="test__b">
+        <div class="test__stars"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.8 1.2 7L12 17.8 5.8 21.2 7 14.2 2 9.4l7-.9z"/></svg></div>
+        <blockquote>Alicia and her husband, Randy, went above and beyond for our home buying process. They are the sweetest people and always took time to explain everything to us.</blockquote>
+        <cite>Karleigh &amp; Johnny Runyon</cite><small>Screven, GA</small>
+      </div>
+    </article>
+  </div>
+  <div class="test__more"><a class="btn" href="21-testimonials.html">Read all reviews</a></div>
+</section>
+
+
+<!-- ============ 09 CLOSING CTA ============ -->
+<section class="cta" id="contact" data-tone="dark">
+  <div class="cta__bg" data-parallax="24"><img src="img/ga-carpenter-gothic-historic-01.webp" alt="Rocking chairs on a white columned Southern porch looking out over a lawn"></div>
+  <div class="rv">
+    <span class="eyebrow">08 / Start here</span>
+    <h2>Start the<br>conversation</h2>
+    <p class="lede" style="color:rgba(255,255,255,.82)">No form that disappears into an inbox. Call, text, or email and you will be talking to Alicia, Randy or Kathy, not a lead router.</p>
+    <div class="cta__routes">
+      <a class="btn btn--green" href="tel:+19122535721">Call 912.253.5721</a>
+      <a class="btn btn--light" href="sms:+19122535721">Send a text</a>
+      <a class="btn btn--light" href="mailto:alicia@thedaygroup.net">Email the team</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr" id="footer">
+  <div class="ftr__grid">
+    <div>
+      <div class="ftr__logo"><img src="img/logo.png" alt="The Day Group, brokered by eXp Realty"></div>
+      <p>W Kelly Ln<br>Hazlehurst, GA 31539</p>
+      <p style="margin-top:14px"><a href="tel:+19122535721">912.253.5721</a><br><a href="mailto:alicia@thedaygroup.net">alicia@thedaygroup.net</a></p>
+      <div class="ftr__soc">
+        <a href="https://www.facebook.com/thedaygroup.net" aria-label="The Day Group on Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-9h3l.5-3.5H13V7.3c0-1 .3-1.7 1.8-1.7H17V2.4A24 24 0 0014.4 2C11.8 2 10 3.6 10 6.5v3H7V13h3v9z"/></svg></a>
+        <a href="https://www.instagram.com/thedaygroup.ga" aria-label="The Day Group on Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 5 5 .1 1.3.1 1.6.1 4.7s0 3.5-.1 4.8c-.2 3.3-1.7 4.8-5 5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.2-4.8-1.7-5-5C2 15.5 2 15.1 2 12s0-3.4.1-4.7c.2-3.3 1.7-4.9 5-5C8.4 2.2 8.8 2.2 12 2.2m0 4.9a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8m0 8.1a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4m5.1-9.4a1.15 1.15 0 100 2.3 1.15 1.15 0 000-2.3"/></svg></a>
+        <a href="https://www.linkedin.com/company/the-day-group-us" aria-label="The Day Group on LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5M3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.75-2.05 4 0 4.75 2.6 4.75 6V21h-4v-5.6c0-1.35-.03-3.1-1.9-3.1-1.9 0-2.2 1.48-2.2 3v5.7H9z"/></svg></a>
+        <a href="https://x.com/thedaygroup_us" aria-label="The Day Group on X"><svg viewBox="0 0 24 24"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.2l-4.9-6.4L5.1 21H2l7.3-8.3L2.3 3h6.3l4.4 5.8zm-1.1 16h1.7L7.7 4.7H5.9z"/></svg></a>
+        <a href="https://www.youtube.com/@thedaygroup-net" aria-label="The Day Group on YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.6-.46-5.32a2.76 2.76 0 00-1.94-1.95C18.88 4.27 12 4.27 12 4.27s-6.88 0-8.6.46a2.76 2.76 0 00-1.94 1.95C1 8.4 1 12 1 12s0 3.6.46 5.32a2.76 2.76 0 001.94 1.95c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.76 2.76 0 001.94-1.95C23 15.6 23 12 23 12M9.75 15.3V8.7L15.5 12z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="04-home-search.html">Home Search</a></li>
+        <li><a href="05-featured-listings.html">Featured Listings</a></li>
+        <li><a href="08-buyers-guide.html">Buyer's Guide</a></li>
+        <li><a href="09-sellers-guide.html">Seller's Guide</a></li>
+        <li><a href="06-home-valuation.html">What Is My Home Worth</a></li>
+        <li><a href="21-testimonials.html">Testimonials</a></li>
+        <li><a href="22-blog.html">Journal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Communities</h4>
+      <ul>
+        <li><a href="14-hazlehurst.html">Jeff Davis County</a></li>
+        <li><a href="15-vidalia.html">Toombs County</a></li>
+        <li><a href="13-baxley.html">Appling County</a></li>
+        <li><a href="12-jesup.html">Wayne County</a></li>
+        <li><a href="17-fitzgerald.html">Ben Hill County</a></li>
+        <li><a href="16-douglas.html">Coffee County</a></li>
+        <li><a href="11-hinesville.html">Liberty County</a></li>
+        <li><a href="19-glennville.html">Tattnall County</a></li>
+        <li><a href="18-alma.html">Bacon County</a></li>
+        <li><a href="10-communities.html">Montgomery County</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Team</h4>
+      <ul>
+        <li><a href="02-about.html">Alicia Day</a></li>
+        <li><a href="03-meet-the-team.html">Randy Day</a></li>
+        <li><a href="03-meet-the-team.html">Kathy Rogers</a></li>
+        <li><a href="02-about.html">About The Day Group</a></li>
+        <li><a href="23-contact.html">Contact</a></li>
+      </ul>
+      <div class="ftr__marks">
+        <svg viewBox="0 0 40 40" role="img" aria-label="Equal Housing Opportunity"><path fill="none" stroke="#161A17" stroke-width="1.6" d="M20 7l14 9.5h-3.5V32h-21V16.5H6z"/><rect x="13.5" y="21" width="13" height="11" fill="none" stroke="#161A17" stroke-width="1.6"/><path stroke="#161A17" stroke-width="1.6" d="M20 21v11M13.5 26.5h13"/></svg>
+        <svg viewBox="0 0 40 40" role="img" aria-label="REALTOR"><rect x="6" y="9" width="28" height="22" fill="none" stroke="#161A17" stroke-width="1.6"/><text x="20" y="24" font-family="Arial, sans-serif" font-size="9" font-weight="700" text-anchor="middle" fill="#161A17">R</text></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr__legal">
+    <p>&copy; 2026 The Day Group. All rights reserved.</p>
+    <p>
+      <a href="24-privacy.html">Privacy Policy</a> &nbsp;&middot;&nbsp;
+      <a href="25-terms.html">Terms of Use</a> &nbsp;&middot;&nbsp;
+      <a href="25-terms.html#accessibility">Accessibility</a> &nbsp;&middot;&nbsp;
+      <a href="26-sitemap.html">Sitemap</a>
+    </p>
+    <p>Site by <a href="https://agenticpress.ai" target="_blank" rel="noopener" style="color:var(--green)">AgenticPress</a></p>
+  </div>
+
+  <p class="ftr__disc">
+    The Day Group is a team of real estate licensees affiliated with eXp Realty, a licensed real estate brokerage in the state of Georgia. All information deemed reliable but not guaranteed. Property information is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. No representation, warranty, or guarantee is made regarding the accuracy or completeness of any information, including property descriptions, measurements, or square footage. All of which should be independently verified by the recipient. This material is not intended to solicit properties currently listed with another brokerage.
+    The Day Group is committed to providing an accessible website. If you have difficulty accessing content or notice any accessibility problems, please contact us at 912.253.5721 to specify the nature of the issue and any assistive technology you use.
+  </p>
+</footer>
+
+<div class="stamp">Design Preview &middot; The Day Group &middot; Homepage v1 &middot; 28 Aug 2026</div>
+
+<script>
+/* header sticky */
+var hdr=document.getElementById('hdr');
+addEventListener('scroll',function(){hdr.classList.toggle('stuck',scrollY>90)},{passive:true});
+
+/* hero cross-fade */
+(function(){
+  var slides=document.querySelectorAll('.hero__img'),dots=document.querySelectorAll('#dots button'),i=0;
+  function go(n){slides[i].classList.remove('on');dots[i].classList.remove('on');i=n;
+    slides[i].classList.add('on');dots[i].classList.add('on');
+    var img=slides[i].querySelector('img');img.style.animation='none';img.offsetHeight;img.style.animation='';}
+  dots.forEach(function(d,n){d.addEventListener('click',function(){go(n)})});
+  setInterval(function(){go((i+1)%slides.length)},7000);
+})();
+
+/* reveal */
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.rv,.rv-fade').forEach(function(el){io.observe(el)});
+})();
+
+/* section rail: show only the ACTIVE label, flip colour over dark grounds */
+(function(){
+  var rail=document.getElementById('rail'),labels=rail.querySelectorAll('span'),
+      secs=document.querySelectorAll('main > section[id]');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var id=e.target.id;
+      labels.forEach(function(l){l.classList.toggle('on',l.dataset.for===id)});
+      rail.classList.toggle('on-dark',e.target.dataset.tone==='dark');
+    });
+  },{threshold:.5});
+  secs.forEach(function(s){io.observe(s)});
+})();
+
+/* parallax bands: clamp progress (never freeze), amplitude from data-parallax,
+   rAF-throttled. The old version moved 20px total and stuck at the guard. */
+(function(){
+  var bands=[].slice.call(document.querySelectorAll('[data-parallax]'));
+  if(!bands.length) return;
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var vh=innerHeight;
+    for(var i=0;i<bands.length;i++){
+      var el=bands[i],sec=el.parentElement,r=sec.getBoundingClientRect();
+      if(r.bottom<-240||r.top>vh+240) continue;
+      var p=(vh-r.top)/(vh+r.height);
+      p=p<0?0:(p>1?1:p);
+      var amp=parseFloat(el.getAttribute('data-parallax'))||20;
+      el.style.transform='translate3d(0,'+((p-0.5)*amp).toFixed(3)+'%,0)';
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  frame();
+})();
+</script>
+</body>
+</html>
