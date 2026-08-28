@@ -1180,3 +1180,294 @@ h1 .hl, h2 .hl, h3 .hl { font-style: normal; color: var(--brass); }
 .paired--nofigure { grid-template-columns: 1fr; }
 .paired--nofigure .paired__figure { display: none; }
 .paired--nofigure .paired__body h2 { max-width: 26ch; }
+
+/* ============================================================
+   VARIANT G  ·  "the folio"
+   The page as an editorial issue. A typographic paper cover with a
+   broadsheet dateline, then numbered spreads: overlapping photo and
+   text plates, a ledger of checks, a ruled almanac, the portrait at
+   scale on ink, and the nearby towns as matted prints. Nothing is
+   hidden; pacing comes from composition, not from tabs or bands.
+   All additions are append-only. No earlier rule is modified.
+   ============================================================ */
+
+/* ---------- nav over a paper cover: ink text from the first pixel ---------- */
+.page-folio .nav::before { display: none; }
+.page-folio .nav:not(.is-stuck) .nav__links > li > a,
+.page-folio .nav:not(.is-stuck) .nav__links > li > .nav__label { color: var(--ink); text-shadow: none; }
+.page-folio .nav:not(.is-stuck) .nav__links a:hover { color: var(--brass); }
+.page-folio .nav:not(.is-stuck) .nav__phone { color: var(--ink); text-shadow: none; }
+.page-folio .nav:not(.is-stuck) .nav__phone:hover { color: var(--brass); }
+.page-folio .nav:not(.is-stuck) .nav__cta { border-color: var(--ink); color: var(--ink); }
+.page-folio .nav:not(.is-stuck) .nav__cta:hover { background: var(--ink); color: #fff; }
+.page-folio .nav:not(.is-stuck) .logo--light { display: none; }
+.page-folio .nav:not(.is-stuck) .logo--dark  { display: block; }
+.page-folio .nav:not(.is-stuck) .nav__burger span { background: var(--ink); }
+
+/* crumbs on paper rather than over photography */
+.page-folio .crumbs { color: var(--text-muted); text-shadow: none; }
+.page-folio .crumbs a { color: var(--text-muted); }
+.page-folio .crumbs a:hover { color: var(--brass); }
+.page-folio .crumbs em { color: var(--brass); }
+
+/* ---------- FOLIO KICKER · numbered spine of the issue ---------- */
+.folio { display: flex; align-items: center; margin-bottom: 1.6rem; }
+.folio i {
+  font-family: var(--font-head); font-style: normal; font-weight: 200;
+  font-size: 1.55rem; line-height: 1; letter-spacing: .08em; color: var(--brass);
+}
+.folio em {
+  font-style: normal; position: relative;
+  font-size: .655rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--text-muted); padding-left: 62px;
+}
+.folio em::before {
+  content: ''; position: absolute; left: 12px; top: 50%;
+  width: 38px; height: 1px; background: var(--brass); opacity: .6;
+}
+.folio--n i { position: relative; padding-right: 62px; }
+.folio--n i::after {
+  content: ''; position: absolute; right: 0; top: 50%;
+  width: 38px; height: 1px; background: var(--brass); opacity: .6;
+}
+.folio--onink i { color: var(--weichert); }
+.folio--onink em { color: #8E8983; }
+.folio--onink em::before, .folio--onink.folio--n i::after { background: rgba(255,255,255,.34); }
+
+/* ---------- COVER · typographic, broadsheet dateline, one plate ---------- */
+.cover { background: var(--paper); padding-top: clamp(176px, 21vh, 236px); }
+.cover__meta {
+  display: flex; flex-wrap: wrap; gap: .4rem 1.6rem;
+  justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--ink); padding-top: .95rem;
+  margin-bottom: clamp(2.2rem, 4vh, 3.4rem);
+  font-size: .655rem; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.cover__mast {
+  font-size: clamp(2.9rem, 8.3vw, 7.4rem);
+  line-height: .98; letter-spacing: .015em;
+  margin-bottom: clamp(2.2rem, 4vh, 3.4rem);
+}
+.cover__kick {
+  display: block; font-family: var(--font-body);
+  font-size: clamp(.68rem, .9vw, .8rem); font-weight: 500;
+  letter-spacing: .34em; color: var(--brass); margin-bottom: 1.5rem;
+}
+.cover__grid {
+  display: grid; grid-template-columns: 1fr .94fr;
+  gap: clamp(2.4rem, 5vw, 5.5rem); align-items: end;
+  padding-bottom: clamp(3rem, 5.5vh, 4.8rem);
+}
+.cover__deck {
+  font-family: var(--font-head); font-weight: 200;
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  text-transform: uppercase; letter-spacing: .05em; line-height: 1.3;
+  color: var(--text);
+}
+.cover__sub { margin-top: 1.05rem; color: var(--text-muted); font-size: clamp(.98rem, 1.3vw, 1.12rem); max-width: 46ch; }
+.cover__plate { position: relative; }
+.cover__frame { position: relative; display: block; } /* corners host: frames the photo, NOT the caption */
+.cover__plate img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.cover__plate figcaption {
+  margin-top: .95rem; font-size: .615rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted);
+}
+.cover__rule { height: 6px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+
+/* ---------- SPREADS · photo and text plates that overlap ---------- */
+.spreads { padding-block: clamp(3.6rem, 6vw, 6.4rem) var(--section-y); background: var(--paper); }
+.spread { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; }
+.spread + .spread { margin-top: clamp(3.2rem, 6vw, 6rem); }
+.spread__media {
+  grid-area: 1 / 1 / 2 / 9; position: relative; overflow: hidden;
+  min-height: clamp(420px, 72vh, 760px); background: var(--ink); display: block;
+}
+.spread__media img {
+  position: absolute; left: 0; top: -13%;
+  width: 100%; height: 126%; object-fit: cover; will-change: transform;
+}
+.spread__panel {
+  grid-area: 1 / 8 / 2 / 13; position: relative; z-index: 2;
+  background: var(--paper); border-top: 2px solid var(--brass);
+  padding: clamp(2.2rem, 3.4vw, 4rem);
+  margin-right: var(--gutter);
+  box-shadow: 0 36px 74px -50px rgba(10,9,9,.5);
+}
+.spread__panel h2 { margin-bottom: 1rem; }
+.spread__panel p { font-size: .97rem; color: var(--text-muted); margin-bottom: 1.7rem; max-width: 44ch; }
+.spread--flip .spread__media { grid-area: 1 / 5 / 2 / 13; }
+.spread--flip .spread__panel { grid-area: 1 / 1 / 2 / 6; margin-right: 0; margin-left: var(--gutter); }
+.spread__panel--ink { background: var(--ink); border-top-color: var(--weichert); box-shadow: 0 26px 48px -42px rgba(10,9,9,.55); }
+.spread__panel--ink h2 { color: #fff; }
+.spread__panel--ink h2 .hl { color: var(--weichert); }
+.spread__panel--ink p { color: #B9B4AE; }
+
+/* ---------- THE LEDGER · six checks as a numbered index ---------- */
+.ledger__grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0 clamp(3rem, 6vw, 5.5rem);
+  margin-top: clamp(2.6rem, 4.4vw, 3.6rem);
+}
+.entry {
+  display: grid; grid-template-columns: 4.2rem 1fr; gap: 1.1rem;
+  padding-block: 1.7rem; border-top: 1px solid var(--line); align-items: start;
+}
+.entry > i {
+  font-family: var(--font-head); font-style: normal; font-weight: 200;
+  font-size: clamp(1.9rem, 2.5vw, 2.5rem); line-height: 1; color: var(--brass);
+}
+.entry h3 { font-size: .92rem; letter-spacing: .055em; margin-bottom: .5rem; }
+.entry p { font-size: .93rem; color: var(--text-muted); }
+
+/* ---------- THE ALMANAC · four ruled columns, contained divider above ---------- */
+.almanac { padding-top: 0; }
+.almanac .wrap { border-top: 1px solid var(--line); padding-top: clamp(52px, 6.5vw, 88px); }
+.almanac__grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(2.4rem, 4vw, 3.2rem); }
+.alm { padding: .3rem clamp(1.4rem, 2.4vw, 2.4rem) .3rem 0; }
+.alm + .alm { border-left: 1px solid var(--line); padding-left: clamp(1.4rem, 2.4vw, 2.4rem); }
+.alm h3 { font-size: .95rem; letter-spacing: .05em; margin-bottom: .6rem; }
+.alm p { font-size: .9rem; color: var(--text-muted); margin-bottom: .9rem; }
+
+/* ---------- THE TWO OF US · portrait at scale, bleeding to the right edge ---------- */
+.duo-band { overflow: hidden; }
+.duo {
+  display: grid; grid-template-columns: minmax(0, .96fr) minmax(0, 1fr);
+  gap: clamp(2.6rem, 5vw, 5.5rem); align-items: center;
+  padding-left: max(var(--gutter), calc((100vw - var(--max)) / 2));
+}
+.duo__body h2 { margin-bottom: 1.3rem; max-width: 20ch; }
+.duo__body p { color: #B9B4AE; }
+.duo__body p + p { margin-top: 1.05rem; }
+.duo__body .btn { margin-top: 2.2rem; }
+.duo__figure { position: relative; }               /* every .corners host must be relative */
+.duo__figure img { width: 100%; aspect-ratio: 4/5; max-height: 78vh; object-fit: cover; }
+.duo__figure .corners { inset: clamp(14px, 1.6vw, 24px); }
+
+/* ---------- THE CONTACT SHEET · nearby towns as matted prints ---------- */
+.sheet__row {
+  display: flex; align-items: flex-start;
+  gap: clamp(1.2rem, 2vw, 2rem);
+  margin-top: clamp(2.8rem, 4.6vw, 4rem);
+  padding-bottom: clamp(1.5rem, 2.6vw, 2.6rem);   /* absorbs the stagger below */
+}
+.print { flex: 1 1 0; min-width: 0; }
+.print:nth-child(even) { transform: translateY(clamp(1.5rem, 2.6vw, 2.6rem)); }
+.print__mat {
+  background: var(--paper); border: 1px solid var(--line);
+  padding: clamp(.55rem, .8vw, .8rem);
+  box-shadow: 0 26px 54px -42px rgba(10,9,9,.5);
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.print__mat img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.print:hover .print__mat { transform: translateY(-6px); box-shadow: 0 34px 64px -38px rgba(10,9,9,.55); }
+.print__cap { margin-top: 1rem; }
+.print__cap h3 { font-size: .9rem; letter-spacing: .07em; color: var(--ink); }
+.print__cap span {
+  font-size: .62rem; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--brass);
+}
+.sheet__foot { text-align: center; margin-top: clamp(2.4rem, 4vw, 3.4rem); }
+
+/* ---------- market band spacing ---------- */
+.market .idx__zone + .idx__zone { margin-top: 1.2rem; }
+.idx__zone--slim { padding-block: clamp(1.8rem, 3.4vw, 2.6rem); }
+
+/* ---------- FOLIO RESPONSIVE ---------- */
+@media (max-width: 1100px) {
+  .spread__media { grid-area: 1 / 1 / 2 / 10; }
+  .spread__panel { grid-area: 1 / 7 / 2 / 13; }
+  .spread--flip .spread__media { grid-area: 1 / 4 / 2 / 13; }
+  .spread--flip .spread__panel { grid-area: 1 / 1 / 2 / 7; }
+}
+@media (max-width: 1024px) {
+  .cover__grid { grid-template-columns: 1fr; align-items: start; gap: 2.4rem; }
+  .almanac__grid { grid-template-columns: 1fr 1fr; }
+  .alm { padding-block: 1.1rem; }
+  .alm:nth-child(2n+1) { border-left: 0; padding-left: 0; }
+  .alm:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .duo { grid-template-columns: 1fr; padding-right: var(--gutter); gap: 2.6rem; }
+  .duo__figure { max-width: 520px; }
+  .ledger__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .cover { padding-top: clamp(188px, 24vh, 244px); }
+  .spread { display: block; }
+  .spread__media { min-height: 0; height: clamp(340px, 52vh, 480px); }
+  .spread__panel, .spread--flip .spread__panel {
+    width: min(92%, 560px);
+    margin: -3.4rem auto 0;
+    padding: 1.9rem 1.6rem 2.1rem;
+  }
+  .spread + .spread { margin-top: clamp(3rem, 8vw, 4rem); }
+  .sheet__row {
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);   /* snap respects the gutter, or the first mat clips */
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+  .sheet__row::-webkit-scrollbar { display: none; }
+  .print { flex: 0 0 66vw; scroll-snap-align: start; }
+  .print:nth-child(even) { transform: none; }
+}
+@media (max-width: 560px) {
+  .almanac__grid { grid-template-columns: 1fr; }
+  .alm:nth-child(n+2) { border-left: 0; border-top: 1px solid var(--line); padding-left: 0; }
+  .cover__meta { justify-content: flex-start; }
+}
+
+/* ============================================
+   GUIDE STEPS · tighter rhythm than the home communities rows
+   (8 steps at full communities height is six screens of scrolling)
+   ============================================ */
+.way--step { min-height: 56vh; }
+.way--step .way__body { padding-block: clamp(2.4rem, 4vw, 4rem); }
+@media (max-width: 860px) { .way--step .way__media { min-height: 42vh; } }
+
+/* ============================================
+   SEARCH CTA · full-bleed band, one button through to the search page
+   ============================================ */
+.searchcta {
+  position: relative; display: block;
+  padding-block: clamp(84px, 11vw, 150px);
+  background: var(--ink); overflow: hidden;
+}
+.searchcta__bg { position: absolute; inset: 0; }
+.searchcta__bg img { width: 100%; height: 100%; object-fit: cover; opacity: .38; }
+.searchcta__bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,9,9,.72), rgba(10,9,9,.86));
+}
+.searchcta__inner { position: relative; z-index: 2; text-align: center; }
+.searchcta h2 { color: #fff; margin-bottom: 1.1rem; }
+.searchcta__note { color: #B9B4AE; font-size: .95rem; margin: 0 auto 2.2rem; max-width: 54ch; }
+
+/* four-up service cards (About routing hub) */
+.paths--4 { grid-template-columns: repeat(4, 1fr); gap: clamp(1.1rem, 1.6vw, 1.6rem); }
+.paths--4 .path { aspect-ratio: 3 / 4; min-height: 0; }
+.paths--4 .path__body { padding: clamp(1.2rem, 1.6vw, 1.7rem); }
+.paths--4 .path__body p { font-size: .86rem; margin-bottom: 1.1rem; }
+@media (max-width: 1100px) { .paths--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px)  { .paths--4 { grid-template-columns: 1fr; } .paths--4 .path { aspect-ratio: 4/3; } }
+
+/* what you can expect · four value adds on the ink ground */
+.expect { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.8rem, 3vw, 3rem);
+  margin-top: clamp(2.6rem, 4vw, 3.6rem); border-top: 1px solid rgba(255,255,255,.16); }
+.expect__item { padding-top: clamp(1.8rem, 2.6vw, 2.4rem); }
+.expect__item svg { width: 26px; height: 26px; margin-bottom: 1.2rem;
+  fill: none; stroke: var(--weichert); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.expect__item h3 { color: #fff; margin-bottom: .7rem; }
+.expect__item p { color: #B9B4AE; font-size: .92rem; line-height: 1.7; }
+@media (max-width: 1100px) { .expect { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px)  { .expect { grid-template-columns: 1fr; } }
+
+/* sitemap columns */
+.smap { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(1.8rem, 3vw, 3rem); }
+.smap__col h3 { margin-bottom: 1.1rem; padding-bottom: .8rem; border-bottom: 1px solid var(--line); }
+.smap__col ul { list-style: none; }
+.smap__col li { margin-bottom: .8rem; }
+.smap__col a { font-size: .9rem; color: var(--text-muted); transition: color .35s var(--ease); }
+.smap__col a:hover { color: var(--brass); }
+@media (max-width: 1100px) { .smap { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px)  { .smap { grid-template-columns: 1fr; } }

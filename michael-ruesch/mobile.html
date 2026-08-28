@@ -1,63 +1,89 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rhaus + Co &middot; Whitney &middot; mobile view</title>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile view · Michael Ruesch</title>
 <style>
-:root{--fw:375px;--ink:#0A0909;--rule:rgba(255,255,255,.16);--soft:#98938D;--weichert:#FFCE00}
-*{box-sizing:border-box}
-body{margin:0;background:#161414;color:#EDEAE5;font-family:'Montserrat',system-ui,sans-serif;font-weight:300}
-header{position:sticky;top:0;z-index:5;background:var(--ink);border-bottom:1px solid var(--rule);
-  padding:16px clamp(16px,3vw,30px);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-h1{font-family:'Raleway',Georgia,serif;font-weight:200;text-transform:uppercase;letter-spacing:.05em;
-  font-size:15px;margin:0}
-h1 small{font-weight:300;text-transform:none;letter-spacing:0;color:var(--soft);font-family:'Montserrat',sans-serif;font-size:12px}
-a.back{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--weichert);text-decoration:none}
-.w{display:flex;gap:6px}
-.w button{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:500;letter-spacing:.14em;
-  background:none;border:1px solid var(--rule);color:var(--soft);padding:5px 11px;cursor:pointer;transition:all .3s}
-.w button.on{border-color:var(--weichert);color:var(--weichert)}
-.row{display:flex;gap:clamp(16px,2vw,28px);overflow-x:auto;padding:clamp(18px,3vw,30px);align-items:flex-start}
-body.single .row{justify-content:center}
-figure{margin:0;flex:0 0 auto;width:var(--fw)}
-figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:0 2px 9px}
-figcaption span{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
-figcaption a{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);text-decoration:none}
-figcaption a:hover{color:var(--weichert)}
-iframe{width:var(--fw);height:78vh;min-height:560px;border:1px solid var(--rule);background:#fff;display:block}
-</style></head>
+body{margin:0;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;background:#181818;color:#ddd}
+header{display:flex;align-items:center;gap:14px;padding:14px 20px;position:sticky;top:0;background:#181818;z-index:2;border-bottom:1px solid #2a2a2a}
+h1{font-size:15px;font-weight:600;margin:0}
+h1 small{color:#888;font-weight:400}
+.w{display:flex;gap:4px;margin-left:auto}
+.w button{font:inherit;font-size:12px;padding:6px 12px;border-radius:5px;border:1px solid #3a3a3a;background:transparent;color:#ccc;cursor:pointer}
+.w button.on{background:#c9a35a;border-color:#c9a35a;color:#161616}
+.row{display:flex;gap:24px;overflow-x:auto;padding:22px;align-items:flex-start}
+figure{margin:0;flex:0 0 auto}
+figcaption{display:flex;justify-content:space-between;gap:10px;padding:0 2px 8px;color:#aaa}
+figcaption a{color:#7ab8ff;text-decoration:none}
+iframe{border:0;background:#fff;width:var(--fw,375px);height:74vh;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 14px 40px rgba(0,0,0,.5)}
+.single .row{justify-content:center}
+.single iframe{height:84vh}
+</style>
+<script type="application/ld+json">
+{
+ "name": "Rhaus + Co",
+ "legalName": "Michael + Joanna Ruesch, Weichert Realtors The Eastland Group",
+ "url": "https://rhausrealty.com/",
+ "telephone": "+1-830-708-0837",
+ "email": "RueschRealtors@gmail.com",
+ "logo": "assets/logo-transparent.png",
+ "image": "assets/portrait.jpg",
+ "streetAddress": "5015 Lakewood Dr",
+ "addressLocality": "Waco",
+ "addressRegion": "TX",
+ "postalCode": "76710",
+ "addressCountry": "US",
+ "areaServed": [
+  "Whitney",
+  "White Bluff",
+  "Hillsboro",
+  "China Spring",
+  "Waco",
+  "Cleburne",
+  "Hewitt",
+  "Lake Whitney"
+ ],
+ "sameAs": [
+  "https://www.facebook.com/joanna.ruesch",
+  "https://www.instagram.com/ruesch.realtors"
+ ],
+ "parentOrganization": "Weichert Realtors, The Eastland Group",
+ "aggregateRating": {
+  "ratingValue": "4.9",
+  "reviewCount": "NEEDS-CLIENT"
+ },
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent"
+}
+</script>
+</head>
 <body>
 <header>
-  <h1>Whitney <small>&middot; the same live pages at phone width</small></h1>
+  <h1>Michael Ruesch <small>· mobile view · the same live pages at phone width</small></h1>
   <span class="w"><button data-w="375px" class="on">375</button><button data-w="768px">768</button></span>
-  <a class="back" href="index.html">&larr; All variants</a>
 </header>
 <div class="row" id="row"></div>
 <script>
-var PAGES = [
-  ["01-home.html","Home · original"],
-  ["01-home-b.html","Home B · dark room"],
-  ["17-whitney-f.html","Whitney F · dark room"],
-  ["17-whitney-d.html","Whitney D · the split"],
-  ["17-whitney-e.html","Whitney E · sticky plate"],
-  ["17-whitney-c.html","Whitney C · tabs plus search"],
-  ["17-whitney-tabs.html","Whitney B · four tabs"],
-  ["17-whitney.html","Whitney A · long scroll"]
-];
+var PAGES = [["01-home.html", "Home"], ["02-properties.html", "Properties"], ["03-buyers-guide.html", "Buyers Guide"], ["04-sellers-guide.html", "Sellers Guide"], ["05-communities.html", "Communities"], ["06-farm-and-ranch.html", "Farm And Ranch"], ["07-about.html", "About"], ["08-home-value.html", "Home Value"], ["09-contact.html", "Contact"], ["10-testimonials.html", "Testimonials"], ["11-blog.html", "Blog"], ["12-white-bluff.html", "White Bluff"], ["13-lake-homes.html", "Lake Homes"], ["14-sitemap.html", "Sitemap"], ["15-privacy.html", "Privacy"], ["16-terms.html", "Terms"], ["17-whitney.html", "Whitney"], ["18-hillsboro.html", "Hillsboro"], ["19-china-spring.html", "China Spring"], ["20-waco.html", "Hotsheet: Waco"], ["21-cleburne.html", "Hotsheet: Cleburne"], ["22-hewitt.html", "Hotsheet: Hewitt"]];
 var q = new URLSearchParams(location.search).get("page");
 var list = q ? PAGES.filter(function(p){ return p[0] === q; }) : PAGES;
 if (q) document.body.classList.add("single");
 var row = document.getElementById("row");
 list.forEach(function(p){
   var f = document.createElement("figure");
-  f.innerHTML = '<figcaption><span>' + p[1] + '</span><a href="' + p[0] + '">open full page</a></figcaption>' +
+  f.innerHTML = '<figcaption><span>' + p[1] + '</span>' +
+    '<a href="' + p[0] + '">open full page</a></figcaption>' +
     '<iframe loading="lazy" src="' + p[0] + '" title="' + p[1] + '"></iframe>';
   row.appendChild(f);
 });
 document.querySelectorAll(".w button").forEach(function(b){
   b.addEventListener("click", function(){
     document.documentElement.style.setProperty("--fw", b.dataset.w);
-    document.querySelectorAll(".w button").forEach(function(o){ o.classList.toggle("on", o === b); });
+    document.querySelectorAll(".w button").forEach(function(o){
+      o.classList.toggle("on", o === b); });
   });
 });
 </script>
-</body></html>
+</body>
+</html>
