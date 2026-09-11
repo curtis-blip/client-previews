@@ -1,0 +1,910 @@
+/* ============================================
+   SOMNATH RANA · AARE · LAS VEGAS
+   Register: Editorial Luxe (Rhonda Giarraffa v2 lineage), polished.
+
+   Inherited unchanged from Rhonda: Raleway 200 UPPERCASE headings at 2px
+   tracking, Montserrat body at 1.7, black-invert rectangular buttons, one
+   accent used sparingly with a metallic secondary, dark four-column footer
+   with gold uppercase headings.
+
+   Changed, deliberately:
+   1. The white/grey alternation is gone as the chaptering device. The page is
+      one continuous white ground broken by two full navy chapters and two
+      photographic ones. Fewer seams, bigger ones.
+   2. Seams overlap instead of butting. Panels pull up into the band above.
+   3. Photography bleeds to the viewport edge while type stays in 1200px.
+   4. The type scale gap is opened: statements go up, working headings come
+      down, so something on the page actually reads as a headline.
+   5. Card shadows and the 4px radius are dropped. Captions sit under the
+      image in tracked caps over a hairline.
+   6. Gold is given a consistent job: every section eyebrow rule and numeral.
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --navy: #0a2a43;
+    --navy-light: #16456b;
+    --gold: #d4a017;
+    --gold-deep: #a8790d;   /* gold that has to be legible as type: 3.9:1 on white */
+    --gray-bg: #F2F1F1;
+    --white: #FFFFFF;
+    --text-dark: #1A1A1A;
+    --text-muted: #666666;
+    --border-light: #E0E0E0;
+
+    --font-heading: 'Raleway', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --max-width: 1200px;
+    --gutter: 24px;
+
+    /* Rhythm, not trays. Open where the page needs to breathe, tight where
+       two blocks belong to each other. */
+    --rhythm: clamp(88px, 9vw, 140px);
+    --rhythm-tight: clamp(52px, 5.5vw, 78px);
+
+    --transition: 0.3s ease;
+    --nav-h: 98px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    /* clip, not hidden: overflow-x:hidden on the root turns it into a scroll
+       container and kills every IntersectionObserver on the page. */
+    overflow-x: clip;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: color var(--transition); }
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.22;
+}
+
+/* The scale gap. Statement sizes are large, working headings are quiet.
+   Absolute 2px tracking eases itself as the size grows, which is why it is
+   kept absolute rather than converted to em. */
+.display      { font-size: clamp(40px, 6.4vw, 82px); line-height: 1.1; }
+.display--mid { font-size: clamp(32px, 4.6vw, 62px); line-height: 1.14; }
+h2            { font-size: clamp(24px, 2.6vw, 34px); }
+h3            { font-size: clamp(18px, 1.9vw, 23px); }
+h4            { font-size: 17px; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+.measure   { max-width: 62ch; }
+.measure--tight { max-width: 46ch; }
+
+/* --- eyebrow: the gold device, used on every section ------------------- */
+.eyebrow {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+.eyebrow::after {
+    content: "";
+    flex: 0 0 56px;
+    height: 2px;
+    background: var(--gold);
+}
+.eyebrow--onDark { color: var(--white); }
+.eyebrow--center { justify-content: center; }
+.eyebrow--center::before {
+    content: "";
+    flex: 0 0 56px;
+    height: 2px;
+    background: var(--gold);
+}
+
+.num {
+    font-family: var(--font-heading);
+    font-weight: 200;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 18px;
+}
+
+/* --- buttons: inherited from Rhonda, radius 0, invert on hover --------- */
+.btn {
+    display: inline-block;
+    padding: 15px 42px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--text-dark);
+    background: var(--text-dark);
+    color: var(--white);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.btn:hover { background: var(--white); color: var(--text-dark); }
+.btn--outline { background: transparent; color: var(--text-dark); }
+.btn--outline:hover { background: var(--text-dark); color: var(--white); }
+.btn--white { background: var(--white); color: var(--navy); border-color: var(--white); }
+.btn--white:hover { background: transparent; color: var(--white); }
+
+/* text link with a rule that grows, the quiet CTA used between sections */
+.tlink {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gold);
+}
+.tlink:hover { color: var(--gold); }
+.tlink--onDark { color: var(--white); }
+.tlink--onDark:hover { color: var(--gold); }
+
+/* ============================================
+   NAVIGATION · sticky, white from the top because the hero is type-led
+   ============================================ */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+.nav.is-stuck { border-bottom-color: var(--gold); box-shadow: 0 1px 20px rgba(10,42,67,.07); }
+.nav__in {
+    /* The transparent header's scrim is an absolutely positioned ::before on
+       .nav. A positioned pseudo-element paints ABOVE static in-flow content, so
+       with .nav__in static the scrim was laid over the logo, the mark, the
+       Contact button and the phone, dragging white type down to about
+       rgb(87,109,126). The nav links were the one bright element because their
+       li carries position:relative for the dropdowns, which lifted them clear.
+       Giving the bar its own layer puts every child above the scrim. */
+    position: relative;
+    z-index: 1;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 26px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.nav__brand { display: flex; align-items: center; gap: 18px; }
+.nav__brand-rule { flex: 0 0 1px; width: 1px; height: 44px; background: var(--border-light); }
+.nav__mark { height: 32px; width: auto; }
+.nav__logo {
+    font-family: var(--font-heading);
+    font-weight: 200;
+    font-size: 27px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--navy);
+    line-height: 1.1;
+    white-space: nowrap;
+}
+.nav__logo span { display: block; font-size: 9.5px; letter-spacing: 3px; color: var(--text-muted); font-weight: 500; margin-top: 5px; }
+.nav__links { display: flex; align-items: center; gap: 22px; list-style: none; }
+.nav__links > li { position: relative; }
+
+/* A parent item is a LABEL, not a link: one page, one label, and Properties
+   is not a page. */
+.nav__label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    padding: 8px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: default;
+}
+.nav__label::after {
+    content: "";
+    width: 0; height: 0;
+    border-left: 3.5px solid transparent;
+    border-right: 3.5px solid transparent;
+    border-top: 4px solid var(--text-dark);
+    transition: transform var(--transition);
+}
+.nav__links > li:hover .nav__label::after,
+.nav__links > li:focus-within .nav__label::after { transform: rotate(180deg); }
+
+.nav__sub {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    min-width: 232px;
+    background: var(--white);
+    border-top: 2px solid var(--gold);
+    box-shadow: 0 12px 34px rgba(10,42,67,.14);
+    padding: 8px 0;
+    list-style: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    z-index: 20;
+}
+.nav__links > li:hover .nav__sub,
+.nav__links > li:focus-within .nav__sub { opacity: 1; visibility: visible; transform: none; }
+.nav__sub a {
+    display: block;
+    padding: 11px 22px;
+    font-family: var(--font-heading);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    /* dropdown case matches the nav */
+    text-transform: uppercase;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+.nav__sub a:hover { color: var(--gold-deep); background: var(--gray-bg); }
+.nav__links > li > a {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    padding: 8px 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+.nav__links > li > a:hover { color: var(--gold); }
+.nav__phone { font-family: var(--font-heading); font-size: 12px; letter-spacing: 2px; color: var(--navy); white-space: nowrap; }
+.nav__cta { white-space: nowrap; padding: 11px 26px; border: 1px solid var(--navy); color: var(--navy); font-size: 12px; letter-spacing: 2px; font-family: var(--font-heading); text-transform: uppercase; }
+.nav__cta:hover { background: var(--navy); color: var(--white); }
+.nav__toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+.nav__toggle span { display: block; width: 24px; height: 1px; background: var(--text-dark); margin: 6px 0; }
+
+/* ============================================
+   HERO · type-led on white, photography as a band beneath it.
+   The whole photographic part stays under half the viewport, which is the
+   client's own constraint, and it means the page opens on the claim rather
+   than on a picture.
+   ============================================ */
+.hero {
+    padding: clamp(56px, 7vw, 96px) 0 0;
+}
+.hero__type { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter); }
+.hero h1 { margin-bottom: 26px; }
+.hero h1 em { font-style: normal; color: var(--navy); }
+.hero__sub {
+    font-size: 17px;
+    line-height: 1.8;
+    /* Measured, not eyeballed: over the fade the ground drops to rgb(213,228,247)
+       by the third line, where --text-muted #666 lands at 4.45:1, just under the
+       4.5 AA floor. Darkened here rather than weakening the fade. */
+    color: #4a4a4a;
+    max-width: 54ch;
+}
+.hero__type { position: relative; z-index: 2; }
+.hero__band {
+    position: relative;
+    margin-top: clamp(-150px, -10vw, -100px);
+    height: clamp(560px, 82vh, 940px);
+    background-size: cover;
+    background-position: center 62%;
+}
+.hero__band::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 310px;
+    background: linear-gradient(to bottom,
+        #fff 0%, rgba(255,255,255,.96) 26%, rgba(255,255,255,.78) 48%, rgba(255,255,255,.42) 72%, rgba(255,255,255,0) 100%);
+}
+
+/* --- the overlap: the practices panel rides up into the hero band ------ */
+.practices { position: relative; margin-top: clamp(-140px, -11vw, -90px); }
+.practices__panel {
+    background: var(--white);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(40px, 4.4vw, 62px) clamp(28px, 3.6vw, 58px) clamp(34px, 3.6vw, 52px);
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: clamp(28px, 3.4vw, 56px);
+}
+.practices__rule { background: var(--border-light); }
+.practices h3 { margin-bottom: 14px; }
+.practices p { color: var(--text-muted); margin-bottom: 20px; font-size: 15.5px; }
+
+/* ============================================
+   SECTION SHELLS
+   ============================================ */
+.section { padding: var(--rhythm) 0; }
+.section--tight { padding: var(--rhythm-tight) 0; }
+.section--flush-top { padding-top: 0; }
+.section--flush { padding: 0; }
+
+/* the two dark chapters: full navy, edge to edge */
+.chapter-navy {
+    background: var(--navy);
+    color: var(--white);
+    padding: var(--rhythm) 0;
+}
+.chapter-navy h2, .chapter-navy .display--mid { color: var(--white); }
+.chapter-navy p { color: rgba(255,255,255,.76); }
+
+/* --- about: type-led. No portrait block here by design; his only uploaded
+       image is a single photo of himself and it is doing hero duty in the
+       intake, so this block carries on type and a credentials row instead. */
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(36px, 5vw, 90px);
+    align-items: start;
+}
+.about__quote {
+    font-family: var(--font-heading);
+    font-weight: 200;
+    font-size: clamp(23px, 2.5vw, 33px);
+    line-height: 1.42;
+    letter-spacing: .4px;
+    color: var(--navy);
+    text-transform: none;
+}
+.about__quote span { color: var(--gold); }
+.about p { color: var(--text-muted); margin-bottom: 18px; }
+.facts { margin-top: 36px; border-top: 1px solid var(--border-light); }
+.fact { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border-light); }
+.fact dt { font-family: var(--font-heading); font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); padding-top: 3px; }
+.fact dd { font-size: 15px; color: var(--text-dark); }
+
+/* --- agent bio: portrait plate + offset gold bracket ------------------ */
+.bio { display: grid; grid-template-columns: .8fr 1fr; gap: clamp(36px, 5vw, 84px); align-items: start; }
+.bio__portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; position: relative; z-index: 1; }
+.bio__plate { position: relative; }
+.bio__plate::after {
+    content: "";
+    position: absolute;
+    right: -20px; bottom: -20px;
+    width: 68%; height: 62%;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    z-index: 0;
+}
+.bio__cap {
+    margin-top: 30px;
+    font-family: var(--font-heading);
+    font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* --- paths: two routes, photography bleeding past the container -------- */
+/* No wash here. These are two discrete plates and they read as plates, with a
+   hard top edge. The fade belongs to the hero, where the photograph is a
+   continuous ground the page dissolves into. */
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.path { position: relative; min-height: clamp(380px, 44vw, 520px); display: flex; align-items: flex-end; overflow: hidden; }
+.path__bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1.2s var(--transition); }
+.path:hover .path__bg { transform: scale(1.04); }
+/* directional gradient on the type side, never a flat wash over the picture */
+.path__tint { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,42,67,.9) 0%, rgba(10,42,67,.46) 23%, rgba(10,42,67,.06) 50%, rgba(10,42,67,0) 66%); }
+.path__in { position: relative; padding: clamp(30px, 3.4vw, 52px); color: var(--white); }
+.path__in h3 { margin-bottom: 12px; text-shadow: 0 1px 18px rgba(0,0,0,.3); }
+.path__in p { color: rgba(255,255,255,.9); text-shadow: 0 1px 14px rgba(0,0,0,.45); font-size: 15px; margin-bottom: 20px; max-width: 40ch; }
+
+/* --- split: image bleeds off one edge, type holds the container ------- */
+.split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(34px, 4.5vw, 76px); }
+.split__media img { width: 100%; height: clamp(360px, 40vw, 540px); object-fit: cover; }
+/* the container's own side padding has to come off too, or the photo stops
+   one gutter short of the viewport edge instead of bleeding off it. */
+.split--mediaLeft .split__media { margin-left: calc(((100vw - min(100vw, var(--max-width))) / -2) - var(--gutter)); }
+.split__body { padding: clamp(8px, 2vw, 24px) 0; }
+.split__body h2 { margin-bottom: 20px; }
+.split__body p { color: var(--text-muted); margin-bottom: 18px; }
+.svc { list-style: none; margin: 26px 0 30px; }
+.svc li { padding: 11px 0 11px 26px; border-bottom: 1px solid var(--border-light); font-size: 15px; position: relative; }
+.svc li::before { content: ""; position: absolute; left: 0; top: 20px; width: 12px; height: 1px; background: var(--gold); }
+
+/* ============================================
+   PARALLAX · the page's big breath. One statement, no button, nothing else.
+   ============================================ */
+.parallax {
+    position: relative;
+    min-height: clamp(460px, 62vh, 640px);
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.parallax__tint {
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(10,42,67,.93) 0%, rgba(10,42,67,.82) 38%, rgba(10,42,67,.38) 72%, rgba(10,42,67,.14) 100%);
+}
+.parallax__in { position: relative; color: var(--white); }
+.parallax__in p { color: rgba(255,255,255,.82); margin-top: 24px; font-size: 16.5px; }
+.parallax--center { text-align: center; }
+.parallax--center .parallax__tint { background: linear-gradient(to bottom, rgba(10,42,67,.52), rgba(10,42,67,.84)); }
+.parallax--center .parallax__in { margin: 0 auto; }
+
+/* ============================================
+   COMMUNITIES · no shadow, no radius. Caption under the image over a
+   hairline, which is the editorial plate rather than the 2019 card.
+   ============================================ */
+.areas { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.4vw, 34px); }
+.area { display: block; }
+.area__img { overflow: hidden; }
+.area__img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 1.1s var(--transition); }
+.area:hover .area__img img { transform: scale(1.05); }
+.area__cap { border-top: 1px solid var(--border-light); padding-top: 24px; margin-top: 28px; transition: border-color var(--transition); }
+.area:hover .area__cap { border-top-color: var(--gold); }
+.area__cap h3 { margin-bottom: 12px; }
+.area__cap p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+
+/* --- home value: compact, type only ---------------------------------- */
+.hv { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 4vw, 70px); align-items: center; }
+.hv p { color: var(--text-muted); margin-top: 14px; }
+.hv__act { text-align: right; }
+
+/* ============================================
+   FOOTER · Rhonda's shape, his palette
+   ============================================ */
+.footer { background: var(--navy); color: var(--white); padding: clamp(60px, 6vw, 88px) 0 28px; }
+.footer__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: clamp(28px, 3.5vw, 56px); }
+.footer h4 { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin-bottom: 20px; }
+.footer__mark { height: 30px; width: auto; margin-bottom: 20px; }
+.footer__brand-name { font-family: var(--font-heading); font-weight: 200; font-size: 26px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 6px; }
+.footer__brand-sub { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,.55); font-family: var(--font-heading); margin-bottom: 20px; }
+.footer p, .footer a, .footer li { color: rgba(255,255,255,.74); font-size: 14px; line-height: 1.95; }
+.footer a:hover { color: var(--gold); }
+.footer__col ul { list-style: none; }
+.footer__social { display: flex; gap: 16px; margin-top: 24px; }
+.footer__social a { color: rgba(255,255,255,.7); }
+.footer__social a:hover { color: var(--gold); }
+.footer__marks { display: flex; align-items: center; gap: 18px; margin-top: 30px; }
+.footer__marks img { height: 48px; width: auto; }
+.footer__bottom {
+    margin-top: clamp(38px, 4vw, 58px);
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.16);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.footer__bottom p, .footer__bottom a { font-size: 12.5px; color: rgba(255,255,255,.55); }
+
+/* ============================================
+   MOTION · 0.3s, fade-up, nothing springy. Inherited.
+   ============================================ */
+.fade-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.fade-up.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+    .parallax { background-attachment: scroll; }
+    html { scroll-behavior: auto; }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1000px) {
+    .nav__links, .nav__phone { display: none; }
+    .nav__toggle { display: block; }
+    .about__grid, .split, .paths, .hv, .bio { grid-template-columns: 1fr; }
+    .bio__portrait { max-width: 420px; }
+    .split--mediaLeft .split__media { margin-left: calc(var(--gutter) * -1); margin-right: calc(var(--gutter) * -1); }
+    .hv__act { text-align: left; }
+    .areas { grid-template-columns: 1fr 1fr; }
+    .practices__panel { grid-template-columns: 1fr; gap: 30px; }
+    .practices__rule { height: 1px; width: 100%; }
+}
+
+@media (max-width: 640px) {
+    /* logo + contact button + burger together overflowed a 375 viewport by
+       25px. The burger owns the menu at this width, so the button goes. */
+    .nav__cta { display: none; }
+    .nav__in { gap: 12px; padding: 16px var(--gutter); }
+    .nav__logo { font-size: 20px; letter-spacing: 3px; }
+    .nav__brand-rule, .nav__mark { display: none; }
+    .practices { margin-top: -56px; }
+    .practices__panel { margin: 0 var(--gutter); }
+    .areas { grid-template-columns: 1fr; }
+    .footer__top { grid-template-columns: 1fr 1fr; }
+    .parallax { background-attachment: scroll; }
+    .hero__band { height: 520px; margin-top: -74px; }
+    .hero__band::before { height: 210px; }
+    .fact { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* ============================================
+   INTERIOR PAGES
+   The site-scope interior hero: same grammar as home (type block, then a
+   photographic band) at a fraction of the ceremony. No wash. The fade on the
+   home band depends on that photograph's pale sky, and it would read as a
+   washed-out mistake over an interior or a portrait. Home is the signpost and
+   is the only page that gets the full move.
+   ============================================ */
+/* Interior hero: the type sits ON the photograph and the header goes
+   transparent over it. Home is the exception, not this: its fade depends on
+   one pale sky and does not travel. */
+.hero--photo {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(460px, 64vh, 680px);
+    margin-top: calc(var(--nav-h) * -1);
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+}
+/* Directional, weighted to the side the type is on. Never a flat wash across
+   the whole picture. */
+.hero--photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Two layers, and the horizontal one is the important half. A purely
+       bottom-weighted gradient works only when the photo happens to be dark
+       where the headline lands: on the property management hero the H1 sat
+       over bright sky and measured 2.29:1. The text-side wedge makes the
+       column the type occupies dark regardless of what the photograph does. */
+    background:
+        linear-gradient(to right,
+            rgba(10,42,67,.84) 0%, rgba(10,42,67,.7) 34%,
+            rgba(10,42,67,.38) 62%, rgba(10,42,67,.1) 84%, rgba(10,42,67,0) 100%),
+        linear-gradient(to top,
+            rgba(10,42,67,.8) 0%, rgba(10,42,67,.42) 28%,
+            rgba(10,42,67,.08) 58%, rgba(10,42,67,0) 82%);
+}
+/* Keep the headline inside the dark side of that wedge rather than running it
+   out into the bright edge of the picture. */
+.hero--photo .display { max-width: 15ch; }
+.hero--photo .hero__sub { max-width: 48ch; }
+.hero--photo .hero__type {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: clamp(48px, 5.5vw, 84px);
+    color: var(--white);
+}
+.hero--photo .display { font-size: clamp(32px, 4.4vw, 58px); color: var(--white); text-shadow: 0 2px 26px rgba(0,0,0,.34); }
+.hero--photo .eyebrow { color: var(--white); }
+.hero--photo .hero__sub { color: rgba(255,255,255,.9); text-shadow: 0 1px 16px rgba(0,0,0,.4); }
+
+/* --- transparent header, scoped by a body class so the nav markup stays
+       byte-identical on every page --------------------------------------- */
+body.page--interior .nav { background: transparent; }
+/* Measured, not eyeballed. At .42 decaying across the nav's own 98px, white
+   nav text over the pale part of the hero sky landed at 2.44:1. The scrim now
+   runs 190px, holding roughly .55 alpha through the text row (about 6.3:1 on
+   the brightest sampled sky) and fading out below the header, so it reads as a
+   vignette on the photograph rather than a bar across it. */
+body.page--interior .nav::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 190px;
+    background: linear-gradient(to bottom,
+        rgba(10,42,67,.68) 0%, rgba(10,42,67,.48) 50%,
+        rgba(10,42,67,.18) 78%, rgba(10,42,67,0) 100%);
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+/* Over a photograph the problem is STROKE WEIGHT, not colour. Measured on the
+   listings hero: the links (Raleway 500) reached pure white, but the logo
+   (Raleway 200 at 25px) peaked at luminance 0.21, the Contact button at 0.25
+   and the phone at 0.15. Hairline strokes never let a pixel reach full white
+   through antialiasing, and a 12px blur shadow smeared dark straight through
+   them. Fix: give the thin elements body while they sit on the photograph, and
+   swap the soft smear for a tight shadow. They go back to their designed
+   weights the moment the header turns solid. */
+/* -webkit-font-smoothing:antialiased on <body> strips subpixel rendering and
+   makes light-on-dark type render thin and grey. It is right for dark-on-white
+   body copy and wrong for a white header sitting on a photograph. */
+body.page--interior .nav:not(.is-stuck),
+body.page--interior .nav:not(.is-stuck) * {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+body.page--interior .nav:not(.is-stuck) .nav__logo { font-weight: 500; letter-spacing: 3px; }
+body.page--interior .nav:not(.is-stuck) .nav__logo span { font-weight: 600; opacity: 1; letter-spacing: 3.2px; }
+body.page--interior .nav:not(.is-stuck) .nav__phone,
+body.page--interior .nav:not(.is-stuck) .nav__cta { font-weight: 600; }
+body.page--interior .nav:not(.is-stuck) .nav__links > li > a,
+body.page--interior .nav:not(.is-stuck) .nav__links > li > .nav__label { font-weight: 600; }
+body.page--interior .nav .nav__logo,
+body.page--interior .nav .nav__links > li > a,
+body.page--interior .nav .nav__links > li > .nav__label,
+body.page--interior .nav .nav__cta,
+body.page--interior .nav .nav__phone { text-shadow: 0 1px 3px rgba(0,0,0,.55); }
+body.page--interior .nav .nav__links > li > .nav__label { color: var(--white); }
+body.page--interior .nav .nav__links > li > .nav__label::after { border-top-color: var(--white); }
+body.page--interior .nav.is-stuck .nav__logo,
+body.page--interior .nav.is-stuck .nav__links > li > a,
+body.page--interior .nav.is-stuck .nav__links > li > .nav__label,
+body.page--interior .nav.is-stuck .nav__phone { text-shadow: none; }
+body.page--interior .nav.is-stuck .nav__links > li > .nav__label { color: var(--text-dark); }
+body.page--interior .nav.is-stuck .nav__links > li > .nav__label::after { border-top-color: var(--text-dark); }
+body.page--interior .nav.is-stuck .nav__logo span { color: var(--text-muted); opacity: 1; }
+body.page--interior .nav .nav__logo,
+body.page--interior .nav .nav__links > li > a,
+body.page--interior .nav .nav__phone { color: var(--white); }
+body.page--interior .nav .nav__logo span { color: var(--white); opacity: .92; }
+body.page--interior .nav .nav__cta { color: var(--white); border-color: var(--white); }
+body.page--interior .nav .nav__cta:hover { background: var(--white); color: var(--navy); }
+body.page--interior .nav .nav__brand-rule { background: rgba(255,255,255,.55); }
+body.page--interior .nav .nav__toggle span { background: var(--white); }
+body.page--interior .nav .nav__mark--dark { display: none; }
+body.page--interior .nav .nav__mark--light { display: block; }
+/* back to solid once the hero is behind you */
+body.page--interior .nav.is-stuck { background: var(--white); }
+body.page--interior .nav.is-stuck::before { opacity: 0; }
+body.page--interior .nav.is-stuck .nav__logo { color: var(--navy); }
+body.page--interior .nav.is-stuck .nav__logo span { color: var(--text-muted); }
+body.page--interior .nav.is-stuck .nav__links > li > a { color: var(--text-dark); }
+body.page--interior .nav.is-stuck .nav__phone { color: var(--navy); }
+body.page--interior .nav.is-stuck .nav__cta { color: var(--navy); border-color: var(--navy); }
+body.page--interior .nav.is-stuck .nav__brand-rule { background: var(--border-light); }
+body.page--interior .nav.is-stuck .nav__toggle span { background: var(--text-dark); }
+body.page--interior .nav.is-stuck .nav__mark--dark { display: block; }
+body.page--interior .nav.is-stuck .nav__mark--light { display: none; }
+.nav__mark--light { display: none; }
+
+/* --- a navy chapter that sits on a photograph ------------------------- */
+.chapter-navy--photo {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.chapter-navy--photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(10,42,67,.95) 0%, rgba(10,42,67,.86) 52%, rgba(10,42,67,.66) 100%);
+}
+.chapter-navy--photo > * { position: relative; z-index: 1; }
+
+/* --- community tiles: 3 x 2, edge to edge, no gutters ----------------- */
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.tile { position: relative; display: block; overflow: hidden; }
+.tile img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 1.1s var(--transition); }
+.tile:hover img { transform: scale(1.05); }
+.tile__veil {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top,
+        rgba(10,42,67,.9) 0%, rgba(10,42,67,.5) 32%, rgba(10,42,67,.06) 64%, rgba(10,42,67,0) 82%);
+}
+.tile__meta {
+    position: absolute;
+    left: clamp(20px, 2.2vw, 34px);
+    right: clamp(20px, 2.2vw, 34px);
+    bottom: clamp(20px, 2.2vw, 30px);
+    color: var(--white);
+}
+.tile__meta h3 { text-shadow: 0 1px 18px rgba(0,0,0,.34); }
+/* The descriptor is always visible. Hiding copy behind hover is the mistake
+   that killed the tile treatments in the library review. */
+.tile__meta p {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,.86);
+    margin-top: 10px;
+    text-shadow: 0 1px 14px rgba(0,0,0,.4);
+}
+.tile__meta .r { display: block; width: 0; height: 1px; background: var(--gold); margin-top: 12px; transition: width var(--transition); }
+.tile:hover .r { width: 52px; }
+
+@media (max-width: 900px) { .tiles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } }
+
+/* --- process steps: alternating image+text, ghost numeral --------------- */
+.steps { display: grid; gap: clamp(46px, 5.5vw, 92px); }
+.step { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 4vw, 72px); align-items: center; }
+.step:nth-child(even) .step__media { order: 2; }
+.step__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+/* Decorative only, and marked aria-hidden in the markup: the sequence is
+   carried by document order and by the headings, so the low-contrast ghost
+   numeral is not the only route to it. */
+.step__n {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 200;
+    font-size: clamp(46px, 5vw, 70px);
+    line-height: 1;
+    color: var(--gold-deep);
+    margin-bottom: 12px;
+}
+.step__body h3 { margin-bottom: 14px; }
+.step__body p { color: var(--text-muted); }
+.step__body p + p { margin-top: 14px; }
+
+/* --- FAQ: native disclosure, accordion, placed low on the page --------- */
+.faq { border-top: 1px solid var(--border-light); max-width: 900px; }
+.faq details { border-bottom: 1px solid var(--border-light); }
+.faq summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 24px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: clamp(15px, 1.5vw, 18px);
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    line-height: 1.45;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+    content: "+";
+    color: var(--gold);
+    font-size: 24px;
+    line-height: 1;
+    flex: 0 0 auto;
+    transition: transform var(--transition);
+}
+.faq details[open] summary::after { content: "\2013"; }
+.faq summary:hover { color: var(--navy); }
+.faq details > p { color: var(--text-muted); padding: 0 0 26px; max-width: 68ch; font-size: 15.5px; }
+
+/* --- IDX: labelled zone only. The widget owns this UI, we never draw it. */
+.idxz { border: 1px solid var(--border-light); padding: clamp(38px, 4.4vw, 66px); text-align: left; }
+.idxz__tag {
+    font-family: var(--font-heading);
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+}
+.idxz h3 { margin-bottom: 12px; }
+.idxz p { color: var(--text-muted); max-width: 58ch; font-size: 15px; }
+
+@media (max-width: 1000px) {
+    .step { grid-template-columns: 1fr; }
+    .step:nth-child(even) .step__media { order: 0; }
+}
+
+/* --- mirrored split: photograph bleeds off the right edge -------------- */
+.split--mediaRight .split__media {
+    order: 2;
+    margin-right: calc(((100vw - min(100vw, var(--max-width))) / -2) - var(--gutter));
+}
+
+/* --- 2 x 2 photo cards: a different shape from the alternating rows on
+       Buy and from the full-bleed tiles, so two interior pages do not wear
+       the same treatment ------------------------------------------------- */
+/* three-up variant; an inline grid-template-columns beats the media query, so it
+   needs to be a class */
+.grid4--three { grid-template-columns: repeat(3, 1fr); }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 3.6vw, 58px) clamp(28px, 3.4vw, 56px); }
+.grid4__item img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 24px; }
+.grid4__item .step__n { font-size: clamp(36px, 3.2vw, 50px); margin-bottom: 10px; }
+.grid4__item h3 { margin-bottom: 12px; }
+.grid4__item p { color: var(--text-muted); font-size: 15.5px; }
+
+@media (max-width: 1000px) {
+    .split--mediaRight .split__media {
+        order: 0;
+        margin-right: calc(var(--gutter) * -1);
+        margin-left: calc(var(--gutter) * -1);
+    }
+}
+@media (max-width: 900px) { .grid4--three { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 800px) { .grid4, .grid4--three { grid-template-columns: 1fr; } }
+
+/* ============================================
+   HOME SEARCH · his single most emphatic requirement: "Search button/widget
+   just under that pic or video so that it would be clear to see." It rides up
+   into the hero band the way the practices panel used to, which satisfies
+   "just under the picture" and keeps the overlap device on the page.
+   ============================================ */
+.searchzone { position: relative; margin-top: clamp(-118px, -8vw, -76px); }
+.searchzone__panel {
+    background: var(--white);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(30px, 3.2vw, 46px) clamp(26px, 3.4vw, 54px) clamp(30px, 3.2vw, 46px);
+    box-shadow: 0 -1px 0 var(--border-light);
+}
+.searchzone__head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 22px; }
+.searchzone__head h2 { font-size: clamp(19px, 1.9vw, 24px); }
+.searchzone__frame {
+    border: 1px solid var(--border-light);
+    background: var(--gray-bg);
+    padding: clamp(26px, 3vw, 40px);
+    text-align: center;
+}
+.searchzone__frame p { color: var(--text-muted); font-size: 14.5px; max-width: 56ch; margin: 10px auto 0; }
+.searchzone__tag {
+    font-family: var(--font-heading); font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold-deep);
+}
+
+@media (max-width: 640px) {
+    .searchzone { margin-top: -50px; }
+    .searchzone__panel { margin: 0 var(--gutter); }
+}
+
+/* ============================================
+   SELL · full-bleed alternating rows. A third process treatment, distinct from
+   Buy's contained rows and Property Management's 2x2 cards, so no two pages
+   wear the same thing in the same slot.
+   ============================================ */
+.fbrows { display: grid; }
+.fbrow { display: grid; grid-template-columns: 1fr 1fr; min-height: clamp(400px, 44vw, 560px); }
+.fbrow:nth-child(even) .fbrow__media { order: 2; }
+.fbrow:nth-child(even) { background: var(--gray-bg); }
+.fbrow__media { position: relative; overflow: hidden; }
+.fbrow__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fbrow__body {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(36px, 4vw, 70px) clamp(24px, 4.4vw, 78px);
+}
+.fbrow__body .step__n { font-size: clamp(34px, 3vw, 46px); margin-bottom: 10px; }
+.fbrow__body h3 { margin-bottom: 14px; }
+.fbrow__body p { color: var(--text-muted); }
+.fbrow__body p + p { margin-top: 14px; }
+
+/* --- long-form prose: legal pages, guides, anything text-led ----------- */
+.prose { max-width: 74ch; }
+.prose h2 { margin: clamp(34px, 3.4vw, 50px) 0 14px; }
+.prose h3 { margin: 28px 0 10px; }
+.prose p, .prose li { color: var(--text-muted); margin-bottom: 14px; }
+.prose ul { padding-left: 20px; }
+.prose li { margin-bottom: 8px; }
+.prose a { color: var(--navy); border-bottom: 1px solid var(--gold); }
+.prose a:hover { color: var(--gold-deep); }
+.prose__meta { font-family: var(--font-heading); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+
+/* --- contact ---------------------------------------------------------- */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 84px); align-items: start; }
+.contact__block { padding-bottom: 24px; margin-bottom: 24px; border-bottom: 1px solid var(--border-light); }
+.contact__block:last-child { border-bottom: 0; }
+.contact__block h3 { font-size: 17px; margin-bottom: 10px; }
+.contact__block p, .contact__block a { color: var(--text-muted); font-size: 15.5px; line-height: 1.9; }
+.contact__block a:hover { color: var(--navy); }
+
+/* --- sitemap ---------------------------------------------------------- */
+.sitemap { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 3.4vw, 56px); }
+.sitemap h3 { font-size: 16px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light); }
+.sitemap ul { list-style: none; }
+.sitemap li { padding: 7px 0; }
+.sitemap a { color: var(--text-muted); font-size: 15px; }
+.sitemap a:hover { color: var(--navy); }
+
+/* --- blog placeholder-free index -------------------------------------- */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(24px, 2.6vw, 38px); }
+
+@media (max-width: 1000px) {
+    .fbrow { grid-template-columns: 1fr; }
+    .fbrow:nth-child(even) .fbrow__media { order: 0; }
+    .fbrow__media { min-height: 320px; }
+    .contact, .posts { grid-template-columns: 1fr; }
+    .sitemap { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) { .sitemap { grid-template-columns: 1fr; } }
