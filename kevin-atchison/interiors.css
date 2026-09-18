@@ -184,3 +184,27 @@ body.modallock{overflow:hidden}
   .cmodal__hero img{aspect-ratio:16/10}
 }
 @media(prefers-reduced-motion:reduce){ .cmodal{scroll-behavior:auto} }
+
+/* ---------- Lean hero, photographic ------------------------------------ */
+/* Curtis 2026-09-18: every hero carries an image except Privacy and Terms.
+   This keeps the hotsheets shorter than a core-page hero so the listings still
+   lead, but they are no longer a flat colour band. .lhero without .lhero--photo
+   remains the plain band, which is what the two legal pages use. */
+.lhero--photo{
+  position:relative;isolation:isolate;background:var(--ground-deep);
+  padding:calc(3rem + 132px) 0 clamp(52px,5vw,76px);
+  color:rgb(var(--x-onphoto));overflow:hidden;
+}
+.lhero__bg{position:absolute;inset:0;z-index:-2;background-size:cover;
+  background-position:center;filter:saturate(1.1) contrast(1.04)}
+/* Weighted to the text side and fully transparent well before the far edge, so
+   the photograph stays bright rather than washed to grey. */
+.lhero__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(96deg,rgba(6,6,6,.80) 0%,rgba(6,6,6,.52) 34%,
+    rgba(6,6,6,.14) 64%,rgba(6,6,6,0) 88%),
+    linear-gradient(180deg,rgba(6,6,6,.44) 0%,rgba(6,6,6,0) 22%)}
+.lhero--photo h1{color:rgb(var(--x-onphoto));text-shadow:0 2px 24px rgba(0,0,0,.44)}
+.lhero--photo p{color:rgb(var(--x-onphoto) / .94);text-shadow:0 1px 16px rgba(0,0,0,.5)}
+.lhero--photo .kicker{color:rgb(var(--x-onphoto) / .84)}
+.lhero--photo .kicker::after{background:rgb(var(--x-onphoto) / .42)}
+@media(max-width:620px){ .lhero--photo{padding-top:calc(1.5rem + 96px)} }
