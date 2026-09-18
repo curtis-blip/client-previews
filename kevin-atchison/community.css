@@ -1,0 +1,138 @@
+/* Rich community page, pattern B (the split).
+   Ported from _templates/community-page-patterns/reference-build, which is
+   Ruesch-skinned. The pattern is the structure and the mechanic; the skin is
+   Kevin's. Token map: --ink -> --ground-deep, --bone -> --ground-alt,
+   --brass -> --accent (7.38:1 on white, 6.58:1 on the alt ground, both clear
+   of the 4.5:1 floor), --weichert -> NOT the accent. Kevin's accent measures
+   2.54:1 on #121212, so on dark grounds every rule and label is text-invert. */
+
+/* ---------- Breadcrumbs -------------------------------------------------- */
+.crumbs{font-family:var(--font-label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto) / .84);margin-bottom:22px;
+  text-shadow:0 1px 12px rgba(6,6,6,.6)}
+.crumbs a{color:rgb(var(--x-onphoto) / .84)}
+.crumbs a:hover{color:rgb(var(--x-onphoto))}
+.crumbs em{font-style:normal;color:rgb(var(--x-onphoto))}
+.crumbs span{padding-inline:8px;opacity:.5}
+
+/* ---------- Section rail ------------------------------------------------- */
+/* Sticky under the header. It navigates without concealing anything: every
+   section it points at is rendered whether or not the rail is used. */
+.rail{position:sticky;top:88px;z-index:40;background:var(--ground);
+  border-bottom:1px solid var(--rule);box-shadow:0 10px 26px -24px rgba(6,6,6,.5)}
+.rail__inner{display:flex;align-items:center;gap:clamp(20px,2.8vw,44px);
+  overflow-x:auto;scrollbar-width:none}
+.rail__inner::-webkit-scrollbar{display:none}
+.rail a{position:relative;white-space:nowrap;flex:0 0 auto;
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-soft);padding-block:18px;
+  transition:color var(--dur) var(--ease)}
+.rail a::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left center;
+  transition:transform .45s var(--ease)}
+.rail a:hover{color:var(--text)}
+.rail a:hover::after{transform:scaleX(1)}
+.rail a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- The split ---------------------------------------------------- */
+/* The two genuinely different purchases inside one town name. */
+.split2{display:grid;grid-template-columns:1fr 1fr}
+.side{position:relative;min-height:clamp(430px,46vw,620px);display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--ground-deep)}
+.side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.9;transition:transform 1.6s var(--ease),opacity .6s var(--ease)}
+.side::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(6,6,6,.93) 0%,rgba(6,6,6,.58) 46%,rgba(6,6,6,.14) 100%);
+  transition:background .55s var(--ease)}
+.side:hover img{transform:scale(1.045);opacity:1}
+.side:hover::after{background:linear-gradient(0deg,rgba(6,6,6,.90) 0%,rgba(6,6,6,.48) 52%,rgba(6,6,6,.08) 100%)}
+.side__body{position:relative;z-index:2;width:100%;padding:clamp(26px,4vw,58px);
+  color:rgb(var(--x-onphoto));max-width:46ch}
+.side__i{font-family:var(--font-label);font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto) / .82);display:block;margin-bottom:14px}
+.side__body h2{color:rgb(var(--x-onphoto));margin-bottom:14px;
+  font-size:clamp(23px,2.7vw,36px);line-height:1.08}
+.side__body p{color:rgb(var(--x-onphoto) / .88);font-size:15.5px;margin-bottom:22px}
+
+/* ---------- Field notes, the local knowledge ----------------------------- */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(26px,3vw,44px) clamp(28px,4vw,52px);margin-top:clamp(34px,4.4vw,52px)}
+.note{border-top:1px solid var(--rule);padding-top:20px}
+.note h3{font-size:15px;letter-spacing:.03em;margin-bottom:9px}
+.note p{font-size:14.5px;margin:0;color:var(--text-soft)}
+.on-dark .note{border-top-color:var(--x-rule-invert)}
+.on-dark .note h3{color:var(--text-invert)}
+.on-dark .note p{color:rgb(var(--x-invert) / .84)}
+.on-dark .note-lede{color:rgb(var(--x-invert) / .88)}
+
+/* ---------- Good to know ------------------------------------------------- */
+.gtk{display:grid;grid-template-columns:repeat(4,1fr);
+  gap:clamp(24px,2.8vw,40px);margin-top:clamp(30px,4vw,46px)}
+.gtk__c{border-top:1px solid var(--accent);padding-top:21px}
+.gtk__c h3{font-size:15px;letter-spacing:.03em;margin-bottom:10px}
+.gtk__c p{font-size:14.5px;color:var(--text-soft);margin:0 0 14px}
+
+/* ---------- The broker --------------------------------------------------- */
+.agents{display:grid;grid-template-columns:.82fr 1.18fr;
+  gap:clamp(30px,5vw,68px);align-items:center}
+.agents__figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.agents__body h2{margin-bottom:20px;max-width:20ch;font-size:clamp(25px,3.1vw,42px)}
+.agents__body p{color:var(--text-soft);max-width:58ch;margin:0}
+.agents__body p + p{margin-top:16px}
+.agents__body .btn{margin-top:30px}
+.on-dark .agents__body h2{color:var(--text-invert)}
+.on-dark .agents__body p{color:rgb(var(--x-invert) / .84)}
+
+/* ---------- Nearby towns ------------------------------------------------- */
+.nearby-band{background:var(--ground-alt)}
+.towns__head{padding-block:clamp(40px,5vw,66px) clamp(22px,2.6vw,32px)}
+.towns__grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.nearby__grid .town{min-height:clamp(230px,23vw,310px)}
+.town{position:relative;min-height:clamp(270px,27vw,360px);display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--ground-deep)}
+.town img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.88;transition:transform 1.5s var(--ease),opacity .6s var(--ease)}
+.town::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(6,6,6,.88) 0%,rgba(6,6,6,.42) 46%,rgba(6,6,6,.08) 100%);
+  transition:background .5s var(--ease)}
+.town:hover img{transform:scale(1.055);opacity:1}
+.town:hover::after{background:linear-gradient(0deg,rgba(6,6,6,.80) 0%,rgba(6,6,6,.30) 52%,rgba(6,6,6,.04) 100%)}
+.town__body{position:relative;z-index:2;width:100%;padding:clamp(18px,2.2vw,30px);
+  color:rgb(var(--x-onphoto));transition:transform .5s var(--ease)}
+.town:hover .town__body{transform:translateY(-5px)}
+.town__body h3{color:rgb(var(--x-onphoto));margin-bottom:4px;font-size:18px}
+.town__body span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  font-family:var(--font-label);color:rgb(var(--x-onphoto) / .82)}
+.towns__foot{padding-block:clamp(32px,4vw,50px) clamp(44px,5vw,70px);text-align:center}
+
+/* ---------- Responsive --------------------------------------------------- */
+@media(max-width:1100px){
+  .notes,.gtk{grid-template-columns:repeat(2,1fr)}
+  .towns__grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:1024px){
+  .agents{grid-template-columns:1fr}
+  .agents__figure{max-width:440px}
+}
+@media(max-width:860px){
+  .split2{grid-template-columns:1fr}
+  .side{min-height:clamp(380px,62vw,480px)}
+  .rail{top:64px}
+}
+@media(max-width:620px){
+  .notes,.gtk{grid-template-columns:1fr}
+  .towns__grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .side img,.town img,.town__body,.rail a::after{transition:none}
+}
+
+/* ---------- Orientation strip ------------------------------------------- */
+/* Spine item 2: one idea about the town, then the three things buyers filter
+   on. County, schools and drive time, and nothing that goes stale. */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,38px);
+  margin-top:clamp(26px,3vw,38px);padding-top:26px;border-top:1px solid var(--rule)}
+.facts div b{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);margin-bottom:8px}
+.facts div span{font-size:15px;line-height:1.6}
+@media(max-width:700px){.facts{grid-template-columns:1fr;gap:22px}}
