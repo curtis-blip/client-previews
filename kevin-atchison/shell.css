@@ -1,0 +1,168 @@
+/* Shared chrome: sticky header, dropdowns, mobile panel, footer.
+   Loaded last so it wins over the pack's .nav rules. Emitted alongside
+   _build/shell.py; edit there and re-stamp, never hand-edit a page. */
+
+/* ---------- Header ---------------------------------------------------- */
+/* THE HEADER IS ALWAYS STICKY (universal-conventions section 1). The pack
+   ships position:absolute, which scrolls away. Fixed plus a scroll handler
+   that swaps to the solid ground once the page moves. */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  padding:3rem 0;                       /* tall in the transparent state */
+  transition:padding var(--dur) var(--ease),background var(--dur) var(--ease);
+  border-bottom:0;                      /* no line under a transparent nav, ever */
+}
+.nav__in{position:relative}
+.nav__logo{font-size:22px;transition:font-size var(--dur) var(--ease)}
+
+.nav.is-stuck,.nav--solid{
+  padding:2.05rem 0;
+  background:var(--ground-deep);
+  border-bottom:0;                      /* the ground is the only separation it needs */
+}
+.nav.is-stuck .nav__logo,.nav--solid .nav__logo{font-size:18px;text-shadow:none}
+.nav.is-stuck .nav__links a,.nav.is-stuck .nav__top,
+.nav--solid .nav__links a,.nav--solid .nav__top{text-shadow:none}
+
+/* A parent that opens a dropdown is a label, not a link. Styled identically
+   to a real nav link so the row reads as one component. */
+.nav__top{
+  font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto));opacity:.92;
+  background:none;border:0;padding:0;cursor:pointer;
+  text-shadow:0 1px 12px rgba(0,0,0,.55);
+}
+.nav__top:hover{opacity:1}
+.nav__has{position:relative}
+
+/* Dropdown type matches the nav: same face, same tracking, one step smaller. */
+.nav__sub{
+  position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(-6px);
+  min-width:250px;margin:0;padding:12px 0;list-style:none;
+  background:var(--ground-deep);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.nav__has:hover .nav__sub,.nav__has:focus-within .nav__sub,.nav__has.is-open .nav__sub{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);
+}
+/* Hover bridge so the pointer can cross the gap without the menu closing. */
+.nav__has::after{content:"";position:absolute;top:100%;left:0;right:0;height:18px}
+.nav__sub a{
+  display:block;padding:9px 24px;white-space:nowrap;
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgb(var(--x-invert) / .82);text-shadow:none;
+}
+.nav__sub a:hover{color:rgb(var(--x-invert));background:rgb(var(--x-invert) / .07)}
+
+.nav__cta{
+  font-family:var(--font-label);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgb(var(--x-onphoto));
+  border:1px solid rgb(var(--x-onphoto) / .8);padding:11px 24px;
+  transition:background var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.nav__cta:hover{background:rgb(var(--x-onphoto));color:var(--text)}
+.nav__burger{display:none}
+
+:where(.nav a,.nav button):focus-visible,
+:where(.sf a):focus-visible{outline:2px solid rgb(var(--x-onphoto));outline-offset:3px}
+
+/* ---------- Mobile panel ---------------------------------------------- */
+/* The pack hid every nav link below 900px and shipped no replacement, so the
+   site had no mobile navigation at all. Hamburger below 920px, panel slides
+   in, parent rows tap to expand. */
+@media(max-width:920px){
+  .nav{padding:1.5rem 0}
+  .nav.is-stuck{padding:1.15rem 0}
+  .nav__links,.nav__cta{display:none}
+  .nav__burger{
+    display:flex;flex-direction:column;justify-content:center;gap:5px;
+    width:44px;height:44px;background:none;border:0;cursor:pointer;padding:0;
+  }
+  .nav__burger span{display:block;height:2px;width:26px;background:rgb(var(--x-onphoto));
+    transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+  .nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav__burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav__burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .navpanel{
+    position:fixed;inset:0;z-index:55;background:var(--ground-deep);
+    padding:calc(1.5rem + 68px) var(--gutter) 40px;overflow-y:auto;
+  }
+  .navpanel[hidden]{display:none}
+  .navpanel__list{list-style:none;margin:0;padding:0}
+  .navpanel__list > li{border-bottom:1px solid rgb(var(--x-invert) / .14)}
+  .navpanel__list .nav__top{
+    display:block;width:100%;text-align:left;padding:18px 0;font-size:14px;
+    color:rgb(var(--x-invert));text-shadow:none;opacity:1;
+  }
+  .navpanel__list .nav__sub{
+    position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;
+    min-width:0;padding:0 0 14px;background:none;display:none;
+  }
+  .navpanel__list .nav__has.is-open .nav__sub{display:block}
+  .navpanel__list .nav__sub a{padding:11px 0 11px 18px;font-size:11.5px}
+  .navpanel__list .nav__has::after{display:none}
+  body.navlock{overflow:hidden}
+}
+@media(min-width:921px){ .navpanel{display:none} }
+
+/* Interior pages start under a solid bar rather than a photo hero. */
+.nav--solid + main .chero:first-child{padding-top:calc(2.05rem * 2 + 40px)}
+
+/* ---------- Footer ---------------------------------------------------- */
+.sf{background:var(--ground-deep);color:var(--text-invert);
+  padding:clamp(56px,6vw,88px) 0 34px}
+.foot__cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:44px}
+.sf__mark{font-family:var(--font-display);font-weight:700;font-size:20px;
+  
+  letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px}
+.sf__line{color:rgb(var(--x-invert) / .82);max-width:34ch;font-size:14px;
+  margin:0;text-transform:none;font-family:var(--font-body);font-weight:400;letter-spacing:0}
+.sf__pp img{height:34px;width:auto;margin-top:18px;filter:invert(1) brightness(1.6)}
+.sf__h{
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgb(var(--x-invert) / .62);margin:0 0 14px;
+}
+/* Footer links are ALL CAPS, same as the header: a sentence-case footer under
+   an uppercase nav reads as two different sites. */
+.sf__list{list-style:none;margin:0;padding:0;font-family:var(--font-label);
+  font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;line-height:1}
+.sf__list li{margin-bottom:11px}
+.sf__list a{color:rgb(var(--x-invert) / .86)}
+.sf__list a:hover{color:rgb(var(--x-invert))}
+.sf__list--plain li{color:rgb(var(--x-invert) / .86);line-height:1.7}
+.sf__social{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:22px;
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase}
+.sf__social a{color:rgb(var(--x-invert) / .86)}
+.sf__social a:hover{color:rgb(var(--x-invert))}
+
+.sf__band{display:flex;gap:26px;align-items:flex-start;margin-top:52px;
+  padding-top:26px;border-top:1px solid rgb(var(--x-invert) / .18)}
+/* Real image assets, side by side, 48px tall. Never the words typed out. */
+.sf__marks{display:flex;gap:14px;align-items:center;margin:0;flex:none}
+.sf__marks img{height:48px;width:auto}
+/* Measured, not eyeballed. On #121212: invert @ .86 = 12.84:1, @ .82 = 11.73:1,
+   the .62 column headings = 7.06:1. All clear of the 4.5:1 body floor.
+   Accent #1F5F5B on this ground is 2.54:1, which is why it is never text here. */
+.sf__legal{font-size:12px;line-height:1.75;color:rgb(var(--x-invert) / .86);margin:0}
+
+.sf__base{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between;
+  align-items:center;margin-top:26px;padding-top:20px;
+  border-top:1px solid rgb(var(--x-invert) / .18)}
+.sf__copy{font-size:12px;color:rgb(var(--x-invert) / .86);margin:0}
+.sf__util{display:flex;flex-wrap:wrap;gap:22px;margin:0;font-size:12px}
+.sf__util a{color:rgb(var(--x-invert) / .86)}
+.sf__util a:hover{color:rgb(var(--x-invert))}
+
+@media(max-width:900px){
+  .foot__cols{grid-template-columns:1fr 1fr;gap:36px}
+  .sf__brand{grid-column:1 / -1}
+  .sf__band{flex-direction:column;gap:18px}
+  .sf__base{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){ .foot__cols{grid-template-columns:1fr} }
+
+@media(prefers-reduced-motion:reduce){
+  .nav,.nav__logo,.nav__sub,.nav__burger span{transition:none}
+}

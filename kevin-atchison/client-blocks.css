@@ -1,0 +1,189 @@
+/* ---------------------------------------------------------------------------
+   Kevin Atchison, client-authored blocks.
+
+   Blocks the bold-modern pack does not ship. Authored here rather than logged
+   as a gap, because the client explicitly selected them in his intake.
+   Curtis, 2026-09-04: "I need you to be able to author css on the fly if
+   needed for edits, that's how we get better."
+
+   Kept in its own file so the pack's styles.css and treatments.css stay
+   pristine and updatable, and so anything proven here can be promoted into
+   the pack cleanly.
+
+   Uses contract tokens only. No hardcoded colour.
+   --------------------------------------------------------------------------- */
+
+/* --- full-bleed band --------------------------------------------------------
+   A full-bleed photographic band with a headline, a line of copy and one
+   control. Block-agnostic on purpose: it carries the home-value teaser on the
+   home page, and the same treatment can carry any single-decision moment. */
+.fbband{position:relative;isolation:isolate;min-height:clamp(420px,56vw,640px);
+  display:grid;align-items:end;overflow:hidden}
+.fbband__bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  transform:scale(1.02);transition:transform var(--dur) var(--ease);z-index:-2}
+.fbband:hover .fbband__bg{transform:scale(1.05)}
+.fbband__tint{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgb(var(--x-scrim) / .40) 0%,
+    rgb(var(--x-scrim) / .66) 50%, rgb(var(--x-scrim) / .88) 100%)}
+.fbband__in{padding:clamp(34px,5vw,68px) 0 clamp(30px,4vw,56px);color:rgb(var(--x-onphoto))}
+.fbband__in h2{font-size:clamp(28px,4.4vw,60px);line-height:1.02;margin:10px 0 14px;
+  max-width:18ch;text-wrap:balance}
+.fbband__in p{max-width:52ch;color:rgb(var(--x-onphoto) / .82);margin:0 0 22px}
+.fbband__row{display:flex;gap:clamp(16px,3vw,34px);align-items:center;flex-wrap:wrap}
+
+/* the play control doubles as the button, so there is one target not two */
+.fbband__play{display:inline-flex;align-items:center;gap:14px;cursor:pointer;
+  background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left}
+.fbband__play .disc{width:clamp(52px,5vw,68px);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgb(var(--x-onphoto) / .55);display:grid;place-items:center;flex:none;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.fbband__play .disc svg{width:38%;height:38%;fill:rgb(var(--x-onphoto));
+  margin-left:8%/*optical centring of the triangle*/}
+.fbband__play:hover .disc{background:var(--accent);border-color:var(--accent)}
+.fbband__play .lab{font:500 13px/1.35 var(--font-label);letter-spacing:var(--tracking-label);
+  text-transform:uppercase}
+.fbband__play .lab b{display:block;font-weight:500;
+  font-family:var(--font-body);letter-spacing:0;text-transform:none;font-size:15px;
+  color:rgb(var(--x-onphoto) / .78);margin-top:5px;max-width:34ch}
+
+/* --- lightbox ------------------------------------------------------------ */
+.vlb{position:fixed;inset:0;z-index:90;display:none;place-items:center;
+  background:rgb(var(--x-scrim) / .92);padding:clamp(16px,4vw,56px)}
+.vlb[open]{display:grid}
+.vlb__frame{width:min(1100px,100%);aspect-ratio:16/9;background:#000}
+.vlb__frame iframe{width:100%;height:100%;border:0;display:block}
+.vlb__close{position:absolute;top:clamp(14px,2.4vw,30px);right:clamp(14px,2.4vw,30px);
+  background:none;border:1px solid rgb(var(--x-onphoto) / .5);color:rgb(var(--x-onphoto));
+  font:500 12px/1 var(--font-label);letter-spacing:var(--tracking-label);
+  text-transform:uppercase;padding:12px 16px;cursor:pointer}
+.vlb__close:hover{background:var(--accent);border-color:var(--accent)}
+
+@media (max-width:760px){
+  .fbband{min-height:clamp(360px,86vw,520px)}
+  .fbband__play .lab b{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .fbband__bg,.fbband:hover .fbband__bg{transition:none;transform:none}
+}
+
+/* ===========================================================================
+   POLISH PASS, 2026-09-04. Curtis: "make the adjustments." Eight aesthetic
+   moves, each labelled. Nothing here touches the pack's own rules.
+   =========================================================================== */
+:root{--ov:clamp(40px,6vw,96px)}          /* the one overlap distance, used twice */
+body{overflow-x:clip}                       /* guards the bleeds. NEVER on html:
+                                               it becomes a scroll container and
+                                               every IntersectionObserver dies */
+
+/* 7. scroll reveals ------------------------------------------------------- */
+.rv{opacity:0;transform:translateY(18px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}.rv-d3{transition-delay:.36s}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* 4. hero foot: headline +10%, one legible line, a real button, and room
+      underneath for the portrait to overlap ------------------------------ */
+.hero--polish h1{font-size:calc(var(--scale-display) * 1.1)}
+.hero--polish .hero__in{padding-bottom:calc(clamp(56px,9vh,110px) + var(--ov))}
+.hero--polish .hero__meta{font-size:13px;letter-spacing:.16em;white-space:nowrap}
+@media (max-width:760px){.hero--polish .hero__meta{white-space:normal}}
+
+/* 3 + 5. bio: portrait overlaps the hero's bottom edge, sits on a quiet plate,
+      text stays below the seam ------------------------------------------- */
+.bio-sq{margin-top:calc(-1 * var(--ov));padding-top:0;position:relative;z-index:2}
+.bio-sq__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:clamp(28px,5vw,72px);align-items:center}
+.bio-sq__plate{background:var(--ground-alt);padding:clamp(14px,1.8vw,26px)}
+.bio-sq__plate img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.bio-sq__body{padding-top:var(--ov)}
+.bio-sq__body h2{font-size:clamp(26px,3.1vw,42px);line-height:1.04;margin:8px 0 18px}
+@media (max-width:760px){.bio-sq__grid{grid-template-columns:1fr}.bio-sq__body{padding-top:0}}
+
+/* 2 + 8. video: the still bleeds off the left edge, the text keeps to the
+      container; bigger play disc ----------------------------------------- */
+.vsplit{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,72px);align-items:center}
+.vsplit__body{padding-right:max(var(--gutter),calc((100vw - var(--container)) / 2))}
+.vsplit .fbband__play .disc{width:clamp(76px,7.5vw,100px);
+  border-color:rgb(var(--x-onphoto) / .7);background:rgb(var(--x-scrim) / .28)}
+.vsplit .fbband__play:hover .disc{background:var(--accent);border-color:var(--accent)}
+@media (max-width:760px){.vsplit{grid-template-columns:1fr}
+  .vsplit__body{padding:0 var(--gutter) var(--section-y)}}
+
+/* 1. the IDX frame as a designed listings strip, not an empty box ---------- */
+.idxs{border:1px solid var(--rule);padding:clamp(18px,2.4vw,30px)}
+.idxs__top{display:flex;justify-content:space-between;align-items:center;
+  gap:16px;margin-bottom:clamp(16px,2vw,24px)}
+.idxs__tag{font-family:var(--font-label);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-soft)}
+.idxs__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px)}
+.idxs__card{border:1px solid var(--rule)}
+.idxs__img{aspect-ratio:4/3;
+  background:linear-gradient(135deg,var(--ground-alt),rgb(var(--x-ink) / .12))}
+.idxs__lines{padding:14px 16px 18px;display:grid;gap:9px}
+.idxs__lines i{display:block;height:9px;background:rgb(var(--x-ink) / .10)}
+.idxs__lines i:nth-child(1){width:46%;height:12px;background:rgb(var(--x-ink) / .18)}
+.idxs__lines i:nth-child(2){width:74%}
+.idxs__lines i:nth-child(3){width:56%}
+@media (max-width:760px){.idxs__cards{grid-template-columns:1fr 1fr}
+  .idxs__card:nth-child(3){display:none}}
+
+/* 2 + 3. six community tiles, edge to edge, overlapping the value band ----- */
+.fbband--tail .fbband__in{padding-bottom:calc(clamp(30px,4vw,56px) + var(--ov))}
+.ctiles--bleed{width:100vw;margin-left:calc(50% - 50vw)}
+.ctiles--six .ctile{aspect-ratio:4/3}
+.ctiles--up{margin-top:calc(-1 * var(--ov));position:relative;z-index:2}
+.ctiles__row{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:24px;flex-wrap:wrap;margin-top:clamp(26px,3vw,40px)}
+@media (max-width:760px){.ctiles--six{grid-template-columns:1fr 1fr}}
+
+/* 6. testimonials with presence: lead quote at display scale --------------- */
+.quotes--big .quote--lead blockquote{font-size:clamp(26px,3.4vw,46px);line-height:1.12;
+  letter-spacing:-.015em}
+
+/* ---- ssx: saved-search cuts ------------------------------------------------
+   Cards that route to real Showcase IDX saved searches. Deliberately NOT
+   photographic: a price band or an acreage filter is data, not a place, so a
+   photograph there is filler. It also keeps this distinct from the community
+   tiles, which are the photographic treatment. Full bleed, hairline grid, the
+   accent carried on the rule and the count. */
+.ssx{width:100vw;margin-left:calc(50% - 50vw);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.ssx__card{position:relative;display:flex;flex-direction:column;justify-content:space-between;
+  gap:clamp(26px,3vw,44px);
+  padding:clamp(28px,3vw,44px) clamp(24px,2.6vw,40px) clamp(24px,2.6vw,38px);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  color:var(--text);text-decoration:none;
+  transition:background var(--dur) var(--ease)}
+.ssx__card:nth-child(3n){border-right:0}
+.ssx__card:nth-last-child(-n+3){border-bottom:0}
+.ssx__card::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;
+  background:var(--accent);transition:width var(--dur) var(--ease)}
+.ssx__card:hover{background:rgb(var(--x-ink) / .035)}
+.ssx__card:hover::before{width:100%}
+.ssx__n{font-family:var(--font-label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-soft)}
+.ssx__h{font-family:var(--font-display);font-weight:700;
+  font-size:clamp(21px,2.1vw,30px);line-height:1.08;letter-spacing:-.01em;margin:0 0 10px}
+.ssx__d{font-size:14.5px;line-height:1.62;color:var(--text-soft);margin:0;max-width:34ch}
+.ssx__foot{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  border-top:1px solid var(--rule);padding-top:14px}
+.ssx__count{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent)}
+.ssx__go{font-family:var(--font-label);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-soft)}
+.ssx__card:hover .ssx__go{color:var(--accent)}
+@media (max-width:900px){
+  .ssx{grid-template-columns:1fr 1fr}
+  .ssx__card:nth-child(3n){border-right:1px solid var(--rule)}
+  .ssx__card:nth-child(2n){border-right:0}
+  .ssx__card:nth-last-child(-n+3){border-bottom:1px solid var(--rule)}
+  .ssx__card:nth-last-child(-n+2){border-bottom:0}
+}
+@media (max-width:560px){
+  .ssx{grid-template-columns:1fr}
+  .ssx__card{border-right:0!important;border-bottom:1px solid var(--rule)!important}
+  .ssx__card:last-child{border-bottom:0!important}
+}

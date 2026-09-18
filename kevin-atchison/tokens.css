@@ -1,0 +1,21 @@
+/* Kevin Atchison, client token deltas.
+   Generated from global-design.json. Edit global-design.json, never this file.
+   The pack (styles.css + treatments.css) supplies every other token.
+
+   His #121212 takes the ground-deep and brand slots. That is the pack's own
+   documented client swap: "if a client's brand colour is dark and desaturated
+   it may also take the ground-deep slot."
+
+   --accent is NOT set here. It is the pick-grid variable and is written inline
+   per page by build.py until Curtis picks one. */
+:root{
+  --x-scrim:18 18 18;
+  --x-ink:18 18 18;
+  --ground-deep:#121212;
+  --brand:#121212;
+  --text:#121212;
+}
+/* HARD RULE from the contrast pass: accent is never text or a hairline on the
+   deep ground. All three candidates land between 2.54 and 2.93 against #121212,
+   well under 4.5. On the dark ground, use text-invert. */
+.on-dark .accent-as-text{color:var(--text-invert)}

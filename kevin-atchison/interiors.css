@@ -1,0 +1,186 @@
+/* Interior-page vocabulary, written in the home page's token language.
+   Curtis, 2026-09-11: interiors are derived from the approved home page, not
+   pulled from further pack treatments. Everything here is either missing from
+   this older pack emit (.chero, .hero__sub, .lede) or a rule correction
+   (.qa as a real accordion). */
+
+/* ---------- Interior hero ---------------------------------------------- */
+/* Supporting-page heroes run +10% taller than the pack default and carry a
+   one-line subtext under the H1, so the hero says what the page is FOR
+   (universal-conventions section 8, Travis Lucas review). */
+.chero{
+  min-height:clamp(374px,44vw,550px);
+  display:flex;align-items:flex-end;
+  padding:calc(3rem + 96px) 0 clamp(52px,5vw,78px);
+}
+.chero .hero__in{width:100%}
+.chero h1{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(34px,5.2vw,68px);line-height:.98;letter-spacing:-.01em;
+  margin:0;color:rgb(var(--x-onphoto));text-shadow:0 2px 26px rgba(0,0,0,.42);
+}
+.hero__sub{
+  margin:20px 0 0;max-width:56ch;font-size:clamp(16px,1.7vw,19px);line-height:1.6;
+  color:rgb(var(--x-onphoto) / .94);text-shadow:0 1px 16px rgba(0,0,0,.5);
+}
+.chero--center{align-items:center;text-align:center}
+.chero--center .hero__sub{margin-left:auto;margin-right:auto}
+
+/* Lean hero for hotsheets: no background image, per the hotsheet pattern. */
+.lhero{
+  background:var(--ground-deep);color:var(--text-invert);
+  padding:calc(2.05rem + 112px) 0 clamp(44px,4.5vw,64px);
+}
+.lhero h1{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(28px,4vw,52px);line-height:1.02;margin:0;color:var(--text-invert);
+}
+.lhero p{margin:16px 0 0;max-width:60ch;font-size:16px;line-height:1.65;
+  color:rgb(var(--x-invert) / .86)}
+
+.lede{font-size:clamp(17px,1.9vw,21px);line-height:1.6;max-width:58ch;margin:0 0 18px}
+.on-dark .lede{color:rgb(var(--x-invert) / .9)}
+.measure-p{max-width:58ch;color:var(--text-soft)}
+
+/* ---------- FAQ accordion ---------------------------------------------- */
+/* Questions visible, answers closed until clicked. Native details/summary so
+   it works with no JS and stays keyboard accessible. The pack's .qa shipped as
+   a static list with every answer exposed, which is the thing the rule bans. */
+.qa__row{padding:0;border-bottom:1px solid var(--rule)}
+.qa__row > summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(15px,1.6vw,18px);line-height:1.35;letter-spacing:.01em;
+}
+.qa__row > summary::-webkit-details-marker{display:none}
+.qa__row > summary::after{
+  content:"";position:absolute;right:6px;top:50%;width:13px;height:13px;
+  background:
+    linear-gradient(var(--text),var(--text)) center/13px 1.5px no-repeat,
+    linear-gradient(var(--text),var(--text)) center/1.5px 13px no-repeat;
+  transform:translateY(-50%);transition:transform var(--dur) var(--ease);
+}
+.qa__row[open] > summary::after{
+  background:linear-gradient(var(--text),var(--text)) center/13px 1.5px no-repeat;
+}
+.qa__row > summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.qa__row .qa__a{padding:0 0 24px;max-width:62ch}
+.on-dark .qa__row > summary{color:var(--text-invert)}
+.on-dark .qa__row .qa__a{color:rgb(var(--x-invert) / .84)}
+.on-dark .qa__row{border-bottom-color:var(--x-rule-invert)}
+.on-dark .qa__row > summary::after{
+  background:
+    linear-gradient(var(--text-invert),var(--text-invert)) center/13px 1.5px no-repeat,
+    linear-gradient(var(--text-invert),var(--text-invert)) center/1.5px 13px no-repeat;
+}
+.on-dark .qa__row[open] > summary::after{
+  background:linear-gradient(var(--text-invert),var(--text-invert)) center/13px 1.5px no-repeat;
+}
+
+/* ---------- Resources strip -------------------------------------------- */
+/* The in-content external-authority band. About, Buy, Sell, Home Valuation,
+   Communities and the programs page only. Never Home, Contact, Testimonials,
+   the IDX pages, Blog or the legal pages. */
+.res{border-top:1px solid var(--rule);padding-top:clamp(28px,3vw,40px)}
+.res__h{
+  font-family:var(--font-label);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-soft);margin:0 0 20px;
+}
+.res__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.res__c{
+  background:var(--ground-alt);padding:clamp(20px,2.2vw,28px);
+  display:block;transition:background var(--dur) var(--ease);
+}
+.res__c:hover{background:var(--ground-deep);color:var(--text-invert)}
+.res__c:hover p{color:rgb(var(--x-invert) / .8)}
+.res__c h4{
+  font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:14px;line-height:1.3;margin:0 0 8px;
+}
+.res__c p{margin:0;font-size:13.5px;line-height:1.55;color:var(--text-soft)}
+.res__c:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- Small shared pieces ---------------------------------------- */
+.prose p{max-width:60ch;margin:0 0 18px;color:var(--text-soft)}
+.prose p:last-child{margin-bottom:0}
+.prose h3{font-size:clamp(19px,2.1vw,26px);margin:34px 0 12px}
+.on-dark .prose p{color:rgb(var(--x-invert) / .84)}
+
+.sitemap__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.sitemap__grid h2{font-size:clamp(18px,2vw,23px);margin:0 0 14px}
+.sitemap__grid ul{list-style:none;margin:0;padding:0;line-height:2}
+.sitemap__grid a{color:var(--text-soft)}
+.sitemap__grid a:hover{color:var(--text)}
+
+@media(max-width:860px){
+  .res__grid,.chips,.sitemap__grid{grid-template-columns:1fr}
+  .sitemap__grid{gap:30px}
+}
+@media(max-width:620px){
+  .chero{padding-top:calc(1.5rem + 84px)}
+  .lhero{padding-top:calc(1.15rem + 86px)}
+}
+
+/* ---------- Community modals ------------------------------------------- */
+/* The hub's cards open these rather than navigating. The modal carries the
+   real local content; its first button goes to that town's hotsheet page. */
+/* The hub's tiles are buttons, not links, because they open a modal. Reset the
+   button chrome but NOT the colour: treatments.css sets .ctile to the on-photo
+   white that the veil is built for, and color:inherit here rendered the town
+   names near-black on a dark scrim. */
+.ctile{border:0;padding:0;background:none;cursor:pointer;font:inherit;
+  text-align:left;width:100%}
+/* Ten towns read as two rows of five rather than three rows and an orphan. */
+.ctiles--ten{grid-template-columns:repeat(5,1fr)}
+.ctiles--ten .ctile{aspect-ratio:3/3.4}
+@media(max-width:1100px){.ctiles--ten{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.ctiles--ten{grid-template-columns:repeat(2,1fr)}}
+.ctile:focus-visible{outline:3px solid rgb(var(--x-onphoto));outline-offset:-3px}
+
+.cmodal{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-start;
+  justify-content:center;background:rgba(10,10,10,.82);overflow-y:auto;
+  padding:clamp(16px,4vw,56px) var(--gutter)}
+.cmodal[hidden]{display:none}
+.cmodal__in{position:relative;width:min(860px,100%);background:var(--ground);
+  margin:auto}
+.cmodal__x{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;
+  border:0;background:rgba(10,10,10,.55);color:#fff;font-size:26px;line-height:1;
+  cursor:pointer}
+.cmodal__x:hover{background:rgba(10,10,10,.85)}
+.cmodal__x:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.cmodal__hero{position:relative;isolation:isolate}
+.cmodal__hero img{width:100%;aspect-ratio:16/7;object-fit:cover;display:block}
+.cmodal__hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.72) 100%)}
+.cmodal__htxt{position:absolute;left:clamp(20px,3vw,38px);bottom:clamp(18px,2.4vw,28px);
+  right:clamp(20px,3vw,38px);z-index:2;color:rgb(var(--x-onphoto))}
+.cmodal__htxt .kicker{color:rgb(var(--x-onphoto) / .82)}
+.cmodal__htxt .kicker::after{background:rgb(var(--x-onphoto) / .4)}
+.cmodal__htxt h2{font-family:var(--font-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(26px,3.6vw,44px);line-height:1;margin:6px 0 0;color:rgb(var(--x-onphoto))}
+.cmodal__body{padding:clamp(24px,3.4vw,46px)}
+.cmodal__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  padding-bottom:26px;margin-bottom:8px;border-bottom:1px solid var(--rule)}
+.cmodal__facts b{display:block;font-family:var(--font-label);font-size:10px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--text-soft);margin-bottom:7px}
+.cmodal__facts span{font-size:14.5px;line-height:1.55}
+.cmodal__body h3{font-size:clamp(17px,1.9vw,22px);margin:28px 0 10px}
+.cmodal__body p{color:var(--text-soft);max-width:62ch;margin:0}
+.cmodal__hi{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(2,1fr);gap:10px 26px}
+.cmodal__hi li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.55;
+  color:var(--text-soft)}
+.cmodal__hi li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;
+  background:var(--text)}
+.cmodal__take{margin:30px 0 6px;padding:24px clamp(20px,2.4vw,32px);
+  background:var(--ground-alt);font-family:var(--font-display);font-weight:400;
+  font-size:clamp(16px,1.8vw,20px);line-height:1.5}
+.cmodal__who{font-family:var(--font-label);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--text-soft);margin:0 0 4px}
+.cmodal__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+body.modallock{overflow:hidden}
+@media(max-width:700px){
+  .cmodal__facts,.cmodal__hi{grid-template-columns:1fr}
+  .cmodal__hero img{aspect-ratio:16/10}
+}
+@media(prefers-reduced-motion:reduce){ .cmodal{scroll-behavior:auto} }
