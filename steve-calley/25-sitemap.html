@@ -91,7 +91,7 @@
     <div class="r"><h2>Communities</h2><ul><li><a href="05-communities.html">All communities</a></li><li><a href="14-homes-for-sale-broomfield-co.html">Broomfield</a></li><li><a href="15-homes-for-sale-anthem-highlands-broomfield.html">Anthem Highlands</a></li><li><a href="16-homes-for-sale-greenway-park-broomfield.html">Greenway Park</a></li><li><a href="17-homes-for-sale-arvada-co.html">Arvada</a></li><li><a href="18-homes-for-sale-westminster-co.html">Westminster</a></li><li><a href="19-homes-for-sale-thornton-co.html">Thornton</a></li><li><a href="20-homes-for-sale-erie-co.html">Erie</a></li><li><a href="21-homes-for-sale-lafayette-co.html">Lafayette</a></li><li><a href="22-homes-for-sale-denver-co.html">Denver</a></li><li><a href="23-homes-for-sale-boulder-co.html">Boulder</a></li><li><a href="24-homes-for-sale-superior-co.html">Superior</a></li></ul></div>
     <div class="r"><h2>About</h2><ul><li><a href="01-home.html">Home</a></li><li><a href="02-about.html">About Steve</a></li><li><a href="03-services.html">Services</a></li><li><a href="04-testimonials.html">Testimonials</a></li><li><a href="10-blog.html">Blog</a></li><li><a href="09-contact.html">Contact</a></li></ul></div>
     <div class="r"><h2>Legal</h2><ul><li><a href="26-privacy-policy.html">Privacy Policy</a></li><li><a href="27-terms-of-use.html">Terms of Use</a></li><li><a href="28-mls-disclaimer.html">MLS Disclaimer</a></li></ul></div>
-    <div class="smap__wide r"><h2>Market reports</h2><ul><li><a href="29-blog-post.html">Why Some Anthem Highlands Homes Are Selling, and Others Aren&#x27;t</a></li><li><a href="29-blog-post.html">The Anthem Highlands Market Isn&#x27;t Crashing, but It&#x27;s Definitely Changing</a></li><li><a href="29-blog-post.html">The Market Isn&#x27;t Crashing, but It Is Changing in Anthem Highlands</a></li><li><a href="29-blog-post.html">Anthem Just Got Crowded. Is the Market Flooded With Listings?</a></li><li><a href="29-blog-post.html">Is the Anthem Highlands Market Starting to Overheat? Here&#x27;s What July 2025 Tells Us</a></li><li><a href="29-blog-post.html">Homes Are Moving in Anthem, but Not All of Them. Here&#x27;s Why</a></li><li><a href="29-blog-post.html">Why Everyone&#x27;s Talking About Anthem Highlands This Month</a></li><li><a href="29-blog-post.html">The Glow-Up Is Over. Greenway Park&#x27;s Market Just Got Real</a></li><li><a href="29-blog-post.html">The Greenway Park Market Isn&#x27;t Dead, but It&#x27;s Definitely Quieter</a></li><li><a href="29-blog-post.html">Greenway Park: The Market Just Hit Reset. Here&#x27;s What That Means for You</a></li><li><a href="29-blog-post.html">Where Are the Listings? Greenway Park Sellers Are Sitting Out This Summer</a></li><li><a href="29-blog-post.html">May 2025 Just Redefined What It Takes to Sell in Greenway Park</a></li><li><a href="29-blog-post.html">Thinking About Selling in Greenway Park? April Just Sent a Signal</a></li><li><a href="29-blog-post.html">Greenway Park Isn&#x27;t “Affordable” Anymore, and That&#x27;s a Good Thing</a></li></ul></div>
+    <div class="smap__wide r"><h2>Market reports</h2><ul><li><a href="29-blog-post.html">Why Some Anthem Highlands Homes Are Selling, and Others Aren&#x27;t</a></li><li><a href="29-blog-post.html">The Glow-Up Is Over. Greenway Park&#x27;s Market Just Got Real</a></li><li><a href="29-blog-post.html">The Anthem Highlands Market Isn&#x27;t Crashing, but It&#x27;s Definitely Changing</a></li><li><a href="29-blog-post.html">The Greenway Park Market Isn&#x27;t Dead, but It&#x27;s Definitely Quieter</a></li><li><a href="29-blog-post.html">The Market Isn&#x27;t Crashing, but It Is Changing in Anthem Highlands</a></li><li><a href="29-blog-post.html">Greenway Park: The Market Just Hit Reset. Here&#x27;s What That Means for You</a></li><li><a href="29-blog-post.html">Anthem Just Got Crowded. Is the Market Flooded With Listings?</a></li><li><a href="29-blog-post.html">Where Are the Listings? Greenway Park Sellers Are Sitting Out This Summer</a></li><li><a href="29-blog-post.html">Is the Anthem Highlands Market Starting to Overheat? Here&#x27;s What July 2025 Tells Us</a></li><li><a href="29-blog-post.html">Greenway Park Isn&#x27;t “Affordable” Anymore, and That&#x27;s a Good Thing</a></li><li><a href="29-blog-post.html">Why Everyone&#x27;s Talking About Anthem Highlands This Month</a></li><li><a href="29-blog-post.html">May 2025 Just Redefined What It Takes to Sell in Greenway Park</a></li><li><a href="29-blog-post.html">Homes Are Moving in Anthem, but Not All of Them. Here&#x27;s Why</a></li><li><a href="29-blog-post.html">Thinking About Selling in Greenway Park? April Just Sent a Signal</a></li></ul></div>
   </div>
 </section>
 </main>
@@ -318,6 +318,41 @@
         });
       });
     });
+  }
+
+  // Blog categories: filter the post cards in place. The newest card in each view
+  // runs large, and #<category> in the URL opens that category (community pages
+  // link straight to theirs). Without JS every card shows, newest first.
+  var cats = document.querySelectorAll('.cats [data-cat]');
+  if (cats.length) {
+    var posts = [].slice.call(document.querySelectorAll('.pc[data-cats]'));
+    var notes = document.querySelectorAll('.cats__desc [data-for]');
+    var pick = function (cat) {
+      var lead = false;
+      cats.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cat === cat ? 'true' : 'false'); });
+      posts.forEach(function (p) {
+        var on = cat === 'all' || (' ' + p.dataset.cats + ' ').indexOf(' ' + cat + ' ') > -1;
+        p.hidden = !on;
+        p.classList.toggle('pc--lead', on && !lead);
+        if (on) lead = true;
+      });
+      notes.forEach(function (n) { n.hidden = n.dataset.for !== cat; });
+    };
+    cats.forEach(function (b) {
+      b.addEventListener('click', function () {
+        pick(b.dataset.cat);
+        if (history.replaceState) history.replaceState(null, '', b.dataset.cat === 'all' ? location.pathname + location.search : '#' + b.dataset.cat);
+      });
+    });
+    var fromHash = function () {
+      var h = location.hash.slice(1);
+      if (!h || !document.querySelector('.cats [data-cat="' + h + '"]')) return;
+      pick(h);
+      var sec = document.getElementById('reports');
+      if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: 'instant', block: 'start' }); }, 60);
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
   }
 })();
 </script>

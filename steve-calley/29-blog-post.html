@@ -89,14 +89,14 @@
 <!-- POST TEMPLATE · one of the 14 migrated posts, shown whole. Em dashes and emojis
      removed; the copy is otherwise Steve's (one unsourced comparison dropped). The
      blank "Market Update" squares LP used as featured images are replaced with his
-     Anthem Highlands listing photography. Rule 6.10.E: an area sales recap must
+     own neighborhood photography, the same image as the post's card on the blog. Rule 6.10.E: an area sales recap must
      cite its data source and carry a disclaimer; confirm the source with Steve for
      every post before import. -->
 <section class="section" style="padding-top:clamp(56px,6vw,96px)">
   <article class="article">
     <figure>
-      <img src="assets/tw-swan-15993.jpg" alt="Two-story home on Swan Mountain Drive in Anthem Highlands at twilight." width="1600" height="1012">
-      <figcaption>Swan Mountain Drive, Anthem Highlands.</figcaption>
+      <img src="assets/post-anthem-2025-10.jpg" alt="The sun setting behind the mountains between two Anthem Highlands rooftops." width="1500" height="1000">
+      <figcaption>Sunset over Anthem Highlands.</figcaption>
     </figure>
     <p>Let's be honest: the headlines aren't telling the whole story. You've heard people say the market is slowing down, or that buyers have vanished. Here in Anthem Highlands, that's not the case.</p>
     <p>The market isn't crashing. It's correcting. The fast, frenzied pace of 2021 is gone, and in its place is something more strategic, more balanced and more revealing. Right now, the difference between listed and sold has never been clearer.</p>
@@ -149,10 +149,34 @@
       <p class="eyebrow">Keep reading</p>
       <h2 id="more-h">More market reports</h2>
     </div>
-    <div class="reports r" style="grid-template-columns:repeat(3,1fr)">
-      <a class="report" href="29-blog-post.html"><img src="assets/blog-greenway.jpg" alt="Title card from Steve Calley's monthly market video." loading="lazy"><p class="post__meta">Greenway Park &middot; October</p><h3>The Glow-Up Is Over. Greenway Park&#x27;s Market Just Got Real</h3></a>
-      <a class="report" href="29-blog-post.html"><img src="assets/blog-anthem-2.jpg" alt="Title card from Steve Calley's monthly market video." loading="lazy"><p class="post__meta">Anthem Highlands &middot; September</p><h3>The Anthem Highlands Market Isn&#x27;t Crashing, but It&#x27;s Definitely Changing</h3></a>
-      <a class="report" href="29-blog-post.html"><img src="assets/blog-greenway-2.jpg" alt="Title card from Steve Calley's monthly market video." loading="lazy"><p class="post__meta">Greenway Park &middot; September</p><h3>The Greenway Park Market Isn&#x27;t Dead, but It&#x27;s Definitely Quieter</h3></a>
+    <div class="pgrid r">
+      <article class="pc" data-cats="greenway-park">
+        <div class="pc__media"><img src="assets/post-greenway-2025-10.jpg" alt="A two-story home in Greenway Park at dusk." width="1500" height="1000" loading="lazy"><span class="pc__cat">Greenway Park</span></div>
+        <div class="pc__body">
+          <p class="pc__meta">October 2025 &middot; 3 min read</p>
+          <h3><a href="29-blog-post.html">The Glow-Up Is Over. Greenway Park&#x27;s Market Just Got Real</a></h3>
+          <p class="pc__ex">Homes are still selling, but buyers are calling the shots now. October made one thing clear: sellers can&#x27;t coast anymore.</p>
+          <span class="pc__go" aria-hidden="true">Read the report</span>
+        </div>
+      </article>
+      <article class="pc" data-cats="anthem-highlands">
+        <div class="pc__media"><img src="assets/post-anthem-2025-09.jpg" alt="Fall color around a pond in Anthem Highlands." width="1500" height="1000" loading="lazy"><span class="pc__cat">Anthem Highlands</span></div>
+        <div class="pc__body">
+          <p class="pc__meta">September 2025 &middot; 3 min read</p>
+          <h3><a href="29-blog-post.html">The Anthem Highlands Market Isn&#x27;t Crashing, but It&#x27;s Definitely Changing</a></h3>
+          <p class="pc__ex">Twenty-four market events in one month: new listings, price cuts, pending sales and expirations, and what they add up to.</p>
+          <span class="pc__go" aria-hidden="true">Read the report</span>
+        </div>
+      </article>
+      <article class="pc" data-cats="greenway-park for-buyers">
+        <div class="pc__media"><img src="assets/post-greenway-2025-09.jpg" alt="Open lawn and mature trees in Greenway Park." width="1500" height="1000" loading="lazy"><span class="pc__cat">Greenway Park</span></div>
+        <div class="pc__body">
+          <p class="pc__meta">September 2025 &middot; 3 min read</p>
+          <h3><a href="29-blog-post.html">The Greenway Park Market Isn&#x27;t Dead, but It&#x27;s Definitely Quieter</a></h3>
+          <p class="pc__ex">The market has slowed, buyers are pickier than ever, and price drops are part of the weekly conversation.</p>
+          <span class="pc__go" aria-hidden="true">Read the report</span>
+        </div>
+      </article>
     </div>
     <div class="listings__foot r"><a class="btn" href="10-blog.html">All reports</a></div>
   </div>
@@ -394,6 +418,41 @@
         });
       });
     });
+  }
+
+  // Blog categories: filter the post cards in place. The newest card in each view
+  // runs large, and #<category> in the URL opens that category (community pages
+  // link straight to theirs). Without JS every card shows, newest first.
+  var cats = document.querySelectorAll('.cats [data-cat]');
+  if (cats.length) {
+    var posts = [].slice.call(document.querySelectorAll('.pc[data-cats]'));
+    var notes = document.querySelectorAll('.cats__desc [data-for]');
+    var pick = function (cat) {
+      var lead = false;
+      cats.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cat === cat ? 'true' : 'false'); });
+      posts.forEach(function (p) {
+        var on = cat === 'all' || (' ' + p.dataset.cats + ' ').indexOf(' ' + cat + ' ') > -1;
+        p.hidden = !on;
+        p.classList.toggle('pc--lead', on && !lead);
+        if (on) lead = true;
+      });
+      notes.forEach(function (n) { n.hidden = n.dataset.for !== cat; });
+    };
+    cats.forEach(function (b) {
+      b.addEventListener('click', function () {
+        pick(b.dataset.cat);
+        if (history.replaceState) history.replaceState(null, '', b.dataset.cat === 'all' ? location.pathname + location.search : '#' + b.dataset.cat);
+      });
+    });
+    var fromHash = function () {
+      var h = location.hash.slice(1);
+      if (!h || !document.querySelector('.cats [data-cat="' + h + '"]')) return;
+      pick(h);
+      var sec = document.getElementById('reports');
+      if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: 'instant', block: 'start' }); }, 60);
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
   }
 })();
 </script>

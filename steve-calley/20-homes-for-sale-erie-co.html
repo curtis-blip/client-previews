@@ -517,6 +517,41 @@
       });
     });
   }
+
+  // Blog categories: filter the post cards in place. The newest card in each view
+  // runs large, and #<category> in the URL opens that category (community pages
+  // link straight to theirs). Without JS every card shows, newest first.
+  var cats = document.querySelectorAll('.cats [data-cat]');
+  if (cats.length) {
+    var posts = [].slice.call(document.querySelectorAll('.pc[data-cats]'));
+    var notes = document.querySelectorAll('.cats__desc [data-for]');
+    var pick = function (cat) {
+      var lead = false;
+      cats.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cat === cat ? 'true' : 'false'); });
+      posts.forEach(function (p) {
+        var on = cat === 'all' || (' ' + p.dataset.cats + ' ').indexOf(' ' + cat + ' ') > -1;
+        p.hidden = !on;
+        p.classList.toggle('pc--lead', on && !lead);
+        if (on) lead = true;
+      });
+      notes.forEach(function (n) { n.hidden = n.dataset.for !== cat; });
+    };
+    cats.forEach(function (b) {
+      b.addEventListener('click', function () {
+        pick(b.dataset.cat);
+        if (history.replaceState) history.replaceState(null, '', b.dataset.cat === 'all' ? location.pathname + location.search : '#' + b.dataset.cat);
+      });
+    });
+    var fromHash = function () {
+      var h = location.hash.slice(1);
+      if (!h || !document.querySelector('.cats [data-cat="' + h + '"]')) return;
+      pick(h);
+      var sec = document.getElementById('reports');
+      if (sec) setTimeout(function () { sec.scrollIntoView({ behavior: 'instant', block: 'start' }); }, 60);
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+  }
 })();
 </script>
 </body>
