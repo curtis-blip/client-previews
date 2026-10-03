@@ -1,0 +1,130 @@
+/* ==========================================================================
+   Grapple · accessibility settings. Generated from grapple/css/a11y-panel.css.tmpl
+   (cssbuild.py --layer a11y on a site, grapple/kit/a11y/mockup_bundle.py for a
+   client's mockups). Loaded after the project's adapt.css, before its page styles.
+   The panel's markup and script are one module, grapple/kit/a11y/a11y-panel.js, the
+   same on the site and in the mockups; the settings are classes on <html>, set from
+   localStorage in <head> before first paint. Every panel rule states its own type,
+   spacing and backgrounds, so it looks the same with or without a site's resets.
+
+   The panel takes its look from the design through SEVEN tokens the project maps
+   in its adapt.css (Steve: `.sc-site { --sc-a11y-ink: var(--sc-ink); ... }`):
+     --ss-a11y-ink      dark ink (text, filled buttons)      fallback #111111
+     --ss-a11y-paper    light paper (panel background)       fallback #ffffff
+     --ss-a11y-text     body text colour                     fallback #333333
+     --ss-a11y-muted    secondary text, legends              fallback #595959
+     --ss-a11y-line     hairlines between groups             fallback #d6d3cd
+     --ss-a11y-display  display font stack (labels)          fallback system-ui
+     --ss-a11y-body     body font stack                      fallback system-ui
+
+   Settings that depend on the design (which tokens the contrast mode darkens, which
+   classes "readable" also touches, which links "underline" leaves alone, the
+   reveal-on-scroll class under reduced motion) live in the project's adapt.css.
+   Prefix ss-.
+   ========================================================================== */
+
+.ss-site .ss-a11y__open {
+  position: fixed; left: 16px; bottom: 16px; z-index: 70;
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px 0 12px;
+  background: var(--ss-a11y-ink, #111111); color: var(--ss-a11y-paper, #ffffff); border: 1px solid var(--ss-a11y-paper, #ffffff);
+  font-family: var(--ss-a11y-display, system-ui, sans-serif); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+.ss-site .ss-a11y__open svg { width: 24px; height: 24px; }
+.ss-site .ss-a11y__open:focus-visible { outline: 3px solid var(--ss-a11y-ink, #111111); outline-offset: 3px; box-shadow: 0 0 0 3px var(--ss-a11y-paper, #ffffff); }
+@media (max-width: 640px) { .ss-site .ss-a11y__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .ss-site .ss-a11y__open { padding: 0; width: 48px; justify-content: center; } }
+.ss-site .ss-a11y__panel {
+  width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto;
+  margin: auto auto 16px 16px; padding: 28px 28px 24px; border: 0; background: var(--ss-a11y-paper, #ffffff); color: var(--ss-a11y-text, #333333);
+  box-shadow: 0 24px 70px rgba(0,0,0,.28); font-family: var(--ss-a11y-body, system-ui, sans-serif); font-size: 16px;
+  line-height: 1.7; text-align: left;
+}
+.ss-site .ss-a11y__panel::backdrop { background: rgba(17,17,17,.45); }
+.ss-site .ss-a11y__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.ss-site .ss-a11y__title { font-family: var(--ss-a11y-display, system-ui, sans-serif); font-weight: 500; font-size: 18px !important; line-height: 1.08; letter-spacing: .12em; text-transform: uppercase; color: var(--ss-a11y-ink, #111111); margin: 0; }
+.ss-site .ss-a11y__close { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: var(--ss-a11y-ink, #111111); cursor: pointer; }
+.ss-site .ss-a11y__close svg { width: 14px; height: 14px; }
+.ss-site .ss-a11y__group { min-width: 0; border: 0; border-top: 1px solid var(--ss-a11y-line, #d6d3cd); margin: 0; padding: 16px 0 10px; }
+.ss-site .ss-a11y__group legend, .ss-site .ss-a11y__legend { font-family: var(--ss-a11y-display, system-ui, sans-serif); font-weight: 600; font-size: 12px; line-height: 20px; letter-spacing: .22em; text-transform: uppercase; color: var(--ss-a11y-muted, #595959); padding: 0; margin: 0 0 10px; float: left; width: 100%; }
+.ss-site .ss-a11y__sizes { display: flex; gap: 8px; clear: both; }
+.ss-site .ss-a11y__sizes label { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; margin: 0; border: 1px solid var(--ss-a11y-ink, #111111); color: var(--ss-a11y-ink, #111111); cursor: pointer; font-size: 14px; font-weight: 500; line-height: 20px; }
+.ss-site .ss-a11y__sizes label:has(input:checked) { background: var(--ss-a11y-ink, #111111); color: var(--ss-a11y-paper, #ffffff); }
+.ss-site .ss-a11y__sizes label:has(input:focus-visible) { outline: 2px solid var(--ss-a11y-ink, #111111); outline-offset: 3px; }
+.ss-site .ss-a11y__opt { clear: both; display: flex; align-items: center; gap: 12px; min-height: 44px; margin: 0; cursor: pointer; color: var(--ss-a11y-ink, #111111); font-size: 14px; font-weight: 500; line-height: 20px; }
+.ss-site .ss-a11y__opt input, .ss-site .ss-a11y__sizes input { width: 20px; height: 20px; accent-color: var(--ss-a11y-ink, #111111); margin: 0; flex: none; }
+.ss-site .ss-a11y__note { font-size: 14px; line-height: 1.7; color: var(--ss-a11y-muted, #595959); margin: 14px 0 18px; }
+.ss-site .ss-a11y__actions { display: flex; gap: 10px; justify-content: flex-end; }
+.ss-site .ss-a11y__actions button, .ss-site .ss-a11y__speak button {
+  min-height: 48px; padding: 0 24px; border: 1px solid var(--ss-a11y-ink, #111111); background: transparent; color: var(--ss-a11y-ink, #111111); cursor: pointer;
+  font-family: var(--ss-a11y-display, system-ui, sans-serif); font-weight: 600; font-size: 12px; line-height: 1.7; letter-spacing: .22em; text-transform: uppercase;
+}
+.ss-site .ss-a11y__done, .ss-site .ss-a11y__read { background: var(--ss-a11y-ink, #111111) !important; color: var(--ss-a11y-paper, #ffffff) !important; }
+/* Every button and link in the panel: a ring in the design's ink (a filled button's own
+   colour would be paper on paper). The stronger-focus setting still wins. */
+.ss-site .ss-a11y__panel :is(button, a):focus-visible { outline: 2px solid var(--ss-a11y-ink, #111111); outline-offset: 3px; }
+
+/* ---------- Listen: the page read aloud. The group is hidden unless the browser can
+   speak (html.ss-can-speak); Read (filled) and Stop (outlined) look like the actions. */
+.ss-site .ss-a11y__listen[hidden], .ss-site .ss-a11y__jump[hidden] { display: none; }
+.ss-site .ss-a11y__speak { display: flex; gap: 8px; clear: both; }
+.ss-site .ss-a11y__speak button { flex: 1; padding: 0 12px; }
+.ss-site .ss-a11y__speak button:disabled { opacity: .45; cursor: default; }
+.ss-site .ss-a11y__rate { clear: both; min-width: 0; border: 0; margin: 14px 0 0; padding: 0; }
+.ss-site .ss-a11y__status { min-height: 1.7em; margin: 10px 0 0; font-size: 14px; line-height: 1.7; color: var(--ss-a11y-muted, #595959); }
+/* The block being read: the design's ink on a paper halo, so it shows on a photograph. */
+.ss-site .ss-speaking { outline: 3px solid var(--ss-a11y-ink, #111111) !important; outline-offset: 4px; box-shadow: 0 0 0 7px var(--ss-a11y-paper, #ffffff) !important; }
+
+/* ---------- Jump to section: the page's h2s as links (hidden under three). */
+.ss-site .ss-a11y__jumps { clear: both; list-style: none; margin: 0; padding: 0; }
+.ss-site .ss-a11y__jumps li { margin: 0; padding: 0; }
+.ss-site .ss-a11y__jumps a {
+  display: flex; align-items: center; min-height: 44px; color: var(--ss-a11y-ink, #111111);
+  font-size: 14px; font-weight: 500; line-height: 20px; text-decoration: underline; text-underline-offset: .2em;
+}
+
+/* Astra's skip link: keep it, make it visible and on top when focused. */
+.ss-site .skip-link.screen-reader-text:focus {
+  z-index: 100000; background: var(--ss-a11y-paper, #ffffff); color: var(--ss-a11y-ink, #111111); padding: 14px 22px;
+  font-family: var(--ss-a11y-display, system-ui, sans-serif); font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  outline: 2px solid var(--ss-a11y-ink, #111111); outline-offset: 2px;
+}
+
+/* ---------- the settings */
+/* Text size: mockcss.py writes every font-size as calc(X * var(--ss-fs, 1)). */
+html.ss-a11y-text-1 { --ss-fs: 1.15; }
+html.ss-a11y-text-2 { --ss-fs: 1.3; }
+/* Higher contrast: one flat 60% scrim under all cover text, no photo filters. The
+   project darkens its own grey tokens in adapt.css. */
+html.ss-a11y-contrast .ss-site .wp-block-cover__background { background-image: none !important; background-color: rgba(0,0,0,.6) !important; opacity: 1 !important; display: block !important; }
+html.ss-a11y-contrast .ss-site img { filter: none !important; }
+/* Readable type: medium-weight headings, regular body text. The project adds its own
+   heading-like classes (eyebrows, footer headings) at higher specificity. */
+html.ss-a11y-readable .ss-site :is(h1, h2, h3) { font-weight: 500 !important; letter-spacing: .02em !important; }
+html.ss-a11y-readable .ss-site :is(p, li) { font-weight: 400 !important; }
+/* Readable font: Atkinson Hyperlegible (self-hosted; a11y-panel.js declares it beside
+   itself, so it downloads only when this setting is on), then the design's own stack.
+   Third-party zones and icon fonts keep theirs. */
+html.ss-a11y-font .ss-site :is(p, li, dt, dd, blockquote, figcaption, cite, td, th, caption, label, legend, summary, a, span, strong, em, b, small, button, input, select, textarea):not(.ss-3p, .ss-3p *, [class*="icon"], [class*="dashicons"], [class*="fa-"]) { font-family: "Atkinson Hyperlegible", var(--ss-a11y-body, system-ui, sans-serif) !important; }
+html.ss-a11y-font .ss-site :is(h1, h2, h3, h4, h5, h6):not(.ss-3p *) { font-family: "Atkinson Hyperlegible", var(--ss-a11y-display, system-ui, sans-serif) !important; }
+/* Reading guide: a clear band about three lines tall that follows the pointer or focus,
+   the page above and below it dimmed. Never takes a click; no movement under reduced motion. */
+.ss-a11y__guide { display: none; }
+html.ss-a11y-guide .ss-a11y__guide { display: block; position: fixed; inset: 0; z-index: 2147483000; pointer-events: none; }
+.ss-a11y__guide-above, .ss-a11y__guide-below { position: absolute; left: 0; right: 0; background: rgba(17, 17, 17, .3); pointer-events: none; }
+.ss-a11y__guide-above { top: 0; height: var(--ss-guide-top, 40vh); }
+.ss-a11y__guide-below { top: calc(var(--ss-guide-top, 40vh) + var(--ss-guide-h, 84px)); bottom: 0; }
+html:not(.ss-a11y-motion) .ss-a11y__guide-above, html:not(.ss-a11y-motion) .ss-a11y__guide-below { transition: top 90ms linear, height 90ms linear; }
+@media (prefers-reduced-motion: reduce) { .ss-a11y__guide-above, .ss-a11y__guide-below { transition: none !important; } }
+/* Text spacing at the WCAG 1.4.12 values. */
+html.ss-a11y-spacing .ss-site :is(p, li, dd, blockquote) { line-height: 1.9 !important; letter-spacing: .12em !important; word-spacing: .16em !important; }
+/* A heavy focus ring everywhere, blue with a white halo so it shows on any colour. */
+html.ss-a11y-focus .ss-site :focus-visible { outline: 3px solid #0b57d0 !important; outline-offset: 3px !important; box-shadow: 0 0 0 6px #ffffff !important; }
+/* Reduced motion, on request or from the OS setting. */
+html.ss-a11y-motion *, html.ss-a11y-motion *::before, html.ss-a11y-motion *::after {
+  animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important; scroll-behavior: auto !important;
+}
+html.ss-a11y-motion .has-parallax { background-attachment: scroll !important; }
+@media (prefers-reduced-motion: reduce) {
+  .ss-site .has-parallax { background-attachment: scroll !important; }
+}
