@@ -1167,3 +1167,20 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 /* section hooks for the full build (named for Grapple; each needs a rule) */
 .author, .contact, .est, .gate, .lead, .rv-lead, .wall { position: relative; }
 .contact__form, .gal__i { min-width: 0; }
+
+/* ---------- sitemap and legal pages ---------- */
+.smap__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(36px, 4vw, 64px) clamp(28px, 3.4vw, 60px); }
+.smap__g h2 { font-family: var(--body); font-weight: 500; font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); padding-bottom: 14px; border-bottom: 2px solid var(--camel); margin-bottom: 4px; }
+.smap__g li a { display: flex; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); font-family: var(--display); font-size: clamp(18px, 1.35vw, 21px); line-height: 1.3; }
+.smap__g li a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.legal__body { max-width: 760px; font-size: 17px; line-height: 1.8; }
+.legal__body h2 { font-size: clamp(26px, 2.2vw, 34px); margin: 2em 0 .6em; }
+.legal__date { font-weight: 500; font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); }
+.legal__body a { color: var(--ink); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.smap, .legal { position: relative; }
+@media (max-width: 960px) { .smap__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .smap__grid { grid-template-columns: 1fr; } }
+.lcs--feed { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); }
+.lcs--feed .lc__price { font-size: clamp(22px, 1.6vw, 26px); }
+@media (max-width: 1180px) { .lcs--feed { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .lcs--feed { grid-template-columns: 1fr; } }
