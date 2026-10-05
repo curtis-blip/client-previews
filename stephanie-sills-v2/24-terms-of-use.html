@@ -347,6 +347,32 @@
     start();
   }
 
+  // Chapters as tabs (community.py chapters="tabs-*"): click or arrow keys switch panels, and the
+  // selected tab scrolls into view on a narrow screen. Without JS every panel shows.
+  document.querySelectorAll('.ct__tabs').forEach(function (list) {
+    var tabs = [].slice.call(list.querySelectorAll('[role="tab"]'));
+    var pick = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.classList.toggle('is-on', on);
+      });
+      if (list.scrollWidth > list.clientWidth) list.scrollLeft = t.offsetLeft - 16;
+      if (focus) t.focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : tabs.length - 1;
+        pick(tabs[(i + step) % tabs.length], true);
+      });
+    });
+  });
+
   // Past Sales filter chips.
   var chips = document.querySelectorAll('.filter [data-city]');
   if (chips.length) {
