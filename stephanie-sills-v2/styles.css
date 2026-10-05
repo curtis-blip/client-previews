@@ -106,8 +106,11 @@ h3 { font-size: clamp(24px, 2vw, 32px); line-height: 1.18; font-weight: 400; }
   display: inline-flex; align-items: center; gap: .8em; padding-block: 10px; min-height: 44px;
   border-bottom: 1px solid currentColor;
 }
-.tlink::after { content: ""; width: 22px; height: 1px; background: currentColor; transition: width 400ms var(--ease); }
-.tlink:hover::after { width: 40px; }
+/* Link labels are option A, the line under and no dash (Curtis, 2026-10-05: each site has its own; Steve Calley
+   has B, Robert LeBorne C). On hover the line doubles with a shadow, so nothing moves; a card thickens its link's
+   line when any part of the card is hovered. */
+.tlink { transition: box-shadow 400ms var(--ease); }
+.tlink:hover, .card-link:hover .tlink { box-shadow: 0 1px 0 currentColor; }
 .on-ink .tlink, .tlink--light { color: var(--paper); }
 
 /* ---------- the brand colour band (style guide graphic element) ---------- */
@@ -681,8 +684,8 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 .qs__body h3 { font-weight: 400; font-size: clamp(23px, 1.75vw, 28px); line-height: 1.2; }
 .qs__line { margin: .6rem 0 1.1rem; color: var(--stone); font-size: 15.5px; line-height: 1.55; }
 .qs__go { display: inline-flex; align-items: center; gap: .8em; margin: 0; padding-block: 8px; font-weight: 500; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid currentColor; }
-.qs__go::after { content: ""; width: 22px; height: 1px; background: currentColor; transition: width 400ms var(--ease); }
-.qs__card:hover .qs__go::after { width: 40px; }
+.qs__go { transition: box-shadow 400ms var(--ease); }
+.qs__card:hover .qs__go { box-shadow: 0 1px 0 currentColor; }
 .feed { margin-top: clamp(64px, 6vw, 100px); }
 .feed__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 10px 30px; margin-bottom: 1.6rem; }
 .feed__head h3 { font-weight: 300; font-size: clamp(28px, 2.3vw, 38px); }
@@ -969,8 +972,8 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 .feat__body h2 { font-size: clamp(34px, 3.2vw, 52px); line-height: 1.1; margin-bottom: 1.4rem; }
 .feat__body h2 a:hover { text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
 .feat__go { display: inline-flex; align-items: center; gap: .8em; margin: 1.8rem 0 0; padding-block: 8px; font-weight: 500; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid currentColor; }
-.feat__go::after { content: ""; width: 22px; height: 1px; background: currentColor; transition: width 400ms var(--ease); }
-.feat:hover .feat__go::after { width: 40px; }
+.feat__go { transition: box-shadow 400ms var(--ease); }
+.feat:hover .feat__go { box-shadow: 0 1px 0 currentColor; }
 
 /* ---------- blog post template ---------- */
 .lh__meta { margin: 1.8rem 0 0; font-size: 15px; color: var(--stone); }
