@@ -1185,7 +1185,7 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 @media (max-width: 1180px) { .lcs--feed { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .lcs--feed { grid-template-columns: 1fr; } }
 
-/* ---------- community chapters as tabs (community.py chapters="tabs-a"; Montara first, 2026-10-04) ---------- */
+/* ---------- community chapters as tabs (community.py chapters="tabs-a|b"; Montara first, on B since 2026-10-04) ---------- */
 .ct, .ct__panels, .ct__layout { position: relative; }
 .ct__label { margin-bottom: 1.4rem; }
 .ct__tabs { display: flex; gap: 0 4px; overflow-x: auto; scrollbar-width: none; }
@@ -1212,4 +1212,33 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 .ct--a .ct__media img { aspect-ratio: 4 / 3; }
 @media (max-width: 960px) {
   .ct--a .ct__panel { grid-template-columns: 1fr; gap: 28px; }
+}
+/* B: the chapter index down the left (Curtis 2026-10-04, "Maybe I like B the best"), with saved searches by area under it */
+.ct--b .ct__layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(36px, 5vw, 96px); align-items: start; }
+.ct--b .ct__tabs { flex-direction: column; gap: 0; border-top: 1px solid var(--line); position: sticky; top: 140px; }
+.ct--b .ct__side { position: sticky; top: 140px; }
+.ct--b .ct__side .ct__tabs { position: static; }
+.ct--b .ct__tab { white-space: normal; text-align: left; padding: 20px 0 18px 22px; min-height: 64px; border-bottom: 1px solid var(--line); border-left: 2px solid transparent; font-size: 13px; }
+.ct--b .ct__tab .ct__n { font-size: 30px; min-width: 44px; }
+.ct--b .ct__tab[aria-selected="true"] { border-left-color: var(--camel); background: var(--sand); }
+.ct--b .ct__media { margin-bottom: clamp(28px, 3vw, 44px); }
+.ct--b .ct__media img { aspect-ratio: 16 / 9; }
+.ct--b .ct__body h2 { max-width: 24ch; }
+.ct__more { margin-top: clamp(32px, 3.4vw, 48px); }
+.ct__more-h { margin: 0 0 .9rem; font-weight: 500; font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); }
+.ct__areas { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.ct__areas li { margin: 0; padding: 0; border-bottom: 1px solid var(--line); }
+.ct__areas a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 16px; min-height: 44px; padding: 16px 0 16px 22px; color: var(--ink); text-decoration: none; }
+.ct__areas a::after { content: ""; grid-column: 2; grid-row: 1 / span 2; width: 22px; height: 1px; background: currentColor; transition: width 400ms var(--ease); }
+.ct__areas a:hover::after, .ct__areas a:focus-visible::after { width: 40px; }
+.ct__area { grid-column: 1; font-family: var(--display); font-weight: 300; font-size: 22px; line-height: 1.25; }
+.ct__note { grid-column: 1; margin-top: 4px; font-size: 13.5px; line-height: 1.5; color: var(--stone); }
+@media (max-width: 1024px) {
+  .ct--b .ct__layout { grid-template-columns: 1fr; gap: 28px; }
+  .ct--b .ct__side { display: contents; }
+  .ct--b .ct__tabs { flex-direction: row; position: static; border-top: 0; border-bottom: 1px solid var(--line); }
+  .ct--b .ct__tab { border-left: 0; border-bottom: 2px solid transparent; padding: 14px 16px 12px; min-height: 56px; white-space: nowrap; }
+  .ct--b .ct__tab[aria-selected="true"] { border-bottom-color: var(--ink); background: none; }
+  .ct--b .ct__more { order: 1; margin-top: 12px; }
+  .ct__areas a { padding-left: 0; }
 }
