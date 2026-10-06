@@ -121,7 +121,7 @@
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
-  <div class="bleed__media"><img src="assets/life-hiker-overlook.jpg" alt="A hiker in a blue shirt pausing on a rocky ridge above a golden basin at the end of summer." style="object-position:18% 50%" loading="lazy"></div>
+  <div class="bleed__media"><img src="assets/STANDIN-life-commons-ski-terrain-upper-bowl.jpg" alt="Groomed snow on an upper bowl of the Telluride ski area, a lift line climbing toward the ridge under winter peaks." style="object-position:50% 45%" loading="lazy"></div>
   <div class="bleed__body r">
     <p class="step__n" aria-hidden="true">02</p>
     <p class="eyebrow">Step 2 of 8</p>
@@ -139,7 +139,7 @@
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
-  <div class="bleed__media"><img src="assets/life-torchlight.jpg" alt="Snowy rooftops and warm lights of a mountain town at night below a dark forested slope." style="object-position:26% 62%" loading="lazy"></div>
+  <div class="bleed__media"><img src="assets/STANDIN-commons-telluride-victorian-homes.jpg" alt="Painted wood-frame houses with porches and gabled roofs on a Telluride side street." style="object-position:50% 60%" loading="lazy"></div>
   <div class="bleed__body r">
     <p class="step__n" aria-hidden="true">04</p>
     <p class="eyebrow">Step 4 of 8</p>
@@ -432,6 +432,32 @@
     if (mq.addEventListener) mq.addEventListener('change', start); else mq.addListener(start);
     start();
   }
+
+  // Chapters as tabs (community.py chapters="tabs-*"): click or arrow keys switch panels, and the
+  // selected tab scrolls into view on a narrow screen. Without JS every panel shows.
+  document.querySelectorAll('.ct__tabs').forEach(function (list) {
+    var tabs = [].slice.call(list.querySelectorAll('[role="tab"]'));
+    var pick = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.classList.toggle('is-on', on);
+      });
+      if (list.scrollWidth > list.clientWidth) list.scrollLeft = t.offsetLeft - 16;
+      if (focus) t.focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : tabs.length - 1;
+        pick(tabs[(i + step) % tabs.length], true);
+      });
+    });
+  });
 
   // Past Sales filter chips.
   var chips = document.querySelectorAll('.filter [data-city]');

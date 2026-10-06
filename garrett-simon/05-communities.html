@@ -88,7 +88,7 @@
 
 <!-- COMMUNITIES HUB · photo cards link straight to each area page (universal § 5, no modals). No place names in the hero. Focus keyword: telluride neighborhoods. -->
 <section class="ph">
-  <img class="ph__img" src="assets/valley-overlook-fall.jpg" alt="Snow on a long mountain range above a valley of autumn aspens, seen between the trees of an overlook." style="object-position:50% 45%" fetchpriority="high">
+  <img class="ph__img" src="assets/STANDIN-commons-telluride-valley-floor-entrance-autumn.jpg" alt="The road into Telluride in autumn, past the fenced meadow of the Valley Floor and up the box canyon to the peaks." style="object-position:50% 55%" fetchpriority="high">
   <div class="ph__in wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="01-home.html">Home</a></li><li><span aria-current="page">Communities</span></li></ol></nav>
     <p class="ph__eyebrow">Communities</p>
@@ -521,6 +521,32 @@
     if (mq.addEventListener) mq.addEventListener('change', start); else mq.addListener(start);
     start();
   }
+
+  // Chapters as tabs (community.py chapters="tabs-*"): click or arrow keys switch panels, and the
+  // selected tab scrolls into view on a narrow screen. Without JS every panel shows.
+  document.querySelectorAll('.ct__tabs').forEach(function (list) {
+    var tabs = [].slice.call(list.querySelectorAll('[role="tab"]'));
+    var pick = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.classList.toggle('is-on', on);
+      });
+      if (list.scrollWidth > list.clientWidth) list.scrollLeft = t.offsetLeft - 16;
+      if (focus) t.focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : tabs.length - 1;
+        pick(tabs[(i + step) % tabs.length], true);
+      });
+    });
+  });
 
   // Past Sales filter chips.
   var chips = document.querySelectorAll('.filter [data-city]');
