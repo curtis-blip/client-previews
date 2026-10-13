@@ -43,7 +43,7 @@
   --hdr-pad: 2.4rem;
   --hdr-pad-stuck: 1.3rem;
   --logo-h: 70px;
-  --logo-h-stuck: 56px;
+  --logo-h-stuck: 60px;
   --arch: 999px 999px 0 0;
   --mist: var(--sand);        /* house-block names mapped to hers */
   --on-ink-muted: var(--on-umber);
@@ -102,7 +102,7 @@ p { margin: 0 0 1.1em; }
   transition: padding 500ms var(--ease), background 500ms var(--ease), box-shadow 500ms var(--ease); }
 .hdr.is-stuck, .hdr--dark { padding-block: var(--hdr-pad-stuck); background: var(--paper); box-shadow: 0 1px 0 var(--line); }
 .hdr__in { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-.brand { display: flex; align-items: center; gap: 22px; min-height: 44px; text-decoration: none; flex-shrink: 0;
+.brand { display: flex; align-items: flex-end; gap: 22px; min-height: 44px; text-decoration: none; flex-shrink: 0;
   position: relative; z-index: 61; }
 .brand__logo { height: var(--logo-h); width: auto; transition: height 500ms var(--ease); }
 .hdr.is-stuck .brand__logo, .hdr--dark .brand__logo { height: var(--logo-h-stuck); }
@@ -946,4 +946,268 @@ h1, h2, h3 { letter-spacing: 0; }
 @media (max-width: 480px) {
   .facts { grid-template-columns: 1fr; }
   .facts > div, .facts > div + div, .facts > div:nth-child(even) { padding-left: 0; border-left: 0; }
+}
+
+/* ==========================================================================
+   KEY FACTS right below each town's intro (layout A, tiles; Curtis 2026-10-12 and 13, after Stephanie Sills'
+   community modals): tags, key facts, drive times, local highlights and a search button. In her register.
+   ========================================================================== */
+.kf__h { margin: 0 0 20px; font-family: var(--display); font-weight: 400; font-size: clamp(22px, 1.8vw, 27px); line-height: 1.2;
+  letter-spacing: 0; color: var(--ink); }
+.kf, .kf__part, .kf__part--stats, .kf__part--drives, .kf__part--highs { min-width: 0; }
+.kf__tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.kf__tags li { padding: 8px 16px; border: 1px solid var(--red); border-radius: 999px; font-family: var(--body); font-weight: 700;
+  font-size: 12px; line-height: 1.3; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+.kf__stats { margin: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 14px; }
+.kf__stat dt { font-family: var(--body); font-weight: 700; font-size: 12px; line-height: 1.4; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--stone); }
+.kf__stat dd { margin: 10px 0 0; font-size: 16px; line-height: 1.5; font-weight: 500; color: var(--ink); }
+.kf__drives { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.kf__drive { text-align: center; }
+.kf__drive .ico { display: block; width: 24px; height: 24px; margin: 0 auto 12px; color: var(--red); }
+.kf__fig { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(56px, 4.8vw, 72px); line-height: .9; color: var(--red); }  /* her red numerals, the guide steps' exact size */
+.kf__unit { margin-left: 6px; font-family: var(--body); font-size: 13px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--stone); }
+.kf__to { margin: 10px 0 0; font-size: 15px; line-height: 1.45; color: var(--graphite); }
+.kf__note { margin: 16px 0 0; font-size: 15px; line-height: 1.55; color: var(--stone); }
+.kf__highs { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  column-gap: 32px; }
+.kf__highs li { padding: 20px 0 22px; border-top: 1px solid var(--line); }
+.kf__hl { margin: 0; font-family: var(--display); font-size: 21px; line-height: 1.3; color: var(--ink); }
+.kf__hl-line { margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: var(--graphite); }
+.kf__cta { margin: 0; }
+.intro2--split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+.intro2--split .intro2__head { grid-column: auto; }
+.intro2--split .intro2__body { grid-column: auto; padding-top: 3.1rem; }
+.intro2--split h2 { max-width: 13ch; }
+.kf--tiles { margin-top: clamp(56px, 6vw, 96px); display: grid; gap: clamp(40px, 4vw, 56px); }
+.kf--tiles .kf__stat { padding: 24px 24px 26px; background: var(--sand); }
+.kf--tiles .kf__drive { padding: 28px 16px 26px; background: var(--sand); }
+@media (max-width: 900px) {
+  .intro2--split { grid-template-columns: 1fr; }
+  .intro2--split .intro2__body { padding-top: 0; }
+  .kf__stats { grid-auto-flow: row; grid-template-columns: 1fr; }
+  .kf__drives { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+}
+
+/* saved-search cards: the arch sits on the section's own ground with no white box behind it, and no number badge
+   (Curtis, 2026-10-13: "get rid of the white in arches", "leave the number out of the middle") */
+.qs__card { background: transparent; }
+.qs__i { display: none; }
+
+/* header lockup (Curtis, 2026-10-13): the brokerage lines sit on the wordmark's baseline, not the middle of the whole
+   logo (its icon fills the top half); the transparent header keeps the logo's red and green (logo-color-on-dark.png) */
+.brand__kw { margin-bottom: -3px; }
+
+/* ==========================================================================
+   IDX BROKER, DRAWN AS IT WILL LOOK (Curtis, 2026-10-13): listing cards with IMPress's own classes, the omnibar,
+   the map search with its refinement bar. In her register, on her approved text styles.
+   ========================================================================== */
+.listings, .listings--3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2vw, 30px); }
+.listings--4, .listings--row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.impress-showcase-property { position: relative; display: flex; flex-direction: column; padding-bottom: 20px;
+  background: var(--paper); border: 1px solid var(--line); }
+.impress-showcase-photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--sand); }
+.impress-showcase-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease); }
+.impress-showcase-property:hover .impress-showcase-photo img { transform: scale(1.04); }
+.impress-price { margin: 18px 20px 4px; font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.2; color: var(--ink); }
+.impress-address { margin: 0 20px; font-size: 16px; line-height: 1.5; color: var(--graphite); }
+.impress-address a { color: inherit; text-decoration: none; }
+.impress-street, .impress-cityname { display: block; }
+.impress-beds-baths-sqft { margin: 14px 20px 0; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--body);
+  font-weight: 700; font-size: 12px; line-height: 1.5; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.listing-office { margin: 10px 20px 0; font-size: 15px; line-height: 1.45; color: var(--stone); }
+.listings__note { margin-top: 18px; }
+.feed .listings { margin-top: 6px; }
+
+.omni { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+.omni__q { position: relative; flex: 1 1 340px; display: flex; align-items: center; border: 1px solid var(--line); background: var(--paper); }
+.omni__q .ico { position: absolute; left: 16px; width: 20px; height: 20px; color: var(--stone); }
+.omni__q input { width: 100%; min-height: 54px; padding: 0 16px 0 46px; border: 0; background: transparent; font: inherit;
+  font-size: 16px; color: var(--ink); }
+.omni__q input::placeholder { color: var(--stone); }
+.omni__f { display: flex; flex: 0 1 150px; }
+.omni__f select { width: 100%; min-height: 54px; padding: 0 14px; border: 1px solid var(--line); background: var(--paper);
+  font: inherit; font-size: 16px; color: var(--ink); }
+.omni__go { min-height: 54px; padding: 0 30px; background: var(--red); border-color: var(--red); color: var(--paper); }
+.omni__go:hover { background: var(--red-deep); border-color: var(--red-deep); }
+
+.mapsearch .refine { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 16px; }
+.refine__chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line);
+  background: var(--paper); font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--stone); cursor: pointer; }
+.refine__chip:hover { border-color: var(--red); color: var(--red); }
+.refine__chip .ico { width: 14px; height: 14px; color: currentColor; }
+.refine__save { margin-left: auto; min-height: 44px; }
+.mapsearch__map { position: relative; border: 1px solid var(--line); background: var(--paper); }
+.mapsearch__map img { display: block; width: 100%; height: auto; }
+.mapsearch__pins { margin: 0; padding: 0; list-style: none; }
+.mapsearch__pin { position: absolute; transform: translate(-50%, -100%); padding: 6px 10px; border-radius: 999px; background: var(--red);
+  font-family: var(--body); font-weight: 700; font-size: 12px; line-height: 1; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--paper); white-space: nowrap; box-shadow: 0 6px 16px rgba(36, 28, 25, .28); }
+.mapsearch__pin::after { content: ""; position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--red); border-bottom: 0; }
+.mapsearch__credit { margin: 0; padding: 10px 14px; font-size: 15px; color: var(--stone); }
+.mapsearch__count { margin: 26px 0 16px; font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--stone); }
+@media (max-width: 1024px) {
+  .listings, .listings--4, .listings--row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .listings, .listings--4, .listings--row { grid-template-columns: 1fr; }
+  .omni__q { flex-basis: 100%; }
+  .omni__f { flex: 1 1 30%; }
+  .omni__go { flex-basis: 100%; }
+  .refine__save { margin-left: 0; width: 100%; }
+  .mapsearch__pin:nth-child(even) { display: none; }
+}
+
+/* the stand-in map's price pins, placed over the West Valley (no inline styles in mockups) */
+.mapsearch__pin:nth-child(1) { left: 44%; top: 37%; }
+.mapsearch__pin:nth-child(2) { left: 54%; top: 47%; }
+.mapsearch__pin:nth-child(3) { left: 57%; top: 22%; }
+.mapsearch__pin:nth-child(4) { left: 61%; top: 52%; }
+.mapsearch__pin:nth-child(5) { left: 47%; top: 63%; }
+.mapsearch__pin:nth-child(6) { left: 40%; top: 73%; }
+.mapsearch__pin:nth-child(7) { left: 24%; top: 86%; }
+.mapsearch__pin:nth-child(8) { left: 70%; top: 67%; }
+.mapsearch__pin:nth-child(9) { left: 82%; top: 56%; }
+.mapsearch__pin:nth-child(10) { left: 90%; top: 77%; }
+
+/* home hero fills the screen; the stats sit right below the fold, outside it (Curtis, 2026-10-13) */
+.hero { min-height: max(600px, 100svh); }
+@media (min-width: 641px) { .hero { min-height: max(640px, 100svh); } }
+
+/* header alignment (Curtis, 2026-10-13: "the logo sits lower than the nav items"): the logo's text line, not the middle
+   of its box, is the header's axis, so the nav, the Contact button and the menu button drop onto it */
+@media (min-width: 1280px) {
+  .nav { position: relative; top: calc(var(--logo-h) * .25); transition: top 500ms var(--ease); }
+  .hdr.is-stuck .nav, .hdr--dark .nav { top: calc(var(--logo-h-stuck) * .25); }
+}
+@media (min-width: 761px) and (max-width: 1279px) {
+  .burger { top: calc(var(--logo-h) * .25); }
+  .hdr.is-stuck .burger, .hdr--dark .burger { top: calc(var(--logo-h-stuck) * .25); }
+}
+.creds__wrap > .creds { margin-inline: auto; }   /* centred on the page now that it sits outside the hero */
+
+/* the nav now sits on the logo's text line, a little lower over the photo: on desktop (where the nav shows) the top of
+   every photo hero is a shade deeper so its links keep 4.5:1 (Curtis's header alignment, 2026-10-13) */
+@media (min-width: 1280px) {
+.ph::before { background:
+  linear-gradient(180deg, rgba(36,28,25,.84) 0%, rgba(36,28,25,.62) 18%, rgba(36,28,25,0) 40%),
+  linear-gradient(0deg, rgba(36,28,25,.76) 0%, rgba(36,28,25,.44) 38%, rgba(36,28,25,0) 64%),
+  linear-gradient(90deg, rgba(36,28,25,.76) 0%, rgba(36,28,25,.52) 38%, rgba(36,28,25,.14) 66%, rgba(36,28,25,0) 84%); }
+}
+
+/* Home Search bar, Curtis's pick C (2026-10-13): labeled segments in one white bar; no red line, no outer box */
+.hsearch__card { padding: 0; background: transparent; border-top: 0; box-shadow: none; }
+.omni--labeled { flex-wrap: nowrap; gap: 0; align-items: stretch; padding: 10px; background: var(--paper); border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(36, 28, 25, .16); }
+.omni--labeled label { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 12px 22px 10px;
+  border: 0; background: transparent; }
+.omni--labeled label + label { border-left: 1px solid var(--line); }
+.omni__lab { margin-bottom: 4px; font-family: var(--body); font-weight: 700; font-size: 12px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--stone); }
+.omni--labeled .omni__q { flex: 1 1 auto; }
+.omni--labeled .omni__q .ico { display: none; }
+.omni--labeled .omni__q input, .omni--labeled .omni__f select { min-height: 32px; padding: 0; border: 0; background: transparent; }
+.omni--labeled .omni__f { flex: 0 0 160px; }
+.omni--labeled .omni__go { align-self: center; min-height: 58px; margin-left: 8px; padding: 0 30px; border-radius: 12px; }
+@media (max-width: 1024px) {
+  .omni--labeled { flex-wrap: wrap; }
+  .omni--labeled .omni__q { flex-basis: 100%; }
+  .omni--labeled .omni__f { flex: 1 1 30%; padding-inline: 14px; }
+  .omni--labeled label + label { border-left: 0; border-top: 1px solid var(--line); }
+  .omni--labeled .omni__f + .omni__f { border-left: 1px solid var(--line); }
+  .omni--labeled .omni__go { flex-basis: 100%; margin: 8px 0 0; }
+}
+
+/* headings break into even lines, never a lone word or a dangling "a" (2026-10-13) */
+h2 { text-wrap: balance; }
+
+/* header row a little wider than the content, so the logo sits further left and the nav further right (Curtis,
+   2026-10-13) */
+.hdr__in.wrap { max-width: 1520px; padding-inline: clamp(20px, 3vw, 56px); }
+/* phones only: a bar at the bottom to call or contact her (Curtis, 2026-10-13) */
+.callbar { display: none; }
+@media (max-width: 760px) {
+  .callbar { position: fixed; z-index: 55; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: 1fr 1fr;
+    padding-bottom: env(safe-area-inset-bottom); background: var(--umber); box-shadow: 0 -8px 24px rgba(36, 28, 25, .18); }
+  .callbar a { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; font-family: var(--body);
+    font-weight: 700; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--paper); }
+  .callbar__call { background: var(--red); }
+  .callbar .ico { width: 18px; height: 18px; color: currentColor; }
+  body { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+  .rd-site .rd-a11y__open { bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
+
+/* phones: the accessibility button sits in the call bar's left end, so it never covers a button on the page (floating
+   above the bar it covered the home hero's buttons on the left and the estimator's button on the right, 2026-10-13),
+   and the home hero ends where the call bar starts. Its own sheet loads after this one, so the rule doubles the class */
+@media (max-width: 760px) {
+  .callbar { left: 56px; }
+  .rd-site .rd-a11y__open.rd-a11y__open { left: 0; right: auto; bottom: 0; width: 56px; min-height: 0;
+    height: calc(56px + env(safe-area-inset-bottom)); padding: 0 0 env(safe-area-inset-bottom); border: 0; box-shadow: none; }
+  .hero { min-height: max(600px, calc(100svh - 56px)); }
+}
+
+.callbar__contact { background: var(--umber); }
+
+/* her phone and email in a slim line above the header, Curtis's pick E (2026-10-13), on desktop and tablet; phones use
+   the call bar. It stays on the white sticky header too ("the number disappears on the sticky"); there, on desktop,
+   the logo rises a little beside it, with room above the number, between the number and the nav, and under Contact
+   (Curtis: a 103px sticky was "too compressed"; it is 120px, still well under the 165px header over the photo) */
+.hdr__top { display: none; }
+@media (min-width: 761px) {
+  .hdr__top.wrap { display: flex; justify-content: flex-end; align-items: center; gap: 30px; max-width: 1520px;
+    margin-top: -18px; padding-bottom: 12px; padding-inline: clamp(20px, 3vw, 56px);
+    transition: margin 500ms var(--ease), padding 500ms var(--ease); }
+  .hdr__tel, .hdr__mail { display: inline-flex; align-items: center; gap: 9px; min-height: 24px; font-family: var(--body);
+    font-weight: 700; font-size: 12px; letter-spacing: .16em; color: var(--paper); text-decoration: none;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, .5); }
+  .hdr__tel:hover, .hdr__mail:hover { color: var(--red-light); }
+  .hdr__tel .ico { flex: 0 0 15px; width: 15px; height: 15px; color: var(--red-light); }
+  .hdr.is-stuck .hdr__top a, .hdr--dark .hdr__top a { color: var(--ink); text-shadow: none; }
+  .hdr.is-stuck .hdr__top a:hover, .hdr--dark .hdr__top a:hover { color: var(--red); }
+  .hdr.is-stuck .hdr__tel .ico, .hdr--dark .hdr__tel .ico { color: var(--red); }
+  .hdr.is-stuck .hdr__top.wrap, .hdr--dark .hdr__top.wrap { margin-top: -10px; padding-bottom: 2px; }
+  .hdr.menu-open .hdr__top { visibility: hidden; }
+}
+/* touch widths: a full 44px target in the same slim line */
+@media (min-width: 761px) and (max-width: 1024px) {
+  .hdr__top a { min-height: 44px; margin-block: -10px; }
+}
+@media (min-width: 1280px) {
+  .hdr__top.wrap { position: relative; z-index: 62; pointer-events: none; }
+  .hdr__top a { pointer-events: auto; }
+  .hdr.is-stuck, .hdr--dark { padding-block: 14px 30px; }
+  .hdr.is-stuck .hdr__top.wrap, .hdr--dark .hdr__top.wrap { margin-top: 0; margin-bottom: -8px; padding-bottom: 0; }
+  /* the nav sits lower over the home photo now (the phone line is above it), so the top of that photo is a shade
+     deeper on desktop, as on the inner pages */
+  .hero__scrim { background: linear-gradient(180deg, rgba(36, 28, 25, .8) 0%, rgba(36, 28, 25, .56) 18%, rgba(36, 28, 25, 0) 38%),
+    linear-gradient(90deg, rgba(36, 28, 25, .76) 0%, rgba(36, 28, 25, .5) 36%, rgba(36, 28, 25, .1) 64%, rgba(36, 28, 25, 0) 82%); }
+}
+
+/* the home value estimator, drawn as it will look on her site (Curtis, 2026-10-13: "Its not an idx zone"): the house
+   kit's hero address bar (widgets/home-value-estimator/hero-embed.css) in her red. On the live site the kit's five
+   tokens take her colours: --hv-accent her red, --hv-accent-dark her deep red, --hv-ink her ink, --hv-rule her line,
+   --hv-on-accent white. The class names are the plugin's own (.ap-input-container) or follow them, so these rules map
+   onto the kit */
+.agp-hv-panel { position: relative; z-index: 2; max-width: 760px; margin: 34px 0 0; }
+.ap-form { display: flex; align-items: stretch; }
+.ap-input-container { display: flex; flex: 1 1 auto; min-width: 0; background: rgba(255, 255, 255, .10);
+  border: 1px solid rgba(255, 255, 255, .38); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.ap-input-container:focus-within { border-color: var(--red); background: rgba(255, 255, 255, .16); }
+.ap-input { width: 100%; min-height: 62px; padding: 20px 22px; border: 0; background: transparent; color: var(--paper);
+  font-family: var(--body); font-size: 17px; }
+.ap-input::placeholder { color: rgba(255, 255, 255, .72); opacity: 1; }
+.ap-input:focus-visible { outline: 2px solid var(--paper); outline-offset: -6px; }
+.ap-btn { flex: 0 0 auto; padding: 0 34px; border: 0; background: var(--red); color: var(--paper); cursor: pointer;
+  font-family: var(--body); font-weight: 700; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase;
+  transition: background-color 300ms var(--ease); }
+.ap-btn:hover { background: var(--red-deep); }
+@media (max-width: 782px) {
+  .agp-hv-panel { max-width: 100%; margin-top: 26px; }
+  .ap-form { flex-direction: column; gap: 10px; }
+  .ap-btn { width: 100%; min-height: 54px; }
 }

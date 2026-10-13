@@ -18,9 +18,13 @@
 <script>document.documentElement.classList.add('js');document.body.classList.add('js');</script>
 
 <header class="hdr" id="hdr">
+  <div class="hdr__top wrap">
+    <a class="hdr__tel" href="tel:+16232974536"><span class="ico ico--phone" aria-hidden="true"></span>623-297-4536</a>
+    <a class="hdr__mail" href="mailto:rebeccadurfey@kw.com">rebeccadurfey@kw.com</a>
+  </div>
   <div class="hdr__in wrap">
     <a class="brand" href="01-home.html" aria-label="Rebecca Durfey, Keller Williams, Professional Partners, home page">
-      <img class="brand__logo on-dark" src="assets/logo-white.png" alt="Rebecca Durfey" width="720" height="186">
+      <img class="brand__logo on-dark" src="assets/logo-color-on-dark.png" alt="Rebecca Durfey" width="720" height="186">
       <img class="brand__logo on-light" src="assets/logo-transparent.png" alt="Rebecca Durfey" width="720" height="186">
       <span class="brand__kw">Keller Williams,<br>Professional Partners</span>
     </a>
@@ -86,21 +90,24 @@
   </div>
 </section>
 
-<!-- SEARCH BAR · IMPress for IDX Broker's omnibar in a white card over the hero's lower edge: city, ZIP, address or
-     listing ID, then price, beds and baths. SAVED SEARCHES · six IDX Broker saved links; each card opens its saved
+<!-- SEARCH BAR · IMPress for IDX Broker's omnibar with extra fields ([idx-omnibar-extra]) in a white card over the
+     hero's lower edge: one field for a city, ZIP, address or listing ID, then max price, beds and baths, drawn as it
+     will look (Curtis, 2026-10-13); style .idx-omnibar-form with the .omni rules. SAVED SEARCHES · six IDX Broker saved links; each card opens its saved
      search (in WordPress, the IDX Broker saved-link URL): 1. Peoria, North Peoria: City: Peoria · ZIP: 85383 | 2. Glendale, Arrowhead Ranch: City: Glendale · Subdivision: Arrowhead Ranch | 3. Goodyear, Estrella: City: Goodyear · Subdivision: Estrella | 4. Buckeye, Verrado: City: Buckeye · Subdivision: Verrado | 5. Scottsdale, Near the McDowell Sonoran Preserve: City: Scottsdale · Map area: along the Preserve | 6. Cave Creek, Horse property: City: Cave Creek · Horse property: yes -->
 <section class="section section--mist hsearch" aria-labelledby="ss-h">
   <div class="wrap">
     <div class="hsearch__card r">
-      <div class="idx idx--search r">
-      <span class="idx__tag">IDX Broker &middot; Search bar</span>
-      <code class="idx__code">&lt;!-- IDX_ZONE: omnibar --&gt;</code>
-      <p class="idx__note">IMPress for IDX Broker's search bar: city, ZIP, address or listing ID, with price, beds and baths.</p>
-    </div>
+      <form class="omni omni--labeled" role="search" action="16-home-search.html">
+      <label class="omni__q"><span class="omni__lab">Location</span><span class="ico ico--search" aria-hidden="true"></span><input type="search" name="q" placeholder="City, ZIP, address or listing ID" autocomplete="off"></label>
+      <label class="omni__f"><span class="omni__lab">Max price</span><select name="max"><option>Any price</option><option>$300,000</option><option>$400,000</option><option>$500,000</option><option>$750,000</option><option>$1,000,000</option></select></label>
+      <label class="omni__f"><span class="omni__lab">Beds</span><select name="beds"><option>Any</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option></select></label>
+      <label class="omni__f"><span class="omni__lab">Baths</span><select name="baths"><option>Any</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select></label>
+      <button class="btn omni__go" type="submit">Search</button>
+    </form>
     </div>
     <div class="head r">
-      <p class="eyebrow">Saved searches</p>
-      <h2 id="ss-h">Start With a Saved Search</h2><p class="lede">Six searches across Rebecca's towns. Each opens ARMLS listings, updated as they change.</p>
+      <p class="eyebrow">Popular searches</p>
+      <h2 id="ss-h">Start With a Neighborhood or a Search</h2><p class="lede">Six ready-made searches, from neighborhoods like Verrado and Arrowhead Ranch to horse property in Cave Creek. Each opens the homes for sale that fit.</p>
     </div>
     <div class="qs qs--6 r">
       <article class="qs__card card-link">
@@ -131,18 +138,50 @@
   </div>
 </section>
 
-<!-- LIVE MAP · IDX Broker's Map Search widget: the map on top, its listings in rows under it, opening on the West
-     Valley, homes only, newest first. -->
+<!-- LIVE MAP · IDX Broker's Map Search widget with a refinement bar over it (Curtis, 2026-10-13: price, beds, baths,
+     home type, more filters, save), the map opening on the West Valley, homes only, and the listings in view under it,
+     newest first. The map image is an OpenStreetMap stand-in for the live map; the cards and pins are samples. -->
 <section class="section" aria-labelledby="map-h">
   <div class="wrap">
     <div class="head r">
       <p class="eyebrow">Live map</p>
-      <h2 id="map-h">Search by Map</h2><p class="lede">The map opens on the West Valley, and the listings under it follow as you pan or zoom. Draw a shape to search only that area.</p>
+      <h2 id="map-h">Search by Map</h2><p class="lede">Move the map to any part of the Valley and the homes for sale there appear below. Narrow it by price, beds, baths and home type.</p>
     </div>
-    <div class="idx idx--map r">
-      <span class="idx__tag">IDX Broker &middot; Map search</span>
-      <code class="idx__code">&lt;!-- IDX_ZONE: home-search --&gt;</code>
-      <p class="idx__note">IDX Broker's live map search: the map on top, its listings in rows underneath.</p>
+    <div class="mapsearch r">
+      <div class="refine" role="group" aria-label="Refine the search"><button class="refine__chip" type="button">Price<span class="ico ico--chev" aria-hidden="true"></span></button><button class="refine__chip" type="button">Beds<span class="ico ico--chev" aria-hidden="true"></span></button><button class="refine__chip" type="button">Baths<span class="ico ico--chev" aria-hidden="true"></span></button><button class="refine__chip" type="button">Home type<span class="ico ico--chev" aria-hidden="true"></span></button><button class="refine__chip" type="button">More filters<span class="ico ico--chev" aria-hidden="true"></span></button><button class="btn refine__save" type="button">Save this search</button></div>
+      <div class="mapsearch__map">
+        <img src="assets/STANDIN-map-west-valley-osm.jpg" alt="A street map of the West Valley, from Buckeye and Goodyear east to Phoenix, Scottsdale and Mesa." loading="lazy">
+        <ul class="mapsearch__pins" aria-hidden="true"><li class="mapsearch__pin">$489K</li><li class="mapsearch__pin">$615K</li><li class="mapsearch__pin">$849K</li><li class="mapsearch__pin">$429K</li><li class="mapsearch__pin">$699K</li><li class="mapsearch__pin">$565K</li><li class="mapsearch__pin">$459K</li><li class="mapsearch__pin">$799K</li><li class="mapsearch__pin">$1.2M</li><li class="mapsearch__pin">$539K</li></ul>
+        <p class="mapsearch__credit">Map: &copy; OpenStreetMap contributors (stand-in for IDX Broker's live map)</p>
+      </div>
+      <p class="mapsearch__count">Homes in view, newest first</p>
+      <div class="listings listings--4 r">
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-pool-patio-evening.jpg" alt="A lit pool and patio in the evening." loading="lazy"></div>
+        <p class="impress-price">$789,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">21143 W Sunset Ridge Dr</span> <span class="impress-cityname">Buckeye, AZ 85396</span></a></p>
+        <p class="impress-beds-baths-sqft">4 beds &middot; 3.5 baths &middot; 2,960 sq ft</p>
+      </div>
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-stucco-homes-tile-roofs.jpg" alt="Two-story stucco homes with tile roofs." loading="lazy"></div>
+        <p class="impress-price">$415,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">6249 W Ironwood Way</span> <span class="impress-cityname">Glendale, AZ 85302</span></a></p>
+        <p class="impress-beds-baths-sqft">3 beds &middot; 2.5 baths &middot; 1,642 sq ft</p>
+      </div>
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-pool-lounge-desert.jpg" alt="Lounge chairs beside a pool, desert hills behind." loading="lazy"></div>
+        <p class="impress-price">$1,395,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">9425 E Desert Vista Rd</span> <span class="impress-cityname">Scottsdale, AZ 85255</span></a></p>
+        <p class="impress-beds-baths-sqft">4 beds &middot; 4.5 baths &middot; 4,210 sq ft</p>
+      </div>
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-hillside-homes-mountain.jpg" alt="Homes on a desert hillside below a rocky mountain." loading="lazy"></div>
+        <p class="impress-price">$699,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">4418 E Ocotillo Bend</span> <span class="impress-cityname">Cave Creek, AZ 85331</span></a></p>
+        <p class="impress-beds-baths-sqft">3 beds &middot; 3 baths &middot; 2,384 sq ft</p>
+      </div>
+    </div>
+    <p class="idx__note listings__note">Sample listings for the mockup. The live site shows ARMLS listings here, updated as they change.</p>
     </div>
     <p class="idx__note">The homes shown include listings held by other brokerages and are not Rebecca Durfey's own
     sales. Listing information is provided by ARMLS. All information should be verified by the recipient and none is guaranteed as accurate by ARMLS.</p>
@@ -240,6 +279,10 @@
       </p>
     </div>
   </div>
+  <nav class="callbar" aria-label="Call or contact Rebecca">
+    <a class="callbar__call" href="tel:+16232974536"><span class="ico ico--phone" aria-hidden="true"></span>Call</a>
+    <a class="callbar__contact" href="11-contact.html">Contact</a>
+  </nav>
 </footer>
 
 <script>

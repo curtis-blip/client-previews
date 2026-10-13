@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="icons.css">
 <script>try{var s=JSON.parse(localStorage.getItem('rd-a11y')||'{}'),c=document.documentElement.classList;for(var k in s){if(s[k]&&k!=='rate')c.add(k==='text'?'rd-a11y-text-'+s[k]:'rd-a11y-'+k);}}catch(e){}</script>
 <link rel="stylesheet" id="rd-a11y-sheet" href="a11y/a11y-panel.css">
 </head>
@@ -23,9 +24,13 @@
      at every width, beside the logo on desktop and under it on phones.
      ========================================================================== -->
 <header class="hdr" id="hdr">
+  <div class="hdr__top wrap">
+    <a class="hdr__tel" href="tel:+16232974536"><span class="ico ico--phone" aria-hidden="true"></span>623-297-4536</a>
+    <a class="hdr__mail" href="mailto:rebeccadurfey@kw.com">rebeccadurfey@kw.com</a>
+  </div>
   <div class="hdr__in wrap">
     <a class="brand" href="01-home.html" aria-label="Rebecca Durfey, Keller Williams, Professional Partners, home page">
-      <img class="brand__logo on-dark" src="assets/logo-white.png" alt="Rebecca Durfey" width="720" height="186">
+      <img class="brand__logo on-dark" src="assets/logo-color-on-dark.png" alt="Rebecca Durfey" width="720" height="186">
       <img class="brand__logo on-light" src="assets/logo-transparent.png" alt="Rebecca Durfey" width="720" height="186">
       <span class="brand__kw">Keller Williams,<br>Professional Partners</span>
     </a>
@@ -99,6 +104,9 @@
       <a class="btn btn--light" href="08-home-valuation.html">What Is My Home Worth?</a>
     </div>
   </div>
+</section>
+
+<!-- STATS · right below the fold, outside the full-screen hero (Curtis, 2026-10-13) -->
   <div class="creds__wrap">
     <dl class="creds wrap">
       <div class="creds__lead"><dt><span class="creds__big"><span class="creds__hash">#</span>1</span> in Peoria</dt><dd>By sales volume and transactions &middot; RealTrends Verified, 2025 sales</dd></div>
@@ -107,7 +115,7 @@
       <div><dt>Keller Williams</dt><dd>Professional Partners, Peoria</dd></div>
     </dl>
   </div>
-</section>
+
 
 <!-- ================ AGENT SPOTLIGHT · Rebecca and her licensed assistant =======
      Her own portrait (Content Snare "featured hero image") where a portrait
@@ -146,11 +154,30 @@
       <h2 id="listings-h">Homes Rebecca Has for Sale Right Now</h2>
       <p class="lede">Her current listings, updated from the ARMLS feed as they change. Save a search and new matches come straight to your inbox.</p>
     </div>
-    <div class="idx r">
-      <p class="idx__tag">IDX Broker &middot; Featured listings</p>
-      <code class="idx__code">&lt;!-- IDX_ZONE: featured-listings --&gt;</code>
-      <p class="idx__note">Rebecca's own listings (ARMLS agent ID RD116), newest first. The builder places the IDX Broker featured listings widget (IMPress) here, with the ARMLS notice under it.</p>
+    <!-- FEATURED LISTINGS · IMPress for IDX Broker [impress_property_showcase property_type="featured" max="3"
+         num_per_row="3"]: Rebecca's own listings (ARMLS agent ID RD116), newest first, with the listing firm on each and
+         the ARMLS notice under them. Drawn as they will look (Curtis, 2026-10-13); IMPress's classes, so the CSS carries over. -->
+    <div class="listings listings--3 r">
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-desert-front-yard-saguaro.jpg" alt="A single-story home with a saguaro in the desert front yard." loading="lazy"></div>
+        <p class="impress-price">$549,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">8812 W Cielo Grande</span> <span class="impress-cityname">Peoria, AZ 85383</span></a></p>
+        <p class="impress-beds-baths-sqft">4 beds &middot; 2 baths &middot; 2,148 sq ft</p><p class="listing-office">Listed by Keller Williams, Professional Partners</p>
+      </div>
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-modern-home-sunset.jpg" alt="A modern home with tall windows at sunset." loading="lazy"></div>
+        <p class="impress-price">$1,125,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">24617 N 87th Dr</span> <span class="impress-cityname">Peoria, AZ 85383</span></a></p>
+        <p class="impress-beds-baths-sqft">5 beds &middot; 4 baths &middot; 3,860 sq ft</p><p class="listing-office">Listed by Keller Williams, Professional Partners</p>
+      </div>
+      <div class="impress-showcase-property card-link">
+        <div class="impress-showcase-photo"><img src="assets/STANDIN-backyard-pool-shade-sails.jpg" alt="A backyard pool under shade sails, palms beyond." loading="lazy"></div>
+        <p class="impress-price">$629,000</p>
+        <p class="impress-address"><a class="stretch" href="16-home-search.html"><span class="impress-street">17844 W Wind Song Ave</span> <span class="impress-cityname">Goodyear, AZ 85338</span></a></p>
+        <p class="impress-beds-baths-sqft">4 beds &middot; 3 baths &middot; 2,512 sq ft</p><p class="listing-office">Listed by Keller Williams, Professional Partners</p>
+      </div>
     </div>
+    <p class="idx__note listings__note">Sample listings for the mockup. The live site shows Rebecca's current listings here, from ARMLS through IDX Broker, updated as they change.</p>
     <div class="listings__foot acts r">
       <a class="btn" href="05-featured-listings.html">See all of Rebecca's listings</a>
       <a class="btn" href="16-home-search.html">Search every home for sale</a>
@@ -170,7 +197,7 @@
       <div class="head head--flush r">
         <p class="eyebrow">Communities</p>
         <h2 id="comms-h">Peoria, Surprise and Glendale First</h2>
-        <p class="lede">Rebecca works across ten towns in the Valley. These are the three where she sells the most homes, and the best place to start.</p>
+        <p class="lede">Rebecca works across the Valley. These are the three towns where she sells the most homes, and a good place to start.</p>
       </div>
     </div>
   </div>
@@ -471,6 +498,10 @@
       </p>
     </div>
   </div>
+  <nav class="callbar" aria-label="Call or contact Rebecca">
+    <a class="callbar__call" href="tel:+16232974536"><span class="ico ico--phone" aria-hidden="true"></span>Call</a>
+    <a class="callbar__contact" href="11-contact.html">Contact</a>
+  </nav>
 </footer>
 
 <script>
