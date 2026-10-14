@@ -91,7 +91,7 @@
       <h2 id="team-h">Top Tier Realty is the Jim Holbrook Team</h2><p class="lede">Formerly the Jim Holbrook Team at Performance Realty Estates and Homes. The people, the office and the way they work have not changed, only the name on the sign.</p>
     </div>
     <div class="team">
-      <article class="team__card r">
+      <article class="team__card r" id="jim-holbrook">
         <img src="assets/jim-portrait.jpg" alt="Jim Holbrook, broker and owner of Top Tier Realty, smiling in a black jacket in front of a vineyard." loading="lazy">
         <div class="team__body">
           <h3>Jim Holbrook</h3>
@@ -104,7 +104,20 @@
           </ul>
         </div>
       </article>
-      <article class="team__card r">
+      <article class="team__card r" id="kelli-holbrook">
+        <img src="assets/team-kelli.jpg" alt="Kelli Holbrook in a gray sweater, smiling in front of a vineyard." loading="lazy">
+        <div class="team__body">
+          <h3>Kelli Holbrook</h3>
+          <p class="team__role">Loan officer, Miller Financial, Inc.</p>
+          <p>Kelli is Jim's wife and a loan officer at Miller Financial, Inc., where she compares loans from more than 50 lenders for home purchases, refinances and investment properties.</p>
+          <ul class="team__facts">
+            <li>NMLS #785836 &middot; Licensed since 2012</li>
+            <li><a href="tel:+19517757900">(951) 775-7900</a></li>
+            <li><a href="mailto:kelli@millerfinancial.com">kelli@millerfinancial.com</a></li>
+          </ul>
+        </div>
+      </article>
+      <article class="team__card r" id="nicole-caldwell">
         <img src="assets/team-nicole.jpg" alt="Nicole Caldwell in a black blazer, smiling in a bright living room." loading="lazy">
         <div class="team__body">
           <h3>Nicole Caldwell</h3>
@@ -117,7 +130,7 @@
           </ul>
         </div>
       </article>
-      <article class="team__card r">
+      <article class="team__card r" id="shane-rone">
         <img src="assets/team-shane.jpg" alt="Shane Rone in a dark patterned shirt, smiling in front of a vineyard." loading="lazy">
         <div class="team__body">
           <h3>Shane Rone</h3>
@@ -130,7 +143,7 @@
           </ul>
         </div>
       </article>
-      <article class="team__card r">
+      <article class="team__card r" id="mike-deckert">
         <img src="assets/team-michael.jpg" alt="Mike Deckert in a black polo shirt, smiling in front of a vineyard." loading="lazy">
         <div class="team__body">
           <h3>Mike Deckert</h3>
@@ -143,7 +156,7 @@
           </ul>
         </div>
       </article>
-      <article class="team__card r">
+      <article class="team__card r" id="alexis-keiner">
         <img src="assets/team-alexis.jpg" alt="Alexis Keiner in a dark top, smiling in front of a flowering hedge." loading="lazy">
         <div class="team__body">
           <h3>Alexis Keiner</h3>
@@ -157,6 +170,7 @@
         </div>
       </article>
     </div>
+    <p class="team__note r">Kelli Holbrook is a loan officer with Miller Financial, Inc. (NMLS #785836), a separate company from Top Tier Realty. You are free to choose any lender.</p>
   </div>
 </section>
 <section class="bleed section--mist">
@@ -222,6 +236,7 @@
               <li><a href="37-homes-for-sale-wildomar-ca.html">Wildomar</a></li>
               <li><a href="22-homes-for-sale-canyon-lake-ca.html">Canyon Lake</a></li>
             </ul>
+            <p class="ftr__all"><a href="09-communities.html">All communities</a></p>
           </div>
           <div>
             <p class="ftr__sub">San Diego County</p>
@@ -240,7 +255,6 @@
             </ul>
           </div>
         </div>
-        <p class="ftr__all"><a class="tlink" href="09-communities.html">All communities</a></p>
       </div>
       <div class="ftr__office">
         <h3>Office</h3>
@@ -391,6 +405,32 @@
     if (mq.addEventListener) mq.addEventListener('change', start); else mq.addListener(start);
     start();
   }
+
+  // Chapters as tabs (community.py chapters="tabs-*"): click or arrow keys switch panels, and the
+  // selected tab scrolls into view on a narrow screen. Without JS every panel shows.
+  document.querySelectorAll('.ct__tabs').forEach(function (list) {
+    var tabs = [].slice.call(list.querySelectorAll('[role="tab"]'));
+    var pick = function (t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = document.getElementById(x.getAttribute('aria-controls'));
+        if (p) p.classList.toggle('is-on', on);
+      });
+      if (list.scrollWidth > list.clientWidth) list.scrollLeft = t.offsetLeft - 16;
+      if (focus) t.focus();
+    };
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { pick(t); });
+      t.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        var step = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : tabs.length - 1;
+        pick(tabs[(i + step) % tabs.length], true);
+      });
+    });
+  });
 
   // Past Sales filter chips.
   var chips = document.querySelectorAll('.filter [data-city]');

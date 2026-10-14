@@ -798,7 +798,9 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 .ftr__links a { display: inline-block; font-family: var(--body); font-weight: 500; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; padding-block: 4px; }
 .ftr__counties { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(20px, 2.4vw, 40px); }
 .ftr__sub { font-family: var(--body); font-weight: 600; font-size: 11.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--on-ink-muted); margin: 0 0 .8rem; }
-.ftr__all { margin-top: 1.2rem; }
+.ftr__all { margin: 1rem 0 0; }   /* the Riverside column's last row, no underline (Curtis, 2026-10-14) */
+.ftr__all a { display: inline-block; font-family: var(--body); font-weight: 500; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; padding-block: 4px; color: var(--gold); }
+.ftr__all a:hover { color: var(--paper); }
 .ftr__office p { margin-bottom: .6rem; color: var(--on-ink); }
 .ftr__soc { display: flex; gap: 10px; margin-top: 1.6rem; }
 .ftr__soc a { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line-ink); color: var(--on-ink); }
@@ -857,8 +859,9 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 .ftr__bottom a { text-decoration: underline; text-underline-offset: 3px; }              /* the credit is a link inside a sentence */
 .brand { min-height: 44px; }
 @media (max-width: 1024px) {
-  .ftr__links a, .ftr__util a, .ftr__office a, .ftr__bottom a, .ftr__all .tlink { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
+  .ftr__links a, .ftr__util a, .ftr__office a, .ftr__bottom a, .ftr__all a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; }
   .ftr__links li + li { margin-top: 0; }
+  .ftr__soc a { justify-content: center; }   /* the 44px rule above makes them flex; keep the icon centred */
   .tlink { min-height: 44px; }
 }
 @media (max-width: 640px) {
@@ -1006,12 +1009,26 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 .cred-list dd { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink); }
 .cred-list a { color: var(--ink); text-underline-offset: 3px; }
 
-/* the compact community list (About) */
-.clist { list-style: none; margin: clamp(36px, 4vw, 56px) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.clist li a { display: inline-flex; align-items: center; min-height: 48px; padding: 12px 20px; border: 1px solid var(--line);
-  font-family: var(--body); font-weight: 600; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); text-decoration: none;
-  transition: border-color 300ms var(--ease), color 300ms var(--ease); }
-.clist li a:hover { border-color: var(--gold-deep); color: var(--gold-deep); }
+/* About: Where Jim works, two county panels (option D, Curtis 2026-10-14: "I wanted this one"). Each county is a
+   photograph under an ink gradient holding its towns in two columns; both lists keep one height so the two county
+   names line up. Phones stack the panels. */
+.cpanels { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 28px); margin-top: clamp(36px, 4vw, 56px); }
+.cpanel { position: relative; display: flex; align-items: flex-end; min-height: clamp(620px, 56vw, 820px); overflow: hidden; background: var(--ink); }
+.cpanel__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.cpanel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 14, 12, .92) 0, rgba(15, 14, 12, .86) 480px, rgba(15, 14, 12, .12) 100%); }   /* dark under all of the text, measured from the panel's foot; the top of the photo stays clear */
+.cpanel__body { position: relative; z-index: 1; width: 100%; padding: clamp(28px, 3vw, 48px); }
+.cpanel__n { margin: 0 0 10px; font-family: var(--body); font-weight: 600; font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); }
+.cpanel__name { font-weight: 200; font-size: clamp(30px, 2.6vw, 42px); line-height: 1.15; letter-spacing: .05em; text-transform: uppercase; color: var(--paper); }
+.cpanel__list { columns: 2; column-gap: 28px; min-height: 284px; list-style: none; margin: 22px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line-ink); }
+.cpanel__list li { break-inside: avoid; }
+.cpanel__list a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; font-size: 16px; line-height: 1.35; letter-spacing: .02em; color: var(--on-ink); text-decoration: none; }
+.cpanel__list a:hover, .cpanel__list a:focus-visible { color: var(--gold); text-decoration: underline; text-underline-offset: 4px; }
+.cpanels__all { margin: clamp(30px, 3vw, 44px) 0 0; }
+@media (max-width: 900px) {
+  .cpanels { grid-template-columns: 1fr; }
+  .cpanel { min-height: 680px; }
+  .cpanel__list { min-height: 0; }
+}
 
 /* reviews: cards on paper with a deep-gold rule, five stars drawn, the lead card larger */
 .rv-wall { columns: 3 320px; column-gap: clamp(20px, 2.4vw, 36px); margin-top: clamp(36px, 4vw, 56px); }
@@ -1037,6 +1054,7 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 .team__facts { list-style: none; margin: 1.2rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--line); font-size: 15px; }
 .team__facts li + li { margin-top: .3rem; }
 .team__facts a { color: var(--ink); text-underline-offset: 3px; }
+.team__note { margin: clamp(32px, 3.5vw, 48px) 0 0; max-width: 62ch; font-size: 14px; line-height: 1.6; color: var(--stone); }   /* Kelli's lender line (2026-10-14) */
 
 /* contact: the form, and the office card beside it */
 .contact { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 112px); align-items: start; }
@@ -1050,7 +1068,7 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 @media (max-width: 1024px) {
   .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cred-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .team__facts a, .cred-list a, .office a, .clist li a { display: inline-flex; align-items: center; min-height: 44px; }
+  .team__facts a, .cred-list a, .office a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 @media (max-width: 900px) {
   .bio, .contact { grid-template-columns: minmax(0, 1fr); }
@@ -1116,6 +1134,10 @@ h3 { font-weight: 300; letter-spacing: .05em; text-transform: uppercase; }
 
 .sold--grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .sold__city { margin: -12px 0 0; padding: 0 var(--gutter) 20px 22px; font-size: 14px; color: var(--stone); }
+.sold--grid .sold__card { display: flex; flex-direction: column; }   /* Sold Listings: the sale under the address, as his own site shows it (Curtis, 2026-10-14) */
+.sold__price { margin: auto var(--gutter) 0 22px; padding-top: 16px; border-top: 1px solid var(--line); font-family: var(--display); font-weight: 300; font-size: 21px; letter-spacing: .03em; color: var(--ink); }
+.sold__facts { margin: 6px var(--gutter) 0 22px; font-size: 14px; color: var(--ink); }
+.sold__side { margin: 10px var(--gutter) 0 22px; padding-bottom: 22px; font-family: var(--body); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); }
 @media (max-width: 1024px) {
   .smap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .smap__col a, .credits a, .legal a { display: inline-flex; align-items: center; min-height: 44px; }
