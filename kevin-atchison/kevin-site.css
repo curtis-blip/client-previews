@@ -1,0 +1,424 @@
+/* Kevin Atchison, site sheet: the header, footer and call bar on every page, the home page's blocks,
+   and the few rules that carry option B onto the interior pages. Curtis picked B on 2026-10-23.
+   The look Kevin liked on highrockyliving.com (Christian Kelly): a full-screen photo hero with the
+   title centred on it, light display type, airy grounds, an outlined card beside the portrait,
+   editorial buy and sell rows with short dash lists, outlined square buttons, quote cards.
+   Written fresh for Kevin; nothing is carried over from Christian's stylesheet.
+
+   Every colour and face comes from the --ka-* tokens below. Classes carry the ka- prefix and the
+   element rules are scoped to the home page (body.ka-home), so this sheet loads last on the interior
+   pages beside the pack sheets without a collision. The pack's own tokens take B in tokens.css.
+
+   Colour, checked against what Kevin asked for (Curtis, 2026-10-23: "make sure that the colors align
+   with what he wants"): his intake gives one colour, his primary #121212, and no other colour notes.
+   So #121212 is the ink and every dark ground; B's warm white and sage sand are the light grounds,
+   and his river teal stays the accent.
+
+   Hard rule kept from Kevin's contrast pass: the accent is never text or a hairline on the deep
+   ground. On the deep ground and over photographs, labels and lines are the invert colour. */
+
+:root{
+  --ka-ground:#f8f6f1;          /* warm white */
+  --ka-alt:#e7e4da;             /* sage sand, the second ground */
+  --ka-deep:#121212;            /* Kevin's own primary: the dark ground */
+  --ka-ink:#121212;
+  --ka-soft:#4f5550;
+  --ka-invert:#f6f4ef;
+  --ka-line:rgba(18,18,18,.18);
+  --ka-display:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --ka-body:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --ka-label:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --ka-label-weight:600;--ka-label-size:11.5px;
+  --ka-w-display:300;--ka-case-display:none;--ka-track-display:-.015em;--ka-lh-display:1.08;
+  --ka-h1:clamp(42px,5.8vw,84px);--ka-h2:clamp(32px,3.75vw,54px);--ka-h3:clamp(21px,1.75vw,27px);
+  --ka-wordmark-weight:500;
+  --ka-accent:#1F5F5B;          /* river teal, Kevin's accent since 2026-09-04 */
+  --ka-accent-deep:#164844;
+  --ka-onphoto:#ffffff;
+  --ka-wrap:1320px;
+  --ka-hdr-wrap:1520px;
+  --ka-gutter:clamp(20px,4.4vw,64px);
+  --ka-sec:clamp(96px,11vw,172px);
+  --ka-ease:cubic-bezier(.16,1,.3,1);
+  --ka-cta-h:46px;
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:140px}
+body.ka-home{margin:0;background:var(--ka-ground);color:var(--ka-ink);font:400 17px/1.7 var(--ka-body);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body.ka-lock{overflow:hidden}
+.ka-home img,.ka-hdr img,.ka-ftr img{display:block;max-width:100%;height:auto}
+.ka-home a{color:inherit}
+.ka-home h1,.ka-home h2,.ka-home h3{margin:0;font-family:var(--ka-display);font-weight:var(--ka-w-display);
+  text-transform:var(--ka-case-display);letter-spacing:var(--ka-track-display);line-height:var(--ka-lh-display)}
+.ka-home h1{font-size:var(--ka-h1)}
+.ka-home h2{font-size:var(--ka-h2)}
+.ka-home h1,.ka-home h2{text-wrap:balance}
+.ka-home p{text-wrap:pretty}
+.ka-home h3{font-size:var(--ka-h3)}
+.ka-home p{margin:0 0 1.1em}
+.ka-home :focus-visible,.ka-hdr :focus-visible{outline:2px solid var(--ka-accent);outline-offset:3px}
+.ka-wrap{width:100%;max-width:var(--ka-wrap);margin-inline:auto;padding-inline:var(--ka-gutter)}
+.ka-sec{padding-block:var(--ka-sec)}
+.ka-sec--alt{background:var(--ka-alt)}
+
+/* ---------- labels and buttons ---------- */
+.ka-eyebrow{display:block;margin:0 0 22px;font:var(--ka-label-weight) var(--ka-label-size)/1.4 var(--ka-label);
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ka-accent)}
+.ka-eyebrow--photo{color:var(--ka-onphoto);opacity:.9;text-shadow:0 1px 12px rgba(0,0,0,.45)}
+.ka-eyebrow--dark{color:var(--ka-invert);opacity:.78}
+
+.ka-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 34px;
+  border:1px solid var(--ka-accent);background:transparent;color:var(--ka-accent);border-radius:0;
+  font:600 12.5px/1 var(--ka-body);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  transition:background-color .4s var(--ka-ease),color .4s var(--ka-ease),border-color .4s var(--ka-ease)}
+.ka-btn:hover{background:var(--ka-accent);color:#fff}
+.ka-btn--light{border-color:var(--ka-onphoto);color:var(--ka-onphoto)}
+.ka-btn--light:hover{background:var(--ka-onphoto);color:var(--ka-ink)}
+.ka-btn--light:focus-visible,.ka-tel:focus-visible{outline-color:var(--ka-onphoto)}
+.ka-acts{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px 30px;margin:0}
+.ka-cta{margin:0;padding-top:10px}
+
+.ka-ico{display:inline-block;width:1.4em;height:1.4em;background-color:currentColor;
+  -webkit-mask:var(--i) center/100% 100% no-repeat;mask:var(--i) center/100% 100% no-repeat}
+.ka-ico--phone{--i:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22black%22%20stroke-width=%221.4%22%20stroke-linejoin=%22round%22%20stroke-linecap=%22round%22%3E%3Cpath%20d=%22M6.6%203.5h2.9l1.5%204.1-2%201.4a11.4%2011.4%200%20006%206l1.4-2%204.1%201.5v2.9a2%202%200%2001-2.1%202.1A16.6%2016.6%200%20014.5%205.6a2%202%200%20012.1-2.1z%22/%3E%3C/svg%3E")}
+
+/* ---------- header: sticky always, over the photo, then the ground once the page moves ---------- */
+.ka-hdr{position:fixed;inset:0 0 auto 0;z-index:50;padding-block:2.2rem 2rem;background:transparent;
+  transition:padding .5s var(--ka-ease),background-color .5s var(--ka-ease),box-shadow .5s var(--ka-ease)}
+.ka-hdr::before{content:"";position:absolute;inset:0 0 -40px 0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.16) 60%,rgba(0,0,0,0) 100%);
+  transition:opacity .5s var(--ka-ease)}
+.ka-hdr.is-stuck{padding-block:14px 20px;background:var(--ka-ground);box-shadow:0 10px 30px rgba(0,0,0,.07)}
+.ka-hdr.is-stuck::before,.ka-hdr.menu-open::before{opacity:0}
+/* .ka-hdr--solid (pages with no photo hero) is held in the stuck state by the header script */
+.ka-hdr__row{width:100%;max-width:var(--ka-hdr-wrap);margin-inline:auto;padding-inline:clamp(20px,3vw,56px)}
+.ka-hdr__in{display:flex;align-items:center;justify-content:space-between;gap:28px}
+
+.ka-brand{position:relative;z-index:61;display:flex;flex-direction:column;gap:7px;flex-shrink:0;
+  color:var(--ka-onphoto);text-decoration:none;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.ka-brand__name{font:var(--ka-wordmark-weight) clamp(22px,2vw,30px)/1 var(--ka-display);letter-spacing:.16em;
+  text-transform:uppercase;transition:font-size .5s var(--ka-ease)}
+.ka-brand__line{font:var(--ka-label-weight) 10.5px/1 var(--ka-label);letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+.ka-hdr.is-stuck .ka-brand,.ka-hdr.menu-open .ka-brand{color:var(--ka-ink);text-shadow:none}
+.ka-hdr.is-stuck .ka-brand__name{font-size:clamp(20px,1.7vw,25px)}
+
+.ka-nav{display:flex;align-items:center;gap:clamp(20px,2.2vw,40px)}
+.ka-nav__list{display:flex;align-items:center;gap:clamp(16px,2vw,34px);margin:0;padding:0;list-style:none}
+.ka-nav__item{position:relative}
+.ka-nav__top{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0;border:0;background:none;
+  cursor:pointer;font:600 12.5px/1 var(--ka-body);letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;color:var(--ka-onphoto);text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.ka-has>.ka-nav__top::after{content:"";width:6px;height:6px;margin-top:-4px;border:solid currentColor;
+  border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.ka-hdr.is-stuck .ka-nav__top{color:var(--ka-ink);text-shadow:none}
+.ka-hdr.is-stuck .ka-nav__top:hover{color:var(--ka-accent)}
+.ka-nav__sub{position:absolute;top:calc(100% + 12px);left:-26px;min-width:270px;margin:0;padding:12px 0;
+  list-style:none;background:var(--ka-ground);border-top:2px solid var(--ka-accent);
+  box-shadow:0 20px 50px rgba(0,0,0,.14);opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .3s var(--ka-ease),transform .3s var(--ka-ease),visibility .3s}
+.ka-nav__sub::before{content:"";position:absolute;inset:-16px 0 auto 0;height:16px}
+.ka-has:hover .ka-nav__sub,.ka-has:focus-within .ka-nav__sub,.ka-has.is-open .ka-nav__sub{opacity:1;visibility:visible;transform:none}
+.ka-nav__sub a{display:flex;align-items:center;min-height:44px;padding:0 26px;font:600 11.5px/1.2 var(--ka-body);
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ka-ink)}
+.ka-nav__sub a:hover{background:var(--ka-alt);color:var(--ka-accent)}
+.ka-nav__cta{display:inline-flex;align-items:center;min-height:var(--ka-cta-h);padding:0 24px;
+  border:1px solid var(--ka-onphoto);color:var(--ka-onphoto);font:600 12.5px/1 var(--ka-body);letter-spacing:.16em;
+  text-transform:uppercase;text-decoration:none;transition:background-color .3s var(--ka-ease),color .3s var(--ka-ease)}
+.ka-nav__cta:hover{background:var(--ka-onphoto);color:var(--ka-ink)}
+.ka-hdr.is-stuck .ka-nav__cta{background:var(--ka-accent);border-color:var(--ka-accent);color:#fff}
+.ka-hdr.is-stuck .ka-nav__cta:hover{background:var(--ka-accent-deep);border-color:var(--ka-accent-deep)}
+
+.ka-hdr__top{display:none}
+@media (min-width:761px){
+  .ka-hdr__top{display:flex;justify-content:flex-end;align-items:center;gap:30px;margin-top:-14px;padding-bottom:10px}
+  .ka-hdr__tel,.ka-hdr__mail{display:inline-flex;align-items:center;gap:9px;min-height:24px;
+    font:600 12px/1 var(--ka-body);letter-spacing:.14em;color:var(--ka-onphoto);text-decoration:none;
+    text-shadow:0 1px 10px rgba(0,0,0,.5)}
+  .ka-hdr__tel .ka-ico{width:15px;height:15px}
+  .ka-hdr.is-stuck .ka-hdr__top{margin-top:0;padding-bottom:14px}
+  .ka-hdr.is-stuck .ka-hdr__top a{color:var(--ka-ink);text-shadow:none}
+  .ka-hdr.is-stuck .ka-hdr__tel .ka-ico{color:var(--ka-accent)}
+  .ka-hdr.menu-open .ka-hdr__top{visibility:hidden}
+}
+@media (min-width:761px) and (max-width:1024px){.ka-hdr__top a{min-height:44px;margin-block:-10px}}
+
+.ka-burger{display:none;position:relative;width:48px;height:48px;flex-shrink:0;padding:0;border:0;background:none;cursor:pointer}
+.ka-burger span{position:absolute;left:11px;right:11px;height:1.5px;background:var(--ka-onphoto);
+  transition:transform .3s var(--ka-ease),opacity .3s}
+.ka-burger span:nth-child(1){top:17px}.ka-burger span:nth-child(2){top:24px}.ka-burger span:nth-child(3){top:31px}
+.ka-hdr.is-stuck .ka-burger span,.ka-hdr.menu-open .ka-burger span{background:var(--ka-ink)}
+.ka-burger:focus-visible{outline-color:currentColor}
+
+@media (max-width:1100px){
+  .ka-burger{display:block;z-index:60}
+  .ka-nav{position:fixed;inset:0;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;
+    padding:130px var(--ka-gutter) 40px;overflow-y:auto;background:var(--ka-ground);transform:translateX(100%);
+    visibility:hidden;transition:transform .45s var(--ka-ease),visibility .45s}
+  .ka-nav.open{transform:none;visibility:visible}
+  .ka-hdr.menu-open .ka-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .ka-hdr.menu-open .ka-burger span:nth-child(2){opacity:0}
+  .ka-hdr.menu-open .ka-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .ka-nav__list{flex-direction:column;align-items:stretch;gap:0}
+  .ka-nav__item{border-bottom:1px solid var(--ka-line)}
+  .ka-nav__top{width:100%;justify-content:space-between;min-height:60px;font-size:13.5px;color:var(--ka-ink);text-shadow:none}
+  .ka-nav__sub{position:static;display:none;min-width:0;padding:0 0 14px;border-top:0;box-shadow:none;
+    opacity:1;visibility:visible;transform:none;background:none}
+  .ka-has.is-open .ka-nav__sub{display:block}
+  .ka-has:hover .ka-nav__sub{display:none}
+  .ka-has.is-open:hover .ka-nav__sub{display:block}
+  .ka-nav__sub a{padding:0 0 0 16px}
+  .ka-nav__cta{margin-top:28px;justify-content:center;min-height:54px;background:var(--ka-accent);
+    border-color:var(--ka-accent);color:#fff}
+}
+
+/* ---------- hero: full bleed, fills the screen, the title centred on the photograph ---------- */
+.ka-hero{position:relative;display:grid;place-items:center;min-height:max(640px,100svh);overflow:hidden;
+  color:var(--ka-onphoto);text-align:center;background:var(--ka-deep);isolation:isolate}
+.ka-hero__media{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center 58%;
+  filter:saturate(1.08) contrast(1.04) brightness(1.06)}
+.ka-hero__scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 62% 46% at 50% 54%,rgba(10,12,12,.42) 0%,rgba(10,12,12,.16) 62%,rgba(10,12,12,0) 100%)}
+.ka-hero__in{padding-top:150px;padding-bottom:110px;max-width:1260px}
+.ka-hero h1{margin:0 auto 24px;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.ka-hero__sub{max-width:690px;margin:0 auto 40px;font-size:clamp(17px,1.35vw,20px);line-height:1.65;font-weight:400;
+  text-shadow:0 1px 16px rgba(0,0,0,.55)}
+
+/* ---------- meet Kevin: portrait beside an outlined card ---------- */
+.ka-meet__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1vw,14px);align-items:stretch}
+.ka-meet__photo img{width:100%;height:100%;min-height:520px;max-height:720px;object-fit:cover;object-position:center 20%}
+.ka-meet__card{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding:clamp(36px,5vw,84px);border:1px solid var(--ka-line)}
+.ka-meet__card h2{margin-bottom:26px}
+.ka-meet__card p{max-width:52ch;color:var(--ka-soft)}
+
+/* ---------- buy and sell: editorial rows on the second ground ---------- */
+.ka-path{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center}
+.ka-path+.ka-path{margin-top:clamp(72px,8vw,120px)}
+.ka-path--flip .ka-path__media{order:2}
+.ka-path__media img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover}
+.ka-path__body{max-width:560px}
+.ka-path--flip .ka-path__body{justify-self:end}
+.ka-path__body h2{margin-bottom:22px}
+.ka-path__body>p{color:var(--ka-soft)}
+.ka-dash{margin:6px 0 34px;padding:0;list-style:none}
+.ka-dash li{position:relative;padding:7px 0 7px 30px;color:var(--ka-soft);line-height:1.5}
+.ka-dash li::before{content:"";position:absolute;left:0;top:1.05em;width:14px;height:1px;background:var(--ka-ink);opacity:.55}
+
+/* ---------- market reports: the photograph bleeds off the left edge ---------- */
+.ka-reports{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--ka-ground)}
+.ka-reports__media{position:relative;display:block;min-height:clamp(420px,40vw,600px);overflow:hidden;color:var(--ka-onphoto);text-decoration:none}
+.ka-reports__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ka-ease)}
+.ka-reports__media:hover img{transform:scale(1.03)}
+.ka-reports__play{margin:0}
+.ka-reports__play a{position:absolute;inset:0;z-index:1;isolation:isolate;display:grid;place-items:center;padding-top:62px;
+  color:var(--ka-onphoto);text-decoration:none;font:600 10.5px/1 var(--ka-body);letter-spacing:.2em;text-transform:uppercase}
+.ka-reports__play a::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:104px;height:104px;margin:-52px 0 0 -52px;
+  border:1px solid rgba(255,255,255,.85);border-radius:50%;background:rgba(0,0,0,.22)}
+.ka-reports__play a::after{content:"";position:absolute;left:50%;top:50%;margin:-24px 0 0 -7px;border-style:solid;
+  border-width:13px 0 13px 21px;border-color:transparent transparent transparent currentColor}
+.ka-reports__play a:focus-visible{outline:2px solid var(--ka-onphoto);outline-offset:-8px}
+.ka-reports__body{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding:clamp(56px,7vw,120px) var(--ka-gutter) clamp(56px,7vw,120px) clamp(48px,7vw,120px);max-width:760px}
+.ka-reports__body h2{margin-bottom:22px}
+.ka-reports__body p{max-width:46ch;color:var(--ka-soft)}
+
+/* ---------- home value: copy left on the deep ground, a photograph right, one button ---------- */
+.ka-value{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--ka-deep);color:var(--ka-invert)}
+.ka-value__copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;justify-self:end;
+  width:100%;max-width:calc(var(--ka-wrap) / 2);padding:clamp(72px,8vw,140px) clamp(40px,6vw,100px) clamp(72px,8vw,140px) var(--ka-gutter)}
+.ka-value__copy h2{margin-bottom:24px;color:var(--ka-invert)}
+.ka-value__copy p{max-width:44ch;color:var(--ka-invert);opacity:.84}
+.ka-value__photo{position:relative;min-height:clamp(440px,42vw,600px)}
+.ka-value__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ---------- communities: a split head, then six town tiles edge to edge ---------- */
+.ka-towns{padding-bottom:0}
+.ka-split-head{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,110px);align-items:end;
+  margin-bottom:clamp(48px,5vw,80px)}
+.ka-split-head__side p{color:var(--ka-soft);max-width:54ch}
+.ka-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:0;padding:0;list-style:none;background:var(--ka-ground)}
+.ka-tile{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;
+  aspect-ratio:4/3;overflow:hidden;color:var(--ka-onphoto)}
+.ka-tile img{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ka-ease)}
+.ka-tile:hover img{transform:scale(1.04)}
+.ka-tile__meta{padding:clamp(90px,9vw,140px) clamp(22px,2.4vw,40px) clamp(22px,2.4vw,36px);
+  background:linear-gradient(0deg,rgba(8,10,10,.74) 0%,rgba(8,10,10,.34) 55%,rgba(8,10,10,0) 100%)}
+.ka-tile__n{margin:0 0 10px;font:var(--ka-label-weight) 11px/1 var(--ka-label);letter-spacing:.24em;opacity:.85}
+.ka-tile h3{color:var(--ka-onphoto);text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.ka-tile h3 a{color:inherit;text-decoration:none}
+.ka-tile h3 a::after{content:"";position:absolute;inset:0}
+.ka-tile h3 a:focus-visible{outline:none}
+.ka-tile:focus-within{outline:2px solid var(--ka-accent);outline-offset:-2px}
+.ka-tile p{margin:8px 0 0;font-size:15px;line-height:1.45;opacity:.92}
+
+/* ---------- reviews: one square review at a time, arrows below ---------- */
+.ka-center-head{text-align:center;max-width:760px;margin:0 auto clamp(44px,4.6vw,68px)}
+.ka-center-foot{margin:clamp(40px,4vw,56px) 0 0;text-align:center}
+.ka-words{overflow-x:clip}
+.ka-slider{--ka-slide:min(560px,82vw);--ka-gap:clamp(14px,2.4vw,36px);margin-inline:calc(50% - 50vw)}
+.ka-slider__track{position:relative;display:flex;align-items:center;gap:var(--ka-gap);margin:-36px 0;
+  padding:48px calc(50% - var(--ka-slide) / 2);list-style:none;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none}
+.ka-slider__track::-webkit-scrollbar{display:none}
+.ka-slider__track:focus-visible{outline:2px solid var(--ka-accent);outline-offset:4px}
+/* the review in the middle is full size; its neighbours peek in smaller and faded, and grow as they slide in.
+   --ka-s and --ka-o are set from the scroll position by the slider script; with no script every review is full */
+.ka-slide{flex:0 0 var(--ka-slide);width:var(--ka-slide);scroll-snap-align:center}
+/* the card, not the snap item, takes the transform: a snap point measured on a moving box would drift */
+.ka-slide__card{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:clamp(26px,8%,64px);text-align:center;background:var(--ka-ground);border:1px solid var(--ka-line);
+  transform:translateX(var(--ka-x,0px)) scale(var(--ka-s,1));opacity:var(--ka-o,1);
+  box-shadow:0 24px 60px rgba(18,18,18,calc((var(--ka-o,1) - .4) * .16));will-change:transform,opacity}
+.ka-slide.is-side{cursor:pointer}
+.ka-slide blockquote{margin:0 0 26px}
+.ka-slide blockquote::before{content:"\201C";display:block;height:.6em;margin-bottom:14px;
+  font:300 72px/1 Georgia,'Times New Roman',serif;color:var(--ka-accent)}
+.ka-slide blockquote p{margin:0;font-size:clamp(18px,1.6vw,23px);line-height:1.58}
+.ka-slide__who{margin:0;font:var(--ka-label-weight) 11px/1 var(--ka-label);letter-spacing:.22em;text-transform:uppercase;color:var(--ka-soft)}
+.ka-slider__nav{display:flex;align-items:center;justify-content:center;gap:26px;margin-top:28px}
+.ka-slider__count{margin:0;min-width:64px;text-align:center;font:var(--ka-label-weight) 12px/1 var(--ka-label);letter-spacing:.2em;color:var(--ka-soft)}
+.ka-slider__now{color:var(--ka-ink)}
+.ka-slider__arrow{position:relative;width:54px;height:54px;padding:0;border:1px solid var(--ka-accent);background:transparent;
+  color:var(--ka-accent);cursor:pointer;transition:background-color .4s var(--ka-ease),color .4s var(--ka-ease)}
+.ka-slider__arrow:hover{background:var(--ka-accent);color:#fff}
+.ka-slider__arrow::before{content:"";position:absolute;left:50%;top:50%;width:18px;height:1px;margin:0 0 0 -9px;background:currentColor}
+.ka-slider__arrow::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border:solid currentColor;border-width:0 0 1px 1px}
+.ka-slider__arrow--prev::after{margin:-4px 0 0 -9px;transform:rotate(45deg)}
+.ka-slider__arrow--next::after{margin:-4px 0 0 1px;transform:rotate(-135deg)}
+
+/* ---------- closing: parallax photograph, centred ---------- */
+.ka-close{position:relative;display:grid;place-items:center;min-height:clamp(520px,50vw,700px);overflow:hidden;
+  color:var(--ka-onphoto);text-align:center;isolation:isolate}
+.ka-close__media{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;background-attachment:fixed}
+.ka-close__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,12,12,.28) 0%,rgba(10,12,12,.5) 100%)}
+.ka-close__in{max-width:900px;padding-block:120px}
+.ka-close h2{margin-bottom:22px;color:var(--ka-onphoto);text-shadow:0 2px 26px rgba(0,0,0,.4)}
+.ka-close__in>p:not(.ka-eyebrow){max-width:560px;margin:0 auto 38px;font-size:18px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.ka-tel{display:inline-flex;align-items:center;min-height:44px;color:var(--ka-onphoto);font:600 13px/1 var(--ka-body);
+  letter-spacing:.16em;text-decoration:none;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.ka-tel:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* ---------- footer: deep ground, four columns, the compliance band ---------- */
+.ka-ftr{background:var(--ka-deep);color:var(--ka-invert);padding:clamp(72px,8vw,110px) 0 34px}
+.ka-ftr a{text-decoration:none}
+.ka-ftr__cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:clamp(28px,4vw,64px)}
+.ka-ftr__mark{margin:0 0 18px;font:var(--ka-wordmark-weight) 22px/1.1 var(--ka-display);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ka-invert)}
+.ka-ftr__brand p{max-width:34ch;font-size:15px;line-height:1.65;opacity:.8}
+.ka-ftr__pp img{width:auto;height:34px;margin-top:12px;filter:invert(1) brightness(1.6);opacity:.9}
+.ka-ftr__h{margin:4px 0 20px;font:var(--ka-label-weight) 11.5px/1 var(--ka-label);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ka-invert);opacity:.72}
+.ka-ftr__list{margin:0;padding:0;list-style:none}
+.ka-ftr__list li{margin:0 0 12px;font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase}
+.ka-ftr__list a{color:var(--ka-invert);opacity:.86}
+.ka-ftr__list a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.ka-ftr__list--plain li{letter-spacing:.04em;text-transform:none;font-size:14px;opacity:.86}
+.ka-ftr__list--plain a{opacity:1}
+.ka-ftr__social{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px}
+.ka-ftr__social a{display:inline-flex;align-items:center;min-height:44px;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ka-invert);opacity:.86}
+.ka-ftr__social a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.ka-ftr__band{display:flex;align-items:center;gap:30px;margin-top:clamp(56px,6vw,84px);padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.14)}
+.ka-ftr__marks{display:flex;align-items:center;gap:16px;margin:0;flex-shrink:0}
+.ka-ftr__marks img{height:48px;width:auto}
+.ka-ftr__legal{margin:0;max-width:110ch;font-size:13px;line-height:1.65;opacity:.78}
+.ka-ftr__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 28px;margin-top:28px;
+  font-size:12.5px;opacity:.78}
+.ka-ftr__base p{margin:0}
+.ka-ftr__util{display:flex;flex-wrap:wrap;gap:6px 22px}
+.ka-ftr__util a{display:inline-flex;align-items:center;min-height:32px;color:var(--ka-invert);letter-spacing:.12em;text-transform:uppercase;font-size:11.5px}
+.ka-ftr__util a:hover{text-decoration:underline;text-underline-offset:4px}
+.ka-ftr :focus-visible{outline-color:var(--ka-invert)}
+
+/* ---------- phones: the call bar (optimus_shell/call-bar.html, Kevin's tokens) ---------- */
+:root{--callbar-h:56px;--callbar-call-bg:var(--ka-accent);--callbar-call-ink:#ffffff;
+  --callbar-contact-bg:var(--ka-deep);--callbar-contact-ink:#ffffff}
+.callbar{display:none}
+@media (max-width:760px){
+  .callbar{position:fixed;z-index:55;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr;
+    padding:0 env(safe-area-inset-right,0px) 0 env(safe-area-inset-left,0px);
+    background:var(--callbar-contact-bg);box-shadow:0 -8px 24px rgba(0,0,0,.18)}
+  .callbar a{display:flex;align-items:center;justify-content:center;gap:10px;box-sizing:border-box;
+    min-height:calc(max(44px,var(--callbar-h)) + env(safe-area-inset-bottom,0px));
+    padding:0 12px env(safe-area-inset-bottom,0px);font:700 13px/1.2 var(--ka-body);letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none;opacity:1}
+  .callbar a:hover,.callbar a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+  .callbar a:focus-visible{outline:3px solid currentColor;outline-offset:-6px}
+  .callbar .callbar__call,.callbar .callbar__call:hover{background:var(--callbar-call-bg);color:var(--callbar-call-ink)}
+  .callbar .callbar__contact,.callbar .callbar__contact:hover{background:var(--callbar-contact-bg);color:var(--callbar-contact-ink)}
+  .callbar__call::before,.callbar__contact::before{content:"";flex:0 0 18px;width:18px;height:18px;
+    background-color:currentColor;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+  .callbar__call{--i:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22black%22%20stroke-width=%221.6%22%20stroke-linejoin=%22round%22%20stroke-linecap=%22round%22%3E%3Cpath%20d=%22M6.6%203.5h2.9l1.5%204.1-2%201.4a11.4%2011.4%200%20006%206l1.4-2%204.1%201.5v2.9a2%202%200%2001-2.1%202.1A16.6%2016.6%200%20014.5%205.6a2%202%200%20012.1-2.1z%22/%3E%3C/svg%3E")}
+  .callbar__contact{--i:url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22black%22%20stroke-width=%221.6%22%20stroke-linejoin=%22round%22%20stroke-linecap=%22round%22%3E%3Crect%20x=%223%22%20y=%225.5%22%20width=%2218%22%20height=%2213%22%20rx=%221.5%22/%3E%3Cpath%20d=%22M3.5%206.5l8.5%206.5%208.5-6.5%22/%3E%3C/svg%3E")}
+  body{padding-bottom:calc(max(44px,var(--callbar-h)) + env(safe-area-inset-bottom,0px))}
+  .ka-hero{min-height:max(600px,calc(100svh - var(--callbar-h)))}
+  body:has([class*="a11y__open"]) .callbar{left:var(--callbar-h)}
+}
+@media print{.callbar{display:none !important}}
+
+/* ---------- narrower screens ---------- */
+@media (max-width:980px){
+  .ka-meet__grid,.ka-path,.ka-reports,.ka-value,.ka-split-head{grid-template-columns:1fr}
+  .ka-meet__photo img{min-height:0;max-height:none;aspect-ratio:4/5;height:auto}
+  .ka-path--flip .ka-path__media{order:0}
+  .ka-path--flip .ka-path__body{justify-self:start}
+  .ka-path__body{max-width:none}
+  .ka-reports__body{padding:clamp(48px,8vw,80px) var(--ka-gutter);max-width:none}
+  .ka-value__copy{max-width:none;justify-self:stretch;padding:clamp(64px,10vw,96px) var(--ka-gutter)}
+  .ka-value__photo{min-height:0;aspect-ratio:16/10}
+  .ka-tiles{grid-template-columns:repeat(2,1fr)}
+  .ka-ftr__cols{grid-template-columns:1fr 1fr}
+  .ka-ftr__brand{grid-column:1/-1}
+}
+@media (max-width:760px){
+  body.ka-home{font-size:16px}
+  .ka-hdr{padding-block:22px 18px}
+  .ka-hdr.is-stuck{padding-block:14px}
+  .ka-brand__name{font-size:20px;letter-spacing:.14em}
+  .ka-brand__line{font-size:9.5px;letter-spacing:.24em}
+  .ka-hero__in{padding-top:130px;padding-bottom:70px}
+  .ka-meet__card{padding:36px 26px}
+  .ka-tiles{grid-template-columns:1fr}
+  .ka-slider{--ka-gap:10px}
+  .ka-slide__card{padding:22px}
+  .ka-slide blockquote{margin-bottom:18px}
+  .ka-slide blockquote p{font-size:15.5px;line-height:1.55}
+  .ka-slide blockquote::before{font-size:52px;margin-bottom:8px}
+  .ka-close__media{background-attachment:scroll}
+  .ka-ftr__cols{grid-template-columns:1fr}
+  .ka-ftr__band{flex-direction:column;align-items:flex-start}
+  .ka-btn{padding:0 26px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0s !important;animation:none !important}
+  .ka-close__media{background-attachment:scroll}
+}
+
+/* ---------- option B on the interior pages ----------
+   The pack's tokens take B in tokens.css. These are the pack rules that set their own weight or
+   case rather than reading a token, so they would stay bold capitals without this. Structure is
+   untouched: the full-bleed alternating steps on Buy and Sell keep their shape, on sand and #121212. */
+.chero h1,.lhero h1{font-family:var(--font-display);font-weight:var(--weight-display);text-transform:var(--case-display);
+  letter-spacing:var(--tracking-display);line-height:1.06}
+h1,h2,h3{line-height:1.1}
+.kicker{font-weight:600}
+/* the step label on a dark row was the accent, 2.54:1 on #121212: the hard rule says text-invert there */
+.stp--bleed .stp__row:nth-of-type(even) .stp__n{color:rgb(var(--x-invert) / .72)}
+.on-dark .kicker b{color:var(--text-invert)}
+/* Every heading in B's display weight and the case it is written in, including the pack's blocks that
+   hard-code bold capitals (checked 2026-10-23 on all 32 pages: these were the 23 headings left bold).
+   Questions and record titles read as text, so they take a medium weight; labels, buttons and the
+   nav keep their tracked capitals, as on the home page. */
+.idxz__h,.svc__t,.ssx__h,.cx-inline,.chips__c h4{font-weight:var(--weight-display);text-transform:var(--case-display);
+  letter-spacing:var(--tracking-display)}
+.idxz__h{font-size:clamp(22px,2.4vw,30px)}
+.qa__row > summary,.qa__q,.res__c h4,.rswap__list button{font-weight:500;text-transform:none;letter-spacing:0}
+.kicker b{font-weight:600}
+/* the taller house header: a page with no photo hero starts its first band below it */
+.ka-hdr--solid ~ main > :first-child{padding-top:calc(118px + clamp(40px,5vw,72px))}
+@media (max-width:760px){.ka-hdr--solid ~ main > :first-child{padding-top:calc(76px + 40px)}}

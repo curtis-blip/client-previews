@@ -1,21 +1,35 @@
-/* Kevin Atchison, client token deltas.
-   Generated from global-design.json. Edit global-design.json, never this file.
-   The pack (styles.css + treatments.css) supplies every other token.
+/* Kevin Atchison, client token deltas over the pack (styles.css + treatments.css).
 
-   His #121212 takes the ground-deep and brand slots. That is the pack's own
-   documented client swap: "if a client's brand colour is dark and desaturated
-   it may also take the ground-deep slot."
+   Hand-kept since 2026-10-23. It was generated from global-design.json by the composed lane, which
+   is retired; global-design.json still describes the September bold-modern look and is not read.
 
-   --accent is NOT set here. It is the pick-grid variable and is written inline
-   per page by build.py until Curtis picks one. */
+   Option B, picked by Curtis on 2026-10-23 for the home page redo, carried onto the interiors:
+   Plus Jakarta Sans Light in the case the copy is written in, warm white and sage sand grounds,
+   and Kevin's own primary #121212 (the only colour his intake gives) as the ink and every dark
+   ground. The accent stays river teal; shell.py also writes it inline in every page head.
+
+   HARD RULE from the September contrast pass, still true: the accent is never text or a hairline
+   on the dark ground. It measures 2.54:1 on #121212. On the dark ground, use text-invert. */
 :root{
   --x-scrim:18 18 18;
   --x-ink:18 18 18;
+  --x-invert:246 244 239;
+  --ground:#f8f6f1;
+  --ground-alt:#e7e4da;
   --ground-deep:#121212;
   --brand:#121212;
+  --brand-ink:#f6f4ef;
   --text:#121212;
+  --text-soft:#4f5550;
+  --text-invert:#f6f4ef;
+  --accent:#1F5F5B;
+  --accent-ink:#ffffff;
+  --font-display:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --font-body:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --font-label:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
+  --weight-display:300;
+  --case-display:none;
+  --tracking-display:-.015em;
+  --scale-display:clamp(40px,5.6vw,80px);
 }
-/* HARD RULE from the contrast pass: accent is never text or a hairline on the
-   deep ground. All three candidates land between 2.54 and 2.93 against #121212,
-   well under 4.5. On the dark ground, use text-invert. */
 .on-dark .accent-as-text{color:var(--text-invert)}
