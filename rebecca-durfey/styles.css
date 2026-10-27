@@ -1211,3 +1211,44 @@ h2 { text-wrap: balance; }
   .ap-form { flex-direction: column; gap: 10px; }
   .ap-btn { width: 100%; min-height: 54px; }
 }
+
+/* ==========================================================================
+   Lighter and brighter, Curtis's pick B (2026-10-26, from Rebecca's review via Rachael, 2026-10-21: "stronger use
+   of white backgrounds & soften the overlay on photos"). Sitewide: every sand band is white, and cards that sat white
+   on sand take a hairline (no page-wide line between bands: universal-conventions 8.9, Check 52); every photo wash is lighter, the washes behind words
+   by about a third and the top wash the menu needs by about a fifth, each only as far as its text still passes
+   (grapple/review/photo_contrast.py at 1440 and 375). Sand stays only as a hover and an empty-photo ground.
+   ========================================================================== */
+.section--mist, .creds__wrap, .step--mist, .res, .lh, .section--mist.bleed, .bleed.section--mist { background: var(--paper); }
+.bleed--arch.step--mist .bleed__media, .bleed--arch.section--mist .bleed__media { background: var(--paper); }
+.hv__in, .kf--tiles .kf__stat, .kf--tiles .kf__drive { background: var(--paper); border: 1px solid var(--line); }
+.hv__in { border-top: 3px solid var(--red); }
+.review { border: 1px solid var(--line); }
+/* the hairline adds 2px to each drive-time tile's narrowest width, which pushed a two-column row 2px past a 320px screen */
+@media (max-width: 900px) { .kf__drives { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 360px) { .kf--tiles .kf__drive { padding-inline: 10px; } }
+
+.hero__scrim { background: linear-gradient(180deg, rgba(36, 28, 25, .46) 0%, rgba(36, 28, 25, 0) 26%),
+  linear-gradient(90deg, rgba(36, 28, 25, .5) 0%, rgba(36, 28, 25, .3) 36%, rgba(36, 28, 25, .05) 64%, rgba(36, 28, 25, 0) 82%); }
+.ph::before { background: linear-gradient(180deg, rgba(36,28,25,.76) 0%, rgba(36,28,25,.46) 16%, rgba(36,28,25,0) 36%),
+  linear-gradient(0deg, rgba(36,28,25,.6) 0%, rgba(36,28,25,.36) 38%, rgba(36,28,25,0) 64%),
+  linear-gradient(90deg, rgba(36,28,25,.62) 0%, rgba(36,28,25,.42) 38%, rgba(36,28,25,.1) 66%, rgba(36,28,25,0) 84%); }
+.statement::before { background: linear-gradient(96deg, rgba(36,28,25,.74) 0%, rgba(36,28,25,.6) 40%, rgba(36,28,25,.3) 72%, rgba(36,28,25,.16) 100%); }
+.tile::before, .tiles--5 .tile::before { background: linear-gradient(0deg, rgba(36,28,25,.86) 0%, rgba(36,28,25,.74) 45%, rgba(36,28,25,.58) 75%, rgba(36,28,25,.46) 100%); }
+.vid::after { background: linear-gradient(0deg, rgba(36,28,25,.6) 0%, rgba(36,28,25,.37) 38%, rgba(36,28,25,.08) 72%, rgba(36,28,25,.03) 100%); }
+.qs__media::after { background: linear-gradient(0deg, rgba(36, 28, 25, .37) 0%, rgba(36, 28, 25, 0) 28%); }
+@media (max-width: 900px) {
+  .hero__scrim { background: linear-gradient(180deg, rgba(36, 28, 25, .4) 0%, rgba(36, 28, 25, 0) 22%),
+    linear-gradient(0deg, rgba(36, 28, 25, .74) 0%, rgba(36, 28, 25, .62) 46%, rgba(36, 28, 25, .48) 72%, rgba(36, 28, 25, .3) 88%, rgba(36, 28, 25, .16) 100%); }
+  .ph::before { background: linear-gradient(180deg, rgba(36,28,25,.72) 0%, rgba(36,28,25,.46) 16%, rgba(36,28,25,0) 30%),
+    linear-gradient(0deg, rgba(36,28,25,.78) 0%, rgba(36,28,25,.66) 46%, rgba(36,28,25,.52) 72%, rgba(36,28,25,.34) 88%, rgba(36,28,25,.2) 100%); }
+  .tile::before, .tiles--5 .tile::before { background: linear-gradient(0deg, rgba(36,28,25,.88) 0%, rgba(36,28,25,.78) 45%, rgba(36,28,25,.62) 75%, rgba(36,28,25,.5) 100%); }
+  .statement::before { background: linear-gradient(0deg, rgba(36,28,25,.84) 0%, rgba(36,28,25,.66) 50%, rgba(36,28,25,.38) 85%, rgba(36,28,25,.26) 100%); }
+}
+@media (min-width: 1280px) {
+  .hero__scrim { background: linear-gradient(180deg, rgba(36, 28, 25, .64) 0%, rgba(36, 28, 25, .42) 18%, rgba(36, 28, 25, 0) 38%),
+    linear-gradient(90deg, rgba(36, 28, 25, .5) 0%, rgba(36, 28, 25, .3) 36%, rgba(36, 28, 25, .05) 64%, rgba(36, 28, 25, 0) 82%); }
+  .ph::before { background: linear-gradient(180deg, rgba(36,28,25,.8) 0%, rgba(36,28,25,.58) 18%, rgba(36,28,25,0) 40%),
+    linear-gradient(0deg, rgba(36,28,25,.6) 0%, rgba(36,28,25,.36) 38%, rgba(36,28,25,0) 64%),
+    linear-gradient(90deg, rgba(36,28,25,.62) 0%, rgba(36,28,25,.42) 38%, rgba(36,28,25,.1) 66%, rgba(36,28,25,0) 84%); }
+}
