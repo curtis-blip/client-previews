@@ -11,6 +11,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="icons.css">
 <link rel="stylesheet" href="styles.css">
+<script>
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="#src-"]');
+  if (!a) return;
+  var t = document.querySelector('[role="tab"][aria-controls="' + a.getAttribute('href').slice(1) + '"]');
+  if (!t) return;
+  e.preventDefault();
+  t.click();
+  t.closest('.stabs').scrollIntoView({ block: 'start' });
+  history.replaceState(null, '', a.getAttribute('href'));
+});
+window.addEventListener('load', function () {
+  var t = location.hash && document.querySelector('[role="tab"][aria-controls="' + location.hash.slice(1) + '"]');
+  if (t) { t.click(); t.closest('.stabs').scrollIntoView({ block: 'start' }); }
+});
+</script>
 
 </head>
 <body>
@@ -105,7 +121,7 @@
     <p><span class="rg__l">What happens</span>Christina compares your home with the homes buyers will weigh it against, and looks at what sets it apart.</p>
     <p><span class="rg__l">What you decide</span>The list price and how firm you are on it.</p>
     <p><span class="rg__l">What Christina does</span>Adds what an automated estimate cannot see at the house itself; the Home Value page shows what that is.</p>
-    <p class="links"><a class="tlink" href="06-home-value.html">What Is My Home Worth?</a></p>
+    <p class="links"><a class="tlink" href="06-home-value.html">What Is My Home Worth?</a><a class="tlink" href="08-home-search.html">Search Homes for Sale</a></p>
   </div>
 </section>
 <section class="bleed step">
@@ -128,6 +144,7 @@
     <p><span class="rg__l">What happens</span>The photographs, the description and the listing go live, and the home is shown.</p>
     <p><span class="rg__l">What you decide</span>When to list, and which days work for showings.</p>
     <p><span class="rg__l">What Christina does</span>Can lead the listing with what sets your home apart, and answer the roof and flood questions buyers will have.</p>
+    <p class="links"><a class="tlink" href="07-communities.html">Sarasota Neighborhoods</a></p>
   </div>
 </section>
 <section class="bleed step">
@@ -139,6 +156,7 @@
     <p><span class="rg__l">What happens</span>Offers come in. Each has a price and terms, and Florida law requires you to give the buyer a flood disclosure at or before the time the contract is signed (s. 689.302, F.S., read October 27, 2026).</p>
     <p><span class="rg__l">What you decide</span>Which offer to take, counter or turn down.</p>
     <p><span class="rg__l">What Christina does</span>Can lay the offers side by side and explain what each term means for you, and go through the flood disclosure with you.</p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s5">Sources for Step 5</a></p>
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
@@ -150,6 +168,8 @@
     <p><span class="rg__l">What happens</span>The buyer's inspectors visit and the lender's appraiser looks at the home.</p>
     <p><span class="rg__l">What you decide</span>How you answer what they find.</p>
     <p><span class="rg__l">What Christina does</span>Can be at the home for the inspection and the appraisal, and explain what an insurer may ask for on an older roof.</p>
+    <p class="links"><a class="tlink" href="13-flood-zones.html">Sarasota Flood Zones</a></p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s6">Sources for Step 6</a></p>
   </div>
 </section>
 <section class="bleed step">
@@ -172,6 +192,8 @@
     <p><span class="rg__l">What happens</span>The closing, the keys and the move.</p>
     <p><span class="rg__l">What you decide</span>Your move-out day and what stays with the home.</p>
     <p><span class="rg__l">What Christina does</span>Coordinates with the title company and the attorneys.</p>
+    <p class="links"><a class="tlink" href="04-buyers-guide.html">Buying in Sarasota</a></p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s8">Sources for Step 8</a></p>
   </div>
 </section>
 </div>
@@ -197,6 +219,58 @@
       <details><summary>Should I repair things before I list?</summary><p class="faq__a">Fix what an inspector is likely to flag, such as a roof near the end of its life, and price the rest. Christina can walk the home with you and say which is which.</p></details>
       <details><summary>What happens after an offer is accepted?</summary><p class="faq__a">The buyer's inspectors visit, the lender's appraiser looks at the home, and any repairs are negotiated. Christina can help you decide which repairs to make.</p></details>
       <details><summary>What does an older roof mean for my sale?</summary><p class="faq__a">Buyers and their insurers look at a roof's age. The <a href="14-four-point-inspection.html">4-Point and Roof guide</a> explains what an insurer asks for.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES · the page's official sources in one directory: a row of step tabs, each opening its sources as cards
+     (the house script's tab module; without JS every panel shows). Each step's cue opens its tab. Outside links open
+     in a new tab with rel=noopener. -->
+<section class="section section--mist srcdir" aria-labelledby="src-h">
+  <div class="wrap">
+    <div class="srcdir__head">
+      <p class="eyebrow">Sources, step by step</p>
+      <h2 id="src-h">Where Each Step Is Spelled Out</h2>
+      <p class="lede">The laws and offices behind the steps where Florida adds a rule, grouped the way the steps run. Each card says who publishes it and what it covers, and opens on that office's own site.</p>
+    </div>
+    <div class="stabs">
+      <div class="stabs__panel is-on" id="src-s5">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 5</p>
+          <h3>Weigh the offers</h3>
+          <p class="stabs__count">2 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0689/Sections/0689.302.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 689.302</span><span class="scard__t">Seller's flood disclosure</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://laws.flrules.org/2025/166" target="_blank" rel="noopener"><span class="scard__who">Laws of Florida, chapter 2025-166</span><span class="scard__t">The 2025 change to the flood disclosure</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel is-on" id="src-s6">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 6</p>
+          <h3>Get through the inspection and the appraisal</h3>
+          <p class="stabs__count">4 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/ask-cfpb/what-are-appraisals-and-why-do-i-need-to-look-at-them-en-167/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Appraisals and why you may read them</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.citizensfla.com/inspections" target="_blank" rel="noopener"><span class="scard__who">Citizens Property Insurance</span><span class="scard__t">4-point and roof inspections</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.7011.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 627.7011</span><span class="scard__t">Roof age and homeowners insurance</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www2.myfloridalicense.com/home-inspectors/" target="_blank" rel="noopener"><span class="scard__who">Florida DBPR</span><span class="scard__t">Home inspector licensing</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel is-on" id="src-s8">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 8</p>
+          <h3>Close the sale</h3>
+          <p class="stabs__count">4 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/owning-a-home/closing-disclosure/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Closing Disclosure</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://floridarevenue.com/taxes/taxesfees/Pages/doc_stamp.aspx" target="_blank" rel="noopener"><span class="scard__who">Florida Department of Revenue</span><span class="scard__t">Documentary stamp tax</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.sarasotaclerk.com/Records/Recording-Services" target="_blank" rel="noopener"><span class="scard__who">Sarasota County Clerk and Comptroller</span><span class="scard__t">Recording services</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.irs.gov/publications/p523" target="_blank" rel="noopener"><span class="scard__who">IRS Publication 523</span><span class="scard__t">Selling your main home</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

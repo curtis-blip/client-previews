@@ -11,6 +11,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="icons.css">
 <link rel="stylesheet" href="styles.css">
+<script>
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="#src-"]');
+  if (!a) return;
+  var t = document.querySelector('[role="tab"][aria-controls="' + a.getAttribute('href').slice(1) + '"]');
+  if (!t) return;
+  e.preventDefault();
+  t.click();
+  t.closest('.stabs').scrollIntoView({ block: 'start' });
+  history.replaceState(null, '', a.getAttribute('href'));
+});
+window.addEventListener('load', function () {
+  var t = location.hash && document.querySelector('[role="tab"][aria-controls="' + location.hash.slice(1) + '"]');
+  if (t) { t.click(); t.closest('.stabs').scrollIntoView({ block: 'start' }); }
+});
+</script>
 
 </head>
 <body>
@@ -93,7 +109,7 @@
     <p><span class="rg__l">What happens</span>You and Christina talk about when you want to move, how you will use the home and what has to be true for it to work.</p>
     <p><span class="rg__l">What you decide</span>What matters most, and what you would give up for it.</p>
     <p><span class="rg__l">What Christina does</span>Asks about your timing, how you will use the home and your budget so the search starts narrow, and can explain how owning a home in Florida differs from owning elsewhere.</p>
-    <p class="links"><a class="tlink" href="11-contact.html">Book a Call</a></p>
+    <p class="links"><a class="tlink" href="11-contact.html">Book a Call</a><a class="tlink" href="02-about.html">About Christina</a></p>
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
@@ -105,10 +121,11 @@
     <p><span class="rg__l">What happens</span>You meet a lender and learn what you can borrow and which loan fits, including a VA loan if you have served.</p>
     <p><span class="rg__l">What you decide</span>The loan, the down payment and the monthly payment you are comfortable with.</p>
     <p><span class="rg__l">What Christina does</span>Can explain the VA appraisal and inspection requirements and what they mean for the homes you are considering.</p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s2">Sources for Step 2</a></p>
   </div>
 </section>
 <section class="bleed step">
-  <div class="bleed__media"><img src="assets/STANDIN-siesta-key-beach-aerial-lifeguard-tower.jpg" alt="A white-sand Gulf beach seen from above, with a lifeguard tower at the water&#x27;s edge" style="object-position:50% 50%" loading="lazy"></div>
+  <div class="bleed__media"><img src="assets/STANDIN-siesta-key-beach-aerial-lifeguard-tower.jpg" alt="A white-sand Gulf beach seen from above, with a lifeguard tower on the sand" style="object-position:50% 50%" loading="lazy"></div>
   <div class="bleed__body r">
     <p class="step__n" aria-hidden="true">03</p>
     <p class="eyebrow">Step 3 of 8</p>
@@ -126,9 +143,9 @@
     <p class="eyebrow">Step 4 of 8</p>
     <h3>Search and tour homes</h3>
     <p><span class="rg__l">What happens</span>You watch new listings, tour the ones that fit and compare them with what you saw the week before.</p>
-    <p><span class="rg__l">What you decide</span>Which homes are worth an offer, and which only look right in the photos.</p>
+    <p><span class="rg__l">What you decide</span>Which homes are worth an offer, which only look right in the photos, and <a href="06-home-value.html">what a home is worth</a> against its asking price.</p>
     <p><span class="rg__l">What Christina does</span>Can write down your questions at each showing, so the answers are ready for the next one.</p>
-    <p class="links"><a class="tlink" href="08-home-search.html">Search Homes</a></p>
+    <p class="links"><a class="tlink" href="08-home-search.html">Search Homes</a><a class="tlink" href="09-featured-listings.html">Featured Listings</a></p>
   </div>
 </section>
 <section class="bleed step">
@@ -141,6 +158,7 @@
     <p><span class="rg__l">What you decide</span>Whether the full yearly cost of owning this home still fits your budget.</p>
     <p><span class="rg__l">What Christina does</span>Can ask your insurance agent for quotes before you write the offer, and look up the flood zone with you.</p>
     <p class="links"><a class="tlink" href="13-flood-zones.html">Flood Zones</a></p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s5">Sources for Step 5</a></p>
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
@@ -152,6 +170,7 @@
     <p><span class="rg__l">What happens</span>You write the offer and sign the contract. In a condominium or a deed-restricted neighborhood, the association's rules come with it, including any limits on rentals and pets, and Florida law requires the seller to give you a flood disclosure at or before the time the contract is signed (s. 689.302, F.S.).</p>
     <p><span class="rg__l">What you decide</span>The price, the terms, and whether the association's rules suit how you will use the home.</p>
     <p><span class="rg__l">What Christina does</span>Can read the rules with you while there is still time to change your mind, and go through the contract with you.</p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s6">Sources for Step 6</a></p>
   </div>
 </section>
 <section class="bleed step">
@@ -164,6 +183,7 @@
     <p><span class="rg__l">What you decide</span>Which repairs you ask the seller for, and whether you go ahead.</p>
     <p><span class="rg__l">What Christina does</span>Can set up the inspections and explain what the roof's age means for insurance. On the water, it is worth asking who last inspected the seawall and what shape the dock is in.</p>
     <p class="links"><a class="tlink" href="14-four-point-inspection.html">4-Point and Roof</a></p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s7">Sources for Step 7</a></p>
   </div>
 </section>
 <section class="bleed bleed--rev step step--mist">
@@ -175,6 +195,8 @@
     <p><span class="rg__l">What happens</span>The last walk-through, the closing and the move.</p>
     <p><span class="rg__l">What you decide</span>Your move-in date, and which keys, codes and warranties come to you.</p>
     <p><span class="rg__l">What Christina does</span>Coordinates with the attorneys and the title company.</p>
+    <p class="links"><a class="tlink" href="05-sellers-guide.html">Selling a home in Sarasota</a></p>
+    <p class="src-cue"><a class="tlink src-cue__a" href="#src-s8">Sources for Step 8</a></p>
   </div>
 </section>
 </div>
@@ -202,6 +224,92 @@
       <details><summary>What should I ask about a waterfront home?</summary><p class="faq__a">Who last inspected the seawall, what shape the dock is in, and what the flood zone and elevation are.</p></details>
       <details><summary>What should I know about a condominium or a neighborhood with an association?</summary><p class="faq__a">Read the association's rules before you make an offer, especially the limits on rentals and pets, and especially if you plan to rent the home out or use it only part of the year.</p></details>
       <details><summary>How does a VA loan change the process?</summary><p class="faq__a">The VA appraisal and inspection requirements shape which homes work. Christina can explain them before you tour, so you know what to expect.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES · the page's official sources in one directory: a row of step tabs, each opening its sources as cards
+     (the house script's tab module; without JS every panel shows). Each step's cue opens its tab. Outside links open
+     in a new tab with rel=noopener. -->
+<section class="section section--mist srcdir" aria-labelledby="src-h">
+  <div class="wrap">
+    <div class="srcdir__head">
+      <p class="eyebrow">Sources, step by step</p>
+      <h2 id="src-h">Where Each Step Is Spelled Out</h2>
+      <p class="lede">The agencies and laws behind each step, grouped the way the steps run. Each card says who publishes it and what it covers, and opens on that office's own site.</p>
+    </div>
+    <div class="stabs stabs--tabbed">
+      <div class="stabs__list ct__tabs" role="tablist" aria-label="Sources by step">
+        <button class="stab" type="button" role="tab" id="tab-src-s2" aria-controls="src-s2" aria-selected="true" tabindex="0"><span class="stab__n">02</span><span class="stab__l">Financing</span></button>
+        <button class="stab" type="button" role="tab" id="tab-src-s5" aria-controls="src-s5" aria-selected="false" tabindex="-1"><span class="stab__n">05</span><span class="stab__l">Insurance</span></button>
+        <button class="stab" type="button" role="tab" id="tab-src-s6" aria-controls="src-s6" aria-selected="false" tabindex="-1"><span class="stab__n">06</span><span class="stab__l">The Offer</span></button>
+        <button class="stab" type="button" role="tab" id="tab-src-s7" aria-controls="src-s7" aria-selected="false" tabindex="-1"><span class="stab__n">07</span><span class="stab__l">Inspections</span></button>
+        <button class="stab" type="button" role="tab" id="tab-src-s8" aria-controls="src-s8" aria-selected="false" tabindex="-1"><span class="stab__n">08</span><span class="stab__l">Closing</span></button>
+      </div>
+      <div class="stabs__panel is-on" id="src-s2" role="tabpanel" aria-labelledby="tab-src-s2">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 2</p>
+          <h3>Line up your financing</h3>
+          <p class="stabs__count">2 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/ask-cfpb/whats-the-difference-between-a-prequalification-letter-and-a-preapproval-letter-en-127/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Preapproval and prequalification letters</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/owning-a-home/loan-estimate/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Loan Estimates</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel" id="src-s5" role="tabpanel" aria-labelledby="tab-src-s5">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 5</p>
+          <h3>Check insurance and the flood zone before the offer</h3>
+          <p class="stabs__count">4 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.floodsmart.gov/flood-zones-and-maps/what-is-my-flood-zone" target="_blank" rel="noopener"><span class="scard__who">FloodSmart, FEMA</span><span class="scard__t">Flood zones and what they mean</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.scgov.net/government/stormwater/flood-maps" target="_blank" rel="noopener"><span class="scard__who">Sarasota County</span><span class="scard__t">Flood maps and the county's interactive map</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.351.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 627.351</span><span class="scard__t">Citizens flood insurance requirement</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.myfloridacfo.com/division/ica/shoppingforinsurance" target="_blank" rel="noopener"><span class="scard__who">Florida Department of Financial Services</span><span class="scard__t">Shopping for homeowners insurance</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel" id="src-s6" role="tabpanel" aria-labelledby="tab-src-s6">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 6</p>
+          <h3>Read the association rules, then make the offer</h3>
+          <p class="stabs__count">5 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0689/Sections/0689.302.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 689.302</span><span class="scard__t">Seller's flood disclosure</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0720/Sections/0720.401.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 720.401</span><span class="scard__t">HOA disclosure summary</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0718/Sections/0718.503.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 718.503</span><span class="scard__t">Documents a condominium buyer receives</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0718/Sections/0718.110.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 718.110</span><span class="scard__t">Condominium rental amendments</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0700-0799/0720/Sections/0720.306.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 720.306</span><span class="scard__t">HOA rental amendments</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel" id="src-s7" role="tabpanel" aria-labelledby="tab-src-s7">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 7</p>
+          <h3>Inspect the home, the roof and the water side</h3>
+          <p class="stabs__count">6 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.citizensfla.com/inspections" target="_blank" rel="noopener"><span class="scard__who">Citizens Property Insurance</span><span class="scard__t">4-point and roof inspections</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://floir.gov/consumers/wind-mitigation-resources" target="_blank" rel="noopener"><span class="scard__who">Florida Office of Insurance Regulation</span><span class="scard__t">Wind mitigation inspection form</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.leg.state.fl.us/statutes/index.cfm?App_mode=Display_Statute&URL=0600-0699/0627/Sections/0627.7011.html" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 627.7011</span><span class="scard__t">Roof age and homeowners insurance</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.flsenate.gov/Laws/Statutes/2026/627.0629" target="_blank" rel="noopener"><span class="scard__who">Florida Statutes 627.0629</span><span class="scard__t">Windstorm mitigation discounts</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.mysafeflhome.com/" target="_blank" rel="noopener"><span class="scard__who">My Safe Florida Home</span><span class="scard__t">Wind mitigation inspections and grants</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www2.myfloridalicense.com/home-inspectors/" target="_blank" rel="noopener"><span class="scard__who">Florida DBPR</span><span class="scard__t">Home inspector licensing</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
+      <div class="stabs__panel" id="src-s8" role="tabpanel" aria-labelledby="tab-src-s8">
+        <div class="stabs__intro">
+          <p class="srcdir__k">Step 8</p>
+          <h3>Close and get the keys</h3>
+          <p class="stabs__count">2 sources</p>
+        </div>
+        <ul class="scards">
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/owning-a-home/closing-disclosure/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Closing Disclosure</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+          <li><a class="scard srcdir__a" href="https://www.consumerfinance.gov/ask-cfpb/what-is-owners-title-insurance-en-164/" target="_blank" rel="noopener"><span class="scard__who">CFPB</span><span class="scard__t">Owner's title insurance</span><span class="ico ico--arrow" aria-hidden="true"></span></a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

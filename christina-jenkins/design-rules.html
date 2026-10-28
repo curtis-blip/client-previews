@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christina Jenkins: Design Rules</title>
+
+<!-- Client fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Tokens injected from global-design.json at generation time */
+  --color-primary: #0C0C0C;
+  --color-secondary: #2F3B2D;
+  --color-accent: #2F3B2D;
+  --color-contrast: #1B1B1A;
+  --color-text-dark: #1B1B1A;
+  --color-text-muted: #5C5953;
+  --color-text-light: #FFFFFF;
+  --color-surface: #EFEEEA;
+  --color-white: #FFFFFF;
+  --color-background: #FFFFFF;
+  --color-background-alt: #EFEEEA;
+  --color-background-dark: #2F3B2D;
+  --color-border: #D9D6CF;
+
+  --font-heading: 'Jost';
+  --font-body: 'Libre Caslon Text';
+
+  --h1-size: 76px;
+  --h2-size: 40px;
+  --h3-size: 24px;
+  --body-size: 16px;
+  --eyebrow-size: 12px;
+
+  --h1-weight: 300;
+  --h2-weight: 400;
+  --h3-weight: 400;
+  --body-weight: 400;
+
+  --h1-tracking: 0.14em;
+  --h2-tracking: 0.1em;
+  --eyebrow-tracking: 0.26em;
+
+  --h1-transform: uppercase;
+  --h2-transform: uppercase;
+
+  --h1-line-height: 1.15;
+  --body-line-height: 1.8;
+
+  --container-width: 1240px;
+  --section-padding-y: 96px;
+  --container-padding-x: 40px;
+
+  --motion-duration-default: 250ms;
+  --motion-easing-default: cubic-bezier(.4, 0, .2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--color-text-dark);
+  background: var(--color-background);
+}
+
+.doc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem var(--container-padding-x);
+}
+
+.doc-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+.doc-header__eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.doc-header__title {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  color: var(--color-text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.doc-header__meta {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+section > h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  line-height: 1.2;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section > p.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 65ch;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.row__label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.row__value {
+  font-size: 0.9375rem;
+  color: var(--color-text-dark);
+}
+
+.row__demo {
+  margin-top: 0.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-text-dark);
+}
+
+.demo-h1 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  margin-top: 0.5rem;
+}
+.demo-h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  margin-top: 0.5rem;
+}
+.demo-h3 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  margin-top: 0.5rem;
+}
+.demo-eyebrow {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+.demo-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line-height);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+/* Color swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+.swatch__chip {
+  height: 90px;
+  border-bottom: 1px solid var(--color-border);
+}
+.swatch__meta {
+  padding: 0.875rem 1rem;
+}
+.swatch__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.swatch__hex {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+.swatch__role {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Spacing scale */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.spacing-row__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.spacing-row__value {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+.spacing-row__bar {
+  background: var(--color-accent);
+  height: 12px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.8125rem;
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  transition: background var(--motion-duration-fast) var(--motion-easing-default),
+              color var(--motion-duration-default) var(--motion-easing-default);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-accent {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Anti-pattern callouts */
+.callout {
+  background: var(--color-background-alt);
+  border-left: 4px solid var(--color-accent);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.callout__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.callout ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.callout li {
+  margin: 0.25rem 0;
+  color: var(--color-text-dark);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9375rem;
+}
+th, td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-background-alt);
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875em;
+  background: var(--color-background-alt);
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-border);
+}
+
+.note {
+  background: var(--color-background-alt);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  body { background: white; }
+  section { page-break-inside: avoid; }
+  .doc { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header class="doc-header">
+    <div class="doc-header__eyebrow">Design Rules · Handoff Document</div>
+    <h1 class="doc-header__title">Christina Jenkins</h1>
+    <p class="doc-header__meta">For Jeff, Kersey, and any builder picking up this project · Generated 2026-10-28 · Template: custom (Noir Coast, with Dalton Wade mint and sage)</p>
+  </header>
+
+  <section>
+    <h2>How to Read This Document</h2>
+    <p class="section-intro">
+      Every rule below is rendered using the actual fonts, colors, and sizes the site should use.
+      What you see on this page is what the live site should look like at the component level.
+      No need to translate hex codes or font-size values into mental pictures, the doc shows it.
+    </p>
+    <div class="note">
+      <strong>If something doesn't match the mockups:</strong> the mockups are the source of truth.
+      The mockups consumed this same design system, so a mismatch means either the mockup needs fixing
+      or this doc needs regeneration. Either way, surface it to Curtis before building.
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="section-intro">
+      The brand uses <strong>'Jost'</strong> for headings and <strong>'Libre Caslon Text'</strong> for body copy.
+      H1 case is <strong>uppercase</strong>. Body line-height is generous (1.8) for readability.
+    </p>
+
+    <div class="row">
+      <div class="row__label">H1 (page titles)</div>
+      <div class="row__value">
+        Font: 'Jost' · Weight: 300 · Size: 76px (phones 42px) · Tracking: 0.14em · Case: uppercase · Line-height: 1.15
+        <div class="demo-h1">Christina Jenkins <span style="display:block;font-size:16px;font-weight:500;letter-spacing:.34em">Your Sarasota REALTOR®</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H2 (section heads)</div>
+      <div class="row__value">
+        Font: 'Jost' · Weight: 400 · Size: 40px (28 to 40px; phones 21 to 28px) · Tracking: 0.1em · Case: uppercase
+        <div class="demo-h2">Sarasota homes, with the Florida details explained first</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H3 (subsection)</div>
+      <div class="row__value">
+        Font: 'Jost' · Weight: 400 · Size: 24px (19 to 24px) · Case: uppercase
+        <div class="demo-h3">Neighborhood name tile</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Eyebrow / Overline</div>
+      <div class="row__value">
+        Font: 'Jost' · Weight: 500 · Size: 12px · Tracking: 0.26em · Case: UPPERCASE
+        <div class="demo-eyebrow">Eyebrow Label Style</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Body</div>
+      <div class="row__value">
+        Font: 'Libre Caslon Text' · Weight: 400 · Size: 16px · Line-height: 1.8
+        <div class="demo-body">
+          This is the standard body copy style. It runs at a generous line-height because most blocks
+          carry meaningful paragraph content (about teasers, agent bio, FAQ answers, community descriptions).
+          Width caps around 65 characters per line for readability.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Typography Hard Rules</div>
+      <ul>
+        <li>Heading and body font families MUST be loaded via Google Fonts link at top of every page.</li>
+        <li>Never substitute a system font fallback as the primary face, only as the secondary in the font stack.</li>
+        <li>Never introduce a third font family: Jost (display) and Libre Caslon Text (body) only.</li>
+        <li>No italic-serif accent spans inside H1s ("real estate, <em>reimagined</em>" is banned). The only H1 second line is the small spaced Jost 500 line the hero and page headers already carry.</li>
+        <li>No em or en dashes anywhere in copy. Use a comma, period, colon, or middle dot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color Palette</h2>
+    <p class="section-intro">
+      White and stone grounds with ink type. Dark green is the one deep band (home value, community neighborhoods and closing call). Since 2026-10-28 (Curtis), every band or panel that was black is mint and the header (once stuck) and footer are sage, both with ink type. Black (#0C0C0C) stays for text, buttons and photo veils.
+    </p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background: #0C0C0C;"></div><div class="swatch__meta"><div class="swatch__name">Black</div><div class="swatch__hex">#0C0C0C</div><div class="swatch__role">Buttons, photo veils, text on photos. Never a band</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #1B1B1A;"></div><div class="swatch__meta"><div class="swatch__name">Ink</div><div class="swatch__hex">#1B1B1A</div><div class="swatch__role">Body copy on light grounds; all type on mint and sage</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #FFFFFF;"></div><div class="swatch__meta"><div class="swatch__name">White</div><div class="swatch__hex">#FFFFFF</div><div class="swatch__role">Default background; type and outlines over photos</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #EFEEEA;"></div><div class="swatch__meta"><div class="swatch__name">Stone</div><div class="swatch__hex">#EFEEEA</div><div class="swatch__role">Alternate section background (About band, surfaces)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #2F3B2D;"></div><div class="swatch__meta"><div class="swatch__name">Dark Green</div><div class="swatch__hex">#2F3B2D</div><div class="swatch__role">The deep band: home value, community neighborhoods and closing call; accent and secondary</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #CCE5DF;"></div><div class="swatch__meta"><div class="swatch__name">Mint</div><div class="swatch__hex">#CCE5DF</div><div class="swatch__role">Every block that was black: .section--ink, title bands, closing card, listing card, reviews, carousel band. Ink type</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #C0D1BA;"></div><div class="swatch__meta"><div class="swatch__name">Sage</div><div class="swatch__hex">#C0D1BA</div><div class="swatch__role">Header once stuck, the phone menu panel and the footer. Ink type; logos drawn black</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #5C5953;"></div><div class="swatch__meta"><div class="swatch__name">Muted</div><div class="swatch__hex">#5C5953</div><div class="swatch__role">Eyebrows, captions on white and stone only (4.4:1 on sage, so never on sage)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #4A4843;"></div><div class="swatch__meta"><div class="swatch__name">Muted 2</div><div class="swatch__hex">#4A4843</div><div class="swatch__role">Small supporting text on mint and sage (6.9:1 and 5.7:1)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #D9D6CF;"></div><div class="swatch__meta"><div class="swatch__name">Line</div><div class="swatch__hex">#D9D6CF</div><div class="swatch__role">Hairlines on white and stone (rgba(27,27,26,.2) on mint and sage)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #E4E2DC;"></div><div class="swatch__meta"><div class="swatch__name">On-dark</div><div class="swatch__hex">#E4E2DC</div><div class="swatch__role">Body text on the green bands</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #C9C6BE;"></div><div class="swatch__meta"><div class="swatch__name">On-dark muted</div><div class="swatch__hex">#C9C6BE</div><div class="swatch__role">Supporting text on the green bands (6.9:1)</div></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Color Hard Rules</div>
+      <ul>
+        <li>Mint and sage carry ink type only (#1B1B1A, or #4A4843 for small supporting text). #5C5953 is never used on sage.</li>
+        <li>Body text contrast must meet WCAG AA against its background (ink on mint 13:1, on sage 10.7:1).</li>
+        <li>Never invent additional colors: use only the swatches listed above.</li>
+        <li>Hover states are an outline-to-solid fill swap (see Buttons), never a hue shift.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Spacing Scale</h2>
+    <p class="section-intro">
+      Section padding-Y is <strong>96px (72px on phones)</strong>. Container max-width is <strong>1240px</strong>.
+      The values below, read from the approved stylesheet, are the source of truth for gaps and padding.
+    </p>
+
+    <div class="spacing-scale">
+      <div class="spacing-row"><span class="spacing-row__name">Tile gap</span><span class="spacing-row__value">2px</span><div class="spacing-row__bar" style="width: 2px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Phone side</span><span class="spacing-row__value">20px</span><div class="spacing-row__bar" style="width: 20px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Side</span><span class="spacing-row__value">40px</span><div class="spacing-row__bar" style="width: 40px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Sticky header</span><span class="spacing-row__value">22px</span><div class="spacing-row__bar" style="width: 22px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Section (phone)</span><span class="spacing-row__value">72px</span><div class="spacing-row__bar" style="width: 72px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Section</span><span class="spacing-row__value">96px</span><div class="spacing-row__bar" style="width: 96px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Wrap</span><span class="spacing-row__value">1240px</span><div class="spacing-row__bar" style="width: 620px;"></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Spacing Hard Rules</div>
+      <ul>
+        <li>Always use the values listed above, never one-off pixel or rem values.</li>
+        <li>Section padding-Y is generous by design. Don't tighten it without explicit direction.</li>
+        <li>Container padding-X is consistent across all sections (no per-section overrides).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <p class="section-intro">
+      Square, 1px outline, Jost 500 13px uppercase, 0.22em tracking, 48px tall. White outline over photos and the green band, ink outline on white, stone, mint and sage. A white solid button is the main action over photos and green; an ink solid button is the main action on mint.
+    </p>
+
+    <div class="row">
+      <div class="row__label">Primary</div>
+      <div class="row__value">
+        Solid fill (ink on light grounds), inverts to an outline on hover.
+        <div class="btn-row">
+          <a href="#" class="btn-primary">Schedule a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Secondary</div>
+      <div class="row__value">
+        Ghost from start. Use as the second CTA when both options carry equal weight.
+        <div class="btn-row">
+          <a href="#" class="btn-secondary">Browse Listings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Accent</div>
+      <div class="row__value">
+        Dark green fill. Use sparingly, for small in-block moments.
+        <div class="btn-row">
+          <a href="#" class="btn-accent">Get Home Value</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Button Hard Rules</div>
+      <ul>
+        <li>Border-radius: 0. Sharp geometry only. No rounded buttons.</li>
+        <li>Never use 3+ buttons in a single hero. One primary, optionally one secondary, never three.</li>
+        <li>Transition duration 200ms with easing cubic-bezier(.4, 0, .2, 1) on hover.</li>
+        <li>Always include `:focus-visible` indicator (browser default OK, or an ink outline).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <p class="section-intro">
+      Slow, subtle motion. Never bouncy. Never fast.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--motion-duration-fast</code></td><td>200ms</td><td>Link underline color changes, small UI feedback</td></tr>
+        <tr><td><code>--motion-duration-default</code></td><td>250ms</td><td>Button hover, accordion expand</td></tr>
+        <tr><td><code>--motion-duration-slow</code></td><td>800ms</td><td>Section fade-in, photo zoom on hover</td></tr>
+        <tr><td><code>--motion-easing-default</code></td><td>cubic-bezier(.4, 0, .2, 1)</td><td>All hover transitions</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Motion Hard Rules</div>
+      <ul>
+        <li>No bounce easing. No springs. No spinning loaders inside content.</li>
+        <li>Photo zoom is scale 1.03 to 1.04 over 800ms. Carousels slide over 600ms with off-screen slides hidden. More feels gimmicky.</li>
+        <li>Respect `prefers-reduced-motion`, disable photo-zoom and section fade-in when set.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Imagery</h2>
+    <p class="section-intro">
+      Real photography only. No stock illustrations, no vectors, no 3D renders, no AI-generated images. Photos are large and editorial; the status of the current ones is under Curtis's rules for this site.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Use</th><th>Aspect Ratio</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero (full-bleed)</td><td>86svh, min 560px, cover</td><td>Top veil keeps the header legible; photo focal point center 40%</td></tr>
+        <tr><td>Agent headshot</td><td>3:4, 4:5, or 5:6 (portrait)</td><td>~55% max column width. Landscape lifestyle photos = different block</td></tr>
+        <tr><td>Community card</td><td>16:9 or 4:3</td><td>Real neighborhood / streetscape photos</td></tr>
+        <tr><td>Lifestyle / property</td><td>16:9, 16:10, 21:9</td><td>Landscape orientation</td></tr>
+        <tr><td>Process step photos</td><td>4:5 or 1:1</td><td>Per-step photography when V3/V5 process variant is used</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Imagery Hard Rules</div>
+      <ul>
+        <li>Never mix headshot and lifestyle in same slot, they require different aspect ratios and crops.</li>
+        <li>Never use gradient placeholders. Replace every STANDIN- photo with the real one before launch (list below).</li>
+        <li>Every image needs descriptive `alt` text, never leave blank, never use "image" or "photo".</li>
+        <li>Borders/rounded corners on images: NEVER. `border-radius: 0` is non-negotiable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Layout Widths</h2>
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--container-width</code></td><td>1240px</td><td>Standard section content width</td></tr>
+        <tr><td><code>--wide-width</code></td><td>1240px (full-bleed bands run edge to edge)</td><td>Wider blocks (full-bleed hero, alternating image rows)</td></tr>
+        <tr><td><code>--narrow-width</code></td><td>760px (quotes and prose columns)</td><td>Text-heavy blocks (agent bio prose, FAQ)</td></tr>
+        <tr><td><code>--container-padding-x</code></td><td>40px (20px on phones)</td><td>Horizontal padding on all containers</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Breakpoints</div>
+      <ul>
+        <li>Mobile-first base styles</li>
+        <li>Tablet breakpoint: 768px</li>
+        <li>Desktop breakpoint: 1024px</li>
+        <li>Wide desktop breakpoint: 1440px (when alternating image rows benefit)</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>Header and Footer</h2>
+    <table><thead><tr><th>Part</th><th>Rule</th></tr></thead><tbody>
+    <tr><td>Header</td><td>transparent with white type over the hero photograph (its top veil keeps it legible), then sage #C0D1BA with ink type once scrolled and in the phone menu panel; her name in spaced caps on two lines, a thin divider, the Dalton Wade logo (white over the photo, drawn black on sage with filter: brightness(0); 64px over the photo, 56px stuck; 30px on phones); phone and an outlined Book a Call</td></tr>
+    <tr><td>Footer</td><td>sage #C0D1BA with ink type; her name, the Dalton Wade logo and the EHO logo drawn black (filter: brightness(0)), contact; three link columns; EHO and the brokerage line; the phone call bar on the same sage (Call on sage, Contact in ink)</td></tr>
+    <tr><td>Bands</td><td>mint for every block that was black: .section--ink, the lean title band .lh, the closing card .cx-card, the community pages&#x27; carousel band .cm-water and its slides, listing cards, drive-time tiles, map pins; the green #2F3B2D bands (home value, community neighborhoods, community closing call) stay green</td></tr>
+    </tbody></table>
+  </section>
+
+  <section id="mobile-spec">
+<h2>Mobile spec </h2>
+<p>The mockups are the mobile spec: open any page at 375px (<code>mockups/mobile.html</code> shows every page at phone width). This section translates the stylesheet's responsive rules into build settings. Definition of done: the built page matches the mockup at 375px.</p>
+<h3>Type scale: phone vs desktop</h3>
+<p>The phone value is each clamp() lower bound. Set these as the mobile font sizes in Spectra.</p>
+<table><tr><th>Selector</th><th>Phone</th><th>Desktop</th></tr>
+<tr><td><code>.smap__group h2</code></td><td>22px</td><td>30px</td></tr>
+<tr><td><code>.legal__body h2</code></td><td>22px</td><td>30px</td></tr>
+</table>
+<h3>At and below 1024px</h3><ul>
+<li><code>.plate__media</code> hidden</li>
+</ul>
+<h3>At and below 900px</h3><ul>
+<li><code>.legal, .smap__group</code> stacks to one column</li>
+<li><code>.legal__toc</code> hidden</li>
+</ul>
+<h3>At and below 820px</h3><ul>
+<li><code>.ph h1</code> type drops to 42px</li>
+<li><code>.ph h1 span</code> type drops to 13px</li>
+<li><code>.ph__sub</code> type drops to 16px</li>
+<li><code>.lh h1</code> type drops to 42px</li>
+<li><code>.intro2__head h2, .head h2, .faq-wrap__head h2, .res h2, .bleed__body h2, .steps > h2</code> type drops to 28px</li>
+<li><code>.cx-card h2</code> type drops to 26px</li>
+<li><code>.faq summary</code> type drops to 17px</li>
+<li><code>.listings .impress-price</code> type drops to 26px</li>
+<li><code>.hv .stat dt</code> type drops to 30px</li>
+<li><code>.cm-shead</code> stacks vertically</li>
+<li><code>.cm-shead h2, .cm-intro h2, .cm-why h2, .cm-faq h2, .cm-cta h2, .cm .blog__h h2</code> type drops to 27px</li>
+<li><code>.cm .cm-hero h1</code> type drops to 44px</li>
+<li><code>.cm .cm-hero h1 span</code> type drops to 12px</li>
+<li><code>.cm-stat dt</code> type drops to 30px</li>
+<li><code>.cm-cx__t h3</code> type drops to 23px</li>
+<li><code>.srcdir__head h2</code> type drops to 28px</li>
+</ul>
+<h3>At and below 782px</h3><ul>
+<li><code>.ap-form</code> stacks vertically</li>
+</ul>
+<h3>At and below 768px</h3><ul>
+<li><code>.stab__n</code> type drops to 32px</li>
+</ul>
+<h3>At and below 760px</h3><ul>
+<li><code>.brand__name</code> type drops to 15px</li>
+<li><code>.hdr__tel</code> hidden</li>
+</ul>
+<h3>At and below 600px</h3><ul>
+<li><code>.smap__list</code> stacks to one column</li>
+</ul>
+<h3>At and below 380px</h3><ul>
+<li><code>.brand__name</code> type drops to 13px</li>
+</ul>
+<h3>Hero focal points and phone departures</h3><ul><li>Home hero: the Gulf sunset and the waterline, <code>object-position: center 40%</code>, kept on the phone crop (hero height 86svh, min 560px).</li><li>Page headers (<code>.ph</code>) and community heroes: centered crop; keep the horizon and skyline in the middle band of the photo.</li><li>Phone departures: the header phone number is hidden at 760px and below (the sticky call bar carries it); the Dalton Wade logo in the header drops to 30px; the burger menu opens a sage panel; <code>.brand__name</code> steps down to 15px, then 13px under 380px.</li></ul>
+</section>
+
+
+  <section>
+    <h2>Curtis's Rules for This Site</h2>
+    <p class="section-intro">The feedback rules recorded in the client file (from <code>christina-jenkins-client.json</code>). They apply to every page you build, and they win over any default above.</p>
+    <div class="callout"><div class="callout__title">Feedback rules</div><ul><li>Every band on every page carries a photograph; no full-width text-only panel. Lists of checks or steps get a photo per item, reviews sit beside a photo of the place, and her favourite things (beaches, boating, golf, art, city) show as a photo row. (sitewide; Curtis 2026-10-28: &quot;needs more imegery I think&quot;)</li><li>The home page is a premium routing hub, not a guide: process and education blocks (numbered checks, steps, how-to lists) live on the Buyer&#x27;s Guide, Seller&#x27;s Guide and the guide pages, never on the home page. (sitewide; Curtis 2026-10-28: &quot;This block is something you would expect on the buyers guide page.&quot;)</li><li>Premium or nothing: no dated or snapshot-looking stock (the HOA pool), no small thumbnail photos in a numbered grid, no half-empty grid rows. Photos are large, editorial and current; the home page is rebuilt from scratch, not patched. (sitewide; Curtis 2026-10-28: &quot;this page doesnt look premium. This is also really bad. I want to scrap her page and start over&quot;)</li><li>A calm hero: one eyebrow at most, an H1 of two or three lines, one short line under it, the two buttons. No stacked extras. Keep the button and link styles. (sitewide; Curtis 2026-10-28: &quot;The home hero looks a bit busy and jumbled. I like the buttons and link.&quot;)</li><li>One communities pathway per home page, never two: the areas row is it. No second block (a lifestyle row, a map, a list) that also routes to Communities. (sitewide; Curtis 2026-10-28: &quot;We can have to communities pathways on a homepage ever. It doesnt make sense.&quot;)</li><li>Christina&#x27;s site takes its look from her top reference site, jenniferspinelli.com: its type, weights and caps, palette structure, hero treatment and height, header, line devices, card and tile shapes and spacing. The house grammar keeps the block order; her copy, facts and photos fill it. Steve Calley&#x27;s build is no longer the base. (sitewide; Curtis 2026-10-28: &quot;it should feel like her top reference site&quot;)</li><li>Never carry a reference agent&#x27;s marks onto Christina&#x27;s site: no palm emblem or any logo, icon or signature device from the site a design was adapted from. Her wordmark is her name in text. (sitewide; Curtis 2026-10-28: &quot;the palm tree is not her trademark its the other agent which the homepage was adapted from&quot;)</li><li>Every visible use of the word is REALTOR® or REALTORS®: all caps with the ®, in body copy, page titles, meta descriptions and the Rank Math snippets. It names a NAR member, never a generic agent. Leave realtor.com links, file names and the footer mark&#x27;s alt text alone. (sitewide; Curtis 2026-10-28: &quot;anytime we reference the word realtor in the copy we need to have the trademark next to it&quot;)</li><li>Her header carries the Dalton Wade logo beside her name (the white transparent version from Content Snare over dark grounds), with a thin divider between; the footer carries it too. Header a little taller than the Noir Coast default. (sitewide; Curtis 2026-10-28: &quot;Increate the height of the header slightly and we should add her brokerage logo in the header. The content snare offered multiple options to choose from&quot;)</li><li>The sticky header is taller too: 22px above and below on desktop (100px with the logo), 16px on phones. (sitewide; Curtis 2026-10-28: &quot;increase height of sticky header as well&quot;)</li><li>A bio block (the Meet Christina band on an interior page) carries a Book a Call button, and no Zillow Reviews link. Reviews are shown as quotes, not linked out from the bio. (sitewide; Curtis 2026-10-28: &quot;book a call button should be on the bio block as well and get zillow reviews off (Curtis, 2026-10-28, on About)&quot;)</li><li>No outlined chip or pill boxes for short word lists (reviewer words, tags, features). Say them in a sentence or a plain ruled line. (sitewide; Curtis 2026-10-28: &quot;also these chips are not super appealing (the outlined Knowledgeable, Attentive, Available, Responsive chips on About; Curtis, 2026-10-28)&quot;)</li><li>The second home page in look A (Steve Calley base, jenniferspinelli.com feel) was rejected outright, after the first. Do not build a third home page in look A without a new direction from Curtis. (client; Curtis 2026-10-28: &quot;scrap it&quot;)</li><li>No property spotlight unless the agent has a real listing to feature. Her home page listings block is one big listing card that the arrows turn through her listings, with one button below to the Featured Listings page. (client; Curtis 2026-10-28: &quot;she doesnt have a spotlight property so we should reconfigure that section. lets do a big listings card with a courosel and button below conencting to see more on the featured listings page&quot;)</li><li>Reviews on the home page sit on a carousel like the listings: one review at a time, the same arrows and counter, her verified Zillow reviews only, quoted in the client&#x27;s own words with cuts marked. (client; Curtis 2026-10-28: &quot;also the testimonials section should be on a carousel as well&quot;)</li><li>The home page photo pathways are three across: Selling, Buying and Homes for Sale (to Home Search). (client; Curtis 2026-10-28: &quot;for this block can we add search homes as a pathway as well&quot;)</li></ul></div>
+
+    <div class="callout"><div class="callout__title">Locked pages: build against these</div>
+    <ul>
+      <li><strong>01 Home</strong> (<code>mockups/01-home.html</code>): the design contract every interior derives from.</li>
+      <li><strong>02 About</strong> (<code>mockups/02-about.html</code>): the interior page pattern (page header, bio block, bands).</li>
+      <li><strong>20 Sarasota</strong> (<code>mockups/20-community-sarasota.html</code>): the community page pattern, used for all nine towns (21 to 28 follow it).</li>
+    </ul>
+    <p style="margin-top:.75rem">Compare the built page against its mockup at desktop and at 375px. The mockups are locked in <code>mockups/_approved.json</code>; if a built page differs, the build is wrong, not the mockup.</p></div>
+
+    <div class="callout"><div class="callout__title">Sources directory (Buyer's Guide and Seller's Guide)</div>
+    <ul>
+      <li>Each step on the Buyer's Guide and Seller's Guide keeps its internal links and ends in a cue, "Sources for Step N", that jumps to its group in the directory near the foot of the page.</li>
+      <li>The directory is a row of step tabs with one panel per step and a card per source (who publishes it over what it covers). Four groups or more show as tabs; three or fewer show as panels with no tabs. Without JavaScript every panel shows.</li>
+      <li>Every link is an official source already opened and recorded. Outside links open in a new tab with <code>rel="noopener noreferrer"</code>. Build it from <code>mockups/_src/directory.py</code> and <code>mockups/_src/css/directory.css</code>; do not add or swap links.</li>
+    </ul></div>
+
+    <div class="callout"><div class="callout__title">Photo status (image-manifest.md)</div>
+    <ul>
+      <li>Every photo is a STANDIN- (Unsplash or Pexels, shown with no credit or caption) until the real ones arrive. Build with them; do not rename them.</li>
+      <li>STANDIN-GENERIC- marks a photo that names a place it does not show: replace it with a real photo of the place. Home: Nokomis (palm-lined lagoon), Palmer Ranch (aerial golf and lakes), Arlington Park (white stucco home). Sarasota page: Southside Village (bungalow under oaks), Gulf Gate (ranch home). Several more on the guide pages (insurance street, tile roof, golf course aerial); the full list is in <code>image-manifest.md</code>.</li>
+      <li>Her headshot (<code>STANDIN-christina-jenkins-headshot-ai.jpg</code>) is AI-generated; Rachael asks Christina for a real photo before launch.</li>
+      <li>No visible photo credits or captions on the site.</li>
+    </ul></div>
+
+    <div class="callout"><div class="callout__title">Open items</div>
+    <ul>
+      <li><strong>REALTOR®:</strong> her NAR membership is unverified. Rachael confirms it before launch. Until then the mark stays everywhere the word appears (REALTOR® or REALTORS®, all caps with the ®); do not remove it.</li>
+      <li><strong>Phone:</strong> (941) 941-9915 comes from her Zillow profile and is not yet confirmed as hers by Rachael. Use it as written; the header, footer and call bar must change together if it does.</li>
+      <li><strong>Brand background art is being redesigned.</strong> The <code>.tide</code> hook in <code>styles.css</code> is parked with <code>background: none</code>. Do not add any background art, line art or pattern yet; keep the hook and the band classes as they are.</li>
+      <li><strong>Domain:</strong> christinajenkinsrealestate.com is the working domain, not confirmed.</li>
+    </ul></div>
+  </section>
+
+  <section>
+    <h2>Voice and Content Reminders</h2>
+    <p class="section-intro">
+      Content writers and designers both need to remember these voice rules. Even if it's the writer's job,
+      a designer who notices an em dash or "your trusted partner" should flag it before publish.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Copy Hard Rules</div>
+      <ul>
+        <li>Never use em or en dashes (or a double hyphen as a dash). Use a comma, period, colon, or middle dot.</li>
+        <li>Never use generic AI phrases: "dream home", "seamless experience", "every step of the way", "your trusted partner", "in today's market", "with confidence".</li>
+        <li>Never use generic city descriptors: "thriving", "vibrant", "nestled", "perfect blend", "world-class", "rich history", "something for everyone".</li>
+        <li>Never use parallel triplets ("Clear, calm, confident"), hyphenated compound metaphors ("courtroom-trained eye"), or conditional buildups ("Whether you're A, B, or C...").</li>
+        <li>Every page H1 references at least ONE specific item from the client's brief (years, credentials, niche, personal story).</li>
+      </ul>
+    </div>
+
+    <p class="section-intro" style="margin-top: 2rem;">
+      Full doctrine: <code>references/copy-voice.md</code> in the Optimus Prime plugin.
+    </p>
+  </section>
+
+  <section>
+    <h2>External Links Compliance</h2>
+    <p class="section-intro">
+      Every external link on the site must follow these rules. Resources strips above the footer are the primary placement.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Rule</th><th>HTML</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Opens in new tab</td><td><code>target="_blank"</code></td></tr>
+        <tr><td>Security</td><td><code>rel="noopener noreferrer"</code></td></tr>
+        <tr><td>Underlined</td><td>browser default (do not remove)</td></tr>
+        <tr><td>Visited state</td><td>browser default (do not disable)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Banned External Targets</div>
+      <ul>
+        <li>Zillow, Redfin, Trulia (competes with the agent's lead capture)</li>
+        <li>Brokerage internal portals (public URLs only)</li>
+        <li>Paid services the client doesn't endorse</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns Summary</h2>
+    <p class="section-intro">
+      The shortlist of "do not do this." Every rule below was learned the hard way on past builds.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Never Do These</div>
+      <ul>
+        <li>Em or en dashes anywhere in copy</li>
+        <li>Emojis as icons (inline SVG only)</li>
+        <li>Rounded corners on cards, buttons, images (the round arrow buttons and the round social buttons are the only circles)</li>
+        <li>Carousel sliders in heroes (the listings and reviews carousels on the home page are the approved ones)</li>
+        <li>Italic-serif "register lift" spans inside H1</li>
+        <li>3+ CTAs in a hero (1 default, 2 max)</li>
+        <li>Split heroes (heroes are full-bleed photographs)</li>
+        <li>Two deep-colored bands (green or mint) in a row</li>
+        <li>A form or more than two buttons inside the hero</li>
+        <li>Gradient placeholders past first draft</li>
+        <li>Raw shortcode embeds without styled container</li>
+        <li>Flat text-only service boxes (must have SVG icons)</li>
+        <li>Zigzag timeline layouts for process steps</li>
+        <li>"Recently Sold Nearby" on Home Valuation page</li>
+        <li>4-step process blocks shipped as production (always default to 8)</li>
+        <li>FAQ mode: faq on About page (use mode: expertise, Areas of Expertise)</li>
+        <li>Communities home-page treatment on inner pages (V2 home-only)</li>
+        <li>About teaser block on /about (always use full Agent Bio)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 0.875rem; text-align: center;">
+    Generated by Optimus Prime · <a href="mailto:curtis@agenticpress.com" style="color: var(--color-text-muted);">Curtis Gould, AgenticPress</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
