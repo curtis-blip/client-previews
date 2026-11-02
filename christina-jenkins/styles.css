@@ -286,7 +286,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .path { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 520px; padding: 96px 36px; overflow: hidden; text-align: center; color: var(--paper); }
 .path:hover { text-decoration: none; }
 .path img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 800ms ease; }
-.path::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 8, 8, .66) 0%, rgba(8, 8, 8, .56) 50%, rgba(8, 8, 8, .18) 82%); }
+.path::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 8, 8, .66) 0%, rgba(8, 8, 8, .58) 50%, rgba(8, 8, 8, .5) 100%); }   /* darker lower half for the white interiors behind the buttons (2026-11-02) */
 .path .stretch:hover { text-decoration: none; }
 .path:hover img { transform: scale(1.03); }
 .path__in { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 18px; text-shadow: 0 2px 14px rgba(0, 0, 0, .4); }
@@ -1317,3 +1317,17 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 
 /* the longest hero word (Neighborhoods, Accessibility) fits a 375px phone without clipping (2026-10-28) */
 @media (max-width: 400px) { .ph h1 { font-size: 34px; letter-spacing: .03em; } }
+
+/* Community headings keep place-name pairs on one line (universal-conventions 8.11, &nbsp; from the shell), so the
+   narrow intro, town-center and question columns size their headings with the viewport, and phones take them a step down
+   (2026-11-02: "Lakewood Ranch:" and "Sarasota County" ran past their columns at 1440, 1024 and 320). */
+@media (min-width: 821px) { .cm-intro h2, .cm-why h2, .cm-faq h2 { font-size: clamp(24px, 2.35vw, 34px); } }
+@media (min-width: 821px) and (max-width: 1000px) {   /* the tightest two-column widths, just above the phone layout */
+  .cm-faq__g { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .cm-cta h2 { font-size: 30px; }
+  .cm .cards .post h3 { font-size: 16px; }
+}
+@media (max-width: 360px) {
+  .cm-intro h2, .cm-why h2, .cm-faq h2, .cm-cta h2 { font-size: 24px; }
+  .cm-hood__t h3 { font-size: 19px; }
+}
