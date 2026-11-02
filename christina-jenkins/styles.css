@@ -19,10 +19,12 @@
   --on-dark: #E4E2DC;
   --on-dark-muted: #C9C6BE;    /* light captions over photographs */
   /* the Dalton Wade palette (Curtis, 2026-10-28): every band or panel that was black is mint; the header's solid state
-     and the footer are sage. Both are light: ink on them (ink 13:1 on mint, 10.7:1 on sage; muted-2 6.9:1 and 5.7:1).
+     and the footer were sage until 2026-11-02 (now --sea, below). Both are light: ink on them (ink 13:1 on mint, 10.7:1 on sage; muted-2 6.9:1 and 5.7:1).
      --muted (4.4:1 on sage) is never used on them. --black stays for text, buttons and photo veils. */
   --mint: #CCE5DF;
-  --sage: #C0D1BA;
+  --sea: #B3D0DC;               /* "Shallow Water": the header's solid state, the phone menu, the call bar and the footer
+                                   (Christina asked for a soft beachy blue there; Curtis's pick D, 2026-11-02). Ink 10.6:1,
+                                   muted-2 5.6:1; --muted (4.3:1) is never used on it. */
   /* the button colour, from the same palette (Curtis, 2026-10-28): the outline of every button outside the header, the
      menu, the call bar and the footer, whose label stays ink (white on photos). 3.3:1 on white, 3.0 on stone,
      2.6 on mint; ink on it 5.0:1. Never text, never under white type. As an accent it
@@ -52,7 +54,7 @@
   --color-background-alt: var(--stone);
   --color-background-dark: var(--mint);
   --color-background-tint: var(--mint);
-  --color-header-footer: var(--sage);
+  --color-header-footer: var(--sea);
   --font-family-display: var(--sans);
   --font-family-body: var(--serif);
 }
@@ -96,7 +98,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- header: white over the hero photograph, then sage with ink type once the page scrolls or the menu opens ---------- */
 .hdr { position: fixed; inset: 0 0 auto 0; z-index: 50; padding: 34px 44px; color: var(--paper); background: transparent;
   transition: padding 400ms var(--ease), background-color 400ms var(--ease), color 400ms var(--ease); }
-.hdr.is-stuck { padding-block: 22px; background: var(--sage); }
+.hdr.is-stuck { padding-block: 22px; background: var(--sea); }
 .hdr.is-stuck, .hdr.menu-open, .hdr--dark { color: var(--ink); }
 /* the header's button over the photograph keeps its white hover (sage deep is for the page's buttons) */
 .hdr .btn-w { border-color: currentColor; }
@@ -156,7 +158,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .burger { display: block; z-index: 61; }
   .hdr__end .btn { display: none; }
   .nav { position: fixed; inset: 0; z-index: 58; display: flex; flex-direction: column; padding: 120px var(--side) 120px; overflow-y: auto;
-    background: var(--sage); color: var(--ink); transform: translateX(100%); visibility: hidden; transition: transform 450ms var(--ease), visibility 450ms; }
+    background: var(--sea); color: var(--ink); transform: translateX(100%); visibility: hidden; transition: transform 450ms var(--ease), visibility 450ms; }
   .nav.open { transform: none; visibility: visible; }
   .hdr.menu-open .brand, .hdr.menu-open .hdr__end { position: relative; z-index: 61; }
   .hdr.menu-open .burger span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
@@ -354,7 +356,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .cta__b { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
 
 /* ---------- footer: sage, ink type; the white Dalton Wade and Equal Housing logos drawn black (the same files) ---------- */
-.ftr { padding: 80px 0 40px; background: var(--sage); color: var(--ink); }
+.ftr { padding: 80px 0 40px; background: var(--sea); color: var(--ink); }
 .ftr__g { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 48px; }
 .ftr .brand { text-shadow: none; }
 .ftr__c address { font-size: 14px; font-style: normal; line-height: 1.9; color: var(--ink); }
@@ -435,10 +437,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   .ftr { padding-bottom: 96px; }
   .ftr__g { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .ftr__legal { grid-template-columns: minmax(0, 1fr); }
-  .callbar { position: fixed; inset: auto 0 0 0; z-index: 40; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line-tint); background: var(--sage); }
+  .callbar { position: fixed; inset: auto 0 0 0; z-index: 40; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line-tint); background: var(--sea); }
   .callbar a { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; color: var(--ink); font: 500 13px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; }
-  /* the footer's ground: Call on sage, Contact the ink button beside it */
-  .callbar__call { background: var(--sage); }
+  /* the footer's ground: Call on sea, Contact the ink button beside it */
+  .callbar__call { background: var(--sea); }
   .callbar__contact { background: var(--ink); color: var(--paper) !important; }
 }
 @media print { .callbar { display: none !important; } }
@@ -454,7 +456,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   --mist: var(--stone); --hv-accent: var(--paper); --hv-accent-dark: var(--stone); --hv-on-accent: var(--black); }
 
 /* the header on pages with no photo under it (stubs, utility pages) */
-.hdr--dark { background: var(--sage); }
+.hdr--dark { background: var(--sea); }
 
 /* ---------- shared type and grounds ---------- */
 .eyebrow { margin: 0 0 18px; font: 500 12px/1.5 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--ink); }
