@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Giarraffa Real Estate: Design Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Raleway:wght@200;300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Tokens injected from global-design.json at generation time */
+  --color-primary: #0d0d0d;
+  --color-secondary: #1a1a1a;
+  --color-accent: #bcaf8a;
+  --color-contrast: #0d0d0d;
+  --color-text-dark: #1a1a1a;
+  --color-text-muted: #666666;
+  --color-text-light: #ffffff;
+  --color-surface: #f2f1f1;
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-background-alt: #f2f1f1;
+  --color-background-dark: #0d0d0d;
+  --color-border: #dedad3;
+
+  --font-heading: 'Raleway';
+  --font-body: 'Montserrat';
+
+  --h1-size: clamp(34px,4.4vw,62px);
+  --h2-size: clamp(30px,3.3vw,46px);
+  --h3-size: clamp(22px,2vw,27px);
+  --body-size: 16px;
+  --eyebrow-size: 12.5px;
+
+  --h1-weight: 200;
+  --h2-weight: 200;
+  --h3-weight: 300;
+  --body-weight: 400;
+
+  --h1-tracking: .08em;
+  --h2-tracking: .08em;
+  --eyebrow-tracking: .24em;
+
+  --h1-transform: uppercase;
+  --h2-transform: uppercase;
+
+  --h1-line-height: 1.1;
+  --body-line-height: 1.75;
+
+  --container-width: 1320px;
+  --section-padding-y: clamp(80px,8vw,112px);
+  --container-padding-x: clamp(20px,4vw,64px);
+
+  --motion-duration-default: 400ms;
+  --motion-easing-default: cubic-bezier(.2,.7,.1,1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--color-text-dark);
+  background: var(--color-background);
+}
+
+.doc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem var(--container-padding-x);
+}
+
+.doc-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+.doc-header__eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.doc-header__title {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  color: var(--color-text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.doc-header__meta {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+section > h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  line-height: 1.2;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section > p.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 65ch;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.row__label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.row__value {
+  font-size: 0.9375rem;
+  color: var(--color-text-dark);
+}
+
+.row__demo {
+  margin-top: 0.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-text-dark);
+}
+
+.demo-h1 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  margin-top: 0.5rem;
+}
+.demo-h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  margin-top: 0.5rem;
+}
+.demo-h3 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  margin-top: 0.5rem;
+}
+.demo-eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+.demo-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line-height);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+/* Color swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+.swatch__chip {
+  height: 90px;
+  border-bottom: 1px solid var(--color-border);
+}
+.swatch__meta {
+  padding: 0.875rem 1rem;
+}
+.swatch__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.swatch__hex {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+.swatch__role {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Spacing scale */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.spacing-row__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.spacing-row__value {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+.spacing-row__bar {
+  background: var(--color-accent);
+  height: 12px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  transition: background var(--motion-duration-default) var(--motion-easing-default),
+              color var(--motion-duration-default) var(--motion-easing-default);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-accent {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Anti-pattern callouts */
+.callout {
+  background: var(--color-background-alt);
+  border-left: 4px solid var(--color-accent);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.callout__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.callout ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.callout li {
+  margin: 0.25rem 0;
+  color: var(--color-text-dark);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9375rem;
+}
+th, td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-background-alt);
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875em;
+  background: var(--color-background-alt);
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-border);
+}
+
+.note {
+  background: var(--color-background-alt);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  body { background: white; }
+  section { page-break-inside: avoid; }
+  .doc { padding: 1rem; }
+}
+
+.btn-primary,.btn-secondary,.btn-accent{background:transparent;color:#0d0d0d;border:1px solid #bcaf8a;font-weight:600;letter-spacing:.2em;font-size:12.5px;min-height:54px;display:inline-flex;align-items:center;padding:0 36px;transition:background-color 400ms var(--motion-easing-default),color 400ms var(--motion-easing-default)}
+.btn-primary:hover,.btn-secondary:hover,.btn-accent:hover{background:#bcaf8a;color:#0d0d0d}
+.btn-dark{background:#0d0d0d;padding:24px}
+.btn-dark a{color:#fff;border-color:#bcaf8a;background:transparent;display:inline-flex;align-items:center;min-height:54px;padding:0 36px;font-weight:600;letter-spacing:.2em;font-size:12.5px;text-transform:uppercase;text-decoration:none;border:1px solid #bcaf8a;transition:background-color 400ms cubic-bezier(.2,.7,.1,1),color 400ms cubic-bezier(.2,.7,.1,1)}
+.btn-dark a:hover{background:#bcaf8a;color:#0d0d0d}
+.demo-h1,.demo-h2,.demo-h3{color:#0d0d0d}
+.eyebrow-demo{font:600 12.5px/1.4 var(--font-body);letter-spacing:.24em;text-transform:uppercase;color:#726540}
+.swatch__chip{height:70px}
+.ref-list a{color:#726540}
+.chip-demo{display:grid;grid-template-columns:repeat(4,86px);gap:10px;margin-top:.75rem}
+.chip-demo div{aspect-ratio:1/1;border:1px solid #bcaf8a;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:11px;color:#666}
+.chip-demo strong{font:300 20px/1.1 var(--font-heading);letter-spacing:.04em;color:#0d0d0d;display:block}
+.tabs-demo{display:flex;gap:26px;border-bottom:1px solid #dedad3;margin-top:.75rem}
+.tabs-demo span{padding:12px 0;font:500 12px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#666}
+.tabs-demo span.on{color:#0d0d0d;border-bottom:2px solid #bcaf8a;margin-bottom:-1px}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:.5rem}.spacing-row{grid-template-columns:60px 90px 1fr}}
+</style>
+</head>
+<body>
+<div class="doc">
+  <header class="doc-header">
+    <div class="doc-header__eyebrow">Design Rules · Handoff Document</div>
+    <h1 class="doc-header__title">Team Giarraffa Real Estate</h1>
+    <p class="doc-header__meta">teamgiarraffa.com · Louis and Rhonda Giarraffa · Century 21 Results, Cumming, GA · For Jeff, Kersey, and any builder picking up this project · Generated 2026-11-04 · Look: homeonlakelanier.com as live on 2026-11-03 (Editorial Luxe)</p>
+  </header>
+
+  <section>
+    <h2>How to Read This Document</h2>
+    <p class="section-intro">Every rule below is rendered in the fonts, colors and sizes the site uses. The values come from the shipped stylesheet, <code>mockups/styles.css</code>, and the 29 mockup pages (01 to 29) in <code>mockups/</code>.</p>
+    <div class="note"><strong>The stylesheet wins.</strong> <code>global-design.json</code> is a short brief (palette, fonts, buttons) and the early design notes differ from what shipped. Where they disagree, <code>styles.css</code> is right; the notes below say where it mattered. There is no blue anywhere on this site. If a mockup and this document disagree, the mockup is the source of truth: raise it with Curtis before building.</div>
+    <div class="callout">
+      <div class="callout__title">Reference Pages (approved and locked 2026-11-04, Curtis)</div>
+      <ul>
+        <li><code>01-home.html</code> is the reference for the header, hero, tabbed area directory, section rhythm and footer.</li>
+        <li><code>02-about.html</code> is the reference for interior page heads, bio and text-and-photo bands.</li>
+        <li><code>05-homes-for-sale-cumming-ga.html</code> is the reference for every community page: sticky chapter tabs, square stat chips, Showcase IDX zones.</li>
+        <li>Locks live in <code>mockups/_locks/</code> and <code>mockups/_approved.json</code>. Build these three first and match them exactly; every other page derives from them.</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <div class="callout__title">Open Compliance Item</div>
+      <ul><li>The firm name and firm phone prominence (Georgia Rule 520-1-.09(7)) still needs the office's Century 21 Results logo and phone number.</li></ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="section-intro"><strong>Raleway</strong> for headings (always uppercase, weight 200 to 400) and <strong>Montserrat</strong> for body and labels. No third family. Headings use <code>text-wrap: balance</code>.</p>
+    <div class="row"><div class="row__label">H1 (page titles)</div><div class="row__value">Raleway · 200 · clamp(34px,4.4vw,62px) · tracking .08em · uppercase · line-height 1.1. The home hero is larger: clamp(42px,5.3vw,76px), tracking .07em, line-height 1.06.<div class="demo-h1">Live Life Loud in Forsyth&nbsp;County</div></div></div>
+    <div class="row"><div class="row__label">H2 (section heads)</div><div class="row__value">Raleway · 200 · clamp(30px,3.3vw,46px) (.h2 class; bare h2 is 44px max) · tracking .08em · uppercase · line-height 1.18. Directory panel heads: clamp(25px,2.7vw,36px).<div class="demo-h2">Forsyth&nbsp;County, Area by Area</div></div></div>
+    <div class="row"><div class="row__label">H3 (cards, tiles)</div><div class="row__value">Raleway · 300 to 400 · 22px to 34px by block · tracking .08em to .1em · uppercase. Area tile names 27px/300; card titles 22px/400; directory panel head 34px/300.<div class="demo-h3" style="text-transform:uppercase;letter-spacing:.1em">Explore the Lifestyle</div></div></div>
+    <div class="row"><div class="row__label">Eyebrow</div><div class="row__value">Montserrat · 600 · 12.5px · tracking .24em · uppercase · Gold Ink (#726540). On centered heads it is flanked by two 56px gold rules; on a photo it is white.<div class="eyebrow-demo" style="margin-top:.5rem">Forsyth County Real Estate · Team Giarraffa</div></div></div>
+    <div class="row"><div class="row__label">Body</div><div class="row__value">Montserrat · 400 · 16px · line-height 1.75. Lede paragraphs 17px, max 640px.<div class="demo-body">Louis and Rhonda Giarraffa help buyers and sellers across Forsyth County and the north Atlanta suburbs, from Cumming City Center to the Chattahoochee.</div></div></div>
+    <div class="callout"><div class="callout__title">Typography Hard Rules</div><ul>
+      <li>Load Raleway (200 to 600) and Montserrat (400 to 700) from Google Fonts on every page; never a system face as primary.</li>
+      <li>Headings are uppercase at light weights (200 to 400). Never bold a heading; never mixed case.</li>
+      <li>Headings keep pairs together: join real-estate terms, place names and brand names with non-breaking spaces (<code>Forsyth&amp;nbsp;County</code>, <code>Cumming,&amp;nbsp;GA</code>) so no heading ends on a lone last word. Apply it to every heading you build, plus <code>text-wrap: balance</code>.</li>
+      <li>"Chattahoochee River Club" is written <code>Chattahoochee&amp;nbsp;&lt;wbr&gt;River&amp;nbsp;Club</code>: it may break only before "River".</li>
+      <li>No em or en dashes in any copy. No italic accent spans inside H1s.</li></ul></div>
+  </section>
+
+  <section>
+    <h2>Color Palette</h2>
+    <p class="section-intro">The live gold of the lake site, <strong>#bcaf8a</strong>, on white, light gray and near-black. Gold is trim and accent, not a fill, except the button hover. <strong>There is no blue.</strong> (The dark navy <code>#0b2233</code> and <code>rgba(6,20,32,...)</code> in the stylesheet are only the photo fallback color and the hero scrim behind photographs; do not use them as design colors.)</p>
+    <div class="swatches"><div class="swatch"><div class="swatch__chip" style="background:#bcaf8a;"></div><div class="swatch__meta"><div class="swatch__name">Gold</div><div class="swatch__hex">#bcaf8a</div><div class="swatch__role">Brand gold: button trim and hover fill, rules, active tab underline, square chip border, eyebrow flanking lines. Never small text on white.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#a59a7a;"></div><div class="swatch__meta"><div class="swatch__name">Gold Deep</div><div class="swatch__hex">#a59a7a</div><div class="swatch__role">Gold on dark grounds (--gold-deep, used by the on-ink accent).</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#726540;"></div><div class="swatch__meta"><div class="swatch__name">Gold Ink</div><div class="swatch__hex">#726540</div><div class="swatch__role">Small gold text and links on light grounds (eyebrows, link color, chip labels). Passes AA; plain gold does not.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#1a1a1a;"></div><div class="swatch__meta"><div class="swatch__name">Text</div><div class="swatch__hex">#1a1a1a</div><div class="swatch__role">Body copy on light grounds.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#666666;"></div><div class="swatch__meta"><div class="swatch__name">Muted</div><div class="swatch__hex">#666666</div><div class="swatch__role">Captions, inactive tabs, supporting text.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#0d0d0d;"></div><div class="swatch__meta"><div class="swatch__name">Ink</div><div class="swatch__hex">#0d0d0d</div><div class="swatch__role">Headings, footer ground, dark bands, button text.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#f2f1f1;"></div><div class="swatch__meta"><div class="swatch__name">Gray</div><div class="swatch__hex">#f2f1f1</div><div class="swatch__role">Alternate section ground (Meet the team, Life, open directory panel).</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#ffffff;"></div><div class="swatch__meta"><div class="swatch__name">White</div><div class="swatch__hex">#ffffff</div><div class="swatch__role">Default ground.</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#dedad3;"></div><div class="swatch__meta"><div class="swatch__name">Line</div><div class="swatch__hex">#dedad3</div><div class="swatch__role">Hairlines and dividers (--line).</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background:#e6dfca;"></div><div class="swatch__meta"><div class="swatch__name">Gold Light</div><div class="swatch__hex">#e6dfca</div><div class="swatch__role">Light gold tint (--gold-light), sparing.</div></div></div></div>
+    <div class="callout"><div class="callout__title">Color Hard Rules</div><ul>
+      <li>Small gold text on a light ground is <strong>#726540</strong>, never #bcaf8a (fails contrast). Links are #726540 and turn #0d0d0d on hover.</li>
+      <li>Grounds alternate white, #f2f1f1 and #0d0d0d. No two dark bands in a row.</li>
+      <li>Text is #1a1a1a with #666666 for secondary. Use only the colors above.</li>
+      <li>Where <code>global-design.json</code> and <code>styles.css</code> disagree, the stylesheet wins (the JSON predates the final tokens and omits Gold Light, Line and the scrim).</li></ul></div>
+  </section>
+
+  <section>
+    <h2>Spacing and Layout</h2>
+    <p class="section-intro">Content width <strong>1320px</strong>, header width 1520px, gutter clamp(20px,4vw,64px), section padding clamp(80px,8vw,112px). Mobile first at breakpoints listed in the Mobile section.</p>
+    <div class="spacing-scale"><div class="spacing-row"><span class="spacing-row__name">gutter</span><span class="spacing-row__value">clamp(20px,4vw,64px)</span><div class="spacing-row__bar" style="width:64px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">section-y</span><span class="spacing-row__value">clamp(80px,8vw,112px)</span><div class="spacing-row__bar" style="width:112px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">wrap</span><span class="spacing-row__value">1320px max</span><div class="spacing-row__bar" style="width:320px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">header wrap</span><span class="spacing-row__value">1520px max</span><div class="spacing-row__bar" style="width:360px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">card gap</span><span class="spacing-row__value">28px to 32px</span><div class="spacing-row__bar" style="width:32px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">tile gap (chips)</span><span class="spacing-row__value">18px</span><div class="spacing-row__bar" style="width:18px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">tap target</span><span class="spacing-row__value">44px min</span><div class="spacing-row__bar" style="width:44px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">button height</span><span class="spacing-row__value">54px (nav CTA 46px)</span><div class="spacing-row__bar" style="width:54px;"></div></div></div>
+    <div class="callout"><div class="callout__title">Spacing Hard Rules</div><ul>
+      <li>Every interactive target is at least 44px tall (links in lists, tabs, chips); buttons are 54px.</li>
+      <li>Do not tighten section padding without Curtis's direction. The gutter is the same in every section.</li>
+      <li>Border radius is 0 on cards, buttons, images and tabs. The only rounded shapes are the pill search bars and tag pills in the IDX placeholder zones.</li></ul></div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <p class="section-intro">Every button is <strong>transparent with a gold trim</strong> and fills gold on hover. Montserrat 600, 12.5px, tracking .2em, uppercase, 54px tall, 36px side padding, 400ms ease <code>cubic-bezier(.2,.7,.1,1)</code>.</p>
+    <div class="row"><div class="row__label">On light</div><div class="row__value">Ink text, 1px gold border; hover fills gold, text stays ink.<div class="btn-row"><a href="#" class="btn-primary">Schedule a Consultation</a></div></div></div>
+    <div class="row"><div class="row__label">On a photo or dark band</div><div class="row__value">White text (<code>.btn--light</code>), same gold border and hover.<div class="btn-dark" style="margin-top:.75rem"><a href="#">Browse Listings</a></div></div></div>
+    <div class="callout"><div class="callout__title">Button Hard Rules</div><ul>
+      <li>No solid-fill buttons at rest, no blue, no rounded corners. One style for primary and secondary.</li>
+      <li>At most two buttons in a hero. Stack them vertically below 760px.</li>
+      <li>Text links (<code>.tlink</code>) are Montserrat 600, 12.5px, tracking .24em, uppercase, underlined on hover only.</li>
+      <li>Keep the focus ring: 2px Gold Ink outline, 3px offset, on every focusable element.</li></ul></div>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <table><thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead><tbody>
+      <tr><td><code>--ease</code></td><td>cubic-bezier(.2,.7,.1,1)</td><td>All transitions</td></tr>
+      <tr><td>Tab and link color</td><td>240ms to 300ms</td><td>Directory tabs, dropdown fade</td></tr>
+      <tr><td>Button hover</td><td>400ms</td><td>Fill and color</td></tr>
+      <tr><td><code>--slow</code></td><td>900ms</td><td>Photo zoom on hover (maximum scale 1.04)</td></tr></tbody></table>
+    <div class="callout"><div class="callout__title">Motion Hard Rules</div><ul><li>No bounce, no spring. Respect <code>prefers-reduced-motion</code> (the stylesheet already turns zoom and fades off).</li></ul></div>
+  </section>
+
+  <section>
+    <h2>Patterns a Builder Needs</h2>
+    <table><thead><tr><th>Pattern</th><th>Rule</th></tr></thead><tbody>
+      <tr><td>Header</td><td>Fixed and transparent over the hero, logo in the white version; once stuck it gets a light ground and the dark logo. Dropdowns open on hover and focus. The nav carries Lake Lanier Homes to homeonlakelanier.com. Phone and email sit above the nav on desktop only.</td></tr>
+      <tr><td>Area directory (home and hub)</td><td>A tabbed directory of <strong>six areas</strong>. On the home page the tabs are text; on the hub they are photo tiles (3 columns) that open that area's neighborhoods in a gray panel below. One panel open at a time; rows are 56px with a gold arrow.</td></tr>
+      <tr><td>Community pages</td><td>Sticky <strong>chapter tabs</strong> pinned under the sticky header (top 120px desktop, 112px at 1279px, 88px at 760px). Tabs are Raleway 14px/500, gold underline on the active one. The tab row scrolls sideways on phones; chapters become stacked sections on small screens.</td></tr>
+      <tr><td>Stat chips</td><td>Four <strong>square chips</strong> (<code>aspect-ratio: 1/1</code>), 1px gold border, transparent ground, centered. Label in Gold Ink caps, figure in Raleway 300. Two across at 760px and below; figure size steps down at 980px, 760px and 360px.<div class="chip-demo"><div><strong>$00</strong>Label</div><div><strong>00</strong>Label</div><div><strong>00</strong>Label</div><div><strong>00</strong>Label</div></div></td></tr>
+      <tr><td>Heading pairs</td><td>Non-breaking spaces on place names and real-estate terms; "Chattahoochee River Club" breaks only before "River" (see Typography). The tab row look:<div class="tabs-demo"><span class="on">Overview</span><span>Homes</span><span>Schools</span><span>Lifestyle</span></div></td></tr>
+      <tr><td>Footer</td><td>Identical on every page: black ground, logo, line, three link columns with gold caps headings, the legal row with the brokerage line, Equal Housing and MLS notes. Build it once as a template part; do not vary it by page.</td></tr>
+      <tr><td>Showcase IDX zones</td><td>Labelled placeholders ("Showcase IDX" tag plus a note naming what goes there). Provider: Showcase IDX on a second website, <strong>not provisioned</strong>. Builders leave the labelled zone in place; the Showcase shortcode is placed when the account exists. Nothing links off Home Search or Featured Listings.</td></tr>
+      <tr><td>Images</td><td>Real photography, no credits shown, no captions. Files marked <code>STANDIN-</code> in <code>image-manifest.md</code> are house-library stand-ins; replace them when the client sends a fit, and keep the alt text. Hero object-position per page is in the table below.</td></tr>
+      <tr><td>External links</td><td>Primary sources only (county, city, state, school district, park owners). New tab, <code>rel="noopener"</code>, an anchor that names the destination. Never in the home page body, never on Home Search or Featured Listings.</td></tr></tbody></table>
+  </section>
+
+  <section>
+    <h2>Mobile</h2>
+    <p class="section-intro">The mockups are the mobile spec. Open any page at 375px, or use <code>mockups/mobile.html</code>, which shows every page at phone width. Definition of done: the built page matches the mockup at 375px.</p>
+    
+
+<p>The mockups are the mobile spec: open any page at 375px (<code>mockups/mobile.html</code> shows every page at phone width). This section translates the stylesheet's responsive rules into build settings. Definition of done: the built page matches the mockup at 375px.</p>
+<h3>Type scale: phone vs desktop</h3>
+<p>The phone value is each clamp() lower bound. Set these as the mobile font sizes in Spectra.</p>
+<table><tr><th>Selector</th><th>Phone</th><th>Desktop</th></tr>
+<tr><td><code>.h2</code></td><td>30px</td><td>46px</td></tr>
+<tr><td><code>.hero h1</code></td><td>42px</td><td>76px</td></tr>
+<tr><td><code>.dir__head h2</code></td><td>25px</td><td>36px</td></tr>
+<tr><td><code>.guide h3</code></td><td>24px</td><td>32px</td></tr>
+<tr><td><code>.phero h1</code></td><td>34px</td><td>62px</td></tr>
+<tr><td><code>h1</code></td><td>34px</td><td>62px</td></tr>
+<tr><td><code>h2</code></td><td>30px</td><td>44px</td></tr>
+<tr><td><code>.cx-card p</code></td><td>17px</td><td>19px</td></tr>
+<tr><td><code>.ph__sub</code></td><td>17px</td><td>20px</td></tr>
+<tr><td><code>.lh__sub</code></td><td>17px</td><td>20px</td></tr>
+<tr><td><code>.step__n</code></td><td>64px</td><td>116px</td></tr>
+<tr><td><code>.statement blockquote</code></td><td>32px</td><td>62px</td></tr>
+<tr><td><code>.faq summary</code></td><td>19px</td><td>23px</td></tr>
+<tr><td><code>.facts dd strong</code></td><td>30px</td><td>44px</td></tr>
+<tr><td><code>.kf__fig</code></td><td>32px</td><td>42px</td></tr>
+<tr><td><code>.chapter__i</code></td><td>54px</td><td>84px</td></tr>
+<tr><td><code>.ct__body h2</code></td><td>28px</td><td>44px</td></tr>
+<tr><td><code>.faq-wrap__head h2,.res__grid h2</code></td><td>25px</td><td>36px</td></tr>
+<tr><td><code>.smap__group h2</code></td><td>26px</td><td>36px</td></tr>
+<tr><td><code>.legal__body h2</code></td><td>26px</td><td>36px</td></tr>
+<tr><td><code>.legal__body h3</code></td><td>20px</td><td>24px</td></tr>
+</table>
+<h3>At and below 1279px</h3><ul>
+<li><code>.nav</code> hidden</li>
+<li><code>.hdr__top</code> hidden</li>
+<li><code>.nav</code> stacks vertically</li>
+<li><code>.nav__list</code> stacks vertically</li>
+<li><code>.nav__link,.nav__toggle</code> type drops to 14px</li>
+<li><code>.nav__sub</code> hidden</li>
+</ul>
+<h3>At and below 1024px</h3><ul>
+<li><code>.dir__tabs::-webkit-scrollbar</code> hidden</li>
+<li><code>.ct--a .ct__panel, .ct--b .ct__layout</code> stacks to one column</li>
+<li><code>.plate</code> stacks to one column</li>
+<li><code>.plate__media</code> hidden</li>
+<li><code>.contact</code> stacks to one column</li>
+</ul>
+<h3>At and below 980px</h3><ul>
+<li><code>.facts dd strong</code> type drops to 20px</li>
+<li><code>.faq-wrap,.res__grid</code> stacks to one column</li>
+</ul>
+<h3>At and below 900px</h3><ul>
+<li><code>.intro2, .faq-wrap, .res__grid</code> stacks to one column</li>
+<li><code>.bleed, .bleed--tall</code> stacks to one column</li>
+<li><code>.tiles, .tiles--2</code> stacks to one column</li>
+<li><code>.res ul</code> stacks to one column</li>
+<li><code>.intro2</code> stacks to one column</li>
+<li><code>.intro2--split, .kf--lift</code> stacks to one column</li>
+<li><code>.kf__stats</code> stacks to one column</li>
+<li><code>.legal, .smap__group</code> stacks to one column</li>
+<li><code>.legal__toc</code> hidden</li>
+</ul>
+<h3>At and below 782px</h3><ul>
+<li><code>.ap-form</code> stacks vertically</li>
+</ul>
+<h3>At and below 760px</h3><ul>
+<li><code>.hero__sub</code> type drops to 16.5px</li>
+<li><code>.acts</code> stacks vertically</li>
+<li><code>.dir__panel h3</code> type drops to 28px</li>
+<li><code>.dir__name</code> type drops to 21px</li>
+<li><code>.dir__line</code> hidden</li>
+<li><code>.dir__head</code> stacks vertically</li>
+<li><code>.phero__in</code> stacks vertically</li>
+<li><code>.types__list</code> stacks to one column</li>
+<li><code>.ftr__cols</code> stacks to one column</li>
+<li><code>.ftr .legal</code> stacks vertically</li>
+<li><code>.util</code> stacks vertically</li>
+<li><code>.hdr__top</code> hidden</li>
+<li><code>.ct--a .ct__tab</code> type drops to 13px</li>
+<li><code>.facts dd strong</code> type drops to 19px</li>
+<li><code>.facts dd</code> type drops to 13px</li>
+<li><code>.qs__body h3</code> type drops to 19px</li>
+</ul>
+<h3>At and below 640px</h3><ul>
+<li><code>.ph__eyebrow</code> type drops to 12px</li>
+<li><code>.form__grid</code> stacks to one column</li>
+<li><code>.daily</code> stacks to one column</li>
+</ul>
+<h3>At and below 600px</h3><ul>
+<li><code>.smap__list</code> stacks to one column</li>
+</ul>
+<h3>At and below 480px</h3><ul>
+<li><code>.kf--lift .kf__drives</code> stacks to one column</li>
+<li><code>.qs</code> stacks to one column</li>
+</ul>
+<h3>At and below 360px</h3><ul>
+<li><code>h2,.cx-card h2</code> type drops to 21px</li>
+<li><code>.facts dd strong</code> type drops to 16px</li>
+<li><code>.idx__code</code> type drops to 12px</li>
+</ul>
+
+    <h3>Hero focal point per page</h3>
+    <p class="section-intro">Set the hero photo's object position so the named part survives the tall phone crop. Values are the mockups' own.</p>
+    <table><thead><tr><th>Page</th><th>object-position</th><th>Must survive the crop</th></tr></thead><tbody><tr><td>Home</td><td><code>50% 50% (default)</code></td><td>Cumming City Center aerial: keep the green lawns and storefront band in frame; the centered headline sits over the middle.</td></tr><tr><td>Communities hub</td><td><code>50% 72%</code></td><td>Sawnee Mountain pasture: the lower pasture and the ridge line must survive the crop.</td></tr><tr><td>About</td><td><code>50% 30%</code></td><td>Keep the people near the upper third.</td></tr><tr><td>Forsyth County</td><td><code>50% 55%</code></td><td></td></tr><tr><td>Cumming</td><td><code>50% 45%</code></td><td></td></tr><tr><td>New Construction</td><td><code>50% 50%</code></td><td></td></tr><tr><td>Land</td><td><code>50% 60%</code></td><td></td></tr><tr><td>Townhomes</td><td><code>50% 55%</code></td><td></td></tr><tr><td>Buying</td><td><code>50% 40%</code></td><td></td></tr><tr><td>First-time</td><td><code>50% 60%</code></td><td></td></tr><tr><td>Property tax</td><td><code>50% 40%</code></td><td></td></tr><tr><td>Selling</td><td><code>50% 50%</code></td><td></td></tr><tr><td>Home Value</td><td><code>50% 55%</code></td><td></td></tr><tr><td>Reviews</td><td><code>50% 40%</code></td><td></td></tr><tr><td>Blog</td><td><code>50% 45%</code></td><td></td></tr><tr><td>Contact</td><td><code>50% 45%</code></td><td></td></tr><tr><td>Polo Fields, Chattahoochee River Club, Vickery, Olde Atlanta Club, St. Marlo, Laurel Springs</td><td><code>50% 50% to 60% (set per page; see each mockup's inline object-position)</code></td><td>St. Marlo and Vickery 55%, Laurel Springs 50%, Polo Fields 60%, Chattahoochee River Club 55%, Vickery 55%, Olde Atlanta Club 55%.</td></tr><tr><td>Home Search, Featured Listings, Privacy, Terms, Sitemap, MLS Disclaimer, Accessibility</td><td><code>no hero photo</code></td><td>Plain page heads.</td></tr></tbody></table>
+    <h3>Deliberate mobile-only departures</h3>
+    <ul style="margin-left:1.25rem">
+      <li>Header: the desktop nav and the phone and email strip hide below 1280px; a burger menu replaces them, and a fixed two-button call bar (<code>.callbar</code>) pins to the bottom of the phone screen.</li>
+      <li>Directory tab row scrolls sideways below 1280px; hub tiles stack one per row and their one-line descriptions hide below 760px.</li>
+      <li>Community chapters: the fixed side plate and its sticky photo hide at 1024px; each chapter shows its own 4:3 photo instead.</li>
+      <li>Parallax photo bands (<code>background-attachment: fixed</code>) become normal scroll on phones.</li>
+      <li>Footer columns stack to one column at 760px. The legal table of contents hides below 900px.</li></ul>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns Summary</h2>
+    <div class="callout"><div class="callout__title">Never Do These</div><ul>
+      <li>Blue anywhere, or gold #bcaf8a as small text on white</li>
+      <li>Solid-fill buttons at rest, rounded buttons, cards or images</li>
+      <li>Em or en dashes in copy; emojis as icons (inline SVG only)</li>
+      <li>A third font family, bold or mixed-case headings</li>
+      <li>A heading ending in a lone last word; breaking "Chattahoochee River Club" anywhere but before "River"</li>
+      <li>A different footer on any page</li>
+      <li>Visible photo credits or captions; outside links in the home page body</li>
+      <li>Rebuilding a locked page (home, About, Cumming) instead of matching it</li>
+      <li>Pasting a raw Showcase shortcode outside its labelled, styled zone</li></ul></div>
+  </section>
+
+  <footer style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--color-border);color:var(--color-text-muted);font-size:.875rem;text-align:center;">
+    Generated by Optimus Prime · Curtis Gould, AgenticPress
+  </footer>
+
+</div>
+</body>
+</html>
