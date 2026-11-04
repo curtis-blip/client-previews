@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile view · Team Giarraffa · teamgiarraffa.com</title>
+<style>
+body{margin:0;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;background:#181818;color:#ddd}
+header{display:flex;align-items:center;gap:14px;padding:14px 20px;position:sticky;top:0;background:#181818;z-index:2;border-bottom:1px solid #2a2a2a}
+h1{font-size:15px;font-weight:600;margin:0}
+h1 small{color:#888;font-weight:400}
+.w{display:flex;gap:4px;margin-left:auto}
+.w button{font:inherit;font-size:12px;padding:6px 12px;border-radius:5px;border:1px solid #3a3a3a;background:transparent;color:#ccc;cursor:pointer}
+.w button.on{background:#c9a35a;border-color:#c9a35a;color:#161616}
+.row{display:flex;gap:24px;overflow-x:auto;padding:22px;align-items:flex-start}
+figure{margin:0;flex:0 0 auto}
+figcaption{display:flex;justify-content:space-between;gap:10px;padding:0 2px 8px;color:#aaa}
+figcaption a{color:#7ab8ff;text-decoration:none}
+iframe{border:0;background:#fff;width:var(--fw,375px);height:74vh;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 14px 40px rgba(0,0,0,.5)}
+.single .row{justify-content:center}
+.single iframe{height:84vh}
+</style>
+</head>
+<body>
+<header>
+  <h1>Team Giarraffa · teamgiarraffa.com <small>· mobile view · the same live pages at phone width</small></h1>
+  <span class="w"><button data-w="375px" class="on">375</button><button data-w="768px">768</button></span>
+</header>
+<div class="row" id="row"></div>
+<script>
+var PAGES = [["01-home.html", "Home"], ["02-about.html", "About"], ["03-communities.html", "Communities"], ["04-homes-for-sale-forsyth-county-ga.html", "Homes For Sale Forsyth County Ga"], ["05-homes-for-sale-cumming-ga.html", "Homes For Sale Cumming Ga"], ["06-home-search.html", "Home Search"], ["07-featured-listings.html", "Featured Listings"], ["08-new-construction-homes-cumming-ga.html", "New Construction Homes Cumming Ga"], ["09-land-for-sale-forsyth-county-ga.html", "Land For Sale Forsyth County Ga"], ["10-townhomes-for-sale-cumming-ga.html", "Townhomes For Sale Cumming Ga"], ["11-buying-a-house-in-georgia.html", "Buying A House In Georgia"], ["12-first-time-home-buyer-programs-georgia.html", "First Time Home Buyer Programs Georgia"], ["13-forsyth-county-property-tax.html", "Forsyth County Property Tax"], ["14-selling-a-house-in-georgia.html", "Selling A House In Georgia"], ["15-home-value.html", "Home Value"], ["16-reviews.html", "Reviews"], ["17-blog.html", "Blog"], ["18-contact.html", "Contact"], ["19-privacy.html", "Privacy"], ["20-terms.html", "Community: Terms"], ["21-sitemap.html", "Community: Sitemap"], ["22-mls-disclaimer.html", "Community: Mls Disclaimer"], ["23-accessibility.html", "Community: Accessibility"], ["24-homes-for-sale-polo-fields-cumming-ga.html", "Community: Homes For Sale Polo Fields Cumming Ga"], ["25-homes-for-sale-st-marlo-duluth-ga.html", "Community: Homes For Sale St Marlo Duluth Ga"], ["26-homes-for-sale-laurel-springs-suwanee-ga.html", "Community: Homes For Sale Laurel Springs Suwanee Ga"], ["27-homes-for-sale-chattahoochee-river-club-cumming-ga.html", "Community: Homes For Sale Chattahoochee River Club Cumming Ga"], ["28-homes-for-sale-vickery-cumming-ga.html", "Community: Homes For Sale Vickery Cumming Ga"], ["29-homes-for-sale-olde-atlanta-club-suwanee-ga.html", "Community: Homes For Sale Olde Atlanta Club Suwanee Ga"]];
+var q = new URLSearchParams(location.search).get("page");
+var list = q ? PAGES.filter(function(p){ return p[0] === q; }) : PAGES;
+if (q) document.body.classList.add("single");
+var row = document.getElementById("row");
+list.forEach(function(p){
+  var f = document.createElement("figure");
+  f.innerHTML = '<figcaption><span>' + p[1] + '</span>' +
+    '<a href="' + p[0] + '">open full page</a></figcaption>' +
+    '<iframe loading="lazy" src="' + p[0] + '" title="' + p[1] + '"></iframe>';
+  row.appendChild(f);
+});
+document.querySelectorAll(".w button").forEach(function(b){
+  b.addEventListener("click", function(){
+    document.documentElement.style.setProperty("--fw", b.dataset.w);
+    document.querySelectorAll(".w button").forEach(function(o){
+      o.classList.toggle("on", o === b); });
+  });
+});
+</script>
+</body>
+</html>
