@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vantegic home page, search overlay options</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#a90606; --red-lt:#d81f27; --ink:#0a0a0a; --grey:#565656;
+  --off:#f7f7f5; --white:#fff;
+  --hero:url('https://josemedinastg.wpenginepowered.com/wp-content/uploads/2026/08/colorado-springs-hd.jpg');
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--off)}
+.lab{background:var(--ink);color:#fff;padding:14px 28px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.lab span{color:var(--red-lt)}
+.note{background:#fff;padding:14px 28px;font-size:14px;color:var(--grey);border-bottom:1px solid #e4e4e0}
+.hero{position:relative;min-height:460px;background:var(--hero) center/cover;display:flex;align-items:center;overflow:visible}
+.hero::before{content:'';position:absolute;inset:0;background:rgba(10,10,10,.65)}
+.hero .in{position:relative;max-width:1200px;margin:0 auto;padding:70px 40px 90px;width:100%}
+.eyebrow{color:var(--red-lt);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin:0 0 14px}
+h1{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;color:#fff;font-size:54px;line-height:1.05;margin:0 0 18px;max-width:16ch}
+.sub{color:rgba(255,255,255,.86);max-width:56ch;line-height:1.6;margin:0 0 26px;font-size:16px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:14px 26px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--red);background:var(--red);color:#fff}
+.btn.sec{background:transparent;border-color:#fff;color:#fff}
+.next{background:#fff;padding:120px 40px 80px;text-align:center}
+.next h2{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:32px;margin:0 0 10px}
+.next p{color:var(--grey);margin:0}
+/* the search bar itself */
+.sb{display:flex;gap:0;align-items:stretch;background:#fff;width:100%}
+.sb input{flex:1;border:1px solid #dcdcd8;border-right:0;padding:16px 18px;font-size:15px;font-family:inherit;outline:0;min-width:0}
+.sb .f{border:1px solid #dcdcd8;border-right:0;background:#fff;padding:16px 22px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:var(--ink)}
+.sb .go{border:1px solid var(--red);background:var(--red);color:#fff;padding:16px 30px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+/* ---- A: floating card, straddles the seam ---- */
+.A .wrap{position:relative;max-width:1120px;margin:-46px auto -46px;padding:0 40px;z-index:5}
+.A .card{background:#fff;padding:26px;box-shadow:0 26px 60px rgba(10,10,10,.28)}
+.A .cap{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin:0 0 14px}
+/* ---- B: full bleed dark band ---- */
+.B .wrap{position:relative;margin:-38px 0 -38px;z-index:5;background:rgba(10,10,10,.92);border-top:3px solid var(--red);padding:24px 40px}
+.B .inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:22px}
+.B .lbl{color:#fff;font-family:Anton,sans-serif;text-transform:uppercase;font-size:17px;white-space:nowrap;letter-spacing:.02em}
+/* ---- C: deep inset card, bigger overlap ---- */
+.C .wrap{position:relative;max-width:1000px;margin:-86px auto -56px;padding:0 40px;z-index:5}
+.C .card{background:#fff;padding:34px;border-top:4px solid var(--red);box-shadow:0 34px 70px rgba(10,10,10,.34)}
+.C .cap{font-family:Anton,sans-serif;text-transform:uppercase;font-size:22px;margin:0 0 16px;text-align:center}
+@media(max-width:820px){
+ h1{font-size:34px}.hero .in{padding:50px 24px 80px}
+ .sb{flex-wrap:wrap}.sb input{flex:1 0 100%;border-right:1px solid #dcdcd8;border-bottom:0}
+ .sb .f{flex:1;border-bottom:1px solid #dcdcd8}.sb .go{flex:1 0 100%}
+ .A .wrap,.C .wrap{padding:0 18px}
+ .B .inner{flex-direction:column;align-items:stretch;gap:12px}
+}
+</style></head><body>
+
+<div class="lab">Option <span>A</span> &nbsp;·&nbsp; Floating white card, straddles the seam evenly</div>
+<div class="note">Search sits half in the hero, half in the section below. Lightest touch, keeps the hero photo readable. Overlap 46px each side.</div>
+<section class="A">
+  <div class="hero"><div class="in">
+    <p class="eyebrow">Colorado Springs Realtor · Top 1% Producer</p>
+    <h1>Your Advantage In Colorado Springs Real Estate.</h1>
+    <p class="sub">Two decades in the Pikes Peak market, more than 1,200 families guided home, and a Top 1% track record.</p>
+    <div class="btns"><a class="btn" href="#">Search Colorado Springs Homes</a><a class="btn sec" href="#">Get Your Home Value</a></div>
+  </div></div>
+  <div class="wrap"><div class="card">
+    <p class="cap">Find your home</p>
+    <div class="sb"><input placeholder="Enter a location or keyword"><div class="f">Price</div><div class="f">Beds</div><div class="f">Baths</div><div class="go">Search</div></div>
+  </div></div>
+  <div class="next"><h2>Colorado Springs Homes For Sale</h2><p>Live listings appear here.</p></div>
+</section>
+
+<div class="lab">Option <span>B</span> &nbsp;·&nbsp; Full bleed dark band with a red top rule</div>
+<div class="note">Edge to edge, heavier, reads as a deliberate tool bar. Ties to the crimson brand line. Overlap 38px each side.</div>
+<section class="B">
+  <div class="hero"><div class="in">
+    <p class="eyebrow">Colorado Springs Realtor · Top 1% Producer</p>
+    <h1>Your Advantage In Colorado Springs Real Estate.</h1>
+    <p class="sub">Two decades in the Pikes Peak market, more than 1,200 families guided home, and a Top 1% track record.</p>
+    <div class="btns"><a class="btn" href="#">Search Colorado Springs Homes</a><a class="btn sec" href="#">Get Your Home Value</a></div>
+  </div></div>
+  <div class="wrap"><div class="inner">
+    <div class="lbl">Start Your Search</div>
+    <div class="sb"><input placeholder="Enter a location or keyword"><div class="f">Price</div><div class="f">Beds</div><div class="f">Baths</div><div class="go">Search</div></div>
+  </div></div>
+  <div class="next"><h2>Colorado Springs Homes For Sale</h2><p>Live listings appear here.</p></div>
+</section>
+
+<div class="lab">Option <span>C</span> &nbsp;·&nbsp; Deep inset card, sits mostly in the hero</div>
+<div class="note">Narrower and pulled higher, so the search is the hero's focal point. Strongest "search front and centre". Overlap 86px up, 56px down.</div>
+<section class="C">
+  <div class="hero"><div class="in">
+    <p class="eyebrow">Colorado Springs Realtor · Top 1% Producer</p>
+    <h1>Your Advantage In Colorado Springs Real Estate.</h1>
+    <p class="sub">Two decades in the Pikes Peak market, more than 1,200 families guided home, and a Top 1% track record.</p>
+    <div class="btns"><a class="btn" href="#">Search Colorado Springs Homes</a><a class="btn sec" href="#">Get Your Home Value</a></div>
+  </div></div>
+  <div class="wrap"><div class="card">
+    <p class="cap">Search Every Listing In The Pikes Peak MLS</p>
+    <div class="sb"><input placeholder="Enter a location or keyword"><div class="f">Price</div><div class="f">Beds</div><div class="f">Baths</div><div class="go">Search</div></div>
+  </div></div>
+  <div class="next"><h2>Colorado Springs Homes For Sale</h2><p>Live listings appear here.</p></div>
+</section>
+
+</body></html>

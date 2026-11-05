@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Medina, Vantegic Home Team · Design Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   Jose Medina, Vantegic Home Team, HomeSmart
+   DESIGN RULES, builder handoff (Phase 9)
+   Tokens below are copied verbatim from mockups/styles.css.
+   If a value here and a value there ever disagree,
+   styles.css wins and this document gets regenerated.
+   ============================================================ */
+:root {
+  --color-primary: #0a0a0a;
+  --color-secondary: #1a1a1a;
+  --color-accent: #d81f27;
+  --color-accent-dark: #a90606;
+  --color-accent-light: #ef5350;
+  --color-accent-soft: #f7e6e6;
+  --color-contrast: #000000;
+  --color-text-dark: #0a0a0a;
+  --color-text-muted: #565656;
+  --color-text-light: #ffffff;
+  --color-surface: #f7f7f5;
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-background-alt: #f7f7f5;
+  --color-background-dark: #0a0a0a;
+  --color-background-deep: #000000;
+  --color-border: #e0e0e0;
+  --color-border-strong: #0a0a0a;
+
+  --font-display: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-size-h1-display: clamp(3rem, 8vw, 6.5rem);
+  --font-size-h1: clamp(2.5rem, 5.5vw, 4.5rem);
+  --font-size-h2: clamp(1.875rem, 3.5vw, 2.875rem);
+  --font-size-h3: clamp(1.375rem, 2.25vw, 1.75rem);
+  --font-size-h4: clamp(1.125rem, 1.5vw, 1.25rem);
+  --font-size-body: 1.0625rem;
+  --font-size-body-lg: 1.1875rem;
+  --font-size-small: 0.875rem;
+  --font-size-eyebrow: 0.75rem;
+
+  --fw-thin: 300;
+  --fw-light: 400;
+  --fw-medium: 500;
+  --fw-bold: 600;
+  --fw-heavy: 700;
+
+  --lh-h1-display: 0.95;
+  --lh-h1: 1.08;
+  --lh-h2: 1.15;
+  --lh-h3: 1.3;
+  --lh-body: 1.7;
+  --lh-tight: 1.2;
+
+  --ls-h1-display: 0.005em;
+  --ls-h1: 0.02em;
+  --ls-h2: 0.01em;
+  --ls-eyebrow: 0.18em;
+  --ls-button: 0.12em;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8rem;
+  --space-4xl: 11rem;
+
+  --container-width: 1280px;
+  --wide-width: 1440px;
+  --narrow-width: 780px;
+  --section-py: 7rem;
+  --section-py-tight: 5rem;
+  --container-px: 2rem;
+
+  --duration-fast: 200ms;
+  --duration-default: 400ms;
+  --duration-slow: 800ms;
+  --duration-slowest: 1200ms;
+  --ease-default: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- document chrome ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-dark);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--color-background-deep);
+  border-bottom: 3px solid var(--color-accent);
+}
+.topbar__inner {
+  max-width: var(--wide-width); margin: 0 auto;
+  padding: 0.85rem var(--container-px);
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.topbar__brand {
+  font-family: var(--font-display); font-size: 1.05rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-white); white-space: nowrap;
+}
+.topbar__brand span { color: var(--color-accent); }
+.topbar__nav { display: flex; gap: 1.1rem; flex-wrap: wrap; margin-left: auto; }
+.topbar__nav a {
+  font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.14em;
+  font-weight: var(--fw-medium); color: rgba(255,255,255,0.72);
+  text-decoration: none; transition: color var(--duration-fast) var(--ease-default);
+}
+.topbar__nav a:hover { color: var(--color-accent); }
+
+.doc { max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-px) 6rem; }
+
+.masthead { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--color-border); margin-bottom: 4rem; }
+.masthead__eyebrow {
+  font-size: var(--font-size-eyebrow); font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-eyebrow); text-transform: uppercase;
+  color: var(--color-accent-dark); margin-bottom: 1rem;
+}
+.masthead__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6.5vw, 5rem);
+  line-height: 0.95; letter-spacing: 0.005em;
+  text-transform: uppercase; color: var(--color-text-dark);
+  margin-bottom: 1.25rem;
+}
+.masthead__title em { font-style: normal; color: var(--color-accent-dark); }
+.masthead__meta { color: var(--color-text-muted); font-size: 0.9375rem; max-width: 70ch; }
+.masthead__meta strong { color: var(--color-text-dark); }
+
+section.block { padding: 3.5rem 0; border-bottom: 1px solid var(--color-border); }
+section.block:last-of-type { border-bottom: none; }
+.block__num {
+  font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.14em;
+  color: var(--color-accent-dark); text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.block > h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2); font-weight: var(--fw-light);
+  line-height: var(--lh-h2); letter-spacing: var(--ls-h2);
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+.lede { color: var(--color-text-muted); max-width: 72ch; margin-bottom: 2rem; font-size: 1.0625rem; }
+h3.sub {
+  font-size: 1.0625rem; font-weight: var(--fw-bold); text-transform: uppercase;
+  letter-spacing: 0.08em; margin: 2.5rem 0 1rem; color: var(--color-text-dark);
+}
+h3.sub:first-of-type { margin-top: 0; }
+p + p { margin-top: 1rem; }
+.doc p { max-width: 72ch; }
+
+/* ---------- callouts ---------- */
+.callout { background: var(--color-background-alt); border-left: 4px solid var(--color-accent-dark); padding: 1.5rem 1.75rem; margin: 1.75rem 0; }
+.callout--critical { background: var(--color-accent-soft); border-left-color: var(--color-accent-dark); }
+.callout--dark { background: var(--color-background-deep); border-left-color: var(--color-accent); color: rgba(255,255,255,0.85); }
+.callout--dark .callout__title { color: var(--color-accent); }
+.callout--dark strong { color: var(--color-white); }
+.callout__title {
+  font-size: 0.75rem; font-weight: var(--fw-bold); text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--color-accent-dark); margin-bottom: 0.65rem;
+}
+.callout p { max-width: 74ch; }
+.callout ul { margin: 0.5rem 0 0 1.25rem; }
+.callout li { margin: 0.4rem 0; }
+
+/* ---------- tables ---------- */
+table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9375rem; }
+th, td { padding: 0.8rem 0.9rem; text-align: left; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+th {
+  font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-text-muted); font-weight: var(--fw-bold);
+  background: var(--color-background-alt); border-bottom: 1px solid var(--color-border-strong);
+}
+td.nowrap { white-space: nowrap; }
+tbody tr:hover { background: var(--color-background-alt); }
+.table-scroll { overflow-x: auto; }
+
+code {
+  font-family: 'SF Mono', Monaco, Menlo, monospace;
+  font-size: 0.85em; background: var(--color-background-alt);
+  padding: 0.1rem 0.35rem; border: 1px solid var(--color-border); white-space: nowrap;
+}
+.callout--dark code,
+.stage--dark code,
+.redpanel--dark code { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.28); color: var(--color-white); }
+
+.tag {
+  display: inline-block; font-size: 0.625rem; font-weight: var(--fw-bold);
+  text-transform: uppercase; letter-spacing: 0.12em; padding: 0.2rem 0.5rem;
+  border: 1px solid currentColor; margin-right: 0.35rem;
+}
+.tag--yes { color: #17692f; }
+.tag--no { color: var(--color-accent-dark); }
+
+/* ---------- swatches ---------- */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 1rem; }
+.swatch { border: 1px solid var(--color-border); background: var(--color-white); }
+.swatch__chip { height: 96px; border-bottom: 1px solid var(--color-border); position: relative; }
+.swatch__chip span {
+  position: absolute; bottom: 0.5rem; left: 0.6rem;
+  font-size: 0.5625rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: var(--fw-bold);
+}
+.swatch__meta { padding: 0.85rem 1rem 1rem; }
+.swatch__name { font-size: 0.75rem; font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: 0.08em; }
+.swatch__hex { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8125rem; color: var(--color-text-dark); margin-top: 0.2rem; }
+.swatch__var { font-family: 'SF Mono', Monaco, monospace; font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 0.2rem; }
+.swatch__role { font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.55rem; line-height: 1.5; }
+
+/* ---------- two-tone red proof ---------- */
+.redproof { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.75rem 0; }
+.redpanel { padding: 2rem 1.75rem; border: 1px solid var(--color-border); }
+.redpanel--light { background: var(--color-white); }
+.redpanel--dark { background: var(--color-background-deep); border-color: #000; }
+.redpanel__label {
+  font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.16em;
+  font-weight: var(--fw-bold); margin-bottom: 1.25rem;
+}
+.redpanel--light .redpanel__label { color: var(--color-text-muted); }
+.redpanel--dark .redpanel__label { color: rgba(255,255,255,0.55); }
+.redsample { padding: 0.9rem 0; border-bottom: 1px dashed var(--color-border); }
+.redpanel--dark .redsample { border-bottom-color: rgba(255,255,255,0.15); }
+.redsample:last-child { border-bottom: none; }
+.redsample__type { font-family: var(--font-display); font-size: 1.85rem; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.1; }
+.redsample__body { font-size: 0.9375rem; margin-top: 0.2rem; }
+.redsample__verdict { font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: var(--fw-bold); margin-top: 0.45rem; }
+.v-good { color: #1c7a37; }
+.v-bad { color: var(--color-accent-dark); }
+.redpanel--dark .v-good { color: #58d67d; }
+.redpanel--dark .v-bad { color: #ff8b8b; }
+
+/* ---------- type specimens ---------- */
+.spec { padding: 1.75rem 0; border-bottom: 1px solid var(--color-border); }
+.spec:last-child { border-bottom: none; }
+.spec__meta {
+  font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--color-text-muted); font-weight: var(--fw-medium); margin-bottom: 0.85rem;
+}
+.spec__meta b { color: var(--color-accent-dark); font-weight: var(--fw-bold); }
+.t-h1-display { font-family: var(--font-display); font-size: var(--font-size-h1-display); font-weight: 400; line-height: var(--lh-h1-display); letter-spacing: var(--ls-h1-display); text-transform: uppercase; }
+.t-h1 { font-family: var(--font-heading); font-size: var(--font-size-h1); font-weight: var(--fw-thin); line-height: var(--lh-h1); letter-spacing: var(--ls-h1); text-transform: uppercase; }
+.t-h2 { font-family: var(--font-heading); font-size: var(--font-size-h2); font-weight: var(--fw-light); line-height: var(--lh-h2); letter-spacing: var(--ls-h2); text-transform: uppercase; }
+.t-h3 { font-family: var(--font-heading); font-size: var(--font-size-h3); font-weight: var(--fw-medium); line-height: var(--lh-h3); }
+.t-h4 { font-family: var(--font-heading); font-size: var(--font-size-h4); font-weight: var(--fw-medium); line-height: var(--lh-tight); text-transform: uppercase; letter-spacing: 0.04em; }
+.t-display-inline { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.02em; font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1; }
+.t-eyebrow { font-size: var(--font-size-eyebrow); font-weight: var(--fw-medium); text-transform: uppercase; letter-spacing: var(--ls-eyebrow); color: var(--color-accent-dark); }
+.t-body { font-size: var(--font-size-body); font-weight: var(--fw-light); line-height: var(--lh-body); max-width: 65ch; }
+.t-body-lg { font-size: var(--font-size-body-lg); line-height: 1.6; max-width: 65ch; }
+.t-small { font-size: var(--font-size-small); color: var(--color-text-muted); }
+
+/* ---------- buttons (verbatim from styles.css) ---------- */
+.btn {
+  display: inline-block; padding: 1rem 2.5rem;
+  font-family: var(--font-body); font-weight: var(--fw-bold);
+  font-size: 0.8125rem; letter-spacing: var(--ls-button);
+  text-transform: uppercase; text-decoration: none;
+  border: 1px solid transparent; cursor: pointer;
+  transition: background var(--duration-default) var(--ease-default),
+              color var(--duration-default) var(--ease-default),
+              border-color var(--duration-default) var(--ease-default);
+}
+.btn-primary { background: transparent; color: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+.btn-primary:hover, .btn-primary:focus-visible { background: var(--color-accent); color: var(--color-primary); border-color: var(--color-accent); }
+.btn-secondary { background: transparent; color: var(--color-primary); border-color: var(--color-primary); }
+.btn-secondary:hover, .btn-secondary:focus-visible { background: var(--color-primary); color: var(--color-white); }
+.btn-on-dark { background: transparent; color: var(--color-white); border-color: rgba(255, 255, 255, 0.85); }
+.btn-on-dark:hover, .btn-on-dark:focus-visible { background: var(--color-accent); color: var(--color-white); border-color: var(--color-accent); }
+.btn-wrong-on-dark { background: transparent; color: var(--color-accent-dark); border-color: var(--color-accent-dark); }
+
+.btn-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0; }
+.stage { padding: 2.25rem 1.75rem; border: 1px solid var(--color-border); }
+.stage--light { background: var(--color-white); }
+.stage--dark { background: var(--color-background-deep); border-color: #000; }
+.stage__label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: var(--fw-bold); color: var(--color-text-muted); margin-bottom: 1.25rem; }
+.stage--dark .stage__label { color: rgba(255,255,255,0.55); }
+.stage__row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+.stage__note { font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 0.4rem; }
+.stage--dark .stage__note { color: rgba(255,255,255,0.6); }
+.hint { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); font-weight: var(--fw-medium); }
+
+/* ---------- spacing ruler ---------- */
+.ruler { display: flex; flex-direction: column; }
+.ruler__row { display: grid; grid-template-columns: 90px 110px 1fr; gap: 1rem; align-items: center; padding: 0.65rem 0; border-bottom: 1px solid var(--color-border); }
+.ruler__name { font-size: 0.75rem; font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted); }
+.ruler__value { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8125rem; }
+.ruler__bar { background: var(--color-accent-dark); height: 14px; }
+.ruler__bar--alt { background: var(--color-primary); }
+
+.widths { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1.25rem; }
+.widths__row { display: grid; grid-template-columns: 150px 1fr; gap: 1rem; align-items: center; }
+.widths__label { font-family: 'SF Mono', Monaco, monospace; font-size: 0.75rem; color: var(--color-text-muted); }
+.widths__bar { height: 22px; background: var(--color-background-alt); border: 1px solid var(--color-border); position: relative; }
+.widths__fill { position: absolute; inset: 0 auto 0 0; background: var(--color-accent-dark); opacity: 0.85; }
+.widths__fill--wide { background: var(--color-primary); }
+
+/* ---------- geometry ---------- */
+.geo { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+.geo__item { text-align: center; }
+.geo__demo { height: 120px; background: var(--color-primary); border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--color-white); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.geo__demo--card { background: var(--color-background-alt); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+.geo__avatar { width: 96px; height: 96px; margin: 12px auto; background: var(--color-primary); color: var(--color-white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.04em; }
+.geo__avatar--round { border-radius: 50%; border: 2px solid var(--color-accent); }
+.geo__avatar--square { border: 2px solid var(--color-accent); }
+.geo__caption { font-size: 0.75rem; margin-top: 0.6rem; line-height: 1.5; }
+.geo__caption b { display: block; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.6875rem; margin-bottom: 0.2rem; }
+
+/* ---------- motion demos ---------- */
+.motion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+.motion-card { border: 1px solid var(--color-border); padding: 1.5rem; background: var(--color-white); }
+.motion-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: var(--fw-bold); color: var(--color-accent-dark); margin-bottom: 0.85rem; }
+.motion-card p { font-size: 0.8125rem; color: var(--color-text-muted); margin-top: 0.75rem; }
+
+.zoomframe { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--color-primary); }
+.zoomframe__inner {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg, #141414 0 14px, #1e1e1e 14px 28px);
+  transition: transform var(--duration-slowest) var(--ease-default);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5); font-size: 0.6875rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+}
+.zoomframe:hover .zoomframe__inner { transform: scale(1.04); }
+
+.kenframe { aspect-ratio: 16 / 9; overflow: hidden; position: relative; background: #000; }
+.kenframe__inner {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 35%, #3a3a3a 0%, #0a0a0a 65%);
+  transform-origin: center;
+  display: flex; align-items: flex-end; padding: 0.75rem;
+  color: rgba(255,255,255,0.45); font-size: 0.625rem;
+  text-transform: uppercase; letter-spacing: 0.16em;
+}
+.kenframe.run .kenframe__inner { animation: kenDemo 22s ease-out forwards; }
+@keyframes kenDemo { from { transform: scale(1); } to { transform: scale(1.09); } }
+
+.countdemo { font-family: var(--font-display); font-size: 3rem; color: var(--color-accent-dark); line-height: 1; letter-spacing: 0.01em; }
+
+.revealbox { border: 1px dashed var(--color-border); padding: 1rem; display: grid; gap: 0.6rem; }
+.revealitem {
+  background: var(--color-background-alt); border-left: 3px solid var(--color-accent-dark);
+  padding: 0.6rem 0.85rem; font-size: 0.8125rem;
+  opacity: 0; transform: translateY(26px);
+  transition: opacity 750ms var(--ease-default), transform 750ms var(--ease-default);
+}
+.revealbox.run .revealitem { opacity: 1; transform: none; }
+.revealbox.run .revealitem:nth-child(2) { transition-delay: 90ms; }
+.revealbox.run .revealitem:nth-child(3) { transition-delay: 180ms; }
+
+.replay {
+  margin-top: 0.9rem; font-family: var(--font-body); font-size: 0.6875rem;
+  text-transform: uppercase; letter-spacing: 0.12em; font-weight: var(--fw-bold);
+  padding: 0.5rem 1rem; background: transparent; color: var(--color-accent-dark);
+  border: 1px solid var(--color-accent-dark); cursor: pointer;
+  transition: background var(--duration-default) var(--ease-default), color var(--duration-default) var(--ease-default);
+}
+.replay:hover { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-primary); }
+
+/* ---------- footer ---------- */
+.docfoot {
+  border-top: 3px solid var(--color-accent);
+  background: var(--color-background-deep); color: rgba(255,255,255,0.6);
+  padding: 2.5rem var(--container-px); text-align: center; font-size: 0.8125rem;
+}
+.docfoot strong { color: var(--color-white); }
+
+@media (max-width: 860px) {
+  .redproof, .btn-stage { grid-template-columns: 1fr; }
+  .ruler__row { grid-template-columns: 70px 90px 1fr; }
+  .widths__row { grid-template-columns: 110px 1fr; }
+  .topbar__nav { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenframe.run .kenframe__inner { animation: none; }
+  .revealitem { opacity: 1; transform: none; transition: none; }
+  .zoomframe:hover .zoomframe__inner { transform: none; }
+}
+@media print {
+  .topbar, .replay { display: none; }
+  section.block { page-break-inside: avoid; }
+  body { background: #fff; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar__inner">
+    <div class="topbar__brand">Vantegic <span>Design Rules</span></div>
+    <nav class="topbar__nav">
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#geometry">Geometry</a>
+      <a href="#blocks">Blocks</a>
+      <a href="#motion">Motion</a>
+      <a href="#rules">Hard Rules</a>
+    </nav>
+  </div>
+</div>
+
+<div class="doc">
+
+  <header class="masthead">
+    <div class="masthead__eyebrow">Design Rules · Builder Handoff · Phase 9</div>
+    <h1 class="masthead__title">Jose Medina<br><em>Vantegic Home Team</em></h1>
+    <p class="masthead__meta">
+      For <strong>Kane and Jeff</strong>, and any builder picking this project up. Generated <strong>2026-07-21</strong>.
+      Register: <strong>Cluster D, bold-credentialed regional anchor</strong>, sourced from the Shellien Gilliland
+      build and re-skinned to Vantegic crimson. Brokerage: HomeSmart, Colorado Springs.
+      Stack: Astra parent plus child theme, Spectra / UAGB blocks.
+    </p>
+    <p class="masthead__meta" style="margin-top:1rem;">
+      Everything on this page is rendered in the real fonts, at the real sizes, in the real colors.
+      If it looks a certain way here, it should look that way on the site.
+    </p>
+  </header>
+
+  <section class="block">
+    <div class="block__num">Read this first</div>
+    <h2>Source of Truth, and the Three Things People Get Wrong</h2>
+    <p class="lede">
+      The shipped mockups in <code>mockups/</code> and their <code>styles.css</code> are the source of truth.
+      This document explains them. If a value here disagrees with the stylesheet, the stylesheet wins
+      and this document needs regenerating. Flag it to Curtis rather than guessing.
+    </p>
+    <div class="callout callout--critical">
+      <div class="callout__title">The three traps on this specific build</div>
+      <ul>
+        <li><strong>There are two reds.</strong> <code>#a90606</code> and <code>#d81f27</code> are not interchangeable and neither one is a mistake. See section 01.</li>
+        <li><strong>Buttons on dark use a WHITE outline, not a red one.</strong> This is deliberate and approved. Do not "correct" it. See section 03.</li>
+        <li><strong>Border radius is 0 everywhere, except testimonial photos, which are circles.</strong> That single exception is a direct client request. See section 05.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 01 COLOR ============================== -->
+  <section class="block" id="color">
+    <div class="block__num">01</div>
+    <h2>Color</h2>
+    <p class="lede">
+      One accent color, at full strength, against black and paper. Crimson, black, off-white. Nothing else.
+      There is no secondary brand color on this site and none is to be introduced.
+    </p>
+
+    <div class="swatches">
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#0a0a0a;"><span style="color:rgba(255,255,255,0.6);">Primary</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Primary Black</div>
+          <div class="swatch__hex">#0a0a0a</div>
+          <div class="swatch__var">--color-primary · --color-text-dark · --color-background-dark</div>
+          <div class="swatch__role">All body and heading text on light. Dark section backgrounds. Secondary button outline and fill.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#1a1a1a;"><span style="color:rgba(255,255,255,0.6);">Secondary</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Secondary Off Black</div>
+          <div class="swatch__hex">#1a1a1a</div>
+          <div class="swatch__var">--color-secondary</div>
+          <div class="swatch__role">Separation value when two dark surfaces stack and need to read apart. Used sparingly.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#000000;"><span style="color:rgba(255,255,255,0.6);">Contrast</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Deep Black</div>
+          <div class="swatch__hex">#000000</div>
+          <div class="swatch__var">--color-contrast · --color-background-deep</div>
+          <div class="swatch__role">Poster moments. The lead bar, the military specialty panel, the closing band, the agent bio sidebar.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#d81f27;"><span style="color:rgba(255,255,255,0.85);">Accent</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Accent, Bright Crimson</div>
+          <div class="swatch__hex">#d81f27</div>
+          <div class="swatch__var">--color-accent</div>
+          <div class="swatch__role"><strong>ON DARK ONLY.</strong> Eyebrows on dark, stat and credential numbers, top rules, testimonial star rows, focus outlines, and every button hover fill on both light and dark.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#a90606;"><span style="color:rgba(255,255,255,0.85);">Accent Dark</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Accent Dark, Brand Red</div>
+          <div class="swatch__hex">#a90606</div>
+          <div class="swatch__var">--color-accent-dark</div>
+          <div class="swatch__role"><strong>The client's actual brand red, ON LIGHT ONLY.</strong> Eyebrows on white, link hover, service icons, primary button text and outline, footer column heads, FAQ plus icons.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#ef5350;"><span style="color:rgba(255,255,255,0.85);">Accent Light</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Accent Light</div>
+          <div class="swatch__hex">#ef5350</div>
+          <div class="swatch__var">--color-accent-light</div>
+          <div class="swatch__role">Reserve value for very quiet red moments. Not used in the shipped 13 pages. Do not introduce it without asking.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#f7e6e6;"><span style="color:rgba(0,0,0,0.5);">Accent Soft</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Accent Soft Wash</div>
+          <div class="swatch__hex">#f7e6e6</div>
+          <div class="swatch__var">--color-accent-soft</div>
+          <div class="swatch__role">Pale red tint for hover states on small controls, such as the testimonial carousel dots.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#565656;"><span style="color:rgba(255,255,255,0.75);">Text Muted</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Text Muted</div>
+          <div class="swatch__hex">#565656</div>
+          <div class="swatch__var">--color-text-muted</div>
+          <div class="swatch__role">Supporting copy, section intros, captions, card body text, footer contact details.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#f7f7f5;"><span style="color:rgba(0,0,0,0.45);">Surface</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Surface, Warm Paper</div>
+          <div class="swatch__hex">#f7f7f5</div>
+          <div class="swatch__var">--color-surface · --color-background-alt</div>
+          <div class="swatch__role">Alternate section background, <code>section.alt</code>. Card fills, modal stat tiles, team member panel.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#ffffff; border-bottom:1px solid #e0e0e0;"><span style="color:rgba(0,0,0,0.45);">White</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">White</div>
+          <div class="swatch__hex">#ffffff</div>
+          <div class="swatch__var">--color-white · --color-background · --color-text-light</div>
+          <div class="swatch__role">Default page background. All text and button outlines on dark sections.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#e0e0e0;"><span style="color:rgba(0,0,0,0.5);">Border</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Border</div>
+          <div class="swatch__hex">#e0e0e0</div>
+          <div class="swatch__var">--color-border</div>
+          <div class="swatch__role">The client's own secondary grey. Hairlines, card outlines, form field borders, table rules, FAQ dividers.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__chip" style="background:#0a0a0a;"><span style="color:rgba(255,255,255,0.6);">Border Strong</span></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Border Strong</div>
+          <div class="swatch__hex">#0a0a0a</div>
+          <div class="swatch__var">--color-border-strong</div>
+          <div class="swatch__role">Emphasis rules where a hairline is too quiet, such as the head of a data table.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="sub">The two-tone red, and why it exists</h3>
+    <p>
+      This register was built for a client whose accent was gold. Gold sits at high luminance, so a single
+      gold value worked on white and on black. Crimson does not have that luxury. The client's brand red,
+      <code>#a90606</code>, is a deep, dark red. It is superb on white and it collapses on black.
+      One value cannot serve both surfaces, so the system carries two, and each one has exactly one job.
+    </p>
+
+    <div class="redproof">
+      <div class="redpanel redpanel--light">
+        <div class="redpanel__label">On light backgrounds, white and #f7f7f5</div>
+
+        <div class="redsample">
+          <div class="redsample__type" style="color:#a90606;">Brand Red #a90606</div>
+          <div class="redsample__body" style="color:#a90606;">Eyebrows, links on hover, icons, primary button outline and label.</div>
+          <div class="redsample__verdict v-good">Correct · contrast about 7.7 to 1 · clears AA and AAA</div>
+        </div>
+
+        <div class="redsample">
+          <div class="redsample__type" style="color:#d81f27;">Bright Red #d81f27</div>
+          <div class="redsample__body" style="color:#d81f27;">Reads pinker and lighter. It is not the client's brand red.</div>
+          <div class="redsample__verdict v-bad">Wrong for text on light · contrast about 5.1 to 1 · looks washed next to the black type</div>
+        </div>
+      </div>
+
+      <div class="redpanel redpanel--dark">
+        <div class="redpanel__label">On dark backgrounds, #0a0a0a and #000000</div>
+
+        <div class="redsample">
+          <div class="redsample__type" style="color:#d81f27;">Bright Red #d81f27</div>
+          <div class="redsample__body" style="color:#d81f27;">Credential numbers, on-dark eyebrows, top rules, hover fills.</div>
+          <div class="redsample__verdict v-good">Correct · contrast about 4.1 to 1 · display use only, never body copy</div>
+        </div>
+
+        <div class="redsample">
+          <div class="redsample__type" style="color:#a90606;">Brand Red #a90606</div>
+          <div class="redsample__body" style="color:#a90606;">Goes muddy. It sinks into the black instead of sitting on it.</div>
+          <div class="redsample__verdict v-bad">Wrong on dark · contrast about 2.7 to 1 · fails every WCAG threshold</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--critical">
+      <div class="callout__title">The rule, in one line</div>
+      <p>
+        <strong>Light background, use <code>#a90606</code>. Dark background, use <code>#d81f27</code>.</strong>
+        Both are Jose's red. The split is not a compromise, it is the only way a dark crimson can carry a
+        high-contrast register. In the CSS this is already wired: <code>--color-accent-dark</code> is the on-light
+        token and <code>--color-accent</code> is the on-dark token. If you are reaching for a red and you are not
+        sure which one, look at what is behind it.
+      </p>
+      <p style="margin-top:0.75rem;">
+        <strong>The one shared job:</strong> <code>#d81f27</code> is the hover fill on both surfaces. A primary
+        button on white sits in <code>#a90606</code> outline and text, then fills bright <code>#d81f27</code> on hover.
+        That is intentional. The brighter red is what gives the hover its snap.
+      </p>
+    </div>
+
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Combination</th><th class="nowrap">Contrast</th><th>Verdict</th><th>Where it appears</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nowrap"><code>#a90606</code> on white</td><td class="nowrap">7.7 to 1</td><td><span class="tag tag--yes">Use</span> AAA for normal text</td><td>Eyebrows, link hover, service icons, primary button, footer heads</td></tr>
+        <tr><td class="nowrap"><code>#d81f27</code> on <code>#0a0a0a</code></td><td class="nowrap">3.9 to 1</td><td><span class="tag tag--yes">Use</span> display sizes only</td><td>Credential and stat numbers, on-dark eyebrows, star rows, accent rules</td></tr>
+        <tr><td class="nowrap"><code>#d81f27</code> on <code>#000000</code></td><td class="nowrap">4.1 to 1</td><td><span class="tag tag--yes">Use</span> display sizes only</td><td>Lead bar eyebrow, specialty panel accents, closing band details</td></tr>
+        <tr><td class="nowrap"><code>#d81f27</code> on white</td><td class="nowrap">5.1 to 1</td><td><span class="tag tag--no">Avoid</span> off-brand read</td><td>Nowhere. Hover fills only, where it is a background not a text color</td></tr>
+        <tr><td class="nowrap"><code>#a90606</code> on <code>#0a0a0a</code></td><td class="nowrap">2.6 to 1</td><td><span class="tag tag--no">Never</span> fails AA and AAA</td><td>Nowhere. This is the mistake this section exists to prevent</td></tr>
+        <tr><td class="nowrap"><code>#0a0a0a</code> on white</td><td class="nowrap">19.6 to 1</td><td><span class="tag tag--yes">Use</span></td><td>All body copy and headings on light</td></tr>
+        <tr><td class="nowrap"><code>#565656</code> on white</td><td class="nowrap">7.4 to 1</td><td><span class="tag tag--yes">Use</span></td><td>Supporting copy, captions, section intros</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Color hard rules</div>
+      <ul>
+        <li>Body copy on dark is white or <code>rgba(255,255,255,0.85)</code>. Never crimson. Crimson on dark is for display type and rules only.</li>
+        <li>Never introduce a second brand color. No blue, no gold, no green. Crimson, black, paper.</li>
+        <li>Never use crimson as a large flat background fill. It appears as outlines, small type, thin rules, and hover states.</li>
+        <li>Hover states shift value, never hue. Nothing in this palette turns orange or pink under interaction.</li>
+        <li>Two dark sections never stack back to back. Break them with <code>section.alt</code> paper or white.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 02 TYPE ============================== -->
+  <section class="block" id="type">
+    <div class="block__num">02</div>
+    <h2>Type Scale</h2>
+    <p class="lede">
+      Two families. <strong>Anton</strong> is the display face and it is display only. <strong>Inter</strong> does
+      everything else, weights 300 through 700. Every size below is a CSS <code>clamp()</code>, so it is fluid
+      between mobile and desktop. Resize this window and the specimens below move with it. That is the intended behavior,
+      do not replace the clamps with fixed pixel sizes in Astra or Spectra.
+    </p>
+
+    <div class="callout callout--critical">
+      <div class="callout__title">Two rules people miss</div>
+      <ul>
+        <li><strong>H1 and H2 are UPPERCASE by default.</strong> This is set in CSS with <code>text-transform: uppercase</code>, not typed into the content. Write headings in normal title case in the WordPress editor and let the stylesheet do the transform, so the copy stays readable in the admin and in search results.</li>
+        <li><strong>Anton is display only.</strong> It is a single weight, all caps, tight fitting face. It carries hero H1s, section H2s inside dark bands, card names, stat numbers, and brand moments. It never sets a paragraph, never sets a form label, never sets navigation, and never sets an FAQ answer. Anton has no italic and no other weights, so do not ask it for any.</li>
+      </ul>
+    </div>
+
+    <h3 class="sub">Specimens, live at real sizes</h3>
+
+    <div class="spec">
+      <div class="spec__meta">Hero display H1 · <b>Anton 400</b> · <code>clamp(3rem, 8vw, 6.5rem)</code> · UPPERCASE · tracking 0.005em · line height 0.95 · class <code>h1.display</code></div>
+      <div class="t-h1-display">Your Advantage In<br>Colorado Springs Real Estate.</div>
+      <p class="t-small" style="margin-top:0.85rem;">Home page hero only. This is the biggest type on the site and it is the reason Anton is in the stack.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">H1 · <b>Inter 300</b> · <code>clamp(2.5rem, 5.5vw, 4.5rem)</code> · UPPERCASE · tracking 0.02em · line height 1.08</div>
+      <div class="t-h1">Best Neighborhoods In Colorado Springs</div>
+      <p class="t-small" style="margin-top:0.85rem;">Every interior page H1. Thin weight at large size, which is what keeps it from shouting.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">H2 · <b>Inter 400</b> · <code>clamp(1.875rem, 3.5vw, 2.875rem)</code> · UPPERCASE · tracking 0.01em · line height 1.15</div>
+      <div class="t-h2">Two Decades In The Pikes Peak Region</div>
+      <p class="t-small" style="margin-top:0.85rem;">Section headings. One H2 per section, sitting under an eyebrow.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">H2 in Anton · <b>Anton 400</b> · <code>clamp(2rem, 4vw, 3rem)</code> · UPPERCASE · line height 1 · used inside <code>.cta-form</code>, <code>.closing-cta</code>, <code>.path__content h3</code></div>
+      <div class="t-display-inline">When You're Ready, I'm Ready.</div>
+      <p class="t-small" style="margin-top:0.85rem;">The display face reappears at section scale inside dark conversion bands and the buy and sell path cards. This is the only place Anton is allowed below hero size.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">H3 · <b>Inter 500</b> · <code>clamp(1.375rem, 2.25vw, 1.75rem)</code> · <b>Title Case, not uppercase</b> · line height 1.3</div>
+      <div class="t-h3">Buying In Colorado Springs</div>
+      <p class="t-small" style="margin-top:0.85rem;">Card titles, process step titles, sub headings. The case rule flips at H3. H1 and H2 are uppercase, H3 and below are not.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">H4 · <b>Inter 500</b> · <code>clamp(1.125rem, 1.5vw, 1.25rem)</code> · uppercase with 0.04em tracking inside <code>.service</code> cards · line height 1.2</div>
+      <div class="t-h4">Military Relocation</div>
+      <p class="t-small" style="margin-top:0.85rem;">Service card headings and small component titles.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">Eyebrow · <b>Inter 500</b> · <code>0.75rem</code> · UPPERCASE · tracking <b>0.18em</b> · <code>#a90606</code> on light, <code>#d81f27</code> on dark via <code>.eyebrow--on-dark</code></div>
+      <div class="t-eyebrow">Top 1% Producer · Colorado Springs</div>
+      <p class="t-small" style="margin-top:0.85rem;">Sits directly above almost every H2 on the site. The wide 0.18em tracking is load bearing, it is what makes the eyebrow read as a label rather than small text.</p>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">Body · <b>Inter 400</b> · <code>1.0625rem</code> (17px) · line height <b>1.7</b> · max width 65ch</div>
+      <div class="t-body">
+        I have spent twenty years helping families buy and sell across the Pikes Peak region, and the through line
+        has always been the same, protecting the equity my clients have worked for. Paragraphs run at a generous
+        line height because most blocks on this site carry real content, not filler. Measure caps at 65 characters,
+        which is set globally on the paragraph element.
+      </div>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">Body large · <b>Inter 400</b> · <code>1.1875rem</code> · line height 1.6 · used for featured testimonial quotes and hero subheads</div>
+      <div class="t-body-lg">Jose walked us through a PCS move from Fort Carson without a single surprise.</div>
+    </div>
+
+    <div class="spec">
+      <div class="spec__meta">Small · <b>Inter 400</b> · <code>0.875rem</code> · <code>#565656</code> · captions, card body, compliance copy, footer detail</div>
+      <div class="t-small">HomeSmart · Colorado license ER.100025793 · 1755 Telstar Dr #300, Colorado Springs, CO 80920</div>
+    </div>
+
+    <h3 class="sub">Full scale reference</h3>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Slot</th><th>Family</th><th class="nowrap">Weight</th><th>Size</th><th class="nowrap">Case</th><th class="nowrap">Tracking</th><th class="nowrap">Line height</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero display H1</td><td>Anton</td><td>400</td><td class="nowrap"><code>clamp(3rem, 8vw, 6.5rem)</code></td><td>UPPER</td><td>0.005em</td><td>0.95</td></tr>
+        <tr><td>H1</td><td>Inter</td><td>300</td><td class="nowrap"><code>clamp(2.5rem, 5.5vw, 4.5rem)</code></td><td>UPPER</td><td>0.02em</td><td>1.08</td></tr>
+        <tr><td>H2</td><td>Inter</td><td>400</td><td class="nowrap"><code>clamp(1.875rem, 3.5vw, 2.875rem)</code></td><td>UPPER</td><td>0.01em</td><td>1.15</td></tr>
+        <tr><td>H2, display variant</td><td>Anton</td><td>400</td><td class="nowrap"><code>clamp(2rem, 4vw, 3rem)</code></td><td>UPPER</td><td>0.02em</td><td>1.0</td></tr>
+        <tr><td>H3</td><td>Inter</td><td>500</td><td class="nowrap"><code>clamp(1.375rem, 2.25vw, 1.75rem)</code></td><td>Title</td><td>0</td><td>1.3</td></tr>
+        <tr><td>H4</td><td>Inter</td><td>500</td><td class="nowrap"><code>clamp(1.125rem, 1.5vw, 1.25rem)</code></td><td>UPPER in cards</td><td>0.04em</td><td>1.2</td></tr>
+        <tr><td>Eyebrow</td><td>Inter</td><td>500</td><td class="nowrap"><code>0.75rem</code></td><td>UPPER</td><td>0.18em</td><td>inherit</td></tr>
+        <tr><td>Body</td><td>Inter</td><td>400</td><td class="nowrap"><code>1.0625rem</code></td><td>sentence</td><td>0</td><td>1.7</td></tr>
+        <tr><td>Body large</td><td>Inter</td><td>400</td><td class="nowrap"><code>1.1875rem</code></td><td>sentence</td><td>0</td><td>1.6</td></tr>
+        <tr><td>Small</td><td>Inter</td><td>400</td><td class="nowrap"><code>0.875rem</code></td><td>sentence</td><td>0</td><td>1.7</td></tr>
+        <tr><td>Button label</td><td>Inter</td><td>600</td><td class="nowrap"><code>0.8125rem</code></td><td>UPPER</td><td>0.12em</td><td>inherit</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Typography hard rules</div>
+      <ul>
+        <li>Load both faces from Google Fonts on every page: <code>Anton</code> and <code>Inter</code> at weights 300, 400, 500, 600, 700. Nothing else.</li>
+        <li>The client asked for <strong>Calibri</strong>. It was overridden with Curtis's approval on 2026-07-21 because Calibri is a system UI font with no display weight and it would flatten the whole register. Do not reintroduce it.</li>
+        <li>Never add a third family. No serif accent face, no script, no icon font.</li>
+        <li>No italic serif lift spans inside headings. "Real estate, <em>reimagined</em>" is banned.</li>
+        <li>Keep the clamps. Astra global typography and Spectra block typography both accept clamp values, use them rather than setting separate desktop, tablet, and mobile pixel sizes.</li>
+        <li>No em dashes anywhere in copy. Use commas, periods, colons, or a middle dot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 03 BUTTONS ============================== -->
+  <section class="block" id="buttons">
+    <div class="block__num">03</div>
+    <h2>Buttons</h2>
+    <p class="lede">
+      Three variants, all sharing the same shell: transparent fill, 1px outline, uppercase Inter 600 at
+      <code>0.8125rem</code> with 0.12em tracking, padding <code>1rem 2.5rem</code>, zero radius,
+      transition <code>400ms cubic-bezier(0.2, 0.8, 0.2, 1)</code> on background, color, and border color.
+      Only the colors change between them. Hover over the live buttons below to see the real transitions.
+    </p>
+
+    <div class="btn-stage">
+      <div class="stage stage--light">
+        <div class="stage__label">On white and paper backgrounds</div>
+
+        <div class="stage__row">
+          <a href="#buttons" class="btn btn-primary">Schedule A Consultation</a>
+          <span class="hint">btn btn-primary</span>
+        </div>
+        <p class="stage__note">
+          Transparent, outline and label in brand red <code>#a90606</code>.
+          Hover fills bright <code>#d81f27</code> with the label flipping to black <code>#0a0a0a</code>, border matches the fill.
+          This is the default call to action everywhere on a light section.
+        </p>
+
+        <div class="stage__row" style="margin-top:1.75rem;">
+          <a href="#buttons" class="btn btn-secondary">Browse Listings</a>
+          <span class="hint">btn btn-secondary</span>
+        </div>
+        <p class="stage__note">
+          Transparent, outline and label in black <code>#0a0a0a</code>.
+          Hover fills black with a white label. Use as the second option when two actions carry equal weight,
+          never as the only button in a section.
+        </p>
+      </div>
+
+      <div class="stage stage--dark">
+        <div class="stage__label">On dark and deep black backgrounds</div>
+
+        <div class="stage__row">
+          <a href="#buttons" class="btn btn-on-dark">Start Your Search</a>
+          <span class="hint" style="color:rgba(255,255,255,0.5);">btn btn-on-dark</span>
+        </div>
+        <p class="stage__note">
+          Transparent, <strong>white</strong> label, outline <code>rgba(255,255,255,0.85)</code>.
+          Hover fills bright <code>#d81f27</code> with a white label and a matching crimson border.
+          Used in the hero, the lead bar, the specialty panel, and every dark conversion band.
+        </p>
+
+        <div class="stage__row" style="margin-top:1.75rem;">
+          <span class="btn btn-wrong-on-dark">Do Not Do This</span>
+          <span class="hint" style="color:#ff8b8b;">wrong</span>
+        </div>
+        <p class="stage__note" style="color:#ff8b8b;">
+          The same button with a <code>#a90606</code> outline and label, which is what the universal convention
+          would produce. Look at it against the black. That is the whole argument.
+        </p>
+      </div>
+    </div>
+
+    <div class="callout callout--critical">
+      <div class="callout__title">Documented deviation, approved by Curtis 2026-07-21</div>
+      <p>
+        The AgenticPress universal convention is <strong>accent outline on every button, on every surface</strong>.
+        This build breaks that rule in exactly one place: <code>.btn-on-dark</code> uses a
+        <strong>white outline, not a crimson one</strong>.
+      </p>
+      <p style="margin-top:0.75rem;">
+        The reason is the same reason the palette carries two reds. A <code>#a90606</code> outline on black
+        sits at roughly 2.6 to 1 contrast. Over the hero photograph it effectively disappears, and against the
+        solid black bands it reads as a muddy smudge rather than a button. White outline restores the punch the
+        register depends on, and the accent still owns the interaction because the hover fill is crimson.
+      </p>
+      <p style="margin-top:0.75rem;">
+        <strong>A builder who does not know this will "fix" it back to crimson.</strong> It is not broken.
+        Leave it white. If it ever needs revisiting, that is a conversation with Curtis, not a silent correction.
+      </p>
+    </div>
+
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Variant</th><th>Rest state</th><th>Hover and focus state</th><th>Where</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="nowrap"><code>.btn-primary</code></td>
+          <td>background transparent · color <code>#a90606</code> · border 1px <code>#a90606</code></td>
+          <td>background <code>#d81f27</code> · color <code>#0a0a0a</code> · border <code>#d81f27</code></td>
+          <td>Default CTA on any light section</td>
+        </tr>
+        <tr>
+          <td class="nowrap"><code>.btn-secondary</code></td>
+          <td>background transparent · color <code>#0a0a0a</code> · border 1px <code>#0a0a0a</code></td>
+          <td>background <code>#0a0a0a</code> · color <code>#ffffff</code></td>
+          <td>Second equal-weight action on light</td>
+        </tr>
+        <tr>
+          <td class="nowrap"><code>.btn-on-dark</code></td>
+          <td>background transparent · color <code>#ffffff</code> · border 1px <code>rgba(255,255,255,0.85)</code></td>
+          <td>background <code>#d81f27</code> · color <code>#ffffff</code> · border <code>#d81f27</code></td>
+          <td>Hero, lead bar, specialty panel, all dark bands</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Button hard rules</div>
+      <ul>
+        <li>Border radius 0. Always. There are no rounded buttons anywhere on this site.</li>
+        <li><code>:hover</code> and <code>:focus-visible</code> share the same styling. Keyboard users must see the same state mouse users see. Do not drop the focus rule when rebuilding in Spectra.</li>
+        <li>One primary per hero. Two buttons maximum in any hero or band. Never three.</li>
+        <li>Never fill a button crimson at rest. Crimson fill is the hover state and only the hover state.</li>
+        <li>Form submits use the same button classes. The lead bar submit is <code>.btn.btn-primary</code> sitting on black, which is intentional, it is the one place the red-outlined button appears on a dark surface because it is a submit control inside a form group, not a standalone CTA.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 04 SPACING ============================== -->
+  <section class="block" id="spacing">
+    <div class="block__num">04</div>
+    <h2>Spacing and Layout</h2>
+    <p class="lede">
+      Eight steps, roughly geometric. Every margin and padding on the site comes from this scale. There are no
+      one-off values. The bars below are drawn at their literal CSS width, so the visual length is the value.
+    </p>
+
+    <div class="ruler">
+      <div class="ruler__row"><span class="ruler__name">xs</span><span class="ruler__value">0.5rem / 8px</span><div class="ruler__bar" style="width:0.5rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">sm</span><span class="ruler__value">1rem / 16px</span><div class="ruler__bar" style="width:1rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">md</span><span class="ruler__value">1.5rem / 24px</span><div class="ruler__bar" style="width:1.5rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">lg</span><span class="ruler__value">2.5rem / 40px</span><div class="ruler__bar" style="width:2.5rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">xl</span><span class="ruler__value">4rem / 64px</span><div class="ruler__bar" style="width:4rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">2xl</span><span class="ruler__value">5.5rem / 88px</span><div class="ruler__bar" style="width:5.5rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">3xl</span><span class="ruler__value">8rem / 128px</span><div class="ruler__bar" style="width:8rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">4xl</span><span class="ruler__value">11rem / 176px</span><div class="ruler__bar" style="width:11rem;"></div></div>
+    </div>
+
+    <h3 class="sub">Section rhythm</h3>
+    <div class="ruler">
+      <div class="ruler__row"><span class="ruler__name">Section</span><span class="ruler__value">7rem / 112px</span><div class="ruler__bar ruler__bar--alt" style="width:7rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">Tight</span><span class="ruler__value">5rem / 80px</span><div class="ruler__bar ruler__bar--alt" style="width:5rem;"></div></div>
+      <div class="ruler__row"><span class="ruler__name">Gutter X</span><span class="ruler__value">2rem / 32px</span><div class="ruler__bar ruler__bar--alt" style="width:2rem;"></div></div>
+    </div>
+    <p class="t-small" style="margin-top:0.9rem;">
+      Every <code>&lt;section&gt;</code> carries <code>padding: 7rem 0</code> top and bottom.
+      <code>section.tight</code> drops it to <code>5rem</code>. Container horizontal padding is <code>2rem</code>
+      and it is the same on every container, with no per section overrides.
+    </p>
+
+    <h3 class="sub">Layout widths</h3>
+    <div class="widths">
+      <div class="widths__row">
+        <span class="widths__label">wide 1440px</span>
+        <div class="widths__bar"><div class="widths__fill widths__fill--wide" style="width:100%;"></div></div>
+      </div>
+      <div class="widths__row">
+        <span class="widths__label">content 1280px</span>
+        <div class="widths__bar"><div class="widths__fill" style="width:88.9%;"></div></div>
+      </div>
+      <div class="widths__row">
+        <span class="widths__label">narrow 780px</span>
+        <div class="widths__bar"><div class="widths__fill" style="width:54.2%;"></div></div>
+      </div>
+      <div class="widths__row">
+        <span class="widths__label">text measure 65ch</span>
+        <div class="widths__bar"><div class="widths__fill" style="width:44%;"></div></div>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Token</th><th class="nowrap">Value</th><th>Class</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="nowrap"><code>--wide-width</code></td><td class="nowrap">1440px</td><td class="nowrap"><code>.container-wide</code></td><td>Process rows, coverage bands, hero credentials strip, footer grid</td></tr>
+        <tr><td class="nowrap"><code>--container-width</code></td><td class="nowrap">1280px</td><td class="nowrap"><code>.container</code></td><td>The default. Nearly every section sits in this.</td></tr>
+        <tr><td class="nowrap"><code>--narrow-width</code></td><td class="nowrap">780px</td><td class="nowrap"><code>.container-narrow</code></td><td>FAQ accordions, legal copy, long-form intro paragraphs</td></tr>
+        <tr><td class="nowrap"><code>--container-px</code></td><td class="nowrap">2rem</td><td>all containers</td><td>Horizontal gutter, identical everywhere</td></tr>
+        <tr><td class="nowrap">paragraph measure</td><td class="nowrap">65ch</td><td class="nowrap"><code>p</code></td><td>Global cap on paragraph line length</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Breakpoints</div>
+      <ul>
+        <li>Mobile-first base styles.</li>
+        <li>Tablet, 768px.</li>
+        <li>Desktop, 1024px.</li>
+        <li>Wide desktop, 1440px, where alternating image rows benefit from the extra width.</li>
+        <li>Two-column grids such as <code>.split</code>, <code>.path</code>, <code>.process-row</code>, <code>.cta-form</code>, and <code>.agent-bio</code> all collapse to a single column below the tablet breakpoint.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Spacing hard rules</div>
+      <ul>
+        <li>Only use scale values. If you find yourself typing <code>37px</code>, something is wrong.</li>
+        <li>Section padding is generous on purpose. Do not tighten it to fit more above the fold.</li>
+        <li>Container padding X is uniform. No section gets its own gutter.</li>
+        <li>Grid gaps come from the same scale: <code>--space-md</code> for card grids, <code>--space-2xl</code> for two-column splits, <code>--space-3xl</code> between stacked path rows.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 05 GEOMETRY ============================== -->
+  <section class="block" id="geometry">
+    <div class="block__num">05</div>
+    <h2>Sharp Geometry, and the One Exception</h2>
+    <p class="lede">
+      <strong>Border radius is 0 across the entire site.</strong> Buttons, cards, images, form fields, modals,
+      badges, panels, nav dropdowns, everything. The register depends on it. Rounded corners soften the build
+      into something generic and undo the bold structure the rest of the system is doing.
+    </p>
+
+    <div class="geo">
+      <div class="geo__item">
+        <div class="geo__demo">Button</div>
+        <div class="geo__caption"><b>radius 0</b>Correct</div>
+      </div>
+      <div class="geo__item">
+        <div class="geo__demo geo__demo--card">Card</div>
+        <div class="geo__caption"><b>radius 0</b>Correct</div>
+      </div>
+      <div class="geo__item">
+        <div class="geo__demo geo__demo--card" style="border-color:#a90606; color:#a90606;">Input</div>
+        <div class="geo__caption"><b>radius 0</b>Correct</div>
+      </div>
+      <div class="geo__item">
+        <div class="geo__demo" style="border-radius:14px; background:#c9c9c9; color:#555;">Rounded</div>
+        <div class="geo__caption" style="color:#a90606;"><b>never</b>Not on this build</div>
+      </div>
+    </div>
+
+    <div class="callout callout--critical">
+      <div class="callout__title">The single exception: testimonial photos are circular</div>
+      <p>
+        Jose asked for this explicitly in his Content Snare submission, in his own words, a circular frame.
+        It is the only rounded shape on the site, and it applies to <strong>testimonial client photos only</strong>.
+        Not headshots, not team member photos, not community cards, not listing images.
+      </p>
+      <div class="geo" style="margin-top:1.25rem;">
+        <div class="geo__item">
+          <div class="geo__avatar geo__avatar--round">JM</div>
+          <div class="geo__caption"><b>Correct</b><code>border-radius: 50%</code> with a 2px <code>#d81f27</code> ring. 72px in the featured testimonial, 56px in the card grid.</div>
+        </div>
+        <div class="geo__item">
+          <div class="geo__avatar geo__avatar--square">JM</div>
+          <div class="geo__caption" style="color:#a90606;"><b>Wrong here</b>Square is correct everywhere else on the site, but not in a testimonial.</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem;">
+        The CSS that carries this is a single rule targeting <code>.testimonial-card__photo</code> and
+        <code>.testimonial-featured__photo</code>. When you rebuild the testimonial block in Spectra, the
+        circular mask and the 2px accent ring both need to survive the port.
+      </p>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Geometry hard rules</div>
+      <ul>
+        <li>Radius 0 everywhere except testimonial client photos.</li>
+        <li>No drop shadows as decoration. The only shadows in the system are functional: a subtle lift on testimonial card hover, a nav shadow once the bar goes solid on scroll, and the modal shadows.</li>
+        <li>Accent rules are square: a 3px or 4px crimson top or left border on panels, never a rounded pill or badge.</li>
+        <li>Images fill their frames with <code>object-fit: cover</code> inside a fixed aspect ratio box. No visible image borders except the testimonial ring.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 06 BLOCKS ============================== -->
+  <section class="block" id="blocks">
+    <div class="block__num">06</div>
+    <h2>Block Inventory</h2>
+    <p class="lede">
+      These are the blocks actually used across the 13 shipped pages, taken from the mockup HTML rather than
+      from a wish list. Page numbers refer to the mockup filenames. The build column is a starting suggestion
+      for the Spectra rebuild, not a rule, use whatever produces the same output cleanly.
+    </p>
+
+    <h3 class="sub">Shell, on every page</h3>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Block</th><th>What it is</th><th class="nowrap">Pages</th><th>Build as</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="nowrap"><code>.nav</code></td>
+          <td>Sticky header. Logo links home, dropdowns for Properties, Buy, Sell, plus a top-level Communities item and About, with Contact as the right-side CTA. Home uses <code>.transparent-to-solid</code>, which starts transparent over the hero and turns white on scroll. Every other page uses the solid bar plus <code>.nav-spacer</code>.</td>
+          <td class="nowrap">01 to 13</td>
+          <td>Astra header builder, or a Spectra container header template</td>
+        </tr>
+        <tr>
+          <td class="nowrap"><code>.footer</code></td>
+          <td>Four-column footer with brand column, link columns, EHO and REALTOR logos, license and compliance text, legal links, AgenticPress credit. <strong>Byte identical on all 13 pages.</strong></td>
+          <td class="nowrap">01 to 13</td>
+          <td>One Astra or Spectra footer template, reused</td>
+        </tr>
+        <tr>
+          <td class="nowrap"><code>.section-header</code></td>
+          <td>Centered eyebrow plus H2 plus optional intro paragraph, max 760px. The standard opener for most sections.</td>
+          <td class="nowrap">01 to 11</td>
+          <td>Spectra Advanced Heading</td>
+        </tr>
+        <tr>
+          <td class="nowrap"><code>.cta-form</code></td>
+          <td>The "Let's Talk" split contact form on a dark band. Anton H2 and supporting copy on the left, name, email, phone, message on the right. One per page, at the bottom, EXCEPT 10-contact: there the same cta-form is the MAIN content block, light variant (section.alt, btn-primary), contact details in the left column. Build contact exactly as the mockup shows, it is not a variation to derive.</td>
+          <td class="nowrap">01 to 11</td>
+          <td>Spectra container plus the site form plugin, two columns</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Hero variants</h3>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Block</th><th>What it is</th><th class="nowrap">Pages</th><th>Build as</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap"><code>.hero</code></td><td>Full-bleed photo hero, minimum 88vh, Anton display H1, darkening gradient, Ken Burns zoom on the background.</td><td class="nowrap">01</td><td>Spectra Container, full width, background image plus overlay</td></tr>
+        <tr><td class="nowrap"><code>.hero--medium</code></td><td>Same hero at 70vh for the two guide pages.</td><td class="nowrap">06, 07</td><td>Same, reduced min height</td></tr>
+        <tr><td class="nowrap"><code>.hero--small</code></td><td>Same hero at 56vh, H1 plus a one-line subhead, no credentials strip. The default interior page header.</td><td class="nowrap">02, 03, 04, 05, 08, 09, 10, 11, 12, 13</td><td>Same, reduced min height</td></tr>
+        <tr><td class="nowrap"><code>.hero__credentials</code></td><td>Black-tint band pinned to the bottom of the home hero with a crimson top rule. Three credentials: 1,200+ families, 20+ years, 4.9 stars across 91 reviews. The numbers count up on load.</td><td class="nowrap">01</td><td>Absolutely positioned container inside the hero</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="sub">Content blocks</h3>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Block</th><th>What it is</th><th class="nowrap">Pages</th><th>Build as</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap"><code>.lead-bar</code></td><td>Slim deep-black lead capture bar sitting directly under the home hero. Inline first name plus email, new listing alerts. Form format one of three.</td><td class="nowrap">01</td><td>Full-width Spectra container plus inline form</td></tr>
+        <tr><td class="nowrap"><code>.about-teaser</code></td><td>Portrait photo at 4:5 beside an overlapping content card. Eyebrow, H2, two paragraphs, CTA. Routes to Meet The Team.</td><td class="nowrap">01</td><td>Spectra two-column container with a negative-offset card</td></tr>
+        <tr><td class="nowrap"><code>.specialty-featured</code></td><td>Deep black panel with a 4px crimson left border and a soft radial crimson glow. Carries the military relocation story and the four base tiles. It is the featured item inside the broader Specialties section, not a standalone block.</td><td class="nowrap">01, 06</td><td>Spectra container, two columns, custom background</td></tr>
+        <tr><td class="nowrap"><code>.mil-bases</code></td><td>Tile row for Fort Carson, Peterson SFB, Schriever SFB, Air Force Academy. Sits inside the specialty panel.</td><td class="nowrap">01, 06</td><td>Spectra icon list or a small grid</td></tr>
+        <tr><td class="nowrap"><code>.services</code> and <code>.service</code></td><td>Four-up card grid. Each card carries an inline SVG icon at 44px in <code>#a90606</code>, an uppercase H4, and short body copy. Hover lifts 2px and turns the border crimson.</td><td class="nowrap">01, 04, 06, 07, 10, 11</td><td>Spectra Info Box, four columns</td></tr>
+        <tr><td class="nowrap"><code>.paths</code> and <code>.path</code></td><td>Buy and sell routing rows. 4:5 photo beside content, alternating sides, Anton H3, photo scales 1.04 on row hover.</td><td class="nowrap">01</td><td>Two Spectra containers, image plus content, reversed on the second</td></tr>
+        <tr><td class="nowrap"><code>.split</code></td><td>Generic two-column content plus media block at 4:3. The workhorse for home value teasers, relocation sections, education sections, and office details.</td><td class="nowrap">01, 06, 07, 08, 10</td><td>Spectra two-column container</td></tr>
+        <tr><td class="nowrap"><code>.process-rows</code> and <code>.process-row</code></td><td>Alternating image and text steps with a large ghost step number. <strong>8 steps</strong> on the buyer and seller guides, 4 on the valuation method section. Never a numbered-circle timeline.</td><td class="nowrap">06 (8), 07 (8), 08 (4)</td><td>Repeated Spectra containers, alternating column order</td></tr>
+        <tr><td class="nowrap"><code>.agent-bio</code></td><td>Three-column EEAT bio: 4:5 portrait, long-form prose, and a sticky deep-black credentials sidebar with a crimson top rule holding license number, designations, languages, and markets.</td><td class="nowrap">02</td><td>Spectra three-column container, sticky third column</td></tr>
+        <tr><td class="nowrap"><code>.stat-bar</code></td><td>Credentials bar in the light asymmetric variant, one marquee stat plus three supporting. Numbers in Anton, <code>#a90606</code> on the light variant.</td><td class="nowrap">02</td><td>Spectra container, four columns with vertical rules</td></tr>
+        <tr><td class="nowrap"><code>.team-member</code></td><td>Paper panel with a 4px crimson left border, 4:5 photo, name in Anton, role in a crimson eyebrow, contact links. <strong>Five instances.</strong> Matt Hughes and Patti Madone are outside partners, not staff, and must be labeled that way.</td><td class="nowrap">02</td><td>Spectra Team block, or a two-column container</td></tr>
+        <tr><td class="nowrap"><code>.testimonials-asym</code></td><td>Home page social proof. One featured quote on black at 1.6fr beside a stack of supporting cards at 1fr. Circular client photos with a crimson ring.</td><td class="nowrap">01</td><td>Spectra container, two columns</td></tr>
+        <tr><td class="nowrap"><code>.testimonials-grid</code></td><td>Three-column card grid. <strong>Seven real reviews</strong>, circular photos, star row, name and location. Hover lifts 4px with a soft shadow.</td><td class="nowrap">03</td><td>Spectra Testimonial block, or Info Box grid</td></tr>
+        <tr><td class="nowrap"><code>.live-feed</code></td><td>Labeled placeholder zone for the Google Reviews embed. Not a designed review UI.</td><td class="nowrap">03</td><td>Container with the review plugin shortcode</td></tr>
+        <tr><td class="nowrap"><code>.communities-grid</code> and <code>.community-card</code></td><td><strong>Eight</strong> photo cards with a bottom gradient, Anton name, crimson meta line. Background scales 1.04 on hover. Each card opens a modal.</td><td class="nowrap">09</td><td>Spectra container grid, cards trigger modals</td></tr>
+        <tr><td class="nowrap"><code>.community-modal</code></td><td><strong>Eight</strong> native <code>&lt;dialog&gt;</code> modals. Each has a photo hero, a stat tile row, prose sections, a highlights grid with SVG icons, a "my take" pull quote, and two CTAs. Real qualitative information only, no fabricated market statistics.</td><td class="nowrap">09</td><td><strong>Spectra Modal, <code>uagb/modal</code>.</strong> Real server-rendered HTML, not a hand-rolled JS modal, so the content is crawlable.</td></tr>
+        <tr><td class="nowrap"><code>.communities-list</code></td><td>Compact inline list of community links with hairline underlines. Points back at page 09.</td><td class="nowrap">05, 06</td><td>Spectra icon list, inline layout</td></tr>
+        <tr><td class="nowrap"><code>.faq</code> and <code>.faq-item</code></td><td>Single-open accordion, 780px wide, hairline dividers, a crimson plus icon that rotates 45 degrees when open. <strong>Six questions</strong> per page. FAQPage schema is already attached on all three.</td><td class="nowrap">06, 07, 08</td><td>Spectra FAQ block</td></tr>
+        <tr><td class="nowrap"><code>.idx-placeholder</code></td><td>Labeled placeholder zone. Crimson label, Anton title, explanatory note. Five instances: home featured carousel, featured listings grid, full MLS search, the valuation widget, and the blog post loop.</td><td class="nowrap">01, 04, 05, 08, 11</td><td><strong>Drop the real shortcode in.</strong> See the note below.</td></tr>
+        <tr><td class="nowrap"><code>.lead-modal</code></td><td>Scroll-triggered lead capture modal firing at roughly 50 percent page depth, dismissible, once per session via <code>sessionStorage</code>. Name, email, and a buying, selling, or relocating select. Form format two of three.</td><td class="nowrap">01</td><td>Spectra Modal with a scroll trigger, plus the form plugin</td></tr>
+        <tr><td class="nowrap"><code>.container-narrow</code></td><td>780px text column for legal copy and long intros.</td><td class="nowrap">02, 06, 09, 12, 13</td><td>Constrained Spectra container</td></tr>
+        <tr><td class="nowrap"><code>.img-placeholder</code></td><td>Styled photo placeholder carrying an aspect ratio and a descriptive hint. Every one of these must be replaced with a real photograph before launch.</td><td class="nowrap">01, 06, 07, 08, 09, 10</td><td>Replace with real images</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout callout--dark">
+      <div class="callout__title">In styles.css but NOT used, do not build these</div>
+      <p>
+        <code>.coverage</code>, <code>.crew</code>, <code>.award-strip</code>, <code>.resources-strip</code>,
+        <code>.testimonials-carousel</code>, <code>.two-col-content</code>, <code>.paths-cinematic</code>,
+        <code>.closing-cta</code>. These are inherited from the source register and carry no content on any of
+        the 13 pages. Ignore them. If a page seems to need one, ask before adding it.
+      </p>
+    </div>
+
+    <h3 class="sub">The three form formats</h3>
+    <p>
+      Jose asked for a signup form at the top, middle, and bottom of the home page, plus a form on every page.
+      That was delivered as three genuinely different formats so it never reads as the same form three times.
+    </p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th class="nowrap">Position</th><th>Format</th><th>Fields</th><th class="nowrap">Where</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap">Top</td><td>Slim dark lead bar under the hero, new listing alerts</td><td>First name, email</td><td class="nowrap">Home only</td></tr>
+        <tr><td class="nowrap">Middle</td><td>Scroll-triggered modal at about 50 percent depth, dismissible, once per session</td><td>Name, email, buying / selling / relocating</td><td class="nowrap">Home only</td></tr>
+        <tr><td class="nowrap">Bottom</td><td>"Let's Talk" split contact form on a dark band</td><td>Name, email, phone, message</td><td class="nowrap">Pages 01 to 11</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="t-small">Pages 12 and 13, Terms and Privacy, carry no form at all. Every other interior page carries the bottom form only, giving one clean conversion moment per page.</p>
+  </section>
+
+  <!-- ============================== 07 MOTION ============================== -->
+  <section class="block" id="motion">
+    <div class="block__num">07</div>
+    <h2>Motion</h2>
+    <p class="lede">
+      Slow, deliberate, and sparing. Nothing bounces, nothing springs, nothing spins. Four effects carry the
+      whole site. All four are live below, hover or press replay to run them.
+    </p>
+
+    <div class="motion-grid">
+
+      <div class="motion-card">
+        <h4>Scroll reveal</h4>
+        <div class="revealbox" id="revealDemo">
+          <div class="revealitem">First element, no delay</div>
+          <div class="revealitem">Second element, 90ms</div>
+          <div class="revealitem">Third element, 180ms</div>
+        </div>
+        <p>
+          <code>opacity 0 to 1</code> plus <code>translateY(26px) to 0</code> over <strong>750ms</strong>
+          with <code>cubic-bezier(0.2, 0.8, 0.2, 1)</code>. Driven by an IntersectionObserver at a
+          <strong>0.12</strong> threshold, firing once per element. Stagger comes from
+          <code>data-reveal-delay</code> values of 1, 2, and 3, which map to 90ms, 180ms, and 270ms.
+        </p>
+        <button class="replay" data-replay="revealDemo">Replay</button>
+      </div>
+
+      <div class="motion-card">
+        <h4>Hero Ken Burns</h4>
+        <div class="kenframe run" id="kenDemo"><div class="kenframe__inner">Hero background</div></div>
+        <p>
+          The hero background image scales from <code>1</code> to <code>1.09</code> over
+          <strong>22 seconds</strong>, <code>ease-out</code>, <code>forwards</code>, so it settles and holds
+          rather than looping. Home page hero only. It is slow enough that most visitors register it as depth
+          rather than as an animation.
+        </p>
+        <button class="replay" data-replay="kenDemo">Replay</button>
+      </div>
+
+      <div class="motion-card">
+        <h4>Count-up on credentials</h4>
+        <div class="countdemo" id="countDemo" data-target="1200" data-comma="1" data-suffix="+">0</div>
+        <p>
+          Credential and stat numbers animate from 0 to their target over <strong>1400ms</strong>, triggered
+          when the strip enters the viewport. There is a <code>setTimeout</code> fallback so a throttled or
+          background tab still lands on the final value instead of freezing partway. Home hero credentials
+          (1,200+ families, 20+ years, 4.9 stars) and the Meet The Team stat bar.
+        </p>
+        <button class="replay" data-replay="countDemo">Replay</button>
+      </div>
+
+      <div class="motion-card">
+        <h4>Hover scale on photos</h4>
+        <div class="zoomframe"><div class="zoomframe__inner">Hover me</div></div>
+        <p>
+          Images inside a fixed-ratio frame scale to <strong>1.04</strong> over
+          <strong>1200ms</strong> with <code>cubic-bezier(0.2, 0.8, 0.2, 1)</code>. The frame keeps
+          <code>overflow: hidden</code> so nothing spills. Applies to path photos, process row photos,
+          community card backgrounds, and split media.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Token</th><th class="nowrap">Value</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td class="nowrap"><code>--duration-fast</code></td><td class="nowrap">200ms</td><td>Link color, nav link hover, small icon feedback</td></tr>
+        <tr><td class="nowrap"><code>--duration-default</code></td><td class="nowrap">400ms</td><td>Button hover, FAQ icon rotation, modal entry</td></tr>
+        <tr><td class="nowrap"><code>--duration-slow</code></td><td class="nowrap">800ms</td><td>FAQ panel expand and collapse</td></tr>
+        <tr><td class="nowrap"><code>--duration-slowest</code></td><td class="nowrap">1200ms</td><td>Photo hover scale</td></tr>
+        <tr><td class="nowrap">scroll reveal</td><td class="nowrap">750ms</td><td>Opacity and translateY on reveal</td></tr>
+        <tr><td class="nowrap">count-up</td><td class="nowrap">1400ms</td><td>Credential and stat numbers</td></tr>
+        <tr><td class="nowrap">Ken Burns</td><td class="nowrap">22s</td><td>Hero background, scale 1 to 1.09, ease-out forwards</td></tr>
+        <tr><td class="nowrap"><code>--ease-default</code></td><td class="nowrap"><code>cubic-bezier(0.2, 0.8, 0.2, 1)</code></td><td>Everything except the Ken Burns, which uses ease-out</td></tr>
+        <tr><td class="nowrap"><code>--ease-smooth</code></td><td class="nowrap"><code>cubic-bezier(0.4, 0, 0.2, 1)</code></td><td>Reserve easing, available but rarely used</td></tr>
+        <tr><td class="nowrap">photo hover scale</td><td class="nowrap">1.04</td><td>Path, process, community card, split media</td></tr>
+        <tr><td class="nowrap">card hover lift</td><td class="nowrap">translateY(-4px)</td><td>Testimonial cards, with a soft shadow</td></tr>
+        <tr><td class="nowrap">service hover lift</td><td class="nowrap">translateY(-2px)</td><td>Service cards, with the border turning crimson</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Motion hard rules</div>
+      <ul>
+        <li>Every effect must be inside a <code>prefers-reduced-motion: reduce</code> guard. The mockups already do this: reveals resolve to their final state instantly and the Ken Burns is switched off. Carry this into the WordPress build.</li>
+        <li>No bounce, no spring, no elastic easing. No spinning loaders inside content.</li>
+        <li>Photo hover scale stops at 1.04. Higher reads as a gimmick.</li>
+        <li>Scroll reveals fire once. Do not re-hide an element when it leaves the viewport.</li>
+        <li>The count-up must have a fallback that sets the final value. A visitor who lands on a stat frozen at 437 is worse than no animation at all.</li>
+        <li>No carousels or auto-rotating sliders in the hero.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== 08 HARD RULES ============================== -->
+  <section class="block" id="rules">
+    <div class="block__num">08</div>
+    <h2>Hard Rules and Anti-Patterns</h2>
+    <p class="lede">
+      Client-specific. Every line below came out of Jose's brief, his Content Snare submission, or a decision
+      Curtis made during this build. These override general habit.
+    </p>
+
+    <div class="callout callout--critical">
+      <div class="callout__title">Never, on this build</div>
+      <ul>
+        <li><strong>No em dashes.</strong> Anywhere. Not in copy, not in headings, not in alt text, not in HTML comments. Use a comma, a period, a colon, or a middle dot. This one has bitten this build twice already.</li>
+        <li><strong>No second accent color.</strong> Crimson, black, paper. No blue, no gold, no green, no gradient brand color.</li>
+        <li><strong>No rounded corners</strong>, with the single exception of testimonial client photos.</li>
+        <li><strong>No hand-built IDX interface.</strong> Jose runs <strong>iHomefinder / Optima Express</strong>, not Showcase IDX. We do not control that UI. Listing search, listing grids, and map search are shortcode zones only. Never design listing cards.</li>
+        <li><strong>No hand-built home valuation form.</strong> The client has his own valuation widget plugin. The valuation page carries a labeled placeholder zone and nothing else.</li>
+        <li><strong>No fabricated statistics.</strong> No invented sale counts, no invented average days on market, no invented price data, no invented reviews. Only what Content Snare supplied or research verified.</li>
+        <li><strong>No stats that go stale.</strong> Homes sold in the last 12 months is deliberately not published, the numbers on hand disagree. Only evergreen credentials appear: 20+ years, 1,200+ families, Top 1%, 4.9 stars across 91 reviews.</li>
+        <li><strong>No market data on the home page.</strong> Market updates belong on the blog where they can be dated.</li>
+        <li><strong>No "Recently Sold Nearby" block</strong> on the home valuation page.</li>
+        <li><strong>No superlative claims.</strong> No "best rated", no "5 star realtor", no "number one agent". They read as puffery and the keyword research showed no search volume behind them.</li>
+        <li><strong>No filler phrasing.</strong> No "dream home", no "your real estate journey", no "every step of the way", no "seamless experience", no "nestled", no "vibrant", no "thriving".</li>
+        <li><strong>No emoji as icons.</strong> Inline SVG only, stroke width 1.5, currentColor so it inherits the right red.</li>
+        <li><strong>No employment implication for partners.</strong> Matt Hughes at Security National Mortgage and Patti Madone at First American Title are outside partners, not Vantegic staff. Label them as partners.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Always, on this build</div>
+      <ul>
+        <li>The footer is identical on all 13 pages. Build it once, reuse it, never fork it per page.</li>
+        <li>No "Home" link in the navigation. The logo is the home link.</li>
+        <li>Contact is the right-side CTA in the nav, not a plain menu item.</li>
+        <li>Terms of Use and Privacy Policy are both live and both linked from the footer.</li>
+        <li>Equal Housing Opportunity and REALTOR logos plus the compliance block appear in the footer, along with HomeSmart, Colorado license ER.100025793, and the PPMLS IDX disclaimer.</li>
+        <li>Minimum three contextual internal links per page. No orphan pages.</li>
+        <li>Eight steps in the buyer and seller process blocks. Six questions in each FAQ.</li>
+        <li>Every image gets descriptive alt text. Never blank, never the word "image", never keyword stuffed.</li>
+        <li>Real photography only. Client-supplied assets first: the crimson shield logo, his headshot, his Colorado Springs listing exterior, and the ten named client photos.</li>
+        <li>Several client testimonial photos are 5 to 6MB. <strong>Downsize them before launch.</strong></li>
+        <li>Voice is first person. Jose speaks for himself. Credential-forward without bragging, equity protection as the through line, bilingual service treated as a fact rather than a slogan.</li>
+      </ul>
+    </div>
+
+    <div class="callout callout--dark">
+      <div class="callout__title">Still open, confirm before launch</div>
+      <ul>
+        <li>Buyer and seller lifestyle photos, plus the eight neighborhood photos, are still placeholders.</li>
+        <li>Is the iHomefinder / Optima Express account live and paid?</li>
+        <li>Terms and Privacy are templates and need counsel review.</li>
+        <li>The eight service areas were derived from Jose's bio and public profile, his Content Snare fields were blank. Confirm with him.</li>
+        <li>Pueblo is deliberately excluded from the communities page pending confirmation that he works it.</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<div class="docfoot">
+  <strong>Jose Medina · Vantegic Home Team · HomeSmart</strong><br>
+  Design rules generated by Optimus Prime Phase 9 on 2026-07-21 · Register: Cluster D, bold-credentialed regional anchor<br>
+  Questions go to Curtis Gould, AgenticPress.
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function runCount(el) {
+    var target = parseFloat(el.dataset.target);
+    var comma = el.dataset.comma === '1';
+    var suffix = el.dataset.suffix || '';
+    var dur = 1400, start = null, done = false;
+
+    function fmt(v) {
+      var n = Math.round(v);
+      return (comma ? n.toLocaleString('en-US') : String(n)) + suffix;
+    }
+    function finish() {
+      if (done) return;
+      done = true;
+      el.textContent = fmt(target);
+    }
+    if (reduce) { finish(); return; }
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      el.textContent = fmt(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) { requestAnimationFrame(step); } else { finish(); }
+    }
+    requestAnimationFrame(step);
+    setTimeout(finish, dur + 400);
+  }
+
+  function runReveal(box) {
+    box.classList.remove('run');
+    void box.offsetWidth;
+    box.classList.add('run');
+  }
+
+  function runKen(frame) {
+    frame.classList.remove('run');
+    void frame.offsetWidth;
+    frame.classList.add('run');
+  }
+
+  var observed = [
+    { el: document.getElementById('revealDemo'), fn: runReveal },
+    { el: document.getElementById('countDemo'), fn: runCount }
+  ];
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        observed.forEach(function (o) { if (o.el === entry.target) o.fn(o.el); });
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    observed.forEach(function (o) { if (o.el) io.observe(o.el); });
+  } else {
+    observed.forEach(function (o) { if (o.el) o.fn(o.el); });
+  }
+
+  document.querySelectorAll('.replay').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.replay);
+      if (!el) return;
+      if (el.id === 'countDemo') { el.textContent = '0'; runCount(el); }
+      else if (el.id === 'revealDemo') { runReveal(el); }
+      else if (el.id === 'kenDemo') { runKen(el); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
