@@ -1143,13 +1143,13 @@ h2 { text-wrap: balance; }
   .rd-site .rd-a11y__open { bottom: calc(72px + env(safe-area-inset-bottom)); }
 }
 
-/* phones: the accessibility button sits in the call bar's left end, so it never covers a button on the page (floating
-   above the bar it covered the home hero's buttons on the left and the estimator's button on the right, 2026-10-13),
-   and the home hero ends where the call bar starts. Its own sheet loads after this one, so the rule doubles the class */
+/* phones: Call and Contact run edge to edge, half each (Curtis, 2026-11-05: "they don't go to the edges of the screen").
+   The accessibility button moves to the header beside the menu button, where it never covers a button on the page
+   (floating above the bar it covered the home hero's buttons and the estimator's, 2026-10-13). The home hero ends where
+   the call bar starts. Its own sheet loads after this one, so the rule doubles the class */
 @media (max-width: 760px) {
-  .callbar { left: 56px; }
-  .rd-site .rd-a11y__open.rd-a11y__open { left: 0; right: auto; bottom: 0; width: 56px; min-height: 0;
-    height: calc(56px + env(safe-area-inset-bottom)); padding: 0 0 env(safe-area-inset-bottom); border: 0; box-shadow: none; }
+  .rd-site .rd-a11y__open.rd-a11y__open { left: auto; right: 70px; top: 38px; bottom: auto; width: 44px;
+    height: 44px; min-height: 0; padding: 0; box-shadow: none; }
   .hero { min-height: max(600px, calc(100svh - 56px)); }
 }
 
@@ -1262,4 +1262,25 @@ h2 { text-wrap: balance; }
 }
 @media (max-width: 480px) {
   .vid::after { background: linear-gradient(0deg, rgba(36,28,25,.84) 0%, rgba(36,28,25,.55) 38%, rgba(36,28,25,.12) 72%, rgba(36,28,25,.05) 100%); }
+}
+
+/* phones, Curtis's pick from explore/phone-hero (2026-11-05): a tighter header at the top of the page that keeps the
+   broker line (the same height as the sticky header), the home headline on two lines as on desktop, and stacked
+   buttons that fill the column, so the left and right edges line up */
+@media (max-width: 760px) {
+  :root { --hdr-pad: var(--hdr-pad-stuck); --logo-h: var(--logo-h-stuck); }
+}
+@media (max-width: 640px) {
+  .hero h1 { --h1: clamp(34px, 10.8vw, 69px); font-size: var(--h1); max-width: none; text-wrap: wrap; }
+  .acts { flex-direction: column; align-items: stretch; flex-wrap: nowrap; }
+  .acts > .btn { display: flex; width: 100%; justify-content: center; text-align: center; box-sizing: border-box; }
+}
+
+/* About: the team photo must show all three people. A phone-shaped crop cuts one out, so on phones the whole photo sits
+   under the header and the words sit on a solid band below it (2026-11-05) */
+@media (max-width: 640px) {
+  .ph:has(.ph__img[src*="team-kitchen"]) { min-height: 0; background: var(--umber); }
+  .ph:has(.ph__img[src*="team-kitchen"])::before { display: none; }
+  .ph__img[src*="team-kitchen"] { inset: 121px 0 auto 0; height: auto; aspect-ratio: 3 / 2; object-position: 50% 50% !important; }
+  .ph:has(.ph__img[src*="team-kitchen"]) .ph__in { padding-top: calc(121px + 66.67vw + 28px); padding-bottom: 44px; }
 }
