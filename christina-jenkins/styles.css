@@ -98,7 +98,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ---------- header: white over the hero photograph, then sage with ink type once the page scrolls or the menu opens ---------- */
 .hdr { position: fixed; inset: 0 0 auto 0; z-index: 50; padding: 34px 44px; color: var(--paper); background: transparent;
   transition: padding 400ms var(--ease), background-color 400ms var(--ease), color 400ms var(--ease); }
-.hdr.is-stuck { padding-block: 22px; background: var(--sea); }
+.hdr.is-stuck { padding-block: 28px; background: var(--sea); }   /* 22px until 2026-11-09: Curtis, "the sticky is too narrow" */
 .hdr.is-stuck, .hdr.menu-open, .hdr--dark { color: var(--ink); }
 /* the header's button over the photograph keeps its white hover (sage deep is for the page's buttons) */
 .hdr .btn-w { border-color: currentColor; }
@@ -112,13 +112,16 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand__name span { display: block; }
 .brand__rule { align-self: stretch; width: 1px; margin: 6px 0; background: rgba(255, 255, 255, .55); }
 /* her brokerage's white logo (Content Snare, the transparent white version) beside her name */
-.brand__dw { width: auto; height: 64px; filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .3)); transition: height 400ms var(--ease); }
-.hdr.is-stuck .brand__dw { height: 56px; }
+.brand__dw { width: auto; height: 54px; filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .3)); transition: height 400ms var(--ease); }
+.hdr.is-stuck .brand__dw { height: 46px; }   /* logo 64/56 until 2026-11-09: Curtis, "shrink her logo a little bit" */
 .ftr .brand { display: block; margin-bottom: 18px; }
 .ftr__dw { width: auto; height: 48px; margin-bottom: 26px; filter: brightness(0); }
 .ftr .brand__name span { display: inline; }
 .brand:hover { text-decoration: none; }
 .brand__name { display: block; font: 400 22px/1.2 var(--sans); letter-spacing: .32em; text-transform: uppercase; white-space: nowrap; }
+/* the header's name a little smaller than the footer's (Curtis, 2026-11-09, "shrink her logo a little bit"); the sizes set under
+   1440px (17px) and on phones (15px, 13px) stay as they were */
+@media (min-width: 1440px), (min-width: 761px) and (max-width: 1279px) { .hdr .brand__name { font-size: 20px; } }
 .brand__kw { display: block; margin-top: 8px; font: 400 12px/1.2 var(--sans); letter-spacing: .3em; text-transform: uppercase; white-space: nowrap; }
 .nav__list { display: flex; align-items: center; gap: 26px; }
 .nav__item, .has-drop { position: relative; }
