@@ -114,6 +114,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* her brokerage's white logo (Content Snare, the transparent white version) beside her name */
 .brand__dw { width: auto; height: 54px; filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .3)); transition: height 400ms var(--ease); }
 .hdr.is-stuck .brand__dw { height: 46px; }   /* logo 64/56 until 2026-11-09: Curtis, "shrink her logo a little bit" */
+/* her logo (Curtis made it, 2026-11-09: "add this to the header and the footer"), used whole, in place of the typed
+   name: white over the photograph, black once the header is stuck, the same treatment as the Dalton Wade logo */
+.brand__logo { flex: none; width: auto; height: 84px; filter: drop-shadow(0 1px 8px rgba(0, 0, 0, .3)); transition: height 400ms var(--ease); }
+.hdr.is-stuck .brand__logo { height: 70px; }
+:is(.hdr.is-stuck, .hdr.menu-open, .hdr--dark) .brand__logo { filter: brightness(0); }
+/* the full logo (mark and name) heads the footer column, drawn black on Shallow Water */
+.ftr__logo { display: block; width: auto; height: 132px; margin-bottom: 24px; filter: brightness(0); }
 .ftr .brand { display: block; margin-bottom: 18px; }
 .ftr__dw { width: auto; height: 48px; margin-bottom: 26px; filter: brightness(0); }
 .ftr .brand__name span { display: inline; }
@@ -182,6 +189,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .brand__name { font-size: 15px; letter-spacing: .2em; }
   .brand { gap: 14px; }
   .brand__dw, .hdr.is-stuck .brand__dw { height: 30px; }
+  .brand__logo, .hdr.is-stuck .brand__logo { height: 56px; }
   .brand__kw { margin-top: 6px; letter-spacing: .14em; }
   .hdr__tel { display: none; }
   .hdr__in { gap: 12px; }
@@ -193,10 +201,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   .brand { gap: 10px; }
   .brand__name { font-size: 13px; letter-spacing: .16em; }
   .brand__dw, .hdr.is-stuck .brand__dw { height: 24px; }
+  .brand__logo, .hdr.is-stuck .brand__logo { height: 48px; }
 }
 
 /* ---------- hero: the photo, the name, one line, one button ---------- */
-.hero { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; min-height: max(560px, 86svh);
+.hero { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; min-height: max(560px, 100svh); /* full bleed: the whole screen (Curtis, 2026-11-09; was 86svh). Interior heroes (.ph) stay at 76svh */
   padding: 150px 24px 96px; text-align: center; color: var(--paper); background: #141414; overflow: hidden; }
 .hero__img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: saturate(1.08) contrast(1.04); }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
@@ -289,16 +298,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .list__f { margin-top: 40px; text-align: center; }
 
 /* ---------- buy and sell ---------- */
-.paths { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--paper); }
-.path { position: relative; display: flex; flex-direction: column; align-items: center; min-height: 520px; padding: 96px 36px; overflow: hidden; text-align: center; color: var(--paper); }
+.paths { padding-top: clamp(56px, 6vw, 88px); background: var(--paper); }
+.list + .paths { padding-top: 0; }
+/* the pathways' own small heading (Curtis, 2026-11-09: "The pathways need a small H2") */
+.paths__h { margin-bottom: 36px; text-align: center; }
+.paths__h h2 { font-size: 22px; letter-spacing: .22em; }
+.paths__g { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+.path { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 520px; padding: 96px 36px; overflow: hidden; text-align: center; color: var(--paper); }   /* centred top to bottom (Curtis, 2026-11-09) */
 .path:hover { text-decoration: none; }
 .path img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 800ms ease; }
 .path::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 8, 8, .66) 0%, rgba(8, 8, 8, .58) 50%, rgba(8, 8, 8, .5) 100%); }   /* darker lower half for the white interiors behind the buttons (2026-11-02) */
 .path .stretch:hover { text-decoration: none; }
 .path:hover img { transform: scale(1.03); }
 .path__in { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 18px; text-shadow: 0 2px 14px rgba(0, 0, 0, .4); }
-.path h2 { font-size: 28px; letter-spacing: .12em; }
-.path p { max-width: 34ch; font-size: 16px; font-style: italic; }
+.path h3 { font-size: 28px; letter-spacing: .12em; }
+.path p { max-width: 34ch; font-size: 16px; }   /* no italics (Curtis, 2026-11-09) */
 .path .btn { margin-top: 12px; }
 /* the panel is the link (its button is a label): hovering the panel fills the button sage deep */
 .path:hover .btn-w { background: var(--sage-deep); border-color: var(--sage-deep); color: var(--ink); text-shadow: none; }
@@ -392,7 +406,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 1100px) {
   .about__g { gap: 56px; }
   .path { padding: 72px 22px; }
-  .path h2 { font-size: 23px; }
+  .path h3 { font-size: 23px; }
   .lc__card .impress-info { padding: 48px 36px; }
   .hv__t { padding: 80px 48px 80px var(--side); }
   .cta { background-attachment: scroll; }
@@ -425,9 +439,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   .lc__card .impress-info { padding: 36px 24px 40px; }
   .lc__card .impress-price { font-size: 26px; }
   .cards { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .paths { grid-template-columns: minmax(0, 1fr); }
+  .paths__g { grid-template-columns: minmax(0, 1fr); }
   .path { min-height: 440px; padding: 64px 20px; }
-  .path h2 { font-size: 26px; }
+  .path h3 { font-size: 26px; }
   .quote__g { grid-template-columns: minmax(0, 1fr); gap: 32px; }
   .quote__c { width: 120px; height: 120px; }
   .quote__mark { margin-top: 40px; font-size: 110px; }
@@ -505,6 +519,20 @@ ul { margin: 0; padding: 0; list-style: none; }
 .ph__eyebrow { font: 500 12px/1.5 var(--sans); letter-spacing: .26em; text-transform: uppercase; }
 .ph__sub { max-width: 44ch; font-size: 19px; line-height: 1.7; font-style: italic; letter-spacing: .02em; }
 .ph .acts { justify-content: center; margin-top: 6px; }
+/* Interior heroes: the H1 stays centred, and the breadcrumb is a short vertical list on the hero's left, one step per
+   line with a thin rule beside it (Curtis, 2026-11-09: "all the h1's to be center located and the breadcrumbs stacked
+   vertically on the left side"). Wide screens: beside the centred heading, at the logo's left edge. Narrower: the same
+   list at the top left, above the heading. */
+.ph .crumbs { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 0; padding-left: 16px; border-left: 1px solid rgba(255, 255, 255, .55); text-align: left; }
+.ph .crumbs li + li::before { display: none; }
+.ph .crumbs a, .ph .crumbs [aria-current] { justify-content: flex-start; }
+@media (min-width: 1440px) {
+  .ph .crumbs { position: absolute; left: 44px; top: 176px; z-index: 2; max-width: 170px; }   /* just under the header (152px tall over the photo) */
+  .ph .crumbs a, .ph .crumbs [aria-current] { min-height: 32px; padding: 4px 0; line-height: 1.5; }
+}
+/* the header grew with her logo (152px over the photo), so the hero's content starts below it */
+@media (min-width: 761px) and (max-width: 1439px) { .ph { padding-top: 184px; } }
+@media (max-width: 1439px) { .ph .crumbs { align-self: flex-start; } }
 .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 14px; margin: 0;
   font: 500 12px/1.4 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: rgba(255, 255, 255, .9); }
 .crumbs ol, .crumbs li { display: contents; }
