@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mitch Jearls: Design Rules</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111111;--grey:#F1F1F1;--line:#D9D9D9;--text:#2A2A2A;--muted:#555555;--navy:#0B2769;--gold:#F3CE0B;--white:#ffffff;--head:"Montserrat",system-ui,sans-serif;--body:"Roboto",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+body{font-family:var(--body);font-size:16px;line-height:1.7;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+.doc{max-width:1200px;margin:0 auto;padding:64px 32px 96px}
+.eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+h1,h2,h3{font-family:var(--head);font-weight:200;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+h1{font-size:clamp(30px,4vw,56px);letter-spacing:.08em;line-height:1.2}
+h2{font-size:clamp(24px,2.6vw,36px);letter-spacing:.04em;line-height:1.22;padding-bottom:14px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+h3{font-size:16px;letter-spacing:.14em;font-weight:300;margin:28px 0 10px}
+header.top{border-bottom:1px solid var(--line);padding-bottom:40px;margin-bottom:56px}
+.meta{color:var(--muted);font-size:15px;margin-top:14px}
+section{margin-bottom:72px}
+.intro{color:var(--muted);max-width:68ch;margin-bottom:24px}
+p+p{margin-top:12px}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--grey)}
+code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.86em;background:var(--grey);padding:1px 6px;border:1px solid var(--line)}
+.callout{background:var(--grey);border-left:3px solid var(--ink);padding:20px 24px;margin:20px 0}
+.callout b.t{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
+.callout ul{margin-left:20px}.callout li{margin:4px 0}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.sw{border:1px solid var(--line)}.sw i{display:block;height:84px;border-bottom:1px solid var(--line)}
+.sw div{padding:12px 14px}.sw b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink)}
+.sw span{display:block;font-size:13px;color:var(--muted);margin-top:4px}.sw .hex{font-family:ui-monospace,Menlo,monospace;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 30px;font:400 12px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;border:1px solid currentColor;background:transparent;color:var(--ink);text-decoration:none}
+.btn.solid{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:500}
+.btn.white{background:#fff;border-color:#fff;color:var(--ink)}
+.dark{background:#141414;padding:28px;display:flex;gap:14px;flex-wrap:wrap}.dark .btn.l{color:#fff}
+.demo{border:1px solid var(--line);padding:28px;margin:16px 0;background:#fff}
+.demo.photo{background:linear-gradient(rgba(10,10,10,.46),rgba(10,10,10,.46)),#5b6b7a;color:#fff;border:0}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.d1{font-size:clamp(34px,4.6vw,64px);letter-spacing:.08em;line-height:1.2}
+.d2{font-size:clamp(30px,3.6vw,52px);letter-spacing:.04em;line-height:1.22}
+.d3{font-size:clamp(17px,1.5vw,21px);letter-spacing:.14em;line-height:1.35;font-weight:300;margin:0}
+.cap{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.hdrmock{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 24px;flex-wrap:wrap}
+.hdrmock.a{background:linear-gradient(rgba(10,10,10,.46),rgba(10,10,10,.46)),#5b6b7a;color:#fff}
+.hdrmock.b{background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.07);padding:14px 24px;border:1px solid var(--line)}
+.hdrmock .nm{font:300 22px/1 var(--head);letter-spacing:.34em;text-transform:uppercase}
+.hdrmock .sub{font-size:12px;letter-spacing:.3em;text-transform:uppercase;opacity:.85;margin-top:6px}
+.hdrmock nav{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:22px;flex-wrap:wrap}
+.hdrmock.b .nm,.hdrmock.b nav{color:var(--ink)}
+.callbar{display:grid;grid-template-columns:1fr 1fr;max-width:375px;background:#111}
+.callbar span{display:flex;align-items:center;justify-content:center;min-height:56px;font:500 13px/1 var(--body);letter-spacing:.22em;text-transform:uppercase}
+.callbar .c{background:var(--gold);color:#111}.callbar .t{background:#111;color:#fff}
+.tabsmock{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);overflow-x:auto;background:#fff}
+.tabsmock .l{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-right:18px;flex:none}
+.tabsmock .tab{flex:none;min-height:62px;display:inline-flex;align-items:center;padding:0 16px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap}
+.tabsmock .tab.on{color:var(--ink);border-bottom-color:var(--ink)}
+.sbar{display:grid;grid-template-columns:2.6fr 1fr 1fr 1fr auto;gap:24px;align-items:end}
+.sbar label{display:block;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sbar .f{border-bottom:1px solid var(--ink);min-height:48px;display:flex;align-items:center;font-size:16px;color:var(--ink)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pill{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border:1px solid var(--line);border-radius:999px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pill.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.lc{max-width:340px;text-align:center}
+.lc .ph{position:relative;height:280px;background:#2b3138}
+.lc .tag{position:absolute;top:14px;right:14px;background:#111;color:#fff;font-size:12px;letter-spacing:.22em;text-transform:uppercase;padding:7px 12px}
+.lc h3{margin:24px 0 0;font-size:18px;letter-spacing:.12em}
+.lc .m{margin-top:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.lc .p{margin-top:8px;font:300 21px/1.3 var(--head);letter-spacing:.08em;color:var(--ink)}
+.lc .f{margin-top:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.float{background:var(--grey);padding:28px;margin:12px 0;text-align:center}
+@media(max-width:760px){.doc{padding:40px 20px}.sbar{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="top">
+<div class="eyebrow">Design Rules · Handoff Document</div>
+<h1>Mitch Jearls</h1>
+<p class="meta">The Jearls Home Team, MKB, REALTORS® · For Jeff, Kersey and any builder picking up this project · Generated 2026-11-11 · Look: The Crouch Team (thecrouchteam.com), approved by Curtis on the Claude Design canvas</p>
+</header>
+
+<section>
+<h2>How to Read This Document</h2>
+<p class="intro">Every rule below is drawn in the fonts, colours and sizes the site uses. The two approved pages are the source of truth: <code>mockups/01-home.html</code> (home) and <code>mockups/13-homes-for-sale-roanoke-va.html</code> (the template for all nine town pages). The stylesheet is <code>mockups/styles.css</code>. If this page and a mockup disagree, the mockup wins; tell Curtis before building.</p>
+<div class="callout"><b class="t">Built from the canvas</b>
+<p>The approved design is the Claude Design canvas: <a href="https://claude.ai/artifact/XC2BjzR99Nc9izEA8dEShp">https://claude.ai/artifact/XC2BjzR99Nc9izEA8dEShp</a> (artboards Main for the home page and Community-Roanoke for every town page, both approved 2026-11-11). <code>mockups/_src/port_canvas.py</code> writes the stylesheet from it. Any look change goes on the canvas first, then the port is re-run. Never hand-edit the canvas layer at the top of <code>styles.css</code>, and do not use <code>global-design.json</code> in this folder (it is from an earlier look that was not picked).</p></div>
+</section>
+
+<section>
+<h2>Typography</h2>
+<p class="intro">Headings are <strong>Montserrat</strong>, weight 200 (300 for H3 and small display), UPPERCASE with wide tracking. Body is <strong>Roboto</strong> 400, 16px, line-height 1.7. Load both from Google Fonts (Montserrat 200, 300, 400, 500; Roboto 300, 400, 500). Headings use balanced wrapping and never carry italic or coloured words.</p>
+<table>
+<tr><th>Style</th><th>Weight · tracking · line-height</th><th>1440 desktop</th><th>375 phone</th></tr>
+<tr><td>H1, home</td><td>200 · .08em · 1.2</td><td>64px</td><td>29px</td></tr>
+<tr><td>H1, interior and town</td><td>200 · .08em · 1.2</td><td>60px</td><td>29px</td></tr>
+<tr><td>H2, home</td><td>200 · .04em · 1.22</td><td>52px</td><td>30px</td></tr>
+<tr><td>H2, interior and town</td><td>200 · .04em · 1.22</td><td>46px</td><td>28px (24px at 420px and below)</td></tr>
+<tr><td>H3, home</td><td>300 · .14em · 1.35</td><td>21px</td><td>17px</td></tr>
+<tr><td>H3, interior and town</td><td>300 · .14em · 1.35</td><td>19px</td><td>16px</td></tr>
+<tr><td>Path tile H3 (Buy, Sell, Search)</td><td>200 · .06em · one line</td><td>30px</td><td>24px (22px at 360px)</td></tr>
+<tr><td>Stats figure (home)</td><td>Montserrat 200 · .14em</td><td>30px</td><td>30px (24px at 360px)</td></tr>
+<tr><td>Review quote</td><td>Montserrat 300 · .02em · 1.7</td><td>24px</td><td>19px</td></tr>
+<tr><td>Eyebrow</td><td>Roboto 400 · .24em · UPPERCASE · muted</td><td>13px</td><td>13px</td></tr>
+<tr><td>Lede</td><td>Roboto 400 · 1.75 · muted</td><td>17px</td><td>17px</td></tr>
+<tr><td>Body</td><td>Roboto 400 · 1.7 · #2A2A2A</td><td>16px</td><td>16px</td></tr>
+<tr><td>Labels, meta, tags, tabs, buttons</td><td>Roboto 400 · .14em to .26em · UPPERCASE</td><td>12px (floor)</td><td>12px (floor)</td></tr>
+</table>
+<div class="demo"><div class="eyebrow">Eyebrow Label</div><h1 class="d1">Roanoke VA REALTOR® with a renovator's eye</h1></div>
+<div class="demo"><h2 class="d2" style="border:0;padding:0;margin:0">Find your place in the Roanoke Valley</h2></div>
+<div class="demo"><h3 class="d3">Service Subhead</h3><p style="margin-top:10px;max-width:62ch">This is body copy: Roboto 400 at 16px, line-height 1.7, in #2A2A2A. The lede above a section is 17px in muted grey and stops at about 620px wide.</p></div>
+<div class="callout"><b class="t">Typography Hard Rules</b><ul>
+<li>Two families only: Montserrat for headings, Roboto for everything else. Never add a third.</li>
+<li>No italic, serif or coloured words inside headings. Headings are one colour (ink, or white on a photo).</li>
+<li>Keep pairs together on a line break (non-breaking spaces, as in "Roanoke&amp;nbsp;VA"); no lone last word.</li>
+<li>No text under 12px anywhere, including tags, labels and the footer.</li>
+<li>No em or en dashes in any copy.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Color Palette</h2>
+<p class="intro">Black, white and grey carry the page. MKB navy is the only brand colour on solid buttons and links. MKB gold is reserved for two spots. Do not add colours.</p>
+<div class="swatches"><div class="sw"><i style="background:#111111"></i><div><b>Ink</b><span class="hex">#111111</span><span>H1 to H3 on light grounds, hairline button text and border, the footer base bar, the call bar Let's Talk half, listing tags and the home number chips, the active tab and pill.</span></div></div><div class="sw"><i style="background:#141414"></i><div><b>Panel</b><span class="hex">#141414</span><span>The Meet Mitch band on the home page (the only dark band that carries copy besides the footer base).</span></div></div><div class="sw"><i style="background:#2A2A2A"></i><div><b>Text</b><span class="hex">#2A2A2A</span><span>Body copy on white and on grey.</span></div></div><div class="sw"><i style="background:#555555"></i><div><b>Muted</b><span class="hex">#555555</span><span>Eyebrows, ledes, card meta lines, the listing firm line, tab labels, form labels.</span></div></div><div class="sw"><i style="background:#0B2769"></i><div><b>Navy (MKB)</b><span class="hex">#0B2769</span><span>Solid buttons (Schedule, Home Value, Get Pre-Approved, submit), text links, hover on link text, focus rings on light grounds. Never a large fill.</span></div></div><div class="sw"><i style="background:#F3CE0B"></i><div><b>Gold (MKB)</b><span class="hex">#F3CE0B</span><span>Only two places: the hero search button and the phone call bar's Call half. Nav hover on the transparent header. Nowhere else.</span></div></div><div class="sw"><i style="background:#FFFFFF"></i><div><b>White</b><span class="hex">#FFFFFF</span><span>Default ground, the stuck header, text on photos and on solid navy.</span></div></div><div class="sw"><i style="background:#F1F1F1"></i><div><b>Grey</b><span class="hex">#F1F1F1</span><span>Alternate grounds: the floating home value and financing cards, the Schools and Parks band, table heads, hover on submenu rows.</span></div></div><div class="sw"><i style="background:#D9D9D9"></i><div><b>Line</b><span class="hex">#D9D9D9</span><span>Hairlines: section dividers, tab bar bottom, card and form rules, pill borders.</span></div></div></div>
+<table>
+<tr><th>Overlay</th><th>Value</th><th>Where</th></tr>
+<tr><td>Hero shade</td><td>rgba(10,10,10,.46) home, .5 interior</td><td>Over every photo hero so white type holds contrast</td></tr>
+<tr><td>Path tile and close block shade</td><td>rgba(10,10,10,.5)</td><td>Buy, Sell, Search tiles; the closing block</td></tr>
+<tr><td>Reviews shade</td><td>rgba(10,10,10,.64)</td><td>Floating reviews block</td></tr>
+<tr><td>Search strip</td><td>rgba(10,10,10,.86)</td><td>Strip under the home hero</td></tr>
+<tr><td>Parallax band shade</td><td>rgba(10,10,10,.58)</td><td>Let's Talk band on town pages</td></tr>
+</table>
+<div class="callout"><b class="t">Color Hard Rules</b><ul>
+<li>Gold only on the hero search button and the call bar's Call half (plus the nav hover on the transparent header). Not on cards, links or icons.</li>
+<li>Navy is never a section background. It sits on solid buttons, links and focus rings.</li>
+<li>Body text meets WCAG AA on its ground. Hover on solid navy goes to ink, never to a lighter blue.</li>
+<li>Never two dark bands in a row.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Buttons</h2>
+<p class="intro">Hairline outlined, square corners, Roboto 12px, UPPERCASE, .24em tracking, 48px tall (44px in the header), 30px side padding. Hover fills the outline with ink (white on dark grounds). Solid navy is the main call to action.</p>
+<div class="demo"><div class="row"><a class="btn" href="#">Browse Listings</a><a class="btn solid" href="#">Schedule a Consultation</a><a class="btn gold" href="#">Search</a></div>
+<p class="cap" style="margin-top:12px">Hairline (default) · Solid navy · Gold (hero search button only)</p></div>
+<div class="dark"><a class="btn l" href="#">Hairline on Dark</a><a class="btn white" href="#">White on Photo</a><a class="btn solid" href="#">Solid Navy</a></div>
+<table>
+<tr><th>Variant</th><th>Class in the mockup</th><th>Use</th></tr>
+<tr><td>Hairline</td><td><code>.btn</code></td><td>Default. Ink outline on light grounds; hover fills ink, text white.</td></tr>
+<tr><td>Hairline, light</td><td><code>.btn--light</code></td><td>On photos and the dark band; hover fills white, text ink.</td></tr>
+<tr><td>Solid navy</td><td><code>.btn--solid</code></td><td>Primary CTA on light grounds (Schedule, Home Value, financing, forms). Hover goes ink.</td></tr>
+<tr><td>White solid</td><td><code>.btn--white</code></td><td>Primary CTA over a photo (closing block).</td></tr>
+<tr><td>Gold</td><td><code>.btn--gold</code> and the strip search button</td><td>The home hero search button only. Gold bar of the phone Call half is separate.</td></tr>
+<tr><td>Text link</td><td><code>.textlink</code>, <code>.home__go</code></td><td>12px caps, .22em, ink; underline hairline under card links.</td></tr>
+</table>
+<div class="callout"><b class="t">Button Hard Rules</b><ul>
+<li>Border radius 0 on every button, card, image, input and block. The only round things are the 44px social icons and the quick-search pills.</li>
+<li>Buttons sit below a section, never inside a section head beside the H2.</li>
+<li>One primary and at most one secondary per hero. Minimum tap target 44px.</li>
+<li>Focus ring: 2px navy, 3px offset (white on photo and dark grounds).</li>
+<li>Hover timing .2s on background and colour; photo zoom .6s.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Header: Two States</h2>
+<p class="intro">Brand lockup left (Mitch Jearls, Montserrat 300, 26px, .34em tracking, with "The Jearls Home Team" at 12px beneath), menu right: Properties, Buy, Sell, Communities, About as dropdowns, the phone number, and a hairline Let's Talk button. Nav text is Roboto 12.5px, .2em, UPPERCASE. The Communities dropdown lists every community in two columns (460px wide); other submenus are 250px wide on white with a soft shadow, 44px rows, grey hover.</p>
+<div class="hdrmock a"><div><div class="nm">Mitch Jearls</div><div class="sub">The Jearls Home Team</div></div><nav><span>Properties</span><span>Buy</span><span>Sell</span><span>Communities</span><span>About</span></nav></div>
+<p class="cap" style="margin:8px 0 18px">At rest over a photo hero: transparent, white type, absolute position, 26px top and bottom padding. Link hover turns gold.</p>
+<div class="hdrmock b"><div><div class="nm">Mitch Jearls</div><div class="sub" style="color:#555">The Jearls Home Team</div></div><nav><span>Properties</span><span>Buy</span><span>Sell</span><span>Communities</span><span>About</span></nav></div>
+<p class="cap" style="margin-top:8px">Stuck (after the page moves), on pages with no photo hero, and with the phone menu open: fixed, white, ink type, 20px top and bottom padding, 0 10px 30px rgba(0,0,0,.07) shadow. Link hover turns navy. The page script sets <code>--hdr-h</code> to the header's height; the town page's tab bar and anchor offsets depend on it.</p>
+<div class="callout"><b class="t">Header Hard Rules</b><ul>
+<li>The home hero fills the screen (min-height 100svh, at least 640px) so the stats show at the fold.</li>
+<li>Every submenu item and nav link has a 44px tap target. Submenus open on hover, focus and tap.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Phone Menu and Call Bar</h2>
+<p class="intro">At 1100px and below the links collapse behind a 44px square hairline toggle. The open menu is a white panel from the bottom of the header to the bottom of the screen, 12px gutter padding, hairline rows 58px tall, Communities and the other groups expand with a plus that turns to a minus. Page scroll locks while it is open. The phone number and Let's Talk sit as panel rows at the end. The header button and phone link are hidden below 600px.</p>
+<p class="intro">At 760px and below a call bar is pinned to the bottom of every page: two equal halves, 56px tall, Roboto 500, 13px, .22em, UPPERCASE, safe-area padding underneath. Body gets bottom padding of 56px so nothing hides behind it.</p>
+<div class="callbar"><span class="c">Call</span><span class="t">Let's Talk</span></div>
+<p class="cap" style="margin-top:8px">Call half: gold with ink text, links to <code>tel:+15406412390</code>. Let's Talk half: #111111 with white text, links to the contact page.</p>
+</section>
+
+<section>
+<h2>Spacing and Sections</h2>
+<table>
+<tr><th>Rule</th><th>1440</th><th>Phone</th></tr>
+<tr><td>Content width (<code>--wrap</code>)</td><td>1240px max, centred</td><td>full width</td></tr>
+<tr><td>Side gutter</td><td>clamp(20px, 4vw, 56px)</td><td>20px</td></tr>
+<tr><td>Home section padding, top and bottom</td><td>120px</td><td>84px (900px and below)</td></tr>
+<tr><td>Interior and town section padding</td><td>110px</td><td>110px, per mockup</td></tr>
+<tr><td>Stats block</td><td>110px top, 104px bottom</td><td>80px top, 76px bottom</td></tr>
+<tr><td>Section head to content</td><td>56px home, 48px interior</td><td>same</td></tr>
+<tr><td>Floating block width</td><td>100% minus two gutters, 1328px max</td><td>same</td></tr>
+<tr><td>Gap between the two home value and financing cards</td><td>24px</td><td>24px</td></tr>
+<tr><td>Grid gaps</td><td>town and path tiles 14px, feature cards 36px, listing cards 48px by 32px, home type cards 24px</td><td>one column</td></tr>
+</table>
+<div class="callout"><b class="t">Floating Blocks</b><b style="display:block"></b><ul>
+<li>Reviews, the home value and financing cards, the Schools and Parks band and the closing block are inset from the page edges (white margin all round), never full bleed.</li>
+<li>Home value and financing are two grey (#F1F1F1) cards, 24px apart; copy side and photo side, sharp corners.</li>
+<li>Hero, the Meet Mitch band, the Let's Talk parallax band and the footer base run full bleed.</li>
+</ul></div>
+<div class="float">Floating card: inset from the page edges, #F1F1F1, square corners</div>
+<div class="callout"><b class="t">Spacing Hard Rules</b><ul>
+<li>Do not tighten section padding. Spacing is part of the luxury register.</li>
+<li>Photo heroes: home min 640px (100svh); interior and town 640px with content bottom aligned, 170px top and 84px bottom padding inside.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Town Page: Sticky Jump Tabs</h2>
+<p class="intro">Directly under the town hero, a white bar with a 1px #D9D9D9 bottom rule pins itself under the header (<code>top: calc(var(--hdr-h) - 1px)</code>, z-index 20). It starts with the label "On this page" (12px, .26em, muted; hidden at 900px and below), then one tab per section. Tabs are 62px tall, 12px caps, .2em tracking, muted, with a 2px transparent bottom border; the current tab turns ink with an ink underline (<code>aria-current</code> follows scroll). On phones the bar scrolls sideways with no scrollbar. Sections carry <code>scroll-margin-top</code> of the header height plus 62px.</p>
+<div class="tabsmock"><span class="l">On this page</span><span class="tab on">Overview</span><span class="tab">Highlights</span><span class="tab">The homes</span><span class="tab">For sale</span><span class="tab">Schools and parks</span><span class="tab">FAQ</span><span class="tab">Nearby</span></div>
+<table>
+<tr><th>Town page order</th><th>Notes</th></tr>
+<tr><td>Hero · tabs · Overview (copy left 5fr, facts right 7fr; 3-column fact row beneath)</td><td>Facts use a drawn glyph, Montserrat 300 19px term, muted detail</td></tr>
+<tr><td>What sets it apart (grey inset block, photo left)</td><td>Icon points with H3 and short copy</td></tr>
+<tr><td>The homes (4 home type cards)</td><td>260px photos, number chip, caps "see" link below</td></tr>
+<tr><td>For sale: IDX Broker bar, quick-search pills, listing cards, then the button</td><td>See next section</td></tr>
+<tr><td>Let's Talk parallax band, Schools and Parks (grey), blog feature, FAQ, Nearby towns</td><td>Buttons always below the section</td></tr>
+</table>
+</section>
+
+<section>
+<h2>IDX Broker Pieces</h2>
+<p class="intro">Every client is on IDX Broker. Build these pieces in the house look; the markup hooks (<code>.impress-*</code>) are named in the stylesheet so the WordPress build can style IMPress to match. Never use the stock IMPress search form.</p>
+<h3>One-line search bar</h3>
+<p class="intro">Four fields on one row: location (widest, 2.6fr), max price, beds, baths, then a button. Labels are 12px caps in muted grey; fields are borderless with a 1px ink rule under them, 48px tall, 16px text (so phones do not zoom). Selects use a small drawn arrow. A "More" disclosure (hairline button with ink fill when open) reveals extra filters in four columns on a hairline. At 600px and below the row stacks to one column.</p>
+<div class="demo"><div class="sbar"><div><label>Location</label><div class="f">Roanoke, VA</div></div><div><label>Max price</label><div class="f">No max</div></div><div><label>Beds</label><div class="f">Any</div></div><div><label>Baths</label><div class="f">Any</div></div><a class="btn solid" href="#">Search</a></div>
+<div class="pills"><span class="pill on">All homes</span><span class="pill">New listings</span><span class="pill">Under $350K</span><span class="pill">Waterfront</span><span class="pill">Open houses</span></div></div>
+<h3>Quick-search pills</h3>
+<p class="intro">A list of links under the bar: 40px tall, pill-round (999px, the one rounded element), 1px #D9D9D9 border, 12px caps, .16em; hover borders ink; the active pill fills ink with white text. 10px gaps, wrapping, 52px of space before the cards.</p>
+<h3>Listing card A (with the listing firm line)</h3>
+<p class="intro">Photo 280px tall (cover), black tag top right ("Just Listed", "New"), then centred text: address in Montserrat H3 (18px, .12em), a meta line (beds · baths · sq ft, 12px caps, muted), price in Montserrat 300 21px, then the <strong>listing firm line</strong> ("Listing courtesy of ..."), 12px caps, .14em, muted. The firm line is required on every card and stays visible. The home page Featured Properties uses the same card at 400px photo height, two across, 36px gap. One stretched link per card; image zoom 1.04 on hover.</p>
+<div class="demo"><div class="lc"><div class="ph"><span class="tag">New</span></div><h3>412 Grandin Road</h3><div class="m">3 Beds · 2 Baths · 1,840 Sq Ft</div><div class="p">$349,000</div><div class="f">Listing courtesy of Example Realty</div></div></div>
+<h3>Results page</h3>
+<p class="intro">Refine bar pinned under the header (the same one-line bar plus a Sort and More button), white with a hairline underneath. Below it, two columns: the list left (7fr) with a caps result count and two listing cards across at 1440, and a sticky map right (5fr, height 100vh minus the header, hairline left border). At 1100px and below the map moves above the list at 360px tall and the list is one column below 600px.</p>
+<div class="callout"><b class="t">IDX Hard Rules</b><ul>
+<li>The search bar takes any search; the H1 names the search (for example "Homes for sale in Roanoke, VA").</li>
+<li>Use IDX Broker "Use Mobile Wrappers = No" so phones do not get IDX's bare frame.</li>
+<li>No MLS source line under Featured Properties on the home page (Curtis removed it); the listing firm line on each card stays.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>Mobile</h2>
+<div id="mobile-spec">
+
+<p>The mockups are the mobile spec: open any page at 375px (<code>mockups/mobile.html</code> shows every page at phone width). This section translates the stylesheet's responsive rules into build settings. Definition of done: the built page matches the mockup at 375px.</p>
+<h3>Type scale: phone vs desktop</h3>
+<p>The phone value is each clamp() lower bound. Set these as the mobile font sizes in Spectra.</p>
+<table><tr><th>Selector</th><th>Phone</th><th>Desktop</th></tr>
+<tr><td><code>.mj:where(.mj--home) h1</code></td><td>34px</td><td>64px</td></tr>
+<tr><td><code>.mj:where(.mj--home) h2</code></td><td>30px</td><td>52px</td></tr>
+<tr><td><code>.mj h3</code></td><td>17px</td><td>21px</td></tr>
+<tr><td><code>.mj:where(.mj--home) .path h3</code></td><td>24px</td><td>30px</td></tr>
+<tr><td><code>:where(.mj--home) .reviews blockquote</code></td><td>19px</td><td>24px</td></tr>
+<tr><td><code>.mj:where(.mj--page) h2</code></td><td>28px</td><td>46px</td></tr>
+<tr><td><code>.mj:where(.mj--page) h3</code></td><td>16px</td><td>19px</td></tr>
+<tr><td><code>:where(.mj--page) .band__take</code></td><td>22px</td><td>34px</td></tr>
+<tr><td><code>.mj:where(.mj--page) .blog h3</code></td><td>20px</td><td>28px</td></tr>
+<tr><td><code>:where(.mj--page) .faq summary</code></td><td>16px</td><td>19px</td></tr>
+</table>
+<h3>At and below 1100px</h3><ul>
+<li><code>.nav a.nav__link</code> hidden</li>
+<li><code>:where(.mj--page) .results</code> stacks to one column</li>
+</ul>
+<h3>At and below 900px</h3><ul>
+<li><code>:where(.mj--home) .meet,:where(.mj--home) .split</code> stacks to one column</li>
+<li><code>:where(.mj--home) .cards</code> stacks to one column</li>
+<li><code>:where(.mj--home) .paths</code> stacks to one column</li>
+<li><code>:where(.mj--home) .strip__call</code> hidden</li>
+<li><code>:where(.mj--page) .overview__grid,:where(.mj--page) .apart,:where(.mj--page) .blog,:where(.mj--page) .close</code> stacks to one column</li>
+<li><code>:where(.mj--page) .lcards,:where(.mj--page) .cols</code> stacks to one column</li>
+<li><code>:where(.mj--page) .towns</code> stacks to one column</li>
+<li><code>:where(.mj--page) .sec-head</code> stacks vertically</li>
+<li><code>:where(.mj--page) .tabs__label</code> hidden</li>
+<li><code>:where(.mj--page) .steps</code> stacks to one column</li>
+<li><code>:where(.mj--page) .quotes</code> stacks to one column</li>
+<li><code>:where(.mj--page) .talk</code> stacks to one column</li>
+<li><code>:where(.mj--page) .legal</code> stacks to one column</li>
+</ul>
+<h3>At and below 760px</h3><ul>
+<li><code>.callbar a</code> type drops to 13px</li>
+</ul>
+<h3>At and below 600px</h3><ul>
+<li><code>.mj:where(.mj--home) h1</code> type drops to 29px</li>
+<li><code>.brand__firm</code> hidden</li>
+<li><code>.brand__name</code> type drops to 19px</li>
+<li><code>.brand__sub</code> type drops to 10px</li>
+<li><code>.nav .btn</code> hidden</li>
+<li><code>:where(.mj--home) .towns</code> stacks to one column</li>
+<li><code>:where(.mj--home) .facts dt</code> type drops to 22px</li>
+<li><code>:where(.mj--home) .facts dd</code> type drops to 11px</li>
+<li><code>.foot__top</code> stacks to one column</li>
+<li><code>.legal</code> stacks vertically</li>
+<li><code>:where(.mj--home) .feat__head</code> stacks vertically</li>
+<li><code>.mj:where(.mj--page) h1</code> type drops to 29px</li>
+<li><code>:where(.mj--page) .homes</code> stacks to one column</li>
+<li><code>:where(.mj--page) .facts</code> stacks to one column</li>
+<li><code>:where(.mj--page) .sbar__extra</code> stacks to one column</li>
+<li><code>.brand__sub</code> type drops to 12px</li>
+<li><code>:where(.mj--page) .form</code> stacks to one column</li>
+<li><code>:where(.mj--page) .results .lcards</code> stacks to one column</li>
+<li><code>:where(.mj--page) .smap</code> stacks to one column</li>
+</ul>
+<h3>At and below 420px</h3><ul>
+<li><code>.mj:where(.mj--page) h2</code> type drops to 24px</li>
+</ul>
+<h3>At and below 360px</h3><ul>
+<li><code>:where(.mj--home) .stats dt</code> type drops to 24px</li>
+<li><code>.mj:where(.mj--home) .path h3</code> type drops to 22px</li>
+</ul>
+
+</div>
+
+<h3>Hero focal point (hand-written)</h3>
+<table>
+<tr><th>Page</th><th>Photo</th><th>Keep in the tall phone crop</th></tr>
+<tr><td>Home</td><td><code>hero</code>, aerial of the Roanoke Valley</td><td>The Blue Ridge line and the city skyline in the middle band; crop is centred (cover). Headline sits low, centred.</td></tr>
+<tr><td>Town pages</td><td>The town's own photo</td><td>The recognisable landmark (downtown skyline, Mill Mountain star for Roanoke) in the upper middle; text sits bottom left.</td></tr>
+<tr><td>Meet Mitch</td><td>Portrait</td><td><code>object-position: 50% 22%</code> so the face survives the crop.</td></tr>
+</table>
+<h3>Deliberate mobile-only departures</h3>
+<ul style="margin-left:20px"><li>The call bar replaces the header Let's Talk button and the phone link below 760px and 600px.</li><li>The home hero search strip drops its call link at 900px and below; the search button goes full width at 600px.</li><li>Parallax (<code>background-attachment: fixed</code>) is the same on phones; if a device ignores it, the band simply scrolls.</li><li>Stats drop to two columns; town and path tiles stack to one column.</li></ul>
+<p class="intro" style="margin-top:12px">Definition of done: the built page matches the mockup at 375px. <code>mockups/mobile.html</code> shows every page at phone width.</p>
+</section>
+
+<section>
+<h2>Motion</h2>
+<table>
+<tr><th>Use</th><th>Value</th></tr>
+<tr><td>Button, link and nav colour</td><td>.2s</td></tr>
+<tr><td>Header background and padding on scroll</td><td>.3s</td></tr>
+<tr><td>Submenu open</td><td>.25s opacity and 6px rise</td></tr>
+<tr><td>Photo zoom on hover (tiles, cards)</td><td>.6s, maximum scale 1.04</td></tr>
+</table>
+<div class="callout"><b class="t">Motion Hard Rules</b><ul><li>No bounce, springs or spinners in content. Respect <code>prefers-reduced-motion</code>: turn off the zoom and the fixed-background band.</li></ul></div>
+</section>
+
+<section>
+<h2>Imagery</h2>
+<p class="intro">Real photography only; files named <code>STANDIN-</code> are honest stand-ins to be replaced before launch. Every image has descriptive alt text. No visible photo credits, no rounded corners, no captions on photos.</p>
+<table>
+<tr><th>Use</th><th>Size</th></tr>
+<tr><td>Home hero</td><td>Full bleed, fills the screen; 2400 by 1350 source</td></tr>
+<tr><td>Interior and town hero</td><td>Full bleed, 640px minimum</td></tr>
+<tr><td>Meet Mitch</td><td>Left half, 640px minimum, portrait</td></tr>
+<tr><td>Town tiles</td><td>340px tall, three across</td></tr>
+<tr><td>Path tiles (Buy, Sell, Search)</td><td>460px tall, three across, 14px gap</td></tr>
+<tr><td>Featured and listing cards</td><td>400px home, 280px lists</td></tr>
+<tr><td>Home type cards</td><td>260px tall, four across</td></tr>
+<tr><td>Split blocks (home value, financing)</td><td>560px minimum photo side</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Voice and Content Reminders</h2>
+<div class="callout"><b class="t">Copy Hard Rules</b><ul>
+<li>No em or en dashes anywhere. Use commas, periods, colons or the middle dot.</li>
+<li>Write REALTOR® with the mark, and "MKB, REALTORS®" as the brokerage.</li>
+<li>No generic AI phrases ("dream home", "seamless experience", "your trusted partner") or filler city words ("thriving", "vibrant", "nestled").</li>
+<li>Every H1 reads like a person and names something specific from the brief.</li>
+<li>Stats on the home page are placeholders until DPOR and Zillow figures settle them; do not publish them as final.</li>
+</ul></div>
+</section>
+
+<section>
+<h2>External Links</h2>
+<table>
+<tr><th>Rule</th><th>HTML</th></tr>
+<tr><td>Opens in a new tab</td><td><code>target="_blank"</code></td></tr>
+<tr><td>Security</td><td><code>rel="noopener noreferrer"</code></td></tr>
+<tr><td>Underlined</td><td>Browser default; keep visited state</td></tr>
+</table>
+<div class="callout"><b class="t">Banned Targets</b><ul><li>Zillow, Redfin, Trulia and brokerage internal portals.</li></ul></div>
+</section>
+
+<section>
+<h2>Anti-Patterns</h2>
+<div class="callout"><b class="t">Never Do These</b><ul>
+<li>Rounded corners on anything but the quick-search pills and social icons</li>
+<li>Gold anywhere but the hero search button and the call bar's Call half</li>
+<li>Italic, serif or coloured words in headings</li>
+<li>Full-bleed reviews, home value, financing or closing blocks (they float)</li>
+<li>Buttons inside a section head beside the H2</li>
+<li>Text below 12px</li>
+<li>The stock IMPress search form, or a listing card without the firm line</li>
+<li>Carousels in heroes, emojis as icons, gradient placeholders past first draft</li>
+<li>Colours or fonts from <code>global-design.json</code> in this folder</li>
+</ul></div>
+</section>
+
+<footer style="margin-top:56px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center">Generated by Optimus Prime for AgenticPress · 2026-11-11</footer>
+</div>
+</body>
+</html>
