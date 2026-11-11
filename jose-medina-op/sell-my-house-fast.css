@@ -140,3 +140,9 @@ section.dark .cg-h3 { color: #fff; }
 .cg-offer-modal .cg-form { display: grid; flex-direction: initial; }
 @media (max-width: 640px) { .cg-offer-modal .cg-form { grid-template-columns: 1fr; } }
 .cg-offer-modal .lead-modal__inner > .cg-eyebrow { color: var(--color-accent-dark); font-size: .75rem; margin-bottom: var(--space-sm); }
+/* 2026-11-11 (Curtis): parallax photo behind the closing CTA (universal-conventions: closing CTA is parallax-backed). */
+.cg-close--para { position: relative; display: flex; align-items: center; min-height: 64vh; background-color: #000; background-size: cover; background-position: center 40%; background-attachment: fixed; }
+.cg-close--para::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.78) 100%); }
+.cg-close--para > .container { position: relative; z-index: 1; width: 100%; }
+.cg-close--para .cg-disclosure { color: rgba(255,255,255,.8); }
+@media (hover: none), (prefers-reduced-motion: reduce) { .cg-close--para { background-attachment: scroll; } }
