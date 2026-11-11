@@ -171,3 +171,24 @@ section.dark .cg-h3 { color: #fff; }
 /* Eight situations: a narrower photo column keeps the band under one screen (photo-height rule). */
 @media (min-width: 1001px) { .cg-fits-band__grid { grid-template-columns: 1fr 2fr; } }
 .cg-fits-band__copy { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+/* Sticky jump tabs (Curtis, 2026-11-11): stick under the fixed site nav (80px, 64px at 980 and below). */
+.cg-tabs { position: sticky; top: 80px; z-index: 90; background: #fff; border-bottom: 1px solid var(--color-border); box-shadow: 0 6px 18px rgba(0,0,0,.05); }
+.cg-tabs__inner { max-width: var(--wide-width); margin: 0 auto; padding: 0 var(--container-px); display: flex; align-items: center; gap: .25rem; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.cg-tabs__inner::-webkit-scrollbar { display: none; }
+.cg-tabs__link { flex: none; padding: 1.05rem .9rem; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; color: var(--color-text-muted); text-decoration: none; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; }
+.cg-tabs__link:hover, .cg-tabs__link:focus-visible { color: var(--color-primary); }
+.cg-tabs__link.is-active { color: var(--color-primary); border-bottom-color: var(--color-accent); }
+.cg-tabs__cta { flex: none; margin-left: auto; padding: .6rem 1rem; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; color: #fff; background: var(--color-accent); text-decoration: none; }
+.cg-tabs__cta:hover, .cg-tabs__cta:focus-visible { background: var(--color-accent-dark); }
+#who-we-help, #how-we-work, #our-promise, #cash-or-listing, #about-jose, #reviews, #faq, #tell-us { scroll-margin-top: 140px; }
+@media (max-width: 980px) {
+  .cg-tabs { top: 64px; }
+  #who-we-help, #how-we-work, #our-promise, #cash-or-listing, #about-jose, #reviews, #faq, #tell-us { scroll-margin-top: 120px; }
+}
+@media (max-width: 640px) {
+  .cg-tabs__inner { padding: 0 .5rem; gap: 0; }
+  .cg-tabs__link { padding: .95rem .75rem; }
+  .cg-tabs__cta { margin-left: .5rem; }
+}
+/* The Get Our Offer tab stays pinned at the right end while the other tabs scroll under it. */
+.cg-tabs__cta { position: sticky; right: 0; box-shadow: -14px 0 12px -4px #fff, 16px 0 0 0 #fff; }

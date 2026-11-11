@@ -199,8 +199,22 @@
   </div>
 </section>
 
+<!-- ============ STICKY JUMP TABS (Curtis, 2026-11-11): sit under the fixed nav on every screen size ============ -->
+<nav class="cg-tabs" aria-label="On this page">
+  <div class="cg-tabs__inner">
+    <a class="cg-tabs__link" href="#who-we-help">Who We Help</a>
+    <a class="cg-tabs__link" href="#how-we-work">How It Works</a>
+    <a class="cg-tabs__link" href="#our-promise">Our Promise</a>
+    <a class="cg-tabs__link" href="#cash-or-listing">Cash Or Listing</a>
+    <a class="cg-tabs__link" href="#about-jose">About Jose</a>
+    <a class="cg-tabs__link" href="#reviews">Reviews</a>
+    <a class="cg-tabs__link" href="#faq">FAQ</a>
+    <a class="cg-tabs__cta cg-open-offer" href="#tell-us">Get Our Offer</a>
+  </div>
+</nav>
+
 <!-- ============ WHO WE HELP (the seller's problem first) ============ -->
-<section class="alt cg-fits-band">
+<section class="alt cg-fits-band" id="who-we-help">
   <div class="cg-fits-band__grid">
     <div class="cg-fits-band__photo" style="background-image: url('assets/STANDIN-before-dated-kitchen.jpg'); background-position: center;"></div>
     <div class="cg-fits-band__copy">
@@ -300,7 +314,7 @@
 </section>
 
 <!-- ============ HOW WE DO BUSINESS: values, why we offer high, the mission, Turn-Key Partner Program (from coloradoguysbuyhomes.com/home1) ============ -->
-<section class="alt">
+<section class="alt" id="our-promise">
   <div class="container">
     <div class="cg-split cg-split--top">
       <div>
@@ -329,7 +343,7 @@
 </section>
 
 <!-- ============ CASH VS LISTING (step 4, the right path) ============ -->
-<section class="dark">
+<section class="dark" id="cash-or-listing">
   <div class="container">
     <div class="cg-head">
       <p class="cg-tag">Cash Or Listing</p>
@@ -362,7 +376,7 @@
 </section>
 
 <!-- ============ WHO IS BUYING ============ -->
-<section>
+<section id="about-jose">
   <div class="container">
     <div class="cg-split cg-split--top">
       <img class="cg-split__photo" src="assets/jose-medina-headshot.jpg" alt="Jose Medina, founder of the Vantegic Home Team and Colorado Guys Buy Homes" width="750" height="500" />
@@ -384,7 +398,7 @@
 </section>
 
 <!-- ============ REAL PEOPLE, REAL REVIEWS (verbatim excerpts from vantegic.com/testimonials) ============ -->
-<section class="alt">
+<section class="alt" id="reviews">
   <div class="container-wide">
     <div class="cg-head cg-head--center">
       <p class="cg-eyebrow">Real People, Real Reviews</p>
@@ -412,7 +426,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section>
+<section id="faq">
   <div class="container">
     <div class="cg-head cg-head--center">
       <p class="cg-eyebrow">Questions</p>
@@ -641,6 +655,33 @@
     });
     modal.querySelector('.lead-modal__close').addEventListener('click', function() { modal.close(); });
     modal.addEventListener('click', function(e) { if (e.target === modal) modal.close(); });
+  })();
+  (function() {
+    var bar = document.querySelector('.cg-tabs__inner');
+    if (!bar) return;
+    var links = [].slice.call(bar.querySelectorAll('.cg-tabs__link'));
+    var targets = links.map(function(a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    var cta = bar.querySelector('.cg-tabs__cta');
+    var current = null, ticking = false;
+    function activate(a) {
+      if (a === current) return;
+      if (current) { current.classList.remove('is-active'); current.removeAttribute('aria-current'); }
+      current = a;
+      if (!a) return;
+      a.classList.add('is-active'); a.setAttribute('aria-current', 'true');
+      var room = bar.clientWidth - (cta ? cta.offsetWidth + 16 : 0);
+      bar.scrollTo({ left: a.offsetLeft - (room - a.offsetWidth) / 2, behavior: 'smooth' });
+    }
+    function update() {
+      ticking = false;
+      var line = window.innerHeight * 0.45, found = null;
+      targets.forEach(function(el, i) { if (el && el.getBoundingClientRect().top <= line) found = links[i]; });
+      var first = targets[0] && targets[0].getBoundingClientRect().top > line;
+      activate(first ? null : found);
+    }
+    window.addEventListener('scroll', function() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   })();
 </script>
 </body>
