@@ -57,7 +57,7 @@
       <p class="cg-hero__sub">We&rsquo;ll explain the process, answer your questions, and make our best offer. If it works for you, great. The decision is yours.</p>
       <div class="cg-row">
         <a href="#how-we-work" class="btn cg-btn-fill">Learn More</a>
-        <a href="#tell-us" class="btn btn-on-dark">Get Our Offer</a>
+        <a href="#tell-us" class="btn btn-on-dark cg-open-offer">Get Our Offer</a>
       </div>
       <p class="cg-hero__note">Real people. Straight answers. No obligation.</p>
     </div>
@@ -195,7 +195,7 @@
       </article>
     </div>
     <div class="cg-row cg-row--center">
-      <a href="#tell-us" class="btn cg-btn-fill">Get Our Offer</a>
+      <a href="#tell-us" class="btn cg-btn-fill cg-open-offer">Get Our Offer</a>
       <a href="tel:+17193933633" class="btn btn-secondary">Call (719) 393-3633</a>
     </div>
   </div>
@@ -227,7 +227,7 @@
       </tbody>
     </table>
     <div class="cg-row cg-row--after">
-      <a href="#tell-us" class="btn cg-btn-fill">Get Our Offer</a>
+      <a href="#tell-us" class="btn cg-btn-fill cg-open-offer">Get Our Offer</a>
       <a href="07-sellers-guide.html" class="btn btn-on-dark">Read The Seller's Guide</a>
     </div>
   </div>
@@ -333,63 +333,75 @@
   </div>
 </section>
 
-<!-- ============ CLOSING FORM (the live site's black band) ============ -->
+<!-- ============ CLOSING BAND (the live site's black band); the form opens in a pop-up ============ -->
 <section class="cg-close" id="tell-us">
   <div class="container">
-    <div class="cg-split">
-      <div>
-        <p class="cg-tag">No Pressure</p>
-        <h2>Tell Us About The House</h2>
-        <p class="cg-close__lede">The address, the condition and when you would like to be out are enough to start. We will reach out right away, and a real person reads every message.</p>
-        <p class="cg-close__contact"><a href="tel:+17193933633">(719) 393-3633</a> &middot; <a href="mailto:jose@vantegic.com">jose@vantegic.com</a> &middot; Se habla espa&ntilde;ol</p>
-        <p class="cg-disclosure">Colorado Guys Buy Homes buys for its own account. Jose Medina is a licensed Colorado real estate broker, License #ER.100025793, with HomeSmart. In a direct cash purchase he acts as a principal, not as your broker or agent.</p>
+    <div class="cg-close__inner">
+      <p class="cg-tag">No Pressure</p>
+      <h2>Tell Us About The House</h2>
+      <p class="cg-close__lede">The address, the condition and when you would like to be out are enough to start. We will reach out right away, and a real person reads every message.</p>
+      <div class="cg-row">
+        <a href="#tell-us" class="btn cg-btn-fill cg-open-offer">Get Our Offer</a>
+        <a href="tel:+17193933633" class="btn btn-on-dark">Call (719) 393-3633</a>
       </div>
-      <form class="cg-form" onsubmit="return false;">
-        <div>
-          <label for="cg-name">Name</label>
-          <input id="cg-name" type="text" autocomplete="name" required />
-        </div>
-        <div>
-          <label for="cg-phone">Phone</label>
-          <input id="cg-phone" type="tel" autocomplete="tel" required />
-        </div>
-        <div class="cg-field--wide">
-          <label for="cg-email">Email</label>
-          <input id="cg-email" type="email" autocomplete="email" required />
-        </div>
-        <div class="cg-field--wide">
-          <label for="cg-address">Property address</label>
-          <input id="cg-address" type="text" autocomplete="street-address" required />
-        </div>
-        <div>
-          <label for="cg-when">When do you need to sell?</label>
-          <select id="cg-when">
-            <option>As soon as possible</option>
-            <option>Within 30 days</option>
-            <option>Within 90 days</option>
-            <option>I have a specific date</option>
-            <option>Just exploring</option>
-          </select>
-        </div>
-        <div>
-          <label for="cg-reach">Best way to reach you</label>
-          <select id="cg-reach">
-            <option>Phone call</option>
-            <option>Text</option>
-            <option>Email</option>
-          </select>
-        </div>
-        <div class="cg-field--wide">
-          <label for="cg-notes">What should we know about the house?</label>
-          <textarea id="cg-notes"></textarea>
-        </div>
-        <div class="cg-field--wide">
-          <button type="submit" class="btn cg-btn-fill">Get Our Offer</button>
-        </div>
-      </form>
+      <p class="cg-close__contact"><a href="mailto:jose@vantegic.com">jose@vantegic.com</a> &middot; Se habla espa&ntilde;ol</p>
+      <p class="cg-disclosure">Colorado Guys Buy Homes buys for its own account. Jose Medina is a licensed Colorado real estate broker, License #ER.100025793, with HomeSmart. In a direct cash purchase he acts as a principal, not as your broker or agent.</p>
     </div>
   </div>
 </section>
+
+<!-- ============ OFFER FORM POP-UP: the site's lead-modal dialog, opened by every "Get Our Offer" button ============ -->
+<dialog class="lead-modal cg-offer-modal" id="offerModal" aria-labelledby="offerModalTitle">
+  <div class="lead-modal__inner">
+    <button class="lead-modal__close" type="button" aria-label="Close">&times;</button>
+    <p class="cg-eyebrow">No Pressure, No Obligation</p>
+    <h2 id="offerModalTitle">Tell Us About The House</h2>
+    <form class="cg-form" onsubmit="return false;">
+      <div>
+        <label for="cg-name">Name</label>
+        <input id="cg-name" type="text" autocomplete="name" required autofocus />
+      </div>
+      <div>
+        <label for="cg-phone">Phone</label>
+        <input id="cg-phone" type="tel" autocomplete="tel" required />
+      </div>
+      <div class="cg-field--wide">
+        <label for="cg-email">Email</label>
+        <input id="cg-email" type="email" autocomplete="email" required />
+      </div>
+      <div class="cg-field--wide">
+        <label for="cg-address">Property address</label>
+        <input id="cg-address" type="text" autocomplete="street-address" required />
+      </div>
+      <div>
+        <label for="cg-when">When do you need to sell?</label>
+        <select id="cg-when">
+          <option>As soon as possible</option>
+          <option>Within 30 days</option>
+          <option>Within 90 days</option>
+          <option>I have a specific date</option>
+          <option>Just exploring</option>
+        </select>
+      </div>
+      <div>
+        <label for="cg-reach">Best way to reach you</label>
+        <select id="cg-reach">
+          <option>Phone call</option>
+          <option>Text</option>
+          <option>Email</option>
+        </select>
+      </div>
+      <div class="cg-field--wide">
+        <label for="cg-notes">What should we know about the house?</label>
+        <textarea id="cg-notes"></textarea>
+      </div>
+      <div class="cg-field--wide">
+        <button type="submit" class="btn cg-btn-fill">Get Our Offer</button>
+      </div>
+    </form>
+    <p class="cg-offer-modal__fine">We will reach out right away. Colorado Guys Buy Homes buys for its own account; Jose Medina, License #ER.100025793, HomeSmart, acts as a principal, not as your broker or agent.</p>
+  </div>
+</dialog>
 
 <footer class="footer">
   <div class="footer__grid">
@@ -470,6 +482,15 @@
     function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 40); }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+  (function() {
+    var modal = document.getElementById('offerModal');
+    if (!modal || typeof modal.showModal !== 'function') return;
+    [].forEach.call(document.querySelectorAll('.cg-open-offer'), function(a) {
+      a.addEventListener('click', function(e) { e.preventDefault(); modal.showModal(); });
+    });
+    modal.querySelector('.lead-modal__close').addEventListener('click', function() { modal.close(); });
+    modal.addEventListener('click', function(e) { if (e.target === modal) modal.close(); });
   })();
 </script>
 </body>
