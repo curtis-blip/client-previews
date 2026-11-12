@@ -1,0 +1,188 @@
+/* Brenda McLean, Residential Investment page. Tokens read from brendamclean.com (Astra globals) on 2026-11-04. */
+:root {
+  --gold: #DCA54A;
+  --gold-dark: #D09A40;
+  --white: #FFFFFF;
+  --text: #F4F4F4;
+  --ground: #0E0D06;
+  --panel: #141006;
+  --line: #2E2D2A;
+  --heading: "Playfair Display", serif;
+  --body: "Source Sans Pro", sans-serif;
+  --radius-card: 6px;
+  --radius-pill: 50px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 130px; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.5 var(--body); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+h1, h2, h3, h4 { margin: 0; color: var(--white); font-family: var(--heading); font-weight: 700; line-height: 1.3; text-wrap: balance; }
+h1 { font-size: 50px; }
+h2 { font-size: 34px; }
+h3 { font-size: 24px; }
+p { margin: 0; }
+
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 200; background: var(--gold); color: var(--ground); padding: 10px 16px; border-radius: 4px; }
+.skip-link:focus { top: 12px; }
+
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; }
+.section { padding: 120px 40px; }
+
+/* Links inside a sentence stand apart by weight as well as colour */
+.section-head p a, .faq details p a { font-weight: 700; }
+
+/* Buttons: her pill shape and gold, with ground-coloured text so the label passes contrast */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 34px; border: 2px solid var(--gold); border-radius: var(--radius-pill); background: var(--gold); color: var(--ground); font: 700 15px/1.3 var(--body); text-align: center; text-transform: uppercase; transition: background .3s, border-color .3s, color .3s; }
+.btn:hover { background: var(--gold-dark); border-color: var(--gold-dark); text-decoration: none; }
+.btn--ghost { background: transparent; color: var(--gold); padding: 14px 32px; font-size: 13.68px; min-height: 48px; border-radius: 40px; }
+.btn--ghost:hover { background: var(--gold); border-color: var(--gold); color: var(--ground); }
+
+/* Header */
+.nav { position: sticky; top: 0; z-index: 100; background: var(--ground); transition: box-shadow .3s; }
+.site-header.is-stuck { box-shadow: 0 2px 18px rgba(0, 0, 0, .55); }
+.site-header__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: 1240px; min-height: 125px; margin: 0 auto; padding: 16px 20px; }
+.site-header__logo img { width: 350px; height: auto; }
+.site-header__logo-link { display: block; }
+.primary-nav { display: flex; align-items: center; gap: 12px; }
+.primary-menu { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+.primary-menu > li { position: relative; display: flex; align-items: center; }
+.primary-menu a { display: block; padding: 12px 14.6px; color: var(--white); font-size: 16px; font-weight: 400; line-height: 1.3; }
+.primary-menu a:hover { color: var(--gold); text-decoration: none; }
+.submenu-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: -20px; margin-right: -10px; padding: 0; border: 0; background: none; color: var(--white); cursor: pointer; }
+.submenu-toggle::before { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.submenu { position: absolute; top: 100%; left: 0; z-index: 10; visibility: hidden; opacity: 0; min-width: 240px; margin: 0; padding: 8px 0; list-style: none; background: var(--panel); border-top: 2px solid var(--gold); transition: opacity .2s; }
+.submenu a { font-size: 15px; padding: 10px 18px; }
+.has-sub:hover > .submenu, .has-sub:focus-within > .submenu, .has-sub.is-open > .submenu { visibility: visible; opacity: 1; }
+.submenu .is-new a { color: var(--gold); }
+.menu-toggle { display: none; width: 48px; height: 48px; padding: 0; border: 2px solid var(--gold); border-radius: 8px; background: none; color: var(--gold); cursor: pointer; }
+.menu-toggle::before { content: ""; display: block; width: 22px; height: 14px; margin: 0 auto; border-top: 2px solid currentColor; border-bottom: 2px solid currentColor; background: linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat; }
+
+/* Hero: left weighted fade, as on the commercial page */
+.hero { position: relative; display: flex; align-items: flex-end; min-height: clamp(520px, 56vw, 810px); padding: 100px 40px; background-color: var(--ground); background-position: 70% center; background-size: cover; }
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14, 13, 6, .96) 0%, rgba(14, 13, 6, .86) 34%, rgba(14, 13, 6, .34) 62%, rgba(14, 13, 6, 0) 84%), linear-gradient(0deg, rgba(14, 13, 6, .5) 0%, rgba(14, 13, 6, 0) 40%); }
+.hero .wrap { position: relative; }
+.hero__copy { max-width: 820px; padding: 0 40px; }
+.hero__sub { max-width: 620px; margin-top: 16px; color: var(--white); font-size: 19px; line-height: 1.5; }
+
+/* Property types: five columns, photo above, centred copy */
+.types { padding: 64px 100px 112px; }
+.types .wrap { max-width: 1240px; }
+.types__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px 50px; }
+.type { flex: 1 1 calc(20% - 40px); min-width: 200px; max-width: 320px; text-align: center; }
+.type__img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-card); }
+.type h3 { margin: 24px 0 10px; }
+
+/* Counties */
+.counties { padding: 0 40px 120px; }
+.section-head { max-width: 840px; margin: 0 auto 40px; text-align: center; }
+.section-head h2 { margin-bottom: 16px; }
+.section-head p + p { margin-top: 12px; }
+.counties__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.county { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 283px; padding: 48px; overflow: hidden; border-radius: var(--radius-card); background-position: center; background-size: cover; }
+.county::before { content: ""; position: absolute; inset: 0; background: var(--panel); opacity: .78; }
+.county h3, .county p { position: relative; color: var(--white); }
+.county h3 { margin-bottom: 8px; }
+
+/* Listings zone */
+.listings { padding: 0 40px 120px; }
+.listings .section-head { margin-bottom: 32px; }
+.idx-snapshot img { display: block; width: 100%; height: auto; }
+@media (max-width: 600px) { .idx-snapshot img { max-width: 315px; margin: 0 auto; } }
+.listings__more { margin-top: 32px; text-align: center; }
+
+/* FAQ over the night skyline */
+.faq { position: relative; padding: 112px 40px; background-position: center; background-size: cover; }
+.faq::before { content: ""; position: absolute; inset: 0; background: rgba(14, 13, 6, .88); }
+.faq .wrap { position: relative; max-width: 800px; }
+.faq details { margin-bottom: 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--ground); }
+.faq summary { position: relative; display: block; padding: 20px 56px 20px 24px; color: var(--white); font-size: 20px; line-height: 1.5; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; position: absolute; top: 50%; right: 26px; width: 10px; height: 10px; margin-top: -8px; border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(45deg); transition: transform .2s; }
+.faq details[open] summary::after { margin-top: -3px; transform: rotate(-135deg); }
+.faq details p { padding: 0 24px 22px; }
+
+/* Closing card over a fixed photograph */
+.cta { padding: 120px 40px; background-attachment: fixed; background-position: center; background-size: cover; }
+.cta__card { max-width: 950px; margin: 0 auto; padding: 60px 85px; border-radius: 20px; background: rgba(13, 12, 5, .94); text-align: center; }
+.cta__card h2 { margin-bottom: 16px; }
+.cta__card .acts { margin-top: 28px; }
+.cta__note { margin-top: 24px; color: var(--text); font-size: 14px; }
+
+/* Footer, matching the live theme footer */
+.site-footer { background: var(--panel); }
+.site-footer__row { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 56px 40px 40px; }
+.site-footer h3 { margin-bottom: 14px; font-size: 22px; }
+.site-footer__logo { width: 367px; height: auto; }
+.site-footer__legal { display: flex; align-items: center; gap: 16px; margin-top: 20px; font-size: 14px; }
+.site-footer__eho { flex: none; width: 72px; height: 72px; }
+.site-footer ul { margin: 0; padding: 0; list-style: none; }
+.site-footer__links a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; color: var(--text); }
+.site-footer__contact a { display: inline-flex; align-items: center; min-height: 44px; color: var(--text); }
+.site-footer__social { display: flex; gap: 18px; margin-top: 14px; }
+.site-footer__social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--white); }
+.site-footer__social svg { width: 18px; height: 18px; fill: currentColor; }
+.site-footer__band { background: var(--ground); }
+.site-footer__band-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; max-width: 1200px; margin: 0 auto; padding: 12px 40px; font-size: 14px; }
+.site-footer__band-row a { display: inline-flex; align-items: center; min-height: 44px; }
+
+@media (max-width: 1180px) {
+  .site-header__logo img { width: 280px; }
+  .types { padding: 56px 40px 96px; }
+}
+
+@media (max-width: 976px) {
+  h1 { font-size: 42px; }
+  h2 { font-size: 30px; }
+  .section, .faq, .cta { padding-top: 88px; padding-bottom: 88px; }
+  .menu-toggle { display: block; }
+  .primary-nav { gap: 12px; }
+  .primary-menu { position: absolute; top: 100%; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; max-height: calc(100vh - 110px); overflow-y: auto; padding: 8px 20px 20px; background: var(--ground); }
+  .primary-menu.is-open { display: flex; }
+  .primary-menu > li { flex-wrap: wrap; justify-content: space-between; }
+  .submenu-toggle { margin: 0; }
+  .submenu { position: static; display: none; visibility: visible; opacity: 1; width: 100%; border-top: 0; }
+  .has-sub.is-open > .submenu { display: block; }
+  .has-sub:hover > .submenu { display: none; }
+  .has-sub.is-open:hover > .submenu { display: block; }
+  .counties__grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer__row { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 760px) {
+  h1 { font-size: 34px; }
+  h2 { font-size: 28px; }
+  .site-header__row { min-height: 96px; padding: 12px 16px; }
+  .site-header__logo img { width: 210px; }
+  .btn--ghost.header-contact { display: none; }
+  .hero { min-height: 460px; padding: 64px 24px; background-position: 62% center; }
+  .hero::before { background: linear-gradient(0deg, rgba(14, 13, 6, .94) 0%, rgba(14, 13, 6, .8) 46%, rgba(14, 13, 6, .3) 100%); }
+  .hero__copy { padding: 0; }
+  .hero__sub { font-size: 17px; }
+  .types { padding: 48px 24px 72px; }
+  .type { flex-basis: 100%; max-width: 420px; }
+  .type__img { aspect-ratio: 4 / 3; }
+  .counties, .listings { padding: 0 24px 72px; }
+  .counties__grid { grid-template-columns: 1fr; }
+  .county { min-height: 240px; padding: 32px 28px; }
+  .faq, .cta { padding: 72px 24px; }
+  .faq summary { font-size: 18px; padding: 18px 48px 18px 20px; }
+  .faq details p { padding: 0 20px 20px; }
+  .cta { background-attachment: scroll; }
+  .cta__card { padding: 40px 24px; }
+  .site-footer__row { grid-template-columns: 1fr; padding: 48px 24px 32px; }
+  .site-footer__logo { width: 280px; }
+  .site-footer__legal { flex-direction: column; align-items: flex-start; }
+  .site-footer__band-row { flex-direction: column; padding: 20px 24px; }
+}
+
+/* "Residential Investment" stays on one line in headings, so the long pair sets the size on small phones */
+@media (max-width: 480px) {
+  h1 { font-size: 7.2vw; }
+  .cta__card h2 { font-size: min(28px, 6.4vw); }
+}
