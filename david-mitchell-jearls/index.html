@@ -10,56 +10,59 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-:root{--ink:#111111;--text:#2A2A2A;--muted:#555555;--line:#D9D9D9;--grey:#F1F1F1;--navy:#0B2769;
-  --head:"Montserrat",system-ui,sans-serif;--body:"Roboto",system-ui,sans-serif;--gutter:clamp(20px,4vw,56px)}
+:root{--ink:#111111;--text:#2A2A2A;--muted:#555555;--line:#D9D9D9;--grey:#F1F1F1;--accent:#0B2769;
+  --head:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--body:"Roboto",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--hw:200;--logo:132px;--gutter:clamp(20px,4vw,56px)}
 body{margin:0;background:#ffffff;color:var(--text);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 .ix{width:100%;max-width:1320px;margin:0 auto;padding:0 var(--gutter)}
 .ix-top{padding:56px 0 48px;border-bottom:1px solid var(--line)}
 .ix-brand{display:flex;align-items:center;gap:40px;flex-wrap:wrap}
-.ix-brand img{height:132px;width:auto}
+.ix-brand img{height:var(--logo);width:auto}
 .ix-eyebrow{margin:0 0 10px;font:400 13px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
-.ix-top h1{margin:0;font:200 clamp(32px,3.6vw,52px)/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.ix-top h1{margin:0;font:var(--hw) clamp(32px,3.6vw,52px)/1.1 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .ix-note{margin:12px 0 0;font-size:15px;color:var(--muted)}
 .ix-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .ix-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid var(--ink);
   font:400 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--ink);transition:background .2s,color .2s}
 .ix-btn:hover{background:var(--ink);color:#ffffff}
-.ix-btn--solid{background:var(--navy);border-color:var(--navy);color:#ffffff}
+.ix-btn--solid{background:var(--accent);border-color:var(--accent);color:#ffffff}
 .ix-btn--solid:hover{background:var(--ink);border-color:var(--ink)}
 .ix-sec{padding-top:64px}
 .ix-sec h2{margin:0 0 24px;font:500 13px/1 var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
 .ix-feat{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);background:var(--grey)}
-.ix-feat__ph{display:block;aspect-ratio:16/9;overflow:hidden}
+.ix-feat__ph{display:block;aspect-ratio:16/9;overflow:hidden;background:var(--grey)}
 .ix-feat__ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 .ix-feat:hover .ix-feat__ph img{transform:scale(1.03)}
 .ix-feat__copy{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:40px 48px}
-.ix-feat__copy h3{margin:0;font:200 clamp(28px,2.6vw,40px)/1.15 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.ix-feat__copy h3{margin:0;font:var(--hw) clamp(28px,2.6vw,40px)/1.15 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .ix-feat__copy p{margin:0;color:var(--muted)}
 .ix-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:36px 24px;margin:0;padding:0;list-style:none}
+.ix-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .ix-grid--5{grid-template-columns:repeat(5,minmax(0,1fr))}
-.ix-card__ph{display:block;aspect-ratio:3/2;overflow:hidden;background:var(--grey)}
+.ix-card__ph{display:grid;place-items:center;aspect-ratio:3/2;overflow:hidden;background:var(--grey)}
+.ix-card__ph span{padding:0 18px;font:var(--hw) 17px/1.3 var(--head);letter-spacing:.14em;text-transform:uppercase;
+  text-align:center;color:var(--muted)}
 .ix-card__ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 .ix-card:hover .ix-card__ph img{transform:scale(1.04)}
 .ix-card h3{margin:16px 0 4px;font:400 13px/1.35 var(--head);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
-.ix-card h3 a:hover{color:var(--navy)}
-.ix-path{margin:0;font-size:13px;color:var(--muted)}
+.ix-card h3 a:hover{color:var(--accent)}
+.ix-path{margin:0;font-size:13px;color:var(--muted);overflow-wrap:anywhere}
 .ix-views{display:flex;gap:16px;margin:10px 0 0;padding:0;list-style:none}
 .ix-views a{display:inline-flex;align-items:center;min-height:28px;font:400 12px/1 var(--body);letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line)}
-.ix-views a:hover{color:var(--navy);border-color:var(--navy)}
+.ix-views a:hover{color:var(--accent);border-color:var(--accent)}
 .ix-legal{display:flex;flex-wrap:wrap;gap:12px 32px;margin:0;padding:24px 0 0;list-style:none;border-top:1px solid var(--line)}
 .ix-legal a{display:inline-flex;align-items:center;min-height:44px;font:400 13px/1 var(--body);letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink)}
-.ix-legal a:hover{color:var(--navy)}
+.ix-legal a:hover{color:var(--accent)}
 .ix-foot{margin-top:88px;padding:28px 0 48px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .ix-foot a{text-decoration:underline;text-underline-offset:3px}
 @media (max-width:1100px){.ix-grid,.ix-grid--5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:860px){.ix-feat{grid-template-columns:1fr}.ix-feat__copy{padding:28px 24px 32px}}
 @media (max-width:700px){
-  .ix-top{padding:32px 0 36px}.ix-brand{gap:20px}.ix-brand img{height:104px}
-  .ix-grid,.ix-grid--5{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
+  .ix-top{padding:32px 0 36px}.ix-brand{gap:20px}.ix-brand img{height:calc(var(--logo) * .79)}
+  .ix-grid,.ix-grid--3,.ix-grid--5{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}
   .ix-card h3{font-size:12px;letter-spacing:.12em}.ix-views{gap:12px}.ix-sec{padding-top:48px}
 }
 </style>
@@ -110,7 +113,7 @@ img{display:block;max-width:100%}
 <li class="ix-card"><a class="ix-card__ph" href="08-home-search.html" tabindex="-1" aria-hidden="true"><img src="assets/STANDIN-listing-modern-home.jpg" alt="" loading="lazy"></a><h3><a href="08-home-search.html">Home Search</a></h3><p class="ix-path">/home-search/</p><ul class="ix-views"><li><a href="08-home-search.html" aria-label="Home Search on a computer">Desktop</a></li><li><a href="mobile.html?page=08-home-search.html" aria-label="Home Search on a phone">Phone</a></li></ul></li>
 <li class="ix-card"><a class="ix-card__ph" href="09-featured-listings.html" tabindex="-1" aria-hidden="true"><img src="assets/listing-3.jpg" alt="" loading="lazy"></a><h3><a href="09-featured-listings.html">Featured Listings</a></h3><p class="ix-path">/featured-listings/</p><ul class="ix-views"><li><a href="09-featured-listings.html" aria-label="Featured Listings on a computer">Desktop</a></li><li><a href="mobile.html?page=09-featured-listings.html" aria-label="Featured Listings on a phone">Phone</a></li></ul></li>
 <li class="ix-card"><a class="ix-card__ph" href="27-sold-listings.html" tabindex="-1" aria-hidden="true"><img src="assets/STANDIN-listing-brick-colonial.jpg" alt="" loading="lazy"></a><h3><a href="27-sold-listings.html">Sold Listings</a></h3><p class="ix-path">/sold-listings/</p><ul class="ix-views"><li><a href="27-sold-listings.html" aria-label="Sold Listings on a computer">Desktop</a></li><li><a href="mobile.html?page=27-sold-listings.html" aria-label="Sold Listings on a phone">Phone</a></li></ul></li>
-<li class="ix-card"><a class="ix-card__ph" href="28-search-results.html" tabindex="-1" aria-hidden="true"><img src="assets/listing-1.jpg" alt="" loading="lazy"></a><h3><a href="28-search-results.html">Saved Search Results</a></h3><p class="ix-path">/search-results/</p><ul class="ix-views"><li><a href="28-search-results.html" aria-label="Saved Search Results on a computer">Desktop</a></li><li><a href="mobile.html?page=28-search-results.html" aria-label="Saved Search Results on a phone">Phone</a></li></ul></li>
+<li class="ix-card"><a class="ix-card__ph" href="28-search-results.html" tabindex="-1" aria-hidden="true"><img src="assets/listing-1.jpg" alt="" loading="lazy"></a><h3><a href="28-search-results.html">Saved Search</a></h3><p class="ix-path">/search-results/</p><ul class="ix-views"><li><a href="28-search-results.html" aria-label="Saved Search on a computer">Desktop</a></li><li><a href="mobile.html?page=28-search-results.html" aria-label="Saved Search on a phone">Phone</a></li></ul></li>
 </ul>
 </section>
 <section class="ix-sec">
@@ -130,7 +133,7 @@ img{display:block;max-width:100%}
 </section>
 <section class="ix-sec">
 <h2>Legal and utility</h2>
-<ul class="ix-legal"><li><a href="22-sitemap.html">Sitemap</a></li><li><a href="23-privacy-policy.html">Privacy Policy</a></li><li><a href="24-terms-of-use.html">Terms of Use</a></li><li><a href="25-mls-disclaimer.html">MLS Disclaimer</a></li><li><a href="26-accessibility-statement.html">Accessibility Statement</a></li></ul>
+<ul class="ix-legal"><li><a href="22-sitemap.html">Sitemap</a></li><li><a href="23-privacy-policy.html">Privacy Policy</a></li><li><a href="24-terms-of-use.html">Terms of Use</a></li><li><a href="25-mls-disclaimer.html">MLS Disclaimer</a></li><li><a href="26-accessibility-statement.html">Accessibility</a></li></ul>
 </section>
 <footer class="ix-foot">A preview for review, not the live site. <a href="https://agenticpress.ai" target="_blank" rel="nofollow noopener">Site by AgenticPress</a></footer>
 </main>
