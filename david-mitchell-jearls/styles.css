@@ -648,6 +648,20 @@ h1,h2,h3,h4{text-wrap:balance}
   :where(.mj--page) :is(.hero,.phead) .wrap{position:relative}
   :where(.mj--page) :is(.hero,.phead) .crumbs{position:absolute;left:var(--gutter);top:calc(var(--hdr-h,103px) + 8px);margin:0}
 }
+/* phone H1s one pixel smaller and a touch tighter, so the longest town and state ("Christiansburg, VA", joined) fits a
+   375 line instead of leaving "VA" alone (Curtis's no lone last word rule; within the lock's 6 percent) */
+@media (min-width:361px) and (max-width:600px){.mj:where(.mj--page) h1{font-size:28px;letter-spacing:.04em}}
+/* phones and tablets: the trail shrinks to one back link, the page's parent, on the left (Curtis, 2026-11-12, B of the
+   phone breadcrumb sheet: "b"); the stacked trail pushed the H1 390px down a 375 screen. Where the parent is not a page
+   (the guides' "Buy" and "Sell"), the link is Home. The markup and the desktop trail are unchanged. */
+@media (max-width:900px){
+  :where(.mj--page) :is(.hero,.phead) .crumbs{flex-direction:row;margin:0 0 6px}
+  :where(.mj--page) :is(.hero,.phead) .crumbs li{display:none}
+  :where(.mj--page) :is(.hero,.phead) .crumbs li:nth-last-child(2):has(a){display:flex;border-left:0;padding-left:0}
+  /* :has() cannot nest, and one bad selector drops a whole rule: keep these two rules apart */
+  :where(.mj--page) :is(.hero,.phead) .crumbs:not(:has(li:nth-last-child(2) a)) li:first-child{display:flex;border-left:0;padding-left:0}
+  .mj:where(.mj--page) :is(.hero,.phead) .crumbs a::before{content:"\2039";font-size:20px;line-height:1;margin-right:10px;letter-spacing:0}
+}
 .mj .base__links .base__credit{white-space:nowrap}
 
 
