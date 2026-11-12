@@ -269,3 +269,42 @@ p.svc__n,p.side__i,p.idxz__tag{margin-bottom:0}
 /* a step label is a <p> now: .stp__row p must not take its colour or spacing */
 .stp__row p.stp__n{color:var(--accent);margin:0 0 14px;max-width:none;font-size:12px}
 .sitemap__grid h2.gap-top{margin-top:34px}
+
+/* a legal page's plain title band (no photograph): the build gives these pages the solid header (theme header.light_first) */
+.lhero--plain{isolation:auto}
+
+/* the house standard (Curtis 2026-11-09, standards.json interior-h1-centred-crumbs-left): on an interior hero the title is
+   centred and the breadcrumbs stand one step per line at the hero's top left */
+@media (min-width:1101px){
+  .chero{position:relative;isolation:isolate}
+  .chero .hero__in{position:static}
+  .chero .hero__in > *{position:relative;z-index:1}
+  .chero .crumbs{position:absolute;left:44px;top:176px;width:170px;margin:0;display:flex;flex-direction:column;
+    align-items:flex-start;gap:6px;text-align:left}
+  .chero .crumbs span{display:none}
+}
+
+/* ---------- gate 0 (the mockups' own accessibility, 2026-11-11): text links and labels sized for a finger and the eye.
+   A 44px tap area that keeps the line where it was: padding and an equal negative margin. ---------- */
+.rail a{font-size:12px}
+.ctile h3 a,.gtk__c a.tlink,.facts a.tlink,.bio__cred a.tlink,.crumbs a{display:inline-block;padding:12px 0;margin:-12px 0}
+@media (min-width:1101px){.chero .crumbs a{padding:0;margin:0;min-height:24px}}
+.sitemap__grid li a{display:inline-flex;align-items:center;min-height:44px}
+/* class names with a job in the markup only (the section a page anchors to, the form's own blocks) */
+.rv-sec,.rv-close,.ct,.ct-form,.ct-fields,.ct-wide,.hx4{min-width:0}
+.ctile h3 a,.gtk__c a.tlink,.facts a.tlink,.bio__cred a.tlink,.crumbs a,.nearby-band a.tlink{min-width:44px;text-align:center}
+.nearby-band a.tlink{display:inline-block;padding:12px 0;margin:-12px 0}
+.sitemap__grid li a{min-width:44px}
+.facts div b,.facts b{font-size:12px}
+.ct-big a{display:inline-flex;align-items:center;min-height:44px}
+/* breadcrumbs that wrap on a tablet or phone: real 44px rows, so the tap areas never overlap */
+@media (max-width:1100px){.chero .crumbs a{display:inline-flex;align-items:center;min-height:44px;padding:0;margin:0}}
+/* small phones: the panels on the pattern give back their side padding, a service row's text takes the full width,
+   and a section heading steps down so a held town name ("Glenwood Springs") fits 320px */
+@media (max-width:480px){
+  .geo-head{padding:20px 16px}
+  .chapter--alt .res{padding:20px 12px}
+  .chapter--alt .svc__row,.chapter--alt .chips__c{padding-left:12px;padding-right:12px}
+  .svc__d{grid-column:1/-1}
+}
+@media (max-width:360px){.chapter h2,.pad-top h2,.geo-head h2,.cx-para h2{font-size:22px;letter-spacing:.02em}}
