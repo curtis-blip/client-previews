@@ -492,8 +492,22 @@ a:hover{color:#111111}
 .hdr--dark.is-stuck{box-shadow:0 10px 30px rgba(0,0,0,.07)}
 .mj:has(>.hdr--dark){height:var(--hdr-h,103px)}
 .hdr.is-stuck .hdr__in,.hdr.menu-open .hdr__in{padding-top:20px;padding-bottom:20px}
-:is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__name{color:var(--ink)}
-:is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__sub{color:var(--muted)}
+/* Mitch's logo (Curtis, 2026-11-11), universal-conventions 1: a wide wordmark lockup at 70px over the hero and 60px
+   stuck. Over the photo the white-letter file, its blue roof kept, with a soft shadow; on white the dark-letter file. */
+.mj .brand{flex-direction:row;align-items:center;flex:0 0 auto}
+.mj .brand__logo{height:70px;width:auto;max-width:none;transition:height .3s}
+.mj .brand__logo--light{filter:drop-shadow(0 1px 8px rgba(0,0,0,.45))}
+.mj .brand__logo--dark{display:none}
+.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo--light{display:none}
+.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo--dark{display:block}
+.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo{height:60px}
+@media (max-width:1279px){.mj .brand__logo{height:62px}.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo{height:56px}}
+@media (max-width:600px){.mj .brand__logo{height:54px}.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo{height:50px}}
+@media (max-width:360px){.mj .brand__logo,.mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .brand__logo{height:44px}}
+/* the footer's logo: the full stacked lockup, linked home */
+.mj .foot__logo{display:inline-block}
+.mj .foot__logo img{width:280px;height:auto}
+@media (max-width:600px){.mj .foot__logo img{width:250px}}
 .mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .nav>a:not(.btn),:is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .nav__drop{color:var(--ink)}
 .mj :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .nav>a:not(.btn):hover,:is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .nav__drop:hover{color:var(--navy)}
 :is(.hdr.is-stuck,.hdr--dark,.hdr.menu-open) .nav .btn--light{color:var(--ink)}
@@ -652,13 +666,26 @@ h1,h2,h3,h4{text-wrap:balance}
 :where(.mj--page) .phead__meta{margin-top:18px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#E6E6E6}
 @media (max-width:600px){:where(.mj--page) .phead .wrap{padding-top:140px;padding-bottom:56px}}
 
-/* steps: the guides' ten steps, two columns of numbered rows */
-:where(.mj--page) .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 72px;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
-:where(.mj--page) .steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:0 18px;padding:30px 0;border-bottom:1px solid var(--line)}
-:where(.mj--page) .steps__num{padding-top:2px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
-:where(.mj--page) .steps h3{font-size:16px;margin-bottom:6px}
-:where(.mj--page) .steps li>div p{font-size:15px;line-height:1.7;color:var(--text)}
-@media (max-width:900px){:where(.mj--page) .steps{grid-template-columns:1fr}}
+/* steps: the guides' eight steps as alternating rows, a photo on one side and the step on the other, swapping each
+   row (Curtis, 2026-11-11; universal-conventions 7), at the Roanoke artboard's split-block width and grey (.apart) */
+:where(.mj--page) .steps{width:calc(100% - 2 * var(--gutter));max-width:1328px;margin:0 auto}
+:where(.mj--page) .step{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+:where(.mj--page) .step__photo{position:relative;min-height:480px}
+:where(.mj--page) .step__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+:where(.mj--page) .step:nth-child(even) .step__photo{order:2}
+:where(.mj--page) .step__copy{display:flex;flex-direction:column;justify-content:center;padding:64px 80px;background:var(--grey)}
+:where(.mj--page) .step h3{margin-bottom:20px}
+:where(.mj--page) .steps__num{display:block;margin-bottom:22px;font-size:clamp(48px,4.4vw,64px);font-weight:200;letter-spacing:.04em;line-height:1;color:var(--navy)}
+:where(.mj--page) .step__copy p{font-size:17px;line-height:1.75;color:var(--text)}
+@media (min-width:901px) and (max-width:1200px){:where(.mj--page) .step__copy{padding:48px}}
+@media (max-width:900px){
+  :where(.mj--page) .step{grid-template-columns:1fr}
+  :where(.mj--page) .step:nth-child(even) .step__photo{order:0}
+  :where(.mj--page) .step__photo{min-height:0;aspect-ratio:3/2}
+  :where(.mj--page) .step__copy{padding:40px 28px 48px}
+  :where(.mj--page) .step+.step{margin-top:20px}
+}
+@media (max-width:420px){:where(.mj--page) .step__copy{padding:36px 18px 44px}}
 
 /* quotes: the testimonials page, each review in the canvas's overview type */
 :where(.mj--page) .quotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px 72px}
