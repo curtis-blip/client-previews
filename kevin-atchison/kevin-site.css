@@ -54,6 +54,15 @@ h1,h2,h3,h4{text-wrap:balance}
 /* ---------- the geometric pattern behind the soft grey bands (Kevin likes geometric shapes) ---------- */
 .chapter--alt,.nearby-band{background-color:var(--ground-alt);background-image:url(assets/geo-tile.svg);
   background-size:192px 110.85px;background-repeat:repeat}
+/* Kevin, 2026-11-10 (Rachael's card comment): "the lines darker" (geo-tile.svg #B3B3AD at 1.5px, was #D9D9D5 at
+   1.25px, the board's "pattern" default too), and text never sits straight on the pattern: a heading group on a
+   patterned band sits in a solid panel (stamp.py wraps it in .geo-head), and every card on one has a solid ground. */
+.geo-head{position:relative;max-width:880px;margin:0 0 clamp(32px,3.4vw,48px);padding:clamp(24px,2.6vw,36px) clamp(24px,2.8vw,40px);
+  background:var(--ground-alt);box-shadow:0 0 0 1px rgba(18,18,18,.06)}
+.geo-head > :last-child{margin-bottom:0}
+.chapter--alt .svc__row,.chapter--alt .chips__c,.chapter--alt .tst-grid__c,.chapter--alt .res__c,.chapter--alt .cnames__list,
+.nearby-band .geo-head{background:var(--ground-alt)}
+.chapter--alt .svc__row,.chapter--alt .chips__c{padding-left:clamp(18px,2vw,28px);padding-right:clamp(18px,2vw,28px)}
 
 /* ---------- heroes clear the board's header (about 150px over a photo, 74px on phones) ---------- */
 .chero{min-height:clamp(520px,50vw,700px);padding-top:calc(150px + 64px)}
@@ -123,3 +132,106 @@ h1,h2,h3,h4{text-wrap:balance}
 /* ---------- phones: sections spaced as on the home page (80px); the buyer's guide town cards one across ---------- */
 @media (max-width:760px){.chapter{padding:72px 0}}
 @media (max-width:480px){.nserve{grid-template-columns:1fr}.nserve__c{aspect-ratio:16/10}}
+
+/* ---------- Kevin, 2026-11-10 (Rachael's card comment): "the headers across the site need to have the margins adjusted
+   so they're not all squished to the left". Every interior page header is centred, as the home page hero is: the
+   label, the title and its line centred in the photograph, the line held to two or three lines (62ch). ---------- */
+.chero{align-items:center;text-align:center}
+.chero .hero__in,.lhero > .wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+.chero h1,.lhero h1{margin-left:auto;margin-right:auto;max-width:24ch}
+.chero .hero__sub,.lhero > .wrap > p:not(.kicker){max-width:62ch;margin-left:auto;margin-right:auto}
+.chero .crumbs,.lhero .crumbs,.chero .kicker,.lhero .kicker{justify-content:center}
+/* the pack's scrim sat behind the left of the hero; centred text takes an even one */
+.chero .hero__in::before{background:radial-gradient(60% 62% at 50% 55%,rgb(var(--x-scrim) / .62) 0%,rgb(var(--x-scrim) / .36) 50%,rgb(var(--x-scrim) / 0) 82%)}
+.lhero__tint{background:linear-gradient(180deg,rgba(6,6,6,.66) 0%,rgba(6,6,6,.52) 45%,rgba(6,6,6,.6) 100%)}
+/* on a phone the header reads left-aligned again: a centred line of three or more lines is hard to read (the house
+   rule grapple/review/centred.mjs checks at 375) */
+@media (max-width:760px){
+  .chero{text-align:left}
+  .chero .hero__in,.lhero > .wrap{align-items:flex-start;text-align:left}
+  .chero h1,.lhero h1{max-width:none;margin-left:0}
+  .chero .hero__sub,.lhero > .wrap > p:not(.kicker){margin-left:0}
+  .chero .crumbs,.lhero .crumbs,.chero .kicker,.lhero .kicker{justify-content:flex-start}
+}
+
+/* ---------- section headings: one size on every interior (they were set in style attributes) ---------- */
+.chapter h2{font-size:clamp(26px,3.2vw,44px);margin-bottom:18px}
+.chapter h2 + .lede,.chapter h2 + .measure-p{margin-top:0}
+.cx-para .kicker{justify-content:center}
+.chips__c h3,.chips__t{font-family:var(--font-display);font-weight:var(--weight-display);text-transform:var(--case-display);
+  letter-spacing:var(--tracking-display);font-size:clamp(15px,1.6vw,19px);line-height:1.25;margin:0 0 8px}
+.res__c h3,.ct-next__t{font-family:var(--font-body);font-weight:500;text-transform:none;letter-spacing:0;font-size:15px;line-height:1.3;margin:0 0 8px}
+
+/* ---------- Testimonials, rebuilt 2026-11-11 after the look Kevin pointed at (homeonlakelanier.com/reviews):
+   a centred intro, two large reviews (one light, one dark), a grid of review cards with source tiles, a photo band
+   with the sources, a closing call. His reviews only, word for word, "Verified review" (no names are published). */
+.rv-intro{max-width:760px;margin:0 auto clamp(40px,4.4vw,64px);text-align:center}
+.rv-intro .kicker{justify-content:center}
+.rv-intro p{color:var(--text-soft);max-width:72ch;margin-left:auto;margin-right:auto}
+.rv-h2{font-size:clamp(26px,3.2vw,44px);margin-bottom:18px}
+.rv-feature{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+.rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.rv-card{margin:0;display:flex;flex-direction:column;background:#fff;border:1px solid #DCDCDA;padding:clamp(26px,2.6vw,40px)}
+.rv-card--lead{background:var(--ground-alt);border-color:var(--ground-alt)}
+.rv-card--dark{background:#121212;border-color:#121212;color:#fff;--accent:var(--hid)}
+.rv-card--wide{grid-column:span 2}
+.rv-stars{display:flex;gap:4px;margin:0 0 18px;color:var(--accent)}
+.rv-star{display:inline-block;width:16px;height:16px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z'/%3E%3C/svg%3E") center/contain no-repeat}
+.rv-q{margin:0 0 24px;flex:1 1 auto}
+.rv-q p{margin:0;font-size:15.5px;line-height:1.7}
+.rv-card--lead .rv-q p,.rv-card--dark .rv-q p{font-size:clamp(16px,1.3vw,18px)}
+.rv-card--dark .rv-q p{color:#E6E6E3}
+.rv-who{display:flex;flex-direction:column;gap:2px;padding-top:18px;border-top:1px solid rgba(18,18,18,.12)}
+.rv-card--dark .rv-who{border-top-color:rgba(255,255,255,.2)}
+.rv-who b{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.rv-who small{font-size:13px;color:var(--text-soft)}
+.rv-card--dark .rv-who small{color:#C9C9C6}
+.rv-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  background:var(--ground-alt);padding:clamp(28px,3vw,44px)}
+.rv-tile .rv-tile__mark{font-family:var(--font-display);font-weight:300;font-size:40px;line-height:1;color:var(--accent);margin:0 0 14px}
+.rv-tile h3{font-size:16px;letter-spacing:.06em;line-height:1.3;margin:0 0 10px}
+.rv-tile p{font-size:14px;color:var(--text-soft);margin:0 0 6px}
+.rv-btns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:26px 0 0}
+.rv-btn--line{background:transparent;border-color:#fff;color:#fff}
+.rv-btn--line:hover{background:#fff;border-color:#fff;color:#121212}
+.rv-intro--panel{margin-bottom:0;background:var(--ground-alt);padding:clamp(28px,3vw,44px);box-shadow:0 0 0 1px rgba(18,18,18,.06)}
+.rv-btn--ink{background:transparent;color:#121212}
+.rv-btn--ink:hover{background:#121212;color:#fff}
+@media (max-width:1100px){.rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rv-card--wide{grid-column:span 2}}
+@media (max-width:760px){.rv-feature,.rv-grid{grid-template-columns:minmax(0,1fr)}.rv-card--wide{grid-column:auto}
+  .rv-intro{text-align:left}.rv-intro .kicker{justify-content:flex-start}.rv-intro p{margin-left:0}.rv-btns{justify-content:flex-start}}
+
+/* ---------- Contact, rebuilt 2026-11-11 after the look Kevin pointed at (sellwithsapp.com/contact): the form on the
+   left, the direct lines in a card on the right with a rule down its edge, the office below. ---------- */
+.ct-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(40px,5vw,80px);align-items:start}
+.ct-h2{font-size:clamp(26px,3.2vw,40px);margin-bottom:28px}
+.ct-h3{font-size:clamp(22px,2.2vw,28px);margin-bottom:24px}
+.ct-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ct-field{display:flex;flex-direction:column;gap:8px;margin:0 0 20px}
+.ct-field label,.ct-checks legend{font-size:13px;font-weight:500;color:var(--text)}
+.ct-req{font-weight:400;color:var(--accent)}
+.ct-field input,.ct-field textarea{font:inherit;font-size:16px;padding:14px 16px;border:1px solid #BDBDB8;background:#fff;color:var(--text);border-radius:0}
+.ct-field input:focus,.ct-field textarea:focus{outline:2px solid #121212;outline-offset:1px}
+.ct-checks{border:0;margin:0 0 20px;padding:0}
+.ct-checks legend{padding:0;margin-bottom:10px}
+.ct-check{display:flex;align-items:center;gap:12px;margin:0;min-height:44px}
+.ct-check input{width:20px;height:20px;margin:0;accent-color:#121212}
+.ct-check label{font-size:15px}
+.ct-send{margin:8px 0 14px}
+.ct-note{font-size:14px;color:var(--text-soft);margin:0}
+.ct-card{position:sticky;top:150px;background:var(--ground-alt);border-left:3px solid var(--accent);padding:clamp(28px,3vw,44px)}
+.ct-line{padding:18px 0;border-top:1px solid rgba(18,18,18,.1)}
+.ct-line p{margin:0;font-size:15.5px;line-height:1.6}
+.ct-label{font-size:12px!important;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px!important}
+.ct-big{font-family:var(--font-display);font-weight:300;font-size:clamp(24px,2.4vw,30px)!important;letter-spacing:.02em}
+.ct-big a{color:inherit}
+.ct-social{display:flex;flex-wrap:wrap;gap:6px 22px}
+.ct-social a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.ct-office{margin:clamp(28px,3vw,40px) 0 0}
+.ct-office img{width:100%;aspect-ratio:21/9;object-fit:cover}
+.ct-next{margin-top:clamp(24px,2.6vw,36px)}
+@media (max-width:960px){.ct-grid{grid-template-columns:minmax(0,1fr)}.ct-card{position:static}}
+@media (max-width:560px){.ct-row{grid-template-columns:minmax(0,1fr);gap:0}.ct-office img{aspect-ratio:4/3}}
+/* a resources block on a patterned band sits in a solid panel too (Kevin, 2026-11-10) */
+.chapter--alt .res{background:var(--ground-alt);border-top:0;padding:clamp(24px,2.6vw,36px) clamp(24px,2.8vw,40px)}
+.chapter--alt .wrap > p{display:table;background:var(--ground-alt);padding:4px 12px;margin-left:-12px}
