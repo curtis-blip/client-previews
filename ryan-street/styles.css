@@ -543,7 +543,8 @@ a.tlink:hover::before, .card-link:hover .tlink::before { width: 46px; }
 .tile h3 { color: var(--paper); margin-bottom: .9rem; }
 .tile p:where(:not(.tile__go, .tile__credit, .tile__n)) { color: rgba(255,255,255,.93); font-size: 16px; line-height: 1.6; max-width: 40ch; margin-bottom: 1.3rem; text-shadow: 0 1px 12px rgba(var(--scrim),.45); }
 .tile .tlink { color: var(--paper); }
-.tile__n { color: var(--copper-hi); }
+.tile__n { color: var(--paper); }   /* white, with the copper rule above it as the accent (2026-11-11, the build orchestrator's
+   call for Curtis: the copper label read 2.3 to 4.4:1 over the photos; the 10-21 copper rule stays) */
 .tile__n::before { content: ""; display: block; width: 32px; height: 2px; margin-bottom: 1.1rem; background: var(--copper-hi); transition: width 500ms var(--ease); }
 .tile.card-link:hover .tile__n::before { width: 56px; }
 .tile .tlink::before { background: var(--copper-hi); }
@@ -1332,4 +1333,40 @@ iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
   .js .r { opacity: 1; transform: none; transition: none; }
   .cx-para { background-attachment: scroll; }
   .h-path > img, .h-town > img, .impress-showcase-photo img, .tlink::before { transition: none; }
+}
+
+/* Tablet widths: a step's photo stretched to the height of its text, and on the Buyer's Guide one step's text runs past
+   the screen at 1024 (photo 774px on a 768px screen, Grapple gate 0, 2026-11-11). The photo stops at 90% of the screen
+   and sits centred beside the text. */
+@media (min-width: 901px) and (max-width: 1199px) {
+  .step .bleed__media { align-self: center; height: 100%; max-height: 90vh; }
+}
+
+/* ---------- interior heroes: the H1 centred, the breadcrumb stacked on the left (Curtis, 2026-11-09, a standing ask
+   for every site: "all the h1's to be center located and the breadcrumbs stacked vertically on the left side";
+   Grapple standards interior-h1-centred-crumbs-left). Added 2026-11-11 for the build, after these mockups were
+   approved: the eyebrow, H1, intro, buttons and the home value bar sit on the hero's centre line; the breadcrumb is a
+   short vertical list at the content's top left, one step per line beside a thin rule. The hero keeps its height and
+   its place at the photo's foot. ---------- */
+.ph__in { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.ph__in > * { margin-inline: auto; }
+.ph .acts { justify-content: center; }
+.ph .agp-hv-panel { margin-inline: auto; text-align: left; }
+.ph .crumbs { align-self: flex-start; margin: 0 0 1.6rem; flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 0;
+  padding-left: 16px; border-left: 1px solid rgba(255, 255, 255, .55); text-align: left; }
+.ph .crumbs li + li::before { display: none; }
+.ph .crumbs a, .ph .crumbs [aria-current] { min-height: 32px; padding: 4px 0; }
+@media (max-width: 1024px) { .ph .crumbs a, .ph .crumbs [aria-current] { min-height: 44px; } }
+/* The centred copy needs a centred veil: the hero's left-weighted layer (96deg) assumed copy on the left, and the
+   eyebrow over a bright patch read 3.0:1 once centred (Home Valuation, 2026-11-11). Over 760px an ellipse behind the centre line
+   joins the left layer (which still backs the breadcrumb on the left); phones keep their own scrim. */
+@media (min-width: 761px) {
+  .ph::before {
+    background:
+    radial-gradient(ellipse 52% 30% at 82% 0%, rgba(var(--scrim),.42) 0%, rgba(var(--scrim),0) 100%),
+    linear-gradient(180deg, rgba(var(--scrim),.78) 0%, rgba(var(--scrim),.64) 12%, rgba(var(--scrim),.38) 22%, rgba(var(--scrim),0) 40%),
+    linear-gradient(0deg, rgba(var(--scrim),.62) 0%, rgba(var(--scrim),.3) 38%, rgba(var(--scrim),0) 62%),
+    radial-gradient(ellipse 58% 52% at 50% 64%, rgba(var(--scrim),.66) 0%, rgba(var(--scrim),.46) 55%, rgba(var(--scrim),0) 100%),
+    linear-gradient(96deg, rgba(var(--scrim),.72) 0%, rgba(var(--scrim),.46) 34%, rgba(var(--scrim),.1) 62%, rgba(var(--scrim),0) 84%);
+  }
 }
