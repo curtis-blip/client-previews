@@ -275,7 +275,7 @@ a:hover{color:#111111}
 :where(.mj--page) .home h3{margin-top:22px}
 :where(.mj--page) .home p:not(.home__num):not(.home__go){margin-top:10px;font-size:15px;line-height:1.65;color:var(--muted)}
 :where(.mj--page) .home__go{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin-top:6px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink)}
-:where(.mj--page) .band{position:relative;min-height:540px;display:flex;align-items:center;color:#ffffff;overflow:hidden;background-image:url(assets/lets-talk.jpg);background-size:cover;background-position:center;background-attachment:fixed}
+:where(.mj--page) .band{position:relative;min-height:540px;display:flex;align-items:center;color:#ffffff;overflow:hidden;background-image:url(assets/STANDIN-terrace-mountain-view.jpg);background-size:cover;background-position:center;background-attachment:fixed}
 :where(.mj--page) .band__shade{position:absolute;inset:0;background:rgba(10,10,10,.58)}
 :where(.mj--page) .band .wrap{position:relative;z-index:2;max-width:1040px;text-align:center}
 :where(.mj--page) .band .eyebrow{color:#E6E6E6}
@@ -664,6 +664,35 @@ h1,h2,h3,h4{text-wrap:balance}
 .mj:where(.mj--page) :is(.hero,.phead) .crumbs a::before{content:"\2039";font-size:20px;line-height:1;margin-right:10px;letter-spacing:0}
 .mj .base__links .base__credit{white-space:nowrap}
 
+/* ---------- the footer, balanced (Mitch's review, 2026-11-12): logo and socials left, contact lines in a row
+   under the three link columns, so the four columns end together ---------- */
+.mj .foot__top{row-gap:40px}
+.mj .foot__top>.foot__id{grid-row:span 2}
+.mj .foot__top>.contact--row{grid-column:2/-1;margin:0;grid-template-columns:max-content max-content minmax(0,1fr);gap:48px;align-self:start;
+  padding-top:34px;border-top:1px solid var(--line)}
+.mj .contact--row a{white-space:nowrap}
+@media (max-width:1100px){
+  .mj .foot__top{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mj .foot__top>.foot__id{grid-row:auto;grid-column:1/-1}
+  .mj .foot__top>.contact--row{grid-column:1/-1}
+}
+@media (max-width:760px){
+  .mj .foot__top{grid-template-columns:1fr}
+  .mj .foot__top>.contact--row{grid-template-columns:1fr;gap:22px}
+}
+
+/* the review controls: the arrows take the button's height, so all three start on one line at every width
+   (standards cells-equal-tops, 2026-11-17: 2px apart at 375) */
+.mj .reviews__ctrl{align-items:stretch}
+.mj .reviews__ctrl button{height:auto;min-height:44px}
+
+/* the MLS's own notices under every search (RVAR IDX Business Rules VI.B, mls-rules/rvar.md) */
+.mj .results__notice{margin-top:32px;display:grid;gap:10px}
+.mj .results__notice p{font-size:12px;line-height:1.6;color:var(--muted);max-width:980px}
+
+/* a heading's last two words stay together on phones (_src/last_pair.py), never at 320 or above 544px */
+@media (min-width:360px) and (max-width:544px){.mj .lp{white-space:nowrap}}
+
 
 /* ==========================================================================================================
    The interior layer: blocks for the pages the canvas does not draw (guides, forms, IDX search, legal, sitemap),
@@ -825,3 +854,55 @@ h1,h2,h3,h4{text-wrap:balance}
 @media (min-width:901px) and (max-width:1200px){.mj:where(.mj--page) :is(.overview__grid,.apart__copy) h2{font-size:28px}}
 /* a town name longer than the overview column at 46px (Christiansburg): the same size, tighter tracking */
 .mj:where(.mj--page) .overview__grid h2.h-long{letter-spacing:.01em}
+
+/* agp-phone-type: begin (grapple/phone_type.py, rebuilt on every run: never edit by hand) */
+/* The house phone heading scale (Curtis, 2026-11-16, option C, "two steps down"). At 544px and under
+   no heading is larger than h1 32px, h2 28px, h3 22px, and one it shrinks is tracked no wider than 0.06em.
+   Each rule repeats a rule of styles.css with min(): same selector, same weight, so it applies only where
+   that rule did and never makes a heading bigger. 3 sizes, 1 trackings capped;
+   19 rules repeated as they are, so the design's own order holds (a later, smaller rule wins).
+   One flat query per rule (the design's own query and the phone's), never nested: a tool that reads
+   the stylesheet (font_scale.py, mockcss.py) keeps the phone condition. */
+@media (max-width: 544px) {
+  .mj:where(.mj--home) h1 { font-size: min(clamp(34px,4.6vw,64px), 32px); letter-spacing: min(.08em, 0.06em); }
+  .mj:where(.mj--home) h2 { font-size: min(clamp(30px,3.6vw,52px), 28px); letter-spacing: .04em; }
+  .mj h3 { font-size: clamp(17px,1.5vw,21px); letter-spacing: .14em; }
+  .mj:where(.mj--home) .card h3 { font-size: 19px; }
+  .mj:where(.mj--home) .path h3 { font-size: min(clamp(24px,2.1vw,30px), 22px); letter-spacing: .06em; }
+  .foot h3 { font-size: 12px; letter-spacing: .24em; }
+}
+@media (max-width:600px) and (max-width: 544px) {
+  .mj:where(.mj--home) h1 { font-size: 29px; letter-spacing: .05em; }
+}
+@media (max-width: 544px) {
+  .mj:where(.mj--page) h1 { font-size: clamp(32px,4.4vw,60px); letter-spacing: .08em; }
+  .mj:where(.mj--page) h2 { font-size: clamp(28px,3.2vw,46px); letter-spacing: .04em; }
+  .mj:where(.mj--page) h3 { font-size: clamp(16px,1.4vw,19px); letter-spacing: .14em; }
+  :where(.mj--page) .points h3 { font-size: 16px; }
+  .mj:where(.mj--page) .lc h3 { font-size: 18px; letter-spacing: .12em; }
+  .mj:where(.mj--page) .blog h3 { font-size: clamp(20px,2vw,28px); letter-spacing: .06em; }
+}
+@media (max-width:600px) and (max-width: 544px) {
+  .mj:where(.mj--page) h1 { font-size: 29px; letter-spacing: .05em; }
+}
+@media (max-width:360px) and (max-width: 544px) {
+  .mj:where(.mj--home) .path h3 { font-size: 22px; letter-spacing: .04em; }
+  .mj .town h3 { letter-spacing: .08em; }
+}
+@media (min-width:361px) and (max-width:600px) and (max-width: 544px) {
+  .mj:where(.mj--page) h1 { font-size: 28px; letter-spacing: .04em; }
+}
+@media (max-width:360px) and (max-width: 544px) {
+  .mj.mj:where(.mj--page) h1 { letter-spacing: .01em; }
+}
+@media (max-width: 544px) {
+  :where(.mj--page) .talk__reach h3 { font-size: 16px; }
+}
+@media (max-width:360px) and (max-width: 544px) {
+  .mj:where(.mj--page) h1 { font-size: 25px; letter-spacing: .03em; }
+  .mj:where(.mj--page) h2 { font-size: 22px; letter-spacing: .02em; }
+}
+@media (max-width: 544px) {
+  .mj:where(.mj--page) .overview__grid h2.h-long { letter-spacing: .01em; }
+}
+/* agp-phone-type: end */
