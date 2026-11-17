@@ -209,8 +209,11 @@
     <h2 class="h21">Every Option, Side by&#160;Side</h2>
     <p class="p4">Three ways to sell, laid out plainly. A cash offer usually comes in below full market value; in exchange you skip repairs, showings and the wait. Mark shows you the trade so you can decide.</p>
    </div>
-   <div class="div15">
-    <img class="img1" src="assets/STANDIN-camelback-dusk.webp" alt="Hillside homes on a desert mountain above the city at dusk">
+   <div class="vidbox">
+    <button class="vid" type="button" data-yt="fxU8QmQfRME" aria-label="Play the ExpressCashSale video: Your 3 Options to Sell">
+     <img src="assets/expresscashsale-3-options-video.jpg" alt="" width="1280" height="720" loading="lazy">
+     <span class="vid__play" aria-hidden="true"></span>
+    </button>
    </div>
   </div>
   <div class="tbl div16" tabindex="0" role="region" aria-label="Comparison of the three ways to sell">
@@ -374,6 +377,21 @@
     e.preventDefault();
     try { sessionStorage.setItem('ecs-address', form.querySelector('input[name="address"]').value.trim()); } catch (err) {}
     window.location.href = form.getAttribute('action');
+  });
+})();
+</script>
+<script>
+(function () {
+  document.querySelectorAll('.vid[data-yt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-yt') + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = 'ExpressCashSale: Your 3 Options to Sell';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+      f.classList.add('vid__frame');
+    }, { once: true });
   });
 })();
 </script>

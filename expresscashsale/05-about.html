@@ -95,6 +95,23 @@
  </div>
 </section>
 
+<section id="video" class="sec">
+ <div class="wrap two">
+  <div>
+   <p class="p3">Watch</p>
+   <h2 class="h21">Your Three Options to&#160;Sell</h2>
+   <p class="p7">A short ExpressCashSale video on the three ways to sell: a cash offer from investors, Cash to Win, or a listing on the open market.</p>
+   <a class="btn a6" href="03-three-ways-to-sell.html">Compare the Three Ways <span class="ico ico--arrow" aria-hidden="true"></span></a>
+  </div>
+  <div class="vidbox">
+    <button class="vid" type="button" data-yt="fxU8QmQfRME" aria-label="Play the ExpressCashSale video: Your 3 Options to Sell">
+     <img src="assets/expresscashsale-3-options-video.jpg" alt="" width="1280" height="720" loading="lazy">
+     <span class="vid__play" aria-hidden="true"></span>
+    </button>
+  </div>
+ </div>
+</section>
+
 <section class="sec">
  <div class="wrap">
   <div class="div8">
@@ -243,5 +260,20 @@
 </footer>
 
 </div>
+<script>
+(function () {
+  document.querySelectorAll('.vid[data-yt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-yt') + '?autoplay=1&rel=0&modestbranding=1';
+      f.title = 'ExpressCashSale: Your 3 Options to Sell';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+      f.classList.add('vid__frame');
+    }, { once: true });
+  });
+})();
+</script>
 </body>
 </html>
