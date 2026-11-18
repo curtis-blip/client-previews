@@ -859,6 +859,12 @@ h1,h2,h3,h4{text-wrap:balance}
    hero's 900px cap; this hero's cap is wider, the type unchanged (universal-conventions 8.11, standards h1-lines). */
 .mj:where(.mj--page) .hero--wide h1{max-width:1180px}
 
+/* Communities: "Find your place in the Roanoke Valley" sits in the overview's 440px column; joined, "Roanoke Valley" is
+   453px at the page h2's 46px, so from 1201px up that one heading is capped at 44px and the place name stays on one
+   line (house heading rule: no lone last word, a place name on one line; build orchestrator 2026-11-17). Below 1201
+   the page's own sizes apply (28px at 901 to 1200, the column full width under 900). */
+@media (min-width:1201px){.mj:where(.mj--page) .overview__grid h2.h2--fit{font-size:min(clamp(28px,3.2vw,46px),44px)}}
+
 /* agp-phone-type: begin (grapple/phone_type.py, rebuilt on every run: never edit by hand) */
 /* The house phone heading scale (Curtis, 2026-11-16, option C, "two steps down"). At 544px and under
    no heading is larger than h1 32px, h2 28px, h3 22px, and one it shrinks is tracked no wider than 0.06em.
