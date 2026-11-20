@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leticia Torres: Design Rules</title>
+
+<!-- Client fonts (replaced per-client at generation time) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Tokens injected from global-design.json at generation time */
+  --color-primary: #0a6a48;
+  --color-secondary: #4f5a69;
+  --color-accent: #0d8359;
+  --color-contrast: #171e30;
+  --color-text-dark: #151b2b;
+  --color-text-muted: #4f5a69;
+  --color-text-light: #ffffff;
+  --color-surface: #f3f6f3;
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-background-alt: #f3f6f3;
+  --color-background-dark: #171e30;
+  --color-border: #e1e7e2;
+
+  --font-heading: Outfit;
+  --font-body: Inter;
+
+  --h1-size: clamp(38px, 4.4vw, 64px);
+  --h2-size: clamp(30px, 3.1vw, 46px);
+  --h3-size: 21px;
+  --body-size: 17px;
+  --eyebrow-size: 12.5px;
+
+  --h1-weight: 500;
+  --h2-weight: 500;
+  --h3-weight: 500;
+  --body-weight: 400;
+
+  --h1-tracking: .03em;
+  --h2-tracking: .035em;
+  --eyebrow-tracking: .22em;
+
+  --h1-transform: uppercase;
+  --h2-transform: uppercase;
+
+  --h1-line-height: 1.08;
+  --body-line-height: 1.7;
+
+  --container-width: 1320px;
+  --section-padding-y: clamp(72px, 8.5vw, 128px);
+  --container-padding-x: clamp(20px, 4vw, 64px);
+
+  --motion-duration-default: 400ms;
+  --motion-easing-default: cubic-bezier(.2, .7, .1, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--color-text-dark);
+  background: var(--color-background);
+}
+
+.doc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem var(--container-padding-x);
+}
+
+.doc-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+.doc-header__eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.doc-header__title {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  color: var(--color-text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.doc-header__meta {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+section > h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  line-height: 1.2;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section > p.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 65ch;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.row__label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.row__value {
+  font-size: 0.9375rem;
+  color: var(--color-text-dark);
+}
+
+.row__demo {
+  margin-top: 0.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-text-dark);
+}
+
+.demo-h1 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  margin-top: 0.5rem;
+}
+.demo-h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  margin-top: 0.5rem;
+}
+.demo-h3 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  margin-top: 0.5rem;
+}
+.demo-eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+.demo-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line-height);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+/* Color swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+.swatch__chip {
+  height: 90px;
+  border-bottom: 1px solid var(--color-border);
+}
+.swatch__meta {
+  padding: 0.875rem 1rem;
+}
+.swatch__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.swatch__hex {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+.swatch__role {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Spacing scale */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.spacing-row__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.spacing-row__value {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+.spacing-row__bar {
+  background: var(--color-accent);
+  height: 12px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  transition: background var(--motion-duration-default) var(--motion-easing-default),
+              color var(--motion-duration-default) var(--motion-easing-default);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-accent {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Anti-pattern callouts */
+.callout {
+  background: var(--color-background-alt);
+  border-left: 4px solid var(--color-accent);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.callout__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.callout ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.callout li {
+  margin: 0.25rem 0;
+  color: var(--color-text-dark);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9375rem;
+}
+th, td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-background-alt);
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875em;
+  background: var(--color-background-alt);
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-border);
+}
+
+.note {
+  background: var(--color-background-alt);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  body { background: white; }
+  section { page-break-inside: avoid; }
+  .doc { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header class="doc-header">
+    <div class="doc-header__eyebrow">Design Rules · Handoff Document</div>
+    <h1 class="doc-header__title">Leticia Torres</h1>
+    <p class="doc-header__meta">For Jeff, Kersey, and any builder picking up this project · Generated 2026-11-17 · Template: Optimus shell, approved modern coastal revamp (home page)</p>
+  </header>
+
+  <section>
+    <h2>How to Read This Document</h2>
+    <p class="section-intro">
+      Every rule below is rendered using the actual fonts, colors, and sizes the site should use.
+      What you see on this page is what the live site should look like at the component level.
+      No need to translate hex codes or font-size values into mental pictures, the doc shows it.
+    </p>
+    <div class="note">
+      <strong>If something doesn't match the mockups:</strong> the mockups are the source of truth.
+      The mockups consumed this same design system, so a mismatch means either the mockup needs fixing
+      or this doc needs regeneration. Either way, surface it to Curtis before building.
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="section-intro">
+      The brand uses <strong>Outfit</strong> for headings and <strong>Inter</strong> for body copy.
+      H1 case is <strong>uppercase</strong>. Body line-height is generous (1.7) for readability.
+    </p>
+
+    <div class="row">
+      <div class="row__label">H1 (page titles)</div>
+      <div class="row__value">
+        Font: Outfit · Weight: 500 · Size: clamp(38px, 4.4vw, 64px) · Tracking: .03em · Case: uppercase · Line-height: 1.08
+        <div class="demo-h1">Your Carlsbad Real&nbsp;Estate Agent for All of North&nbsp;County</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H2 (section heads)</div>
+      <div class="row__value">
+        Font: Outfit · Weight: 500 · Size: clamp(30px, 3.1vw, 46px) · Tracking: .035em · Case: uppercase
+        <div class="demo-h2">Explore the Towns of North&nbsp;County San&nbsp;Diego</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H3 (subsection)</div>
+      <div class="row__value">
+        Font: Outfit · Weight: 500 · Size: 21px · Case: sentence
+        <div class="demo-h3">Service Subhead</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Eyebrow / Overline</div>
+      <div class="row__value">
+        Font: Inter · Weight: 500 · Size: 12.5px · Tracking: .22em · Case: UPPERCASE
+        <div class="demo-eyebrow">Eyebrow Label Style</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Body</div>
+      <div class="row__value">
+        Font: Inter · Weight: 400 · Size: 17px · Line-height: 1.7
+        <div class="demo-body">
+          This is the standard body copy style. It runs at a generous line-height because most blocks
+          carry meaningful paragraph content (about teasers, agent bio, FAQ answers, community descriptions).
+          Width caps around 65 characters per line for readability.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Typography Hard Rules</div>
+      <ul>
+        <li>Headings are Outfit in uppercase at weight 500 (the stats heading is weight 200). Body is Inter. Load both from Google Fonts on every page.</li>
+        <li>H1: caps at 38px minimum, 64px maximum, and 32px at 544px and under. H2 caps at 28px and H3 at 22px at 544px and under. Body drops to 16px at 760px and under.</li>
+        <li>Every eyebrow carries a short green rule under it (36px by 2px, 12px gap): green_deep text on light, green_light on navy, white over photos.</li>
+        <li>Home H1 two lines ideally at desktop; every hero is centred, home included.</li>
+        <li>Never substitute a system font as the primary face. System fonts only as the fallback in the stack.</li>
+        <li>Never introduce a third font family. Heading and body only.</li>
+        <li>No italic-serif accent spans inside H1s ("real estate, <em>reimagined</em>" is banned).</li>
+        <li>No em dashes anywhere in copy: replace with comma, period, colon, or middle dot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color Palette</h2>
+    <p class="section-intro">
+      Her green on neutral ink, navy and mist grounds. Green is the fingerprint: button fills, the short rule under every eyebrow, eyebrow words, and small marks. Navy carries the dark bands. Use green_deep for green text on light, green_light on navy and photos.
+    </p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background: #171e30;"></div><div class="swatch__meta"><div class="swatch__name">Navy</div><div class="swatch__hex">#171e30</div><div class="swatch__role">Dark bands, footer, header ground, stats-free dark sections (--navy)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #151b2b;"></div><div class="swatch__meta"><div class="swatch__name">Ink</div><div class="swatch__hex">#151b2b</div><div class="swatch__role">Body copy and headings on light grounds, ink-outline buttons on the palm ground (--ink)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #0d8359;"></div><div class="swatch__meta"><div class="swatch__name">Green</div><div class="swatch__hex">#0d8359</div><div class="swatch__role">Accent fill: hero and header buttons, closing CTA; white text 4.7:1 (--green)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #0a6a48;"></div><div class="swatch__meta"><div class="swatch__name">Green Deep</div><div class="swatch__hex">#0a6a48</div><div class="swatch__role">Accent as text on light grounds, primary outline button (--green-deep)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #6fdcb0;"></div><div class="swatch__meta"><div class="swatch__name">Green Light</div><div class="swatch__hex">#6fdcb0</div><div class="swatch__role">Accent on navy and on photos: eyebrows, rules (--green-light)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #4f5a69;"></div><div class="swatch__meta"><div class="swatch__name">Stone</div><div class="swatch__hex">#4f5a69</div><div class="swatch__role">Muted text on white (--stone)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #f3f6f3;"></div><div class="swatch__meta"><div class="swatch__name">Mist</div><div class="swatch__hex">#f3f6f3</div><div class="swatch__role">The quiet light band (--mist)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #e1e7e2;"></div><div class="swatch__meta"><div class="swatch__name">Line</div><div class="swatch__hex">#e1e7e2</div><div class="swatch__role">Borders and hairlines (--line)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #ffffff;"></div><div class="swatch__meta"><div class="swatch__name">Paper</div><div class="swatch__hex">#ffffff</div><div class="swatch__role">Default background, button text on dark (--paper)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #f1efdd;"></div><div class="swatch__meta"><div class="swatch__name">Palm Ground</div><div class="swatch__hex">#f1efdd</div><div class="swatch__role">Under the sage mini palm background (assets/palm-mini-sage.webp), About and reviews bands only; never behind a photo</div></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Color Hard Rules</div>
+      <ul>
+        <li>Every colour is a token from the client stylesheet (<code>mockups/styles.css</code> :root). Take values from there, never from memory.</li>
+        <li>Body text color contrast must meet WCAG AA against the background (this palette is verified).</li>
+        <li>Never invent additional colours. Use only the ten above.</li>
+        <li>The palm background sits on light bands (About, reviews), never behind a photo.</li>
+        <li>Primary button: square, 1px green_deep outline, green_deep caps text, fills green on hover. Photo and navy grounds use a white outline; the palm ground uses an ink outline.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Spacing Scale</h2>
+    <p class="section-intro">
+      Section padding-Y is <strong>clamp(72px, 8.5vw, 128px)</strong>. Container max-width is <strong>1320px</strong>.
+      The stylesheet has no named spacing scale, so the rows below are the fixed values it does define (gutter, section padding, eyebrow rule).
+    </p>
+
+    <div class="spacing-scale">
+      <div class="spacing-row"><span class="spacing-row__name">Gutter</span><span class="spacing-row__value">clamp(20px, 4vw, 64px)</span><div class="spacing-row__bar" style="width: min(100%, 64px);"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Section Y</span><span class="spacing-row__value">clamp(72px, 8.5vw, 128px)</span><div class="spacing-row__bar" style="width: min(100%, 128px);"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Eyebrow gap</span><span class="spacing-row__value">12px</span><div class="spacing-row__bar" style="width: 12px;"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">Eyebrow rule</span><span class="spacing-row__value">36px by 2px</span><div class="spacing-row__bar" style="width: 36px;"></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Spacing Hard Rules</div>
+      <ul>
+        <li>Always use scale values: never one-off pixel or rem values.</li>
+        <li>Section padding-Y is generous by design (LP doctrine). Don't tighten it without explicit direction.</li>
+        <li>Container padding-X is consistent across all sections (no per-section overrides).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons and Link Labels</h2>
+    <p class="section-intro">
+      Her buttons are square, uppercase, and come in four kinds: outline (primary), green fill, white outline over photos and navy, and ink outline on the palm ground.
+    </p>
+
+    <div class="row">
+      <div class="row__label">Primary</div>
+      <div class="row__value">
+        Green fill with white text. Use on the hero, header Contact and the closing band.
+        <div class="btn-row">
+          <a href="#" class="btn-primary">Schedule a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Secondary</div>
+      <div class="row__value">
+        Outline from the start (green_deep). Fills green on hover.
+        <div class="btn-row">
+          <a href="#" class="btn-secondary">Browse Listings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Accent</div>
+      <div class="row__value">
+        Green fill, in-block CTAs.
+        <div class="btn-row">
+          <a href="#" class="btn-accent">Get Home Value</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Button Hard Rules</div>
+      <ul>
+        <li>Border-radius: 0. Square buttons only.</li>
+        <li>Never use 3+ buttons in a single hero. One primary, optionally one secondary, never three.</li>
+        <li>Transition duration 400ms with easing cubic-bezier(.2, .7, .1, 1) on hover.</li>
+        <li>Always include `:focus-visible` indicator (browser default OK, or styled with accent outline).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <p class="section-intro">
+      Slow, subtle motion. The stylesheet uses one easing, <code>--ease</code>. Never bouncy, never fast.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--motion-duration-fast</code></td><td>300ms</td><td>Link underline color changes, small UI feedback</td></tr>
+        <tr><td><code>--motion-duration-default</code></td><td>400ms</td><td>Button hover, accordion expand</td></tr>
+        <tr><td><code>--motion-duration-slow</code></td><td>900ms</td><td>Photo zoom on hover (900ms); header and hero transitions run 450 to 500ms</td></tr>
+        <tr><td><code>--motion-easing-default</code></td><td>cubic-bezier(.2, .7, .1, 1)</td><td>All hover transitions</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Motion Hard Rules</div>
+      <ul>
+        <li>No bounce easing. No springs. No spinning loaders inside content.</li>
+        <li>Photo hover zoom maxes at 1.03 (3%). The stylesheet runs the town tile and path card image zoom at 900ms.</li>
+        <li>Respect `prefers-reduced-motion`: disable photo-zoom and section fade-in when set.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Imagery</h2>
+    <p class="section-intro">
+      Real photography only. No stock illustrations, no vectors, no 3D renders, no AI-generated images.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Use</th><th>Aspect Ratio</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero (full-bleed)</td><td>16:9 or 21:9</td><td>Home hero is 100svh (640px minimum). Interior heroes are one shorter height: max(460px, 62svh), max(440px, 56svh) on phones. Scrim gradient is in the stylesheet.</td></tr>
+        <tr><td>Agent headshot</td><td>3:4, 4:5, or 5:6 (portrait)</td><td>~55% max column width. Landscape lifestyle photos = different block</td></tr>
+        <tr><td>Community card</td><td>16:9 or 4:3</td><td>Real neighborhood / streetscape photos</td></tr>
+        <tr><td>Lifestyle / property</td><td>16:9, 16:10, 21:9</td><td>Landscape orientation</td></tr>
+        <tr><td>Process step photos</td><td>4:5 or 1:1</td><td>Per-step photography when V3/V5 process variant is used</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Imagery Hard Rules</div>
+      <ul>
+        <li>Never mix headshot and lifestyle in same slot: they require different aspect ratios and crops.</li>
+        <li>Never use gradient placeholders past first draft: replace with real Unsplash or client photos before delivery.</li>
+        <li>Every image needs descriptive `alt` text: never leave blank, never use "image" or "photo".</li>
+        <li>Borders/rounded corners on images: NEVER. `border-radius: 0` is non-negotiable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Layout Widths</h2>
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--container-width</code></td><td>1320px</td><td>Standard section content width</td></tr>
+        <tr><td><code>--wide-width</code></td><td>1520px</td><td>Wider blocks (full-bleed hero, alternating image rows)</td></tr>
+        <tr><td><code>--narrow-width</code></td><td>none set; text blocks cap by character count (about 58ch to 65ch)</td><td>Text-heavy blocks (agent bio prose, FAQ)</td></tr>
+        <tr><td><code>--container-padding-x</code></td><td>clamp(20px, 4vw, 64px)</td><td>Horizontal padding on all containers</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Breakpoints</div>
+      <ul>
+        <li>Mobile-first base styles</li>
+        <li>Tablet breakpoint: 768px</li>
+        <li>Desktop breakpoint: 1024px</li>
+        <li>Wide desktop breakpoint: 1440px (when alternating image rows benefit)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="mobile-spec">
+<h2>Mobile spec (generated from the mockup CSS)</h2>
+<p>The mockups are the mobile spec: open any page at 375px (<a href='mockups/mobile.html'>mobile.html</a> shows every page at phone width). This section translates the stylesheet's responsive rules into build settings. Definition of done: the built page matches the mockup at 375px.</p>
+<h3>Type scale: phone vs desktop</h3>
+<p>The phone value is each clamp() lower bound. Set these as the mobile font sizes in Spectra.</p>
+<table><tr><th>Selector</th><th>Phone</th><th>Desktop</th></tr>
+<tr><td><code>.h2</code></td><td>30px</td><td>46px</td></tr>
+<tr><td><code>.hero h1</code></td><td>38px</td><td>64px</td></tr>
+<tr><td><code>.stats__h</code></td><td>30px</td><td>50px</td></tr>
+<tr><td><code>.town h3</code></td><td>22px</td><td>30px</td></tr>
+<tr><td><code>.path h3</code></td><td>26px</td><td>38px</td></tr>
+<tr><td><code>.ph h1</code></td><td>38px</td><td>64px</td></tr>
+<tr><td><code>.lh h1</code></td><td>34px</td><td>50px</td></tr>
+<tr><td><code>.legal__body h2</code></td><td>26px</td><td>36px</td></tr>
+<tr><td><code>.legal__body h3</code></td><td>20px</td><td>24px</td></tr>
+<tr><td><code>.svc-paths .path h3</code></td><td>24px</td><td>32px</td></tr>
+</table>
+<h3>At and below 1279px</h3><ul>
+<li><code>.brand__name</code> type drops to 23px</li>
+<li><code>.nav</code> stacks vertically</li>
+<li><code>.nav__list</code> stacks vertically</li>
+<li><code>.nav__link, .nav__toggle</code> type drops to 13.5px</li>
+<li><code>.nav__sub</code> hidden</li>
+</ul>
+<h3>At and below 900px</h3><ul>
+<li><code>.legal</code> stacks to one column</li>
+<li><code>.legal__toc</code> hidden</li>
+</ul>
+<h3>At and below 860px</h3><ul>
+<li><code>.contact</code> stacks to one column</li>
+</ul>
+<h3>At and below 782px</h3><ul>
+<li><code>.ap-form</code> stacks vertically</li>
+</ul>
+<h3>At and below 760px</h3><ul>
+<li><code>.brand__name</code> type drops to 18px</li>
+<li><code>body</code> type drops to 16px</li>
+<li><code>.hero__sub</code> type drops to 17px</li>
+<li><code>.lede, .cta__sub, .quote p</code> type drops to 17px</li>
+<li><code>.ph__sub</code> type drops to 17px</li>
+</ul>
+<h3>At and below 600px</h3><ul>
+<li><code>.jump__link</code> type drops to 12.5px</li>
+<li><code>.contact-map</code> stacks to one column</li>
+<li><code>.form__grid</code> stacks to one column</li>
+</ul>
+<h3>At and below 544px</h3><ul>
+<li><code>.mark__v</code> type drops to 22px</li>
+<li><code>.contact__form h3, .contact__label, .contact-map__h</code> type drops to 19px</li>
+<li><code>.legal__body h2</code> type drops to 24px</li>
+<li><code>.legal__body h3</code> type drops to 19px</li>
+<li><code>.svc-paths .path h3</code> type drops to 22px</li>
+</ul>
+<h3>At and below 400px</h3><ul>
+<li><code>.brand__logo</code> hidden</li>
+</ul>
+
+<h3>Hero focal point per page (hand-written)</h3>
+<p>Every hero photo is a cover crop. On a phone the hero is tall and narrow, so only a centred slice of the width survives (about the middle 40% of a landscape photo). The position below is what the mockup sets; keep it in the build.</p>
+<table><tr><th>Page</th><th>Photo</th><th>Position</th><th>What must survive</th></tr>
+<tr><td>Home</td><td><code>site-oceanside-bluff-homes-palm.jpg</code></td><td>centre 42% (CSS background-position)</td><td>The tall palm (right of centre, about two thirds across) with its crown and the line of bluff homes under it. Phone crop is a centred 40% slice: palm and homes stay, the white building bottom left and the far right houses go. Keep the horizon in the upper middle under the scrim.</td></tr>
+<tr><td>About, Seller's Guide, Testimonials</td><td><code>site-palm-lined-coastal-street.jpg</code></td><td>50% 60%</td><td>The palm cluster in the middle with the green hill behind it. The tall palms at the far left and the right-hand shops drop out on a phone; that is fine.</td></tr>
+<tr><td>Communities hub</td><td><code>site-carlsbad-aerial-coast.jpg</code></td><td>50% 50%</td><td>The ocean horizon and the beach line (a third of the way down) with the street grid just under it. Keep sea and coast in frame; the foreground blocks can go.</td></tr>
+<tr><td>Buyer's Guide, Services, Blog</td><td><code>site-oceanside-bluff-homes-palm.jpg</code></td><td>50% 55% (Blog 50% 50%)</td><td>Same photo as the home hero: the tall palm and the row of homes. Do not move the position left, or the palm leaves the crop.</td></tr>
+<tr><td>Home Value</td><td><code>lib-hv-hero.jpg</code></td><td>50% 55%</td><td>The pool and the lit covered patio at centre right. The mountains left and the house's right wing drop out on a phone. The pool must stay.</td></tr>
+<tr><td>Property Management</td><td><code>site-oceanside-beachfront-palms.jpg</code></td><td>50% 55%</td><td>The band of palms and condos with the surf line under it. The blank sky above can crop away.</td></tr>
+<tr><td>Contact</td><td><code>lib-contact-hero.jpg</code></td><td>50% 55%</td><td>The coffee cup and the open magazine on the counter. On a phone the cup (right of centre) is the part most at risk, so check it survives. A library stock photo, not Leticia.</td></tr>
+<tr><td>Carlsbad</td><td><code>site-carlsbad-village-sign.jpg</code></td><td>50% 45%</td><td>The CARLSBAD Village sign over the road and the blue Victorian building behind it. The sign is centred, so it survives; the left lamp post and right palms drop.</td></tr>
+<tr><td>Oceanside</td><td><code>site-oceanside-beachfront-palms.jpg</code></td><td>50% 50%</td><td>The palm and condo band and the surf. Keep the band centred; the sky is spare.</td></tr>
+<tr><td>San Marcos</td><td><code>site-san-marcos-hillside-homes.jpg</code></td><td>50% 50%</td><td>The tile roof house in the middle, with the valley of homes behind it. The two side houses crop away on a phone.</td></tr>
+<tr><td>Vista</td><td><code>site-vista-lagoon-golf-aerial.jpg</code></td><td>50% 50%</td><td>The resort and the lagoon channel in the upper middle. The golf course below is the part that drops.</td></tr>
+<tr><td>Fallbrook</td><td><code>site-fallbrook-hillside-neighborhood.jpg</code></td><td>50% 50%</td><td>The tile roof homes and pines in the middle with the two hills behind. Keep the hill tops in view.</td></tr>
+<tr><td>Escondido</td><td><code>site-escondido-aerial-blocks.jpg</code></td><td>50% 50%</td><td>The pink building and the palm lined street running up the middle to the skyline. The street is centred, so it survives.</td></tr>
+</table>
+<h3>Mobile-only departures</h3>
+<ul><li>H1 is capped at 32px at 544px and under (38px is the clamp floor above that); H2 at 28px, H3 at 22px.</li><li>The header logo hides at 400px and under; the phone call bar (Call, Contact) shows on phones.</li><li>The nav stacks and the sub-menus hide at 1279px and under, so the Communities dropdown becomes a stacked list.</li></ul>
+</section>
+
+
+  <section>
+    <h2>Community Pages</h2>
+    <p class="section-intro">The six town pages (Carlsbad, Oceanside, San Marcos, Vista, Fallbrook, Escondido) share one renderer and one layout, ported as drawn from the approved Claude Design board. Carlsbad is the reference.</p>
+    <div class="row"><div class="row__label">Shape</div><div class="row__value">One long page. A sticky section bar sits under the sticky site header (together they stay under 20 percent of the screen; 120px plus 48px at 1440). A small script highlights the section being read, and the bar links scroll to each section.</div></div>
+    <div class="row"><div class="row__label">Section order</div><div class="row__value">Quick facts, neighborhoods by quarter of the town, living here, shopping and dining, schools, the commute, before you buy, ask Leticia, helpful links, nearby towns.</div></div>
+    <div class="row"><div class="row__label">Left out on purpose</div><div class="row__value">No IDX anywhere on the site: no listings, no search, no Home Search page. No live market data (no median prices, days on market, HOA dues or drive minutes). Leticia's Picks stay blank until she supplies her own words.</div></div>
+    <div class="row"><div class="row__label">Heroes and eyebrows</div><div class="row__value">Every hero is centred. The H1 runs two lines at desktop. Every eyebrow has the short green rule under it.</div></div>
+    <div class="row"><div class="row__label">Heading breaks</div><div class="row__value">Theme <code>headings.pair_max</code> is 17: the mockups join the word pairs of up to 17 letters with a non-breaking space, and always the last two words of every heading (h1 to h4). Carry this into the build so no heading ends on a single word. 17 is deliberate: "Property Management" (19 letters) clipped at 375px.</div></div>
+    <div class="row"><div class="row__label">Neighborhoods</div><div class="row__value">Grouped by quarter of the town. No ZIP codes are printed (town-facts rule). Source links are checked; some city sites refuse scripts and are marked in each town's JSON.</div></div>
+  </section>
+
+  <section>
+    <h2>Voice and Content Reminders</h2>
+    <p class="section-intro">
+      Content writers and designers both need to remember these voice rules. Even if it's the writer's job,
+      a designer who notices an em dash or "your trusted partner" should flag it before publish.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Copy Hard Rules</div>
+      <ul>
+        <li>Never use em dashes (the long dash or a double hyphen): replace with comma, period, colon, or middle dot.</li>
+        <li>Never use generic AI phrases: "dream home", "seamless experience", "every step of the way", "your trusted partner", "in today's market", "with confidence".</li>
+        <li>Never use generic city descriptors: "thriving", "vibrant", "nestled", "perfect blend", "world-class", "rich history", "something for everyone".</li>
+        <li>Never use parallel triplets ("Clear, calm, confident"), hyphenated compound metaphors ("courtroom-trained eye"), or conditional buildups ("Whether you're A, B, or C...").</li>
+        <li>Every page H1 references at least ONE specific item from the client's brief (years, credentials, niche, personal story).</li>
+      </ul>
+    </div>
+
+    <p class="section-intro" style="margin-top: 2rem;">
+      Full doctrine: <code>references/copy-voice.md</code> in the Optimus Prime plugin.
+    </p>
+  </section>
+
+  <section>
+    <h2>External Links Compliance</h2>
+    <p class="section-intro">
+      Every external link on the site must follow these rules. Resources strips above the footer are the primary placement.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Rule</th><th>HTML</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Opens in new tab</td><td><code>target="_blank"</code></td></tr>
+        <tr><td>Security</td><td><code>rel="noopener noreferrer"</code></td></tr>
+        <tr><td>Underlined</td><td>browser default (do not remove)</td></tr>
+        <tr><td>Visited state</td><td>browser default (do not disable)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Banned External Targets</div>
+      <ul>
+        <li>Zillow, Redfin, Trulia (competes with the agent's lead capture)</li>
+        <li>Brokerage internal portals (public URLs only)</li>
+        <li>Paid services the client doesn't endorse</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns Summary</h2>
+    <p class="section-intro">
+      The shortlist of "do not do this." Every rule below was learned the hard way on past builds.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Never Do These</div>
+      <ul>
+        <li>Em dashes anywhere in copy</li>
+        <li>Emojis as icons (inline SVG only)</li>
+        <li>Rounded corners on cards, buttons, images</li>
+        <li>Carousel sliders in heroes</li>
+        <li>Italic-serif "register lift" spans inside H1</li>
+        <li>3+ CTAs in a hero (1 default, 2 max)</li>
+        <li>Split heroes anywhere except a clean home-page exception</li>
+        <li>Two dark-background sections in a row</li>
+        <li>Aggressive form or large CTA inside the hero (exception: Home Valuation page widget)</li>
+        <li>Gradient placeholders past first draft</li>
+        <li>Raw shortcode embeds without styled container</li>
+        <li>Flat text-only service boxes (must have SVG icons)</li>
+        <li>Zigzag timeline layouts for process steps (use alternating image+text rows)</li>
+        <li>"Recently Sold Nearby" on Home Valuation page</li>
+        <li>4-step process blocks shipped as production (always default to 8)</li>
+        <li>FAQ mode: faq on About page (use mode: expertise: Areas of Expertise)</li>
+        <li>Communities home-page treatment on inner pages (V2 home-only)</li>
+        <li>About teaser block on /about (always use full Agent Bio)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 0.875rem; text-align: center;">
+    Generated by Optimus Prime,  <a href="mailto:curtis@agenticpress.com" style="color: var(--color-text-muted);">Curtis Gould, AgenticPress</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
