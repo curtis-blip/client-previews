@@ -86,6 +86,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .section--night .lede, .section--charcoal .lede { color: var(--muted-dark); }
 .script { font-family: var(--script); font-weight: 700; letter-spacing: 0; text-transform: none; }
 
+/* No coloured line on the edge of a box, panel or card, anywhere (Curtis, 2026-11-25: "The little blue line at the top
+   is ai looking"). A box is set off by its ground, its shadow or its space, never by an accent strip. */
+
 /* ---------------------------------------------------------------- buttons */
 /* Filled teal with Night text, sharp corners: the reference's filled buttons in Noah's teal (house default is the
    outline button; this is a recorded balance call for this client) */
@@ -131,7 +134,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .hdr.is-stuck .nav__link, .hdr.is-stuck .nav__toggle { color: var(--charcoal); text-shadow: none; }
 .hdr.is-stuck .nav__link:hover, .hdr.is-stuck .nav__toggle:hover { color: var(--teal-deep); }
 .nav__sub { position: absolute; top: calc(100% + 10px); left: -24px; min-width: 270px; margin: 0; padding: 12px 0; list-style: none;
-  background: var(--white); border-top: 3px solid var(--teal); box-shadow: 0 18px 50px rgba(10, 12, 14, .18); opacity: 0;
+  background: var(--white); box-shadow: 0 18px 50px rgba(10, 12, 14, .18); opacity: 0;
   visibility: hidden; transform: translateY(6px); transition: opacity 300ms var(--ease), transform 300ms var(--ease), visibility 300ms; }
 .nav__sub::before { content: ""; position: absolute; inset: -14px 0 auto 0; height: 14px; }
 .nav__item:hover .nav__sub, .nav__item:focus-within .nav__sub { opacity: 1; visibility: visible; transform: none; }
@@ -425,7 +428,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
 .paths__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
 .path { position: relative; display: flex; flex-direction: column; min-height: 520px; padding: clamp(32px, 3vw, 48px);
   background-color: var(--night); background-position: center; background-size: cover; isolation: isolate; overflow: hidden;
-  border-bottom: 4px solid var(--teal); transition: transform 500ms var(--ease); }
+  transition: transform 500ms var(--ease); }
 .path::before { content: ""; position: absolute; inset: 0; z-index: -1; background:
   linear-gradient(180deg, rgba(10, 12, 14, .14) 0%, rgba(10, 12, 14, .34) 28%, rgba(10, 12, 14, .87) 56%, rgba(10, 12, 14, .95) 100%); }
 .path:hover { transform: translateY(-6px); }
@@ -467,7 +470,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px soli
   background-position: center; background-size: cover; background-attachment: fixed; }
 .closing::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 12, 14, .35), rgba(10, 12, 14, .62)); }
 .closing__card { position: relative; max-width: 760px; margin-inline: auto; padding: clamp(36px, 4vw, 64px); text-align: center;
-  background: rgba(10, 12, 14, .78); border-top: 4px solid var(--teal); }
+  background: rgba(10, 12, 14, .78); }
 .closing__lede { margin: 20px auto 0; max-width: 52ch; color: var(--muted-dark); }
 .closing__script { margin: 18px 0 0; font-size: 36px; line-height: 1.1; color: var(--teal); }
 @media (hover: none) { .closing { background-attachment: scroll; } }
@@ -622,7 +625,7 @@ html:has(.jump) { scroll-padding-top: 210px; }
 
 /* the soft prompt: a small card that slides up from the corner; a call or the contact page, never a form */
 .nudge { position: fixed; z-index: 45; right: 24px; bottom: 24px; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 16px; align-items: start;
-  width: min(400px, calc(100vw - 32px)); padding: 20px 52px 18px 18px; background: var(--white); color: var(--charcoal); border-top: 4px solid var(--teal);
+  width: min(400px, calc(100vw - 32px)); padding: 20px 52px 18px 18px; background: var(--white); color: var(--charcoal);
   box-shadow: 0 24px 60px rgba(10, 12, 14, .28); opacity: 0; transform: translateY(24px); visibility: hidden;
   transition: opacity 500ms var(--ease), transform 500ms var(--ease), visibility 500ms; }
 .nudge[hidden] { display: none; }
@@ -814,14 +817,14 @@ html:has(.jump) { scroll-padding-top: 210px; }
 .feed .rail__track > li { display: flex; }
 .feed .lcard { width: 100%; }
 .alert { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: clamp(24px, 3vw, 36px) clamp(24px, 3.4vw, 44px); background: var(--white);
-  border-left: 4px solid var(--teal); box-shadow: 0 14px 40px rgba(10, 12, 14, .08); }
+  box-shadow: 0 14px 40px rgba(10, 12, 14, .08); }
 .alert__copy { min-width: 0; }
 .alert__title { font-size: clamp(20px, 1.8vw, 26px); }
 .alert__note { max-width: 60ch; margin: 10px 0 0; color: var(--muted); }
 .alert .btn { flex: 0 0 auto; }
 .idx-note a { color: var(--teal-deep); font-weight: 700; }
 /* Noah's own listings: a walk-through button on the photo where he has filmed the home */
-.lcard--own { border-top: 4px solid var(--teal); }
+.lcard--own { box-shadow: 0 18px 48px rgba(10, 12, 14, .12); }
 .lcard__tour { position: absolute; z-index: 2; left: 0; bottom: 0; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px 0 14px;
   border: 0; background: var(--night); color: #FFFFFF; cursor: pointer; font: 700 12px/1 var(--body); letter-spacing: .14em; text-transform: uppercase;
   transition: background-color 300ms var(--ease), color 300ms var(--ease); }
@@ -855,7 +858,7 @@ html:has(.jump) { scroll-padding-top: 210px; }
 /* the relocation page: a second row of videos under the lead one, and one column per state people move from */
 .honest__more { margin-top: clamp(44px, 5vw, 72px); padding-top: clamp(36px, 4vw, 56px); border-top: 1px solid var(--line); }
 .from__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3vw, 44px); }
-.from { display: flex; flex-direction: column; padding-top: 22px; border-top: 4px solid var(--teal); }
+.from { display: flex; flex-direction: column; padding-top: 22px; border-top: 1px solid var(--line); }
 .from__title { font-size: clamp(22px, 2vw, 28px); }
 .from__copy { margin: 14px 0 0; color: var(--muted); }
 .from__video { margin-top: 22px; }
@@ -946,7 +949,7 @@ html:has(.jump) { scroll-padding-top: 210px; }
 .about__a { padding: 0 0 26px; color: var(--muted); }
 .about__sub { margin: 22px 0 8px; font: 700 13px/1.3 var(--body); letter-spacing: .18em; color: var(--teal-deep); }
 .about__note { font-size: 14px; }
-.moments { padding: 26px 28px 18px; background: var(--white); border-top: 4px solid var(--teal); box-shadow: 0 14px 40px rgba(10, 12, 14, .08); }
+.moments { padding: 26px 28px 18px; background: var(--white); box-shadow: 0 14px 40px rgba(10, 12, 14, .08); }
 .moments__head { font-size: 20px; }
 .moments__list { margin: 14px 0 0; padding: 0; list-style: none; }
 .moments__list li { border-top: 1px solid var(--line); }
