@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noah Inhofer, Real Estate Hippie: Design Rules</title>
+
+<!-- Client fonts (replaced per-client at generation time) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Barlow:wght@500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Tokens injected from global-design.json at generation time */
+  --color-primary: #0A0C0E;
+  --color-secondary: #2B2B2B;
+  --color-accent: #37BFC0;
+  --color-contrast: #0A0C0E;
+  --color-text-dark: #2B2B2B;
+  --color-text-muted: #45514F;
+  --color-text-light: #B4C2C2;
+  --color-surface: #DDE6E6;
+  --color-white: #FFFFFF;
+  --color-background: #F3F7F7;
+  --color-background-alt: #DDE6E6;
+  --color-background-dark: #0A0C0E;
+  --color-border: #C9D6D6;
+
+  --font-heading: 'Poppins';
+  --font-body: 'Barlow';
+
+  --h1-size: clamp(42px, 5.6vw, 82px);
+  --h2-size: clamp(34px, 4.1vw, 60px);
+  --h3-size: 22px (phone) to 28px;
+  --body-size: 18px;
+  --eyebrow-size: 13px;
+
+  --h1-weight: 800;
+  --h2-weight: 800;
+  --h3-weight: 700;
+  --body-weight: 500;
+
+  --h1-tracking: 0.02em;
+  --h2-tracking: 0.02em;
+  --eyebrow-tracking: 0.22em;
+
+  --h1-transform: uppercase;
+  --h2-transform: uppercase;
+
+  --h1-line-height: 1.06;
+  --body-line-height: 1.65;
+
+  --container-width: 1320px;
+  --section-padding-y: clamp(76px, 9vw, 132px);
+  --container-padding-x: clamp(20px, 4vw, 64px);
+
+  --motion-duration-default: 300ms;
+  --motion-easing-default: cubic-bezier(.2, .7, .1, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+  color: var(--color-text-dark);
+  background: var(--color-background);
+}
+
+.doc {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem var(--container-padding-x);
+}
+
+.doc-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 3rem;
+  margin-bottom: 4rem;
+}
+
+.doc-header__eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.doc-header__title {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  color: var(--color-text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.doc-header__meta {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+section > h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  line-height: 1.2;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+section > p.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  max-width: 65ch;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+}
+
+.row__label {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.row__value {
+  font-size: 0.9375rem;
+  color: var(--color-text-dark);
+}
+
+.row__demo {
+  margin-top: 0.5rem;
+  font-family: var(--font-heading), system-ui, sans-serif;
+  color: var(--color-text-dark);
+}
+
+.demo-h1 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  letter-spacing: var(--h1-tracking);
+  text-transform: var(--h1-transform);
+  line-height: var(--h1-line-height);
+  margin-top: 0.5rem;
+}
+.demo-h2 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  letter-spacing: var(--h2-tracking);
+  text-transform: var(--h2-transform);
+  margin-top: 0.5rem;
+}
+.demo-h3 {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  margin-top: 0.5rem;
+}
+.demo-eyebrow {
+  font-size: var(--eyebrow-size);
+  font-weight: 500;
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+}
+.demo-body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--body-size);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line-height);
+  margin-top: 0.5rem;
+  max-width: 60ch;
+}
+
+/* Color swatches */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.swatch {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+.swatch__chip {
+  height: 90px;
+  border-bottom: 1px solid var(--color-border);
+}
+.swatch__meta {
+  padding: 0.875rem 1rem;
+}
+.swatch__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.swatch__hex {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+.swatch__role {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Spacing scale */
+.spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.spacing-row {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.spacing-row__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+.spacing-row__value {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-dark);
+}
+.spacing-row__bar {
+  background: var(--color-accent);
+  height: 12px;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 1px solid var(--color-primary);
+  transition: background var(--motion-duration-default) var(--motion-easing-default),
+              color var(--motion-duration-default) var(--motion-easing-default);
+}
+.btn-primary:hover {
+  background: transparent;
+  color: var(--color-primary);
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-accent {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Anti-pattern callouts */
+.callout {
+  background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.callout__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+.callout ul {
+  margin-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.callout li {
+  margin: 0.25rem 0;
+  color: var(--color-text-dark);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9375rem;
+}
+th, td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  background: var(--color-background-alt);
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  font-size: 0.875em;
+  background: var(--color-background-alt);
+  padding: 0.125rem 0.375rem;
+  border: 1px solid var(--color-border);
+}
+
+.note {
+  background: var(--color-background-alt);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  body { background: white; }
+  section { page-break-inside: avoid; }
+  .doc { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header class="doc-header">
+    <div class="doc-header__eyebrow">Design Rules, Handoff Document</div>
+    <h1 class="doc-header__title">Noah Inhofer, Real Estate Hippie</h1>
+    <p class="doc-header__meta">For Jeff, Kersey, and any builder picking up this project · Generated 2026-11-25 · Template: legacy lane, own stylesheet (mockups/styles.css)</p>
+  </header>
+
+  <section>
+    <h2>How to Read This Document</h2>
+    <p class="section-intro">
+      Every rule below is rendered using the actual fonts, colors, and sizes the site should use.
+      What you see on this page is what the live site should look like at the component level.
+      No need to translate hex codes or font-size values into mental pictures, the doc shows it.
+    </p>
+    <div class="note">
+      <strong>If something doesn't match the mockups:</strong> the mockups are the source of truth.
+      The mockups consumed this same design system, so a mismatch means either the mockup needs fixing
+      or this doc needs regeneration. Either way, surface it to Curtis before building.
+    </div>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="section-intro">
+      The brand uses <strong>'Poppins'</strong> for headings and <strong>'Barlow'</strong> for body copy.
+      H1 case is <strong>uppercase</strong>. Body line-height is generous (1.65) for readability.
+    </p>
+
+    <div class="row">
+      <div class="row__label">H1 (page titles)</div>
+      <div class="row__value">
+        Font: 'Poppins' · Weight: 800 · Size: clamp(42px, 5.6vw, 82px) · Tracking: 0.02em · Case: uppercase · Line-height: 1.06
+        <div class="demo-h1">Longmont Real Estate With Noah Inhofer</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H2 (section heads)</div>
+      <div class="row__value">
+        Font: 'Poppins' · Weight: 800 · Size: clamp(34px, 4.1vw, 60px) · Tracking: 0.02em · Case: uppercase
+        <div class="demo-h2">See the Towns Before You Tour Them</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">H3 (subsection)</div>
+      <div class="row__value">
+        Font: 'Poppins' · Weight: 700 · Size: 22px (phone) to 28px · Case: sentence
+        <div class="demo-h3">Service Subhead</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Eyebrow / Overline</div>
+      <div class="row__value">
+        Font: 'Barlow' · Weight: 500 · Size: 13px · Tracking: 0.22em · Case: UPPERCASE
+        <div class="demo-eyebrow">Eyebrow Label Style</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Body</div>
+      <div class="row__value">
+        Font: 'Barlow' · Weight: 500 · Size: 18px · Line-height: 1.65
+        <div class="demo-body">
+          This is the standard body copy style. It runs at a generous line-height because most blocks
+          carry meaningful paragraph content (about teasers, agent bio, FAQ answers, community descriptions).
+          Width caps around 65 characters per line for readability.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Typography Hard Rules</div>
+      <ul>
+        <li>Poppins, Barlow and Caveat load from Google Fonts at the top of every page.</li><li>Caveat is for the tagline and Noah's sign-off only, one short line, never a heading.</li>
+        <li>Never substitute a system font fallback as the primary face, only as the secondary in font-stack.</li>
+        <li>Never introduce a fourth family.</li>
+        <li>No italic-serif accent spans inside H1s ("real estate, <em>reimagined</em>" is banned).</li>
+        <li>No long dashes anywhere in copy, replace with comma, period, colon, or middle dot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Color Palette</h2>
+    <p class="section-intro">
+      Mist dominates, Fog supports, Charcoal and Night anchor the dark bands. Teal is the working accent; pink is the single Contact button.
+    </p>
+
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background: #F3F7F7;"></div><div class="swatch__meta"><div class="swatch__name">mist</div><div class="swatch__hex">#F3F7F7</div><div class="swatch__role">Dominant ground</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #DDE6E6;"></div><div class="swatch__meta"><div class="swatch__name">fog</div><div class="swatch__hex">#DDE6E6</div><div class="swatch__role">Alternate light bands</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #FFFFFF;"></div><div class="swatch__meta"><div class="swatch__name">white</div><div class="swatch__hex">#FFFFFF</div><div class="swatch__role">Cards and text on dark</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #37BFC0;"></div><div class="swatch__meta"><div class="swatch__name">teal</div><div class="swatch__hex">#37BFC0</div><div class="swatch__role">Hippie Teal: buttons, rules, frames; text only on dark grounds</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #1B5E62;"></div><div class="swatch__meta"><div class="swatch__name">teal deep</div><div class="swatch__hex">#1B5E62</div><div class="swatch__role">Teal-coloured text on light grounds (6.9:1 on Mist)</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #FF2768;"></div><div class="swatch__meta"><div class="swatch__name">pink</div><div class="swatch__hex">#FF2768</div><div class="swatch__role">Sunset Pink: once per page, the header Contact button, Night text</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #2B2B2B;"></div><div class="swatch__meta"><div class="swatch__name">charcoal</div><div class="swatch__hex">#2B2B2B</div><div class="swatch__role">Text; the buy, sell and watch band</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #0A0C0E;"></div><div class="swatch__meta"><div class="swatch__name">night</div><div class="swatch__hex">#0A0C0E</div><div class="swatch__role">Fold band, town tiles, footer, dialogs</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #45514F;"></div><div class="swatch__meta"><div class="swatch__name">muted on light</div><div class="swatch__hex">#45514F</div><div class="swatch__role">Supporting text on light grounds</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #B4C2C2;"></div><div class="swatch__meta"><div class="swatch__name">muted on dark</div><div class="swatch__hex">#B4C2C2</div><div class="swatch__role">Supporting text on dark grounds</div></div></div>
+<div class="swatch"><div class="swatch__chip" style="background: #C9D6D6;"></div><div class="swatch__meta"><div class="swatch__name">line</div><div class="swatch__hex">#C9D6D6</div><div class="swatch__role">Hairlines and borders</div></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Color Hard Rules</div>
+      <ul>
+        <li>Teal and pink never fill a section and never carry white text: Night or Charcoal text on them.</li><li>Sunset Pink appears once per page: the header Contact button.</li>
+        <li>Body text color contrast must meet WCAG AA against the background (this palette is verified).</li>
+        <li>Never invent additional colors, use ONLY the colors listed above.</li>
+        <li>Hover states: lighten/darken by 8-12%, never shift hue.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Spacing Scale</h2>
+    <p class="section-intro">
+      Section padding-Y defaults to <strong>clamp(76px, 9vw, 132px)</strong>. Container max-width is <strong>1320px</strong>.
+      The values below are this client's layout spacing.
+    </p>
+
+    <div class="spacing-scale">
+      <div class="spacing-row"><span class="spacing-row__name">gutter</span><span class="spacing-row__value">clamp(20px, 4vw, 64px)</span><div class="spacing-row__bar" style="width: 64px;max-width:100%"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">section pad</span><span class="spacing-row__value">clamp(76px, 9vw, 132px)</span><div class="spacing-row__bar" style="width: 132px;max-width:100%"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">wrap</span><span class="spacing-row__value">1320px</span><div class="spacing-row__bar" style="width: 1320px;max-width:100%"></div></div>
+<div class="spacing-row"><span class="spacing-row__name">header wrap</span><span class="spacing-row__value">1520px</span><div class="spacing-row__bar" style="width: 1520px;max-width:100%"></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Spacing Hard Rules</div>
+      <ul>
+        <li>Use these layout values; never one-off container or section values.</li>
+        <li>Section padding-Y is generous by design. Don't tighten it without explicit direction.</li>
+        <li>Container padding-X is consistent across all sections (no per-section overrides).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <p class="section-intro">
+      This client's buttons are filled Hippie Teal with Night text and sharp corners (a recorded balance call awaiting Curtis's look). The outline button is the secondary. Uppercase, wide tracking, never pill-shaped.
+    </p>
+
+    <div class="row">
+      <div class="row__label">Primary</div>
+      <div class="row__value">
+        Filled teal with Night text, goes Night with white text on hover. Use on Home hero, About CTA, Closing CTA.
+        <div class="btn-row">
+          <a href="#" class="btn-primary">Schedule a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Secondary</div>
+      <div class="row__value">
+        Ghost from start. Use as the second CTA when both options carry equal weight.
+        <div class="btn-row">
+          <a href="#" class="btn-secondary">Browse Listings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row__label">Accent</div>
+      <div class="row__value">
+        Accent-color fill. Use sparingly, small visual moments, in-block CTAs.
+        <div class="btn-row">
+          <a href="#" class="btn-accent">Get Home Value</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout__title">Button Hard Rules</div>
+      <ul>
+        <li>Border-radius: 0. Sharp geometry only. No rounded buttons.</li>
+        <li>Never use 3+ buttons in a single hero. One primary, optionally one secondary, never three.</li>
+        <li>Transition duration 300ms with easing cubic-bezier(.2, .7, .1, 1) on hover.</li>
+        <li>Always include `:focus-visible` indicator (browser default OK, or styled with accent outline).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="client-rules">
+    <h2>Client Rules</h2>
+    <p class="section-intro">Curtis's standing rules for this client. Each applies to every page unless it says otherwise.</p>
+    <div class="callout">
+      <div class="callout__title">Rules From Curtis</div>
+      <ul>
+        <li><strong>No pills.</strong> No pill-shaped buttons, chips or tags anywhere. A choice of towns is the map itself plus one plain chooser, and labels are plain caps text (2026-11-24).</li>
+        <li><strong>No coloured accent line on any box edge.</strong> Top, bottom or side, on any box, panel or card (2026-11-25).</li>
+        <li><strong>Closing call to action is option G.</strong> No box. One row low on a tall parallax photograph: the question and a short line on the left, two buttons on the right, over a bottom-up fade. Its photo is never the page's hero photo (2026-11-25).</li>
+        <li><strong>The Communities menu is a dropdown of all 19 towns</strong>, on every page: Arvada, Berthoud, Boulder, Broomfield, Commerce City, Dacono, Erie, Firestone, Fort Collins, Frederick, Johnstown, Lafayette, Longmont, Louisville, Loveland, Lyons, Thornton, Westminster, Windsor.</li>
+        <li><strong>The area map is illustrated and alive</strong>, never a flat outline. Never a dark strip under a full-bleed row of photo tiles.</li>
+        <li><strong>External links:</strong> 2 to 3 official sources per town page; any core page except the home page, only where relevant. Each checked live, <code>rel="noopener"</code>.</li>
+      </ul>
+    </div>
+    <h3 class="demo-h3" style="margin-top:2rem">Town Page Pattern</h3>
+    <p class="section-intro">One template, one record per town. The 19 community pages are built by <code>mockups/_src/town.py</code> from <code>_src/town/page.html</code> (the whole page), <code>_src/town/&lt;block&gt;.html</code> (one item of each repeated block) and <code>_src/towns/&lt;slug&gt;.json</code> (that town's words, videos, photos and sample listings). To change a block on every town, edit its file in <code>town/</code> and rerun; to change one town, edit its record. Never edit a built <code>NN-community-&lt;town&gt;.html</code> by hand.</p>
+    <table>
+      <thead><tr><th>Part</th><th>Rule</th></tr></thead>
+      <tbody>
+        <tr><td>Hero</td><td>H1 "Homes for Sale in Town, CO"; a section bar under it sticks under the header on scroll and marks the section on screen</td></tr>
+        <tr><td>Town tour</td><td>Night map of the town beside tabs drawn as a numbered route, one stop at a time, each with Noah's own video. No real-time or market data</td></tr>
+        <tr><td>Tour stop search</td><td>Lives inside its tab: four listings and one button under the map, search area ringed on the map</td></tr>
+        <tr><td>Noah's listings</td><td>Own block (heading, his cards, one button to all his listings) when he has any in the town; left out otherwise</td></tr>
+        <tr><td>Soft prompt</td><td>Slides up while scrolling, after the tour, never over the closing call to action, dismissible; a call or the contact page, never a form</td></tr>
+        <tr><td>Closing call to action</td><td>Option G, as above</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+<section id="mobile-spec">
+<h2>Mobile</h2>
+<p>The mockups are the mobile spec: open any page at 375px (<a href='mobile.html'>mobile.html</a> shows every page at phone width). This section translates the stylesheet's responsive rules into build settings. Definition of done: the built page matches the mockup at 375px.</p>
+<h3>Type scale: phone vs desktop</h3>
+<p>The phone value is each clamp() lower bound. Set these as the mobile font sizes in Spectra.</p>
+<table><tr><th>Selector</th><th>Phone</th><th>Desktop</th></tr>
+<tr><td><code>.h2</code></td><td>34px</td><td>60px</td></tr>
+<tr><td><code>.hero h1</code></td><td>42px</td><td>82px</td></tr>
+<tr><td><code>.hero__tag</code></td><td>30px</td><td>42px</td></tr>
+<tr><td><code>.fold__title</code></td><td>28px</td><td>38px</td></tr>
+<tr><td><code>.amap__card-name</code></td><td>26px</td><td>36px</td></tr>
+<tr><td><code>.tile__name</code></td><td>28px</td><td>40px</td></tr>
+<tr><td><code>.path__title</code></td><td>26px</td><td>34px</td></tr>
+<tr><td><code>.hero__lede</code></td><td>18px</td><td>22px</td></tr>
+<tr><td><code>.stop__name</code></td><td>26px</td><td>36px</td></tr>
+<tr><td><code>.near__title</code></td><td>22px</td><td>28px</td></tr>
+<tr><td><code>.feed__head</code></td><td>22px</td><td>28px</td></tr>
+<tr><td><code>.feed__title</code></td><td>22px</td><td>28px</td></tr>
+<tr><td><code>.alert__title</code></td><td>20px</td><td>26px</td></tr>
+<tr><td><code>.from__title</code></td><td>22px</td><td>28px</td></tr>
+<tr><td><code>.watch__title</code></td><td>34px</td><td>60px</td></tr>
+<tr><td><code>.step__name</code></td><td>24px</td><td>32px</td></tr>
+</table>
+<h3>At and below 1279px</h3><ul>
+<li><code>.nav</code> stacks vertically</li>
+<li><code>.nav__list</code> stacks vertically</li>
+<li><code>.nav__link, .nav__toggle</code> type drops to 14px</li>
+<li><code>.nav__sub</code> hidden</li>
+</ul>
+<h3>At and below 900px</h3><ul>
+<li><code>.legal</code> stacks to one column</li>
+<li><code>.legal__toc</code> hidden</li>
+</ul>
+<h3>At and below 760px</h3><ul>
+<li><code>.brand__kw</code> hidden</li>
+<li><code>body</code> type drops to 17px</li>
+<li><code>.amap__svg text, .amap__shield, .amap__leader</code> hidden</li>
+<li><code>.signoff</code> type drops to 32px</li>
+<li><code>.alert</code> stacks vertically</li>
+<li><code>.near__bar</code> stacks vertically</li>
+<li><code>.near__grid::-webkit-scrollbar</code> hidden</li>
+<li><code>.check::before</code> type drops to 26px</li>
+<li><code>.tmap__label, .tmap__place, .tmap__way, .tmap__svg .amap__shield</code> hidden</li>
+<li><code>.tour__tabs::-webkit-scrollbar</code> hidden</li>
+</ul>
+<h3>At and below 560px</h3><ul>
+<li><code>.smap</code> stacks to one column</li>
+</ul>
+<h3>Hero Focal Points (hand-written)</h3>
+<table><thead><tr><th>Page</th><th>Phone crop rule</th></tr></thead><tbody>
+<tr><td>Home</td><td>Silent full-bleed video loop, <code>object-fit: cover</code> centred, still image as poster. Keep Noah and the foreground subject in the middle of the frame; the headline sits low over the bottom scrim</td></tr>
+<tr><td>Town pages</td><td>Each town's <code>hero_photo</code> in its record, centred; keep the landmark or skyline in the upper two thirds so the bottom scrim and headline do not cover it</td></tr>
+<tr><td>About arch frame</td><td>Portrait of Noah, <code>object-position: 50% 30%</code>, so the face survives the arch crop</td></tr>
+</tbody></table>
+<h3>Mobile-Only Departures (hand-written)</h3>
+<ul>
+<li>The Communities dropdown does not hover on a phone: the 19 towns sit in the stacked menu, and the sub-list rule above applies</li>
+<li>Sticky call bar on phones: Call (filled teal, Night text) and Contact (Night, white text)</li>
+<li>Map labels, shields and leaders hide at 760px; the town chooser and arrows stay</li>
+</ul>
+<p class="note">Shipped phone-width view of every page: <a href="mockups/mobile.html">mockups/mobile.html</a>.</p>
+</section>
+
+
+  <section>
+    <h2>Motion</h2>
+    <p class="section-intro">
+      Slow, subtle motion. Reveals fade up 28px over 900ms as a section scrolls in (never the hero). Photo tiles and video thumbnails zoom 5 to 6 percent on hover; cards lift 6px. Reduced motion resolves everything to its final state.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--motion-duration-fast</code></td><td>300ms</td><td>Link underline color changes, small UI feedback</td></tr>
+        <tr><td><code>--motion-duration-default</code></td><td>300ms</td><td>Button hover, accordion expand</td></tr>
+        <tr><td><code>--motion-duration-slow</code></td><td>900ms</td><td>Section reveal on scroll</td></tr>
+        <tr><td><code>--motion-easing-default</code></td><td>cubic-bezier(.2, .7, .1, 1)</td><td>All hover transitions</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Motion Hard Rules</div>
+      <ul>
+        <li>No bounce easing. No springs. No spinning loaders inside content.</li>
+        <li>Photo hover zoom is 5 to 6 percent, the house value for this client.</li>
+        <li>Respect `prefers-reduced-motion`, disable photo-zoom and section fade-in when set.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Imagery</h2>
+    <p class="section-intro">
+      Noah's own photography and footage. The illustrated area map and the topographic contours are the only drawn art.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Use</th><th>Aspect Ratio</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero (full-bleed)</td><td>16:9 or 21:9</td><td>Optional 30-50% top-to-bottom darkening overlay if text contrast requires</td></tr>
+        <tr><td>Agent headshot</td><td>3:4, 4:5, or 5:6 (portrait)</td><td>~55% max column width. Landscape lifestyle photos = different block</td></tr>
+        <tr><td>Community card</td><td>16:9 or 4:3</td><td>Real neighborhood / streetscape photos</td></tr>
+        <tr><td>Lifestyle / property</td><td>16:9, 16:10, 21:9</td><td>Landscape orientation</td></tr>
+        <tr><td>Process step photos</td><td>4:5 or 1:1</td><td>Per-step photography when V3/V5 process variant is used</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Imagery Hard Rules</div>
+      <ul>
+        <li>Never mix headshot and lifestyle in same slot, they require different aspect ratios and crops.</li>
+        <li>Never use gradient placeholders past first draft, replace with real Unsplash or client photos before delivery.</li>
+        <li>Every image needs descriptive `alt` text, never leave blank, never use "image" or "photo".</li>
+        <li>Borders/rounded corners on images: NEVER. `border-radius: 0` is non-negotiable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Layout Widths</h2>
+    <table>
+      <thead>
+        <tr><th>Token</th><th>Value</th><th>Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--container-width</code></td><td>1320px</td><td>Standard section content width</td></tr>
+        <tr><td><code>--wide-width</code></td><td>1520px (header)</td><td>Wider blocks (full-bleed hero, alternating image rows)</td></tr>
+        <tr><td><code>--narrow-width</code></td><td>not used; copy blocks cap near 65 characters</td><td>Text-heavy blocks (agent bio prose, FAQ)</td></tr>
+        <tr><td><code>--container-padding-x</code></td><td>clamp(20px, 4vw, 64px)</td><td>Horizontal padding on all containers</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Breakpoints</div>
+      <ul>
+        <li>Mobile-first base styles</li>
+        <li>Tablet breakpoint: 768px</li>
+        <li>Desktop breakpoint: 1024px</li>
+        <li>Wide desktop breakpoint: 1440px (when alternating image rows benefit)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Voice and Content Reminders</h2>
+    <p class="section-intro">
+      Content writers and designers both need to remember these voice rules. Even if it's the writer's job,
+      a designer who notices an em dash or "your trusted partner" should flag it before publish.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Copy Hard Rules</div>
+      <ul>
+        <li>Never use long dashes (the long dash or a double hyphen), replace with comma, period, colon, or middle dot.</li>
+        <li>Never use generic AI phrases: "dream home", "seamless experience", "every step of the way", "your trusted partner", "in today's market", "with confidence".</li>
+        <li>Never use generic city descriptors: "thriving", "vibrant", "nestled", "perfect blend", "world-class", "rich history", "something for everyone".</li>
+        <li>Never use parallel triplets ("Clear, calm, confident"), hyphenated compound metaphors ("courtroom-trained eye"), or conditional buildups ("Whether you're A, B, or C...").</li>
+        <li>Every page H1 references at least ONE specific item from the client's brief (years, credentials, niche, personal story).</li>
+      </ul>
+    </div>
+
+    <p class="section-intro" style="margin-top: 2rem;">
+      Full doctrine: <code>references/copy-voice.md</code> in the Optimus Prime plugin.
+    </p>
+  </section>
+
+  <section>
+    <h2>External Links Compliance</h2>
+    <p class="section-intro">
+      Every external link on the site must follow these rules. Resources strips above the footer are the primary placement.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Rule</th><th>HTML</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Opens in new tab</td><td><code>target="_blank"</code></td></tr>
+        <tr><td>Security</td><td><code>rel="noopener noreferrer"</code></td></tr>
+        <tr><td>Underlined</td><td>browser default (do not remove)</td></tr>
+        <tr><td>Visited state</td><td>browser default (do not disable)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout__title">Banned External Targets</div>
+      <ul>
+        <li>Zillow, Redfin, Trulia (competes with the agent's lead capture)</li>
+        <li>Brokerage internal portals (public URLs only)</li>
+        <li>Paid services the client doesn't endorse</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns Summary</h2>
+    <p class="section-intro">
+      The shortlist of "do not do this." Every rule below was learned the hard way on past builds.
+    </p>
+
+    <div class="callout">
+      <div class="callout__title">Never Do These</div>
+      <ul>
+        <li>Long dashes anywhere in copy</li>
+        <li>Emojis as icons (inline SVG only)</li>
+        <li>Rounded corners on cards, buttons, images</li><li>Pills, chips or tags of any kind</li><li>A coloured accent line on the edge of any box, panel or card</li>
+        <li>Carousel sliders in heroes</li>
+        <li>Italic-serif "register lift" spans inside H1</li>
+        <li>3+ CTAs in a hero (1 default, 2 max)</li>
+        <li>Split heroes anywhere except a clean home-page exception</li>
+        <li>Two dark-background sections in a row</li>
+        <li>Aggressive form or large CTA inside the hero (exception: Home Valuation page widget)</li>
+        <li>Gradient placeholders past first draft</li>
+        <li>Raw shortcode embeds without styled container</li>
+        <li>Flat text-only service boxes (must have SVG icons)</li>
+        <li>Zigzag timeline layouts for process steps (use alternating image+text rows)</li>
+        <li>"Recently Sold Nearby" on Home Valuation page</li>
+        <li>4-step process blocks shipped as production (always default to 8)</li>
+        <li>FAQ mode: faq on About page (use mode: expertise, Areas of Expertise)</li>
+        <li>Communities home-page treatment on inner pages (V2 home-only)</li>
+        <li>About teaser block on /about (always use full Agent Bio)</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 0.875rem; text-align: center;">
+    Generated by Optimus Prime · <a href="mailto:curtis@agenticpress.com" style="color: var(--color-text-muted);">Curtis Gould, AgenticPress</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
